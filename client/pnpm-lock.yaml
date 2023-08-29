@@ -11,18 +11,15 @@ dependencies:
   react-dom:
     specifier: ^18.2.0
     version: 18.2.0(react@18.2.0)
-<<<<<<< HEAD
   react-hook-form:
     specifier: ^7.45.4
     version: 7.45.4(react@18.2.0)
-=======
   react-router-dom:
     specifier: ^6.15.0
     version: 6.15.0(react-dom@18.2.0)(react@18.2.0)
   styled-components:
     specifier: ^6.0.7
     version: 6.0.7(react-dom@18.2.0)(react@18.2.0)
->>>>>>> fc7bf45ca911ab619c7acc8e157ef2c09f9bdf1c
 
 devDependencies:
   '@pnpm/eslint-config':
