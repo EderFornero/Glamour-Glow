@@ -1,6 +1,6 @@
 import type { ServiceProvider } from '../../interfaces'
 import './ServiceCard.css'
-// import { NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom'
 
 const ServiceCard: React.FC<ServiceProvider> = ({ sellerName, price, rating, serviceDescription }) => {
   return (
@@ -10,7 +10,7 @@ const ServiceCard: React.FC<ServiceProvider> = ({ sellerName, price, rating, ser
       <h3>Price: {price}</h3>
       <p>Rating: {rating}</p>
       <p>Description: {serviceDescription}</p>
-      {/* <NavLink to=route here> */}<button>Check it out</button>{/* </NavLink> */}
+      <NavLink to="ROUTE HERE"><button>Check it out</button></NavLink>
     </article>
   )
 }
