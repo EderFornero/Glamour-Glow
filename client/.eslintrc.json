@@ -10,7 +10,7 @@
     "parserOptions": {
         "ecmaVersion": "latest",
         "sourceType": "module",
-        "project": "./client/tsconfig.json"
+        "project": "./Glamour-Glow/client/tsconfig.json"
     },
     "plugins": [
         "react"
