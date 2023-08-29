@@ -1,0 +1,1 @@
+Categories, in the array of categories should reference a categories table.
