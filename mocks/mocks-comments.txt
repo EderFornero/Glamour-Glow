@@ -1,0 +1,1 @@
+Categories should reference a categories table.
