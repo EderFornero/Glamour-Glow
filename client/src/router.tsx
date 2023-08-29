@@ -4,8 +4,10 @@ import { createBrowserRouter } from 'react-router-dom'
 import Layout from './Layout/Layout.tsx'
 // pages
 import Home from './pages/Home/Home.tsx'
-import NotFound from './pages/NotFound/NotFound.tsx'
 // error component
+import NotFound from './pages/NotFound/NotFound.tsx'
+//component
+import FormRegister from './components/FormRegister/FormRegister'
 
 const router = createBrowserRouter([
   {
@@ -17,6 +19,15 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />
+      },
+      {
+        path: '/register',
+        children: [
+          {
+            index: true,
+            element: <FormRegister />
+          }
+        ]
       }
     ]
   }

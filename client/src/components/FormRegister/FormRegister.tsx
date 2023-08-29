@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { useForm } from "react-hook-form";
 
 
-const FormLogin = () => {
+const FormRegister = () => {
   const {
     register,
     handleSubmit,
@@ -165,4 +165,4 @@ const FormLogin = () => {
   )
 }
 
-export default FormLogin
+export default FormRegister
