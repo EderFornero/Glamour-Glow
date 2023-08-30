@@ -8,6 +8,7 @@ interface AcceptTermsInputProps {
 const AcceptTermsInput: React.FC<AcceptTermsInputProps> = ({ register, errors }) => {
   return (
     <div>
+      <label>Terms and Conditions</label>
       <input
         type="checkbox"
         name="acceptTerms"
@@ -18,8 +19,9 @@ const AcceptTermsInput: React.FC<AcceptTermsInputProps> = ({ register, errors })
           },
         })}
       />
-      <label>Accept Terms and Conditions</label>
+      <div>
       {errors.acceptTerms && <span>{errors.acceptTerms.message}</span>}
+      </div>
     </div>
   );
 };

@@ -6,16 +6,21 @@ import EmailInput from './inputs/EmailInput';
 import BirthDateInput from './inputs/BirthDateInput';
 import PasswordInput from './inputs/PasswordInput';
 import AcceptTermsInput from './inputs/AcceptTermsInput';
+import UserNameInput from './inputs/UserNameInput';
+import style from './FormRegister.module.css';
+import { useGoBack } from '../../hooks';
+
 
 const FormRegister: React.FC = () => {
+  const goBack = useGoBack()
   const {
     register,
     handleSubmit,
     formState: { errors },
-    watch,
   } = useForm<FormData>({
     defaultValues: {
       name: '',
+      userName: '',
       email: '',
       birthDate: '',
       password: '',
@@ -29,17 +34,35 @@ const FormRegister: React.FC = () => {
   });
 
   return (
-    <form onSubmit={onSubmit}>
-      <NameInput register={register} errors={errors} />
-      <EmailInput register={register} errors={errors} />
-      <BirthDateInput register={register} errors={errors} />
-      <PasswordInput register={register} errors={errors} />
-      <AcceptTermsInput register={register} errors={errors} />
-
-      <button type='submit'>Send</button>
-      {watch('name') ? <h3>Hello {watch('name')}!</h3> : null}
-      <pre>{JSON.stringify(watch(), null, 2)}</pre>
-    </form>
+    <div className={style['div-form']}>
+      <form className={style['form-box']} onSubmit={onSubmit}>
+        <h1>Welcome!</h1>
+        <div className={style['name-input']}>
+          <NameInput register={register} errors={errors} />
+        </div>
+        <div className={style['user-input']}>
+          <UserNameInput register={register} errors={errors} />
+        </div>
+        <div className={style['email-input']}>
+          <EmailInput register={register} errors={errors} />
+        </div>
+        <div className={style['password-input']}>
+          <PasswordInput register={register} errors={errors} />
+        </div>
+        <div className={style['birth-input']}>
+          <BirthDateInput register={register} errors={errors} />
+        </div>
+        <div className={style['confirm-input']}>
+          <AcceptTermsInput register={register} errors={errors} />
+        </div>
+        <div className={style['div-buttons']}>
+        <button onClick={goBack}>Back</button>
+          <div className={style['button-div']}>
+            <button type='submit'>Send</button>
+          </div>
+        </div>
+      </form>
+    </div>
   );
 };
 
