@@ -14,6 +14,7 @@
     height: 100%;
     background: #ffffff;
     transition: width 0.4s;
+    z-index: 9;
   }
   
   .sidebar-header {
@@ -36,7 +37,7 @@
   }
   
   .sidebar button.active {
-    background: #9d5bff;
+    background:#5448de;
     color: #f9f9f9;
   }
   
