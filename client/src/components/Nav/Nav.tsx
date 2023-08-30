@@ -20,7 +20,7 @@ const Nav = (): JSX.Element => {
               </NavLink>
             </li>
             <li className='menu-item'>
-              <NavLink to='/' className='link'>
+              <NavLink to='/admin' className='link'>
                 For business
               </NavLink>
             </li>
@@ -36,7 +36,7 @@ const Nav = (): JSX.Element => {
             </NavLink>
           </li>
           <li className='menu-item-full'>
-            <NavLink to='/' className='link-full'>
+            <NavLink to='/admin' className='link-full'>
               For business
             </NavLink>
           </li>

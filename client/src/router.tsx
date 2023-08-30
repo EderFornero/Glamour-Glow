@@ -4,6 +4,7 @@ import { createBrowserRouter } from 'react-router-dom'
 import Layout from './Layout/Layout.tsx'
 // pages
 import Home from './pages/Home/Home.tsx'
+import AdminDashboard from './pages/AdminDashboard/AdminDashboard.tsx'
 // error component
 import NotFound from './pages/NotFound/NotFound.tsx'
 //component
@@ -26,6 +27,15 @@ const router = createBrowserRouter([
           {
             index: true,
             element: <FormRegister />
+          }
+        ]
+      },
+      {
+        path: '/admin',
+        children: [
+          {
+            index: true,
+            element: <AdminDashboard />
           }
         ]
       }
