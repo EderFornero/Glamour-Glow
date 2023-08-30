@@ -5,4 +5,4 @@ import sellers from './sellers';
 
 sellerRouter.use("/sellers", sellers)
 
-module.exports = sellerRouter;
+export default sellerRouter;

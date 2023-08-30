@@ -5,4 +5,4 @@ import services from './services';
 
 serviceRouter.use("/services", services)
 
-module.exports = serviceRouter;
+export default serviceRouter;

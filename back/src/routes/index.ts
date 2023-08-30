@@ -1,3 +1,3 @@
-export * from "./users/index"
-export * from "./services"
-export * from "./sellers"
+export {default as userRouter} from "./users/index"
+export {default as serviceRouter} from "./services/index"
+export {default as sellerRouter} from "./sellers/index"
