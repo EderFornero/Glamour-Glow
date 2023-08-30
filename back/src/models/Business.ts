@@ -1,6 +1,7 @@
 import { prop, Ref } from "@typegoose/typegoose";
 import { modelOptions } from "@typegoose/typegoose";
 import { Category } from "./Category";
+import { Services } from "./Services";
 
 
 
@@ -33,6 +34,9 @@ export class Business {
 
     @prop({ref: () => Category, default:[]})
     categoriesArray: Ref<Category>[];
+
+    @prop({ref: () => Services, default: []})
+    servicesArray: Ref<Services>[];
 
     
 }
