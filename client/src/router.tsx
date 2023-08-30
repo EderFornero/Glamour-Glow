@@ -7,7 +7,7 @@ import Home from './pages/Home/Home.tsx'
 // error component
 import NotFound from './pages/NotFound/NotFound.tsx'
 //component
-import FormRegister from './components/FormRegister/FormRegister'
+import FormRegister from './components/FormRegister/FormRegister.tsx'
 
 const router = createBrowserRouter([
   {

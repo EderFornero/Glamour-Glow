@@ -1,5 +1,5 @@
 import './App.css'
-import FormLogin from './components/FormLogin/FormLogin'
+import FormLogin from './components/FormRegister/FormRegister'
 
 const App = (): JSX.Element => {
   return (
