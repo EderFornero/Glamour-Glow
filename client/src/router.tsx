@@ -4,10 +4,11 @@ import { createBrowserRouter } from 'react-router-dom'
 import Layout from './Layout/Layout.tsx'
 // pages
 import Home from './pages/Home/Home.tsx'
+import AboutUs from './pages/AboutUs/AboutUs.tsx'
 // error component
 import NotFound from './pages/NotFound/NotFound.tsx'
-//component
-import FormRegister from './components/FormRegister/FormRegister'
+// component
+import FormRegister from './components/FormRegister/FormRegister.tsx'
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
             element: <FormRegister />
           }
         ]
+      },
+      {
+        path: '/about',
+        element: <AboutUs />
       }
     ]
   }

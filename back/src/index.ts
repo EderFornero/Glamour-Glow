@@ -1,4 +1,5 @@
 import express from "express";
+import {userRouter, sellerRouter, serviceRouter} from "./routes/index" 
 import "./db"
 
 const server = express();
@@ -9,6 +10,10 @@ server.use(express.json());
 server.listen(PORT, ()=> {
     console.log("Server running  in PORT 3001 my king")
 });
+
+server.use("/", userRouter)
+server.use("/", sellerRouter)
+server.use("/", serviceRouter)
 
 
 server.get("/holis", (_req, res)=> {

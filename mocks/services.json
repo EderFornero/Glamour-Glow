@@ -3,94 +3,37 @@
     {
       "id": 1,
       "name": "Haircut",
-      "description": "A professional haircut service",
-      "genderOriented": "Both",
-      "category": 1,
-      "sellerId": 1
+      "description": "Professional haircut service",
+      "category": "Hair Services",
+      "price": 40.0
     },
     {
       "id": 2,
-      "name": "Hair Dye",
-      "description": "Expert hair dyeing service",
-      "genderOriented": "Both",
-      "category": 1
+      "name": "Massage",
+      "description": "Relaxing massage service",
+      "category": "Spa Services",
+      "price": 60.0
     },
     {
       "id": 3,
-      "name": "Nail Polish",
-      "description": "Nail polish application",
-      "genderOriented": "Female",
-      "category": 2
+      "name": "Manicure",
+      "description": "Professional manicure service",
+      "category": "Nail Services",
+      "price": 25.0
     },
     {
       "id": 4,
       "name": "Facial Spa",
-      "description": "Relaxing facial spa treatment",
-      "genderOriented": "Female",
-      "category": 3
+      "description": "Rejuvenating facial spa",
+      "category": "Spa Services",
+      "price": 50.0
     },
     {
       "id": 5,
-      "name": "Beard Trim",
-      "description": "Precision beard trimming",
-      "genderOriented": "Male",
-      "category": 5
-    },
-    {
-      "id": 6,
-      "name": "Manicure",
-      "description": "Professional manicure service",
-      "genderOriented": "Female",
-      "category": 2
-    },
-    {
-      "id": 7,
-      "name": "Pedicure",
-      "description": "Expert pedicure service",
-      "genderOriented": "Female",
-      "category": 2
-    },
-    {
-      "id": 8,
-      "name": "Massage Therapy",
-      "description": "Relaxing massage therapy",
-      "genderOriented": "Both",
-      "category": 4
-    },
-    {
-      "id": 9,
-      "name": "Waxing",
-      "description": "Professional waxing service",
-      "genderOriented": "Both",
-      "category": 4
-    },
-    {
-      "id": 10,
-      "name": "Makeup",
-      "description": "Makeup application service",
-      "genderOriented": "Female",
-      "category": 6
-    },
-    {
-      "id": 11,
-      "name": "Shave",
-      "description": "Professional shaving service",
-      "genderOriented": "Male",
-      "category": 5
-    },
-    {
-      "id": 12,
-      "name": "Hairstyling",
-      "description": "Creative hairstyling service",
-      "genderOriented": "Both",
-      "category": 1
-    },
-    {
-      "id": 13,
-      "name": "New Service",
-      "description": "A new service",
-      "genderOriented": "Both",
-      "category": 4
+      "name": "Eyelash Extension",
+      "description": "Eyelash extension service",
+      "category": "Eyelash Services",
+      "price": 35.0
     }
   ]
 }
