@@ -48,7 +48,7 @@
   .card img {
     margin: -100px 0 30 0;
     width: 100%;
-    max-width: 1000px;
+    max-width: 100%;
   }
   .card button {
     width: 10rem;

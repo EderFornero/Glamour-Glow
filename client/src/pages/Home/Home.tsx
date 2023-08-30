@@ -1,12 +1,13 @@
 import Cards from '../../components/Cards/Cards'
 import Nav from '../../components/Nav/Nav'
-import SideBar from '../../components/SideBar/SideBar'
+import Carousel from '../../components/Carousel/Carousel'
 import Fotter from '../../components/Footer/Fotter'
 
 const Home: React.FC = () => {
   return (
     <div>
       <Nav />
+      <Carousel/>
       <Cards />
       <Fotter/>
     </div>
