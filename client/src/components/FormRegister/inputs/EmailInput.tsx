@@ -11,7 +11,6 @@ const EmailInput: React.FC<EmailInputProps> = ({ register, errors }) => {
       <input
         type="email"
         name="email"
-        placeholder='Email'
         {...register('email', {
           required: {
             value: true,
@@ -27,7 +26,7 @@ const EmailInput: React.FC<EmailInputProps> = ({ register, errors }) => {
       {errors.email && <span>{errors.email.message}</span>}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default EmailInput;
+export default EmailInput

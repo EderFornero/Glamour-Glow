@@ -10,7 +10,6 @@ import UserNameInput from './inputs/UserNameInput';
 import style from './FormRegister.module.css';
 import { useGoBack } from '../../hooks';
 
-
 const FormRegister: React.FC = () => {
   const goBack = useGoBack()
   const {
@@ -27,11 +26,11 @@ const FormRegister: React.FC = () => {
       confirmPassword: '',
       acceptTerms: false,
     },
-  });
+  })
 
   const onSubmit = handleSubmit((data: FormData) => {
-    console.log(data);
-  });
+    console.log(data)
+  })
 
   return (
     <div className={style['div-form']}>
@@ -66,4 +65,4 @@ const FormRegister: React.FC = () => {
   );
 };
 
-export default FormRegister;
+export default FormRegister

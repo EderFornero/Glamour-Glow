@@ -1,0 +1,22 @@
+.div-input-wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 8px;
+}
+
+.div-input-wrapper input {
+  background-color: #eee;
+  border: none;
+  padding: 1rem;
+  font-size: 1rem;
+  width: 13em;
+  border-radius: 1rem;
+  color: var(--primary-color);
+  box-shadow: 0 0.4rem #dfd9d9;
+  cursor: pointer;
+}
+
+.div-input-wrapper input:focus {
+  outline-color: var(--primary-color);
+}
