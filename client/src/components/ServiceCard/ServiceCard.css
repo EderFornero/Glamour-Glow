@@ -1,3 +1,10 @@
+:root {
+  --primary-color: #3e38b6;
+  --secondary-color: #6e66ff;
+  --accent-color: #5effb1;
+  --neutral-color: #f3f3e6;
+}
+
 .card {
   display: flex;
   align-items: center;
@@ -29,7 +36,7 @@
 
 .card button {
   border: 0;
-  background: #5448de;
+  background: var(--primary-color);
   color: #f8f8f8;
   font-family: inherit;
   padding: 16px 26px;

@@ -1,5 +1,25 @@
+:root {
+  --primary-color: #3e38b6;
+  --secondary-color: #6e66ff;
+  --accent-color: #5effb1;
+  --neutral-color: #f3f3e6;
+}
+
 header {
   height: 4rem;
+  background-color: var(--primary-color);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+}
+.logo {
+  cursor: pointer;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
 }
 
 nav {
@@ -15,12 +35,15 @@ nav {
   height: 100%;
   margin-right: 3rem;
 }
+.div {
+  right: 20px;
+}
 
 .div,
 .menu {
   position: fixed;
-  right: 50px;
   list-style: none;
+  top: 8px;
 }
 
 .menu {
@@ -28,6 +51,10 @@ nav {
   display: flex;
   flex-direction: column;
   align-items: center;
+  right: 0;
+  background: var(--primary-color);
+  width: 250px;
+  height: 350px;
 }
 
 .menu-item {

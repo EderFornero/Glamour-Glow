@@ -1,10 +1,12 @@
 import { Outlet } from 'react-router-dom'
+import Nav from '../components/Nav/Nav'
 
 const Layout: React.FC = () => {
   return (
-      <>
-        <Outlet />
-      </>
+    <>
+      <Nav />
+      <Outlet />
+    </>
   )
 }
 
