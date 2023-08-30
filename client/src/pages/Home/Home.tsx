@@ -1,11 +1,19 @@
+// mock
+import { users } from '../../../../mocks/fullAPIresponse.json'
+// components
 import Cards from '../../components/Cards/Cards'
 import Nav from '../../components/Nav/Nav'
+import SearchBar from '../../components/SearchBar/SearchBar'
+// hooks
+import { useSearchBarHome } from '../../hooks/index'
 
-const Home: React.FC = () => {
+const Home = (): JSX.Element => {
+  const { searchResults, handleOnSearch } = useSearchBarHome(users)
   return (
     <div>
       <Nav />
-      <Cards />
+      <SearchBar onSearch={handleOnSearch}/>
+      <Cards searchUsers={searchResults.length > 0 ? searchResults : users}/>
     </div>
   )
 }
