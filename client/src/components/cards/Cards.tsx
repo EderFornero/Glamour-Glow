@@ -1,4 +1,4 @@
-import { serviceProviders } from '../../../../mocks/serviceProvider.json'
+import { users } from '../../../../mocks/fullAPIresponse.json'
 import ServiceCard from '../ServiceCard/ServiceCard'
 import type { ServiceProvider } from '../../interfaces'
 import './Cards.css'
@@ -7,8 +7,8 @@ const Cards = (): JSX.Element => {
   return (
     <section className='cardsSection'>
       {/* Loader while services are loading */}
-      {serviceProviders.map(({ sellerId, serviceId, price, rating, categoryId, sellerName, serviceDescription }: ServiceProvider) => {
-        return <ServiceCard key={`${sellerId}${serviceId}`} price={price} rating={rating} categoryId={categoryId} sellerName={sellerName} serviceDescription={serviceDescription} />
+      {users.map(({ id, businessName, businessLocation, rating, categories, services }: ServiceProvider) => {
+        return <ServiceCard key={id} id={id} businessName={businessName} businessLocation={businessLocation} rating={rating} categories={categories} services={services} />
       })}
     </section>
   )
