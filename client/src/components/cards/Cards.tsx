@@ -1,13 +1,16 @@
-import { users } from '../../../../mocks/fullAPIresponse.json'
+// components
 import ServiceCard from '../ServiceCard/ServiceCard'
+// interfaces
 import type { ServiceProvider } from '../../interfaces'
+// css
 import style from './Cards.module.css'
+// props
+import type { CardsProps } from '../../interfaces/props'
 
-const Cards = (): JSX.Element => {
+const Cards: React.FC<CardsProps> = ({ searchUsers }: CardsProps) => {
   return (
     <section className={style.cardsSection}>
-      {/* Loader while services are loading */}
-      {users.map(({ id, businessName, businessLocation, rating, categories, services }: ServiceProvider) => {
+      {searchUsers.map(({ id, businessName, businessLocation, rating, categories, services }: ServiceProvider) => {
         return <ServiceCard key={id} id={id} businessName={businessName} businessLocation={businessLocation} rating={rating} categories={categories} services={services} />
       })}
     </section>
