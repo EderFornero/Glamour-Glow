@@ -1,0 +1,139 @@
+.div-container-about{
+  width: 100%;
+  height: fit-content;
+  position: relative;
+}
+
+.div-container-about::before{
+  content: "";
+  inset: 0;
+  background: var(--neutral-color);
+  position: absolute;
+  filter: blur(1.5px);
+  z-index: -1;  
+  }
+
+.get-to-know-us{
+  display: flex;
+  justify-content: center;
+  margin: 15px;
+}
+
+.card-container{
+ display: grid;
+ grid-template-columns: repeat(3, 1fr);
+ width: 100%;
+}
+
+.card {
+  position: relative;
+  max-width: 400px;
+  height: 400px;
+  margin: 10px;
+  padding: 2rem 1.5rem;
+  transition: box-shadow .3s ease, transform .2s ease;
+  -webkit-box-shadow: 7px 7px 3px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 7px 7px 3px 0px rgba(0,0,0,0.75);
+  box-shadow: 7px 7px 3px 0px rgba(0,0,0,0.75);
+  border: solid 2px var(--primary-color);
+  border-radius: 6px;
+ }
+ 
+ .card::before{
+  content: "";
+  inset: 0;
+  background: var(--secondary-color);
+  position: absolute;
+  filter: blur(2.3px);
+  z-index: -1;  
+ }
+
+ .card-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: transform .2s ease, opacity .2s ease;
+ }
+ 
+ /*Image*/
+ .card-avatar {
+  --size: 200px;
+  width: var(--size);
+  height: var(--size);
+  object-fit: cover;
+  border-radius: 50%;
+  transition: transform .2s ease;
+  margin-bottom: 1rem;
+ }
+
+  /*Text*/
+  .card-title {
+    color: var(--neutral-color);
+    font-size: 1.5em;
+    font-weight: 600;
+    line-height: 2rem;
+  }
+   
+   .card-subtitle {
+    color: var(--accent-color); 
+    font-size: 0.8em;
+   }
+   
+ 
+ /*Card desc*/
+
+ .card-description{
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  text-align: start;
+  margin-left: 15px;
+  margin-top: 6px;
+  height: 80px;
+  color: var(--neutral-color);
+ }
+ 
+ /*Card footer*/
+ .card-social {
+  transform: translateY(200%);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0;
+  width: 100%;
+  opacity: 0;
+  transition: transform .2s ease, opacity .2s ease;
+ }
+
+ .card-social__item {
+  list-style: none;
+ }
+ 
+ .card-social__item svg {
+  display: block;
+  height: 25px;
+  width: 30px;
+  cursor: pointer;
+  transition: fill 0.2s ease ,transform 0.2s ease;
+ }
+ 
+
+ /*Hover*/
+ .card:hover .card-info {
+  transform: translateY(-5%);
+ }
+ 
+ .card:hover .card-social {
+  transform: translateY(100%);
+  opacity: 1;
+ }
+ 
+ .card-social__item svg:hover {
+  fill: #232323;
+  transform: scale(1.1);
+ }
+ 
+ .card-avatar:hover {
+  transform: scale(1.1);
+ }

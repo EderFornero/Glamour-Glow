@@ -4,3 +4,19 @@
   --accent-color: #5effb1;     
   --neutral-color: #f3f3e6; 
 }
+
+*{
+  margin: 0;
+  padding: 0;
+  font-family: FontText;
+  scroll-behavior: smooth;
+}
+
+body{
+  background-color: var(--neutral-color);
+}
+
+@font-face {
+  font-family: FontText;
+  src: url('./assets/Fonts/FontRegular.ttf');
+}
