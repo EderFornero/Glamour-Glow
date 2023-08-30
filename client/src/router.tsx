@@ -7,13 +7,8 @@ import Home from './pages/Home/Home.tsx'
 import AboutUs from './pages/AboutUs/AboutUs.tsx'
 // error component
 import NotFound from './pages/NotFound/NotFound.tsx'
-<<<<<<< HEAD
-//component
-import FormRegister from './components/FormRegister/FormRegister.tsx'
-=======
 // component
-import FormRegister from './components/FormRegister/FormRegister'
->>>>>>> about-us
+import FormRegister from './components/FormRegister/FormRegister.tsx'
 
 const router = createBrowserRouter([
   {

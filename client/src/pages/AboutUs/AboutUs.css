@@ -2,9 +2,9 @@
   width: 100%;
   height: fit-content;
   position: relative;
-}
+} 
 
-.div-container-about::before{
+ .div-container-about::before{
   content: "";
   inset: 0;
   background: var(--neutral-color);
@@ -25,11 +25,11 @@
  width: 100%;
 }
 
-.card {
+.card-about {
   position: relative;
   max-width: 400px;
-  height: 400px;
-  margin: 10px;
+  height: 460px;
+  margin: 15px;
   padding: 2rem 1.5rem;
   transition: box-shadow .3s ease, transform .2s ease;
   -webkit-box-shadow: 7px 7px 3px 0px rgba(0,0,0,0.75);
@@ -39,16 +39,16 @@
   border-radius: 6px;
  }
  
- .card::before{
+ .card-about::before{
   content: "";
   inset: 0;
   background: var(--secondary-color);
   position: absolute;
   filter: blur(2.3px);
   z-index: -1;  
- }
+ } 
 
- .card-info {
+ .card-about-info {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -68,14 +68,13 @@
  }
 
   /*Text*/
-  .card-title {
+  .card-about-title {
     color: var(--neutral-color);
     font-size: 1.5em;
     font-weight: 600;
     line-height: 2rem;
   }
-   
-   .card-subtitle {
+   .card-about-subtitle {
     color: var(--accent-color); 
     font-size: 0.8em;
    }
@@ -83,19 +82,19 @@
  
  /*Card desc*/
 
- .card-description{
+ .card-about-description{
   display: flex;
   justify-content: center;
   align-items: start;
   text-align: start;
   margin-left: 15px;
-  margin-top: 6px;
+  margin-top: 2px;
   height: 80px;
   color: var(--neutral-color);
  }
  
  /*Card footer*/
- .card-social {
+ .card-about-social {
   transform: translateY(200%);
   display: flex;
   justify-content: space-around;
@@ -114,22 +113,23 @@
   display: block;
   height: 25px;
   width: 30px;
+  margin-top: 5px;
   cursor: pointer;
   transition: fill 0.2s ease ,transform 0.2s ease;
  }
  
 
  /*Hover*/
- .card:hover .card-info {
+ .card-about:hover .card-about-info {
   transform: translateY(-5%);
  }
  
- .card:hover .card-social {
+ .card-about:hover .card-about-social {
   transform: translateY(100%);
   opacity: 1;
  }
  
- .card-social__item svg:hover {
+ .card-about-social__item svg:hover {
   fill: #232323;
   transform: scale(1.1);
  }
