@@ -1,71 +1,47 @@
 {
-    "sellers": [
-      {
-        "seller_id": 101,
-        "name": "John's Hair Studio",
-        "location": "Downtown",
-        "services_offered": [
-          {
-            "service_id": 1,  
-            "price": 30.00,
-            "rating": 4.5
-          }
-        ]
-      },
-      {
-        "seller_id": 102,
-        "name": "Sarah's Salon",
-        "location": "Suburbia",
-        "services_offered": [
-          {
-            "service_id": 1,  
-            "price": 35.00,
-            "rating": 4.7
-          },
-          {
-            "service_id": 2, 
-            "price": 50.00,
-            "rating": 4.8
-          }
-        ]
-      },
-      {
-        "seller_id": 103,
-        "name": "Lisa's Beauty Hub",
-        "location": "City Center",
-        "services_offered": [
-          {
-            "service_id": 2, 
-            "price": 55.00,
-            "rating": 4.6
-          }
-        ]
-      },
-      {
-        "seller_id": 104,
-        "name": "Grace's Nail Spa",
-        "location": "City Center",
-        "services_offered": [
-          {
-            "service_id": 3, 
-            "price": 15.00,
-            "rating": 4.2
-          }
-        ]
-      },
-      {
-        "seller_id": 105,
-        "name": "Ella's Nail Studio",
-        "location": "Downtown",
-        "services_offered": [
-          {
-            "service_id": 3,
-            "price": 18.00,
-            "rating": 4.4
-          }
-        ]
-      }
-      
-    ]
-  }
-  
+  "sellers": [
+    {
+      "id": 101,
+      "name": "John's Hair Studio",
+      "location": "Downtown"
+    },
+    {
+      "id": 102,
+      "name": "Sarah's Salon",
+      "location": "Suburbia"
+    },
+    {
+      "id": 103,
+      "name": "Lisa's Beauty Hub",
+      "location": "City Center"
+    },
+    {
+      "id": 104,
+      "name": "Grace's Nail Spa",
+      "location": "City Center"
+    },
+    {
+      "id": 105,
+      "name": "Ella's Nail Studio",
+      "location": "Downtown"
+    }
+  ]
+}
+
+Ruta general Home
+{
+  "id": 123,
+  "seller": false,
+  "name": "Nombre del negocio",
+  "location": "Ubicacion equisde",
+  "categories":["categoria 1",  "categoria 2", "categoria 3"],
+  "gender": "both" / "men" / "female",
+  "ratingSeller": 1-5,
+  "services":["activity1", "activity2"] / NO USADO
+}
+
+Por id
+
+{
+  "services":["activity1", "activity2"]
+}

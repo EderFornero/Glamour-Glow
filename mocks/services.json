@@ -3,246 +3,94 @@
     {
       "id": 1,
       "name": "Haircut",
-      "categories": ["Hair Services"],
       "description": "A professional haircut service",
-      "gender_oriented": "Both",
-      "providers": [
-        {
-          "seller_id": 101,
-          "price": 30.00,
-          "location": "Downtown",
-          "rating": 4.5
-        },
-        {
-          "seller_id": 102,
-          "price": 35.00,
-          "location": "Suburbia",
-          "rating": 4.7
-        }
-      ]
+      "genderOriented": "Both",
+      "category": 1,
+      "sellerId": 1
     },
     {
       "id": 2,
       "name": "Hair Dye",
-      "categories": ["Hair Services"],
       "description": "Expert hair dyeing service",
-      "gender_oriented": "Both",
-      "providers": [
-        {
-          "seller_id": 102,
-          "price": 50.00,
-          "location": "Suburbia",
-          "rating": 4.8
-        },
-        {
-          "seller_id": 103,
-          "price": 55.00,
-          "location": "City Center",
-          "rating": 4.6
-        }
-      ]
+      "genderOriented": "Both",
+      "category": 1
     },
     {
       "id": 3,
       "name": "Nail Polish",
-      "categories": ["Nail Services"],
       "description": "Nail polish application",
-      "gender_oriented": "Female",
-      "providers": [
-        {
-          "seller_id": 104,
-          "price": 15.00,
-          "location": "City Center",
-          "rating": 4.2
-        },
-        {
-          "seller_id": 105,
-          "price": 18.00,
-          "location": "Downtown",
-          "rating": 4.4
-        }
-      ]
+      "genderOriented": "Female",
+      "category": 2
     },
     {
       "id": 4,
       "name": "Facial Spa",
-      "categories": ["Skin Care", "Spa Services"],
       "description": "Relaxing facial spa treatment",
-      "gender_oriented": "Female",
-      "providers": [
-        {
-          "seller_id": 106,
-          "price": 40.00,
-          "location": "Downtown",
-          "rating": 4.6
-        },
-        {
-          "seller_id": 107,
-          "price": 45.00,
-          "location": "Suburbia",
-          "rating": 4.3
-        }
-      ]
+      "genderOriented": "Female",
+      "category": 3
     },
     {
       "id": 5,
       "name": "Beard Trim",
-      "categories": ["Grooming"],
       "description": "Precision beard trimming",
-      "gender_oriented": "Male",
-      "providers": [
-        {
-          "seller_id": 108,
-          "price": 25.00,
-          "location": "Suburbia",
-          "rating": 4.4
-        },
-        {
-          "seller_id": 109,
-          "price": 28.00,
-          "location": "City Center",
-          "rating": 4.8
-        }
-      ]
+      "genderOriented": "Male",
+      "category": 5
     },
     {
       "id": 6,
       "name": "Manicure",
-      "categories": ["Nail Services"],
       "description": "Professional manicure service",
-      "gender_oriented": "Female",
-      "providers": [
-        {
-          "seller_id": 110,
-          "price": 20.00,
-          "location": "City Center",
-          "rating": 4.0
-        },
-        {
-          "seller_id": 111,
-          "price": 22.00,
-          "location": "Downtown",
-          "rating": 4.2
-        }
-      ]
+      "genderOriented": "Female",
+      "category": 2
     },
     {
       "id": 7,
       "name": "Pedicure",
-      "categories": ["Nail Services"],
       "description": "Expert pedicure service",
-      "gender_oriented": "Female",
-      "providers": [
-        {
-          "seller_id": 112,
-          "price": 25.00,
-          "location": "Suburbia",
-          "rating": 4.5
-        },
-        {
-          "seller_id": 113,
-          "price": 28.00,
-          "location": "City Center",
-          "rating": 4.3
-        }
-      ]
+      "genderOriented": "Female",
+      "category": 2
     },
     {
       "id": 8,
       "name": "Massage Therapy",
-      "categories": ["Spa Services"],
       "description": "Relaxing massage therapy",
-      "gender_oriented": "Both",
-      "providers": [
-        {
-          "seller_id": 114,
-          "price": 60.00,
-          "location": "Downtown",
-          "rating": 4.9
-        },
-        {
-          "seller_id": 115,
-          "price": 65.00,
-          "location": "Suburbia",
-          "rating": 4.8
-        }
-      ]
+      "genderOriented": "Both",
+      "category": 4
     },
     {
       "id": 9,
       "name": "Waxing",
-      "categories": ["Spa Services"],
       "description": "Professional waxing service",
-      "gender_oriented": "Both",
-      "providers": [
-        {
-          "seller_id": 116,
-          "price": 40.00,
-          "location": "City Center",
-          "rating": 4.4
-        },
-        {
-          "seller_id": 117,
-          "price": 45.00,
-          "location": "Suburbia",
-          "rating": 4.3
-        }
-      ]
+      "genderOriented": "Both",
+      "category": 4
     },
     {
       "id": 10,
       "name": "Makeup",
-      "categories": ["Makeup Services"],
       "description": "Makeup application service",
-      "gender_oriented": "Female",
-      "providers": [
-        {
-          "seller_id": 118,
-          "price": 30.00,
-          "location": "Downtown",
-          "rating": 4.6
-        },
-        {
-          "seller_id": 119,
-          "price": 35.00,
-          "location": "City Center",
-          "rating": 4.7
-        }
-      ]
+      "genderOriented": "Female",
+      "category": 6
     },
     {
       "id": 11,
       "name": "Shave",
-      "categories": ["Grooming"],
       "description": "Professional shaving service",
-      "gender_oriented": "Male",
-      "providers": [
-        {
-          "seller_id": 120,
-          "price": 20.00,
-          "location": "Suburbia",
-          "rating": 4.2
-        },
-        {
-          "seller_id": 121,
-          "price": 22.00,
-          "location": "City Center",
-          "rating": 4.4
-        }
-      ]
+      "genderOriented": "Male",
+      "category": 5
     },
     {
       "id": 12,
       "name": "Hairstyling",
-      "categories": ["Hair Services"],
       "description": "Creative hairstyling service",
-      "gender_oriented": "Both",
-      "providers": [
-        {
-          "seller_id": 122,
-          "price": 35.00
-        }
-      ]
+      "genderOriented": "Both",
+      "category": 1
+    },
+    {
+      "id": 13,
+      "name": "New Service",
+      "description": "A new service",
+      "genderOriented": "Both",
+      "category": 4
     }
   ]
 }

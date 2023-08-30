@@ -1,6 +1,11 @@
-:root{
-  --primary-color: #3e38b6;    
-  --secondary-color: #6e66ff;  
-  --accent-color: #5effb1;     
-  --neutral-color: #f3f3e6; 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --primary-color: #3e38b6;
+  --secondary-color: #6e66ff;
+  --accent-color: #5effb1;
+  --neutral-color: #f3f3e6;
 }

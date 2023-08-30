@@ -1,0 +1,36 @@
+header {
+  border: 10px solid red;
+}
+
+nav {
+  border: 5px solid aqua;
+  display: flex;
+  flex-direction: row-reverse;
+}
+.div,
+.menu {
+  position: fixed;
+  right: 50px;
+  border: 5px solid green;
+  list-style: none;
+}
+
+.menu {
+  top: 4.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.menu-item {
+  background-color: aqua;
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid red;
+  text-align: center;
+}
+
+.link {
+  color: white;
+  text-decoration: none;
+}
