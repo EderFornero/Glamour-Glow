@@ -6,13 +6,13 @@ const ServiceCard: React.FC<ServiceProvider> = ({ id, businessName, businessLoca
   return (
     <article className='card'>
       {/* <img src="source" alt="alt" /> */}
-      <h2>Name: {businessName}</h2>
+      <h2 className='title'> {businessName}</h2>
       <p>Rating: {rating}</p>
       <p>Location: {businessLocation}</p>
       {categories.map((category) => {
         return <p key={id}>{category}</p>
       })}
-      <NavLink to='ROUTE HERE'>
+      <NavLink to='ROUTE HERE' className='link'>
         <button>Check it out</button>
       </NavLink>
     </article>
