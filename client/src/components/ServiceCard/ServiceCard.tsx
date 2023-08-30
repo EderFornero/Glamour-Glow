@@ -10,7 +10,9 @@ const ServiceCard: React.FC<ServiceProvider> = ({ sellerName, price, rating, ser
       <h3>Price: {price}</h3>
       <p>Rating: {rating}</p>
       <p>Description: {serviceDescription}</p>
-      <NavLink to="ROUTE HERE"><button>Check it out</button></NavLink>
+      <NavLink to='ROUTE HERE'>
+        <button>Check it out</button>
+      </NavLink>
     </article>
   )
 }
