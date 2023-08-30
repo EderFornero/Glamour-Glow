@@ -8,10 +8,9 @@ interface EmailInputProps {
 const EmailInput: React.FC<EmailInputProps> = ({ register, errors }) => {
   return (
     <div>
-      <label>Email: </label>
       <input
-        type='email'
-        name='email'
+        type="email"
+        name="email"
         {...register('email', {
           required: {
             value: true,
@@ -23,7 +22,9 @@ const EmailInput: React.FC<EmailInputProps> = ({ register, errors }) => {
           },
         })}
       />
+      <div>
       {errors.email && <span>{errors.email.message}</span>}
+      </div>
     </div>
   )
 }
