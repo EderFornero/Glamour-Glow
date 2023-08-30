@@ -1,17 +1,12 @@
-:root {
-  --primary-color: #3e38b6;
-  --secondary-color: #6e66ff;
-  --accent-color: #5effb1;
-  --neutral-color: #f3f3e6;
-}
-
 header {
   height: 4rem;
   background-color: var(--primary-color);
   width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   position: fixed;
+  top: 0;
 }
 .logo {
   cursor: pointer;
@@ -26,6 +21,7 @@ nav {
   display: flex;
   flex-direction: row-reverse;
 }
+
 .logout {
   cursor: pointer;
 }
@@ -39,22 +35,18 @@ nav {
   right: 20px;
 }
 
-.div,
-.menu {
-  position: fixed;
-  list-style: none;
-  top: 8px;
-}
-
 .menu {
   top: 3rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  right: 0;
+  right: 0px;
   background: var(--primary-color);
   width: 250px;
-  height: 350px;
+  height: 300px;
+  position: fixed;
+  top: 71px;
+  list-style: none;
 }
 
 .menu-item {
@@ -72,7 +64,6 @@ nav {
   display: flex;
   list-style-type: none;
   gap: 3rem;
-  position: fixed;
 }
 
 .link-full {

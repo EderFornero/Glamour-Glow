@@ -5,7 +5,9 @@ const Layout: React.FC = () => {
   return (
     <>
       <Nav />
-      <Outlet />
+      <main style={{ marginTop: '90px' }}>
+        <Outlet />
+      </main>
     </>
   )
 }

@@ -45,7 +45,7 @@ const Nav = (): JSX.Element => {
                 Login
               </NavLink>
             </li>
-            <li className='menu-item-full'>
+            <li className={style['menu-item-full']}>
               <NavLink to='/' className={style['link-full']}>
                 For business
               </NavLink>

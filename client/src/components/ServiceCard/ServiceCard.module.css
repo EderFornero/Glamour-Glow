@@ -43,7 +43,7 @@
 
 .card button {
   border: 0;
-  background: var(--primary-color);
+  background: #5448de;
   color: #f8f8f8;
   font-family: inherit;
   padding: 16px 26px;
