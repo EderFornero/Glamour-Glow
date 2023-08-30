@@ -1,36 +1,66 @@
 header {
-  border: 10px solid red;
+  height: 4rem;
 }
 
 nav {
-  border: 5px solid aqua;
   display: flex;
   flex-direction: row-reverse;
 }
+.logout {
+  cursor: pointer;
+}
+
+.nav-full {
+  align-items: center;
+  height: 100%;
+  margin-right: 3rem;
+}
+
 .div,
 .menu {
   position: fixed;
   right: 50px;
-  border: 5px solid green;
   list-style: none;
 }
 
 .menu {
-  top: 4.2rem;
+  top: 3rem;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .menu-item {
-  background-color: aqua;
   width: 100%;
   padding: 1rem;
-  border: 1px solid red;
   text-align: center;
 }
 
 .link {
-  color: white;
   text-decoration: none;
+  color: black;
+}
+
+.menu-full {
+  display: flex;
+  list-style-type: none;
+  gap: 3rem;
+  position: fixed;
+}
+
+.link-full {
+  text-decoration: none;
+  color: black;
+}
+
+@media (min-width: 551px) {
+  .nav-mobile {
+    display: none;
+  }
+}
+
+@media (max-width: 550px) {
+  .nav-full {
+    display: none;
+  }
 }
