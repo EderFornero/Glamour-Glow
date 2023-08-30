@@ -8,9 +8,7 @@ const Cards = (): JSX.Element => {
     <section className='cardsSection'>
       {/* Loader while services are loading */}
       {serviceProviders.map(({ sellerId, serviceId, price, rating, categoryId, sellerName, serviceDescription }: ServiceProvider) => {
-        return (
-          <ServiceCard key={`${sellerId}${serviceId}`} price={price} rating={rating} categoryId={categoryId} sellerName={sellerName} serviceDescription={serviceDescription} />
-        )
+        return <ServiceCard key={`${sellerId}${serviceId}`} price={price} rating={rating} categoryId={categoryId} sellerName={sellerName} serviceDescription={serviceDescription} />
       })}
     </section>
   )

@@ -5,7 +5,8 @@
       "name": "Haircut",
       "description": "A professional haircut service",
       "genderOriented": "Both",
-      "category": 1
+      "category": 1,
+      "sellerId": 1
     },
     {
       "id": 2,

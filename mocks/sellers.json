@@ -27,3 +27,21 @@
     }
   ]
 }
+
+Ruta general Home
+{
+  "id": 123,
+  "seller": false,
+  "name": "Nombre del negocio",
+  "location": "Ubicacion equisde",
+  "categories":["categoria 1",  "categoria 2", "categoria 3"],
+  "gender": "both" / "men" / "female",
+  "ratingSeller": 1-5,
+  "services":["activity1", "activity2"] / NO USADO
+}
+
+Por id
+
+{
+  "services":["activity1", "activity2"]
+}
