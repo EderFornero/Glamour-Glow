@@ -31,7 +31,7 @@ footer {
     width: 180px;
 }
 
-h2 {
+.h2 {
     text-align: left;
     color: var(--neutral-color);
     margin-top: 0px;

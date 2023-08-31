@@ -1,4 +1,4 @@
-header {
+ .header {
   height: 4rem;
   background-color: var(--primary-color);
   width: 100%;
@@ -8,7 +8,10 @@ header {
   position: fixed;
   z-index: 999;
   top: 0;
-}
+  color: #ffffff;
+  font-size: 1.2rem;
+}  
+
 .logo {
   cursor: pointer;
 }
@@ -37,7 +40,6 @@ nav {
 }
 
 .menu {
-  top: 3rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -46,7 +48,7 @@ nav {
   width: 250px;
   height: 300px;
   position: fixed;
-  top: 71px;
+  top: 64px;
   list-style: none;
 }
 
@@ -58,7 +60,7 @@ nav {
 
 .link {
   text-decoration: none;
-  color: black;
+  color: #ffffff;
 }
 
 .menu-full {
@@ -69,7 +71,7 @@ nav {
 
 .link-full {
   text-decoration: none;
-  color: black;
+  color: #ffffff;
 }
 
 @media (min-width: 551px) {

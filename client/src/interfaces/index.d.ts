@@ -13,6 +13,7 @@ export interface Service {
   description: string
   category: string
   price: number
+  time?: string
 }
 
 export interface FormData {

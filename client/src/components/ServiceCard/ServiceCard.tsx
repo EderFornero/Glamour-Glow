@@ -12,7 +12,7 @@ const ServiceCard: React.FC<ServiceProvider> = ({ id, businessName, businessLoca
       {categories.map((category) => {
         return <p key={id}>{category}</p>
       })}
-      <NavLink to='ROUTE HERE' className={style.link}>
+      <NavLink to={`/detail/${id}`} className={style.link}>
         <button>Check it out</button>
       </NavLink>
     </article>
