@@ -1,5 +1,6 @@
-import  "dotenv/config"
-const {LOCAL_HOST, DB_NAME} = process.env;
+import "dotenv/config"
+const {URL} = process.env
+
 export const mongodb = {
-    URI : `mongodb://${LOCAL_HOST}/${DB_NAME}`
+    URI : `${URL}`
 }

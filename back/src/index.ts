@@ -1,6 +1,7 @@
 import express from "express";
-import {userRouter, sellerRouter, serviceRouter} from "./routes/index" 
+import {userRouter, sellerRouter, serviceRouter} from "./routes/index.ts" 
 import "./db"
+import { logErrors } from "./middlewares/logError.middleware.ts";
 
 const server = express();
 const PORT = 3001;
@@ -21,3 +22,4 @@ server.get("/holis", (_req, res)=> {
     res.send("Todo bien")
 });
 
+server.use(logErrors)
