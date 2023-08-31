@@ -33,7 +33,7 @@ export const CreateSellerSchema = z.object({
     body: sellerSchema
 });
 
-export const updateUserSchema = z.object({
+export const updateSellerSchema = z.object({
     body: sellerSchema.optional()
 });
 
