@@ -1,28 +1,25 @@
 {
-    "serviceCategories": [
-        {
-            "id": 1,
-            "name": "Hair Services"
-        },
-        {
-            "id": 2,
-            "name": "Nail Services"
-        },
-        {
-            "id": 3,
-            "name": "Skin Care"
-        },
-        {
-            "id": 4,
-            "name": "Spa Services"
-        },
-        {
-            "id": 5,
-            "name": "Grooming"
-        },
-        {
-            "id": 6,
-            "name": "Makeup Services"
-        }
+    "categories": [
+      {
+        "id": 1,
+        "name": "Hair Services"
+      },
+      {
+        "id": 2,
+        "name": "Nail Services"
+      },
+      {
+        "id": 3,
+        "name": "Spa Services"
+      },
+      {
+        "id": 4,
+        "name": "Massage Therapy"
+      },
+      {
+        "id": 5,
+        "name": "Eyelash Services"
+      }
     ]
-}
+  }
+  

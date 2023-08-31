@@ -1,5 +1,4 @@
-import { prop, Ref } from "@typegoose/typegoose";
-import { modelOptions } from "@typegoose/typegoose";
+import { prop, Ref, modelOptions} from "@typegoose/typegoose";
 import { Category } from "./Category";
 import { Services } from "./Services";
 
@@ -19,7 +18,8 @@ export enum GENDER {
     }
 })
 
-export class seller {
+
+export class Seller {
     @prop({required: true, type: String})
     seller_name?: string;
 

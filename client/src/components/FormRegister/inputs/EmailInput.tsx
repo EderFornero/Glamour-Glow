@@ -10,8 +10,8 @@ const EmailInput: React.FC<EmailInputProps> = ({ register, errors }) => {
     <div>
       <label>Email: </label>
       <input
-        type="email"
-        name="email"
+        type='email'
+        name='email'
         {...register('email', {
           required: {
             value: true,
@@ -25,7 +25,7 @@ const EmailInput: React.FC<EmailInputProps> = ({ register, errors }) => {
       />
       {errors.email && <span>{errors.email.message}</span>}
     </div>
-  );
-};
+  )
+}
 
-export default EmailInput;
+export default EmailInput

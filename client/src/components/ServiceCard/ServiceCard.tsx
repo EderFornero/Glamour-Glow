@@ -1,16 +1,20 @@
 import type { ServiceProvider } from '../../interfaces'
-import './ServiceCard.css'
+import style from './ServiceCard.module.css'
 import { NavLink } from 'react-router-dom'
 
-const ServiceCard: React.FC<ServiceProvider> = ({ sellerName, price, rating, serviceDescription }) => {
+const ServiceCard: React.FC<ServiceProvider> = ({ id, businessName, businessLocation, rating, categories }) => {
   return (
-    <article className='card'>
+    <article className={style.card}>
       {/* <img src="source" alt="alt" /> */}
-      <h2>Name: {sellerName}</h2>
-      <h3>Price: {price}</h3>
+      <h2 className={style.title}> {businessName}</h2>
       <p>Rating: {rating}</p>
-      <p>Description: {serviceDescription}</p>
-      <NavLink to="ROUTE HERE"><button>Check it out</button></NavLink>
+      <p>Location: {businessLocation}</p>
+      {categories.map((category) => {
+        return <p key={id}>{category}</p>
+      })}
+      <NavLink to='ROUTE HERE' className={style.link}>
+        <button>Check it out</button>
+      </NavLink>
     </article>
   )
 }

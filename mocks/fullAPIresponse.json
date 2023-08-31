@@ -1,0 +1,753 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "username": "barber_john",
+            "email": "john.barber@example.com",
+            "role": "seller",
+            "birthdate": "1985-02-10",
+            "fullName": "John the Barber",
+            "location": "New York, NY",
+            "img": "john_barber.jpg",
+            "businessName": "John's Barbershop",
+            "businessEmail": "john@barbershop.com",
+            "businessPhone": "+123456789",
+            "businessLocation": "New York, NY",
+            "businessGender": "male",
+            "categories": [
+                "Barber",
+                "Haircut"
+            ],
+            "rating": 3,
+            "services": [
+                {
+                    "id": 1,
+                    "name": "Classic Haircut",
+                    "description": "Traditional men's haircut with a fresh style.",
+                    "seller": 1,
+                    "category": "Barber",
+                    "price": 30.00
+                },
+                {
+                    "id": 2,
+                    "name": "Beard Trim",
+                    "description": "Precise beard trimming and shaping.",
+                    "seller": 1,
+                    "category": "Barber",
+                    "price": 15.00
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "username": "spa_linda",
+            "email": "linda.spa@example.com",
+            "role": "seller",
+            "birthdate": "1980-06-20",
+            "fullName": "Linda the Spa Owner",
+            "location": "Los Angeles, CA",
+            "img": "linda_spa.jpg",
+            "businessName": "Linda's Relaxation Spa",
+            "businessEmail": "linda@spaservices.com",
+            "businessPhone": "+987654321",
+            "businessLocation": "Los Angeles, CA",
+            "businessGender": "female",
+            "categories": [
+                "Spa",
+                "Massage"
+            ],
+            "rating": 3,
+            "services": [
+                {
+                    "id": 3,
+                    "name": "Swedish Massage",
+                    "description": "Relaxing full-body Swedish massage.",
+                    "seller": 2,
+                    "category": "Massage",
+                    "price": 60.00
+                },
+                {
+                    "id": 4,
+                    "name": "Facial Spa",
+                    "description": "Revitalize your skin with our facial spa treatment.",
+                    "seller": 2,
+                    "category": "Spa",
+                    "price": 75.00
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "username": "nail_artist_jane",
+            "email": "jane.nails@example.com",
+            "role": "seller",
+            "birthdate": "1990-03-15",
+            "fullName": "Jane the Nail Artist",
+            "location": "Chicago, IL",
+            "img": "jane_nail_artist.jpg",
+            "businessName": "Jane's Nail Studio",
+            "businessEmail": "jane@nailstudio.com",
+            "businessPhone": "+456789123",
+            "businessLocation": "Chicago, IL",
+            "businessGender": "female",
+            "categories": [
+                "Nail Services"
+            ],
+            "rating": 3,
+            "services": [
+                {
+                    "id": 5,
+                    "name": "Manicure",
+                    "description": "Professional manicure service.",
+                    "seller": 3,
+                    "category": "Nail Services",
+                    "price": 25.00
+                },
+                {
+                    "id": 6,
+                    "name": "Pedicure",
+                    "description": "Expert pedicure service.",
+                    "seller": 3,
+                    "category": "Nail Services",
+                    "price": 30.00
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "username": "massage_mike",
+            "email": "mike.massage@example.com",
+            "role": "seller",
+            "birthdate": "1988-11-28",
+            "fullName": "Mike the Massage Therapist",
+            "location": "Miami, FL",
+            "img": "mike_massage.jpg",
+            "businessName": "Mike's Relaxation Massage",
+            "businessEmail": "mike@massagespa.com",
+            "businessPhone": "+987123456",
+            "businessLocation": "Miami, FL",
+            "businessGender": "male",
+            "categories": [
+                "Massage"
+            ],
+            "rating": 3,
+            "services": [
+                {
+                    "id": 7,
+                    "name": "Deep Tissue Massage",
+                    "description": "Therapeutic deep tissue massage for muscle tension relief.",
+                    "seller": 4,
+                    "category": "Massage",
+                    "price": 70.00
+                },
+                {
+                    "id": 8,
+                    "name": "Hot Stone Massage",
+                    "description": "Relaxing hot stone massage therapy.",
+                    "seller": 4,
+                    "category": "Massage",
+                    "price": 80.00
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "username": "hair_stylist_maria",
+            "email": "maria.hairstylist@example.com",
+            "role": "seller",
+            "birthdate": "1995-04-22",
+            "fullName": "Maria the Hair Stylist",
+            "location": "Los Angeles, CA",
+            "img": "maria_hairstylist.jpg",
+            "businessName": "Maria's Hair Studio",
+            "businessEmail": "maria@hairstudio.com",
+            "businessPhone": "+234567890",
+            "businessLocation": "Los Angeles, CA",
+            "businessGender": "female",
+            "categories": [
+                "Haircut",
+                "Hair Coloring"
+            ],
+            "rating": 3,
+            "services": [
+                {
+                    "id": 9,
+                    "name": "Women's Haircut",
+                    "description": "Stylish haircut for women.",
+                    "seller": 5,
+                    "category": "Haircut",
+                    "price": 40.00
+                },
+                {
+                    "id": 10,
+                    "name": "Hair Coloring",
+                    "description": "Expert hair coloring services.",
+                    "seller": 5,
+                    "category": "Hair Coloring",
+                    "price": 60.00
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "username": "lash_artist_sophie",
+            "email": "sophie.lashartist@example.com",
+            "role": "seller",
+            "birthdate": "1992-08-14",
+            "fullName": "Sophie the Lash Artist",
+            "location": "Chicago, IL",
+            "img": "sophie_lashartist.jpg",
+            "businessName": "Sophie's Lash Lounge",
+            "businessEmail": "sophie@lashlounge.com",
+            "businessPhone": "+345678901",
+            "businessLocation": "Chicago, IL",
+            "businessGender": "female",
+            "categories": [
+                "Eyelashes"
+            ],
+            "rating": 3,
+            "services": [
+                {
+                    "id": 11,
+                    "name": "Eyelash Extensions",
+                    "description": "Beautiful eyelash extensions for a glamorous look.",
+                    "seller": 6,
+                    "category": "Eyelashes",
+                    "price": 50.00
+                },
+                {
+                    "id": 12,
+                    "name": "Lash Lift",
+                    "description": "Enhance your natural lashes with a lash lift treatment.",
+                    "seller": 6,
+                    "category": "Eyelashes",
+                    "price": 45.00
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "username": "spa_david",
+            "email": "david.spa@example.com",
+            "role": "seller",
+            "birthdate": "1983-03-03",
+            "fullName": "David the Spa Owner",
+            "location": "Miami, FL",
+            "img": "david_spa.jpg",
+            "businessName": "David's Spa Haven",
+            "businessEmail": "david@spahaven.com",
+            "businessPhone": "+456789012",
+            "businessLocation": "Miami, FL",
+            "businessGender": "male",
+            "categories": [
+                "Spa",
+                "Massage"
+            ],
+            "rating": 3,
+            "services": [
+                {
+                    "id": 13,
+                    "name": "Couples Massage",
+                    "description": "Relaxing couples massage therapy.",
+                    "seller": 7,
+                    "category": "Massage",
+                    "price": 120.00
+                },
+                {
+                    "id": 14,
+                    "name": "Hot Stone Massage",
+                    "description": "Relaxing hot stone massage therapy.",
+                    "seller": 7,
+                    "category": "Massage",
+                    "price": 80.00
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "username": "nail_artist_lisa",
+            "email": "lisa.nailartist@example.com",
+            "role": "seller",
+            "birthdate": "1991-12-01",
+            "fullName": "Lisa the Nail Artist",
+            "location": "Los Angeles, CA",
+            "img": "lisa_nailartist.jpg",
+            "businessName": "Lisa's Nail Studio",
+            "businessEmail": "lisa@nailstudio.com",
+            "businessPhone": "+567890123",
+            "businessLocation": "Los Angeles, CA",
+            "businessGender": "female",
+            "categories": [
+                "Nail Services"
+            ],
+            "rating": 3,
+            "services": [
+                {
+                    "id": 15,
+                    "name": "Manicure",
+                    "description": "Professional manicure service.",
+                    "seller": 8,
+                    "category": "Nail Services",
+                    "price": 25.00
+                },
+                {
+                    "id": 16,
+                    "name": "Pedicure",
+                    "description": "Expert pedicure service.",
+                    "seller": 8,
+                    "category": "Nail Services",
+                    "price": 30.00
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "username": "massage_anna",
+            "email": "anna.massage@example.com",
+            "role": "seller",
+            "birthdate": "1987-05-18",
+            "fullName": "Anna the Massage Therapist",
+            "location": "Chicago, IL",
+            "img": "anna_massage.jpg",
+            "businessName": "Anna's Relaxation Massage",
+            "businessEmail": "anna@massagespa.com",
+            "businessPhone": "+123456789",
+            "businessLocation": "Chicago, IL",
+            "businessGender": "female",
+            "categories": [
+                "Massage"
+            ],
+            "rating": 2,
+            "services": [
+                {
+                    "id": 17,
+                    "name": "Deep Tissue Massage",
+                    "description": "Therapeutic deep tissue massage for muscle tension relief.",
+                    "seller": 9,
+                    "category": "Massage",
+                    "price": 70.00
+                },
+                {
+                    "id": 18,
+                    "name": "Hot Stone Massage",
+                    "description": "Relaxing hot stone massage therapy.",
+                    "seller": 9,
+                    "category": "Massage",
+                    "price": 80.00
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "username": "hair_stylist_jessica",
+            "email": "jessica.hairstylist@example.com",
+            "role": "seller",
+            "birthdate": "1994-07-12",
+            "fullName": "Jessica the Hair Stylist",
+            "location": "New York, NY",
+            "img": "jessica_hairstylist.jpg",
+            "businessName": "Jessica's Hair Studio",
+            "businessEmail": "jessica@hairstudio.com",
+            "businessPhone": "+234567890",
+            "businessLocation": "New York, NY",
+            "businessGender": "female",
+            "categories": [
+                "Haircut",
+                "Hair Coloring"
+            ],
+            "rating": 1,
+            "services": [
+                {
+                    "id": 19,
+                    "name": "Women's Haircut",
+                    "description": "Stylish haircut for women.",
+                    "seller": 10,
+                    "category": "Haircut",
+                    "price": 40.00
+                },
+                {
+                    "id": 20,
+                    "name": "Hair Coloring",
+                    "description": "Expert hair coloring services.",
+                    "seller": 10,
+                    "category": "Hair Coloring",
+                    "price": 60.00
+                }
+            ]
+        },
+        {
+            "id": 11,
+            "username": "lash_artist_olivia",
+            "email": "olivia.lashartist@example.com",
+            "role": "seller",
+            "birthdate": "1989-09-25",
+            "fullName": "Olivia the Lash Artist",
+            "location": "Miami, FL",
+            "img": "olivia_lashartist.jpg",
+            "businessName": "Olivia's Lash Lounge",
+            "businessEmail": "olivia@lashlounge.com",
+            "businessPhone": "+345678901",
+            "businessLocation": "Miami, FL",
+            "businessGender": "female",
+            "categories": [
+                "Eyelashes"
+            ],
+            "rating": 3,
+            "services": [
+                {
+                    "id": 21,
+                    "name": "Eyelash Extensions",
+                    "description": "Beautiful eyelash extensions for a glamorous look.",
+                    "seller": 11,
+                    "category": "Eyelashes",
+                    "price": 50.00
+                },
+                {
+                    "id": 22,
+                    "name": "Lash Lift",
+                    "description": "Enhance your natural lashes with a lash lift treatment.",
+                    "seller": 11,
+                    "category": "Eyelashes",
+                    "price": 45.00
+                }
+            ]
+        },
+        {
+            "id": 12,
+            "username": "spa_oliver",
+            "email": "oliver.spa@example.com",
+            "role": "seller",
+            "birthdate": "1996-12-05",
+            "fullName": "Oliver the Spa Owner",
+            "location": "Los Angeles, CA",
+            "img": "oliver_spa.jpg",
+            "businessName": "Oliver's Spa Oasis",
+            "businessEmail": "oliver@spaoasis.com",
+            "businessPhone": "+456789012",
+            "businessLocation": "Los Angeles, CA",
+            "businessGender": "male",
+            "categories": [
+                "Spa",
+                "Massage"
+            ],
+            "rating": 3,
+            "services": [
+                {
+                    "id": 23,
+                    "name": "Couples Massage",
+                    "description": "Relaxing couples massage therapy.",
+                    "seller": 12,
+                    "category": "Massage",
+                    "price": 120.00
+                },
+                {
+                    "id": 24,
+                    "name": "Hot Stone Massage",
+                    "description": "Relaxing hot stone massage therapy.",
+                    "seller": 12,
+                    "category": "Massage",
+                    "price": 80.00
+                }
+            ]
+        },
+        {
+            "id": 13,
+            "username": "nail_artist_emily",
+            "email": "emily.nailartist@example.com",
+            "role": "seller",
+            "birthdate": "1993-03-20",
+            "fullName": "Emily the Nail Artist",
+            "location": "Chicago, IL",
+            "img": "emily_nailartist.jpg",
+            "businessName": "Emily's Nail Studio",
+            "businessEmail": "emily@nailstudio.com",
+            "businessPhone": "+567890123",
+            "businessLocation": "Chicago, IL",
+            "businessGender": "female",
+            "categories": [
+                "Nail Services"
+            ],
+            "rating": 3,
+            "services": [
+                {
+                    "id": 25,
+                    "name": "Manicure",
+                    "description": "Professional manicure service.",
+                    "seller": 13,
+                    "category": "Nail Services",
+                    "price": 25.00
+                },
+                {
+                    "id": 26,
+                    "name": "Pedicure",
+                    "description": "Expert pedicure service.",
+                    "seller": 13,
+                    "category": "Nail Services",
+                    "price": 30.00
+                }
+            ]
+        },
+        {
+            "id": 14,
+            "username": "massage_ryan",
+            "email": "ryan.massage@example.com",
+            "role": "seller",
+            "birthdate": "1997-11-15",
+            "fullName": "Ryan the Massage Therapist",
+            "location": "Miami, FL",
+            "img": "ryan_massage.jpg",
+            "businessName": "Ryan's Relaxation Massage",
+            "businessEmail": "ryan@massagespa.com",
+            "businessPhone": "+123456789",
+            "businessLocation": "Miami, FL",
+            "businessGender": "male",
+            "categories": [
+                "Massage"
+            ],
+            "rating": 5,
+            "services": [
+                {
+                    "id": 27,
+                    "name": "Deep Tissue Massage",
+                    "description": "Therapeutic deep tissue massage for muscle tension relief.",
+                    "seller": 14,
+                    "category": "Massage",
+                    "price": 70.00
+                },
+                {
+                    "id": 28,
+                    "name": "Hot Stone Massage",
+                    "description": "Relaxing hot stone massage therapy.",
+                    "seller": 14,
+                    "category": "Massage",
+                    "price": 80.00
+                }
+            ]
+        },
+        {
+            "id": 15,
+            "username": "hair_stylist_alex",
+            "email": "alex.hairstylist@example.com",
+            "role": "seller",
+            "birthdate": "1986-09-08",
+            "fullName": "Alex the Hair Stylist",
+            "location": "Los Angeles, CA",
+            "img": "alex_hairstylist.jpg",
+            "businessName": "Alex's Hair Studio",
+            "businessEmail": "alex@hairstudio.com",
+            "businessPhone": "+234567890",
+            "businessLocation": "Los Angeles, CA",
+            "businessGender": "male",
+            "categories": [
+                "Haircut",
+                "Hair Coloring"
+            ],
+            "rating": 2.5,
+            "services": [
+                {
+                    "id": 29,
+                    "name": "Women's Haircut",
+                    "description": "Stylish haircut for women.",
+                    "seller": 15,
+                    "category": "Haircut",
+                    "price": 40.00
+                },
+                {
+                    "id": 30,
+                    "name": "Hair Coloring",
+                    "description": "Expert hair coloring services.",
+                    "seller": 15,
+                    "category": "Hair Coloring",
+                    "price": 60.00
+                }
+            ]
+        },
+        {
+            "id": 16,
+            "username": "lash_artist_mia",
+            "email": "mia.lashartist@example.com",
+            "role": "seller",
+            "birthdate": "1984-04-30",
+            "fullName": "Mia the Lash Artist",
+            "location": "Chicago, IL",
+            "img": "mia_lashartist.jpg",
+            "businessName": "Mia's Lash Lounge",
+            "businessEmail": "mia@lashlounge.com",
+            "businessPhone": "+345678901",
+            "businessLocation": "Chicago, IL",
+            "businessGender": "female",
+            "categories": [
+                "Eyelashes"
+            ],
+            "rating": 3,
+            "services": [
+                {
+                    "id": 31,
+                    "name": "Eyelash Extensions",
+                    "description": "Beautiful eyelash extensions for a glamorous look.",
+                    "seller": 16,
+                    "category": "Eyelashes",
+                    "price": 50.00
+                },
+                {
+                    "id": 32,
+                    "name": "Lash Lift",
+                    "description": "Enhance your natural lashes with a lash lift treatment.",
+                    "seller": 16,
+                    "category": "Eyelashes",
+                    "price": 45.00
+                }
+            ]
+        },
+        {
+            "id": 17,
+            "username": "spa_mary",
+            "email": "mary.spa@example.com",
+            "role": "seller",
+            "birthdate": "1985-07-17",
+            "fullName": "Mary the Spa Owner",
+            "location": "Miami, FL",
+            "img": "mary_spa.jpg",
+            "businessName": "Mary's Spa Retreat",
+            "businessEmail": "mary@sparetreat.com",
+            "businessPhone": "+456789012",
+            "businessLocation": "Miami, FL",
+            "businessGender": "female",
+            "categories": [
+                "Spa",
+                "Massage"
+            ],
+            "rating": 3,
+            "services": [
+                {
+                    "id": 33,
+                    "name": "Couples Massage",
+                    "description": "Relaxing couples massage therapy.",
+                    "seller": 17,
+                    "category": "Massage",
+                    "price": 120.00
+                },
+                {
+                    "id": 34,
+                    "name": "Hot Stone Massage",
+                    "description": "Relaxing hot stone massage therapy.",
+                    "seller": 17,
+                    "category": "Massage",
+                    "price": 80.00
+                }
+            ]
+        },
+        {
+            "id": 18,
+            "username": "nail_artist_olivia",
+            "email": "olivia.nailartist@example.com",
+            "role": "seller",
+            "birthdate": "1987-01-28",
+            "fullName": "Olivia the Nail Artist",
+            "location": "Los Angeles, CA",
+            "img": "olivia_nailartist.jpg",
+            "businessName": "Olivia's Nail Studio",
+            "businessEmail": "olivia@nailstudio.com",
+            "businessPhone": "+567890123",
+            "businessLocation": "Los Angeles, CA",
+            "businessGender": "female",
+            "categories": [
+                "Nail Services"
+            ],
+            "rating": 3,
+            "services": [
+                {
+                    "id": 35,
+                    "name": "Manicure",
+                    "description": "Professional manicure service.",
+                    "seller": 18,
+                    "category": "Nail Services",
+                    "price": 25.00
+                },
+                {
+                    "id": 36,
+                    "name": "Pedicure",
+                    "description": "Expert pedicure service.",
+                    "seller": 18,
+                    "category": "Nail Services",
+                    "price": 30.00
+                }
+            ]
+        },
+        {
+            "id": 19,
+            "username": "massage_eric",
+            "email": "eric.massage@example.com",
+            "role": "seller",
+            "birthdate": "1998-10-11",
+            "fullName": "Eric the Massage Therapist",
+            "location": "Chicago, IL",
+            "img": "eric_massage.jpg",
+            "businessName": "Eric's Relaxation Massage",
+            "businessEmail": "eric@massagespa.com",
+            "businessPhone": "+123456789",
+            "businessLocation": "Chicago, IL",
+            "businessGender": "male",
+            "categories": [
+                "Massage"
+            ],
+            "rating": 3,
+            "services": [
+                {
+                    "id": 37,
+                    "name": "Deep Tissue Massage",
+                    "description": "Therapeutic deep tissue massage for muscle tension relief.",
+                    "seller": 19,
+                    "category": "Massage",
+                    "price": 70.00
+                },
+                {
+                    "id": 38,
+                    "name": "Hot Stone Massage",
+                    "description": "Relaxing hot stone massage therapy.",
+                    "seller": 19,
+                    "category": "Massage",
+                    "price": 80.00
+                }
+            ]
+        },
+        {
+            "id": 20,
+            "username": "hair_stylist_susan",
+            "email": "susan.hairstylist@example.com",
+            "role": "seller",
+            "birthdate": "1999-02-24",
+            "fullName": "Susan the Hair Stylist",
+            "location": "New York, NY",
+            "img": "susan_hairstylist.jpg",
+            "businessName": "Susan's Hair Studio",
+            "businessEmail": "susan@hairstudio.com",
+            "businessPhone": "+234567890",
+            "businessLocation": "New York, NY",
+            "businessGender": "female",
+            "rating": 3,
+            "categories": [
+                "Haircut",
+                "Hair Coloring"
+            ],
+            "services": [
+                {
+                    "id": 39,
+                    "name": "Women's Haircut",
+                    "description": "Stylish haircut for women.",
+                    "seller": 20,
+                    "category": "Haircut",
+                    "price": 40.00
+                },
+                {
+                    "id": 40,
+                    "name": "Hair Coloring",
+                    "description": "Expert hair coloring services.",
+                    "seller": 20,
+                    "category": "Hair Coloring",
+                    "price": 60.00
+                }
+            ]
+        }
+    ]
+}
