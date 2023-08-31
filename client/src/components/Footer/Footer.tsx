@@ -1,5 +1,4 @@
-import React from 'react';
-import styles from './Footer.module.css';
+import styles from './Footer.module.css'
 
 import facebook from '../../assets/social-icons/facebook.svg'
 import instagram from '../../assets/social-icons/instagram.svg'
@@ -7,11 +6,11 @@ import linkedin from '../../assets/social-icons/linkedin.svg'
 import twitter from '../../assets/social-icons/twitter.svg'
 import ggicon from '../../assets/gg-icon.png'
 
-function Fotter() {
+function Fotter (): JSX.Element {
   return (
     <footer className={styles.footer}>
         <section className={styles.footertopwrapper}>
-            <section  className={styles.footertop}>
+            <section className={styles.footertop}>
                 <img className={styles.logo} src={ggicon} title='Logo' alt='Logo' />
                 <span className={styles.sociallinks}>
                     <a target='_blank' rel='noreferrer'>
@@ -50,7 +49,7 @@ function Fotter() {
             </section>
             <section>
                 <menu>
-                    <h2>.</h2>
+                    <h2 className={styles['dot-display-h']}>.</h2>
                     <li>
                         <a href='https://www.linkedin.com/in/lola-pernigotti-589830276/' target='_blank' rel='noreferrer'>Lola Pernigotti</a>
                     </li>
