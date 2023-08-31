@@ -2,7 +2,7 @@ import { getModelForClass } from "@typegoose/typegoose";
 
 import { Category } from "./Category";
 import { User } from "./User";
-import { Business } from "./Business";
+import { Business } from "./seller";
 import { Services } from "./Services";
 
 export const CategoryModel = getModelForClass(Category)

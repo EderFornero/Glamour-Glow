@@ -1,7 +1,7 @@
 import express  from "express";
 import { schemaValidation } from "../../middlewares/schemaValidator.middleware";
 import { userSchema } from "../../schemas/userSchema";
-import {deleteUser, getUser, postUser, updateUser} from "../../controllers/users/index"
+import {deleteUser, getUser, postUser, updateUser} from "../../handlers/users/index"
 
 const router = express.Router()
 

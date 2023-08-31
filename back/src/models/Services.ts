@@ -1,6 +1,6 @@
 import { prop, Ref, modelOptions } from "@typegoose/typegoose";
 import { Category } from "./Category";
-import { Business } from "./Business";
+import { Business } from "./seller";
 
 
 @modelOptions({
