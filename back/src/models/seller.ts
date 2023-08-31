@@ -18,6 +18,7 @@ export enum GENDER {
     }
 })
 
+
 export class seller {
     @prop({required: true, type: String})
     seller_name?: string;
