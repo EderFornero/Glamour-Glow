@@ -1,5 +1,5 @@
 import express from "express";
-import {userRouter, sellerRouter, serviceRouter} from "./routes/index" 
+import {userRouter, sellerRouter, serviceRouter} from "./routes/index.ts" 
 import "./db"
 
 const server = express();

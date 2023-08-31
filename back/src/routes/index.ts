@@ -1,3 +1,3 @@
-export {default as userRouter} from "./users/index"
-export {default as serviceRouter} from "./services/index"
-export {default as sellerRouter} from "./sellers/index"
+export * from "./users/index.ts"
+export * from "./services/index.ts"
+export * from "./sellers/index.ts"

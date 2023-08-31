@@ -1,14 +1,14 @@
-import express  from "express";
+import {Router}  from "express";
 import { schemaValidation } from "../../middlewares/schemaValidator.middleware";
-import { userSchema } from "../../schemas/userSchema";
-import {deleteUser, getUser, postUser, updateUser} from "../../controllers/users/index"
+import { CreateUserSchema, updateUserSchema} from "../../schemas/userSchema";
+import {deleteUser, getUser, postUser, getUserByid, updateUser} from "../../controllers/users/index"
 
-const router = express.Router()
+const router = Router()
 
-router.get("/", schemaValidation(userSchema), getUser)
-/* router.get("/:id", schemaValidation(userSchema), getUserById) */
-router.post("/", schemaValidation(userSchema), postUser)
-router.put("/:id", schemaValidation(userSchema), updateUser)
-router.delete("/:id", schemaValidation(userSchema), deleteUser)
+router.get("/", getUser)
+router.get("/:id", getUserByid)
+router.post("/", schemaValidation(CreateUserSchema), postUser)
+router.put("/:id", schemaValidation(updateUserSchema), updateUser)
+router.delete("/:id", schemaValidation, deleteUser)
 
 export default router

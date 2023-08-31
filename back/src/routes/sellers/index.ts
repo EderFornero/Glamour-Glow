@@ -1,8 +1,8 @@
-import express from 'express'
-
-const sellerRouter = express.Router()
+import {Router} from 'express'
 import sellers from './sellers';
 
+export const sellerRouter = Router()
 sellerRouter.use("/sellers", sellers)
 
-export default sellerRouter;
+
+

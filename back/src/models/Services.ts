@@ -1,6 +1,6 @@
 import { prop, Ref, modelOptions } from "@typegoose/typegoose";
 import { Category } from "./Category";
-import { Business } from "./Business";
+import { seller } from "./seller";
 
 
 @modelOptions({
@@ -21,7 +21,7 @@ export class Services {
     @prop({required: true, type: Number, min: 0})
     price: number;
 
-    @prop({ref: () => Business})
-    seller: Ref<Business>
+    @prop({ref: () => seller})
+    seller: Ref<seller>
 
 }

@@ -1,8 +1,5 @@
-import express from 'express'
-
-const serviceRouter = express.Router()
+import {Router} from 'express'
 import services from './services';
 
+export const serviceRouter = Router()
 serviceRouter.use("/services", services)
-
-export default serviceRouter;

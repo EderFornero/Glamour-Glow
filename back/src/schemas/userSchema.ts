@@ -1,8 +1,7 @@
 import {z} from "zod"
 import { ROLE } from '../models/User'
 
-export const userSchema = z.object({
-    body: z.object({
+const UserSchema = z.object({
         username: z
             .string({ required_error: "User name must be characters"})
             .nonempty("You must provide an user name")
@@ -36,11 +35,15 @@ export const userSchema = z.object({
             .string({ required_error: "Email is required"})
             .email("Must be an Email")
             .nonempty("Must provide an email")
-    }),
+});
+
+export const CreateUserSchema = z.object({
+    body: UserSchema
 });
 
 export const updateUserSchema = z.object({
-    body: z.object({
+    body: UserSchema.optional()
+    /*  z.object({
         username: z
             .string({ required_error: "User name must be characters"})
             .nonempty("You must provide an user name")
@@ -59,7 +62,6 @@ export const updateUserSchema = z.object({
         })
         .optional(),
 
-
         date_of_birth: z
             .date({required_error: "Date of birth is required"})
             .optional(),
@@ -75,10 +77,11 @@ export const updateUserSchema = z.object({
             .max(12,"12 characters max")
             .trim()
             .optional(),
+
         email: z
             .string({ required_error: "Email is required"})
             .email("Must be an Email")
             .nonempty("Must provide an email")
             .optional(),
-    }),
+    }), */
 });

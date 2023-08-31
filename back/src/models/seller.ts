@@ -19,18 +19,18 @@ export enum GENDER {
     }
 })
 
-export class Business {
+export class seller {
     @prop({required: true, type: String})
-    business_name?: string;
+    seller_name?: string;
 
     @prop({required: true, type: String})
-    business_email?: string;
+    seller_email?: string;
 
     @prop({ required: true, type: Number})
-    business_phone?: number;
+    seller_phone?: number;
 
     @prop({required: true, enum: GENDER})
-    business_gender: GENDER
+    seller_gender: GENDER
 
     @prop({ref: () => Category, default:[]})
     categoriesArray: Ref<Category>[];
