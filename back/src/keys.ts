@@ -1,5 +1,6 @@
-//import  "dotenv/config"
-//const {LOCAL_HOST, DB_NAME} = process.env;
+import "dotenv/config"
+const {URL} = process.env
+
 export const mongodb = {
-    URI : `mongodb://127.0.0.1/glamour-glow`
+    URI : `${URL}`
 }
