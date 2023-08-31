@@ -1,23 +1,11 @@
-.swiper {
-  cursor: grab;
-  background-color: black;
-  width: 85%;
-  margin: 20px auto;
+.carousel{
+margin: 20px;
 }
 
-.swiperslide {
-  display: flex;
-  background-color: rgba(255, 255, 255, 0.9);
-  border-radius: 10px;
-  padding: 20px;
-  color: black;
-  font-weight: bold;
-  font-size: 18px;
-  gap: 10px;
-  margin: 20px;
-  max-width: 35rem;
-  min-height: 20rem;
-  max-height: 20rem;
+.swiper {
+  cursor: grab;
+  width: 85%;
+  margin: 20px auto;
 }
 
 .cards h2 {
@@ -40,4 +28,10 @@
   font-size: 16px;
   border-radius: 40px;
   width: 14vw;
+}
+
+.title {
+  color: black;
+  margin: 30px;
+  font-weight: bold;
 }

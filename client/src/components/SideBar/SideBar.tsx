@@ -1,9 +1,9 @@
-import { FC, useRef, useState } from 'react';
+import { FC, useRef, useState } from 'react'
 import styles from './Sidebar.module.css'
-import { menuItems } from './parts/itemsmenu';
-import NavHeader from './parts/NavHeader';
-import NavButton from './parts/NavButton';
-import SubMenu from './parts/SubMenu';
+import { menuItems } from './parts/itemsmenu'
+import NavHeader from './parts/NavHeader'
+import NavButton from './parts/NavButton'
+import SubMenu from './parts/SubMenu'
 
 function SideBar() {
   const [activeItem, setActiveItem] = useState<string>('')
@@ -13,7 +13,7 @@ function SideBar() {
   }
 
   return (
-    <aside className={styles.sidebar}> 
+    <aside className={styles.sidebar}>
       <NavHeader />
       {menuItems.map((item) => (
         <>

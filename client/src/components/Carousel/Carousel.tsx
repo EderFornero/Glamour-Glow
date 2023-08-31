@@ -1,32 +1,43 @@
 import type { ServiceProvider } from '../../interfaces'
-import { NavLink } from 'react-router-dom'
-import { Swiper,SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import styles from './Carousel.module.css';
 import 'swiper/css';
+import ServiceCard from '../ServiceCard/ServiceCard';
+import { useEffect, useState } from 'react';
 
 interface CarouselProps {
-    users: ServiceProvider[]; 
-  }
+  cardstoshow: ServiceProvider[];
+  carouselName: string;
+}
 
-const Carousel:React.FC<CarouselProps> = ({users}) => {
+const Carousel: React.FC<CarouselProps> = ({ cardstoshow, carouselName }) => {
+  const [slidesPerView, setSlidesPerView] = useState(4);
+
+  const updateSlidesPerView = () => {
+    const width = window.innerWidth;
+
+    setSlidesPerView(width < 2000 ? (width < 1400 ? (width < 880 ? 1 : 2) : 3) : 4);
+  };
+
+  useEffect(() => {
+    updateSlidesPerView();
+    window.addEventListener('resize', updateSlidesPerView);
+    return () => {
+      window.removeEventListener('resize', updateSlidesPerView);
+    };
+  }, []);
+
   return (
-    <Swiper className={styles.swiper} spaceBetween={50} slidesPerView={3} loop navigation pagination autoplay>
-        {users.map(({ id, businessName, rating, categories }: ServiceProvider) => {
-        return <SwiperSlide className={styles.swiperslide}>
-            <article className={styles.cards}>
-                {/* <img src="source" alt="alt" /> */}
-                <h2>Name: {businessName}</h2>
-                <p>Rating: {rating}</p>
-                {categories.map((category) => {
-                    return <p key={id}>{category}</p>
-                })}
-                <NavLink to='ROUTE HERE'>
-                    <button>Check it out</button>
-                </NavLink>
-            </article>
-        </SwiperSlide> 
-    })}   
-    </Swiper>
+    <section className={styles.carousel}>
+      <h3 className={styles.title}>{carouselName}</h3>
+      <Swiper className={styles.swiper} spaceBetween={50} slidesPerView={slidesPerView} loop navigation pagination autoplay>
+        {cardstoshow.map(({ id, businessName, rating, categories }: ServiceProvider) => {
+          return <SwiperSlide className={styles.swiperslide}>
+            <ServiceCard id={id} businessName={businessName} rating={rating} categories={categories} />
+          </SwiperSlide>
+        })}
+      </Swiper>
+    </section>
   );
 };
 
