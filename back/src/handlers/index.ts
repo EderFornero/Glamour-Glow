@@ -1,2 +1,3 @@
-export * from "./users/index.ts"
-export * from "./services/index.ts"
+export * from "./sellers.ts";
+export * from "./service.ts";
+// export * from "./usersController.ts";

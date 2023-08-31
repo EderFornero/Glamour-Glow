@@ -1,5 +1,5 @@
 import {Router}  from "express";
-import { getSellersHandler } from "../../handlers/sellers/index.ts";
+import { getSellersHandler } from "../../controllers/sellers/index.ts";
 
 const router = Router()
 

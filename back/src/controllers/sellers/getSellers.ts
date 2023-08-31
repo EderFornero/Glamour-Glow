@@ -1,4 +1,4 @@
-import { getSellersController } from "../../controllers/index"
+import { getSellersController } from "../../handlers/index"
 
 
 export const getSellersHandler =  () => {

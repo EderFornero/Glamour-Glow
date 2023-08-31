@@ -1,4 +1,4 @@
-import { postSellerController } from "../../controllers/index";
+import { postSellerController } from "../../handlers/index";
 
 
 export const postSellersHandler =  () => { 

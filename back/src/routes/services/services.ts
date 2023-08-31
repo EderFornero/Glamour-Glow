@@ -1,5 +1,5 @@
 import {Router}  from "express";
-import {deleteService, postService, getService, getServiceById, updateService} from "../../handlers/index.ts"
+import {deleteService, postService, getService, getServiceById, updateService} from "../../controllers/index.ts"
 
 const router = Router()
 

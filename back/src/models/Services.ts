@@ -1,6 +1,6 @@
 import { prop, Ref, modelOptions } from "@typegoose/typegoose";
 import { Category } from "./Category";
-import { Seller } from "./seller";
+import { Seller } from "./Seller";
 
 
 @modelOptions({
@@ -8,6 +8,7 @@ import { Seller } from "./seller";
         _id:true
     }
 })
+
 export class Services {
     @prop({required: true, type: String})
     name: string;
