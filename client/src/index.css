@@ -15,6 +15,7 @@
 
 body {
   background-color: var(--neutral-color);
+  overflow-x: hidden;
 }
 
 @font-face {

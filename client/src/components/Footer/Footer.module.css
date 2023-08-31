@@ -31,6 +31,13 @@ footer {
     width: 180px;
 }
 
+.separator {
+  border: 0.1rem solid #ccc;
+  width: 70vw;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
 h2 {
     text-align: left;
     color: var(--neutral-color);
@@ -38,6 +45,10 @@ h2 {
     margin-bottom: 16px;
     opacity: 0.7;
     font-size: 16px;
+}
+
+.dot-display-h{
+  visibility: hidden;
 }
 
 a{
@@ -53,16 +64,11 @@ menu {
 }
 
 menu li {
-    margin-bottom: 16px;
+    margin-bottom: 15px; 
 }
 
 
-.separator {
-    border: 0.1rem solid #ccc;
-    width: 70vw;
-    max-width: 800px;
-    margin: 0 auto;
-  }
+
   
 .logo {
     width: 60px;
