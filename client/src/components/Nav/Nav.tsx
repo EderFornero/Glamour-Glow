@@ -53,21 +53,6 @@ const Nav = (): JSX.Element => {
             <li className='menu-item link logout'>Logout</li>
           </ul>
       </nav>
-      <nav className='nav-full'>
-        <ul className='menu-full'>
-          <li className='menu-item-full'>
-            <NavLink to='/' className='link-full'>
-              Login
-            </NavLink>
-          </li>
-          <li className='menu-item-full'>
-            <NavLink to='/admin' className='link-full'>
-              For business
-            </NavLink>
-          </li>
-          <li className='menu-item-full link-full logout'>Logout</li>
-        </ul>
-      </nav>
     </header>
     </div>
   )

@@ -8,7 +8,7 @@
   
   .sidebar {
     position: fixed;
-    top: 0;
+    top: 4rem;
     left: 0;
     width: 260px;
     height: 100%;
@@ -22,6 +22,7 @@
     align-items: center;
     height: 72px;
     border-bottom: 1px solid #6d6d6d;
+    margin-bottom: 20px;
   }
   
   .sidebar button {
