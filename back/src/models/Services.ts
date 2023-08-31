@@ -25,7 +25,4 @@ export class Services {
     @prop({ref: () => Seller})
     seller: Ref<Seller>
 
-    @prop({required: true, type: Number, min: 0, max: 5})
-    rating: number;
-
 }
