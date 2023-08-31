@@ -1,9 +1,17 @@
-import { Services } from "../models/Services";
+/* import { Services } from "../models/Services"; */
 
-async function readServices() {
+
+interface Data {
+    save(): Promise<any>;
+}
+export const readServices = async() => {
     
-
+   /*  const allServices = await Services.find({}) */
 
 }
 
-export default readServices;
+export const createService = async (_data : Data) => {
+
+/*  const serviceCreated = await data.save() */
+
+}
