@@ -1,6 +1,6 @@
 // css
 import styled from 'styled-components'
-import NotFoundImage from '../../Images/not-found-image.png'
+import NotFoundImage from '../../Images/notfound.png'
 // react router dom
 import { useGoBack } from '../../hooks/index'
 
@@ -33,7 +33,7 @@ const DivGoBack = styled.div`
   background-size: 100% 100%;
   background-position: center;
   position: absolute;
-  filter: blur(4.5px);
+  filter: blur(2px);
   z-index: -1;  
   }
 
