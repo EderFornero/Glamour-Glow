@@ -1,5 +1,7 @@
 import { Outlet } from 'react-router-dom'
+// components
 import Nav from '../components/Nav/Nav'
+import Footer from '../components/Footer/Footer'
 
 const Layout: React.FC = () => {
   return (
@@ -8,6 +10,7 @@ const Layout: React.FC = () => {
       <main style={{ marginTop: '90px' }}>
         <Outlet />
       </main>
+      <Footer />
     </>
   )
 }

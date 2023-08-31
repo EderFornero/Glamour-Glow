@@ -1,6 +1,5 @@
 import Cards from '../../components/Cards/Cards'
 import Carousel from '../../components/Carousel/Carousel'
-import Fotter from '../../components/Footer/Footer'
 import { Description, Description2 } from '../../components/Description/Description'
 import { users } from '../../../../mocks/fullAPIresponse.json'
 import SearchBar from '../../components/SearchBar/SearchBar'
@@ -29,7 +28,6 @@ const Home: React.FC = () => {
           <Carousel cardstoshow={users} carouselName='Nearest' />
           <Description2 />
         </>}
-      <Fotter />
     </div>
   )
 }
