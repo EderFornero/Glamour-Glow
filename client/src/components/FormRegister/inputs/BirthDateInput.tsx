@@ -8,7 +8,6 @@ interface BirthDateInputProps {
 const BirthDateInput: React.FC<BirthDateInputProps> = ({ register, errors }) => {
   return (
     <div>
-      <label>Birth Date: </label>
       <input
         type="date"
         name="birthDate"
@@ -25,7 +24,9 @@ const BirthDateInput: React.FC<BirthDateInputProps> = ({ register, errors }) => 
           },
         })}
       />
+      <div>
       {errors.birthDate && <span>{errors.birthDate.message}</span>}
+      </div>
     </div>
   )
 }

@@ -17,6 +17,7 @@ export interface Service {
 
 export interface FormData {
   name: string
+  userName: string
   email: string
   birthDate: string
   password: string

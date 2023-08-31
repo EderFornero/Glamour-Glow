@@ -1,11 +1,27 @@
 header {
   height: 4rem;
+  background-color: var(--primary-color);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+}
+.logo {
+  cursor: pointer;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
 }
 
 nav {
   display: flex;
   flex-direction: row-reverse;
 }
+
 .logout {
   cursor: pointer;
 }
@@ -15,12 +31,8 @@ nav {
   height: 100%;
   margin-right: 3rem;
 }
-
-.div,
-.menu {
-  position: fixed;
-  right: 50px;
-  list-style: none;
+.div {
+  right: 20px;
 }
 
 .menu {
@@ -28,6 +40,13 @@ nav {
   display: flex;
   flex-direction: column;
   align-items: center;
+  right: 0px;
+  background: var(--primary-color);
+  width: 250px;
+  height: 300px;
+  position: fixed;
+  top: 71px;
+  list-style: none;
 }
 
 .menu-item {
@@ -45,7 +64,6 @@ nav {
   display: flex;
   list-style-type: none;
   gap: 3rem;
-  position: fixed;
 }
 
 .link-full {
