@@ -1,5 +1,6 @@
 import { FC, useRef, useState } from 'react';
-import './SideBar.css'
+import styles from './Sidebar.module.css'
+
 import calendar from '../../assets/sidebard-icons/calendar.svg'
 import dashboard from '../../assets/sidebard-icons/dashboard.svg'
 import message from '../../assets/sidebard-icons/messages.svg'
@@ -59,11 +60,11 @@ type SubMenuProps = {
 }
 
 const Icon = ({ icon }: { icon: string }) => (
-  <img className="sidebar-icon" src={icon} />
+  <img className={styles['sidebar-icon']} src={icon} />
 )
 
 const NavHeader = () => (
-  <header className='sidebar-header'>
+  <header className={styles['sidebar-header']}>
     <button type='button'>
       <Icon icon={menu} />
     </button>
@@ -81,18 +82,18 @@ const NavButton: FC<ButtonProps> = ({
   <button
     type='button'
     onClick={() => { onClick(name) }}
-    className={isActive ? 'active' : ''}
+    className={`${isActive ? styles.active : ''}`}
   >
     {icon && <Icon icon={icon} />}
     <span>{name}</span>
     {hasSubNav && (
       <img
-        className="arrow-icon"
+        className={styles['arrow-icon']}
         src={isActive ? arrowup : arrowdown}
       />
     )}
   </button>
-)
+);
 
 const SubMenu: FC<SubMenuProps> = ({ item, activeItem, handleClick }) => {
   const navRef = useRef<HTMLDivElement>(null)
@@ -102,14 +103,14 @@ const SubMenu: FC<SubMenuProps> = ({ item, activeItem, handleClick }) => {
 
   return (
     <div
-      className={`sub-nav ${isSubNavOpen(item.name, item.items) ? 'open' : ''}`}
+      className={`${styles['sub-nav']} ${isSubNavOpen(item.name, item.items) ? styles.open : ''}`} // Usa los estilos de módulos
       style={{
         height: !isSubNavOpen(item.name, item.items)
           ? 0
           : navRef.current?.clientHeight
       }}
     >
-      <div ref={navRef} className='sub-nav-inner'>
+      <div ref={navRef} className={styles['sub-nav-inner']}> 
         {item?.items.map((subItem) => (
           <NavButton
             key={item.name}
@@ -131,21 +132,11 @@ function SideBar() {
   }
 
   return (
-  <aside className='sidebar'>
-    <NavHeader />
-    {menuItems.map((item) => (
-      <>
-        {!item.items && (
-          <NavButton
-            onClick={handleClick}
-            name={item.name}
-            icon={item.icon}
-            isActive={activeItem === item.name}
-            hasSubNav={!!item.items}
-          />
-        )}
-        {item.items && (
-          <>
+    <aside className={styles.sidebar}> 
+      <NavHeader />
+      {menuItems.map((item) => (
+        <>
+          {!item.items && (
             <NavButton
               onClick={handleClick}
               name={item.name}
@@ -153,16 +144,26 @@ function SideBar() {
               isActive={activeItem === item.name}
               hasSubNav={!!item.items}
             />
-            <SubMenu
-              activeItem={activeItem}
-              handleClick={handleClick}
-              item={item}
-            />
-          </>
-        )}
-      </>
-    ))}
-  </aside>
+          )}
+          {item.items && (
+            <>
+              <NavButton
+                onClick={handleClick}
+                name={item.name}
+                icon={item.icon}
+                isActive={activeItem === item.name}
+                hasSubNav={!!item.items}
+              />
+              <SubMenu
+                activeItem={activeItem}
+                handleClick={handleClick}
+                item={item}
+              />
+            </>
+          )}
+        </>
+      ))}
+    </aside>
   )
 }
 

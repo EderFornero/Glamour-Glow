@@ -23,7 +23,7 @@
     height: 72px;
     border-bottom: 1px solid #6d6d6d;
   }
-   
+  
   .sidebar button {
     position: relative;
     display: flex;
@@ -37,7 +37,7 @@
   }
   
   .sidebar button.active {
-    background:#5448de;
+    background: #5448de;
     color: #f9f9f9;
   }
   
@@ -55,21 +55,17 @@
     position: absolute;
     top: 50%;
     left: 36px;
-    translate: 0 -50%;
+    transform: translate(0, -50%);
     width: 5px;
     height: 5px;
     border-radius: 50%;
     background-color: #1a1a1a;
   }
   
-  .material-symbols-outlined {
-    font-size: 22px;
-  }
-
-  .sidebar-icon{
+  .sidebar-icon {
     width: 35px;
   }
-
-  .arrow-icon{
+  
+  .arrow-icon {
     width: 15px;
   }

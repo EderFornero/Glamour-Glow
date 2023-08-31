@@ -1,5 +1,6 @@
 import React from 'react';
-import './Fotter.css'
+import styles from './Footer.module.css';
+
 import facebook from '../../assets/social-icons/facebook.svg'
 import instagram from '../../assets/social-icons/instagram.svg'
 import linkedin from '../../assets/social-icons/linkedin.svg'
@@ -8,11 +9,11 @@ import ggicon from '../../assets/gg-icon.png'
 
 function Fotter() {
   return (
-    <footer>
-        <section className='footer-top-wrapper'>
-            <section className='footer-top'>
-                <img className='logo' src={ggicon} title='Logo' alt='Logo' />
-                <span className='social-links'>
+    <footer className={styles.footer}>
+        <section className={styles.footertopwrapper}>
+            <section  className={styles.footertop}>
+                <img className={styles.logo} src={ggicon} title='Logo' alt='Logo' />
+                <span className={styles.sociallinks}>
                     <a target='_blank' rel='noreferrer'>
                         <img src={instagram} title='Instagram' alt='Instagram' />
                     </a>
@@ -28,8 +29,8 @@ function Fotter() {
                 </span>
             </section>
         </section>
-        <div className='separator'></div>
-        <section className='footer-middle-wrapper'>
+        <div className={styles.separator}></div>
+        <section className={styles.footermiddlewrapper}>
             <section>
                 <menu>
                     <h2>Work Team</h2>
@@ -76,7 +77,7 @@ function Fotter() {
                 </menu>
             </section>
         </section>
-        <section className='footer-bottom'>
+        <section className={styles.footerbottom}>
                 <small>© Glamour Glow 2023 All rights reserved</small>
         </section>
     </footer>
