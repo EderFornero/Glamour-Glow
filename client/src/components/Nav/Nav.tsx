@@ -52,7 +52,6 @@ const Nav = (): JSX.Element => {
             </li>
             <li className='menu-item link logout'>Logout</li>
           </ul>
-        )}
       </nav>
       <nav className='nav-full'>
         <ul className='menu-full'>
