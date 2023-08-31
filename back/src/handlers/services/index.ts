@@ -1,0 +1,5 @@
+export * from "./deleteService.ts"
+export * from "./getService.ts"
+export * from "./getServiceById.ts"
+export * from "./postService.ts"
+export * from "./updateService.ts"

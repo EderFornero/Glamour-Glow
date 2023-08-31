@@ -1,7 +1,7 @@
-import express  from "express";
+import {Router}  from "express";
 import { getSellersHandler } from "../../handlers/sellers/index.ts";
 
-const router = express.Router()
+const router = Router()
 
 router.get("/", getSellersHandler)
 router.get("/:id")
