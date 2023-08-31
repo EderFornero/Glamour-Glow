@@ -6,6 +6,7 @@ export interface CardsProps {
 
 export interface SearchBarProps {
   onSearch: (query: string) => void
+  updateShowCards: (hasQuery: boolean) => void;
 }
 
 export interface SearchResultsProps {
