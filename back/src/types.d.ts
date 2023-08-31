@@ -7,10 +7,8 @@ export interface SellerEntry{
     business_email: string,
     business_phone: number,
     business_gender: Gender,
-    
-
-
-
+    categoriesArray: string[],
+    servicesArray: string[]
 }
 
 
