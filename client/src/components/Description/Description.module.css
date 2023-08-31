@@ -220,7 +220,7 @@ h3 {
 }
 
 .imgAbout {
-    width: 40%;
+    width: 35%;
     box-shadow: 5px 10px 20px -10px rgba(0, 0, 0, 0.892);
 }
 
@@ -232,6 +232,8 @@ h3 {
 .contenidoAbout {
     width: 55%;
     padding-left: 10%;
+    margin-top: 5rem;
+    align-items: center;
 }
 
 .contenidoAbout h3 {
@@ -250,7 +252,7 @@ h3 {
 
 .botonGetStarted {
     display: inline-block;
-    width: 130px;
+    width: 150px;
     text-align: center;
     color: #fff;
     font-size: 18px;

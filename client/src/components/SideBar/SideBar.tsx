@@ -64,12 +64,12 @@ const Icon = ({ icon }: { icon: string }) => (
 )
 
 const NavHeader = () => (
-  <header className={styles['sidebar-header']}>
+  <div className={styles['sidebar-header']}>
     <button type='button'>
       <Icon icon={menu} />
     </button>
     <span>Admin</span>
-  </header>
+  </div>
 )
 
 const NavButton: FC<ButtonProps> = ({
