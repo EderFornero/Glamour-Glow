@@ -1,5 +1,4 @@
-import { prop, Ref } from "@typegoose/typegoose";
-import { modelOptions } from "@typegoose/typegoose";
+import { prop, Ref, modelOptions} from "@typegoose/typegoose";
 import { Category } from "./Category";
 import { Services } from "./Services";
 
