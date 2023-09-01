@@ -1,16 +1,16 @@
-import axios from 'axios';
-import { GET_ALL_BUSINESS } from './Action-Types';
-import { ServiceAction } from './types';
+import axios from "axios";
+import { GET_ALL_BUSINESS } from "./Action-Types";
+import { ServiceAction } from "./types";
 
-const API_URL = 'http://localhost:3001/';
+const API_URL = "http://localhost:3001/";
 
 const GetAllBusiness = () => {
-  const endpoint = `${API_URL}sellers`;
+  const endpoint = `${API_URL}services`;
 
   return async (dispatch: (action: ServiceAction) => void) => {
     try {
       const { data } = await axios.get(endpoint);
-      console.log('Hoola', data);
+      console.log("Hoola", data);
 
       return dispatch({
         type: GET_ALL_BUSINESS,
