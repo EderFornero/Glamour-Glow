@@ -15,23 +15,23 @@ const UserNameInput: React.FC<UserNameInputProps> = ({ register, errors }) => {
         {...register('userName', {
           required: {
             value: true,
-            message: 'Please enter your user name!',
+            message: 'Please enter your user name!'
           },
           maxLength: 20,
-          minLength: 3,
+          minLength: 3
         })}
       />
       <div>
       {errors.userName?.type === 'required' && <span>User Name Required</span>}
       {errors.userName?.type === 'maxLength' && (
-        <span>The user name must not be longer than 20 characters</span>
+        <span>The user name is too longer</span>
       )}
       {errors.userName?.type === 'minLength' && (
-        <span>The user name must not be less than 3 characters</span>
+        <span>The user name is too short</span>
       )}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default UserNameInput;
+export default UserNameInput

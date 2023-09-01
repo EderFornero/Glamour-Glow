@@ -1,0 +1,104 @@
+
+.cover {
+    background-color: #5effb1;
+    width: 30em;
+    height: 35em;
+    position: relative;
+    border-radius: 50px;
+    box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.alt-login {
+    width: 80%;
+    height: 3em;
+    display: flex;
+    justify-content: space-around;
+}
+
+.alt-login div {
+    width: 45%;
+    height: 90%;
+    border-radius: 0.25em;;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    margin-left: 85px;
+}
+
+.google {
+    background-image: url('./iconGoogle.png');
+}
+.instagram {
+    background-image: url('./iconIg.png');
+}
+.content input {
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+
+.content input:focus {
+    outline-color: #6e66ff;
+}
+
+.buton-div button {
+    justify-content: center;
+    font-size:medium;
+    background-color: #6e66ff;
+    margin: 0 60px; 
+    padding: 20px 30px;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer; 
+    transition: background-color 0.3s ease;
+    transition: transform 0.3s ease;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+    font-weight: 600;
+    margin-top: 50px;
+    height: 60px;
+    width: 100px;
+}
+.cover form input {
+    margin-left: 137px;
+}
+
+.content button:hover {
+    transform: scale(1.07);
+    background-color: #e37f6b;
+}
+
+.forgot:hover {
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+}
+.reg-button:hover {
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+}
+.content{
+    justify-content: center;
+    display: flex;
+}
+.cover h4 {
+    margin-top: 40px;
+    margin-left: 165px;
+}
+
+.link-texts {
+    margin-top: 70px;
+    margin-bottom: -80px;
+    display: flex;
+    height: 20px;
+    width: 400px;
+    justify-content: space-between;
+}
+
+.cover span {
+    position: absolute;
+    margin-left: 305px;
+    margin-top: -36px;
+    color: red
+}

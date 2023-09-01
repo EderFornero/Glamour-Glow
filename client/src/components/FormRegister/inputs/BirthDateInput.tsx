@@ -14,14 +14,14 @@ const BirthDateInput: React.FC<BirthDateInputProps> = ({ register, errors }) => 
         {...register('birthDate', {
           required: {
             value: true,
-            message: 'Birth date required',
+            message: 'Birth date required'
           },
           validate: (value: string) => {
-            const birthDate = new Date(value);
-            const actualDate = new Date();
-            const age = actualDate.getFullYear() - birthDate.getFullYear();
-            return age >= 15 || 'You are too young';
-          },
+            const birthDate = new Date(value)
+            const actualDate = new Date()
+            const age = actualDate.getFullYear() - birthDate.getFullYear()
+            return age >= 15 || 'You are too young'
+          }
         })}
       />
       <div>
