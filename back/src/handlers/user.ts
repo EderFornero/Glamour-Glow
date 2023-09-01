@@ -1,6 +1,6 @@
 import { UserModel } from "../models";
 
-export const getUsersService = async () => {
+export const readUsersService = async () => {
   try {
     const allUsers = await UserModel.find({});
     return allUsers;
@@ -9,16 +9,22 @@ export const getUsersService = async () => {
   }
 };
 
-export const getUserByidService = async (id: any) => {
+export const readUserByidService = async (id: any) => {
   try {
     const user = await UserModel.findById(id).exec();
+    if (!user || !user.isActive) {
+      throw Error("User not found");
+    }
     return user;
-  } catch (error) {
-    throw Error("Something went wrong");
+  } catch (error: any) {
+    if (error.message === "User not found") {
+      throw error;
+    }
+    throw new Error("Something went wrong");
   }
 };
 
-export const postUserService = async (user: any) => {
+export const createUserService = async (user: any) => {
   try {
     const savedUser = await UserModel.create(user);
     return savedUser;
@@ -37,14 +43,27 @@ export const updateUserService = async (id: any, updates: any) => {
     throw Error("Something went wrong");
   }
 };
-
-export const deleteUserService = async (id: any) => {
+// let prueba = {
+//   username: "FirstUser",
+//   fullname: "Primero Us",
+//   email: "posta@gmail.com",
+//   password: "postobon",
+//   role: "customer",
+//   date_of_birth: "2012-04-21",
+//   image: "imagen2POSTA",
+//   isActive: "false",
+// };
+//let prueba2 = JSON.stringify(prueba);
+export const destroyUserService = async (id: any) => {
   try {
     const user = await UserModel.findByIdAndUpdate(
       id,
-      { isActive: true },
-      { new: true }
+      { isActive: false },
+      {
+        new: true,
+      }
     );
+
     return user;
   } catch (error) {
     throw Error("Something went wrong");
