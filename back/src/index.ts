@@ -1,5 +1,5 @@
 import express from "express";
-import {userRouter, sellerRouter, serviceRouter} from "./routes/index.ts" 
+import {userRouter, sellerRouter, serviceRouter, categoriesRouter} from "./routes/index.ts" 
 import "./db"
 import { logErrors } from "./middlewares/logError.middleware.ts";
 
@@ -15,6 +15,8 @@ server.listen(PORT, ()=> {
 server.use("/", userRouter)
 server.use("/", sellerRouter)
 server.use("/", serviceRouter)
+server.use("/", categoriesRouter)
+
 
 
 server.get("/holis", (_req, res)=> {
