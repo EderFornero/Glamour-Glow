@@ -8,11 +8,12 @@ export interface ServiceProvider {
 }
 
 export interface Service {
-  id: number;
-  name: string;
-  description: string;
-  category: string;
-  price: number;
+  id: number
+  name: string
+  description: string
+  category: string
+  price: number
+  time?: string
 }
 
 export interface FormData {

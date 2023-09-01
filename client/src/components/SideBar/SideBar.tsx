@@ -29,18 +29,8 @@ function SideBar(): JSX.Element {
           )}
           {item.items && (
             <>
-              <NavButton
-                onClick={handleClick}
-                name={item.name}
-                icon={item.icon}
-                isActive={activeItem === item.name}
-                hasSubNav={!!item.items}
-              />
-              <SubMenu
-                activeItem={activeItem}
-                handleClick={handleClick}
-                item={item}
-              />
+              <NavButton onClick={handleClick} name={item.name} icon={item.icon} isActive={activeItem === item.name} hasSubNav={!!item.items} />
+              <SubMenu activeItem={activeItem} handleClick={handleClick} item={item} />
             </>
           )}
         </>

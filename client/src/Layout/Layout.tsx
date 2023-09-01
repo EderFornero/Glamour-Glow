@@ -2,6 +2,7 @@ import { Outlet, useLocation } from 'react-router-dom';
 // components
 import Nav from '../components/Nav/Nav';
 import Footer from '../components/Footer/Footer';
+import style from './Layout.module.css'
 
 const Layout: React.FC = () => {
   const location = useLocation();
@@ -10,7 +11,7 @@ const Layout: React.FC = () => {
   return (
     <>
       {showNavFooter && <Nav />}
-      <main style={{ marginTop: '90px' }}>
+      <main className={style.main}>
         <Outlet />
       </main>
       {showNavFooter && <Footer />}

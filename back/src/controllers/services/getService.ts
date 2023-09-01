@@ -9,4 +9,3 @@ export const getService = async (_req: Request, res: Response) => {
         return res.status(500).send(error)
     }
 }
- 

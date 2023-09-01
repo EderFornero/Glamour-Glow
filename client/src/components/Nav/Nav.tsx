@@ -9,7 +9,7 @@ const Nav = (): JSX.Element => {
 
   return (
     <div className={style.test}>
-      <header>
+      <header className={style.header}>
         <div className={style['logo-container']}>
           <NavLink to="/" className={style.logo}>
             <img width="100px" height="50px" src={logoBGLess} alt="logo" />

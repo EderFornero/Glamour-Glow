@@ -8,7 +8,7 @@ import { Seller } from "./Seller";
         _id:true
     }
 })
-//falta el rating
+
 export class Services {
     @prop({required: true, type: String})
     name: string;
@@ -16,11 +16,14 @@ export class Services {
     @prop({required: true, type: String})
     description: string;
 
-    @prop({ ref: () => Category, default: []})
-    serviceCategories: Ref<Category>[];
+    @prop({ ref: () => Category, default:""})
+    serviceCategories: Ref<Category>;
 
     @prop({required: true, type: Number, min: 0})
     price: number;
+
+    @prop({required: true, type: Number})
+    rating: number 
 
     @prop({ref: () => Seller})
     seller: Ref<Seller>
