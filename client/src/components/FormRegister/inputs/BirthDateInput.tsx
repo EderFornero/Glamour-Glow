@@ -17,14 +17,14 @@ const BirthDateInput: React.FC<BirthDateInputProps> = ({
         {...register('birthDate', {
           required: {
             value: true,
-            message: 'Birth date required',
+            message: 'Birth date required'
           },
           validate: (value: string) => {
-            const birthDate = new Date(value);
-            const actualDate = new Date();
-            const age = actualDate.getFullYear() - birthDate.getFullYear();
-            return age >= 15 || 'You are too young';
-          },
+            const birthDate = new Date(value)
+            const actualDate = new Date()
+            const age = actualDate.getFullYear() - birthDate.getFullYear()
+            return age >= 15 || 'You are too young'
+          }
         })}
       />
       <div>{errors.birthDate && <span>{errors.birthDate.message}</span>}</div>
@@ -32,4 +32,4 @@ const BirthDateInput: React.FC<BirthDateInputProps> = ({
   );
 };
 
-export default BirthDateInput;
+export default BirthDateInput

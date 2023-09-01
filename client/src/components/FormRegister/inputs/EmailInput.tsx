@@ -11,18 +11,21 @@ const EmailInput: React.FC<EmailInputProps> = ({ register, errors }) => {
       <input
         type="email"
         name="email"
+        placeholder='Email'
         {...register('email', {
           required: {
             value: true,
-            message: 'Please enter your email',
+            message: 'Please enter your email'
           },
           pattern: {
             value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-            message: 'Email not valid',
-          },
+            message: 'Email not valid'
+          }
         })}
       />
-      <div>{errors.email && <span>{errors.email.message}</span>}</div>
+      <div>
+      {(Boolean(errors.email)) && <span>{errors.email.message}</span>}
+      </div>
     </div>
   );
 };

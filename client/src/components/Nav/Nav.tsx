@@ -43,7 +43,7 @@ const Nav = (): JSX.Element => {
         <nav className={style['nav-full']}>
           <ul className={style['menu-full']}>
             <li className={style['menu-item-full']}>
-              <NavLink to="/" className={style['link-full']}>
+              <NavLink to="/login" className={style['link-full']}>
                 Login
               </NavLink>
             </li>
