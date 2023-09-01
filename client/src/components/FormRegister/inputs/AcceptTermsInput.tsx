@@ -29,8 +29,4 @@ const AcceptTermsInput: React.FC<AcceptTermsInputProps> = ({
   )
 }
 
-<<<<<<< HEAD
 export default AcceptTermsInput
-=======
-export default AcceptTermsInput;
->>>>>>> 62dbd688df7cf908a75f946e13b8f6eb5e31904f

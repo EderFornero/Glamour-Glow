@@ -23,13 +23,9 @@ const EmailInput: React.FC<EmailInputProps> = ({ register, errors }) => {
           }
         })}
       />
-<<<<<<< HEAD
       <div>
       {(Boolean(errors.email)) && <span>{errors.email.message}</span>}
       </div>
-=======
-      <div>{errors.email && <span>{errors.email.message}</span>}</div>
->>>>>>> 62dbd688df7cf908a75f946e13b8f6eb5e31904f
     </div>
   );
 };

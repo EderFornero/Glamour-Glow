@@ -32,8 +32,4 @@ const BirthDateInput: React.FC<BirthDateInputProps> = ({
   );
 };
 
-<<<<<<< HEAD
 export default BirthDateInput
-=======
-export default BirthDateInput;
->>>>>>> 62dbd688df7cf908a75f946e13b8f6eb5e31904f

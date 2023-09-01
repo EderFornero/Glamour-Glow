@@ -54,8 +54,4 @@ const PasswordInput: React.FC<PasswordInputProps> = ({ register, errors }) => {
   )
 }
 
-<<<<<<< HEAD
 export default PasswordInput
-=======
-export default PasswordInput;
->>>>>>> 62dbd688df7cf908a75f946e13b8f6eb5e31904f
