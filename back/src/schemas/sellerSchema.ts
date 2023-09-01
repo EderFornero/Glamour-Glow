@@ -12,20 +12,20 @@ const sellerSchema = z.object({
     .email("Must be an Email")
     .nonempty("Must provide an email"),
     seller_phone: z
-    .number({required_error: "A phone number is required"})
-    .min(1)
+    .string({required_error: "A phone number is required"})
+    .min(6)
     .max(20),
     seller_gender: z
     .enum([GENDER.ANY, GENDER.FEMALE, GENDER.MALE],{
         required_error: "Gender must be female, male or any"
     }),
-    categoriesArray: z
+   categoriesArray: z
     .array(z.string())
     .nonempty("You must provide at least 1 category")
     .min(1, "Min 1 category please"),
     servicesArray: z
     .array(z.string())
-    .optional()
+    .optional() 
 
 });
 

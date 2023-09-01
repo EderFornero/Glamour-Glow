@@ -13,8 +13,11 @@
   "devDependencies": {
     "@commitlint/cli": "^17.7.1",
     "@commitlint/config-conventional": "^17.7.0",
+    "@typegoose/typegoose": "^11.4.1",
+    "@types/express": "^4.17.17",
     "husky": "^8.0.3",
     "ts-node-dev": "^2.0.0",
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "zod": "^3.22.2"
   }
 }

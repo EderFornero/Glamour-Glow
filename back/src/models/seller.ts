@@ -26,8 +26,8 @@ export class Seller {
     @prop({required: true, type: String})
     seller_email?: string;
 
-    @prop({ required: true, type: Number})
-    seller_phone?: number;
+    @prop({ required: true, type: String})
+    seller_phone?: String;
 
     @prop({required: true, enum: GENDER})
     seller_gender: GENDER
