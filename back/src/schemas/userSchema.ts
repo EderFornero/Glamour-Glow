@@ -17,9 +17,9 @@ const UserSchema = z.object({
   }),
 
   //z
-  date_of_birth:
-    //.date({required_error: "Date of birth is required"}),
-    z.string().transform((str) => new Date(str)),
+  //.date({required_error: "Date of birth is required"}),
+  date_of_birth:z
+    .string({required_error: "A date of birth is required"}).transform((str) => new Date(str)),
 
   image: z
     .string({ required_error: "the url image must be provided" })
@@ -35,7 +35,9 @@ const UserSchema = z.object({
     .string({ required_error: "Email is required" })
     .email("Must be an Email")
     .nonempty("Must provide an email"),
-  //isActive: z.boolean().optional(),
+  isActive: z
+  .boolean()
+  .optional()
 });
 
 export const CreateUserSchema = z.object({
@@ -44,45 +46,10 @@ export const CreateUserSchema = z.object({
 
 export const updateUserSchema = z.object({
   body: UserSchema.optional(),
-  /*  z.object({
-        username: z
-            .string({ required_error: "User name must be characters"})
-            .nonempty("You must provide an user name")
-            .max(50,"Max 50 characters")
-            .trim()
-            .optional(),
-        fullname: z
-            .string({ required_error: "Full name is required"})
-            .nonempty("You must provide a full name")
-            .max(50,"Max 50 characters")
-            .trim()
-            .optional(),
-        role: z
-            .enum ([ROLE.CUSTOMER, ROLE.SELLER], {
-            required_error: "Role must be customer or seller"
-        })
-        .optional(),
-
-        date_of_birth: z
-            .date({required_error: "Date of birth is required"})
-            .optional(),
-
-        image: z
-            .string({required_error: "the url image must be provided"})
-            .optional(),
-        
-        password: z
-            .string({required_error: "password  is required"})
-            .nonempty("You must provide a password")
-            .min(6,"The password should have at least 6 characters")
-            .max(12,"12 characters max")
-            .trim()
-            .optional(),
-
-        email: z
-            .string({ required_error: "Email is required"})
-            .email("Must be an Email")
-            .nonempty("Must provide an email")
-            .optional(),
-    }), */
+  params: z.object({
+    id: z.string()
+  })
+  
 });
+export type createUserType = z.infer<typeof CreateUserSchema>["body"]
+export type updateUserType = z.infer<typeof updateUserSchema>["params"]
