@@ -10,6 +10,7 @@ import AdminDashboard from './pages/AdminDashboard/AdminDashboard.tsx'
 import NotFound from './pages/NotFound/NotFound.tsx'
 // component
 import FormRegister from './components/FormRegister/FormRegister.tsx'
+import BusinessDetail from './pages/BusinessDetail/BusinessDetail.tsx'
 import FormBusiness from './components/FormCreateBusiness/FormCreateBusiness.tsx'
 import FormLogin from './components/FormLogin/FormLogin.tsx'
 
@@ -24,6 +25,11 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />
+      },
+      {
+        path: '/detail/:id',
+        children: [
+          { index: true, element: <BusinessDetail /> }]
       },
       {
         path: '/register',

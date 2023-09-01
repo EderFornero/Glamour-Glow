@@ -1,9 +1,10 @@
 .cardsSection {
   display: grid;
   width: 100%;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   justify-items: center;
   align-items: center;
+  gap: 16px;
   @media (max-width: 633px) {
     display: flex;
     flex-direction: column;

@@ -14,39 +14,30 @@ function SideBar(): JSX.Element {
 
   return (
     <aside className={styles.sidebar}>
-      <NavHeader />
-      {menuItems.map((item) => (
-        <>
-          {!item.items && (
-            <NavButton
-              key={item.name}
-              onClick={handleClick}
-              name={item.name}
-              icon={item.icon}
-              isActive={activeItem === item.name}
-              hasSubNav={!!item.items}
-            />
-          )}
-          {item.items && (
-            <>
+      <aside className={styles.sidebar}>
+        <NavHeader />
+        {menuItems.map((item) => (
+          <>
+            {!item.items && (
               <NavButton
+                key={item.name}
                 onClick={handleClick}
                 name={item.name}
                 icon={item.icon}
                 isActive={activeItem === item.name}
                 hasSubNav={!!item.items}
               />
-              <SubMenu
-                activeItem={activeItem}
-                handleClick={handleClick}
-                item={item}
-              />
-            </>
-          )}
-        </>
-      ))}
-    </aside>
-  );
+            )}
+            {item.items && (
+              <>
+                <NavButton onClick={handleClick} name={item.name} icon={item.icon} isActive={activeItem === item.name} hasSubNav={!!item.items} />
+                <SubMenu activeItem={activeItem} handleClick={handleClick} item={item} />
+              </>
+            )}
+          </>
+        ))}
+      </aside>
+      );
 }
 
-export default SideBar;
+      export default SideBar;

@@ -38,7 +38,14 @@ footer {
   margin: 0 auto;
 }
 
-h2 {
+.separator {
+  border: 0.1rem solid #ccc;
+  width: 70vw;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.h2 {
     text-align: left;
     color: var(--neutral-color);
     margin-top: 0px;
