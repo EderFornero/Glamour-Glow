@@ -1,5 +1,5 @@
 // components
-import ServiceCard from '../ServiceCard/ServiceCard'
+import BusinessCard from '../BusinessCard/BusinessCard'
 // interfaces
 import type { ServiceProvider } from '../../interfaces'
 // css
@@ -11,7 +11,7 @@ const Cards: React.FC<CardsProps> = ({ searchUsers }: CardsProps) => {
   return (
     <section className={style.cardsSection}>
       {searchUsers.map(({ id, businessName, businessLocation, rating, categories, services }: ServiceProvider) => {
-        return <ServiceCard key={id} id={id} businessName={businessName} businessLocation={businessLocation} rating={rating} categories={categories} services={services} />
+        return <BusinessCard key={id} id={id} businessName={businessName} businessLocation={businessLocation} rating={rating} categories={categories} services={services} />
       })}
     </section>
   )

@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom'
 import useGetDetail from '../../hooks/useGetDetail'
 import style from './BusinessDetail.module.css'
 import type { Service } from '../../interfaces'
-import ServiceP from '../../components/Service/ServiceP'
+import ServiceCard from '../../components/ServiceCard/ServiceCard'
 import imagetest1 from '../../Images/imagenes testeo/Imgtest1.avif'
 import imagetest2 from '../../Images/imagenes testeo/imagetest2.avif'
 import imagetest3 from '../../Images/imagenes testeo/imgtest3.avif'
@@ -42,7 +42,7 @@ const BusinessDetail = (): JSX.Element => {
       <section className={style.services}>
         {usuario.services.map(({ id, name, description, price, category }: Service) => {
           return (
-            <ServiceP key={id} id={id} name={name} description={description} price={price} category={category} />
+            <ServiceCard key={id} id={id} name={name} description={description} price={price} category={category} />
           )
         })}
       </section>
