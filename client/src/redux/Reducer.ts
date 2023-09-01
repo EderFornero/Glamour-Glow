@@ -1,5 +1,5 @@
-import { GET_ALL_BUSINESS } from './Action-Types';
-import { ServiceAction, RootState } from './types';
+import { GET_ALL_BUSINESS, SET_PAGINATION } from './Action-Types'
+import type { ServiceAction, RootState } from './types'
 
 const initialState: RootState = {
   allServices: []
@@ -10,12 +10,17 @@ const reducer = (state = initialState, action: ServiceAction) => {
     case GET_ALL_BUSINESS:
       return {
         ...state,
-        allServices: [...action.payload],
-      };
+        allServices: [...action.payload]
+      }
 
+    case SET_PAGINATION:
+      return {
+        ...state,
+        pages: action.payload
+      }
     default:
-      return state;
+      return state
   }
-};
+}
 
-export default reducer;
+export default reducer
