@@ -1,0 +1,1 @@
+export const GET_ALL_BUSINESS = 'GET_ALL_BUSINESS';
