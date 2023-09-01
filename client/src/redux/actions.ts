@@ -10,7 +10,7 @@ const GetAllBusiness = () => {
   return async (dispatch: (action: ServiceAction) => void) => {
     try {
       const { data } = await axios.get(endpoint);
-      console.log("Hoola", data);
+      console.log(data);
 
       return dispatch({
         type: GET_ALL_BUSINESS,

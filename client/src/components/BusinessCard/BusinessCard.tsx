@@ -9,8 +9,8 @@ const BusinessCard: React.FC<ServiceProvider> = ({ id, businessName, businessLoc
       <h2 className={style.title}> {businessName}</h2>
       <p>Rating: {rating}</p>
       <p>Location: {businessLocation}</p>
-      {categories.map((category) => {
-        return <p key={id}>{category}</p>
+      {categories.map((category, index) => {
+        return <p key={index}>{category}</p>
       })}
       <NavLink to={`/detail/${id}`} className={style.link}>
         <button>Check it out</button>

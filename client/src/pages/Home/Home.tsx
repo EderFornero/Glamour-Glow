@@ -12,8 +12,6 @@ import { useSearchBarHome } from '../../hooks/index';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { ThunkDispatch } from 'redux-thunk';
-import { AnyAction } from 'redux';
 import { RootState } from '../../redux/types';
 import GetAllBusiness from '../../redux/Actions';
 
@@ -28,14 +26,8 @@ const Home: React.FC = () => {
   const cards = useSelector((state: RootState) => state.allServices);
   const dispatch = useDispatch();
 
-  console.log(cards);
-
-
   useEffect(() => {
-    console.log("aqui ");
     dispatch(GetAllBusiness());
-    console.log("listo");
-
   }, [dispatch]);
 
   return (

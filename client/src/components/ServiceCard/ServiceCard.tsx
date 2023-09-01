@@ -7,7 +7,7 @@ const ServiceP = ({ name, time, price }: Service): JSX.Element => {
       <div className={style.info}>
         <h3 className={style.title}>{name}</h3>
         <p>{time}</p>
-        <p>{$${price} -}</p>
+        <p>{`$${price} -`}</p>
       </div>
       <div className={style['booking-container']}>
         <button className={style.button} >Book Now</button>
