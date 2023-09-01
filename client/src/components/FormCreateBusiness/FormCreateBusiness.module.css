@@ -5,6 +5,7 @@
     align-items: center;
     justify-content: center;
     display: flex;
+    margin-bottom: 60px;
 }
 
 .form-div {
@@ -23,6 +24,8 @@
 
 .div-img {
     height: 50vh;
+    max-height: 600px;
+    max-width: 500px;
     width: 30vw;
     background-image: url('./FormBusiImg.png');
     background-size: cover;
