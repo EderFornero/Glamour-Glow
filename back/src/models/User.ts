@@ -1,10 +1,4 @@
-import {
-  prop,
-  modelOptions,
-  pre,
-  DocumentType,
-  getModelForClass,
-} from "@typegoose/typegoose";
+import { prop, modelOptions, pre, DocumentType } from "@typegoose/typegoose";
 
 import argon2 from "argon2";
 
@@ -61,6 +55,3 @@ export class User {
     }
   }
 }
-
-const UserModel = getModelForClass(User);
-export default UserModel;

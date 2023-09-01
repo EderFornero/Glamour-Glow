@@ -8,13 +8,13 @@
   
   .sidebar {
     position: fixed;
-    top: 4rem;
+    top: 0;
     left: 0;
     width: 260px;
     height: 100%;
     background: #ffffff;
     transition: width 0.4s;
-    z-index: 9;
+    z-index: 2;
   }
   
   .sidebar-header {
@@ -25,6 +25,14 @@
     margin-bottom: 20px;
   }
   
+  .home-link{
+    color: #0a0e12;
+  }
+
+  .home-link:hover{
+    text-decoration: underline var(--secondary-color);
+  }
+
   .sidebar button {
     position: relative;
     display: flex;
@@ -70,3 +78,4 @@
   .arrow-icon {
     width: 15px;
   }
+

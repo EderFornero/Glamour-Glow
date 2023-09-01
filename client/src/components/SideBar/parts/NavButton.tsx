@@ -3,6 +3,7 @@ import styles from '../Sidebar.module.css'
 import arrowup from '../../../assets/sidebard-icons/arrow-up.svg'
 import arrowdown from '../../../assets/sidebard-icons/arrow-down.svg'
 import Icon from './Icon';
+import { Link } from 'react-router-dom';
 
 type ButtonProps = {
   onClick: (item: string) => void
@@ -25,7 +26,7 @@ const NavButton: FC<ButtonProps> = ({
     className={`${isActive ? styles.active : ''}`}
   >
     {icon && <Icon icon={icon} />}
-    <span>{name}</span>
+    <span>{name === 'Home' ? <Link className={styles['home-link']} to='/'>{name}</Link> : name}</span>
     {hasSubNav && (
       <img
         className={styles['arrow-icon']}

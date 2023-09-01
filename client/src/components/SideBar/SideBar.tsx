@@ -1,14 +1,14 @@
-import { FC, useRef, useState } from 'react'
+import { useState } from 'react'
 import styles from './Sidebar.module.css'
 import { menuItems } from './parts/itemsmenu'
 import NavHeader from './parts/NavHeader'
 import NavButton from './parts/NavButton'
 import SubMenu from './parts/SubMenu'
 
-function SideBar() {
+function SideBar (): JSX.Element {
   const [activeItem, setActiveItem] = useState<string>('')
 
-  const handleClick = (item: string) => {
+  const handleClick = (item: string): void => {
     setActiveItem(item !== activeItem ? item : '')
   }
 
@@ -19,6 +19,7 @@ function SideBar() {
         <>
           {!item.items && (
             <NavButton
+              key={item.name}
               onClick={handleClick}
               name={item.name}
               icon={item.icon}

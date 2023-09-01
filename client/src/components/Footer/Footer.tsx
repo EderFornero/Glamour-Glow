@@ -5,6 +5,7 @@ import instagram from '../../assets/social-icons/instagram.svg'
 import linkedin from '../../assets/social-icons/linkedin.svg'
 import twitter from '../../assets/social-icons/twitter.svg'
 import ggicon from '../../assets/gg-icon.png'
+import { Link } from 'react-router-dom'
 
 function Fotter (): JSX.Element {
   return (
@@ -68,7 +69,7 @@ function Fotter (): JSX.Element {
                 <menu>
                     <h2>Company</h2>
                     <li>
-                        <a>About Us</a>
+                        <a href='/about'>About Us</a>
                     </li>
                     <li>
                         <a>Contact</a>

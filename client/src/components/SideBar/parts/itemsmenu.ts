@@ -5,31 +5,31 @@ import services from '../../../assets/sidebard-icons/services.svg'
 import settings from '../../../assets/sidebard-icons/settings.svg'
 import users from '../../../assets/sidebard-icons/users.svg'
 
- export const menuItems = [
-    {
-      name: 'Home',
-      icon: dashboard
-    },
-    {
-      name: 'Settings',
-      icon: settings,
-      items: ['Display', 'Interface']
-    },
-    {
-      name: 'Services',
-      icon: services,
-      items: ['List', 'Create', 'Edit']
-    },
-    {
-      name: 'Calendar',
-      icon: calendar
-    },
-    {
-      name: 'Clients',
-      icon: users
-    },
-    {
-      name: 'Messages',
-      icon: message
-    }
-  ]
+export const menuItems = [
+  {
+    name: 'Home',
+    icon: dashboard
+  },
+  {
+    name: 'Settings',
+    icon: settings,
+    items: ['Display', 'Interface']
+  },
+  {
+    name: 'Services',
+    icon: services,
+    items: ['List', 'Create', 'Edit']
+  },
+  {
+    name: 'Calendar',
+    icon: calendar
+  },
+  {
+    name: 'Clients',
+    icon: users
+  },
+  {
+    name: 'Messages',
+    icon: message
+  }
+]

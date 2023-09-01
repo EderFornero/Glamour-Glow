@@ -13,7 +13,10 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch, updateShowCards }: Sear
       <input
         type="text"
         value={searchQuery}
-        onChange={(e) => { handleOnSearch(e.target.value); updateShowCards(e.target.value.length > 0); }}
+        onChange={(e) => {
+          handleOnSearch(e.target.value)
+          updateShowCards(e.target.value.length > 0)
+        }}
         placeholder="Search by Service Provider"
       />
     </div>
