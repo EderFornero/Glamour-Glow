@@ -2,7 +2,7 @@ import type { ServiceProvider } from '../../interfaces';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import styles from './Carousel.module.css';
 import 'swiper/css';
-import ServiceCard from '../ServiceCard/ServiceCard';
+import BusinessCard from '../BusinessCard/BusinessCard';
 import { useEffect, useState } from 'react';
 
 interface CarouselProps {
@@ -45,7 +45,7 @@ const Carousel: React.FC<CarouselProps> = ({ cardstoshow, carouselName }) => {
           ({ id, businessName, rating, categories }: ServiceProvider) => {
             return (
               <SwiperSlide key={id} className={styles.swiperslide}>
-                <ServiceCard
+                <BusinessCard
                   id={id}
                   businessName={businessName}
                   rating={rating}
