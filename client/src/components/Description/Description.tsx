@@ -1,21 +1,27 @@
-import Landing from '../../Images/Description-images/landing1.png'
-import Landing2 from '../../Images/Description-images/landing2.png'
-import Landing3 from '../../Images/Description-images/landing3.png'
-import Landing4 from '../../Images/Description-images/person.jpg'
-import check from '../../assets/description-icons/check.svg'
+import Landing from '../../Images/Description-images/landing1.png';
+import Landing2 from '../../Images/Description-images/landing2.png';
+import Landing3 from '../../Images/Description-images/landing3.png';
+import Landing4 from '../../Images/Description-images/person.jpg';
+import check from '../../assets/description-icons/check.svg';
 // css
-import styles from './Description.module.css'
+import styles from './Description.module.css';
 // features
-import { useFeatures } from '../../hooks/index'
+import { useFeatures } from '../../hooks/index';
 
-function Description (): JSX.Element {
-  const ecommerceFeatures = useFeatures()
+function Description(): JSX.Element {
+  const ecommerceFeatures = useFeatures();
   return (
     <main className={styles['first-main-description']}>
       <section className={styles['box-header']} id="header">
         <div className={styles['text-header']}>
-          <h1><b>Unlock Your Styling Journey</b></h1>
-          <p>Elevate your styling business to new heights with our cutting-edge ecommerce platform. Connect with clients, gain reputation, and shine in the world of fashion.</p>
+          <h1>
+            <b>Unlock Your Styling Journey</b>
+          </h1>
+          <p>
+            Elevate your styling business to new heights with our cutting-edge
+            ecommerce platform. Connect with clients, gain reputation, and shine
+            in the world of fashion.
+          </p>
         </div>
 
         <div className={styles['img-header']}>
@@ -41,64 +47,86 @@ function Description (): JSX.Element {
         </div>
       </section>
     </main>
-  )
+  );
 }
 
-function Description2 (): JSX.Element {
+function Description2(): JSX.Element {
   return (
-   <main className={styles['second-main-description']}>
-    <section className={styles['box-call-to-actions']}>
-      <div className={styles['call-to-actions']}>
-        <div className={styles['img-call-to-actions']}>
-          <img src={Landing2} alt={Landing2} />
-        </div>
-
-        <article className={styles.content}>
-          <h3>Unlock Your Stylist Potential</h3>
-          <p>Elevate your styling business to new heights. Gain reputation, connect directly with clients, and showcase your remarkable talent to a global audience. With our platform, you&apos;re not just a stylist; you&apos;re a trendsetter, a creator, and a fashion influencer.</p>
-
-          <ul>
-            <li> <img className={styles['icon-check']} src={check} /> Boost your credibility and visibility in the fashion world.
-            </li>
-            <li> <img className={styles['icon-check']} src={check} /> Establish direct communication and build lasting relationships.
-            </li>
-          </ul>
-
-          <div className={styles['box-card-call-to-actions']}>
-            <div className={styles['card-call-to-actions']}>
-              <div className={styles['box-profesional']}>
-                <div className={styles['img-profesional']}>
-                  <img src={Landing4} alt={Landing4} />
-                </div>
-                <div className={styles['datos-profesional']}>
-                  <h5>Lucas Cubile</h5>
-                  <h6>Co-Founder, Apple</h6>
-                </div>
-              </div>
-              <p>&quot;Unlock endless opportunities in the fashion industry. Connect with clients, showcase your skills, and watch your styling business thrive.&quot;</p>
-            </div>
+    <main className={styles['second-main-description']}>
+      <section className={styles['box-call-to-actions']}>
+        <div className={styles['call-to-actions']}>
+          <div className={styles['img-call-to-actions']}>
+            <img src={Landing2} alt={Landing2} />
           </div>
-        </article>
-      </div>
-    </section>
 
-    <section className={styles['box-about']} id="linkAbout">
-      <h3>About Us</h3>
+          <article className={styles.content}>
+            <h3>Unlock Your Stylist Potential</h3>
+            <p>
+              Elevate your styling business to new heights. Gain reputation,
+              connect directly with clients, and showcase your remarkable talent
+              to a global audience. With our platform, you&apos;re not just a
+              stylist; you&apos;re a trendsetter, a creator, and a fashion
+              influencer.
+            </p>
 
-      <div className={styles.about}>
-        <div className={styles['img-about']}>
-          <img src={Landing3} alt={Landing3} />
+            <ul>
+              <li>
+                {' '}
+                <img className={styles['icon-check']} src={check} /> Boost your
+                credibility and visibility in the fashion world.
+              </li>
+              <li>
+                {' '}
+                <img className={styles['icon-check']} src={check} /> Establish
+                direct communication and build lasting relationships.
+              </li>
+            </ul>
+
+            <div className={styles['box-card-call-to-actions']}>
+              <div className={styles['card-call-to-actions']}>
+                <div className={styles['box-profesional']}>
+                  <div className={styles['img-profesional']}>
+                    <img src={Landing4} alt={Landing4} />
+                  </div>
+                  <div className={styles['datos-profesional']}>
+                    <h5>Lucas Cubile</h5>
+                    <h6>Co-Founder, Apple</h6>
+                  </div>
+                </div>
+                <p>
+                  &quot;Unlock endless opportunities in the fashion industry.
+                  Connect with clients, showcase your skills, and watch your
+                  styling business thrive.&quot;
+                </p>
+              </div>
+            </div>
+          </article>
         </div>
+      </section>
 
-        <article className={styles['contenido-about']}>
-          <h3>Your Styling Journey Starts Here</h3>
-          <p>Elevate your styling career to new heights with our innovative platform. Gain more clients, enhance your skills, and become a sought-after fashion influencer.</p>
-          <a className={styles['boton-get-started']} href="#">Learn More</a>
-        </article>
-      </div>
-    </section>
-  </main>
-  )
+      <section className={styles['box-about']} id="linkAbout">
+        <h3>About Us</h3>
+
+        <div className={styles.about}>
+          <div className={styles['img-about']}>
+            <img src={Landing3} alt={Landing3} />
+          </div>
+
+          <article className={styles['contenido-about']}>
+            <h3>Your Styling Journey Starts Here</h3>
+            <p>
+              Elevate your styling career to new heights with our innovative
+              platform. Gain more clients, enhance your skills, and become a
+              sought-after fashion influencer.
+            </p>
+            <a className={styles['boton-get-started']} href="#">
+              Learn More
+            </a>
+          </article>
+        </div>
+      </section>
+    </main>
+  );
 }
 
-export { Description, Description2 }
+export { Description, Description2 };

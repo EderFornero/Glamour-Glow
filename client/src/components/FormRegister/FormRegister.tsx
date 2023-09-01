@@ -11,7 +11,7 @@ import style from './FormRegister.module.css';
 import { useGoBack } from '../../hooks';
 
 const FormRegister: React.FC = () => {
-  const goBack = useGoBack()
+  const goBack = useGoBack();
   const {
     register,
     handleSubmit,
@@ -26,11 +26,11 @@ const FormRegister: React.FC = () => {
       confirmPassword: '',
       acceptTerms: false,
     },
-  })
+  });
 
   const onSubmit = handleSubmit((data: FormData) => {
-    console.log(data)
-  })
+    console.log(data);
+  });
 
   return (
     <div className={style['div-form']}>
@@ -55,9 +55,9 @@ const FormRegister: React.FC = () => {
           <AcceptTermsInput register={register} errors={errors} />
         </div>
         <div className={style['div-buttons']}>
-        <button onClick={goBack}>Back</button>
+          <button onClick={goBack}>Back</button>
           <div className={style['button-div']}>
-            <button type='submit'>Send</button>
+            <button type="submit">Send</button>
           </div>
         </div>
       </form>
@@ -65,4 +65,4 @@ const FormRegister: React.FC = () => {
   );
 };
 
-export default FormRegister
+export default FormRegister;

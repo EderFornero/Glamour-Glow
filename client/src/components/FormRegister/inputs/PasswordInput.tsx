@@ -17,7 +17,7 @@ const PasswordInput: React.FC<PasswordInputProps> = ({ register, errors }) => {
       <input
         type="password"
         name="password"
-        placeholder='Password'
+        placeholder="Password"
         {...register('password', {
           required: {
             value: true,
@@ -30,14 +30,12 @@ const PasswordInput: React.FC<PasswordInputProps> = ({ register, errors }) => {
         })}
         onChange={handlePasswordChange} // Actualiza passwordRef en cada cambio
       />
-      <div>
-      {errors.password && <span>{errors.password.message}</span>}
-      </div>
+      <div>{errors.password && <span>{errors.password.message}</span>}</div>
 
       <input
         type="password"
         name="confirmPassword"
-        placeholder='Confirm Password'
+        placeholder="Confirm Password"
         {...register('confirmPassword', {
           required: {
             value: true,
@@ -52,9 +50,9 @@ const PasswordInput: React.FC<PasswordInputProps> = ({ register, errors }) => {
         })}
       />
       <div>
-      {errors.confirmPassword && (
-        <span>{errors.confirmPassword.message}</span>
-      )}
+        {errors.confirmPassword && (
+          <span>{errors.confirmPassword.message}</span>
+        )}
       </div>
     </div>
   );

@@ -1,8 +1,8 @@
-import React from 'react'
+import React from 'react';
 
 interface UserNameInputProps {
-  register: any
-  errors: any
+  register: any;
+  errors: any;
 }
 
 const UserNameInput: React.FC<UserNameInputProps> = ({ register, errors }) => {
@@ -11,7 +11,7 @@ const UserNameInput: React.FC<UserNameInputProps> = ({ register, errors }) => {
       <input
         type="text"
         name="userName"
-        placeholder='User Name'
+        placeholder="User Name"
         {...register('userName', {
           required: {
             value: true,
@@ -22,13 +22,15 @@ const UserNameInput: React.FC<UserNameInputProps> = ({ register, errors }) => {
         })}
       />
       <div>
-      {errors.userName?.type === 'required' && <span>User Name Required</span>}
-      {errors.userName?.type === 'maxLength' && (
-        <span>The user name must not be longer than 20 characters</span>
-      )}
-      {errors.userName?.type === 'minLength' && (
-        <span>The user name must not be less than 3 characters</span>
-      )}
+        {errors.userName?.type === 'required' && (
+          <span>User Name Required</span>
+        )}
+        {errors.userName?.type === 'maxLength' && (
+          <span>The user name must not be longer than 20 characters</span>
+        )}
+        {errors.userName?.type === 'minLength' && (
+          <span>The user name must not be less than 3 characters</span>
+        )}
       </div>
     </div>
   );

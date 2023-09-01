@@ -1,19 +1,19 @@
 // css
-import styled from 'styled-components'
-import NotFoundImage from '../../Images/notfound.png'
+import styled from 'styled-components';
+import NotFoundImage from '../../Images/notfound.png';
 // react router dom
-import { useGoBack } from '../../hooks/index'
+import { useGoBack } from '../../hooks/index';
 
 const NotFound = (): JSX.Element => {
-  const goBack = useGoBack()
+  const goBack = useGoBack();
   return (
     <DivGoBack>
       <ButtonGoBack onClick={goBack}>GO BACK</ButtonGoBack>
     </DivGoBack>
-  )
-}
+  );
+};
 
-export default NotFound
+export default NotFound;
 
 const DivGoBack = styled.div`
   width: 100%;
@@ -23,30 +23,29 @@ const DivGoBack = styled.div`
   align-items: center;
   position: relative;
   overflow: hidden;
-  
 
-  &::before{
-  content: "";
-  inset: 0;
-  background: url(${NotFoundImage});
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  background-position: center;
-  position: absolute;
-  filter: blur(2px);
-  z-index: -1;  
+  &::before {
+    content: '';
+    inset: 0;
+    background: url(${NotFoundImage});
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+    position: absolute;
+    filter: blur(2px);
+    z-index: -1;
   }
 
-  @media (max-width: 520px){ 
-    &::before{
+  @media (max-width: 520px) {
+    &::before {
       background-size: 90% 90%;
     }
   }
-`
+`;
 const ButtonGoBack = styled.button`
   border: 0.125em solid var(--primary-color);
   border-radius: 1em;
-  box-sizing: border-box; 
+  box-sizing: border-box;
   background-color: var(--primary-color);
   color: var(--neutral-color);
   cursor: pointer;
@@ -60,11 +59,11 @@ const ButtonGoBack = styled.button`
   padding: 1em 2.3em;
   text-align: center;
   text-decoration: none;
-  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  transition: all 300ms cubic-bezier(0.23, 1, 0.32, 1);
 
   &:hover {
- background-color: var(--secondary-color);
- box-shadow: var(--secondary-color) 0 8px 15px;
- transform: translateY(-2px);
- }
-`
+    background-color: var(--secondary-color);
+    box-shadow: var(--secondary-color) 0 8px 15px;
+    transform: translateY(-2px);
+  }
+`;

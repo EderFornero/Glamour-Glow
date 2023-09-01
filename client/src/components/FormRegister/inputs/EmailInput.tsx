@@ -1,8 +1,8 @@
-import React from 'react'
+import React from 'react';
 
 interface EmailInputProps {
-  register: any
-  errors: any
+  register: any;
+  errors: any;
 }
 
 const EmailInput: React.FC<EmailInputProps> = ({ register, errors }) => {
@@ -22,11 +22,9 @@ const EmailInput: React.FC<EmailInputProps> = ({ register, errors }) => {
           },
         })}
       />
-      <div>
-      {errors.email && <span>{errors.email.message}</span>}
-      </div>
+      <div>{errors.email && <span>{errors.email.message}</span>}</div>
     </div>
-  )
-}
+  );
+};
 
-export default EmailInput
+export default EmailInput;

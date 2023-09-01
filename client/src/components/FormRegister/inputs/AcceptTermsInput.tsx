@@ -1,11 +1,14 @@
-import React from 'react'
+import React from 'react';
 
 interface AcceptTermsInputProps {
-  register: any
-  errors: any
+  register: any;
+  errors: any;
 }
 
-const AcceptTermsInput: React.FC<AcceptTermsInputProps> = ({ register, errors }) => {
+const AcceptTermsInput: React.FC<AcceptTermsInputProps> = ({
+  register,
+  errors,
+}) => {
   return (
     <div>
       <label>Terms and Conditions</label>
@@ -20,10 +23,10 @@ const AcceptTermsInput: React.FC<AcceptTermsInputProps> = ({ register, errors })
         })}
       />
       <div>
-      {errors.acceptTerms && <span>{errors.acceptTerms.message}</span>}
+        {errors.acceptTerms && <span>{errors.acceptTerms.message}</span>}
       </div>
     </div>
   );
 };
 
-export default AcceptTermsInput
+export default AcceptTermsInput;

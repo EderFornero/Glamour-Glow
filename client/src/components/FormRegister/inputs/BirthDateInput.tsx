@@ -1,11 +1,14 @@
-import React from 'react'
+import React from 'react';
 
 interface BirthDateInputProps {
-  register: any
-  errors: any
+  register: any;
+  errors: any;
 }
 
-const BirthDateInput: React.FC<BirthDateInputProps> = ({ register, errors }) => {
+const BirthDateInput: React.FC<BirthDateInputProps> = ({
+  register,
+  errors,
+}) => {
   return (
     <div>
       <input
@@ -24,11 +27,9 @@ const BirthDateInput: React.FC<BirthDateInputProps> = ({ register, errors }) => 
           },
         })}
       />
-      <div>
-      {errors.birthDate && <span>{errors.birthDate.message}</span>}
-      </div>
+      <div>{errors.birthDate && <span>{errors.birthDate.message}</span>}</div>
     </div>
-  )
-}
+  );
+};
 
-export default BirthDateInput
+export default BirthDateInput;
