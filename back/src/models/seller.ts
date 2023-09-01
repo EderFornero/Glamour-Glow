@@ -37,6 +37,5 @@ export class Seller {
 
     @prop({ref: () => Services, default: []})
     servicesArray: Ref<Services>[];
-
-    
+   
 }
