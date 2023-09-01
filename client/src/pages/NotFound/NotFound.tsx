@@ -1,7 +1,7 @@
 // css
 import styled from 'styled-components';
 import NotFoundImage from '../../Images/notfound.png';
-// react router dom
+// hooks
 import { useGoBack } from '../../hooks/index';
 
 const NotFound = (): JSX.Element => {

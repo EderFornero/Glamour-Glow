@@ -4,26 +4,25 @@
     "es2021": true
   },
   "extends": [
-    "standard",
-    "plugin:react/recommended",
-    "plugin:prettier/recommended"
+    "standard-with-typescript",
+    "plugin:react/recommended"
   ],
   "parserOptions": {
-    "ecmaVersion": 2021,
+    "ecmaVersion": "latest",
     "sourceType": "module",
     "project": "./Glamour-Glow/client/tsconfig.json"
   },
-  "plugins": ["react", "prettier"],
+  "plugins": ["react"],
   "rules": {
     "react/prop-types": "off",
     "react/react-in-jsx-scope": "off",
-    "@typescript-eslint/no-restricted-imports": [
-      "warn",
-      {
-        "name": "react-redux",
-        "importNames": ["useSelector", "useDispatch"],
-        "message": "Use typed hooks `useAppDispatch` and `useAppSelector` instead."
-      }
-    ]
+    // "@typescript-eslint/no-restricted-imports": [
+    //   "warn",
+    //   {
+    //     "name": "react-redux",
+    //     "importNames": ["useSelector", "useDispatch"],
+    //     "message": "Use typed hooks `useAppDispatch` and `useAppSelector` instead."
+    //   }
+    // ]
   }
 }
