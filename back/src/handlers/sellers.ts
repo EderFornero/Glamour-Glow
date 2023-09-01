@@ -1,10 +1,26 @@
 
-// get Controllers
-export const getSellersController = async () => {
+import { SellerModel } from "../models";
+
+
+export const getSellersHandler = async() => {
     
+    try {
+      const allSellers = await SellerModel.find({})
+      return allSellers
+    } catch (error) {
+      return error
+    }
 }
 
-// post Controllers
-export const postSellerController = async () => {
-    
+
+export const postSellersHandler = async (data : any) => {
+
+    try {
+     const newSeller = await SellerModel.create(data)
+     return newSeller;
+    } catch (error) {
+      throw new Error
+    }
 }
+
+

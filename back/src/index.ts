@@ -9,7 +9,7 @@ const PORT = 3001;
 server.use(express.json());
 
 server.listen(PORT, ()=> {
-    console.log("Server running  in PORT 3001 my king")
+    console.log("Server running  in PORT 3001 my king :** ")
 });
 
 server.use("/", userRouter)
