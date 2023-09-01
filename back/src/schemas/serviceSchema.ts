@@ -14,7 +14,7 @@ const serviceSchema = z.object({
     .trim(),
     
     serviceCategories: z
-    .array(z.string())
+    .string({required_error: "categories is required"})
     .nonempty("You must provide at least 1 category")
     .min(1, "Min 1 category please"),
     
@@ -29,15 +29,27 @@ const serviceSchema = z.object({
     .max(5), 
      
     seller: z
-    .array(z.string())
+    .string({required_error: "seller is required"})
     .nonempty("You must provide a seller related to the services") 
 
 });
 
 export const createServiceSchema = z.object({
     body: serviceSchema
+
 });
 
 export const updateServiceSchema = z.object({
-    body: serviceSchema.optional()
+    body: serviceSchema.optional(),
+    params: z.object({
+        id: z.string()
+    })
+   
+    
 });
+
+
+export type createServiceType = z.infer<typeof createServiceSchema>["body"]
+export type updateServiceType = z.infer<typeof updateServiceSchema>["body"]
+export type updateServiceTypeParams = z.infer<typeof updateServiceSchema>["params"]
+ 

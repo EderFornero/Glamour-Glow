@@ -32,6 +32,9 @@ export class Seller {
     @prop({required: true, enum: GENDER})
     seller_gender: GENDER
 
+    @prop({required: true, type: Number})
+    rating: number 
+
     @prop({ref: () => Category, default:[]})
     categoriesArray: Ref<Category>[];
 
