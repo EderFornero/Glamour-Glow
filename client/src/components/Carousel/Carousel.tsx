@@ -34,7 +34,7 @@ const Carousel: React.FC<CarouselProps> = ({ cardstoshow, carouselName }) => {
       <h3 className={styles.title}>{carouselName}</h3>
       <Swiper
         className={styles.swiper}
-        spaceBetween={50}
+        spaceBetween={160}
         slidesPerView={slidesPerView}
         loop
         navigation

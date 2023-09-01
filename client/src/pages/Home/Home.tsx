@@ -15,7 +15,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { ThunkDispatch } from 'redux-thunk';
 import { AnyAction } from 'redux';
 import { RootState } from '../../redux/types';
-import { GetAllServices } from '../../redux/Actions';
+import GetAllBusiness from '../../redux/Actions';
 
 const Home: React.FC = () => {
   const { searchResults, handleOnSearch } = useSearchBarHome(users);
@@ -25,20 +25,18 @@ const Home: React.FC = () => {
     setShowCards(hasQuery);
   };
 
-  const dispatch: ThunkDispatch<RootState, undefined, AnyAction> = useDispatch();
-
-  useEffect(() => {
-    const fetchData = async () => {
-      await dispatch(GetAllServices());
-    };
-    fetchData();
-  }, [dispatch]);
-
   const cards = useSelector((state: RootState) => state.allServices);
+  const dispatch = useDispatch();
+
+  console.log(cards);
+
 
   useEffect(() => {
-    console.log(cards);
-  }, [cards]);
+    console.log("aqui ");
+    dispatch(GetAllBusiness());
+    console.log("listo");
+
+  }, [dispatch]);
 
   return (
     <div>

@@ -1,1 +1,1 @@
-export const GET_ALL_SERVICES = 'GET_ALL_SERVICES';
+export const GET_ALL_BUSINESS = 'GET_ALL_BUSINESS';

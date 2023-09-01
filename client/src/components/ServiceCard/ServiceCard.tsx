@@ -15,8 +15,8 @@ const ServiceCard: React.FC<ServiceProvider> = ({
       <h2 className={style.title}> {businessName}</h2>
       <p>Rating: {rating}</p>
       <p>Location: {businessLocation}</p>
-      {categories.map((category) => {
-        return <p key={id}>{category}</p>;
+      {categories.map((category, index) => {
+        return <p key={index}>{category}</p>;
       })}
       <NavLink to="ROUTE HERE" className={style.link}>
         <button>Check it out</button>

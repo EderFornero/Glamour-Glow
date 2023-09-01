@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom/client';
-import router from './router.tsx';
+import router from './router.tsx'
 import store from './redux/Store.ts';
 import { RouterProvider } from 'react-router-dom';
 import { Provider } from 'react-redux';

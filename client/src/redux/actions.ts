@@ -1,19 +1,19 @@
 import axios from 'axios';
-import { GET_ALL_SERVICES } from './Action-Types';
+import { GET_ALL_BUSINESS } from './Action-Types';
 import { ServiceAction } from './types';
 
 const API_URL = 'http://localhost:3001/';
 
-export const GetAllServices = () => {
-  const endpoint = `${API_URL}services/`;
+const GetAllBusiness = () => {
+  const endpoint = `${API_URL}sellers`;
 
   return async (dispatch: (action: ServiceAction) => void) => {
     try {
       const { data } = await axios.get(endpoint);
-      console.log(data);
+      console.log('Hoola', data);
 
       return dispatch({
-        type: GET_ALL_SERVICES,
+        type: GET_ALL_BUSINESS,
         payload: data,
       });
     } catch (error: any) {
@@ -21,3 +21,5 @@ export const GetAllServices = () => {
     }
   };
 };
+
+export default GetAllBusiness;
