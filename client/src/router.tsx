@@ -13,7 +13,7 @@ import FormRegister from './components/FormRegister/FormRegister.tsx'
 import BusinessDetail from './pages/BusinessDetail/BusinessDetail.tsx'
 import FormBusiness from './components/FormCreateBusiness/FormCreateBusiness.tsx'
 import FormLogin from './components/FormLogin/FormLogin.tsx'
-
+import BusinessCardsView from './pages/BusinessCardsView/BusinessCardsView.tsx'
 
 const router = createBrowserRouter([
   {
@@ -29,7 +29,18 @@ const router = createBrowserRouter([
       {
         path: '/detail/:id',
         children: [
-          { index: true, element: <BusinessDetail /> }]
+          {
+            index: true,
+            element: <BusinessDetail />
+          }]
+      },
+      {
+        path: '/business',
+        children: [
+          {
+            index: true,
+            element: <BusinessCardsView />
+          }]
       },
       {
         path: '/register',
