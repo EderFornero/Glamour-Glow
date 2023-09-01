@@ -7,7 +7,9 @@ import style from './Cards.module.css';
 // props
 import type { CardsProps } from '../../interfaces/props';
 
+
 const Cards: React.FC<CardsProps> = ({ searchUsers }: CardsProps) => {
+
   return (
     <section className={style.cardsSection}>
       {searchUsers.map(

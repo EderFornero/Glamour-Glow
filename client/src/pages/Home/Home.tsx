@@ -10,6 +10,12 @@ import FAQ from '../../components/FAQ/FAQ';
 // hooks
 import { useSearchBarHome } from '../../hooks/index';
 import { useState } from 'react';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import { ThunkDispatch } from 'redux-thunk';
+import { AnyAction } from 'redux';
+import { RootState } from '../../redux/types';
+import { GetAllServices } from '../../redux/Actions';
 
 const Home: React.FC = () => {
   const { searchResults, handleOnSearch } = useSearchBarHome(users);
@@ -19,9 +25,25 @@ const Home: React.FC = () => {
     setShowCards(hasQuery);
   };
 
+  const dispatch: ThunkDispatch<RootState, undefined, AnyAction> = useDispatch();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      await dispatch(GetAllServices());
+    };
+    fetchData();
+  }, [dispatch]);
+
+  const cards = useSelector((state: RootState) => state.allServices);
+
+  useEffect(() => {
+    console.log(cards);
+  }, [cards]);
+
   return (
     <div>
       <SearchBar onSearch={handleOnSearch} updateShowCards={updateShowCards} />
+      <Cards searchUsers={searchResults.length > 0 ? cards : users} />
       {showCards ? (
         <Cards searchUsers={searchResults.length > 0 ? searchResults : users} />
       ) : (
