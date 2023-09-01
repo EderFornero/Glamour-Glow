@@ -6,6 +6,7 @@ import ServiceCard from '../../components/ServiceCard/ServiceCard'
 import imagetest1 from '../../Images/imagenes testeo/Imgtest1.avif'
 import imagetest2 from '../../Images/imagenes testeo/imagetest2.avif'
 import imagetest3 from '../../Images/imagenes testeo/imgtest3.avif'
+import LeaveAComment from '../../components/LeaveAComment/LeaveAComment'
 const BusinessDetail = (): JSX.Element => {
   const { id } = useParams()
   let usuario = null
@@ -16,11 +17,11 @@ const BusinessDetail = (): JSX.Element => {
 
   return (
     <div className={style['global-container']}>
-      <section className={style.hola}>
+      <section className={style['business']}>
         <div className={style['business-info-container']}>
           <div className={style['business-info']}>
             <h2 className={style.title}>{usuario.businessName}</h2>
-            <p className={style.price}>⭐{usuario.rating}</p>
+            <p className={style.rating}>⭐{usuario.rating}</p>
             <p className={style.location}>{usuario.location}</p>
           </div>
           <div className={style.wrapper}>
@@ -39,14 +40,19 @@ const BusinessDetail = (): JSX.Element => {
           </div>
         </div>
       </section >
-      <section className={style.services}>
-        {usuario.services.map(({ id, name, description, price, category }: Service) => {
-          return (
-            <ServiceCard key={id} id={id} name={name} description={description} price={price} category={category} />
-          )
-        })}
+      <section className={style['services-form']}>
+        <div className={style.services}>
+          {usuario.services.map(({ id, name, description, price, category }: Service) => {
+            return (
+              <ServiceCard key={id} id={id} name={name} description={description} price={price} category={category} />
+            )
+          })}
+        </div>
+        <div className={style.form}>
+          <LeaveAComment />
+        </div>
       </section>
-    </div >
+    </div>
   )
 }
 

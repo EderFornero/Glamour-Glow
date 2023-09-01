@@ -1,7 +1,7 @@
 import type { Service } from '../../interfaces'
 import style from './ServiceCard.module.css'
 
-const ServiceP = ({ name, time, price }: Service): JSX.Element => {
+const ServiceCard = ({ name, time, price }: Service): JSX.Element => {
   return (
     <article className={style.container}>
       <div className={style.info}>
@@ -16,4 +16,4 @@ const ServiceP = ({ name, time, price }: Service): JSX.Element => {
   );
 };
 
-export default ServiceP
+export default ServiceCard

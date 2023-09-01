@@ -1,4 +1,8 @@
- .header {
+.test {
+  margin: 0;
+  padding: 0;
+}
+.header {
   height: 4rem;
   background-color: var(--primary-color);
   width: 100%;
@@ -48,7 +52,7 @@ nav {
   width: 250px;
   height: 300px;
   position: fixed;
-  top: 64px;
+  top: 45px;
   list-style: none;
 }
 

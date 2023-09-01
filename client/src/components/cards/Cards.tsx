@@ -17,4 +17,4 @@ const Cards: React.FC<CardsProps> = ({ searchUsers }: CardsProps) => {
     );
 };
 
-export default Cards;
+export default Cards; 

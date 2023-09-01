@@ -1,14 +1,22 @@
 .container{
     display: flex;
     width: 100%;
-    align-items: center;
     border: 1px solid #ccc;
-    padding: 20px;
+    padding: 30px;
     border-radius: 10px;
+    align-self: flex-start;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    @media (max-width: 940px) {
+        flex-direction: column;
+        width: 250px;
+        height: 300px;
+        justify-content: center;
+    }
 }
 
 .title {
     padding: 0;
+    font-size: 1rem;
 }
 
 .info {
@@ -18,15 +26,22 @@
     align-items: flex-start;
     flex-grow: 1;
     gap: 15px;
+    
+    
 }
 
 .booking-container {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
+    align-self: center;
+   
+    
 }
 
 .button {
     background-color: var(--primary-color);
-    padding: 20px;
+    padding: 15px;
     border-radius: 10px;
+    color: #ffffff;
+    
 }
