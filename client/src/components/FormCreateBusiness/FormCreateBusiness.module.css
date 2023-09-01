@@ -1,0 +1,126 @@
+
+.div-gral{
+    margin-top: 150px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.form-div {
+    background-color: #6e66ff;
+    height: 55vh;
+    width: 25vw;
+    max-width: 400px;
+    min-width: 360px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    border-radius: 50px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+.div-img {
+    height: 50vh;
+    width: 30vw;
+    background-image: url('./FormBusiImg.png');
+    background-size: cover;
+    background-position: center;
+    border-radius: 7%;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+  }
+
+.cont-img {
+    border-radius: 50px;
+    background-color: #3e38b6;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    margin-left: -80px;
+    margin-right: 50px;
+    height: 70vh;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+.div-gral h1 {
+    margin-right: 50px;
+    margin-bottom: 25px;
+    margin-left: 40px;
+}
+.div-gral select {
+    border-radius: 20px;
+    padding: 10px;
+    margin: 5px;
+    height: 5vh;
+    border: none; 
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.div-inputs-bottom {
+    height: 7vh;
+    width: 240px;
+    padding-left: 18px;
+    display: flex;
+}
+
+.div-gral h2 {
+    font-size: 25px;
+    color: black;
+    border-radius: 10px;
+}
+
+.div-gral input[type="number"]::-webkit-inner-spin-button,
+.div-gral input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+.div-gral input {
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+
+.div-button button {
+    background-color: #5effb1;
+    margin: 0 30px; 
+    padding: 10px 20px;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    transition: transform 0.3s ease;
+    display: flex;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+    font-weight: 600;
+}
+
+.div-button button:hover {
+    background-color: #e37f6b;
+    transform: scale(1.07)
+  }
+
+.div-button{
+  height: 40px;
+  width: 200px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  margin-top: 25px;
+}
+
+.div-gral span {
+    color: red;
+    position: absolute;
+    font-size: small;
+    margin-top: -5px;
+    margin-left: 10px;
+}
+.div-gral input {
+    margin-top: 13px;
+    cursor: pointer;
+}

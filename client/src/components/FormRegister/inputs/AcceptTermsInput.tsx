@@ -18,15 +18,15 @@ const AcceptTermsInput: React.FC<AcceptTermsInputProps> = ({
         {...register('acceptTerms', {
           required: {
             value: true,
-            message: 'Please accept the terms and conditions',
-          },
+            message: 'Please accept Terms and conditions'
+          }
         })}
       />
       <div>
         {errors.acceptTerms && <span>{errors.acceptTerms.message}</span>}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default AcceptTermsInput;
+export default AcceptTermsInput

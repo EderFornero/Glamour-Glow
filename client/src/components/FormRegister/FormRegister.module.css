@@ -1,11 +1,6 @@
 .div-form {
-    margin: 0;
+    margin-top: -90px;
     padding: 0;
-    background: linear-gradient(45deg, #3E38B6, #5effb1);
-  }
-  
-  /* Estilos del formulario */
-  .div-form {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -20,7 +15,7 @@
     border-radius: 20px;
     width: 25vw;
     min-width: 300px;
-    height: 60vh;
+    height: 66vh;
     min-height: 400px;
     background: linear-gradient(60deg, #3E38B6, #5effb1);
     box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.2);
@@ -35,10 +30,10 @@
     border: none; 
   }
   
-  /* Estilos de la sección de confirmación de términos */
   .confirm-input {
     display: flex;
     align-items: center;
+    height: 40px;
   }
   
   .confirm-input label {
@@ -55,14 +50,34 @@
   }
   
   .div-buttons button {
-    margin: 0 8vh; 
+    background-color: #5effb1;
+    margin: 0 30px; 
     padding: 10px 20px;
     border: none;
     border-radius: 40px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    transition: transform 0.3s ease;
+    display: flex;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+    font-weight: 600;
+    margin-top: 10px;
   }
   
   .div-buttons button:hover {
     background-color: rgba(255, 255, 255, 0.2);
+  }
+  .form-box input {
+    margin-top: 13px;
+  }
+
+  .div-form span {
+    color: red;
+    position: absolute;
+    font-size: small;
+    margin-top: -5px;
+    margin-left: 10px;
+  }
+  .confirm-input span{
+    margin-top: -18px;
   }
