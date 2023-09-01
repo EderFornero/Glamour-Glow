@@ -1,0 +1,32 @@
+[
+  {
+    "icon": "./src/assets/Features/product-management.png",
+    "title": "Product Management",
+    "description": "Efficiently manage and organize your products. Easily add, edit, and delete products. Categorize and tag your products for more precise searching."
+  },
+  {
+    "icon": "./src/assets/Features/online-store.png",
+    "title": "Online Store",
+    "description": "Create your own online store and reach more customers. Customize the design and appearance of your store. Accept online payments securely and offer flexible shipping options."
+  },
+  {
+    "icon": "./src/assets/Features/reservations-and-appointments.png",
+    "title": "Reservations and Appointments",
+    "description": "Allow your customers to schedule appointments and services. Provide an availability calendar and booking options. Send automatic reminders to reduce cancellations."
+  },
+  {
+    "icon": "./src/assets/Features/inventory-management.png",
+    "title": "Inventory Management",
+    "description": "Maintain accurate control of your inventory and stock. Receive alerts when products are low in stock. Manage multiple locations and product variants."
+  },
+  {
+    "icon": "./src/assets/Features/sales-tracking.png",
+    "title": "Sales Tracking",
+    "description": "Analyze sales and your business performance. Generate detailed reports on sales, income, and trends. Identify the most popular products and areas for improvement."
+  },
+  {
+    "icon": "./src/assets/Features/marketing-tool.png",
+    "title": "Marketing Tools",
+    "description": "Promote your products and services with effective strategies. Create email campaigns and discounts. Optimize your store's SEO for greater online reach."
+  }
+]

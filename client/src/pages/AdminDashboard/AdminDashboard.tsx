@@ -1,13 +1,11 @@
-import Nav from '../../components/Nav/Nav'
-import SideBar from '../../components/SideBar/SideBar'
+import SideBar from '../../components/SideBar/SideBar';
 
 const AdminDashboard: React.FC = () => {
   return (
     <div>
-      <Nav />
-      <SideBar/>
+      <SideBar />
     </div>
-  )
-}
+  );
+};
 
-export default AdminDashboard
+export default AdminDashboard;

@@ -1,15 +1,15 @@
-import type { ServiceProvider } from './index'
+import type { ServiceProvider } from './index';
 
 export interface CardsProps {
-  searchUsers: ServiceProvider[]
+  searchUsers: ServiceProvider[];
 }
 
 export interface SearchBarProps {
-  onSearch: (query: string) => void
+  onSearch: (query: string) => void;
   updateShowCards: (hasQuery: boolean) => void;
 }
 
 export interface SearchResultsProps {
-  searchResults: ServiceProvider[]
-  handleOnSearch: (query: string) => void
+  searchResults: ServiceProvider[];
+  handleOnSearch: (query: string) => void;
 }

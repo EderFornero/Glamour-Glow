@@ -11,7 +11,7 @@ import style from './FormRegister.module.css'
 import { useGoBack } from '../../hooks'
 
 const FormRegister: React.FC = () => {
-  const goBack = useGoBack()
+  const goBack = useGoBack();
   const {
     register,
     handleSubmit,
@@ -24,13 +24,19 @@ const FormRegister: React.FC = () => {
       birthDate: '',
       password: '',
       confirmPassword: '',
+<<<<<<< HEAD
       acceptTerms: false
     }
   })
+=======
+      acceptTerms: false,
+    },
+  });
+>>>>>>> 62dbd688df7cf908a75f946e13b8f6eb5e31904f
 
   const onSubmit = handleSubmit((data: FormData) => {
-    console.log(data)
-  })
+    console.log(data);
+  });
 
   return (
     <div className={style['div-form']}>
@@ -41,16 +47,27 @@ const FormRegister: React.FC = () => {
           <EmailInput register={register} errors={errors} />
           <PasswordInput register={register} errors={errors} />
           <BirthDateInput register={register} errors={errors} />
+<<<<<<< HEAD
           <div className={style['confirm-input']}>
             <AcceptTermsInput register={register} errors={errors} />
           </div>
           <div className={style['div-buttons']}>
             <button onClick={goBack}>Back</button>
             <button type='submit'>Send</button>
+=======
+        </div>
+        <div className={style['confirm-input']}>
+          <AcceptTermsInput register={register} errors={errors} />
+        </div>
+        <div className={style['div-buttons']}>
+          <button onClick={goBack}>Back</button>
+          <div className={style['button-div']}>
+            <button type="submit">Send</button>
+>>>>>>> 62dbd688df7cf908a75f946e13b8f6eb5e31904f
           </div>
       </form>
     </div>
   )
 }
 
-export default FormRegister
+export default FormRegister;

@@ -1,4 +1,4 @@
-import type { ServiceProvider } from '../../interfaces'
+import type { ServiceProvider } from '../../interfaces';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import styles from './Carousel.module.css';
 import 'swiper/css';
@@ -13,10 +13,12 @@ interface CarouselProps {
 const Carousel: React.FC<CarouselProps> = ({ cardstoshow, carouselName }) => {
   const [slidesPerView, setSlidesPerView] = useState(4);
 
-  const updateSlidesPerView = () => {
+  const updateSlidesPerView = (): void => {
     const width = window.innerWidth;
 
-    setSlidesPerView(width < 2000 ? (width < 1400 ? (width < 880 ? 1 : 2) : 3) : 4);
+    setSlidesPerView(
+      width < 2000 ? (width < 1400 ? (width < 1000 ? 1 : 2) : 3) : 4,
+    );
   };
 
   useEffect(() => {
@@ -30,15 +32,32 @@ const Carousel: React.FC<CarouselProps> = ({ cardstoshow, carouselName }) => {
   return (
     <section className={styles.carousel}>
       <h3 className={styles.title}>{carouselName}</h3>
-      <Swiper className={styles.swiper} spaceBetween={50} slidesPerView={slidesPerView} loop navigation pagination autoplay>
-        {cardstoshow.map(({ id, businessName, rating, categories }: ServiceProvider) => {
-          return <SwiperSlide className={styles.swiperslide}>
-            <ServiceCard id={id} businessName={businessName} rating={rating} categories={categories} />
-          </SwiperSlide>
-        })}
+      <Swiper
+        className={styles.swiper}
+        spaceBetween={50}
+        slidesPerView={slidesPerView}
+        loop
+        navigation
+        pagination
+        autoplay
+      >
+        {cardstoshow.map(
+          ({ id, businessName, rating, categories }: ServiceProvider) => {
+            return (
+              <SwiperSlide key={id} className={styles.swiperslide}>
+                <ServiceCard
+                  id={id}
+                  businessName={businessName}
+                  rating={rating}
+                  categories={categories}
+                />
+              </SwiperSlide>
+            );
+          },
+        )}
       </Swiper>
     </section>
   );
 };
 
-export default Carousel
+export default Carousel;

@@ -8,7 +8,7 @@ import { Seller } from "./Seller";
         _id:true
     }
 })
-
+//falta el rating
 export class Services {
     @prop({required: true, type: String})
     name: string;
