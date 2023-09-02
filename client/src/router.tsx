@@ -14,6 +14,7 @@ import BusinessDetail from './pages/BusinessDetail/BusinessDetail.tsx'
 import FormBusiness from './components/FormCreateBusiness/FormCreateBusiness.tsx'
 import FormLogin from './components/FormLogin/FormLogin.tsx'
 import BusinessCardsView from './pages/BusinessCardsView/BusinessCardsView.tsx'
+import UserDetail from './pages/UserDetail/UserDetail.tsx'
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,12 @@ const router = createBrowserRouter([
             index: true,
             element: <BusinessDetail />
           }]
+      },
+      {
+        path: '/user/:id',
+        children: [
+          { index: true, element: <UserDetail /> }
+        ]
       },
       {
         path: '/business',
