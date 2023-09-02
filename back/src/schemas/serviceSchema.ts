@@ -40,7 +40,7 @@ export const createServiceSchema = z.object({
 });
 
 export const updateServiceSchema = z.object({
-    body: serviceSchema.optional(),
+    body: serviceSchema.partial(),
     params: z.object({
         id: z.string()
     })

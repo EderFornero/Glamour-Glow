@@ -34,7 +34,7 @@ export const createSellerSchema = z.object({
 });
 
 export const updateSellerSchema = z.object({
-    body: sellerSchema.optional(),
+    body: sellerSchema.partial(),
     params: z.object({
         id: z.string()
     }),

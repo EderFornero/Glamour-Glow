@@ -45,7 +45,7 @@ export const CreateUserSchema = z.object({
 });
 
 export const updateUserSchema = z.object({
-  body: UserSchema.optional(),
+  body: UserSchema.partial(),
   params: z.object({
     id: z.string()
   })
