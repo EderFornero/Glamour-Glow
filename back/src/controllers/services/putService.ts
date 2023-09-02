@@ -1,7 +1,8 @@
 import { updateService } from "../../handlers"
 import { Request,Response } from "express"
+import { updateServiceType, updateServiceTypeParams } from "../../schemas/serviceSchema"
 
-export const putService = async (req:Request, res: Response) => {
+export const putService = async (req:Request<updateServiceTypeParams,{},updateServiceType>, res: Response) => {
         const {id} = req.params
         const update = req.body
         try {
