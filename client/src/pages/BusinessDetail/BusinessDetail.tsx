@@ -7,6 +7,13 @@ import imagetest1 from '../../Images/imagenes testeo/Imgtest1.avif'
 import imagetest2 from '../../Images/imagenes testeo/imagetest2.avif'
 import imagetest3 from '../../Images/imagenes testeo/imgtest3.avif'
 import LeaveAComment from '../../components/LeaveAComment/LeaveAComment'
+import { Fab } from '@mui/material'
+import FavoriteIcon from "@mui/icons-material/Favorite"
+import { useState } from 'react'
+import FavoriteIconEmpty from "@mui/icons-material/FavoriteBorder"
+import StarIcon from '@mui/icons-material/Star';
+
+
 const BusinessDetail = (): JSX.Element => {
   const { id } = useParams()
   let usuario = null
@@ -15,19 +22,31 @@ const BusinessDetail = (): JSX.Element => {
     usuario = useGetDetail(+id)
   }
 
+  const [isFavorite, setIsFavorite] = useState<boolean>(false);
+
+  const toggleFavorite = () => {
+    setIsFavorite((prevState) => !prevState);
+  };
   return (
     <div className={style['global-container']}>
       <section className={style['business']}>
         <div className={style['business-info-container']}>
           <div className={style['business-info']}>
             <h2 className={style.title}>{usuario.businessName}</h2>
-            <p className={style.rating}>⭐{usuario.rating}</p>
+            <div className={style['rating-container']}>
+              <StarIcon className={style.rating}></StarIcon>
+              <p>{usuario.rating}</p>
+            </div>
             <p className={style.location}>{usuario.location}</p>
           </div>
           <div className={style.wrapper}>
-            <div className={style.fav}>
-              <i className={style['favorite-button']}>❤️</i>
-            </div >
+            <Fab className={style.fav} onClick={toggleFavorite}>
+              {isFavorite ? (
+                <FavoriteIcon className={style['favorite-button-filled']} />
+              ) : (
+                <FavoriteIconEmpty className={style['favorite-button']} />
+              )}
+            </Fab>
           </div>
         </div>
         <div className={style.images}>
@@ -40,6 +59,7 @@ const BusinessDetail = (): JSX.Element => {
           </div>
         </div>
       </section >
+      <h2>Services</h2>
       <section className={style['services-form']}>
         <div className={style.services}>
           {usuario.services.map(({ id, name, description, price, category }: Service) => {
@@ -49,7 +69,7 @@ const BusinessDetail = (): JSX.Element => {
           })}
         </div>
         <div className={style.form}>
-          <LeaveAComment />
+          <LeaveAComment user={usuario} />
         </div>
       </section>
     </div>

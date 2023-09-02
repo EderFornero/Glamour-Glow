@@ -23,8 +23,12 @@
 .logo-container {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
+  
 }
-
+.title {
+  font-size: 1.5rem;
+}
 nav {
   display: flex;
   flex-direction: row-reverse;
@@ -32,6 +36,7 @@ nav {
 
 .logout {
   cursor: pointer;
+  transition: text-decoration 0.5s;
 }
 
 .nav-full {
@@ -54,29 +59,41 @@ nav {
   position: fixed;
   top: 45px;
   list-style: none;
+  padding: 30px;
 }
 
 .menu-item {
   width: 100%;
   padding: 1rem;
   text-align: center;
+  
 }
 
 .link {
-  text-decoration: none;
+  
   color: #ffffff;
+  transition: color 0.5s;
+  transition: text-decoration 0.5s;
 }
+
+
 
 .menu-full {
   display: flex;
-  list-style-type: none;
+  list-style: none;
   gap: 3rem;
 }
 
 .link-full {
-  text-decoration: none;
+  /* text-decoration: none; */
   color: #ffffff;
+  transition: text-decoration 0.5s;
 }
+
+.link-full:hover, .logout:hover {
+  text-decoration: underline;
+}
+
 
 @media (min-width: 551px) {
   .nav-mobile {

@@ -1,18 +1,23 @@
 .global-container{ 
     width: 100%;
-    padding: 4em;
+    padding: 3em;
     display: flex;
     flex-direction: column;
     gap: 40px;
-    @media (max-width: 926px) {
+    box-sizing: border-box;
+    @media(max-width: 500px){
         padding: 1em;
-      }
+    }
+ }
+
+.business{
+   width: 100%;
 }
 
 
 .business-info-container{
-   
-    display: flex;
+   display: flex;
+   margin-bottom: 20px;
 }
 
 .business-info {
@@ -22,50 +27,62 @@
     flex-grow: 1;
     gap: 30px;
     flex-wrap: nowrap;
-    margin-bottom: 20px;
-    @media (max-width: 500px) {
+    @media (max-width: 435px) {
         flex-direction: column;
-        align-items: flex-start;
         padding: 10px;
-        gap: 0;
+        gap: 5px;
+        align-items: flex-start;
       }
     
     .title {
         color: black;
         font-size: 1.4rem;
     }
+    .rating-container {
+        display: flex;
+        gap: 4px;
+        align-items: center;
+    }
 }
 
 .wrapper {
-    
     display: flex;
-    .fav {
-        align-self: center;
-        @media (max-width: 500px) {
-            align-self: flex-start;
-            padding-top: 30px;
-          }
+    align-items: center;
+    box-shadow: none;
+    transition: none;
+    .fav{
+        box-shadow: none;
+    }
+    .favorite-button-filled{
+        color: var(--primary-color);
+        box-shadow: none;
+        transition: none;
+    }
+    .favorite-button{
+        box-shadow: none;
+        transition: none;
     }
 }
 .images {
-  
-    @media (min-width: 910px) {
+        @media (min-width: 910px) {
         display: flex;
-        gap: 20px;
+        gap: 15px;
+        
     }
+    
     .main-img-container{
         
         width: 100%;
         @media (min-width: 910px) {
             display: flex;
-            
-            width: 75%;
+            flex-grow: 1;
           }
          .main-img {
             width: 100%;
             display: flex;
             border-radius: 10px;
             object-fit: cover;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.50);
         }
     }
     .side-images{
@@ -80,10 +97,12 @@
           :first-child{
             width: 100%;
             border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.50);
           }
           :last-child{
             width: 100%;
             border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.50);
           }
     }
 }
@@ -94,22 +113,30 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 25px;
+    @media (max-width: 940px){
+        flex-direction: column;
+        align-items: center;
+    }
     .services{
-        
         display: flex;
         flex-direction: column;
+        width: 50%;
         gap: 10px;
         flex-grow: 1;
-        @media (max-width: 940px) {
-           flex-direction: row;
-           justify-content: center;
-           flex-wrap: wrap;;
-          }
-    
+        padding: 10px 4px 10px 0;
+        @media(max-width: 940px){
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            width: 100%;
+        }
     }
-    .form{
 
-        width: 400px;
+    .form{    
+        min-width: 300px;
+        padding-top: 10px;
+        @media (min-width: 940px){
+            min-width: 400px;
+        }
     }
 }
 

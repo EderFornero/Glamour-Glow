@@ -29,7 +29,23 @@
                     "price": 30.00
                 },
                 {
-                    "id": 2,
+                    "id": 12,
+                    "name": "Beard waxing",
+                    "description": "Traditional men's haircut with a fresh style.",
+                    "seller": 1,
+                    "category": "Barber",
+                    "price": 30.00
+                },
+                {
+                    "id": 15,
+                    "name": "Hair Coloring",
+                    "description": "Traditional Hair Coloring.",
+                    "seller": 1,
+                    "category": "Barber",
+                    "price": 30.00
+                },
+                {
+                    "id": 5,
                     "name": "Beard Trim",
                     "description": "Precise beard trimming and shaping.",
                     "seller": 1,

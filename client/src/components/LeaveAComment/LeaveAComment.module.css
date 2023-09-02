@@ -43,6 +43,11 @@
         & textarea:focus {
             outline: auto;
         }
+        .select-comment {
+            border-radius: 10px;
+            background-color: var(--neutral-color);
+        }
+        
     }
     .submit{
         background-color: var(--primary-color);
@@ -53,3 +58,14 @@
         font-size: 1.2rem;
     }
 }
+
+.star-filled {
+    font-size: 24px;
+  }
+  
+.star-empty {
+    font-size: 24px; 
+  }
+
+
+
