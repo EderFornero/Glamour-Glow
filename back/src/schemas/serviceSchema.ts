@@ -14,9 +14,9 @@ const serviceSchema = z.object({
     .trim(),
     
     serviceCategories: z
-    .string({required_error: "categories is required"})
-    .nonempty("You must provide at least 1 category")
-    .min(1, "Min 1 category please"),
+    .string({required_error: "categories are required"})
+    .nonempty("You must provide at least 1 category"),
+    
     
     price: z
     .number({required_error: "You must provide a price"})
