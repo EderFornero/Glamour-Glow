@@ -58,6 +58,7 @@ nav {
   text-align: center;
 }
 
+
 .link {
   text-decoration: none;
   color: #ffffff;
@@ -67,11 +68,17 @@ nav {
   display: flex;
   list-style-type: none;
   gap: 3rem;
+  align-items: center;
 }
 
 .link-full {
   text-decoration: none;
   color: #ffffff;
+}
+
+.userimg-full{
+  border-radius: 50%;
+  width: 2.5rem;
 }
 
 @media (min-width: 551px) {

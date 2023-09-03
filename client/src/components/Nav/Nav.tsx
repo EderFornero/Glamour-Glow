@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom'
 import Hamburger from 'hamburger-react'
 import style from './Nav.module.css'
 import logoBGLess from '../../assets/logoBGless.png'
+import imgprofile from '../../assets/profile-circle.svg'
 
 const Nav = (): JSX.Element => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
@@ -58,6 +59,11 @@ const Nav = (): JSX.Element => {
               </NavLink>
             </li>
             <li className="menu-item link logout">Logout</li>
+            <li className={style['menu-item-full']}>
+              <NavLink to="/userdetail" >
+                <img className={style['userimg-full']} src={imgprofile} />
+              </NavLink>
+            </li>
           </ul>
         </nav>
       </header>

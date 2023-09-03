@@ -2,6 +2,7 @@ import type { ServiceProvider } from '../../interfaces';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import styles from './Carousel.module.css';
 import 'swiper/css';
+import 'swiper/css/pagination';
 import BusinessCard from '../BusinessCard/BusinessCard';
 import { useEffect, useState } from 'react';
 
@@ -38,7 +39,7 @@ const Carousel: React.FC<CarouselProps> = ({ cardstoshow, carouselName }) => {
         slidesPerView={slidesPerView}
         loop
         navigation
-        pagination
+        pagination={{ clickable: true }}
         autoplay
       >
         {cardstoshow.map(
@@ -56,7 +57,7 @@ const Carousel: React.FC<CarouselProps> = ({ cardstoshow, carouselName }) => {
           },
         )}
       </Swiper>
-    </section>
+    </section >
   );
 };
 

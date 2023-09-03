@@ -1,10 +1,10 @@
-import React from 'react'
 import styles from './UserDetail.module.css'
 import Carousel from '../../components/Carousel/Carousel'
 import image from '/ProfileImages/giovanni-profile.jpg'
 import facebook from '../../assets/UserDetail/facebook.svg'
 import google from '../../assets/UserDetail/google.svg'
 import plus from '../../assets/UserDetail/plus-circle.svg'
+import { users } from '../../../../mocks/fullAPIresponse.json'
 
 function UserDetail() {
     return (
@@ -104,7 +104,7 @@ function UserDetail() {
                         <p>Services you've liked</p>
                     </div>
                     <div className={styles['favorites-body']}>
-                        <div>Carousel</div>
+                        <Carousel cardstoshow={users} carouselName='' />
                     </div>
                 </div>
 

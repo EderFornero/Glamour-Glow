@@ -30,6 +30,7 @@ h4{
     min-width: 20rem;
     max-width: 50rem;
     margin: 0 auto;
+    border-radius: 1rem;
 }
 
 .userdetail-header{
@@ -70,6 +71,7 @@ h4{
     margin-bottom: 1.5rem;
     display: flex;
     flex-direction: column;
+    font-size: 1.25rem;
 }
 
 .userdetail-body span{
@@ -107,6 +109,7 @@ h4{
     max-width: 55vw;
     min-height: 6rem;
     margin: 0 auto 20px;
+    border-radius: 1rem;
 }
 
 .directions-body,
@@ -126,6 +129,7 @@ h4{
 .paymentways-body{
 display: flex;
 align-items: center;
+font-weight: bold;
 }
 
 .iconplussvg{
@@ -139,8 +143,7 @@ align-items: center;
 }
 
 .sectionrigth p{
-    font-size:0.9rem;
-    font-weight: 500;
+    font-size:0.95rem;
 }
 
 .socials-icon{
@@ -178,6 +181,7 @@ align-items: center;
     justify-content: space-between;
     align-items: center;
     margin-top: 1.25rem;
+    margin-left: 1rem;
 }
 
 /* switch */
