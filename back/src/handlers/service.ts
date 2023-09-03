@@ -20,8 +20,8 @@ export const readServiceById = async (id: String) => {
   return service;
 };
 
-export const createService = async (data: Object) => {
-  const newService = await ServicesModel.create(data);
+export const createService = async (service: Object) => {
+  const newService = await ServicesModel.create(service);
   return newService;
 };
 
