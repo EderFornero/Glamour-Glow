@@ -34,6 +34,11 @@ const Nav = (): JSX.Element => {
                   For business
                 </NavLink>
               </li>
+              <li className={style['menu-item']}>
+                <NavLink to="/business" className={style.link}>
+                  Services
+                </NavLink>
+              </li>
               <li className={`${style['menu-item']} ${style.link} logout`}>
                 Logout
               </li>

@@ -1,25 +1,30 @@
-import { useParams } from 'react-router-dom';
-import style from './Reviews.module.css';
-import { users } from '../../../../mocks/fullAPIresponse.json';
-import Review from '../Review/Review';
 
-const Reviews = (): JSX.Element => {
-    const { id } = useParams()
-    let user = users.find(user => user.id === +id)
+import style from './Reviews.module.css';
+import Review from '../Review/Review';
+import Pagination from '../Pagination/Pagination';
+import { usePagination } from '../../hooks/usePagination';
+
+const Reviews = ({ reviews }: any): JSX.Element => {
+
+
+    const { itemsPaginated, currentPage, totalPages, nextPage, prevPage } = usePagination(reviews, 6)
 
     return (
-        <section className={style.reviews}>
-            {user?.reviews?.map(({ date, comment, rating, serviceName }: any, index: number) => {
-                return (
-                    <Review
-                        key={`review-${index}`}
-                        date={date}
-                        comment={comment}
-                        rating={rating}
-                        serviceName={serviceName}
-                    />
-                );
-            })}
+        <section className={style.container}>
+            <Pagination currentPage={currentPage} totalPages={totalPages} nextPage={nextPage} prevPage={prevPage} />
+            <div className={style.reviews}>
+                {itemsPaginated?.map(({ date, comment, rating, serviceName }: any, index: number) => {
+                    return (
+                        <Review
+                            key={`review-${index}`}
+                            date={date}
+                            comment={comment}
+                            rating={rating}
+                            serviceName={serviceName}
+                        />
+                    );
+                })}
+            </div>
         </section>
     );
 }

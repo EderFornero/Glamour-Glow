@@ -1,11 +1,11 @@
 import { useState } from "react"
 
-export const useServicePagination = (services: any, servicesPerPage: number) => {
+export const usePagination = (items: any, itemsPerPage: number) => {
     const [currentPage, setCurrentPage] = useState<number>(0)
-    const totalPages = Math.ceil(services.length / servicesPerPage)
-    const startIndex = currentPage * servicesPerPage
-    const endIndex = startIndex + servicesPerPage
-    const servicesPaginated = services.slice(startIndex, endIndex)
+    const totalPages = Math.ceil(items.length / itemsPerPage)
+    const startIndex = currentPage * itemsPerPage
+    const endIndex = startIndex + itemsPerPage
+    const itemsPaginated = items.slice(startIndex, endIndex)
 
     const nextPage = () => {
         if (currentPage < totalPages - 1) {
@@ -20,7 +20,7 @@ export const useServicePagination = (services: any, servicesPerPage: number) => 
     }
 
     return {
-        servicesPaginated,
+        itemsPaginated,
         currentPage,
         totalPages,
         nextPage,
