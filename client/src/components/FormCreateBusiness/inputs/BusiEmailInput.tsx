@@ -1,4 +1,5 @@
 import React from 'react'
+import style from './input.module.css'
 
 interface BusiEmailInputProps {
   register: any
@@ -9,10 +10,11 @@ const BusiEmailInput: React.FC<BusiEmailInputProps> = ({ register, errors }) => 
   return (
     <div>
       <input
+      className={style['input']}
         type="email"
-        name="businessEmail"
+        name="seller_email"
         placeholder='Business Email'
-        {...register('businessEmail', {
+        {...register('seller_email', {
           required: {
             value: true,
             message: 'Please enter your business email'
@@ -24,7 +26,7 @@ const BusiEmailInput: React.FC<BusiEmailInputProps> = ({ register, errors }) => 
         })}
       />
       <div>
-      {(Boolean(errors.businessEmail)) && <span>{errors.businessEmail.message}</span>}
+      {(Boolean(errors.seller_email)) && <span className={style['span']}>{errors.seller_email.message}</span>}
       </div>
     </div>
   )

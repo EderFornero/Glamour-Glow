@@ -1,4 +1,5 @@
 import React from 'react';
+import style from './input.module.css'
 
 interface NameInputProps {
   register: any;
@@ -9,10 +10,11 @@ const NameInput: React.FC<NameInputProps> = ({ register, errors }) => {
   return (
     <div>
       <input
+        className={style['input']}
         type="text"
-        name="name"
+        name="fullname"
         placeholder="Name"
-        {...register('name', {
+        {...register('fullname', {
           required: {
             value: true,
             message: 'Please enter your name!'
@@ -26,12 +28,12 @@ const NameInput: React.FC<NameInputProps> = ({ register, errors }) => {
         })}
       />
       <div>
-      {errors.name && <span>{errors.name.message}</span>}
-      {errors.name?.type === 'maxLength' && (
-        <span>The name is too longer</span>
+      {errors.fullname && <span className={style['span']}>{errors.fullname.message}</span>}
+      {errors.fullname?.type === 'maxLength' && (
+        <span className={style['span']}>The name is too longer</span>
       )}
       {errors.name?.type === 'minLength' && (
-        <span>The name is too short</span>
+        <span className={style['span']}>The name is too short</span>
       )}
       </div>
     </div>

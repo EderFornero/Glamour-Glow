@@ -1,0 +1,129 @@
+h4{
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+.section{
+    display: flex;
+    justify-content: space-around;
+    border:2px solid #ff0000;
+    margin-inline: 6rem;
+    min-height: 50rem;
+}
+
+.sectionleft{
+    flex: 1;
+    max-width: 40%;
+    padding: 3rem;
+    border:2px solid #38df00;
+}
+
+.sectionrigth{
+    flex: 1;
+    max-width: 60%;
+    padding: 3rem;
+    border:2px solid #00fff7;
+}
+
+.userdetail{
+    background-color: #ffffff;
+    padding: 2rem;
+    min-width: 22rem;
+}
+
+.userdetail-header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid black;
+}
+
+.userdetail-header img {
+    width: 180px; 
+    height: 180px;
+    border-radius: 50%;
+    border:2px solid #00fff7;
+    margin-bottom: 2rem;
+}
+
+.userdetail-header h1 {
+    margin-bottom: 1rem;
+}
+
+.userdetail-header a {
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+}
+
+.userdetail-body {
+    list-style: none;
+    
+}
+
+.userdetail-body ul{
+    list-style: none;
+}
+
+.userdetail-body li{
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.userdetail-body span{
+    font-weight: lighter;
+    margin-top: 0.5rem;
+}
+
+.userdetail-bottom{
+    margin-top: 2rem;
+    color: #ffffff; 
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-top: 1px solid black;
+    text-align: center;
+    padding-top: 1.5rem;
+}
+
+.userdetail-bottom a {
+    color: #ff0000;
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+.rigth-directions,
+.rigth-paymentways,
+.rigth-socials,
+.rigth-notifications,
+.rigth-favorites,
+.rigth-delete{
+    background-color: #ffffff;
+    padding: 20px;
+    margin-bottom: 20px;
+    min-width: 35rem;
+    min-height: 6rem;
+}
+
+.sectionrigth p{
+    font-size:0.9rem;
+    font-weight: 600;
+}
+
+@media (max-width: 1200px) {
+    .section{
+        flex-direction: column;
+    }
+    
+    .sectionleft {
+        order: 1;
+    }
+
+    .sectionright {
+        order: 2; 
+    }
+
+}

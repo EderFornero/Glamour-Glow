@@ -1,4 +1,5 @@
 import React from 'react';
+import style from './input.module.css'
 
 interface BirthDateInputProps {
   register: any;
@@ -12,9 +13,10 @@ const BirthDateInput: React.FC<BirthDateInputProps> = ({
   return (
     <div>
       <input
+        className={style['input']}
         type="date"
-        name="birthDate"
-        {...register('birthDate', {
+        name="date_of_birth"
+        {...register('date_of_birth', {
           required: {
             value: true,
             message: 'Birth date required'
@@ -27,7 +29,7 @@ const BirthDateInput: React.FC<BirthDateInputProps> = ({
           }
         })}
       />
-      <div>{errors.birthDate && <span>{errors.birthDate.message}</span>}</div>
+      <div>{errors.date_of_birth && <span className={style['span']}>{errors.date_of_birth.message}</span>}</div>
     </div>
   );
 };

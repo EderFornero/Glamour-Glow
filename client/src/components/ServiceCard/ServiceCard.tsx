@@ -13,7 +13,7 @@ const ServiceCard = ({ name, time, price }: Service): JSX.Element => {
         <button className={style.button} >Book Now</button>
       </div>
     </article>
-  );
-};
+  )
+}
 
 export default ServiceCard

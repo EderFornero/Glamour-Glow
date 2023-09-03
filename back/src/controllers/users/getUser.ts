@@ -1,11 +1,15 @@
 import { readUsersService } from "../../handlers";
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 
-export const getUser = async (_req: Request, res: Response) => {
+export const getUser = async (
+  _req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   try {
     const allUsers = await readUsersService();
     res.status(200).send(allUsers);
   } catch (error) {
-    res.status(400).send({ message: "Something went wrong" });
+    return next(error);
   }
 };

@@ -1,4 +1,5 @@
 import React, { useRef } from 'react'
+import style from './input.module.css'
 
 interface PasswordInputProps {
   register: any
@@ -15,6 +16,7 @@ const PasswordInput: React.FC<PasswordInputProps> = ({ register, errors }) => {
   return (
     <div>
       <input
+        className={style['input']}
         type="password"
         name="password"
         placeholder="Password"
@@ -30,9 +32,10 @@ const PasswordInput: React.FC<PasswordInputProps> = ({ register, errors }) => {
         })}
         onChange={handlePasswordChange} // Actualiza passwordRef en cada cambio
       />
-      <div>{errors.password && <span>{errors.password.message}</span>}</div>
+      <div>{errors.password && <span className={style['span']}>{errors.password.message}</span>}</div>
 
       <input
+        className={style['input']}
         type="password"
         name="confirmPassword"
         placeholder="Confirm Password"
@@ -47,7 +50,7 @@ const PasswordInput: React.FC<PasswordInputProps> = ({ register, errors }) => {
       />
       <div>
         {errors.confirmPassword && (
-          <span>{errors.confirmPassword.message}</span>
+          <span className={style['span']}>{errors.confirmPassword.message}</span>
         )}
       </div>
     </div>

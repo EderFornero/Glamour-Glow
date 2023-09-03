@@ -5,7 +5,7 @@ import style from './Nav.module.css';
 import logoWhite from '../../assets/whitelogo.png';
 
 const Nav = (): JSX.Element => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false)
 
   return (
     <div className={style.test}>
@@ -48,6 +48,11 @@ const Nav = (): JSX.Element => {
               </NavLink>
             </li>
             <li className={style['menu-item-full']}>
+              <NavLink to="/business" className={style['link-full']}>
+                Services
+              </NavLink>
+            </li>
+            <li className={style['menu-item-full']}>
               <NavLink to="/admin" className={style['link-full']}>
                 For business
               </NavLink>
@@ -57,7 +62,7 @@ const Nav = (): JSX.Element => {
         </nav>
       </header>
     </div>
-  );
-};
+  )
+}
 
-export default Nav;
+export default Nav

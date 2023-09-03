@@ -1,30 +1,43 @@
-import React from 'react'
+import React, { useEffect } from 'react';
+import style from './input.module.css'
 
 interface BusiCategoriesInputProps {
   register: any
   errors: any
+  categoryList: any[]
+  watch: any
+  setArr: any
 }
 
-const BusiCategoriesInput: React.FC<BusiCategoriesInputProps> = ({ register, errors }) => {
+const BusiCategoriesInput: React.FC<BusiCategoriesInputProps> = ({ register, errors, categoryList, watch, setArr }) => {
+
+
+  const value = (watch('categoriesArray'))
+
+  useEffect(() => {
+    setArr((prev: any) => [...prev, value])
+  },  [value])
+
+
   return (
 
     <div>
         <select
+        className={style['input']}
         type='select'
-        name='categories'
-        {...register('categories', {
+        name='categoriesArray'
+        {...register('categoriesArray', {
           required: {
             value: true,
             message: 'Please enter at least one category'
           }
         })}>
-          <option value='Barber'>Barber</option>
-          <option value='Haircut'>Haircut</option>
-          <option value='Spa'>Spa</option>
-          <option value='Massage'>Massage</option>
+          {categoryList.map((el, index) => (
+          <option key={index} value={el._id}>{el.name}</option>
+          ))}
         </select>
         <div>
-            {errors.categories?.type === 'required' && <span>{errors.categories.message}</span>}
+            {errors.categoriesArray?.type === 'required' && <span className={style['span']}>{errors.categoriesArray.message}</span>}
         </div>
     </div>
   )
