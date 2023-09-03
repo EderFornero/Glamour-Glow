@@ -1,8 +1,9 @@
-import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import Hamburger from 'hamburger-react';
-import style from './Nav.module.css';
-import logoWhite from '../../assets/whitelogo.png';
+import { useState } from 'react'
+import { NavLink } from 'react-router-dom'
+import Hamburger from 'hamburger-react'
+import style from './Nav.module.css'
+import logoBGLess from '../../assets/logoBGless.png'
+import imgprofile from '../../assets/profile-circle.svg'
 
 const Nav = (): JSX.Element => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
@@ -55,6 +56,12 @@ const Nav = (): JSX.Element => {
             <li className={style['menu-item-full']}>
               <NavLink to="/admin" className={style['link-full']}>
                 For business
+              </NavLink>
+            </li>
+            <li className="menu-item link logout">Logout</li>
+            <li className={style['menu-item-full']}>
+              <NavLink to="/userdetail" >
+                <img className={style['userimg-full']} src={imgprofile} />
               </NavLink>
             </li>
             <li className={`${style['menu-item-full']} ${style.link} ${style.logout}`}>Logout</li>

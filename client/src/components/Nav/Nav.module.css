@@ -70,6 +70,7 @@ nav {
   
 }
 
+
 .link {
   
   color: #ffffff;
@@ -83,6 +84,7 @@ nav {
   display: flex;
   list-style: none;
   gap: 3rem;
+  align-items: center;
 }
 
 .link-full {
@@ -93,6 +95,11 @@ nav {
 
 .link-full:hover, .logout:hover {
   text-decoration: underline;
+}
+
+.userimg-full{
+  border-radius: 50%;
+  width: 2.5rem;
 }
 
 

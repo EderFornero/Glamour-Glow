@@ -1,11 +1,10 @@
 
-footer {
+.footer {
     background: #000000;
     color: var(--neutral-color);
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    position:inherit;
     width: 100%;
     bottom: 0px;
     z-index: 10;
