@@ -1,78 +1,68 @@
-.images {
-    display: flex; 
-}
-.business-info-container {
-   display: flex;
-   margin-bottom: 20px;
-}
-
-.business-info {
-   display: flex;
-    gap: 15px;
-    align-items: center;
+.global-container{ 
     width: 100%;
-    
-}
-.wrapper {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding-right: 25px;
-    
-}
-
-.fav {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    
-    
-}
-
-.main-img-container {
-    width: 74%;
-    margin: auto;
-    @media (max-width: 980px) {
-        width:95% ;
-      }   
-}
-
-.main-img {
-    width: 97%;
-    border-radius: 20px;
-    padding-bottom: 0;
-    @media (max-width: 980px) {
-        width: 100%;
-      }
-}
-
-.side-images {
-    width: 50%;
+    padding: 5em;
     display: flex;
     flex-direction: column;
+    gap: 40px;
+    box-sizing: border-box;
+    @media(max-width: 500px){
+        padding: 1em;
+    }
+ }
+
+.business{
+   width: 100%;
+}
+
+
+.services-form {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    align-items: flex-start;
-    gap: 10px;
-
-    @media (max-width: 980px) {
-        display: none;
-      }
-}
-
-.side-images img {
-    width: 71%;
-    height: auto;
-    border-radius: 20px;
-}
-
-.services {
-    width: 70%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
     gap: 25px;
-    margin-top: 40px;
+    @media (max-width: 965px){
+        flex-direction: column;
+        align-items: center;
+    }
+    .services{
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        gap: 10px;
+        flex-grow: 1;
+        padding: 10px 4px 10px 0;
+        @media(max-width: 965px){
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            width: 100%;
+        }
+    }
+
+    .form{    
+        min-width: 300px;
+        padding-top: 10px;
+        @media (min-width: 940px){
+            min-width: 400px;
+        }
+       
+    }
+    .reviews{
+        display: flex;
+        @media(min-width: 766px){
+            width: 100%;
+        }
+        
+    }
 }
 
-  
+
+
+
+
+
+
+
+
+
+

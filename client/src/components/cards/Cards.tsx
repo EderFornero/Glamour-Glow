@@ -14,7 +14,7 @@ import { useDispatch } from 'react-redux'
 
 
 const Cards: React.FC<CardsProps> = ({ searchUsers }: CardsProps) => {
-  const {previousPage, nextPage, pages} = Pagination()
+  const { previousPage, nextPage, pages } = Pagination()
   const perPage = 6
   const dispatch = useDispatch()
 
@@ -25,14 +25,14 @@ const Cards: React.FC<CardsProps> = ({ searchUsers }: CardsProps) => {
   const startPage = () => {
     dispatch(setPages(0))
   }
-  
+
   const finalPage = () => {
-    dispatch(setPages(totalPages - 1)); 
+    dispatch(setPages(totalPages - 1));
   }
 
   return (
     <>
-    <div className={style['pagination-div-buttons']}>
+      <div className={style['pagination-div-buttons']}>
         <button className={style['pagination-div-buttons-previous-next']} onClick={previousPage} disabled={pages === 0}>
           Previous
         </button>
@@ -41,15 +41,15 @@ const Cards: React.FC<CardsProps> = ({ searchUsers }: CardsProps) => {
           Next
         </button>
       </div>
-    <section className={style.cardsSection}>
-      {
-        searchUsers
-          .slice(start, final)
-          .map(({ id, businessName, businessLocation, rating, categories, services }: ServiceProvider) => {
-            return <BusinessCard key={id} id={id} businessName={businessName} businessLocation={businessLocation} rating={rating} categories={categories} services={services} />
-          })
-      }
-    </section>
+      <section className={style.cardsSection}>
+        {
+          searchUsers
+            .slice(start, final)
+            .map(({ id, businessName, businessLocation, rating, categories, services }: ServiceProvider) => {
+              return <BusinessCard key={id} id={id} businessName={businessName} businessLocation={businessLocation} rating={rating} categories={categories} services={services} />
+            })
+        }
+      </section>
     </>
   )
 }

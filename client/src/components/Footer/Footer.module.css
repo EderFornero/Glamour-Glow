@@ -147,14 +147,7 @@ footer {
   margin: 0 auto;
 }
 
-h2 {
-    text-align: left;
-    color: var(--neutral-color);
-    margin-top: 0px;
-    margin-bottom: 16px;
-    opacity: 0.7;
-    font-size: 16px;
-}
+
 
 .dot-display-h{
   visibility: hidden;
