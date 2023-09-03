@@ -1,12 +1,26 @@
 import { createUserService } from "../../handlers";
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
+import { createUserType } from "../../schemas/userSchema";
 
-export const postUser = async (req: Request, res: Response) => {
+export const postUser = async (
+  req: Request<{}, {}, createUserType>,
+  res: Response,
+  next: NextFunction
+) => {
   try {
-    const user = req.body;
-    const savedUser = await createUserService(user);
+    const { username, fullname, email, password, role, date_of_birth, image } =
+      req.body;
+    const savedUser = await createUserService({
+      username,
+      fullname,
+      email,
+      password,
+      role,
+      date_of_birth,
+      image,
+    });
     res.status(200).send(savedUser);
   } catch (error) {
-    res.status(400).send({ error: "Something went wrong" });
+    return next(error);
   }
 };

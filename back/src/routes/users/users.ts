@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { schemaValidation } from "../../middlewares/schemaValidator.middleware";
-import { CreateUserSchema, updateUserSchema } from "../../schemas/userSchema";
+import { CreateUserSchema, readAndDeleteUserSchema, updateUserSchema } from "../../schemas/userSchema";
 import {
   deleteUser,
   getUser,
@@ -12,9 +12,9 @@ import {
 const router = Router();
 
 router.get("/", getUser);
-router.get("/:id", getUserByid);
+router.get("/:id",schemaValidation(readAndDeleteUserSchema), getUserByid);
 router.post("/", schemaValidation(CreateUserSchema), postUser);
 router.put("/:id", schemaValidation(updateUserSchema), updateUser);
-router.delete("/:id", deleteUser);
+router.delete("/:id",schemaValidation(readAndDeleteUserSchema), deleteUser);
 
 export default router;
