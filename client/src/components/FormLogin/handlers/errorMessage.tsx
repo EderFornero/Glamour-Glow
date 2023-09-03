@@ -1,5 +1,5 @@
 import React from 'react';
-import style from '..FormLogin.module.css';
+import style from '../FormLogin.module.css';
 
 interface ErrorMessageProps {
   message: string;
