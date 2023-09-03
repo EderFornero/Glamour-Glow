@@ -1,9 +1,9 @@
 import { readServiceById } from "../../handlers/index.ts";
 import { NextFunction, Request, Response } from "express";
-import { updateServiceTypeParams } from "../../schemas/serviceSchema.ts";
+import { readAndDeleteSellerTypeParams } from "../../schemas/sellerSchema.ts";
 
 export const getServiceById = async (
-  req: Request<updateServiceTypeParams>,
+  req: Request<readAndDeleteSellerTypeParams>,
   res: Response,
   next: NextFunction
 ) => {

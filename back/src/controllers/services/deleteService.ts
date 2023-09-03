@@ -1,9 +1,9 @@
 import { Request, Response, NextFunction } from "express";
 import { destroyService } from "../../handlers";
-import { updateServiceTypeParams } from "../../schemas/serviceSchema";
+import { readAndDeleteServiceTypeParams } from "../../schemas/serviceSchema";
 
 export const deleteService = async (
-  req: Request<updateServiceTypeParams>,
+  req: Request<readAndDeleteServiceTypeParams>,
   res: Response,
   next: NextFunction
 ) => {

@@ -59,5 +59,6 @@ export const readAndDeleteUserSchema = z.object({
 })
 
 export type createUserType = z.infer<typeof CreateUserSchema>["body"]
-export type updateUserType = z.infer<typeof updateUserSchema>["params"]
+export type updateUserTypeBody = z.infer<typeof updateUserSchema>["body"]
+export type updateUserTypeParams = z.infer<typeof updateUserSchema>["params"]
 export type readAndDeleteUserType = z.infer<typeof readAndDeleteUserSchema>["params"]
