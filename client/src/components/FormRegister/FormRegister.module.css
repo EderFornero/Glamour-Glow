@@ -1,83 +1,50 @@
-.div-form {
-    margin-top: -90px;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #F3F3E6;
-  }
-  
-  .form-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-radius: 20px;
-    width: 25vw;
-    min-width: 300px;
-    height: 66vh;
-    min-height: 400px;
-    background: linear-gradient(60deg, #3E38B6, #5effb1);
-    box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.2);
-    padding-top: 25px;
-  }
-  
-  form input {
-    border-radius: 20px;
-    padding: 10px;
-    margin: 5px;
-    height: 5vh;
-    border: none; 
-  }
-  
-  .confirm-input {
-    display: flex;
-    align-items: center;
-    height: 40px;
-  }
-  
-  .confirm-input label {
-    margin: 5px;
-    position: relative;
-    top: -2vh;
-  }
-  
+.div-form{
+    margin-top: -25px;
+}
 
-  .div-buttons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .div-buttons button {
-    background-color: #5effb1;
-    margin: 0 30px; 
-    padding: 10px 20px;
-    border: none;
-    border-radius: 40px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    transition: transform 0.3s ease;
-    display: flex;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
-    font-weight: 600;
-    margin-top: 10px;
-  }
-  
-  .div-buttons button:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-  }
-  .form-box input {
-    margin-top: 13px;
-  }
+.botn {
+    border-radius: 10px;
+    height: 25px;
+    width: 80px;
+        background-color: #3e38b6;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 0px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    margin-right: 40px;
+}
 
-  .div-form span {
-    color: red;
-    position: absolute;
-    font-size: small;
-    margin-top: -5px;
-    margin-left: 10px;
-  }
-  .confirm-input span{
-    margin-top: -18px;
+.botn:last-child {
+    margin-right: 0;
+}
+
+.botn:last-child:hover {
+    background-color: #06ec5e;
+}
+.botn:hover {
+    background-color: #ff0000;
+}
+
+.reg-button {
+    margin-top: 15px;
+    color: #f3f3e6;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.reg-button:hover {
+    color: #3e38b6;
+}
+
+.reg-button {
+    width: 160px;
+}
+
+@media (max-width: 767px) {
+    .reg-button {
+      margin-top: -8px; /* Oculta el elemento .left en pantallas pequeñas */
+    }
   }

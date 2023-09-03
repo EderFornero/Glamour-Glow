@@ -1,8 +1,10 @@
-import { GET_ALL_BUSINESS, SET_PAGINATION } from './Action-Types'
+import { GET_ALL_BUSINESS, SET_PAGINATION, GET_ALL_CATEGORIES, GET_ALL_USERS } from './Action-Types'
 import type { ServiceAction, RootState } from './types'
 
 const initialState: RootState = {
-  allServices: []
+  allServices: [],
+  categories: [],
+  users: []
 };
 
 const reducer = (state = initialState, action: ServiceAction) => {
@@ -18,6 +20,19 @@ const reducer = (state = initialState, action: ServiceAction) => {
         ...state,
         pages: action.payload
       }
+
+    case GET_ALL_CATEGORIES:
+      return {
+        ...state,
+        categories: action.payload
+      }
+    
+    case GET_ALL_USERS:
+      return {
+        ...state,
+        users: action.payload
+      }
+
     default:
       return state
   }

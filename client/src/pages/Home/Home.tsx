@@ -1,4 +1,4 @@
-import Cards from '../../components/Cards/Cards'
+import Cards from '../../components/cards/Cards'
 import Carousel from '../../components/Carousel/Carousel'
 import {
   Description,
@@ -14,7 +14,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { ThunkDispatch } from 'redux-thunk'
 import { AnyAction } from 'redux'
 import type { RootState } from '../../redux/types'
-import GetAllBusiness from '../../redux/Actions'
+import {GetAllBusiness} from '../../redux/Actions'
+
 
 const Home: React.FC = () => {
   const { searchResults, handleOnSearch } = useSearchBarHome(users)

@@ -9,10 +9,9 @@ import AdminDashboard from './pages/AdminDashboard/AdminDashboard.tsx'
 // error component
 import NotFound from './pages/NotFound/NotFound.tsx'
 // component
-import FormRegister from './components/FormRegister/FormRegister.tsx'
+import Forms from './pages/Forms/Forms.tsx'
 import BusinessDetail from './pages/BusinessDetail/BusinessDetail.tsx'
 import FormBusiness from './components/FormCreateBusiness/FormCreateBusiness.tsx'
-import FormLogin from './components/FormLogin/FormLogin.tsx'
 import BusinessCardsView from './pages/BusinessCardsView/BusinessCardsView.tsx'
 
 const router = createBrowserRouter([
@@ -43,11 +42,11 @@ const router = createBrowserRouter([
           }]
       },
       {
-        path: '/register',
+        path: '/login',
         children: [
           {
             index: true,
-            element: <FormRegister />
+            element: <Forms />
           }
         ]
       },
@@ -57,15 +56,6 @@ const router = createBrowserRouter([
           {
             index: true,
             element: <FormBusiness />
-          }
-        ]
-      },
-      {
-        path: '/login',
-        children: [
-          {
-            index: true,
-            element: <FormLogin />
           }
         ]
       },

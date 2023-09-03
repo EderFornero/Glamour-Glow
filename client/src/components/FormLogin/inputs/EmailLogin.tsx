@@ -1,4 +1,5 @@
 import React from 'react'
+import style from './input.module.css'
 
 interface EmailLoginProps {
   register: any
@@ -9,9 +10,10 @@ const EmailLogin: React.FC<EmailLoginProps> = ({ register, errors }) => {
   return (
         <div>
             <input
+            className={style['input']}
               type="email"
               name="email"
-              placeholder='Email:'
+              placeholder='you@gmail.com'
               {...register('email', {
                 required: {
                   value: true,
@@ -24,7 +26,7 @@ const EmailLogin: React.FC<EmailLoginProps> = ({ register, errors }) => {
               })}
             />
             <div>
-              {(Boolean(errors.email)) && <span>{errors.email.message}</span>}
+              {(Boolean(errors.email)) && <span className={style['span']}>{errors.email.message}</span>}
             </div>
         </div>
   )

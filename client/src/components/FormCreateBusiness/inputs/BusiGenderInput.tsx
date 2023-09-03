@@ -1,4 +1,5 @@
 import React from 'react'
+import style from './input.module.css'
 
 interface BusiGenderInputProps {
   register: any
@@ -10,9 +11,10 @@ const BusiGenderInput: React.FC<BusiGenderInputProps> = ({ register, errors }) =
 
     <div>
         <select
+        className={style['input']}
         type='select'
-        name='gender'
-        {...register('gender', {
+        name='seller_gender'
+        {...register('seller_gender', {
           required: {
             value: true,
             message: 'Please enter at least one Gender'
@@ -23,7 +25,7 @@ const BusiGenderInput: React.FC<BusiGenderInputProps> = ({ register, errors }) =
           <option value='female'>Female</option>
         </select>
         <div>
-            {errors.businessGender?.type === 'required' && <span>You neet at least one Gender</span>}
+            {errors.seller_gender?.type === 'required' && <span className={style['span']}>You neet at least one Gender</span>}
         </div>
     </div>
   )
