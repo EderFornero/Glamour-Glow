@@ -166,10 +166,8 @@ menu {
 
 menu li {
     margin-bottom: 15px; 
+    margin-top: 15px;
 }
-
-
-
   
 .logo {
     width: 60px;
