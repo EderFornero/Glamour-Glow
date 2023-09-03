@@ -5,7 +5,7 @@
     flex-direction: column;
     gap: 40px;
     box-sizing: border-box;
-    @media(max-width: 500px){
+    @media(max-width: 900px){
         padding: 1em;
     }
  }
@@ -36,14 +36,18 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             width: 100%;
+            align-self: flex-start;
+            
         }
     }
 
     .form{    
-        min-width: 300px;
+        width: 100%;
         padding-top: 10px;
+        display: flex;
         @media (min-width: 940px){
-            min-width: 400px;
+            width: 100%;   
+            max-width: 500px;     
         }
        
     }
@@ -51,8 +55,31 @@
         display: flex;
         @media(min-width: 766px){
             width: 100%;
+            
         }
         
+    }
+}
+
+.pagination {
+    display: flex;
+    width: 100%;
+    gap: 12px;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    & button {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 10px;
+        width: 100px;
+        text-align: center;
+        border-radius: 10px;
+        font-size: 1rem;
+    }
+    & button:disabled {
+        background-color: #ccc;
+        color: var(--primary-color);
     }
 }
 

@@ -10,6 +10,8 @@ import LeaveAComment from '../../components/LeaveAComment/LeaveAComment'
 import Reviews from '../../components/Reviews/Reviews'
 import BusinessInfo from './BusinessInfo/BusinessInfo'
 import BusinessImages from './BusinessInfo/BusinessImages/BusinessImages'
+import { useServicePagination } from '../../hooks/useServicePagination'
+
 
 
 const BusinessDetail = (): JSX.Element => {
@@ -20,6 +22,9 @@ const BusinessDetail = (): JSX.Element => {
     usuario = useGetDetail(+id)
   }
 
+  const { servicesPaginated, currentPage, totalPages, nextPage, prevPage } = useServicePagination(usuario.services, 4)
+
+
 
   return (
     <div className={style['global-container']}>
@@ -29,8 +34,15 @@ const BusinessDetail = (): JSX.Element => {
       </section >
       <h2>Services</h2>
       <section className={style['services-form']}>
+        <div className={style.pagination}>
+          <button disabled={currentPage === 0}
+            onClick={prevPage}>Previous</button>
+          <p>{currentPage + 1}</p>
+          <button disabled={currentPage === totalPages - 1}
+            onClick={nextPage}>Next</button>
+        </div>
         <div className={style.services}>
-          {usuario.services.map(({ id, name, description, price, category }: Service) => {
+          {servicesPaginated.map(({ id, name, description, price, category }: Service) => {
             return (
               <ServiceCard key={id} id={id} name={name} description={description} price={price} category={category} />
             )
