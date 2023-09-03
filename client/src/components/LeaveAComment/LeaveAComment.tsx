@@ -32,7 +32,9 @@ const LeaveAComment = ({ user }: any): JSX.Element => {
                 <label htmlFor="comment">Leave a comment</label>
                 <textarea name="comment" rows={7} style={{ resize: "none" }}></textarea>
             </div>
-            <button className={style.submit} type="submit">Leave comment</button>
+            <div className={style['submit-container']}>
+                <button className={style.submit} type="submit">Leave comment</button>
+            </div>
         </form >
     )
 }

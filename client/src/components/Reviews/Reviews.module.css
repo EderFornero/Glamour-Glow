@@ -1,0 +1,10 @@
+.reviews {
+    width: 100%;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    @media(max-width: 945px){
+        justify-content: center;
+    }
+
+}
