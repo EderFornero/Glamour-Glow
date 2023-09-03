@@ -1,19 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useGoBack } from '../../hooks'
 import EmailLogin from './inputs/EmailLogin'
 import PasswordLogin from './inputs/PasswordLogin'
 import { Link } from 'react-router-dom'
 import style from './FormLogin.module.css'
+import { getUsers } from '../../redux/Actions'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import type { RootState } from '../../redux/types'
+import { FormLoginData } from '../../interfaces'
+import { onSubmitLogin } from './handlers/onSubmit'
+import ErrorMessage from './handlers/errorMessage'
 
 
-interface FormLoginData {
-  email: string
-  password: string
-}
-
-const FormLogin: React.FC = () => {
+const FormLogin: React.FC = ({onToggle}) => {
+  const dispatch = useDispatch()
   const goBack = useGoBack()
+  const navigate = useNavigate()
   const {
     register,
     handleSubmit,
@@ -25,36 +29,49 @@ const FormLogin: React.FC = () => {
     }
   })
 
+  useEffect(() => {
+    dispatch(getUsers())
+  }, [dispatch])
+
+  const Users = useSelector((state: RootState) => state.users)
+  console.log(Users)
+
+  const [errorMessage, setErrorMessage] = useState('');
+
   const onSubmit = handleSubmit((data: FormLoginData) => {
-    console.log(data)
-  })
+    onSubmitLogin(data, Users, navigate, setErrorMessage);
+  });
+
+  
 
   return (
     <div className={style['content']}>
-      <div className={style['cover']}>
         <form onSubmit={onSubmit}>
-          <h3>Login Here</h3>
+          <p className={style['txt']}>Email:</p>
           <EmailLogin register={register} errors={errors} />
+          {errorMessage && <ErrorMessage message={errorMessage} />}
+          <p className={style['txt']}>Password:</p>
           <PasswordLogin register={register} errors={errors} />
-          <h4>or Login With:</h4>
           <div className={style['alt-login']}>
-            <div className={style['instagram']}></div>
-            <div className={style['google']}></div>
+          <h4 className={style['log-with']}>or Login With:</h4>
+            <div className={style['ico-div']}>
+              <div className={style['google']}></div>
+              <div className={style['ig']}></div>
+            </div>
           </div>
           <div className={style['buton-div']}>
-            <button onClick={goBack}>Back</button>
-            <button type='submit'>Send</button>
+            <button className={style['btn']} onClick={goBack}>Back</button>
+            <button className={style['btn']} type='submit'>Send</button>
           </div>
         </form>
         <div className={style['link-texts']}>
-          <Link to='/register'>
-            <p className={style['reg-button']}>Dont have an account?</p>
-          </Link> 
+          <button>
+            <p className={style['reg-button']} onClick={onToggle}>Dont have an account?</p>
+          </button>
           <Link to='/recovePassword'>
             <p className={style['forgot']}>Forgot Password?</p>
           </Link>
         </div>
-      </div>
     </div>
   )
 }

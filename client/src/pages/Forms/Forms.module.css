@@ -35,14 +35,32 @@
     border-top-right-radius: 15px;
 }
 
+.log-reg {
+    position: absolute;
+    width: 90px;
+    top: 0;
+    right: 0;
+    padding-right: 100px;
+}
 .forms {
     justify-content: center;
     align-items: center;
+    display: flex;
     margin-top: 40px;
 }
 
+.text-log {
+    justify-content: flex-start;
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 340px;
+    margin-left: -60px;
+}
+
 .left {
-    background-image: url('../../assets/Features/FormBusiImg.png');
+    background-image: url('../../assets/Features/logImg.png');
     background-repeat: no-repeat;
     background-size: contain;
     background-color: transparent;
@@ -60,7 +78,7 @@
     left: 0;
     width: 100%;
     text-align: center;
-    margin-bottom: 70px;
+    margin-bottom: 120px;
 }
 
 .text {
@@ -70,41 +88,48 @@
     cursor: pointer;
 }
 
-.h2 {
-    font-size: xx-large;
-    color: white;
+.I {
+    margin-left: 10px;
+    margin-right: 10px;
+    cursor: default;
+}
+
+.i-log {
+    background-color: none;
+    height: 23px;
+    width: 45px;
+    align-items: center;
     display: flex;
-    vertical-align: top;
+    justify-content: center;
+    border-radius: 5px;
 }
 
-.btn {
-    margin-top: 20px;
-    border-radius: 10px;
-    height: 25px;
-    width: 80px;
-        background-color: #3e38b6;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        padding: 0px 20px;
-        font-size: 16px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-    margin-right: 180px;
-}
-.btn:last-child {
-    margin-right: 0;
+.i-reg {
+    background-color: none;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 23px;
+    width: 60px;
+    border-radius: 5px;
 }
 
-.btn:last-child:hover {
-    background-color: #06ec5e;
-}
-.btn:hover {
-    background-color: #ff0000;
+.i-reg:disabled{
+    background-color: #5effb1;
+    color: black;
 }
 
-@media (max-width: 768px) {
+.i-log:disabled{
+    background-color: #5effb1;
+    color: black;
+}
+
+.text-log-adjusted {
+    margin-bottom: 70px;
+}
+
+@media (max-width: 767px) {
     .left {
-        display: none;
+      display: none;
     }
-}
+  }

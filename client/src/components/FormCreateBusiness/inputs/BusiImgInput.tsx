@@ -1,21 +1,22 @@
 import React from 'react'
+import style from './input.module.css'
 
 interface BusiImgInputProps {
   register: any
   errors: any
 }
 
-const BusiImgInput: React.FC<BusiImgInputProps> = ({ register, errors }) => {
+const BusiImgInput: React.FC<BusiImgInputProps> = ({ errors }) => {
   return (
     <div>
       <input
+      className={style['input']}
         type='text'
         name="imgs"
         placeholder='Imagen proximamente'
-        {...register('imgs')}
       />
       <div>
-      {(Boolean(errors.imgs)) && <span>{errors.imgs.message}</span>}
+      {(Boolean(errors.imgs)) && <span className={style['span']}>{errors.imgs.message}</span>}
       </div>
     </div>
   )
