@@ -47,9 +47,14 @@ export const updateServiceSchema = z.object({
    
     
 });
+export const readAndDeleteServiceSchema = z.object({
+    params: z.object({
+        id: z.string()
+    })
+})
 
 
 export type createServiceType = z.infer<typeof createServiceSchema>["body"]
 export type updateServiceType = z.infer<typeof updateServiceSchema>["body"]
 export type updateServiceTypeParams = z.infer<typeof updateServiceSchema>["params"]
- 
+export type readAndDeleteServiceTypeParams = z.infer<typeof readAndDeleteServiceSchema>["params"]

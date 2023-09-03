@@ -51,5 +51,13 @@ export const updateUserSchema = z.object({
   })
   
 });
+
+export const readAndDeleteUserSchema = z.object({
+  params: z.object({
+      id: z.string()
+  })
+})
+
 export type createUserType = z.infer<typeof CreateUserSchema>["body"]
 export type updateUserType = z.infer<typeof updateUserSchema>["params"]
+export type readAndDeleteUserType = z.infer<typeof readAndDeleteUserSchema>["params"]

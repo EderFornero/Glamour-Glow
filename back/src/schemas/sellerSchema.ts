@@ -43,7 +43,14 @@ export const updateSellerSchema = z.object({
     })
 });
 
+export const readAndDeleteSellerSchema = z.object({
+    params: z.object({
+        id: z.string()
+    })
+});
+
 export type createSellerType = z.infer<typeof createSellerSchema>["body"]
 export type updateSellerTypeBody = z.infer<typeof updateSellerSchema>["body"]
 export type updateSellerTypeParams = z.infer<typeof updateSellerSchema>["params"]
 export type updateSellerTypeQuery = z.infer<typeof updateSellerSchema>["query"]
+export type readAndDeleteSellerTypeParams = z.infer<typeof readAndDeleteSellerSchema>["params"]
