@@ -29,12 +29,46 @@
                     "price": 30.00
                 },
                 {
-                    "id": 2,
+                    "id": 12,
+                    "name": "Beard waxing",
+                    "description": "Traditional men's haircut with a fresh style.",
+                    "seller": 1,
+                    "category": "Barber",
+                    "price": 30.00
+                },
+                {
+                    "id": 15,
+                    "name": "Hair Coloring",
+                    "description": "Traditional Hair Coloring.",
+                    "seller": 1,
+                    "category": "Barber",
+                    "price": 30.00
+                },
+                {
+                    "id": 5,
                     "name": "Beard Trim",
                     "description": "Precise beard trimming and shaping.",
                     "seller": 1,
                     "category": "Barber",
                     "price": 15.00
+                }
+            ],
+            "reviews": [
+                {
+                    "id": 1,
+                    "userId": 1,
+                    "serviceName": "Classic Haircut",
+                    "rating": 4,
+                    "comment": "Great classic haircut and friendly service!",
+                    "date": "2023-08-31"
+                },
+                {
+                    "id": 2,
+                    "userId": 2,
+                    "serviceName": "Beard Waxing",
+                    "rating": 5,
+                    "comment": "I've been getting beard waxing at John's Barbershop for years. Always satisfied!",
+                    "date": "2023-08-30"
                 }
             ]
         },
@@ -74,6 +108,24 @@
                     "category": "Spa",
                     "price": 75.00
                 }
+            ],
+            "reviews": [
+                {
+                    "id": 3,
+                    "userId": 3,
+                    "serviceName": "Swedish Massage",
+                    "rating": 4,
+                    "comment": "Linda's spa is a hidden gem! The Swedish massage was fantastic.",
+                    "date": "2023-08-29"
+                },
+                {
+                    "id": 4,
+                    "userId": 4,
+                    "serviceName": "Facial Spa",
+                    "rating": 5,
+                    "comment": "Excellent facial spa treatment at Linda's Spa! My skin feels rejuvenated.",
+                    "date": "2023-08-28"
+                }
             ]
         },
         {
@@ -110,6 +162,24 @@
                     "seller": 3,
                     "category": "Nail Services",
                     "price": 30.00
+                }
+            ],
+            "reviews": [
+                {
+                    "id": 5,
+                    "userId": 5,
+                    "serviceName": "Manicure",
+                    "rating": 4,
+                    "comment": "Jane is a skilled nail artist! I had a wonderful manicure.",
+                    "date": "2023-08-27"
+                },
+                {
+                    "id": 6,
+                    "userId": 6,
+                    "serviceName": "Pedicure",
+                    "rating": 5,
+                    "comment": "I love the nail services at Jane's Nail Studio. The pedicure was so relaxing!",
+                    "date": "2023-08-26"
                 }
             ]
         },

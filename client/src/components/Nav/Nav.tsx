@@ -13,10 +13,10 @@ const Nav = (): JSX.Element => {
       <header className={style.header}>
         <div className={style['logo-container']}>
           <NavLink to="/" className={style.logo}>
-            <img width="100px" height="50px" src={logoBGLess} alt="logo" />
+            <img width="140px" height="75px" src={logoWhite} alt="logo" />
           </NavLink>
           <div>
-            <span>Glamour Glow</span>
+            <span className={style.title}>Glamour Glow</span>
           </div>
         </div>
         <nav className={style['nav-mobile']}>
@@ -64,6 +64,7 @@ const Nav = (): JSX.Element => {
                 <img className={style['userimg-full']} src={imgprofile} />
               </NavLink>
             </li>
+            <li className={`${style['menu-item-full']} ${style.link} ${style.logout}`}>Logout</li>
           </ul>
         </nav>
       </header>
