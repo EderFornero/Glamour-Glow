@@ -15,7 +15,7 @@ const BusinessCardsView = (): JSX.Element => {
       {/* The missing property isnt require */}
       <SearchBar onSearch={handleOnSearch} />
       <div className={style['div-business-cards']}>
-       <Cards searchUsers={searchResults.length > 0 ? searchResults : users} />
+        <Cards searchUsers={searchResults.length > 0 ? searchResults : users} />
       </div>
     </div>
   )
