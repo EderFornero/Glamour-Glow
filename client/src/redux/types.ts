@@ -10,4 +10,6 @@ export interface RootState {
   pages: number
   categories: any[]
   users: any[]
+  filter: string
+  rating: number
 }

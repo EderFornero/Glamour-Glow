@@ -1,17 +1,18 @@
-import { useAboutUsData } from '../../hooks/index';
-import styles from './AboutUs.module.css';
+import { useAboutUsData } from '../../hooks/index'
+import styles from './AboutUs.module.css'
 
-import GitHubSvg from '../../assets/AboutSvg/GitHub';
-import LinkedInSvg from '../../assets/AboutSvg/LinkedInSvg';
+import GitHubSvg from '../../assets/AboutSvg/GitHub'
+import LinkedInSvg from '../../assets/AboutSvg/LinkedInSvg'
 
 const AboutUs = (): JSX.Element => {
-  const aboutUsData = useAboutUsData();
+  const aboutUsData = useAboutUsData()
 
   return (
     <div className={styles['div-container-about']}>
       <div className={styles['get-to-know-us']}>
         <h2>Get to know us!</h2>
       </div>
+      <div>
       <div className={styles['card-container']}>
         {aboutUsData.map((us) => (
           <div className={styles['card-about']} key={us.id}>
@@ -42,8 +43,9 @@ const AboutUs = (): JSX.Element => {
           </div>
         ))}
       </div>
+      </div>
     </div>
-  );
-};
+  )
+}
 
-export default AboutUs;
+export default AboutUs
