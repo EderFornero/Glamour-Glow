@@ -1,16 +1,23 @@
-import { GET_ALL_BUSINESS, SET_PAGINATION, GET_ALL_CATEGORIES, GET_ALL_USERS, SET_FILTERS, SET_RATING } from './Action-Types'
+import { GET_ALL_BUSINESS, GET_ALL_CATEGORIES, GET_ALL_USERS, SET_FILTERS, SET_RATING, SET_UPLOAD_IMAGE } from './Action-Types'
 import type { ServiceAction, RootState } from './types'
 
 const initialState: RootState = {
   allServices: [],
   categories: [],
   users: [],
-  pages: 0,
   filter: 'none',
-  rating: 0
+  rating: 0,
+  image: undefined
 }
 
-const reducer = (state = initialState, action: ServiceAction) => {
+const reducer = (state = initialState, action: ServiceAction): {
+  allServices: any[]
+  categories: any[]
+  users: any[]
+  filter: string
+  rating: number
+  image: string | undefined
+} => {
   switch (action.type) {
     case GET_ALL_BUSINESS:
       return {
@@ -18,22 +25,22 @@ const reducer = (state = initialState, action: ServiceAction) => {
         allServices: [...action.payload]
       }
 
-    case SET_PAGINATION:
+    case SET_FILTERS:
       return {
         ...state,
-        pages: action.payload
+        filter: action.payload
+      }
+    case SET_RATING:
+      return {
+        ...state,
+        rating: action.payload
       }
 
-      case SET_FILTERS: 
-    return{
+    case SET_UPLOAD_IMAGE:
+      return {
         ...state,
-        filter: action.payload
-    }
-    case SET_RATING: 
-    return{
-      ...state,
-      rating: action.payload
-    }
+        image: action.payload
+      }
 
     case GET_ALL_CATEGORIES:
       return {
