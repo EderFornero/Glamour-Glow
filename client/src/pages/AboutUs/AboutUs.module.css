@@ -1,17 +1,7 @@
 .div-container-about{
   width: 100%;
   height: fit-content;
-  position: relative;
 } 
-
- .div-container-about::before{
-  content: "";
-  inset: 0;
-  background: var(--neutral-color);
-  position: absolute;
-  filter: blur(1.5px);
-  z-index: -1;  
-  }
 
 .get-to-know-us{
   display: flex;
@@ -21,8 +11,13 @@
 
 .card-container{
  display: grid;
- grid-template-columns: repeat(3, 1fr);
- width: 100%;
+ grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+ justify-items: center;
+ align-items: center;
+
+ @media (min-width: 1600px) {
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+ }
 }
 
 .card-about {
@@ -73,10 +68,19 @@
     font-size: 1.5em;
     font-weight: 600;
     line-height: 2rem;
+
+    @media (max-width: 1250px){ 
+      font-size: 1.2em;
+      line-height: 1.8rem;
+    }
   }
    .card-about-subtitle {
     color: var(--accent-color); 
     font-size: 0.8em;
+
+    @media (max-width: 1250px){ 
+      font-size: 0.6em;
+    }
    }
    
  
@@ -91,6 +95,10 @@
   margin-top: 2px;
   height: 80px;
   color: var(--neutral-color);
+
+  @media (max-width: 1250px){ 
+    font-size: 15px;
+  }
  }
  
  /*Card footer*/
