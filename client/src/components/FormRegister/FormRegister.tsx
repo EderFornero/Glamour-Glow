@@ -6,7 +6,6 @@ import EmailInput from './inputs/EmailInput'
 import BirthDateInput from './inputs/BirthDateInput'
 import PasswordInput from './inputs/PasswordInput'
 import UserNameInput from './inputs/UserNameInput'
-import ImgInput from './inputs/ImgInput'
 import style from './FormRegister.module.css'
 import { useGoBack } from '../../hooks'
 import { useDispatch } from 'react-redux'
@@ -37,6 +36,7 @@ const FormRegister: React.FC = ({onToggle}) => {
 
   const onSubmit = handleSubmit((data: FormData) => {
       delete data.confirmPassword;
+      console.log(data)
       dispatch(postUser(data))
       navigate('/')
   });
@@ -48,7 +48,6 @@ const FormRegister: React.FC = ({onToggle}) => {
           <UserNameInput register={register} errors={errors} />
           <EmailInput register={register} errors={errors} />
           <PasswordInput register={register} errors={errors} />
-          <ImgInput register={register} errors={errors} />
           <BirthDateInput register={register} errors={errors} />
           <div className={style['div-buttons']}>
             <button className={style['botn']} onClick={goBack}>Back</button>

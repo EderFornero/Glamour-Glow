@@ -33,7 +33,7 @@ const BusiCategoriesInput: React.FC<BusiCategoriesInputProps> = ({ register, err
           }
         })}>
           {categoryList.map((el, index) => (
-          <option key={index} value={el._id}>{el.name}</option>
+          <option className={style['option']} key={index} value={el._id}>{el.name}</option>
           ))}
         </select>
         <div>
