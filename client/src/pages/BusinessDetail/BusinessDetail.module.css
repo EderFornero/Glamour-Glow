@@ -2,67 +2,10 @@
     width: 100%;
     padding: 5em;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     gap: 40px;
     box-sizing: border-box;
-    @media(max-width: 500px){
+    @media(max-width: 900px){
         padding: 1em;
     }
  }
-
-.business{
-   width: 100%;
-}
-
-
-.services-form {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 25px;
-    @media (max-width: 965px){
-        flex-direction: column;
-        align-items: center;
-    }
-    .services{
-        display: flex;
-        flex-direction: column;
-        width: 50%;
-        gap: 10px;
-        flex-grow: 1;
-        padding: 10px 4px 10px 0;
-        @media(max-width: 965px){
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            width: 100%;
-        }
-    }
-
-    .form{    
-        min-width: 300px;
-        padding-top: 10px;
-        @media (min-width: 940px){
-            min-width: 400px;
-        }
-       
-    }
-    .reviews{
-        display: flex;
-        @media(min-width: 766px){
-            width: 100%;
-        }
-        
-    }
-}
-
-
-
-
-
-
-
-
-
-
-

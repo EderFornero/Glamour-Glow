@@ -1,5 +1,5 @@
 import style from './Review.module.css';
-import StarIcon from '@mui/icons-material/Star'
+import StarIcon from '@mui/icons-material/Star';
 
 const Review = ({ date, comment, rating, serviceName }: any): JSX.Element => {
     return (

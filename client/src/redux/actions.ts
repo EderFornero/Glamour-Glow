@@ -53,19 +53,18 @@ export const getCategories = (): (dispatch: (action: ServiceAction) => void) => 
 export const postSeller = (payload: any) => {
   const endpoint = `${API_URL}sellers`
 
-    return async function (dispatch: any) {
-        let json = await axios.post(endpoint, payload)
-      return json
-    }
+  return async function (dispatch: any) {
+    let json = await axios.post(endpoint, payload)
+    return json
+  }
 }
 
-export const postUser= (payload: any) => {
+export const postUser = (payload: any) => {
   const endpoint1 = `${API_URL}users`
-
-    return async function (dispatch: any) {
-        let json1 = await axios.post(endpoint1, payload)
-      return json1
-    }
+  return async function (dispatch: any) {
+    let json1 = await axios.post(endpoint1, payload)
+    return json1
+  }
 }
 
 export const getUsers = (): (dispatch: (action: ServiceAction) => void) => Promise<void> => {

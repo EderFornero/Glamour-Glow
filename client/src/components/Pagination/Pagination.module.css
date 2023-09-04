@@ -1,0 +1,21 @@
+.pagination {
+    display: flex;
+    width: 100%;
+    gap: 12px;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    & button {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 10px;
+        width: 100px;
+        text-align: center;
+        border-radius: 10px;
+        font-size: 1rem;
+    }
+    & button:disabled {
+        background-color: #ccc;
+        color: var(--primary-color);
+    }
+}

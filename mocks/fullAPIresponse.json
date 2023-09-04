@@ -51,6 +51,30 @@
                     "seller": 1,
                     "category": "Barber",
                     "price": 15.00
+                },
+                {
+                    "id": 20,
+                    "name": "Surprise Haircut",
+                    "description": "Traditional men's haircut with a fresh style.",
+                    "seller": 1,
+                    "category": "Barber",
+                    "price": 30.00
+                },
+                {
+                    "id": 21,
+                    "name": "Beard wash",
+                    "description": "Traditional men's haircut with a fresh style.",
+                    "seller": 1,
+                    "category": "Barber",
+                    "price": 30.00
+                },
+                {
+                    "id": 22,
+                    "name": "Hair wash",
+                    "description": "Traditional men's haircut with a fresh style.",
+                    "seller": 1,
+                    "category": "Barber",
+                    "price": 30.00
                 }
             ],
             "reviews": [

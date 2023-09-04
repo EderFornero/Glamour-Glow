@@ -26,7 +26,7 @@ const reducer = (state = initialState, action: ServiceAction) => {
         ...state,
         categories: action.payload
       }
-    
+
     case GET_ALL_USERS:
       return {
         ...state,

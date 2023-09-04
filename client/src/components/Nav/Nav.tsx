@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import Hamburger from 'hamburger-react'
 import style from './Nav.module.css'
-import logoBGLess from '../../assets/logoBGless.png'
+import logoWhite from '../../assets/whitelogo.png'
 import imgprofile from '../../assets/profile-circle.svg'
 
 const Nav = (): JSX.Element => {
@@ -13,7 +13,7 @@ const Nav = (): JSX.Element => {
       <header className={style.header}>
         <div className={style['logo-container']}>
           <NavLink to="/" className={style.logo}>
-            <img width="140px" height="75px" src={logoBGLess} alt="logo" />
+            <img width="140px" height="75px" src={logoWhite} alt="logo" />
           </NavLink>
           <div>
             <span className={style.title}>Glamour Glow</span>
@@ -33,6 +33,11 @@ const Nav = (): JSX.Element => {
               <li className={style['menu-item']}>
                 <NavLink to="/" className={style.link}>
                   For business
+                </NavLink>
+              </li>
+              <li className={style['menu-item']}>
+                <NavLink to="/business" className={style.link}>
+                  Services
                 </NavLink>
               </li>
               <li className={`${style['menu-item']} ${style.link} logout`}>
