@@ -103,13 +103,13 @@ nav {
 }
 
 
-@media (min-width: 551px) {
+@media (min-width: 917px) {
   .nav-mobile {
     display: none;
   }
 }
 
-@media (max-width: 550px) {
+@media (max-width: 916px) {
   .nav-full {
     display: none;
   }

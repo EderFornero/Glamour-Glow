@@ -4,7 +4,8 @@ import type { ServiceAction, RootState } from './types'
 const initialState: RootState = {
   allServices: [],
   categories: [],
-  users: []
+  users: [],
+  pages: 0
 };
 
 const reducer = (state = initialState, action: ServiceAction) => {
