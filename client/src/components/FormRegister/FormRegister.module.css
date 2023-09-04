@@ -1,6 +1,3 @@
-.div-form{
-    margin-top: -25px;
-}
 
 .botn {
     border-radius: 10px;
@@ -36,15 +33,18 @@
 }
 
 .reg-button:hover {
-    color: #3e38b6;
+    color: #ffffff;
 }
 
 .reg-button {
     width: 160px;
+    color: black;
+    text-decoration: underline;
+    margin-top: 40px;
 }
 
 @media (max-width: 767px) {
     .reg-button {
-      margin-top: -8px; /* Oculta el elemento .left en pantallas pequeñas */
+        margin-top: 20px;
     }
-  }
+}

@@ -71,14 +71,18 @@
 
 .forgot:hover,
 .reg-button:hover {
-    color: #3e38b6;
+    color: #ffffff;
 }
 
 .reg-button {
     width: 160px;
+    color: black;
+    text-decoration: underline;
 }
 .forgot {
     width: 120px;
+    color: black;
+    text-decoration: underline;
 }
 
 .error-message {
@@ -86,4 +90,14 @@
     font-size: small;
     position: absolute;
     margin-top: -30px;
+}
+
+.txt {
+    color: white;
+    letter-spacing: 1px;
+  }
+
+.log-with {
+    color: white;
+    letter-spacing: 1px;
 }
