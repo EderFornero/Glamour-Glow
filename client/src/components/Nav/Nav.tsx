@@ -7,7 +7,6 @@ import imgprofile from '../../assets/profile-circle.svg'
 
 const Nav = (): JSX.Element => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
-
   return (
     <div className={style.test}>
       <header className={style.header}>
