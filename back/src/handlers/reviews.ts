@@ -1,10 +1,15 @@
-import { ReviewsModel } from "../models";
+import { ReviewsModel, UserModel } from "../models";
 import { createReviewType } from "../schemas/reviewSchema";
-
+import { SellerModel } from "../models";
 
 export const createReviewHandler = async (data: createReviewType) => {
     
-      const  newReview = await ReviewsModel.create(data)
+      let newReview = await ReviewsModel.create(data)
+      const userInformation = await UserModel.findById(newReview.user_id)
+      if (userInformation) {
+            newReview.user_id = userInformation
+      }
+      await SellerModel.findOneAndUpdate({_id : newReview.seller_id}, {"$push": {reviews: newReview}})
       return newReview
     
 }
