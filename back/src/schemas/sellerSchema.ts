@@ -19,14 +19,16 @@ const sellerSchema = z.object({
     .enum([GENDER.ANY, GENDER.FEMALE, GENDER.MALE],{
         required_error: "Gender must be female, male or any"
     }),
-   categoriesArray: z
+    categoriesArray: z
     .string()
     .nonempty("You must provide at least 1 category")
     .min(1, "Min 1 category please"),
     servicesArray: z
     .array(z.string())
-    .optional() 
-
+    .optional(),
+    reviews: z
+    .array(z.string())
+    .optional()
 });
 
 export const createSellerSchema = z.object({
@@ -37,9 +39,6 @@ export const updateSellerSchema = z.object({
     body: sellerSchema.partial(),
     params: z.object({
         id: z.string()
-    }),
-    query: z.object({
-        seller_name: z.string()
     })
 });
 
@@ -52,5 +51,4 @@ export const readAndDeleteSellerSchema = z.object({
 export type createSellerType = z.infer<typeof createSellerSchema>["body"]
 export type updateSellerTypeBody = z.infer<typeof updateSellerSchema>["body"]
 export type updateSellerTypeParams = z.infer<typeof updateSellerSchema>["params"]
-export type updateSellerTypeQuery = z.infer<typeof updateSellerSchema>["query"]
 export type readAndDeleteSellerTypeParams = z.infer<typeof readAndDeleteSellerSchema>["params"]

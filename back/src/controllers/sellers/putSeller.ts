@@ -1,5 +1,5 @@
 import { putSellersHandler } from "../../handlers";
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import {
   updateSellerTypeBody,
   updateSellerTypeParams,
@@ -7,7 +7,8 @@ import {
 
 export const putSellersController = async (
   req: Request<updateSellerTypeParams, {}, updateSellerTypeBody>,
-  res: Response
+  res: Response,
+  next: NextFunction
 ) => {
   const { id } = req.params;
   const update = req.body;
@@ -15,6 +16,6 @@ export const putSellersController = async (
     const sellerUpdated = await putSellersHandler(id, update);
     return res.status(200).json(sellerUpdated);
   } catch (error) {
-    return error;
+    return next(error);
   }
 };
