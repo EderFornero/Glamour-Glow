@@ -1,4 +1,7 @@
 import { UserModel } from "../models";
+import { config } from "dotenv";
+import jwt from "jsonwebtoken";
+config();
 
 export const readUsersService = async () => {
   try {
@@ -43,17 +46,7 @@ export const updateUserService = async (id: any, updates: any) => {
     throw Error("Something went wrong");
   }
 };
-// let prueba = {
-//   username: "FirstUser",
-//   fullname: "Primero Us",
-//   email: "posta@gmail.com",
-//   password: "postobon",
-//   role: "customer",
-//   date_of_birth: "2012-04-21",
-//   image: "imagen2POSTA",
-//   isActive: "false",
-// };
-//let prueba2 = JSON.stringify(prueba);
+
 export const destroyUserService = async (id: any) => {
   try {
     const user = await UserModel.findByIdAndUpdate(
@@ -67,5 +60,37 @@ export const destroyUserService = async (id: any) => {
     return user;
   } catch (error) {
     throw Error("Something went wrong");
+  }
+};
+
+export const validateLogIn = async (email: any, password: any) => {
+  //change "any" type
+  try {
+    const user = await UserModel.findOne({ email }).exec();
+    if (!user) {
+      throw new Error("User is not registered");
+    }
+
+    const isPasswordValid = await user.validatePassword(password);
+
+    if (!isPasswordValid) {
+      return false;
+    }
+    return user;
+  } catch (error: any) {
+    throw new Error(error.message);
+  }
+};
+
+export const generateToken = async (email: any) => {
+  try {
+    const user = await UserModel.findOne({ email }).exec();
+    const token = await jwt.sign(
+      { name: user?.username, id: user?._id },
+      process.env.TOKEN_ENCRYPTION!
+    );
+    return token;
+  } catch (error: any) {
+    throw new Error(error.message);
   }
 };

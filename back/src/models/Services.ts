@@ -1,31 +1,28 @@
 import { prop, Ref, modelOptions } from "@typegoose/typegoose";
 import { Category } from "./Category";
-import { Seller } from "./Seller";
-
+import { Seller } from "./seller";
 
 @modelOptions({
-    schemaOptions: {
-        _id:true
-    }
+  schemaOptions: {
+    _id: true,
+  },
 })
-
 export class Services {
-    @prop({required: true, type: String})
-    name: string;
+  @prop({ required: true, type: String })
+  name: string;
 
-    @prop({required: true, type: String})
-    description: string;
+  @prop({ required: true, type: String })
+  description: string;
 
-    @prop({ ref: () => Category, default:""})
-    serviceCategories: Ref<Category>;
+  @prop({ ref: () => Category, default: "" })
+  serviceCategories: Ref<Category>;
 
-    @prop({required: true, type: Number, min: 0})
-    price: number;
+  @prop({ required: true, type: Number, min: 0 })
+  price: number;
 
-    @prop({required: true, type: Number})
-    rating: number 
+  @prop({ required: true, type: Number })
+  rating: number;
 
-    @prop({ref: () => Seller})
-    seller: Ref<Seller>
-
+  @prop({ ref: () => Seller })
+  seller: Ref<Seller>;
 }
