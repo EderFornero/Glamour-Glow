@@ -1,4 +1,4 @@
-import { createUserService } from "../../handlers";
+import { createUser } from "../../handlers";
 import { NextFunction, Request, Response } from "express";
 import { createUserType } from "../../schemas/userSchema";
 
@@ -10,7 +10,7 @@ export const postUser = async (
   try {
     const { username, fullname, email, password, role, date_of_birth, image } =
       req.body;
-    const savedUser = await createUserService({
+    const savedUser = await createUser({
       username,
       fullname,
       email,

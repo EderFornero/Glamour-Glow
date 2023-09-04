@@ -3,48 +3,29 @@ import { config } from "dotenv";
 import jwt from "jsonwebtoken";
 config();
 
-export const readUsersService = async () => {
-  try {
-    const allUsers = await UserModel.find({});
-    return allUsers;
-  } catch (error) {
-    throw Error("Something went wrong");
-  }
+export const readUsers = async () => {
+  const allUsers = await UserModel.find({});
+  return allUsers;
 };
 
-export const readUserByidService = async (id: any) => {
-  try {
-    const user = await UserModel.findById(id).exec();
-    if (!user || !user.isActive) {
-      throw Error("User not found");
-    }
-    return user;
-  } catch (error: any) {
-    if (error.message === "User not found") {
-      throw error;
-    }
-    throw new Error("Something went wrong");
+export const readUserById = async (id: String) => {
+  const user = await UserModel.findById(id).exec();
+  if (!user || !user.isActive) {
+    throw Error("User not found");
   }
+  return user;
 };
 
-export const createUserService = async (user: any) => {
-  try {
-    const savedUser = await UserModel.create(user);
-    return savedUser;
-  } catch (error) {
-    throw Error("Something went wrong");
-  }
+export const createUser = async (user: Object) => {
+  const savedUser = await UserModel.create(user);
+  return savedUser;
 };
 
-export const updateUserService = async (id: any, updates: any) => {
-  try {
-    const updatedUser = await UserModel.findByIdAndUpdate(id, updates, {
-      new: true,
-    });
-    return updatedUser;
-  } catch (error) {
-    throw Error("Something went wrong");
-  }
+export const updateUser = async (id: String, updates: Object) => {
+  const updatedUser = await UserModel.findByIdAndUpdate(id, updates, {
+    new: true,
+  });
+  return updatedUser;
 };
 
 export const destroyUserService = async (id: any) => {

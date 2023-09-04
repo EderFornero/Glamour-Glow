@@ -10,7 +10,7 @@ import {
   getUser,
   postUser,
   getUserByid,
-  updateUser,
+  putUser,
   logInUser,
 } from "../../controllers/users/index";
 
@@ -20,7 +20,7 @@ router.get("/", getUser);
 router.get("/:id", schemaValidation(readAndDeleteUserSchema), getUserByid);
 router.post("/", schemaValidation(CreateUserSchema), postUser);
 router.post("/login", logInUser);
-router.put("/:id", schemaValidation(updateUserSchema), updateUser);
+router.put("/:id", schemaValidation(updateUserSchema), putUser);
 router.delete("/:id", schemaValidation(readAndDeleteUserSchema), deleteUser);
 
 export default router;

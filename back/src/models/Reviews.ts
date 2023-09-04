@@ -4,7 +4,7 @@ import { User } from "./User";
 
 @modelOptions({
   schemaOptions: {
-    id: true,
+    _id: true,
   },
 })
 export class Reviews {
