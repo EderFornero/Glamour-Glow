@@ -15,8 +15,7 @@
             "businessLocation": "New York, NY",
             "businessGender": "male",
             "categories": [
-                "Barber",
-                "Haircut"
+                "Hair & Styling"
             ],
             "rating": 3,
             "services": [
@@ -111,8 +110,7 @@
             "businessLocation": "Los Angeles, CA",
             "businessGender": "female",
             "categories": [
-                "Spa",
-                "Massage"
+              "Spa & Massage"
             ],
             "rating": 3,
             "services": [
@@ -167,7 +165,7 @@
             "businessLocation": "Chicago, IL",
             "businessGender": "female",
             "categories": [
-                "Nail Services"
+              "Nail Salon"
             ],
             "rating": 3,
             "services": [
@@ -259,8 +257,7 @@
             "businessLocation": "Los Angeles, CA",
             "businessGender": "female",
             "categories": [
-                "Haircut",
-                "Hair Coloring"
+              "Hair & Styling"
             ],
             "rating": 3,
             "services": [
@@ -297,7 +294,7 @@
             "businessLocation": "Chicago, IL",
             "businessGender": "female",
             "categories": [
-                "Eyelashes"
+              "Make up"
             ],
             "rating": 3,
             "services": [
@@ -334,8 +331,7 @@
             "businessLocation": "Miami, FL",
             "businessGender": "male",
             "categories": [
-                "Spa",
-                "Massage"
+              "Spa & Massage"
             ],
             "rating": 3,
             "services": [
@@ -372,7 +368,7 @@
             "businessLocation": "Los Angeles, CA",
             "businessGender": "female",
             "categories": [
-                "Nail Services"
+              "Nail Salon"
             ],
             "rating": 3,
             "services": [
@@ -409,7 +405,7 @@
             "businessLocation": "Chicago, IL",
             "businessGender": "female",
             "categories": [
-                "Massage"
+              "Spa & Massage"
             ],
             "rating": 2,
             "services": [
@@ -446,8 +442,7 @@
             "businessLocation": "New York, NY",
             "businessGender": "female",
             "categories": [
-                "Haircut",
-                "Hair Coloring"
+              "Pet grooming"
             ],
             "rating": 1,
             "services": [
@@ -484,7 +479,7 @@
             "businessLocation": "Miami, FL",
             "businessGender": "female",
             "categories": [
-                "Eyelashes"
+              "Make up"
             ],
             "rating": 3,
             "services": [
@@ -521,8 +516,7 @@
             "businessLocation": "Los Angeles, CA",
             "businessGender": "male",
             "categories": [
-                "Spa",
-                "Massage"
+              "Spa & Massage"
             ],
             "rating": 3,
             "services": [
@@ -559,7 +553,7 @@
             "businessLocation": "Chicago, IL",
             "businessGender": "female",
             "categories": [
-                "Nail Services"
+              "Tatooing"
             ],
             "rating": 3,
             "services": [
@@ -596,7 +590,7 @@
             "businessLocation": "Miami, FL",
             "businessGender": "male",
             "categories": [
-                "Massage"
+              "Tatooing"
             ],
             "rating": 5,
             "services": [
@@ -633,8 +627,7 @@
             "businessLocation": "Los Angeles, CA",
             "businessGender": "male",
             "categories": [
-                "Haircut",
-                "Hair Coloring"
+              "Barbering"
             ],
             "rating": 2.5,
             "services": [
@@ -671,7 +664,7 @@
             "businessLocation": "Chicago, IL",
             "businessGender": "female",
             "categories": [
-                "Eyelashes"
+              "Barbering"
             ],
             "rating": 3,
             "services": [
@@ -708,8 +701,7 @@
             "businessLocation": "Miami, FL",
             "businessGender": "female",
             "categories": [
-                "Spa",
-                "Massage"
+              "Hair removal"
             ],
             "rating": 3,
             "services": [
@@ -746,7 +738,7 @@
             "businessLocation": "Los Angeles, CA",
             "businessGender": "female",
             "categories": [
-                "Nail Services"
+              "Mental health"
             ],
             "rating": 3,
             "services": [
@@ -783,7 +775,7 @@
             "businessLocation": "Chicago, IL",
             "businessGender": "male",
             "categories": [
-                "Massage"
+              "Mental health"
             ],
             "rating": 3,
             "services": [
@@ -821,8 +813,7 @@
             "businessGender": "female",
             "rating": 3,
             "categories": [
-                "Haircut",
-                "Hair Coloring"
+              "Skin care"
             ],
             "services": [
                 {
@@ -842,6 +833,377 @@
                     "price": 60.00
                 }
             ]
+        },
+        {
+          "id": 21,
+          "username": "tattoo_artist_mike",
+          "email": "mike.tattoo@example.com",
+          "role": "seller",
+          "birthdate": "1992-07-18",
+          "fullName": "Mike the Tattoo Artist",
+          "location": "Austin, TX",
+          "img": "mike_tattoo.jpg",
+          "businessName": "Mike's Tattoo Studio",
+          "businessEmail": "mike@tattoostudio.com",
+          "businessPhone": "+555666777",
+          "businessLocation": "Austin, TX",
+          "businessGender": "male",
+          "categories": ["Tattooing"],
+          "rating": 4.5,
+          "services": [
+            {
+              "id": 10,
+              "name": "Custom Tattoo",
+              "description": "Create your own unique custom tattoo design with Mike.",
+              "seller": 5,
+              "category": "Tattooing",
+              "price": 150.00
+            },
+            {
+              "id": 11,
+              "name": "Traditional Tattoo",
+              "description": "Classic traditional tattoo designs by Mike.",
+              "seller": 5,
+              "category": "Tattooing",
+              "price": 100.00
+            }
+          ],
+          "reviews": [
+            {
+              "id": 9,
+              "userId": 9,
+              "serviceName": "Custom Tattoo",
+              "rating": 4,
+              "comment": "Mike's custom tattoo work is impressive. Got exactly what I wanted!",
+              "date": "2023-08-23"
+            },
+            {
+              "id": 10,
+              "userId": 10,
+              "serviceName": "Traditional Tattoo",
+              "rating": 5,
+              "comment": "I love my traditional tattoo by Mike. Great artist!",
+              "date": "2023-08-22"
+            }
+          ]
+        },
+        {
+          "id": 22,
+          "username": "hair_removal_salon_lisa",
+          "email": "lisa.hairremoval@example.com",
+          "role": "seller",
+          "birthdate": "1989-05-12",
+          "fullName": "Lisa the Hair Removal Specialist",
+          "location": "Miami, FL",
+          "img": "lisa_hairremoval.jpg",
+          "businessName": "Lisa's Hair Removal Salon",
+          "businessEmail": "lisa@hairremovalsalon.com",
+          "businessPhone": "+777888999",
+          "businessLocation": "Miami, FL",
+          "businessGender": "female",
+          "categories": ["Hair removal"],
+          "rating": 4.2,
+          "services": [
+            {
+              "id": 12,
+              "name": "Waxing",
+              "description": "Professional waxing service for smooth skin.",
+              "seller": 6,
+              "category": "Hair removal",
+              "price": 40.00
+            },
+            {
+              "id": 13,
+              "name": "Laser Hair Removal",
+              "description": "Permanent hair removal using laser technology.",
+              "seller": 6,
+              "category": "Hair removal",
+              "price": 150.00
+            }
+          ],
+          "reviews": [
+            {
+              "id": 11,
+              "userId": 11,
+              "serviceName": "Waxing",
+              "rating": 4.5,
+              "comment": "Lisa's waxing service is excellent. No more unwanted hair!",
+              "date": "2023-08-21"
+            },
+            {
+              "id": 12,
+              "userId": 12,
+              "serviceName": "Laser Hair Removal",
+              "rating": 4,
+              "comment": "I had laser hair removal at Lisa's salon. It's a game-changer!",
+              "date": "2023-08-20"
+            }
+          ]
+        },
+        {
+          "id": 23,
+          "username": "mental_health_counselor_sara",
+          "email": "sara.mentalhealth@example.com",
+          "role": "seller",
+          "birthdate": "1990-11-25",
+          "fullName": "Sara the Mental Health Counselor",
+          "location": "San Francisco, CA",
+          "img": "sara_mentalhealth.jpg",
+          "businessName": "Sara's Counseling Center",
+          "businessEmail": "sara@counselingcenter.com",
+          "businessPhone": "+888999000",
+          "businessLocation": "San Francisco, CA",
+          "businessGender": "female",
+          "categories": ["Mental health"],
+          "rating": 4.8,
+          "services": [
+            {
+              "id": 14,
+              "name": "Individual Counseling",
+              "description": "One-on-one counseling sessions for personal growth.",
+              "seller": 7,
+              "category": "Mental health",
+              "price": 80.00
+            },
+            {
+              "id": 15,
+              "name": "Couples Therapy",
+              "description": "Therapy for couples to strengthen relationships.",
+              "seller": 7,
+              "category": "Mental health",
+              "price": 120.00
+            }
+          ],
+          "reviews": [
+            {
+              "id": 13,
+              "userId": 13,
+              "serviceName": "Individual Counseling",
+              "rating": 5,
+              "comment": "Sara is a compassionate counselor. She helped me navigate difficult times.",
+              "date": "2023-08-19"
+            },
+            {
+              "id": 14,
+              "userId": 14,
+              "serviceName": "Couples Therapy",
+              "rating": 4.5,
+              "comment": "Sara's couples therapy improved our relationship. Thank you!",
+              "date": "2023-08-18"
+            }
+          ]
+        },
+        {
+          "id": 24,
+          "username": "skincare_specialist_laura",
+          "email": "laura.skincare@example.com",
+          "role": "seller",
+          "birthdate": "1987-03-08",
+          "fullName": "Laura the Skincare Specialist",
+          "location": "Seattle, WA",
+          "img": "laura_skincare.jpg",
+          "businessName": "Laura's Skincare Clinic",
+          "businessEmail": "laura@skincareclinic.com",
+          "businessPhone": "+111222333",
+          "businessLocation": "Seattle, WA",
+          "businessGender": "female",
+          "categories": ["Skin care"],
+          "rating": 4.6,
+          "services": [
+            {
+              "id": 16,
+              "name": "Facial Treatment",
+              "description": "Revitalize your skin with a professional facial treatment.",
+              "seller": 8,
+              "category": "Skin care",
+              "price": 60.00
+            },
+            {
+              "id": 17,
+              "name": "Acne Treatment",
+              "description": "Effective acne treatment for clear skin.",
+              "seller": 8,
+              "category": "Skin care",
+              "price": 80.00
+            }
+          ],
+          "reviews": [
+            {
+              "id": 15,
+              "userId": 15,
+              "serviceName": "Facial Treatment",
+              "rating": 4.8,
+              "comment": "Laura's facial treatment gave me glowing skin. Highly recommended!",
+              "date": "2023-08-17"
+            },
+            {
+              "id": 16,
+              "userId": 16,
+              "serviceName": "Acne Treatment",
+              "rating": 4.5,
+              "comment": "Laura's acne treatment helped me regain my confidence. Thank you!",
+              "date": "2023-08-16"
+            }
+          ]
+        },
+        {
+          "id": 25,
+          "username": "pet_groomer_david",
+          "email": "david.petgroom@example.com",
+          "role": "seller",
+          "birthdate": "1991-12-04",
+          "fullName": "David the Pet Groomer",
+          "location": "Denver, CO",
+          "img": "david_petgroom.jpg",
+          "businessName": "David's Pet Grooming",
+          "businessEmail": "david@petgrooming.com",
+          "businessPhone": "+444555666",
+          "businessLocation": "Denver, CO",
+          "businessGender": "male",
+          "categories": ["Pet grooming"],
+          "rating": 4.7,
+          "services": [
+            {
+              "id": 18,
+              "name": "Dog Grooming",
+              "description": "Professional dog grooming services to keep your furry friend happy.",
+              "seller": 9,
+              "category": "Pet grooming",
+              "price": 45.00
+            },
+            {
+              "id": 19,
+              "name": "Cat Grooming",
+              "description": "Cat grooming services for a clean and happy cat.",
+              "seller": 9,
+              "category": "Pet grooming",
+              "price": 35.00
+            }
+          ],
+          "reviews": [
+            {
+              "id": 17,
+              "userId": 17,
+              "serviceName": "Dog Grooming",
+              "rating": 5,
+              "comment": "David is fantastic with dogs. My pup always looks adorable after a grooming session.",
+              "date": "2023-08-15"
+            },
+            {
+              "id": 18,
+              "userId": 18,
+              "serviceName": "Cat Grooming",
+              "rating": 4.5,
+              "comment": "My cat loves David's grooming. She comes back looking so elegant!",
+              "date": "2023-08-14"
+            }
+          ]
+        },
+        {
+          "id": 26,
+          "username": "hair_stylist_andrew",
+          "email": "andrew.hairstylist@example.com",
+          "role": "seller",
+          "birthdate": "1986-02-28",
+          "fullName": "Andrew the Hair Stylist",
+          "location": "Houston, TX",
+          "img": "andrew_hairstylist.jpg",
+          "businessName": "Andrew's Hair Studio",
+          "businessEmail": "andrew@hairstudio.com",
+          "businessPhone": "+999000111",
+          "businessLocation": "Houston, TX",
+          "businessGender": "male",
+          "categories": ["Hair & Styling"],
+          "rating": 4.9,
+          "services": [
+            {
+              "id": 20,
+              "name": "Haircut and Styling",
+              "description": "Get a trendy haircut and styling by Andrew.",
+              "seller": 10,
+              "category": "Hair & Styling",
+              "price": 50.00
+            },
+            {
+              "id": 21,
+              "name": "Hair Coloration",
+              "description": "Change your hair color with Andrew's expert coloration service.",
+              "seller": 10,
+              "category": "Hair & Styling",
+              "price": 70.00
+            }
+          ],
+          "reviews": [
+            {
+              "id": 19,
+              "userId": 19,
+              "serviceName": "Haircut and Styling",
+              "rating": 5,
+              "comment": "Andrew is a fantastic hair stylist. I always leave his studio with a great look!",
+              "date": "2023-08-13"
+            },
+            {
+              "id": 20,
+              "userId": 20,
+              "serviceName": "Hair Coloration",
+              "rating": 4.8,
+              "comment": "I love the new hair color Andrew gave me. Highly recommended!",
+              "date": "2023-08-12"
+            }
+          ]
+        },
+        {
+          "id": 27,
+          "username": "nail_artist_emily",
+          "email": "emily.nailartist@example.com",
+          "role": "seller",
+          "birthdate": "1993-09-15",
+          "fullName": "Emily the Nail Artist",
+          "location": "Chicago, IL",
+          "img": "emily_nailartist.jpg",
+          "businessName": "Emily's Nail Salon",
+          "businessEmail": "emily@nailsalon.com",
+          "businessPhone": "+333444555",
+          "businessLocation": "Chicago, IL",
+          "businessGender": "female",
+          "categories": ["Nail Salon"],
+          "rating": 4.7,
+          "services": [
+            {
+              "id": 22,
+              "name": "Manicure",
+              "description": "Professional manicure service by Emily.",
+              "seller": 11,
+              "category": "Nail Salon",
+              "price": 35.00
+            },
+            {
+              "id": 23,
+              "name": "Pedicure",
+              "description": "Relaxing pedicure service to pamper your feet.",
+              "seller": 11,
+              "category": "Nail Salon",
+              "price": 45.00
+            }
+          ],
+          "reviews": [
+            {
+              "id": 21,
+              "userId": 21,
+              "serviceName": "Manicure",
+              "rating": 4.5,
+              "comment": "Emily's manicure is top-notch. My nails look fabulous!",
+              "date": "2023-08-11"
+            },
+            {
+              "id": 22,
+              "userId": 22,
+              "serviceName": "Pedicure",
+              "rating": 4.8,
+              "comment": "I enjoyed a relaxing pedicure session at Emily's salon. It was wonderful!",
+              "date": "2023-08-10"
+            }
+          ]
         }
     ]
 }

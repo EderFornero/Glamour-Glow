@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { GET_ALL_BUSINESS, SET_PAGINATION, GET_ALL_CATEGORIES, GET_ALL_USERS } from './Action-Types'
+import { GET_ALL_BUSINESS, SET_PAGINATION, GET_ALL_CATEGORIES, GET_ALL_USERS, SET_RATING, SET_FILTERS } from './Action-Types'
 import type { ServiceAction } from './types'
 
 const API_URL = 'http://localhost:3001/'
@@ -30,6 +30,20 @@ export const setPages = (pages: number): {
   return {
     type: SET_PAGINATION,
     payload: pages
+  }
+}
+
+export const setFiler = (filter: string) => {
+  return{
+      type: SET_FILTERS,
+      payload: filter
+  }
+}
+
+export const setRating = (rating: number) => {
+  return {
+      type: SET_RATING,
+      payload: rating
   }
 }
 
