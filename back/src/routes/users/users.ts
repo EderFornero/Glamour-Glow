@@ -6,7 +6,7 @@ import {
   getUser,
   postUser,
   getUserByid,
-  updateUser,
+  putUser,
 } from "../../controllers/users/index";
 
 const router = Router();
@@ -14,7 +14,7 @@ const router = Router();
 router.get("/", getUser);
 router.get("/:id",schemaValidation(readAndDeleteUserSchema), getUserByid);
 router.post("/", schemaValidation(CreateUserSchema), postUser);
-router.put("/:id", schemaValidation(updateUserSchema), updateUser);
+router.put("/:id", schemaValidation(updateUserSchema), putUser);
 router.delete("/:id",schemaValidation(readAndDeleteUserSchema), deleteUser);
 
 export default router;

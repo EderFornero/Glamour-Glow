@@ -1,11 +1,11 @@
 import { UserModel } from "../models";
 
-export const readUsersService = async () => {
+export const readUsers = async () => {
   const allUsers = await UserModel.find({});
   return allUsers;
 };
 
-export const readUserByidService = async (id: String) => {
+export const readUserById = async (id: String) => {
   const user = await UserModel.findById(id).exec();
   if (!user || !user.isActive) {
     throw Error("User not found");
@@ -13,12 +13,12 @@ export const readUserByidService = async (id: String) => {
   return user;
 };
 
-export const createUserService = async (user: Object) => {
+export const createUser = async (user: Object) => {
   const savedUser = await UserModel.create(user);
   return savedUser;
 };
 
-export const updateUserService = async (id: String, updates: Object) => {
+export const updateUser = async (id: String, updates: Object) => {
   const updatedUser = await UserModel.findByIdAndUpdate(id, updates, {
     new: true,
   });
@@ -35,7 +35,7 @@ export const updateUserService = async (id: String, updates: Object) => {
 //   isActive: "false",
 // };
 //let prueba2 = JSON.stringify(prueba);
-export const destroyUserService = async (id: String) => {
+export const destroyUser = async (id: String) => {
   const user = await UserModel.findByIdAndUpdate(
     id,
     { isActive: false },
