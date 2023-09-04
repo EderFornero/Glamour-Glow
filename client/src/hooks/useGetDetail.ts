@@ -41,7 +41,6 @@ const useGetDetail = (id: number): any => {
   const usuario = useMemo(() => {
     return users.find((user) => user.id === id)
   }, [id])
-  console.log(usuario)
   return usuario
 }
 

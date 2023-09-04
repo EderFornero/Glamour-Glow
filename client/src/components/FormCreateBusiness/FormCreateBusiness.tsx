@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useGoBack } from '../../hooks'
 import { useForm } from 'react-hook-form'
 import BusiCategoriesInput from './inputs/BusiCategoriesInput'
@@ -8,60 +8,78 @@ import BusiEmailInput from './inputs/BusiEmailInput'
 import BusiPhoneInput from './inputs/BusiPhoneInput'
 import BusiImgInput from './inputs/BusiImgInput'
 import style from './FormCreateBusiness.module.css'
-
-interface FormCreateBusi {
-  imgs: string
-  businessName: string
-  businessEmail: string
-  businessPhone: number
-  businessLocation: string
-  businessGender: 'male' | 'female' | 'any'
-  categories: string[]
-}
+import type { RootState } from '../../redux/types'
+import {getCategories, postSeller} from '../../redux/Actions'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { FormCreateBusi } from '../../interfaces'
 
 const FormBusiness: React.FC = () => {
+  const dispatch = useDispatch()
   const goBack = useGoBack()
+  const navigate = useNavigate()
   const {
     register,
+    watch,
     handleSubmit,
     formState: { errors }
   } = useForm<FormCreateBusi>({
     defaultValues: {
-      imgs: '',
-      businessName: '',
-      businessEmail: '',
-      businessPhone: undefined,
-      businessLocation: '',
-      businessGender: 'any',
-      categories: []
+      seller_name: '',
+      seller_email: '',
+      seller_phone: '',
+      seller_gender: 'any',
+      categoriesArray: [],
+      servicesArray: []
     }
   })
 
+  const categoryList = useSelector((state: RootState) => state.categories)
+
+  const [arr, setArr] = useState<string[]>([]);
+
+
+  useEffect(() => {
+    dispatch(getCategories())
+  }, [dispatch])
+
   const onSubmit = handleSubmit((data: FormCreateBusi) => {
-    console.log(data)
+    arr.splice(0, 2)
+    data.categoriesArray = arr
+
+    dispatch(postSeller(data))
+    navigate('/')
   })
 
   return (
-      <div className={style['div-gral']}>
-        <div className={style['cont-img']}>
-            <h1>Share your skills with the world!</h1>
-            <div className={style['div-img']}></div>
+      <div className={style['all']}>
+        <div className={style['content']}>
+          <div className={style['left']}>
+            <h1 className={style['h1']}>Share your skills with the world!</h1>
+          </div>
+            <div className={style['right']}>
+            <div className={style['div-right']}>
+              <div className={style['text']}>
+                <h2 className={style['h2']}>Tell us about your work</h2>
+              </div>
+                <form onSubmit={onSubmit} className={style['forms']}>
+                
+                  <BusiNameInput register={register} errors={errors} />
+                  <BusiEmailInput register={register} errors={errors} />
+                  <BusiPhoneInput register={register} errors={errors} />
+                  <BusiImgInput register={register} errors={errors} />
+                  <div className={style['div-inputs-bottom']}>
+                    <BusiCategoriesInput register={register} errors={errors} categoryList={categoryList} watch={watch} setArr={setArr} />
+                    <BusiGenderInput register={register} errors={errors} />
+                  </div>
+                  <div className={style['buton-div']}>
+                    <button className={style['btn']} onClick={goBack}>Back</button>
+                    <button className={style['btn']} type='submit'>Send</button>
+                  </div>
+                </form>
+                </div>
+          </div>
         </div>
-        <form onSubmit={onSubmit} className={style['form-div']}>
-        <h2>Tell us about your work</h2>
-          <BusiNameInput register={register} errors={errors} />
-          <BusiEmailInput register={register} errors={errors} />
-          <BusiPhoneInput register={register} errors={errors} />
-          <BusiImgInput register={register} errors={errors} />
-          <div className={style['div-inputs-bottom']}>
-            <BusiCategoriesInput register={register} errors={errors} />
-            <BusiGenderInput register={register} errors={errors} />
-          </div>
-          <div className={style['div-button']}>
-            <button onClick={goBack}>Back</button>
-            <button type='submit'>Send</button>
-          </div>
-        </form>
       </div>
   )
 }

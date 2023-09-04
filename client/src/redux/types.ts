@@ -8,4 +8,6 @@ export interface ServiceAction {
 export interface RootState {
   allServices: any[]
   pages: number
+  categories: any[]
+  users: any[]
 }

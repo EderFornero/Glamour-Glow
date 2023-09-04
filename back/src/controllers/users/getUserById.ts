@@ -1,16 +1,21 @@
 import { readUserByidService } from "../../handlers";
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
+import { readAndDeleteUserType } from "../../schemas/userSchema";
 
-export const getUserByid = async (req: Request, res: Response) => {
+export const getUserByid = async (
+  req: Request<readAndDeleteUserType>,
+  res: Response,
+  next: NextFunction
+) => {
   try {
-    const { id } = req.params;
+    const id  = req.params.id;
     const user = await readUserByidService(id);
     // if (!user || !user.isActive) {
     //   return res.status(404).send({ message: "User not found" });
     // }
 
     return res.status(200).json(user);
-  } catch (error: any) {
-    return res.status(400).send({ error: error.message });
+  } catch (error) {
+    return next(error);
   }
 };

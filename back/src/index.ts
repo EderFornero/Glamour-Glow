@@ -1,5 +1,5 @@
 import express from "express";
-import {userRouter, sellerRouter, serviceRouter, categoriesRouter} from "./routes/index.ts" 
+import {userRouter, sellerRouter, serviceRouter, categoriesRouter, reviewsRouter} from "./routes/index.ts" 
 import "./db"
 import { logErrors } from "./middlewares/logError.middleware.ts";
 import cors, { CorsOptions } from "cors"
@@ -23,5 +23,6 @@ server.use("/", userRouter)
 server.use("/", sellerRouter)
 server.use("/", serviceRouter)
 server.use("/", categoriesRouter)
+server.use("/", reviewsRouter)
 
 server.use(logErrors)

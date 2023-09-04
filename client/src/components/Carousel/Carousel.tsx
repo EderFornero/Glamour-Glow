@@ -1,7 +1,12 @@
 import type { ServiceProvider } from '../../interfaces';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination, A11y, Autoplay } from 'swiper/modules'
 import styles from './Carousel.module.css';
 import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+import 'swiper/css/autoplay'
+
 import BusinessCard from '../BusinessCard/BusinessCard';
 import { useEffect, useState } from 'react';
 
@@ -33,13 +38,12 @@ const Carousel: React.FC<CarouselProps> = ({ cardstoshow, carouselName }) => {
     <section className={styles.carousel}>
       <h3 className={styles.title}>{carouselName}</h3>
       <Swiper
+        modules={[Pagination, A11y, Autoplay]}
         className={styles.swiper}
         spaceBetween={160}
         slidesPerView={slidesPerView}
-        loop
-        navigation
-        pagination
-        autoplay
+        pagination={{ clickable: true }}
+        autoplay={{ delay: 3000 }}
       >
         {cardstoshow.map(
           ({ id, businessName, rating, categories }: ServiceProvider) => {
@@ -56,7 +60,7 @@ const Carousel: React.FC<CarouselProps> = ({ cardstoshow, carouselName }) => {
           },
         )}
       </Swiper>
-    </section>
+    </section >
   );
 };
 

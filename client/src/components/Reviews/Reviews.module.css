@@ -1,0 +1,22 @@
+.container {
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+    flex-grow: 1; 
+    flex-wrap: wrap;
+    @media(max-width: 945px){
+        justify-content: center;
+    }
+    .reviews{
+        display: grid;
+        gap: 10px;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        justify-items: center;
+        @media(min-width:1375px){
+            display: flex;
+            justify-content: center;
+        }
+        
+    }
+
+}

@@ -11,10 +11,9 @@ import FAQ from '../../components/FAQ/FAQ'
 import { useSearchBarHome } from '../../hooks/index'
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { ThunkDispatch } from 'redux-thunk'
-import { AnyAction } from 'redux'
 import type { RootState } from '../../redux/types'
-import GetAllBusiness from '../../redux/Actions'
+import { GetAllBusiness } from '../../redux/Actions'
+
 
 const Home: React.FC = () => {
   const { searchResults, handleOnSearch } = useSearchBarHome(users)
@@ -31,26 +30,26 @@ const Home: React.FC = () => {
   useEffect(() => {
     console.log('aqui')
     dispatch(GetAllBusiness())
-    console.log('listo') 
+    console.log('listo')
   }, [dispatch, showCards])
 
   return (
     <div>
       <SearchBar onSearch={handleOnSearch} updateShowCards={updateShowCards} />
-      {showCards 
+      {showCards
         ? (
           <Cards searchUsers={searchResults.length > 0 ? searchResults : users} />
-          )
+        )
         : (
-        <>
-          <Description />
-          <Carousel cardstoshow={users} carouselName="Recomended" />
-          <Carousel cardstoshow={users} carouselName="Most Liked" />
-          <Carousel cardstoshow={users} carouselName="Nearest" />
-          <Description2 />
-          <FAQ />
-        </>
-          )}
+          <>
+            <Description />
+            <Carousel cardstoshow={users} carouselName="Recomended" />
+            <Carousel cardstoshow={users} carouselName="Most Liked" />
+            <Carousel cardstoshow={users} carouselName="Nearest" />
+            <Description2 />
+            <FAQ />
+          </>
+        )}
     </div>
   )
 }

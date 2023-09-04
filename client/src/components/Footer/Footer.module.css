@@ -1,11 +1,10 @@
 
-footer {
+.footer {
     background: #000000;
     color: var(--neutral-color);
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    position:inherit;
     width: 100%;
     bottom: 0px;
     z-index: 10;
@@ -147,14 +146,7 @@ footer {
   margin: 0 auto;
 }
 
-h2 {
-    text-align: left;
-    color: var(--neutral-color);
-    margin-top: 0px;
-    margin-bottom: 16px;
-    opacity: 0.7;
-    font-size: 16px;
-}
+
 
 .dot-display-h{
   visibility: hidden;
@@ -174,10 +166,8 @@ menu {
 
 menu li {
     margin-bottom: 15px; 
+    margin-top: 15px;
 }
-
-
-
   
 .logo {
     width: 60px;

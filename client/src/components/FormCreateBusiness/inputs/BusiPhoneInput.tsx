@@ -1,4 +1,5 @@
 import React from 'react'
+import style from './input.module.css'
 
 interface BusiPhoneInputProps {
   register: any
@@ -9,10 +10,11 @@ const BusiPhoneInput: React.FC<BusiPhoneInputProps> = ({ register, errors }) => 
   return (
     <div>
       <input
-        type='number'
-        name="businessPhone"
+        className={style['input']}
+        type='text'
+        name="seller_phone"
         placeholder='Phone Number'
-        {...register('businessPhone', {
+        {...register('seller_phone', {
           required: {
             value: true,
             message: 'Please enter your phone number!'
@@ -24,7 +26,7 @@ const BusiPhoneInput: React.FC<BusiPhoneInputProps> = ({ register, errors }) => 
         })}
       />
       <div>
-      {(Boolean(errors.businessPhone)) && <span>{errors.businessPhone.message}</span>}
+      {(Boolean(errors.seller_phone)) && <span className={style['span']}>{errors.seller_phone.message}</span>}
       </div>
     </div>
   )

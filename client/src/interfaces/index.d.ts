@@ -17,12 +17,27 @@ export interface Service {
 }
 
 export interface FormData {
-  name: string;
-  userName: string;
+  username: string;
+  fullname: string;
   email: string;
-  birthDate: string;
   password: string;
-  confirmPassword: string;
-  country: string;
-  acceptTerms: boolean;
+  role: 'customer' | 'seller'
+  date_of_birth: string;
+  image: string;
+  isActive: boolean;
+  confirmPassword?: string;
+}
+
+export interface FormCreateBusi {
+  seller_name: string
+  seller_email: string
+  seller_phone: string
+  seller_gender: 'male' | 'female' | 'any'
+  categoriesArray: string[]
+  servicesArray:  string[]
+}
+
+export interface FormLoginData {
+  email: string
+  password: string
 }
