@@ -1,6 +1,10 @@
-import React from 'react'
 import styles from './UserDetail.module.css'
 import Carousel from '../../components/Carousel/Carousel'
+import image from '/ProfileImages/giovanni-profile.jpg'
+import facebook from '../../assets/UserDetail/facebook.svg'
+import google from '../../assets/UserDetail/google.svg'
+import plus from '../../assets/UserDetail/plus-circle.svg'
+import { users } from '../../../../mocks/fullAPIresponse.json'
 
 function UserDetail() {
     return (
@@ -8,22 +12,22 @@ function UserDetail() {
             <section className={styles.sectionleft}>
                 <div className={styles.userdetail}>
                     <div className={styles['userdetail-header']}>
-                        <img src='' alt='' />
+                        <img src={image} alt='' />
                         <h1>Full Name</h1>
-                        <a>Editar la informacion basica</a>
+                        <a>Edit basic information</a>
                     </div>
                     <div className={styles['userdetail-body']}>
                         <ul>
-                            <li>Name <span>1</span></li>
-                            <li>FullName<span>3</span></li>
-                            <li>Telf<span>3</span></li>
-                            <li>Email<span>4</span></li>
-                            <li>Birthdate<span>5</span></li>
-                            <li>Genre<span>6</span></li>
+                            <li>Name <span>Giovanni</span></li>
+                            <li>Full Name <span>Cespedes</span></li>
+                            <li>Phone <span>955 804 941</span></li>
+                            <li>Email <span>giovannice22@hotmail.com</span></li>
+                            <li>Birthdate <span>22/09/2002</span></li>
+                            <li>Gender <span>Male</span></li>
                         </ul>
                     </div>
                     <div className={styles['userdetail-bottom']}>
-                        <a>Cerrar Sesion</a>
+                        <a>Sign Out</a>
                     </div>
                 </div>
             </section>
@@ -31,64 +35,91 @@ function UserDetail() {
             <section className={styles.sectionrigth}>
                 <div className={styles['rigth-directions']}>
                     <div className={styles['directions-header']}>
-                        <h4>Mis direcciones</h4>
+                        <h4>My Addresses</h4>
                     </div>
                     <div className={styles['directions-body']}>
-                        <a href="">Añade una nueva direccion</a>
+                        <img src={plus} className={styles.iconplussvg} /><a href="">Add a new address</a>
                     </div>
                 </div>
 
                 <div className={styles['rigth-paymentways']}>
                     <div className={styles['paymentways-header']}>
-                        <h4>Mis métodos de pago</h4>
-                        <p>Guarda los datos de tu tarjeta de forma segura y paga sin problemas.</p>
+                        <h4>My Payment Methods</h4>
+                        <p>Save your card details securely and pay without any issues.</p>
                     </div>
                     <div className={styles['paymentways-body']}>
-                        <a href="">Añadir metodo de pago</a>
+                        <img src={plus} className={styles.iconplussvg} /><a href="">Add payment method</a>
                     </div>
                 </div>
 
                 <div className={styles['rigth-socials']}>
                     <div className={styles['socials-header']}>
-                        <h4>Mis conexiones con redes sociales</h4>
-                        <p>Vincula los perfiles de tus redes sociales para facilitar el acceso a tu cuenta de Glamour Glow.</p>
+                        <h4>My Social Media Connections</h4>
+                        <p>Link your social media profiles for easy access to your Glamour Glow account.</p>
                     </div>
                     <div className={styles['socials-body']}>
-                        <a href="">Añade una nueva direccion</a>
+                        <div className={styles['socials-icon']}>
+                            <div className={styles['socials-icon-left']}><img src={facebook} /> <span>Facebook</span></div>
+                            <a>Connect</a>
+                        </div>
+                        <div className={styles['socials-icon']}>
+                            <div className={styles['socials-icon-left']}><img src={google} /> <span>Google</span></div>
+                            <a>Connect</a>
+                        </div>
                     </div>
                 </div>
 
                 <div className={styles['rigth-notifications']}>
                     <div className={styles['notifications-header']}>
-                        <h4>Mis notificaciones</h4>
-                        <p>Te enviaremos actualizaciones sobre tus citas, novedades y ofertas de marketing.</p>
+                        <h4>My Notifications</h4>
+                        <p>We will send you updates about your appointments, news, and marketing offers.</p>
                     </div>
                     <div className={styles['notifications-body']}>
-                        <a href="">Añade una nueva direccion</a>
+                        <div className={styles['notification-style']}>
+                            <div>
+                                <h5>Appointment Notifications via SMS</h5>
+                                <p>You will receive SMS messages according to the sender's settings.</p>
+                            </div>
+                            <span className={styles['switch']}>
+                                <input id="switch1" type="checkbox" />
+                                <label htmlFor="switch1"></label>
+                            </span>
+                        </div>
+                        <div className={styles['notification-style']}>
+                            <div>
+                                <h5>Marketing Notifications via Email</h5>
+                                <p>You will receive marketing emails with exciting offers.</p>
+                            </div>
+                            <span className={styles['switch']}>
+                                <input id="switch2" type="checkbox" />
+                                <label htmlFor="switch2"></label>
+                            </span>
+                        </div>
                     </div>
                 </div>
 
                 <div className={styles['rigth-favorites']}>
                     <div className={styles['favorites-header']}>
-                        <h4>Mejores servicios</h4>
-                        <p>Servicios a los cuales le diste me gusta</p>
+                        <h4>Favorite Services</h4>
+                        <p>Services you've liked</p>
                     </div>
                     <div className={styles['favorites-body']}>
-                        <div>Carrousel</div>
+                        <Carousel cardstoshow={users} carouselName='' />
                     </div>
                 </div>
 
                 <div className={styles['rigth-delete']}>
                     <div className={styles['delete-header']}>
-                        <h4>Eliminar cuenta</h4>
-                        <p>¿Estas seguro de que deseas eliminar esta cuenta?</p>
+                        <h4>Delete Account</h4>
+                        <p>Are you sure you want to delete this account?</p>
                     </div>
                     <div className={styles['delete-body']}>
-                        <a href="">Eliminar cuenta</a>
+                        <a href="">Delete Account</a>
                     </div>
                 </div>
             </section>
         </div>
+
     )
 }
 

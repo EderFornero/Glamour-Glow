@@ -7,29 +7,30 @@ h4{
 .section{
     display: flex;
     justify-content: space-around;
-    border:2px solid #ff0000;
-    margin-inline: 6rem;
     min-height: 50rem;
+    margin: 0 auto;
 }
 
 .sectionleft{
     flex: 1;
     max-width: 40%;
-    padding: 3rem;
-    border:2px solid #38df00;
+    padding: 1rem;
 }
 
 .sectionrigth{
     flex: 1;
     max-width: 60%;
-    padding: 3rem;
-    border:2px solid #00fff7;
+    padding: 1rem;
 }
 
 .userdetail{
     background-color: #ffffff;
     padding: 2rem;
-    min-width: 22rem;
+    width: 35vw;
+    min-width: 20rem;
+    max-width: 50rem;
+    margin: 0 auto;
+    border-radius: 1rem;
 }
 
 .userdetail-header{
@@ -44,7 +45,6 @@ h4{
     width: 180px; 
     height: 180px;
     border-radius: 50%;
-    border:2px solid #00fff7;
     margin-bottom: 2rem;
 }
 
@@ -71,6 +71,7 @@ h4{
     margin-bottom: 1.5rem;
     display: flex;
     flex-direction: column;
+    font-size: 1.25rem;
 }
 
 .userdetail-body span{
@@ -103,27 +104,148 @@ h4{
 .rigth-delete{
     background-color: #ffffff;
     padding: 20px;
-    margin-bottom: 20px;
-    min-width: 35rem;
+    width: 70vw;
+    min-width: 36rem;
+    max-width: 55vw;
     min-height: 6rem;
+    margin: 0 auto 20px;
+    border-radius: 1rem;
+}
+
+.directions-body,
+.directions-body,
+.paymentways-body,
+.notifications-body,
+.favorites-body,
+.delete-body{
+    margin-top: 1rem;
+}
+
+.delete-body a{
+    color: red;
+}
+
+.directions-body ,
+.paymentways-body{
+display: flex;
+align-items: center;
+font-weight: bold;
+}
+
+.iconplussvg{
+    width: 1.5rem;
+    fill:blue;
+    margin-right: 0.75rem;
+}
+
+.sectionrigth h4{
+    margin-bottom: 1rem;
 }
 
 .sectionrigth p{
-    font-size:0.9rem;
+    font-size:0.95rem;
+}
+
+.socials-icon{
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    padding: 0.75rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.13);
+    margin-top: 0.75rem;
     font-weight: 600;
 }
 
+.socials-icon-left{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.socials-icon img{
+    width: 2rem;
+}
+
+.notifications-body h5{
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.notifications-body p{
+    font-size: 0.8rem;
+    color: rgba(0, 0, 0, 0.669);
+}
+
+.notification-style{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.25rem;
+    margin-left: 1rem;
+}
+
+/* switch */
+.switch input {
+    display: none;
+}
+  
+.switch label {
+    display: block;
+    width: 50px;
+    height: 25px;
+    padding: 3px;
+    border-radius: 15px;
+    border: 2px solid #7e8382;
+    cursor: pointer;
+    transition: 0.3s;
+}
+  
+.switch label::after {
+    content: "";
+    display: inherit;
+    width: 15px;
+    height: 15px;
+    border-radius: 12px;
+    background: #7e8382;
+    transition: 0.3s;
+}
+  
+  .switch input:checked ~ label {
+    border-color: var(--primary-color)
+  }
+  
+  .switch input:checked ~ label::after {
+    translate: 25px 0;
+    background: var(--primary-color)
+  }
+  
 @media (max-width: 1200px) {
     .section{
         flex-direction: column;
+        width: 95%;
     }
     
-    .sectionleft {
+    .sectionleft{
         order: 1;
+        min-width: 100%;
     }
-
-    .sectionright {
+    
+    .sectionrigth{
         order: 2; 
+        min-width: 100%;
     }
 
+    .userdetail{
+        min-width: 100%;
+    }
+
+    .rigth-directions,
+    .rigth-paymentways,
+    .rigth-socials,
+    .rigth-notifications,
+    .rigth-favorites,
+    .rigth-delete{
+        min-width: 100%;
+}
+    
 }
