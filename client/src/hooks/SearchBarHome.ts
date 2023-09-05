@@ -1,38 +1,41 @@
-import { useState } from 'react';
-import type { ServiceProvider } from '../interfaces';
-import type { SearchResultsProps, SearchBarProps } from '../interfaces/props';
-
+import { useState } from 'react'
+import type { ServiceProvider } from '../interfaces'
+import type { SearchResultsProps, SearchBarProps } from '../interfaces/props'
 export const useSearchBarInOwnComponent = ({
-  onSearch,
+  onSearch
 }: SearchBarProps): {
-  searchQuery: string;
-  handleOnSearch: (query: string) => void;
+  searchQuery: string
+  handleOnSearch: (query: string) => void
 } => {
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState('')
   const handleOnSearch = (query: string): void => {
-    setSearchQuery(query);
-    onSearch(query);
-  };
+    setSearchQuery(query)
+    onSearch(query)
+  }
   return {
     searchQuery,
-    handleOnSearch,
-  };
-};
+    handleOnSearch
+  }
+}
 
-export const useSearchBarHome = (
-  users: ServiceProvider[],
-): SearchResultsProps => {
-  const [searchResults, setSearchResults] = useState<ServiceProvider[]>([]);
+// export const useSearch = (input: string) => {
+//   const { allServices } = useSelector((state: RootState) => state)
+
+//   useEffect(() => {
+//     allServices.filter(service.name.toLowerCase().includes(input.toLowerCase()))
+//   }, [input])
+// }
+
+export const useSearchBarHome = (users: ServiceProvider[]): SearchResultsProps => {
+  const [searchResults, setSearchResults] = useState<ServiceProvider[]>([])
 
   const handleOnSearch = (query: string): void => {
-    const filteredResults = users.filter((user) =>
-      user.businessName.toLowerCase().includes(query.toLowerCase()),
-    );
-    setSearchResults(filteredResults);
-  };
+    const filteredResults = users.filter((user) => user.businessName.toLowerCase().includes(query.toLowerCase()))
+    setSearchResults(filteredResults)
+  }
 
   return {
     searchResults,
-    handleOnSearch,
-  };
-};
+    handleOnSearch
+  }
+}

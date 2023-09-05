@@ -12,7 +12,9 @@
     "sourceType": "module",
     "project": "./Glamour-Glow/client/tsconfig.json"
   },
-  "plugins": ["react"],
+  "plugins": [
+    "react"
+  ],
   "rules": {
     "react/prop-types": "off",
     "react/react-in-jsx-scope": "off"
