@@ -1,13 +1,13 @@
 import styles from './UserDetail.module.css'
 import Carousel from '../../components/Carousel/Carousel'
-import image from '/ProfileImages/giovanni-profile.jpg'
+import image from '../../../public/ProfileImages/giovanni-profile.jpg'
 import facebook from '../../assets/UserDetail/facebook.svg'
 import google from '../../assets/UserDetail/google.svg'
 import plus from '../../assets/UserDetail/plus-circle.svg'
 import { users } from '../../../../mocks/fullAPIresponse.json'
 
 function UserDetail() {
-    return (
+  return (
         <div className={styles.section}>
             <section className={styles.sectionleft}>
                 <div className={styles.userdetail}>
