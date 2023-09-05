@@ -1,6 +1,11 @@
 import { useEffect, useState } from 'react'
 
-export const usePagination = (items: any, itemsPerPage: number, filter?: string, rating?: number): {
+export const usePagination = (
+  items: any,
+  itemsPerPage: number,
+  filter?: string,
+  rating?: number
+): {
   itemsPaginated: any
   currentPage: number
   totalPages: number

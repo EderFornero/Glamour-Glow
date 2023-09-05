@@ -103,3 +103,12 @@
   font-size: 1rem;
   margin: 2em 0;
 }
+
+@media (max-width: 900px) {
+  .accordion-item-4,
+  .accordion-item-5,
+  .accordion-item-6,
+  .accordion-item-7 {
+    display: none;
+  }
+}
