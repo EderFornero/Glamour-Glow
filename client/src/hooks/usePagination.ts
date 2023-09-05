@@ -1,6 +1,21 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
-export const usePagination = (items: any, itemsPerPage: number): any => {
+export const usePagination = (
+  items: any,
+  itemsPerPage: number,
+  filter?: string,
+  rating?: number
+): {
+  itemsPaginated: any
+  currentPage: number
+  totalPages: number
+  filters: string
+  rating: number
+  nextPage: () => void
+  prevPage: () => void
+  startPage: () => void
+  finalPage: () => void
+} => {
   const [currentPage, setCurrentPage] = useState<number>(0)
   const totalPages = Math.ceil(items.length / itemsPerPage)
   const startIndex = currentPage * itemsPerPage
@@ -19,20 +34,25 @@ export const usePagination = (items: any, itemsPerPage: number): any => {
     }
   }
 
-  const goToFirst = (): void => {
+  const startPage = (): void => {
     setCurrentPage(0)
   }
-  const goToLast = (): void => {
+
+  const finalPage = (): void => {
     setCurrentPage(totalPages - 1)
   }
+
+  useEffect(() => {
+    setCurrentPage(0)
+  }, [filter, rating])
 
   return {
     itemsPaginated,
     currentPage,
     totalPages,
+    startPage,
+    finalPage,
     nextPage,
-    prevPage,
-    goToFirst,
-    goToLast
+    prevPage
   }
 }

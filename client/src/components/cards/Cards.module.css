@@ -12,97 +12,9 @@
   }
 }
 
-
-.pagination-div-buttons{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 25px;
-  margin-left: 150px;
-
-  @media (max-width: 768px){ 
-    gap: 15px;
-  }
-}
-
-.span-go-to-start-final span{
-  cursor: pointer;
-  font-size: 18px;
-}
-
-.span-go-to-start-final span:hover{
-  text-decoration: underline;
-  color: var(--start-final);
-}
-
-.pagination-div-buttons-previous-next{
-  appearance: none;
- background-color: var(--primary-color);
- border: 2px solid #fff;
- border-radius: 15px;
- color: var(--neutral-color);
- cursor: pointer;
- display: inline-block;
- font-size: 12px;
- font-weight: 600;
- line-height: normal;
- margin-left: 5px;
- margin-right: 5px;
- min-height: 20px;
- min-width: 40px;
- outline: none;
- padding: 1em 2.3em;
- text-align: center;
- text-decoration: none;
- transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
- user-select: none;
- -webkit-user-select: none;
- touch-action: manipulation;
- will-change: transform;
-
-
-&:disabled {
- pointer-events: none;
- background-color: var(--secondary-color);
-}
-
-&:hover {
- color: #fff;
- box-shadow: var(--primary-color) 0 8px 15px;
- transform: translateY(-2px);
-}
-
-&:active {
- box-shadow: none;
- transform: translateY(0);
-}
-}
-
-
 .div-container-order-filter-cards{
   display: flex;
   justify-content: center;
-
-  .div-container-order-filter{
-    width: 200px;
-    padding: 30px;
-
-    .div-order-by{
-      margin-left: 5px;
-
-      .div-order-by-ul{
-        list-style: none;
-
-        .div-order-by-li{
-          cursor: pointer;
-        }
-      }
-    }
-
-    .div-filter-by{
-      margin: 15px 0 0 5px;
-    }
-  }
 }
 
 

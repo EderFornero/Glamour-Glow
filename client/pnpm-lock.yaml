@@ -20,6 +20,9 @@ dependencies:
   axios:
     specifier: ^1.5.0
     version: 1.5.0
+  dotenv:
+    specifier: ^16.3.1
+    version: 16.3.1
   hamburger-react:
     specifier: ^2.5.0
     version: 2.5.0(react@18.2.0)
@@ -2983,6 +2986,11 @@ packages:
     dependencies:
       '@babel/runtime': 7.22.11
       csstype: 3.1.2
+    dev: false
+
+  /dotenv@16.3.1:
+    resolution: {integrity: sha512-IPzF4w4/Rd94bA9imS68tZBaYyBWSCE47V1RGuMrB94iyTOIEwRmVL2x/4An+6mETpLrKJ5hQkB8W4kFAadeIQ==}
+    engines: {node: '>=12'}
     dev: false
 
   /electron-to-chromium@1.4.499:

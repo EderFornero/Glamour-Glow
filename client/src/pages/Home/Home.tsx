@@ -14,7 +14,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import type { RootState } from '../../redux/types'
 import { GetAllBusiness } from '../../redux/Actions'
 
-
 const Home: React.FC = () => {
   const { searchResults, handleOnSearch } = useSearchBarHome(users)
   const [showCards, setShowCards] = useState(false)
@@ -24,13 +23,10 @@ const Home: React.FC = () => {
     setShowCards(hasQuery)
   }
 
-  const cards = useSelector((state: RootState) => state.allServices)
-  console.log(cards)
+  // const cards = useSelector((state: RootState) => state.allServices)
 
   useEffect(() => {
-    console.log('aqui')
     dispatch(GetAllBusiness())
-    console.log('listo')
   }, [dispatch, showCards])
 
   return (
@@ -39,7 +35,7 @@ const Home: React.FC = () => {
       {showCards
         ? (
           <Cards searchUsers={searchResults.length > 0 ? searchResults : users} />
-        )
+          )
         : (
           <>
             <Description />
@@ -49,7 +45,7 @@ const Home: React.FC = () => {
             <Description2 />
             <FAQ />
           </>
-        )}
+          )}
     </div>
   )
 }
