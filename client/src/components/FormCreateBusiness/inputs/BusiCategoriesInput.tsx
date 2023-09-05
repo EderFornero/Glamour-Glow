@@ -10,20 +10,17 @@ interface BusiCategoriesInputProps {
 }
 
 const BusiCategoriesInput: React.FC<BusiCategoriesInputProps> = ({ register, errors, categoryList, watch, setArr }) => {
-
-
   const value = (watch('categoriesArray'))
 
   useEffect(() => {
     setArr((prev: any) => [...prev, value])
-  },  [value])
-
+  }, [value])
 
   return (
 
     <div>
         <select
-        className={style['input']}
+        className={style.input}
         type='select'
         name='categoriesArray'
         {...register('categoriesArray', {
@@ -33,11 +30,11 @@ const BusiCategoriesInput: React.FC<BusiCategoriesInputProps> = ({ register, err
           }
         })}>
           {categoryList.map((el, index) => (
-          <option className={style['option']} key={index} value={el._id}>{el.name}</option>
+          <option className={style.option} key={index} value={el._id}>{el.name}</option>
           ))}
         </select>
         <div>
-            {errors.categoriesArray?.type === 'required' && <span className={style['span']}>{errors.categoriesArray.message}</span>}
+            {errors.categoriesArray?.type === 'required' && <span className={style.span}>{errors.categoriesArray.message}</span>}
         </div>
     </div>
   )

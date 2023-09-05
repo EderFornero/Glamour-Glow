@@ -1,5 +1,5 @@
 import { prop, modelOptions, Ref } from "@typegoose/typegoose";
-import { Seller } from "./seller";
+import { Seller } from "./Seller";
 import { User } from "./User";
 
 @modelOptions({

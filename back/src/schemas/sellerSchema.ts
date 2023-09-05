@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { GENDER } from "../models/seller";
+import { GENDER } from "../models/Seller";
 
 const sellerSchema = z.object({
   seller_name: z

@@ -10,7 +10,7 @@ const PasswordLogin: React.FC<PasswordLoginProps> = ({ register, errors }) => {
   return (
     <div>
       <input
-      className={style['input']}
+      className={style.input}
         type="password"
         name="password"
         placeholder='**********'
@@ -22,11 +22,11 @@ const PasswordLogin: React.FC<PasswordLoginProps> = ({ register, errors }) => {
           minLength: {
             value: 6,
             message: 'Password Not Valid'
-          },
+          }
         })}
       />
       <div>
-        {(Boolean(errors.password)) && <span className={style['span']}>{errors.password.message}</span>}
+        {(Boolean(errors.password)) && <span className={style.span}>{errors.password.message}</span>}
       </div>
     </div>
   )
