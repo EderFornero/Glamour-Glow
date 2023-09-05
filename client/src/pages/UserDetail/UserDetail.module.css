@@ -1,4 +1,4 @@
-h4{
+.my-adress-h4{
     color: rgb(0, 0, 0);
     font-weight: bold;
     font-size: 1.25rem;
@@ -17,7 +17,7 @@ h4{
     padding: 1rem;
 }
 
-.sectionrigth{
+.sectionright{
     flex: 1;
     max-width: 60%;
     padding: 1rem;
@@ -42,10 +42,10 @@ h4{
 }
 
 .userdetail-header img {
-    width: 180px; 
-    height: 180px;
+    width: 200px; 
+    height: 200px;
     border-radius: 50%;
-    margin-bottom: 2rem;
+    margin: 10px;
 }
 
 .userdetail-header h1 {
@@ -96,12 +96,12 @@ h4{
     font-size: 1.25rem;
 }
 
-.rigth-directions,
-.rigth-paymentways,
-.rigth-socials,
-.rigth-notifications,
-.rigth-favorites,
-.rigth-delete{
+.right-directions,
+.right-paymentways,
+.right-socials,
+.right-notifications,
+.right-favorites,
+.right-delete{
     background-color: #ffffff;
     padding: 20px;
     width: 70vw;
@@ -138,11 +138,11 @@ font-weight: bold;
     margin-right: 0.75rem;
 }
 
-.sectionrigth h4{
+.sectionright h4{
     margin-bottom: 1rem;
 }
 
-.sectionrigth p{
+.sectionright p{
     font-size:0.95rem;
 }
 
@@ -195,7 +195,7 @@ font-weight: bold;
     height: 25px;
     padding: 3px;
     border-radius: 15px;
-    border: 2px solid #7e8382;
+    border: 2px solid var(--notification-color);
     cursor: pointer;
     transition: 0.3s;
 }
@@ -230,7 +230,7 @@ font-weight: bold;
         min-width: 100%;
     }
     
-    .sectionrigth{
+    .sectionright{
         order: 2; 
         min-width: 100%;
     }
@@ -239,12 +239,12 @@ font-weight: bold;
         min-width: 100%;
     }
 
-    .rigth-directions,
-    .rigth-paymentways,
-    .rigth-socials,
-    .rigth-notifications,
-    .rigth-favorites,
-    .rigth-delete{
+    .right-directions,
+    .right-paymentways,
+    .right-socials,
+    .right-notifications,
+    .right-favorites,
+    .right-delete{
         min-width: 100%;
 }
     
