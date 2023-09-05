@@ -3,6 +3,11 @@ import {userRouter, sellerRouter, serviceRouter, categoriesRouter, reviewsRouter
 import "./db"
 import { logErrors } from "./middlewares/logError.middleware.ts";
 import cors, { CorsOptions } from "cors"
+import passport from "passport";
+import passportMiddleware from "./middlewares/passport.ts";
+import session from "express-session";
+import "dotenv/config"
+const {TOKEN_ENCRYPTION} = process.env
 
 const server = express();
 const PORT = 3001;
@@ -14,6 +19,12 @@ const corsOptions: CorsOptions = {
 server.use(express.json());
 
 server.use(cors(corsOptions))
+server.use(session({
+    secret: TOKEN_ENCRYPTION!, 
+    resave: false,
+    saveUninitialized: true,
+}))
+passport.use(passportMiddleware);
 
 server.listen(PORT, ()=> {
     console.log("Server running  in PORT 3001 my king :** ")
@@ -25,4 +36,5 @@ server.use("/", serviceRouter)
 server.use("/", categoriesRouter)
 server.use("/", reviewsRouter)
 
+server.use(passport.initialize()); 
 server.use(logErrors)

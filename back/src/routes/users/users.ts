@@ -14,13 +14,16 @@ import {
   logInUser,
 } from "../../controllers/users/index";
 
+import passport from "passport";
+
+
 const router = Router();
 
-router.get("/", getUser);
-router.get("/:id", schemaValidation(readAndDeleteUserSchema), getUserByid);
+router.get("/",passport.authenticate('jwt',{session: false}),getUser);
+router.get("/:id", passport.authenticate('jwt',{session: false}),schemaValidation(readAndDeleteUserSchema), getUserByid);
 router.post("/", schemaValidation(CreateUserSchema), postUser);
-router.post("/login", logInUser);
-router.put("/:id", schemaValidation(updateUserSchema), putUser);
-router.delete("/:id", schemaValidation(readAndDeleteUserSchema), deleteUser);
+router.post("/login",passport.authenticate('jwt',{session: false}), logInUser);
+router.put("/:id", passport.authenticate('jwt',{session: false}), schemaValidation(updateUserSchema), putUser);
+router.delete("/:id",passport.authenticate('jwt',{session: false}), schemaValidation(readAndDeleteUserSchema), deleteUser);
 
 export default router;
