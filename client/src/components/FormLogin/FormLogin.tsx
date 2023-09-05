@@ -13,7 +13,6 @@ import type { FormLoginData } from '../../interfaces'
 import { onSubmitLogin } from './handlers/onSubmit'
 import ErrorMessage from './handlers/errorMessage'
 
-
 const FormLogin: React.FC = ({ onToggle }) => {
   const dispatch = useDispatch()
   const goBack = useGoBack()
@@ -37,13 +36,10 @@ const FormLogin: React.FC = ({ onToggle }) => {
   console.log(Users)
 
   const [errorMessage, setErrorMessage] = useState('')
-  const [errorMessage, setErrorMessage] = useState('')
 
   const onSubmit = handleSubmit((data: FormLoginData) => {
     onSubmitLogin(data, Users, navigate, setErrorMessage)
   })
-
-
 
   return (
     <div className={style['content']}>
@@ -61,35 +57,27 @@ const FormLogin: React.FC = ({ onToggle }) => {
           </div>
         </div>
         <div className={style['buton-div']}>
-          <button className={style['btn']} onClick={goBack}>Back</button>
-          <button className={style['btn']} type='submit'>Send</button>
+          <button className={style['btn']} onClick={goBack}>
+            Back
+          </button>
+          <button className={style['btn']} type='submit'>
+            Send
+          </button>
         </div>
       </form>
       <div className={style['link-texts']}>
         <button>
-          <p className={style['reg-button']} onClick={onToggle}>Dont have an account?</p>
+          <p className={style['reg-button']} onClick={onToggle}>
+            Dont have an account?
+          </p>
         </button>
         <Link to='/recovePassword'>
           <p className={style['forgot']}>Forgot Password?</p>
         </Link>
       </div>
-          <div className={style['ico-div']}>
-            <div className={style['google']}></div>
-            <div className={style['ig']}></div>
-          </div>
-        </div>
-        <div className={style['buton-div']}>
-          <button className={style['btn']} onClick={goBack}>Back</button>
-          <button className={style['btn']} type='submit'>Send</button>
-        </div>
-      </form>
-      <div className={style['link-texts']}>
-        <button>
-          <p className={style['reg-button']} onClick={onToggle}>Dont have an account?</p>
-        </button>
-        <Link to='/recovePassword'>
-          <p className={style['forgot']}>Forgot Password?</p>
-        </Link>
+      <div className={style['ico-div']}>
+        <div className={style['google']}></div>
+        <div className={style['ig']}></div>
       </div>
     </div>
   )
