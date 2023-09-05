@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { GET_ALL_BUSINESS, SET_PAGINATION, GET_ALL_CATEGORIES, GET_ALL_USERS, SET_RATING, SET_FILTERS } from './Action-Types'
+import { GET_ALL_BUSINESS, GET_ALL_CATEGORIES, GET_ALL_USERS, SET_RATING, SET_FILTERS, SET_UPLOAD_IMAGE } from './Action-Types'
 import type { ServiceAction } from './types'
 
 const API_URL = 'http://localhost:3001/'
@@ -22,28 +22,33 @@ export const GetAllBusiness = (): (dispatch: (action: ServiceAction) => void) =>
   }
 }
 
+export const setFiler = (filter: string): {
+  type: string
+  payload: string
+} => {
+  return {
+    type: SET_FILTERS,
+    payload: filter
+  }
+}
 
-export const setPages = (pages: number): {
+export const setRating = (rating: number): {
   type: string
   payload: number
 } => {
   return {
-    type: SET_PAGINATION,
-    payload: pages
+    type: SET_RATING,
+    payload: rating
   }
 }
 
-export const setFiler = (filter: string) => {
-  return{
-      type: SET_FILTERS,
-      payload: filter
-  }
-}
-
-export const setRating = (rating: number) => {
+export const setUploadImage = (image: string): {
+  type: string
+  payload: string
+} => {
   return {
-      type: SET_RATING,
-      payload: rating
+    type: SET_UPLOAD_IMAGE,
+    payload: image
   }
 }
 

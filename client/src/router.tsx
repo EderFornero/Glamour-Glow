@@ -8,7 +8,7 @@ import AboutUs from './pages/AboutUs/AboutUs.tsx'
 import AdminDashboard from './pages/AdminDashboard/AdminDashboard.tsx'
 // error component
 import NotFound from './pages/NotFound/NotFound.tsx'
-// component
+// pages
 import Forms from './pages/Forms/Forms.tsx'
 import BusinessDetail from './pages/BusinessDetail/BusinessDetail.tsx'
 import FormBusiness from './components/FormCreateBusiness/FormCreateBusiness.tsx'
@@ -37,7 +37,10 @@ const router = createBrowserRouter([
       {
         path: '/userdetail',
         children: [
-          { index: true, element: <UserDetail /> }
+          {
+            index: true,
+            element: <UserDetail />
+          }
         ]
       },
       {

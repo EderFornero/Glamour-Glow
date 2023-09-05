@@ -4,9 +4,13 @@ import type { SearchBarProps } from '../../interfaces/props'
 import { useSearchBarInOwnComponent } from '../../hooks'
 // css
 import style from './SearchBar.module.css'
-import { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
-import { setPages } from '../../redux/Actions'
+// hooks
+// import { usePagination } from '../../hooks/index'
+// import { RootState } from '../../redux/types'
+// import { useSelector } from 'react-redux'
+// import { useEffect } from 'react'
+// import { useDispatch } from 'react-redux'
+// import { setPages } from '../../redux/Actions'
 
 const SearchBar: React.FC<SearchBarProps> = ({
   onSearch,
@@ -16,13 +20,6 @@ const SearchBar: React.FC<SearchBarProps> = ({
     onSearch,
     updateShowCards
   })
-  const dispatch = useDispatch()
-
-  useEffect(() => {
-    if (searchQuery !== '') {
-      dispatch(setPages(0))
-    }
-  }, [dispatch, searchQuery])
 
   return (
     <div className={style['div-input-wrapper']}>
