@@ -1,16 +1,16 @@
-import React from 'react';
+import React from 'react'
 import style from './input.module.css'
 
 interface EmailInputProps {
-  register: any;
-  errors: any;
+  register: any
+  errors: any
 }
 
 const EmailInput: React.FC<EmailInputProps> = ({ register, errors }) => {
   return (
     <div>
       <input
-        className={style['input']}
+        className={style.input}
         type="email"
         name="email"
         placeholder='Email'
@@ -26,10 +26,10 @@ const EmailInput: React.FC<EmailInputProps> = ({ register, errors }) => {
         })}
       />
       <div>
-      {(Boolean(errors.email)) && <span className={style['span']}>{errors.email.message}</span>}
+      {(Boolean(errors.email)) && <span className={style.span}>{errors.email.message}</span>}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default EmailInput;
+export default EmailInput

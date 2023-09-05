@@ -10,7 +10,7 @@ const EmailLogin: React.FC<EmailLoginProps> = ({ register, errors }) => {
   return (
         <div>
             <input
-            className={style['input']}
+            className={style.input}
               type="email"
               name="email"
               placeholder='you@gmail.com'
@@ -26,7 +26,7 @@ const EmailLogin: React.FC<EmailLoginProps> = ({ register, errors }) => {
               })}
             />
             <div>
-              {(Boolean(errors.email)) && <span className={style['span']}>{errors.email.message}</span>}
+              {(Boolean(errors.email)) && <span className={style.span}>{errors.email.message}</span>}
             </div>
         </div>
   )

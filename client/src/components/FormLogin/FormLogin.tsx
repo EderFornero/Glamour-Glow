@@ -13,7 +13,7 @@ import type { FormLoginData } from '../../interfaces'
 import { onSubmitLogin } from './handlers/onSubmit'
 import ErrorMessage from './handlers/errorMessage'
 
-const FormLogin: React.FC = ({ onToggle }) => {
+const FormLogin: React.FC = ({ onToggle }: any) => {
   const dispatch = useDispatch()
   const goBack = useGoBack()
   const navigate = useNavigate()
@@ -42,25 +42,25 @@ const FormLogin: React.FC = ({ onToggle }) => {
   })
 
   return (
-    <div className={style['content']}>
+    <div className={style.content}>
       <form onSubmit={onSubmit}>
-        <p className={style['txt']}>Email:</p>
+        <p className={style.txt}>Email:</p>
         <EmailLogin register={register} errors={errors} />
-        {errorMessage && <ErrorMessage message={errorMessage} />}
-        <p className={style['txt']}>Password:</p>
+        {errorMessage !== '' && <ErrorMessage message={errorMessage} />}
+        <p className={style.txt}>Password:</p>
         <PasswordLogin register={register} errors={errors} />
         <div className={style['alt-login']}>
           <h4 className={style['log-with']}>or Login With:</h4>
           <div className={style['ico-div']}>
-            <div className={style['google']}></div>
-            <div className={style['ig']}></div>
+            <div className={style.google}></div>
+            <div className={style.ig}></div>
           </div>
         </div>
         <div className={style['buton-div']}>
-          <button className={style['btn']} onClick={goBack}>
+          <button className={style.btn} onClick={goBack}>
             Back
           </button>
-          <button className={style['btn']} type='submit'>
+          <button className={style.btn} type='submit'>
             Send
           </button>
         </div>
@@ -72,12 +72,12 @@ const FormLogin: React.FC = ({ onToggle }) => {
           </p>
         </button>
         <Link to='/recovePassword'>
-          <p className={style['forgot']}>Forgot Password?</p>
+          <p className={style.forgot}>Forgot Password?</p>
         </Link>
       </div>
       <div className={style['ico-div']}>
-        <div className={style['google']}></div>
-        <div className={style['ig']}></div>
+        <div className={style.google}></div>
+        <div className={style.ig}></div>
       </div>
     </div>
   )

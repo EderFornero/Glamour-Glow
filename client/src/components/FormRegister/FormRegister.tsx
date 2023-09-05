@@ -12,7 +12,7 @@ import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { postUser } from '../../redux/Actions'
 
-const FormRegister: React.FC = ({onToggle}) => {
+const FormRegister: React.FC = ({ onToggle }: any) => {
   const goBack = useGoBack()
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -35,11 +35,11 @@ const FormRegister: React.FC = ({onToggle}) => {
   })
 
   const onSubmit = handleSubmit((data: FormData) => {
-      delete data.confirmPassword;
-      console.log(data)
-      dispatch(postUser(data))
-      navigate('/')
-  });
+    delete data.confirmPassword
+    console.log(data)
+    dispatch(postUser(data))
+    navigate('/')
+  })
 
   return (
     <div className={style['div-form']}>
@@ -50,8 +50,8 @@ const FormRegister: React.FC = ({onToggle}) => {
           <PasswordInput register={register} errors={errors} />
           <BirthDateInput register={register} errors={errors} />
           <div className={style['div-buttons']}>
-            <button className={style['botn']} onClick={goBack}>Back</button>
-            <button className={style['botn']} type='submit'>Send</button>
+            <button className={style.botn} onClick={goBack}>Back</button>
+            <button className={style.botn} type='submit'>Send</button>
           </div>
       </form>
       <button>
@@ -61,4 +61,4 @@ const FormRegister: React.FC = ({onToggle}) => {
   )
 }
 
-export default FormRegister;
+export default FormRegister
