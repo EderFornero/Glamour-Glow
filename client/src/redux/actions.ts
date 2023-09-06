@@ -11,7 +11,9 @@ import {
 } from "./Action-Types";
 import type { ServiceAction } from "./types";
 
-const API_URL = "http://localhost:3001/";
+const API_URL = 'http://localhost:3001/'
+const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiR0lPVkEiLCJpZCI6IjY0ZjdkNDRlNGI1MmVjODRjMjJhMzEzYyIsImlhdCI6MTY5Mzk2MzQzMH0.Kc3ArXiNzFPWaA23NnrIk4VEQI2LPxCSvXI3b1QnIpg'
+localStorage.setItem('token', token)
 
 export const GetAllBusiness = (): ((
   dispatch: (action: ServiceAction) => void
@@ -136,6 +138,7 @@ export const postValidate = (payload: any) => {
   };
 };
 
+// User Detail
 export const getUserbyId: any = (id: string) => {
   const endpoint = `${API_URL}users/${id}`;
 

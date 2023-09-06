@@ -13,10 +13,13 @@ import type { FormLoginData } from "../../interfaces";
 import { onSubmitLogin } from "./handlers/onSubmit";
 import ErrorMessage from "./handlers/errorMessage";
 
-const FormLogin: React.FC = ({ onToggle }: any) => {
-  const dispatch = useDispatch();
-  const goBack = useGoBack();
-  // const navigate = useNavigate()
+import { auth, provider } from '../../firebase-config'
+import { signInWithPopup } from 'firebase/auth'
+
+const FormLogin: React.FC = ({ onToggle }: any, { setIsAuth }) => {
+  const dispatch = useDispatch()
+  const goBack = useGoBack()
+  const navigate = useNavigate()
   const {
     register,
     handleSubmit,
@@ -42,6 +45,14 @@ const FormLogin: React.FC = ({ onToggle }: any) => {
     return dispatch(postValidate(data));
   });
 
+  const singInWithgoogle = () => {
+    signInWithPopup(auth, provider).then((result=>{
+      localStorage.setItem('isAuth', true)
+      setIsAuth(true)
+      navigate('/')
+    }))
+  }
+
   return (
     <div className={style.content}>
       <form onSubmit={onSubmit}>
@@ -50,11 +61,11 @@ const FormLogin: React.FC = ({ onToggle }: any) => {
         {errorMessage !== "" && <ErrorMessage message={errorMessage} />}
         <p className={style.txt}>Password:</p>
         <PasswordLogin register={register} errors={errors} />
-        <div className={style["alt-login"]}>
-          <h4 className={style["log-with"]}>or Login With:</h4>
-          <div className={style["ico-div"]}>
-            <div className={style.google}></div>
-            <div className={style.ig}></div>
+        <div className={style['alt-login']}>
+          <h4 className={style['log-with']}>or Login With:</h4>
+          <div className={style['ico-div']}>
+            <button type='button' className={style.google}></button>
+            <button className={style.ig}></button>
           </div>
         </div>
         <div className={style["buton-div"]}>
@@ -76,12 +87,8 @@ const FormLogin: React.FC = ({ onToggle }: any) => {
           <p className={style.forgot}>Forgot Password?</p>
         </Link>
       </div>
-      <div className={style["ico-div"]}>
-        <div className={style.google}></div>
-        <div className={style.ig}></div>
-      </div>
     </div>
-  );
-};
+  )
+}
 
-export default FormLogin;
+export default FormLogin

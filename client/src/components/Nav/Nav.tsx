@@ -4,7 +4,7 @@ import logoWhite from '../../assets/whitelogo.png'
 import NavMobile from './NavMobile/NavMobile'
 import NavFull from './NavFull/NavFull'
 
-const Nav = (): JSX.Element => {
+const Nav = ({isAuth}): JSX.Element => {
   return (
     <div className={style.test}>
       <header className={style.header}>
@@ -15,7 +15,7 @@ const Nav = (): JSX.Element => {
           </NavLink>
         </div>
         <NavMobile />
-        <NavFull />
+        <NavFull isAuth={isAuth}/>
       </header>
     </div>
   )
