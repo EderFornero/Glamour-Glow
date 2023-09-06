@@ -8,17 +8,13 @@ const NodemailerTest = () => {
 
   const sendEmail = (e) => {
     e.preventDefault()
-    if (recipientEmail && subject && message) {
-      axios.post('http://localhost:3001/send_email', {
-        recipientEmail,
-        subject,
-        message
-      })
-        .then(() => { console.log('Successfully Sent') })
-        .catch(() => { console.log('Ops...') })
-    }
-    console.log(recipientEmail)
-    console.log('send')
+    axios.post('http://localhost:3001/send_email', {
+      recipientEmail,
+      subject,
+      message
+    })
+      .then(() => { console.log('Successfully Sent') })
+      .catch(() => { console.log('Ops...') })
   }
 
   return (
@@ -41,7 +37,7 @@ const NodemailerTest = () => {
         <div>
           <label htmlFor="email">Message</label>
           <input
-            type="email"
+            type="text"
             onChange={e => { setMessage(e.target.value) }}
           />
         </div>
