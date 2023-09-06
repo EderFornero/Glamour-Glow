@@ -8,6 +8,7 @@ import passport from "passport";
 import passportMiddleware from "./middlewares/passport.ts";
 import session from "express-session";
 import "dotenv/config"
+import { nodemailerRouter } from "./routes/nodemailer/index.ts";
 const {TOKEN_ENCRYPTION} = process.env
 
 const server = express();
@@ -37,6 +38,7 @@ server.use("/", serviceRouter)
 server.use("/", categoriesRouter)
 server.use("/", reviewsRouter)
 server.use("/", paymentRouter)
+server.use("/", nodemailerRouter)
 
 server.use(passport.initialize()); 
 server.use(logErrors)

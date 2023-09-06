@@ -13,3 +13,5 @@ router.post("/send_email", (req: Request, res: Response) => {
     .then((response:any) => res.send(response.message))
     .catch((error) => res.status(500).send(error.message));
 })
+
+export default router;
