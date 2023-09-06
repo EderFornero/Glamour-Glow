@@ -14,7 +14,6 @@ const BusinessDetail2 = (): JSX.Element => {
   if (id !== undefined) {
     usuario = useGetDetail(+id)
   }
-
   return (
     <div className={style['global-container']}>
       <BusinessInfo usuario={usuario} />
