@@ -2,24 +2,27 @@ import { z } from "zod";
 import { ROLE } from "../models/User";
 
 const UserSchema = z.object({
-  username: z
-    .string({ required_error: "User name must be characters" })
-    .nonempty("You must provide an user name")
+  name: z
+    .string({ required_error: "Name is required" })
+    .nonempty("You must provide a full name")
     .max(50, "Max 50 characters")
     .trim(),
-  fullname: z
-    .string({ required_error: "Full name is required" })
+  last_name: z
+    .string({ required_error: "Last name is required" })
     .nonempty("You must provide a full name")
     .max(50, "Max 50 characters")
     .trim(),
   role: z.enum([ROLE.CUSTOMER, ROLE.SELLER], {
     required_error: "Role must be customer or seller",
   }),
+  phone_number: z
+    .string({ required_error: "A phone number is required" })
+    .min(6)
+    .max(20),
 
-  //z
-  //.date({required_error: "Date of birth is required"}),
-  date_of_birth:z
-    .string({required_error: "A date of birth is required"}).transform((str) => new Date(str)),
+  date_of_birth: z
+    .string({ required_error: "A date of birth is required" })
+    .transform((str) => new Date(str)),
 
   image: z
     .string({ required_error: "the url image must be provided" })
@@ -35,9 +38,7 @@ const UserSchema = z.object({
     .string({ required_error: "Email is required" })
     .email("Must be an Email")
     .nonempty("Must provide an email"),
-  isActive: z
-  .boolean()
-  .optional()
+  isActive: z.boolean().optional(),
 });
 
 export const CreateUserSchema = z.object({
@@ -47,18 +48,19 @@ export const CreateUserSchema = z.object({
 export const updateUserSchema = z.object({
   body: UserSchema.partial(),
   params: z.object({
-    id: z.string()
-  })
-  
+    id: z.string(),
+  }),
 });
 
 export const readAndDeleteUserSchema = z.object({
   params: z.object({
-      id: z.string()
-  })
-})
+    id: z.string(),
+  }),
+});
 
-export type createUserType = z.infer<typeof CreateUserSchema>["body"]
-export type updateUserTypeBody = z.infer<typeof updateUserSchema>["body"]
-export type updateUserTypeParams = z.infer<typeof updateUserSchema>["params"]
-export type readAndDeleteUserType = z.infer<typeof readAndDeleteUserSchema>["params"]
+export type createUserType = z.infer<typeof CreateUserSchema>["body"];
+export type updateUserTypeBody = z.infer<typeof updateUserSchema>["body"];
+export type updateUserTypeParams = z.infer<typeof updateUserSchema>["params"];
+export type readAndDeleteUserType = z.infer<
+  typeof readAndDeleteUserSchema
+>["params"];

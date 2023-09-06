@@ -13,9 +13,7 @@ const Services = ({ services }: any): JSX.Element => {
         <Pagination currentPage={currentPage} totalPages={totalPages} nextPage={nextPage} prevPage={prevPage} />
         <div className={style.services}>
           {itemsPaginated.map(({ id, name, description, price, category }: Service) => {
-            return (
-              <ServiceCard key={id} id={id} name={name} description={description} price={price} category={category} />
-            )
+            return <ServiceCard key={id} id={id} name={name} description={description} price={price} category={category} />
           })}
         </div>
       </section>

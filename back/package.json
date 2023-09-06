@@ -13,6 +13,7 @@
   "devDependencies": {
     "@types/cors": "^2.8.13",
     "@types/express": "^4.17.17",
+    "@types/express-session": "^1.17.7",
     "@types/jsonwebtoken": "^9.0.2",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.0",
@@ -21,12 +22,17 @@
   },
   "dependencies": {
     "@typegoose/typegoose": "^11.4.1",
+    "@types/passport": "^1.0.12",
+    "@types/passport-jwt": "^3.0.9",
     "argon2": "^0.31.0",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
+    "express-session": "^1.17.3",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^7.4.5",
+    "passport": "^0.6.0",
+    "passport-jwt": "^4.0.1",
     "zod": "^3.22.2"
   }
 }

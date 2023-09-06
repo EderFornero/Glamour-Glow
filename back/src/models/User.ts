@@ -22,17 +22,20 @@ export enum ROLE {
   },
 })
 export class User {
-  @prop({ required: true, type: String, unique: true })
-  username: string;
+  @prop({ required: true, type: String })
+  name: string;
 
   @prop({ required: true, type: String })
-  fullname: string;
+  last_name: string;
 
   @prop({ required: true, type: String, unique: true, lowercase: true })
   email: string;
 
   @prop({ required: true, type: String })
   password: string;
+
+  @prop({ required: true, type: String })
+  phone_number: string;
 
   @prop({ required: true, enum: ROLE, default: ROLE.CUSTOMER })
   role: ROLE;

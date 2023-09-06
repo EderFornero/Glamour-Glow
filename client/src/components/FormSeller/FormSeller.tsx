@@ -1,0 +1,6 @@
+// import React from 'react'
+// import { useForm } from 'react-hook-form'
+// import style from './FormSeller.module.css'
+// import type { RootState } from '../../redux/types'
+// import { getCategories } from '../../router/Actions'
+// import { useDispatch, useSelector } from 'react-redux'

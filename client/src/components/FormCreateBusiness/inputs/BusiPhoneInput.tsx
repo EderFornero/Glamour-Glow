@@ -10,7 +10,7 @@ const BusiPhoneInput: React.FC<BusiPhoneInputProps> = ({ register, errors }) => 
   return (
     <div>
       <input
-        className={style['input']}
+        className={style.input}
         type='text'
         name="seller_phone"
         placeholder='Phone Number'
@@ -26,7 +26,7 @@ const BusiPhoneInput: React.FC<BusiPhoneInputProps> = ({ register, errors }) => 
         })}
       />
       <div>
-      {(Boolean(errors.seller_phone)) && <span className={style['span']}>{errors.seller_phone.message}</span>}
+      {(Boolean(errors.seller_phone)) && <span className={style.span}>{errors.seller_phone.message}</span>}
       </div>
     </div>
   )
