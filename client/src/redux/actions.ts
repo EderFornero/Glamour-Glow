@@ -102,7 +102,7 @@ export const getUsers = (): (dispatch: (action: ServiceAction) => void) => Promi
   }
 }
 
-export const postValidate = (payload: any): () => Promise<AxiosResponse<any, any>> => {
+export const postValidate = (payload: any) => {
   const endpointLogin = `${API_URL}users/login`
   return async function () {
     const jsonLogin = await axios.post(endpointLogin, payload)

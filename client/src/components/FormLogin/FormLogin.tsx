@@ -38,6 +38,7 @@ const FormLogin: React.FC = ({ onToggle }: any) => {
   const [errorMessage, setErrorMessage] = useState('')
 
   const onSubmit = handleSubmit((data: FormLoginData) => {
+    console.log(data)
     return dispatch(postValidate(data))
   })
 
