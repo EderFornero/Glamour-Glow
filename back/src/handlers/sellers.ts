@@ -2,6 +2,9 @@ import { SellerModel } from "../models";
 
 // get Handlers
 export const getSellersHandler = async () => {
+
+
+
   const allSellers = await SellerModel.find({})
     .populate("categoriesArray", {
       _id: 0,
