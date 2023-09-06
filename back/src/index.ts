@@ -1,5 +1,5 @@
 import express from "express";
-import {userRouter, sellerRouter, serviceRouter, categoriesRouter, reviewsRouter, nodemailerRouter} from "./routes/index.ts" 
+import {userRouter, sellerRouter, serviceRouter, categoriesRouter, reviewsRouter, nodemailerRouter } from "./routes/index.ts" 
 import "./db"
 import { logErrors } from "./middlewares/logError.middleware.ts";
 import cors, { CorsOptions } from "cors"

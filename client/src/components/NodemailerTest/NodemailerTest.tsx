@@ -1,20 +1,20 @@
-import axios from 'axios'
 import { useState } from 'react'
 
 const NodemailerTest = () => {
   const [recipientEmail, setRecipientEmail] = useState('')
-  const [subject, setSubject] = useState('')
-  const [message, setMessage] = useState('')
+  // const [subject, setSubject] = useState('')
+  // const [message, setMessage] = useState('')
 
-  const sendEmail = (e) => {
+  const sendEmail = async (e) => {
     e.preventDefault()
-    axios.post('http://localhost:3001/send_email', {
-      recipientEmail,
-      subject,
-      message
+    const res = await fetch('http://localhost:3001/email', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ recipientEmail })
     })
-      .then(() => { console.log('Successfully Sent') })
-      .catch(() => { console.log('Ops...') })
+    console.log(res)
   }
 
   return (
@@ -27,21 +27,7 @@ const NodemailerTest = () => {
             onChange={e => { setRecipientEmail(e.target.value) }}
           />
         </div>
-        <div>
-          <label htmlFor="subject">Subject</label>
-          <input
-            type="text"
-            onChange={e => { setSubject(e.target.value) }}
-          />
-        </div>
-        <div>
-          <label htmlFor="email">Message</label>
-          <input
-            type="text"
-            onChange={e => { setMessage(e.target.value) }}
-          />
-        </div>
-        <button onClick={(e) => { sendEmail(e) }}>
+        <button onClick={(e) => { void sendEmail(e) }}>
           SEND
         </button>
       </form>
