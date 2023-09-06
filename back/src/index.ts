@@ -7,9 +7,8 @@ import { paymentRouter } from "./routes/payment/index.ts";
 import passport from "passport";
 import passportMiddleware from "./middlewares/passport.ts";
 import session from "express-session";
-import "dotenv/config"
 import { nodemailerRouter } from "./routes/nodemailer/index.ts";
-const {TOKEN_ENCRYPTION} = process.env
+import "dotenv/config"
 const {TOKEN_ENCRYPTION, PORT} = process.env
 
 const server = express();

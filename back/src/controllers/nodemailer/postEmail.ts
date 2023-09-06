@@ -6,7 +6,7 @@ const {EMAIL_GLAMOUR_GLOW, PASSWORD_GLAMOUR_GLOW} = process.env
 const myemail = EMAIL_GLAMOUR_GLOW;
 const mypassword = PASSWORD_GLAMOUR_GLOW;
 
- export const sendEmail = ({ recipient_email, subject, message }) => {
+ export const sendEmail = ({ recipient_email, subject, message }: any) => {
     return new Promise((resolve, reject) => {
       var transporter = nodemailer.createTransport({
         service: "gmail",
