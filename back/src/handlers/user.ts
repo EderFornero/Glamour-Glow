@@ -4,12 +4,12 @@ import jwt from "jsonwebtoken";
 config();
 
 export const readUsers = async () => {
-  const allUsers = await UserModel.find({});
+  const allUsers = await UserModel.find({}).select({ password: 0 });
   return allUsers;
 };
 
 export const readUserById = async (id: String) => {
-  const user = await UserModel.findById(id).exec();
+  const user = await UserModel.findById(id).select({ password: 0 }).exec();
   if (!user || !user.isActive) {
     throw Error("User not found");
   }
@@ -24,7 +24,7 @@ export const createUser = async (user: Object) => {
 export const updateUser = async (id: String, updates: Object) => {
   const updatedUser = await UserModel.findByIdAndUpdate(id, updates, {
     new: true,
-  });
+  }).select({ password: 0 });
   return updatedUser;
 };
 
@@ -67,7 +67,7 @@ export const generateToken = async (email: any) => {
   try {
     const user = await UserModel.findOne({ email }).exec();
     const token = await jwt.sign(
-      { name: user?.username, id: user?._id },
+      { name: user?.name, id: user?._id },
       process.env.TOKEN_ENCRYPTION!
     );
     return token;

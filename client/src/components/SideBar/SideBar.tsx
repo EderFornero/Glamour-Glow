@@ -1,17 +1,17 @@
-import { useState } from 'react';
-import styles from './Sidebar.module.css';
-import { menuItems } from './parts/itemsmenu';
-import NavHeader from './parts/NavHeader';
-import NavButton from './parts/NavButton';
-import SubMenu from './parts/SubMenu';
+import { useState } from 'react'
+import styles from './Sidebar.module.css'
+import { menuItems } from './parts/itemsmenu'
+import NavHeader from './parts/NavHeader'
+import NavButton from './parts/NavButton'
+import SubMenu from './parts/SubMenu'
 
-function SideBar(): JSX.Element {
-  const [activeItem, setActiveItem] = useState<string>('');
+function SideBar (): JSX.Element {
+  const [activeItem, setActiveItem] = useState<string>('')
 
   const handleClick = (item: string): void => {
-    setActiveItem(item !== activeItem ? item : '');
-    
-  };
+    setActiveItem(item !== activeItem ? item : '')
+  }
+  console.log(activeItem)
 
   return (
     <aside className={styles.sidebar}>
@@ -20,7 +20,7 @@ function SideBar(): JSX.Element {
         <>
           {!item.items && (
             <NavButton
-              key={item.name}
+              key={item.id}
               onClick={handleClick}
               name={item.name}
               icon={item.icon}
@@ -37,7 +37,7 @@ function SideBar(): JSX.Element {
         </>
       ))}
     </aside>
-  );
+  )
 }
 
-export default SideBar;
+export default SideBar
