@@ -3,6 +3,7 @@ import {userRouter, sellerRouter, serviceRouter, categoriesRouter, reviewsRouter
 import "./db"
 import { logErrors } from "./middlewares/logError.middleware.ts";
 import cors, { CorsOptions } from "cors"
+import { paymentRouter } from "./routes/payment/index.ts";
 import passport from "passport";
 import passportMiddleware from "./middlewares/passport.ts";
 import session from "express-session";
@@ -34,6 +35,7 @@ server.use("/", sellerRouter)
 server.use("/", serviceRouter)
 server.use("/", categoriesRouter)
 server.use("/", reviewsRouter)
+server.use("/", paymentRouter)
 
 server.use(passport.initialize()); 
 server.use(logErrors)

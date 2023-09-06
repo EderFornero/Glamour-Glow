@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from 'react'
 import style from './input.module.css'
 
 interface BusiCategoriesInputProps {
