@@ -3,6 +3,8 @@ import { GET_ALL_BUSINESS, GET_ALL_CATEGORIES, GET_ALL_USERS, SET_RATING, SET_FI
 import type { ServiceAction } from './types'
 
 const API_URL = 'http://localhost:3001/'
+const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiR0lPVkEiLCJpZCI6IjY0ZjdkNDRlNGI1MmVjODRjMjJhMzEzYyIsImlhdCI6MTY5Mzk2MzQzMH0.Kc3ArXiNzFPWaA23NnrIk4VEQI2LPxCSvXI3b1QnIpg'
+localStorage.setItem('token', token)
 
 export const GetAllBusiness = (): (dispatch: (action: ServiceAction) => void) => Promise<void> => {
   const endpoint = `${API_URL}sellers`
@@ -111,14 +113,12 @@ export const postValidate = (payload: any): () => Promise<AxiosResponse<any, any
   }
 }
 
+// User Detail
 export const getUserbyId: any = (id: string) => {
   const endpoint = `${API_URL}users/${id}`
 
   return async (dispatch: (action: ServiceAction) => void) => {
     try {
-      const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiR0lPVkEiLCJpZCI6IjY0ZjdkNDRlNGI1MmVjODRjMjJhMzEzYyIsImlhdCI6MTY5Mzk2MzQzMH0.Kc3ArXiNzFPWaA23NnrIk4VEQI2LPxCSvXI3b1QnIpg'
-      localStorage.setItem('token', token)
-
       const { data } = await axios.get(endpoint, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -141,8 +141,52 @@ export const updateUserInfo: any = (id: string, updateinfo: any) => {
 
   return async (dispatch: (action: ServiceAction) => void) => {
     try {
-      const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiR0lPVkEiLCJpZCI6IjY0ZjdkNDRlNGI1MmVjODRjMjJhMzEzYyIsImlhdCI6MTY5Mzk2MzQzMH0.Kc3ArXiNzFPWaA23NnrIk4VEQI2LPxCSvXI3b1QnIpg'
+      const { data } = await axios.put(endpoint, updateinfo, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      })
 
+      dispatch({
+        type: UPDATE_USER_DETAIL,
+        payload: data
+      })
+    } catch (error: any) {
+      console.log(error.message)
+    }
+  }
+}
+
+// Seller Detail
+
+export const getSellerbyId: any = (id: string) => {
+  const endpoint = `${API_URL}sellers/${id}`
+
+  return async (dispatch: (action: ServiceAction) => void) => {
+    try {
+      const { data } = await axios.get(endpoint, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      })
+
+      dispatch({
+        type: GET_USER_BY_ID,
+        payload: data
+      })
+    } catch (error: any) {
+      console.log(error.message)
+    }
+  }
+}
+
+export const updateUSellerInfo: any = (id: string, updateinfo: any) => {
+  const endpoint = `${API_URL}sellers/${id}`
+
+  return async (dispatch: (action: ServiceAction) => void) => {
+    try {
       const { data } = await axios.put(endpoint, updateinfo, {
         headers: {
           Authorization: `Bearer ${token}`,

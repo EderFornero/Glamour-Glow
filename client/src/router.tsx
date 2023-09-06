@@ -35,7 +35,7 @@ const router = createBrowserRouter([
           }]
       },
       {
-        path: '/userdetail',
+        path: '/userdetail/:id',
         children: [
           {
             index: true,
