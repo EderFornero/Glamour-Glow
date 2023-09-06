@@ -5,7 +5,7 @@ import EmailLogin from './inputs/EmailLogin'
 import PasswordLogin from './inputs/PasswordLogin'
 import { Link } from 'react-router-dom'
 import style from './FormLogin.module.css'
-import { getUsers } from '../../redux/Actions'
+import { getUsers, postValidate } from '../../redux/Actions'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import type { RootState } from '../../redux/types'
@@ -16,7 +16,7 @@ import ErrorMessage from './handlers/errorMessage'
 const FormLogin: React.FC = ({ onToggle }: any) => {
   const dispatch = useDispatch()
   const goBack = useGoBack()
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
   const {
     register,
     handleSubmit,
@@ -38,7 +38,7 @@ const FormLogin: React.FC = ({ onToggle }: any) => {
   const [errorMessage, setErrorMessage] = useState('')
 
   const onSubmit = handleSubmit((data: FormLoginData) => {
-    onSubmitLogin(data, Users, navigate, setErrorMessage)
+    return dispatch(postValidate(data))
   })
 
   return (

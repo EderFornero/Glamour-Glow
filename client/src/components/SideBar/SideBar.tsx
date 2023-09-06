@@ -10,6 +10,7 @@ function SideBar(): JSX.Element {
 
   const handleClick = (item: string): void => {
     setActiveItem(item !== activeItem ? item : '');
+    
   };
 
   return (
