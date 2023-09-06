@@ -1,5 +1,5 @@
 import express from "express";
-import {userRouter, sellerRouter, serviceRouter, categoriesRouter, reviewsRouter} from "./routes/index.ts" 
+import {userRouter, sellerRouter, serviceRouter, categoriesRouter, reviewsRouter, nodemailerRouter} from "./routes/index.ts" 
 import "./db"
 import { logErrors } from "./middlewares/logError.middleware.ts";
 import cors, { CorsOptions } from "cors"
@@ -7,7 +7,6 @@ import { paymentRouter } from "./routes/payment/index.ts";
 import passport from "passport";
 import passportMiddleware from "./middlewares/passport.ts";
 import session from "express-session";
-import { nodemailerRouter } from "./routes/nodemailer/index.ts";
 import "dotenv/config"
 const {TOKEN_ENCRYPTION, PORT} = process.env
 
