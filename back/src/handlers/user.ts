@@ -24,7 +24,7 @@ export const createUser = async (user: Object) => {
 export const updateUser = async (id: String, updates: Object) => {
   const updatedUser = await UserModel.findByIdAndUpdate(id, updates, {
     new: true,
-  });
+  }).select({ password: 0 });
   return updatedUser;
 };
 
@@ -67,7 +67,7 @@ export const generateToken = async (email: any) => {
   try {
     const user = await UserModel.findOne({ email }).exec();
     const token = await jwt.sign(
-      { name: user?.name, id: user?._id },
+      { name: user?.name, id: user?._id, role: user?.role },
       process.env.TOKEN_ENCRYPTION!
     );
     return token;
