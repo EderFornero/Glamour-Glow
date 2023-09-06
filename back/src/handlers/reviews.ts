@@ -15,8 +15,11 @@ export const createReviewHandler = async (data: createReviewType) => {
 }
 
 export const deleteReviewsHandler = async (id: String) => {
-  
-     await ReviewsModel.findByIdAndDelete(id)
+
+
+     const removeReview = await ReviewsModel.findByIdAndDelete(id)
+
+     await SellerModel.findOneAndUpdate({_id : removeReview?.seller_id}, {"$pull": {reviews: id}})
      return id
   
 }

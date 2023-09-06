@@ -7,7 +7,7 @@ export const postService = async (
   res: Response,
   next: NextFunction
 ) => {
-  const { name, description, serviceCategories, rating, price, seller } =
+  const { name, description, serviceCategories, price, seller } =
     req.body;
   try {
     const service = await createService({
@@ -15,7 +15,6 @@ export const postService = async (
       description,
       serviceCategories,
       price,
-      rating,
       seller,
     });
     return res.status(200).json(service);
