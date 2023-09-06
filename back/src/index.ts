@@ -3,6 +3,7 @@ import {userRouter, sellerRouter, serviceRouter, categoriesRouter, reviewsRouter
 import "./db"
 import { logErrors } from "./middlewares/logError.middleware.ts";
 import cors, { CorsOptions } from "cors"
+import { paymentRouter } from "./routes/payment/index.ts";
 
 const server = express();
 const PORT = 3001;
@@ -24,5 +25,5 @@ server.use("/", sellerRouter)
 server.use("/", serviceRouter)
 server.use("/", categoriesRouter)
 server.use("/", reviewsRouter)
-
+server.use("/", paymentRouter)
 server.use(logErrors)
