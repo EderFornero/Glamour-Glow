@@ -57,7 +57,7 @@ export const validateLogIn = async (email: any, password: any) => {
     if (!isPasswordValid) {
       return false;
     }
-    return user;
+    return { id: user._id };
   } catch (error: any) {
     throw new Error(error.message);
   }
@@ -68,7 +68,8 @@ export const generateToken = async (email: any) => {
     const user = await UserModel.findOne({ email }).exec();
     const token = await jwt.sign(
       { name: user?.name, id: user?._id, role: user?.role },
-      process.env.TOKEN_ENCRYPTION!
+      process.env.TOKEN_ENCRYPTION!,
+      { expiresIn: "1h" }
     );
     return token;
   } catch (error: any) {
