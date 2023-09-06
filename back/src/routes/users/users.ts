@@ -27,6 +27,7 @@ router.get(
 );
 router.post("/", schemaValidation(CreateUserSchema), postUser);
 router.post("/login", logInUser);
+
 router.put(
   "/:id",
   passport.authenticate("jwt", { session: false }),
@@ -39,5 +40,6 @@ router.delete(
   schemaValidation(readAndDeleteUserSchema),
   deleteUser
 );
+
 
 export default router;
