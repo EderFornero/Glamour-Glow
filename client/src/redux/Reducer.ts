@@ -1,5 +1,5 @@
 import { GET_ALL_BUSINESS, GET_ALL_CATEGORIES, GET_ALL_USERS, SET_FILTERS, SET_RATING, SET_UPLOAD_IMAGE, GET_USER_BY_ID, UPDATE_USER_DETAIL } from './Action-Types'
-import type { ServiceAction, RootState } from './types'
+import type { ServiceAction, RootState, UserDetail } from './types'
 
 const initialState: RootState = {
   allServices: [],
@@ -15,7 +15,7 @@ const reducer = (state = initialState, action: ServiceAction): {
   allServices: any[]
   categories: any[]
   users: any[]
-  userdetail: any
+  userdetail: UserDetail
   filter: string
   rating: number
   image: string | undefined
@@ -60,7 +60,7 @@ const reducer = (state = initialState, action: ServiceAction): {
       return { ...state, userdetail: action.payload }
 
     case UPDATE_USER_DETAIL:
-      return { ...state, userdetail: { ...state.userdetail, ...action.payload } }
+      return { ...state, userdetail: action.payload }
 
     default:
       return state

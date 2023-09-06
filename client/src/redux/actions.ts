@@ -107,7 +107,15 @@ export const getUserbyId: any = (id: string) => {
 
   return async (dispatch: (action: ServiceAction) => void) => {
     try {
-      const { data } = await axios.get(endpoint)
+      const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiR0lPVkEiLCJpZCI6IjY0ZjdkNDRlNGI1MmVjODRjMjJhMzEzYyIsImlhdCI6MTY5Mzk2MzQzMH0.Kc3ArXiNzFPWaA23NnrIk4VEQI2LPxCSvXI3b1QnIpg'
+      localStorage.setItem('token', token)
+
+      const { data } = await axios.get(endpoint, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      })
 
       dispatch({
         type: GET_USER_BY_ID,
@@ -120,18 +128,25 @@ export const getUserbyId: any = (id: string) => {
 }
 
 export const updateUserInfo: any = (id: string, updateinfo: any) => {
-  try {
-    const endpoint = `${API_URL}users/${id}`
-    return async (dispatch: (action: ServiceAction) => void) => {
-      const { data } = await axios.put(endpoint, updateinfo)
-      console.log('Modificado correctamente')
+  const endpoint = `${API_URL}users/${id}`
+
+  return async (dispatch: (action: ServiceAction) => void) => {
+    try {
+      const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiR0lPVkEiLCJpZCI6IjY0ZjdkNDRlNGI1MmVjODRjMjJhMzEzYyIsImlhdCI6MTY5Mzk2MzQzMH0.Kc3ArXiNzFPWaA23NnrIk4VEQI2LPxCSvXI3b1QnIpg'
+
+      const { data } = await axios.put(endpoint, updateinfo, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      })
 
       dispatch({
         type: UPDATE_USER_DETAIL,
         payload: data
       })
+    } catch (error: any) {
+      console.log(error.message)
     }
-  } catch (error: any) {
-    console.log(error.message)
   }
 }
