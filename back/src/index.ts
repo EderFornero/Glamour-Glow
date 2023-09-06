@@ -36,10 +36,7 @@ server.use("/", sellerRouter)
 server.use("/", serviceRouter)
 server.use("/", categoriesRouter)
 server.use("/", reviewsRouter)
-<<<<<<< HEAD
 server.use("/", paymentRouter)
-=======
 
 server.use(passport.initialize()); 
->>>>>>> be2f0f5eae4d2a4520685a7e90e5c96615b38aa5
 server.use(logErrors)
