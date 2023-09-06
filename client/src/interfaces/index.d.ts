@@ -1,10 +1,10 @@
 export interface ServiceProvider {
-  id: number;
-  businessName: string;
-  businessLocation: string;
-  rating: number;
-  categories: string[];
-  services: Service[];
+  id: number
+  businessName: string
+  businessLocation: string
+  rating: number
+  categories: string[]
+  services: Service[]
 }
 
 export interface Service {
@@ -17,10 +17,11 @@ export interface Service {
 }
 
 export interface FormData {
-  username: string
-  fullname: string
+  name: string
+  last_name: string
   email: string
   password: string
+  phone_number: string
   role: 'customer' | 'seller'
   date_of_birth: string
   image: string
