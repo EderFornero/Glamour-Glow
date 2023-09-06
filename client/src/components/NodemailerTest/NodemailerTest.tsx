@@ -1,20 +1,19 @@
 import { useState } from 'react'
+// utils
+import { sendEmail } from '../../utils'
 
-const NodemailerTest = () => {
+const NodemailerTest = (): JSX.Element => {
   const [recipientEmail, setRecipientEmail] = useState('')
-  // const [subject, setSubject] = useState('')
-  // const [message, setMessage] = useState('')
 
-  const sendEmail = async (e) => {
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+  const handleSendEmail = async (e: any) => {
     e.preventDefault()
-    const res = await fetch('http://localhost:3001/email', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ recipientEmail })
-    })
-    console.log(res)
+    try {
+      const response = await sendEmail(recipientEmail)
+      console.log(response)
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   return (
@@ -27,7 +26,7 @@ const NodemailerTest = () => {
             onChange={e => { setRecipientEmail(e.target.value) }}
           />
         </div>
-        <button onClick={(e) => { void sendEmail(e) }}>
+        <button onClick={(e) => { void handleSendEmail(e) }}>
           SEND
         </button>
       </form>
