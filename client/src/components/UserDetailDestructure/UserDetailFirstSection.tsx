@@ -10,6 +10,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useEffect, useState } from 'react'
 import { getUserbyId, updateUserInfo } from '../../redux/Actions'
 import { UserDetail } from '../../redux/types'
+import { useParams } from 'react-router-dom'
 
 const UserDetailFirstSection = (): JSX.Element => {
   const dispatch = useDispatch()
@@ -19,7 +20,8 @@ const UserDetailFirstSection = (): JSX.Element => {
   const [editing, setEditing] = useState(false)
   const [newUserInfo, setNewUserInfo] = useState<UserDetail>({ ...userdetail })
 
-  const id = '64f7d44e4b52ec84c22a313c'
+  const { id } = useParams()
+
   useEffect(
     () => {
       dispatch(getUserbyId(id))
@@ -54,7 +56,7 @@ const UserDetailFirstSection = (): JSX.Element => {
                     <Cloudinary />
                     <h1> {editing
                       ? (<input type="text" name="name" value={newUserInfo.name} onChange={handleChange} />)
-                      : (userdetail.name)} </h1>
+                      : (`${userdetail.name} ${userdetail.last_name}`) } </h1>
                     {editing
                       ? (<a onClick={handleSave}>Save</a>)
                       : (<a onClick={handleEdit}>Edit basic information</a>)}

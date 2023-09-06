@@ -3,7 +3,7 @@ import FormRegister from '../../components/FormRegister/FormRegister'
 import FormLogin from '../../components/FormLogin/FormLogin'
 import style from './Forms.module.css'
 
-const Forms: React.FC = () => {
+const Forms: React.FC = ({ setIsAuth }) => {
   const [showLoginForm, setShowLoginForm] = useState(true)
 
   const toggleForm = () => {
@@ -38,7 +38,7 @@ const Forms: React.FC = () => {
               </div>
               <div className={style.forms}>
                 <div>
-                  {showLoginForm ? <FormLogin onToggle={toggleForm} /> : <FormRegister onToggle={toggleForm} />}
+                  {showLoginForm ? <FormLogin onToggle={toggleForm} setIsAuth={ setIsAuth }/> : <FormRegister onToggle={toggleForm} />}
                 </div>
               </div>
             </div>
