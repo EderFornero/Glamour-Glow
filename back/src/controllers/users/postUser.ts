@@ -8,13 +8,22 @@ export const postUser = async (
   next: NextFunction
 ) => {
   try {
-    const { username, fullname, email, password, role, date_of_birth, image } =
-      req.body;
-    const savedUser = await createUser({
-      username,
-      fullname,
+    const {
+      name,
+      last_name,
       email,
       password,
+      phone_number,
+      role,
+      date_of_birth,
+      image,
+    } = req.body;
+    const savedUser = await createUser({
+      name,
+      last_name,
+      email,
+      password,
+      phone_number,
       role,
       date_of_birth,
       image,

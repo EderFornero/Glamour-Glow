@@ -7,25 +7,23 @@ import Reviews from '../../components/Reviews/Reviews'
 import BusinessInfo from './BusinessInfo/BusinessInfo'
 import BusinessImages from './BusinessImages/BusinessImages'
 
-
-
 const BusinessDetail2 = (): JSX.Element => {
-    const { id } = useParams()
-    let usuario = null
+  const { id } = useParams()
+  let usuario = null
 
-    if (id !== undefined) {
-        usuario = useGetDetail(+id)
-    }
+  if (id !== undefined) {
+    usuario = useGetDetail(+id)
+  }
 
-    return (
-        <div className={style['global-container']}>
-            <BusinessInfo usuario={usuario} />
-            <BusinessImages />
-            <Services services={usuario.services} />
-            <LeaveAComment user={usuario} />
-            <Reviews reviews={usuario.reviews} />
-        </div>
-    )
+  return (
+    <div className={style['global-container']}>
+      <BusinessInfo usuario={usuario} />
+      <BusinessImages />
+      <Services services={usuario.services} />
+      <LeaveAComment user={usuario} />
+      <Reviews reviews={usuario.reviews} />
+    </div>
+  )
 }
 
 export default BusinessDetail2

@@ -1,6 +1,6 @@
 .global-container{ 
     width: 100%;
-    padding: 5em;
+    padding: 3em;
     display: flex;
     flex-wrap: wrap;
     gap: 40px;

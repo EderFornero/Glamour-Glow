@@ -34,6 +34,7 @@ export const updateService = async (id: string, update: Object) => {
 };
 
 export const destroyService = async (id: string) => {
-  await ServicesModel.findByIdAndDelete(id);
+  const deleteService = await ServicesModel.findByIdAndDelete(id);
+  await SellerModel.findOneAndUpdate({_id : deleteService?.seller}, {"$pull": {servicesArray: id}})
   return id;
 };

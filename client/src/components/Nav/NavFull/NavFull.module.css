@@ -1,0 +1,24 @@
+nav {
+    display: flex;
+    .menu-full {
+        display: flex;
+        list-style: none;
+        gap: 3rem;
+        align-items: center;
+        margin-right: 25px;
+      }
+      .link-full {
+        color: #ffffff;
+        transition: text-decoration 0.5s;
+      }
+      .userimg-full{
+        border-radius: 50%;
+        width: 2.5rem;
+      }
+  }
+
+@media (max-width: 916px) {
+    .nav-full {
+      display: none;
+    }
+  }

@@ -11,7 +11,7 @@ const BusiGenderInput: React.FC<BusiGenderInputProps> = ({ register, errors }) =
 
     <div>
         <select
-        className={style['input']}
+        className={style.input}
         type='select'
         name='seller_gender'
         {...register('seller_gender', {
@@ -20,12 +20,12 @@ const BusiGenderInput: React.FC<BusiGenderInputProps> = ({ register, errors }) =
             message: 'Please enter at least one Gender'
           }
         })}>
-          <option className={style['option']} value='any'>Any</option>
-          <option className={style['option']} value='male'>Male</option>
-          <option className={style['option']} value='female'>Female</option>
+          <option className={style.option} value='any'>Any</option>
+          <option className={style.option} value='male'>Male</option>
+          <option className={style.option} value='female'>Female</option>
         </select>
         <div>
-            {errors.seller_gender?.type === 'required' && <span className={style['span']}>You neet at least one Gender</span>}
+            {errors.seller_gender?.type === 'required' && <span className={style.span}>You neet at least one Gender</span>}
         </div>
     </div>
   )

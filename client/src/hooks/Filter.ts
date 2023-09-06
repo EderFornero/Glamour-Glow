@@ -1,5 +1,5 @@
 // actions
-import { setFiler, setPages } from '../redux/Actions'
+import { setFiler } from '../redux/Actions'
 // redux
 import { useDispatch, useSelector } from 'react-redux'
 // root
@@ -24,7 +24,6 @@ export const useFilterHook = (searchUsers: ServiceProvider[]): {
 
   const useFilter = (category: string): void => {
     dispatch(setFiler(category))
-    dispatch(setPages(0))
   }
 
   const filteredUsers = searchUsers.sort(filteredRating[rating]).filter(filteredCategories(filter))

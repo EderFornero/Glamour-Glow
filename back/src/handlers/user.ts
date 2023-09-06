@@ -1,12 +1,15 @@
 import { UserModel } from "../models";
+import { config } from "dotenv";
+import jwt from "jsonwebtoken";
+config();
 
 export const readUsers = async () => {
-  const allUsers = await UserModel.find({});
+  const allUsers = await UserModel.find({}).select({ password: 0 });
   return allUsers;
 };
 
 export const readUserById = async (id: String) => {
-  const user = await UserModel.findById(id).exec();
+  const user = await UserModel.findById(id).select({ password: 0 }).exec();
   if (!user || !user.isActive) {
     throw Error("User not found");
   }
@@ -21,27 +24,54 @@ export const createUser = async (user: Object) => {
 export const updateUser = async (id: String, updates: Object) => {
   const updatedUser = await UserModel.findByIdAndUpdate(id, updates, {
     new: true,
-  });
+  }).select({ password: 0 });
   return updatedUser;
 };
-// let prueba = {
-//   username: "FirstUser",
-//   fullname: "Primero Us",
-//   email: "posta@gmail.com",
-//   password: "postobon",
-//   role: "customer",
-//   date_of_birth: "2012-04-21",
-//   image: "imagen2POSTA",
-//   isActive: "false",
-// };
-//let prueba2 = JSON.stringify(prueba);
-export const destroyUser = async (id: String) => {
-  const user = await UserModel.findByIdAndUpdate(
-    id,
-    { isActive: false },
-    {
-      new: true,
+
+export const destroyUserService = async (id: any) => {
+  try {
+    const user = await UserModel.findByIdAndUpdate(
+      id,
+      { isActive: false },
+      {
+        new: true,
+      }
+    );
+
+    return user;
+  } catch (error) {
+    throw Error("Something went wrong");
+  }
+};
+
+export const validateLogIn = async (email: any, password: any) => {
+  //change "any" type
+  try {
+    const user = await UserModel.findOne({ email }).exec();
+    if (!user) {
+      throw new Error("User is not registered");
     }
-  );
-  return user;
+
+    const isPasswordValid = await user.validatePassword(password);
+
+    if (!isPasswordValid) {
+      return false;
+    }
+    return user;
+  } catch (error: any) {
+    throw new Error(error.message);
+  }
+};
+
+export const generateToken = async (email: any) => {
+  try {
+    const user = await UserModel.findOne({ email }).exec();
+    const token = await jwt.sign(
+      { name: user?.name, id: user?._id },
+      process.env.TOKEN_ENCRYPTION!
+    );
+    return token;
+  } catch (error: any) {
+    throw new Error(error.message);
+  }
 };

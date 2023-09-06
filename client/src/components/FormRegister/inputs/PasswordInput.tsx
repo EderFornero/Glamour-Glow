@@ -9,14 +9,14 @@ interface PasswordInputProps {
 const PasswordInput: React.FC<PasswordInputProps> = ({ register, errors }) => {
   const passwordRef = useRef<string | undefined>('')
 
-  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>): any => {
     passwordRef.current = event.target.value
   }
 
   return (
     <div>
       <input
-        className={style['input']}
+        className={style.input}
         type="password"
         name="password"
         placeholder="Password"
@@ -30,12 +30,12 @@ const PasswordInput: React.FC<PasswordInputProps> = ({ register, errors }) => {
             message: 'The password is too short'
           }
         })}
-        onChange={handlePasswordChange} // Actualiza passwordRef en cada cambio
+        onChange={handlePasswordChange}
       />
-      <div>{errors.password && <span className={style['span']}>{errors.password.message}</span>}</div>
+      <div>{errors.password && <span className={style.span}>{errors.password.message}</span>}</div>
 
       <input
-        className={style['input']}
+        className={style.input}
         type="password"
         name="confirmPassword"
         placeholder="Confirm Password"
@@ -50,7 +50,7 @@ const PasswordInput: React.FC<PasswordInputProps> = ({ register, errors }) => {
       />
       <div>
         {errors.confirmPassword && (
-          <span className={style['span']}>{errors.confirmPassword.message}</span>
+          <span className={style.span}>{errors.confirmPassword.message}</span>
         )}
       </div>
     </div>
