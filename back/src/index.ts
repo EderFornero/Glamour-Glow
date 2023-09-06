@@ -10,9 +10,9 @@ import session from "express-session";
 import "dotenv/config"
 import { nodemailerRouter } from "./routes/nodemailer/index.ts";
 const {TOKEN_ENCRYPTION} = process.env
+const {TOKEN_ENCRYPTION, PORT} = process.env
 
 const server = express();
-const PORT = 3001;
 const corsOptions: CorsOptions = {
     origin: "*",
     credentials: true
@@ -29,7 +29,7 @@ server.use(session({
 passport.use(passportMiddleware);
 
 server.listen(PORT, ()=> {
-    console.log("Server running  in PORT 3001 my king :** ")
+    console.log(`Server running  in PORT ${PORT}`)
 });
 
 server.use("/", userRouter)
