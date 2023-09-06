@@ -9,6 +9,7 @@ export interface RootState {
   allServices: any[]
   categories: any[]
   users: any[]
+  userdetail: any
   filter: string
   rating: number
   image: string | undefined
