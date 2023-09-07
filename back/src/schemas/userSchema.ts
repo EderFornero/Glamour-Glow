@@ -7,7 +7,7 @@ const UserSchema = z.object({
     .nonempty("You must provide a full name")
     .max(50, "Max 50 characters")
     .trim(),
-  last_name: z
+  lastName: z
     .string({ required_error: "Last name is required" })
     .nonempty("You must provide a full name")
     .max(50, "Max 50 characters")
@@ -15,12 +15,12 @@ const UserSchema = z.object({
   role: z.enum([ROLE.CUSTOMER, ROLE.SELLER], {
     required_error: "Role must be customer or seller",
   }),
-  phone_number: z
+  phoneNumber: z
     .string({ required_error: "A phone number is required" })
     .min(6)
     .max(20),
 
-  date_of_birth: z
+  dateOfBirth: z
     .string({ required_error: "A date of birth is required" })
     .transform((str) => new Date(str)),
 

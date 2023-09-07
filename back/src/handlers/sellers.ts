@@ -64,12 +64,12 @@ const query: Record<string, any> = _req.query;
 const filters: Record<string, any> = {};
 
 // aca el filtrado por nombre
-if (query.seller_name) {
-filters.seller_name = query.seller_name;
+if (query.sellerName) {
+filters.sellerName = query.sellerName;
 }
 // por aca el filtrado por genero
-if (query.seller_gender) {
-filters.seller_gender = query.seller_gender;
+if (query.sellerGender) {
+filters.sellerGender = query.sellerGender;
 }
 // filtrado por categorias
 if (query.categoriesArray && Array.isArray(query.categoriesArray)) {

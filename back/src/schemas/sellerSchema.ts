@@ -2,20 +2,20 @@ import { z } from "zod";
 import { GENDER } from "../models/Sellers";
 
 const sellerSchema = z.object({
-  seller_name: z
+  sellerName: z
     .string({ required_error: "a seller name is required" })
     .nonempty("You must provide a seller name")
     .max(50, "Max, 50 characters")
     .trim(),
-  seller_email: z
+  sellerEmail: z
     .string({ required_error: "Email is required" })
     .email("Must be an Email")
     .nonempty("Must provide an email"),
-  seller_phone: z
+  sellerPhone: z
     .string({ required_error: "A phone number is required" })
     .min(6)
     .max(20),
-  seller_gender: z.enum([GENDER.ANY, GENDER.FEMALE, GENDER.MALE], {
+  sellerGender: z.enum([GENDER.ANY, GENDER.FEMALE, GENDER.MALE], {
     required_error: "Gender must be female, male or any",
   }),
   categoriesArray: z
