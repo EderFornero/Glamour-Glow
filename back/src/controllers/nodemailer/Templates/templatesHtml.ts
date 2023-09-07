@@ -1,3 +1,10 @@
+
+export function replaceHtml (stringToReplace: string, ...args: string[]) {
+    return stringToReplace.replace(/%(\d+)/g, (_, i) => args[i])
+}
+
+ 
+  
 export const WELCOME_HTML = `
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -78,7 +85,7 @@ cellspacing="0"><tr><td style="width:180px" valign="top"><![endif]-->
 <td align="left" style="padding:0;Margin:0;width:360px">
 <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
 <tr>
-<td align="center" class="h-auto" valign="middle" height="100" style="padding:0;Margin:0"><h3 style="Margin:0;line-height:26px;mso-line-height-rule:exactly;font-family:Verdana, 'helvetica neue', helvetica, sans-serif;font-size:22px;font-style:normal;font-weight:normal;color:#6e66ff">WELCOME TO OUR COMUNITY</h3></td>
+<td align="center" class="h-auto" valign="middle" height="100" style="padding:0;Margin:0"><h3 style="Margin:0;line-height:26px;mso-line-height-rule:exactly;font-family:Verdana, 'helvetica neue', helvetica, sans-serif;font-size:22px;font-style:normal;font-weight:normal;color:#6e66ff">WELCOME TO OUR COMMUNITY</h3></td>
 </tr>
 </table></td>
 </tr>
@@ -98,7 +105,7 @@ cellspacing="0"><tr><td style="width:180px" valign="top"><![endif]-->
 <td valign="top" align="center" style="padding:0;Margin:0;width:560px">
 <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
 <tr class="es-visible-simple-html-only">
-<td style="padding:0;Margin:0"><h6 style="font-size:15px;margin:2px 0px 2px 10px">Dear [Username],</h6>
+<td style="padding:0;Margin:0"><h6 style="font-size:15px;margin:2px 0px 2px 10px">Dear %0,</h6>
 <section style="text-align:left;margin:2px 2px 5px 20px;font-weight:500;text-indent:5px;padding:3px">
 <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'trebuchet ms', 'lucida grande', 'lucida sans unicode', 'lucida sans', tahoma, sans-serif;line-height:21px;color:#333333;font-size:14px">Welcome to our community! We are thrilled to have you on board. Please be advised that at Glamour Glow, we are dedicated to providing you with the best experience and service possible.</p>
 </section>
@@ -267,7 +274,7 @@ cellspacing="0"><tr><td style="width:180px" valign="top"><![endif]-->
 </section>
 <section style="text-align:left;margin:2px 2px 5px 20px;font-weight:500;text-indent:5px;padding:3px">
 <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'trebuchet ms', 'lucida grande', 'lucida sans unicode', 'lucida sans', tahoma, sans-serif;line-height:21px;color:#333333;font-size:14px">Click the link below to reset your password:</p>
-<p class="reset-password" style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'trebuchet ms', 'lucida grande', 'lucida sans unicode', 'lucida sans', tahoma, sans-serif;line-height:21px;color:#333333;font-size:14px"><a href="https://www.tuweb.com/reset-password" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#5EFFB1;font-size:14px">Reset Password</a></p>
+<p class="reset-password" style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'trebuchet ms', 'lucida grande', 'lucida sans unicode', 'lucida sans', tahoma, sans-serif;line-height:21px;color:#333333;font-size:14px"><a href="%0" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#5EFFB1;font-size:14px">Reset Password</a></p>
 </section></td>
 </tr>
 </table></td>
