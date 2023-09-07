@@ -3,12 +3,13 @@ import { transporter } from "../../config/transportmailer";
 import "dotenv/config"
 import { findUserByEmailHandler } from "../../handlers/nodemailer";
 const {EMAIL_GLAMOUR_GLOW} = process.env
+import { PASSWORD_RECOVERY } from "./Templates/WelcomeHtml";
 
 const myemail = EMAIL_GLAMOUR_GLOW;
 
 export const sendEmail = async (req: Request, res: Response, next: NextFunction) => {
 
-    const {recipientEmail, subject , message} = req.body
+    const {recipientEmail, subject} = req.body
     try {
         const userEmail = await findUserByEmailHandler(recipientEmail)
        
@@ -16,7 +17,7 @@ export const sendEmail = async (req: Request, res: Response, next: NextFunction)
             from: myemail,
             to: JSON.stringify(userEmail),
             subject: subject,
-            html: message 
+            html: PASSWORD_RECOVERY 
           };
       
           transporter.sendMail(mail_configs, (error: any, info: any) => {
