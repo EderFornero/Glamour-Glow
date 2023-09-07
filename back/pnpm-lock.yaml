@@ -76,9 +76,12 @@ devDependencies:
   '@types/mercadopago':
     specifier: ^1.5.8
     version: 1.5.8
+<<<<<<< HEAD
+=======
   '@types/nodemailer':
     specifier: ^6.4.9
     version: 6.4.9
+>>>>>>> 099e852aa3bcdbe60cd5173811f671b3505a7e10
   eslint-config-prettier:
     specifier: ^9.0.0
     version: 9.0.0(eslint@8.48.0)
@@ -1522,10 +1525,13 @@ packages:
     resolution: {integrity: sha512-Yljz7ffyPbrLpLngrMtZ7NduUgVvi6wG9RJ9IUcyCd59YQ911PBJphODUcbOVbqYfxe1wuYf/LJ8PauMRwsM/g==}
     dev: false
 
+<<<<<<< HEAD
+=======
   /js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
     dev: false
 
+>>>>>>> 099e852aa3bcdbe60cd5173811f671b3505a7e10
   /js-yaml@4.1.0:
     resolution: {integrity: sha512-wpxZs9NoxZaJESJGIZTyDEaYpl0FKSA+FB9aJiyemKhMwkxQg63h4T1KJgUGHpTqPDNRcmmYLugrRjJlBtWvRA==}
     hasBin: true
@@ -1672,6 +1678,8 @@ packages:
     engines: {node: '>= 0.6.0'}
     dev: false
 
+<<<<<<< HEAD
+=======
   /loose-envify@1.4.0:
     resolution: {integrity: sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==}
     hasBin: true
@@ -1679,6 +1687,7 @@ packages:
       js-tokens: 4.0.0
     dev: false
 
+>>>>>>> 099e852aa3bcdbe60cd5173811f671b3505a7e10
   /lru-cache@4.1.5:
     resolution: {integrity: sha512-sWZlbEP2OsHNkXrMl5GYk/jKk70MBng6UU4YI/qGDYbgf6YbP4EvmqISbXCoJiRKs+1bSpFHVgQxvJ17F2li5g==}
     dependencies:
@@ -2789,12 +2798,15 @@ packages:
       extsprintf: 1.3.0
     dev: false
 
+<<<<<<< HEAD
+=======
   /warning@4.0.3:
     resolution: {integrity: sha512-rpJyN222KWIvHJ/F53XSZv0Zl/accqHR8et1kpaMTD/fLCRxtV8iX8czMzY7sVZupTI3zcUTg8eycS2kNF9l6w==}
     dependencies:
       loose-envify: 1.4.0
     dev: false
 
+>>>>>>> 099e852aa3bcdbe60cd5173811f671b3505a7e10
   /webidl-conversions@3.0.1:
     resolution: {integrity: sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==}
     dev: false

@@ -1,4 +1,4 @@
-import axios from "./axiosService";
+import axios from "./axiosService"; //{ AxiosResponse } from "axios";
 import {
   GET_ALL_BUSINESS,
   GET_ALL_CATEGORIES,
@@ -8,27 +8,12 @@ import {
   SET_UPLOAD_IMAGE,
   GET_USER_BY_ID,
   UPDATE_USER_DETAIL,
-  GET_SELLER_BY_ID,
-  UPDATE_SELLER_DETAIL,
-  SET_AUTH,
-  SET_USER_ID,
 } from "./Action-Types";
 import type { ServiceAction } from "./types";
 
-const API_URL = "http://localhost:3001/";
-const token =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiR0lPVkEiLCJpZCI6IjY0ZjdkNDRlNGI1MmVjODRjMjJhMzEzYyIsImlhdCI6MTY5Mzk2MzQzMH0.Kc3ArXiNzFPWaA23NnrIk4VEQI2LPxCSvXI3b1QnIpg";
-localStorage.setItem("token", token);
-
-export const setAuth = (isAuth) => ({
-  type: SET_AUTH,
-  payload: isAuth,
-});
-
-export const setUserId = (id) => ({
-  type: SET_USER_ID,
-  payload: id,
-});
+const API_URL = 'http://localhost:3001/'
+const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiR0lPVkEiLCJpZCI6IjY0ZjdkNDRlNGI1MmVjODRjMjJhMzEzYyIsImlhdCI6MTY5Mzk2MzQzMH0.Kc3ArXiNzFPWaA23NnrIk4VEQI2LPxCSvXI3b1QnIpg'
+localStorage.setItem('token', token)
 
 export const GetAllBusiness = (): ((
   dispatch: (action: ServiceAction) => void
@@ -116,13 +101,8 @@ export const postSeller = (payload: any) => {
 export const postUser = (payload: any) => {
   const endpoint1 = `${API_URL}users`;
   return async function (dispatch: any) {
-    try {
-      const response = await axios.post(endpoint1, payload);
-
-      return response;
-    } catch (error: any) {
-      console.log(error.message);
-    }
+    let json1 = await axios.post(endpoint1, payload);
+    return json1;
   };
 };
 
@@ -152,6 +132,8 @@ export const postValidate = (payload: any) => {
     const token = jsonLogin.data.token;
     //const id = jsonLogin.data.id
     localStorage.setItem("token", token);
+    const prueba = localStorage.getItem("token");
+    console.log(prueba);
     return jsonLogin;
   };
 };
@@ -179,45 +161,18 @@ export const updateUserInfo: any = (id: string, updateinfo: any) => {
 
   return async (dispatch: (action: ServiceAction) => void) => {
     try {
-      const { data } = await axios.put(endpoint, updateinfo);
+      const token =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiR0lPVkEiLCJpZCI6IjY0ZjdkNDRlNGI1MmVjODRjMjJhMzEzYyIsImlhdCI6MTY5Mzk2MzQzMH0.Kc3ArXiNzFPWaA23NnrIk4VEQI2LPxCSvXI3b1QnIpg";
+
+      const { data } = await axios.put(endpoint, updateinfo, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
 
       dispatch({
         type: UPDATE_USER_DETAIL,
-        payload: data,
-      });
-    } catch (error: any) {
-      console.log(error.message);
-    }
-  };
-};
-
-// User Detail
-export const getSellerbyId: any = (id: string) => {
-  const endpoint = `${API_URL}sellers/${id}`;
-
-  return async (dispatch: (action: ServiceAction) => void) => {
-    try {
-      const { data } = await axios.get(endpoint);
-
-      dispatch({
-        type: GET_SELLER_BY_ID,
-        payload: data,
-      });
-    } catch (error: any) {
-      console.log(error.message);
-    }
-  };
-};
-
-export const updateSellerInfo: any = (id: string, updateinfo: any) => {
-  const endpoint = `${API_URL}sellers/${id}`;
-
-  return async (dispatch: (action: ServiceAction) => void) => {
-    try {
-      const { data } = await axios.put(endpoint, updateinfo);
-
-      dispatch({
-        type: UPDATE_SELLER_DETAIL,
         payload: data,
       });
     } catch (error: any) {
