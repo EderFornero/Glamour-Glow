@@ -29,13 +29,13 @@ export const setUserId = (id) => ({
   payload: id
 })
 
-export const GetAllBusiness = (): ((dispatch: (action: ServiceAction) => void) => Promise<void>) => {
+export const getAllBusiness = (): ((dispatch: (action: ServiceAction) => void) => Promise<void>) => {
   const endpoint = `${API_URL}sellers`
 
   return async (dispatch: (action: ServiceAction) => void) => {
     try {
       const { data } = await axios.get(endpoint)
-
+      console.log(data)
       dispatch({
         type: GET_ALL_BUSINESS,
         payload: data
