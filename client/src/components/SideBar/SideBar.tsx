@@ -5,13 +5,10 @@ import NavHeader from './parts/NavHeader'
 import NavButton from './parts/NavButton'
 import SubMenu from './parts/SubMenu'
 
-function SideBar (): JSX.Element {
-  const [activeItem, setActiveItem] = useState<string>('')
-
+function SideBar ({setActiveItem, activeItem}): JSX.Element {
   const handleClick = (item: string): void => {
     setActiveItem(item !== activeItem ? item : '')
   }
-  console.log(activeItem)
 
   return (
     <aside className={styles.sidebar}>

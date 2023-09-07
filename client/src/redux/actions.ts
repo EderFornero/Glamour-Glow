@@ -16,8 +16,6 @@ import {
 import type { ServiceAction } from './types'
 
 const API_URL = 'http://localhost:3001/'
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiR0lPVkEiLCJpZCI6IjY0ZjdkNDRlNGI1MmVjODRjMjJhMzEzYyIsImlhdCI6MTY5Mzk2MzQzMH0.Kc3ArXiNzFPWaA23NnrIk4VEQI2LPxCSvXI3b1QnIpg'
-localStorage.setItem('token', token)
 
 export const setAuth = (isAuth) => ({
   type: SET_AUTH,
@@ -141,11 +139,15 @@ export const getUsers = (): ((dispatch: (action: ServiceAction) => void) => Prom
 export const postValidate = (payload: any) => {
   const endpointLogin = `${API_URL}users/login`
   return async function () {
-    const jsonLogin = await axios.post(endpointLogin, payload)
-    const token = jsonLogin.data.token
-    //const id = jsonLogin.data.id
-    localStorage.setItem('token', token)
-    return jsonLogin
+    try {
+      const response = await axios.post(endpointLogin, payload)
+
+      localStorage.setItem('token', response.data.token)
+
+      return response
+    } catch (error: any) {
+      console.log(error.message)
+    }
   }
 }
 
