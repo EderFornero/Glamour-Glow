@@ -1,4 +1,5 @@
 import { Outlet, useLocation } from 'react-router-dom'
+import { useEffect } from 'react'
 // components
 import Nav from '../components/Nav/Nav'
 import Footer from '../components/Footer/Footer'
@@ -15,9 +16,13 @@ const Layout: React.FC = () => {
     <>
       {showNavFooter && <Nav isAuth={isAuth}/>}
 =======
+  const { pathname } = useLocation()
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
 
   const showNavFooter = location.pathname !== '/admin'
-
   return (
     <>
       {showNavFooter && <Nav/>}

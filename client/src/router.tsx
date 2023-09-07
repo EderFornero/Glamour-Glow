@@ -15,6 +15,7 @@ import FormBusiness from './components/FormCreateBusiness/FormCreateBusiness.tsx
 import BusinessCardsView from './pages/BusinessCardsView/BusinessCardsView.tsx'
 import UserDetail from './pages/UserDetail/UserDetail.tsx'
 import NodemailerTest from './components/NodemailerTest/NodemailerTest.tsx'
+import BookAService from './pages/BookAService/BookAService.tsx'
 
 const router = createBrowserRouter([
   {
@@ -33,7 +34,17 @@ const router = createBrowserRouter([
           {
             index: true,
             element: <BusinessDetail />
-          }]
+          }
+        ]
+      },
+      {
+        path: '/bookaservice/:name/:price',
+        children: [
+          {
+            index: true,
+            element: <BookAService />
+          }
+        ]
       },
       {
         path: '/userdetail/:id',
@@ -50,7 +61,8 @@ const router = createBrowserRouter([
           {
             index: true,
             element: <BusinessCardsView />
-          }]
+          }
+        ]
       },
       {
         path: '/login',

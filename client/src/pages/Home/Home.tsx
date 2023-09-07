@@ -1,21 +1,20 @@
 import Cards from '../../components/Cards/Cards'
 import Carousel from '../../components/Carousel/Carousel'
-import {
-  Description,
-  Description2
-} from '../../components/Description/Description'
-import { users } from '../../../../mocks/fullAPIresponse.json'
+import { Description, Description2 } from '../../components/Description/Description'
+// import { users } from '../../../../mocks/fullAPIresponse.json'
 import SearchBar from '../../components/SearchBar/SearchBar'
 import FAQ from '../../components/FAQ/FAQ'
+import type { RootState } from '../../redux/types'
 // hooks
 import { useSearchBarHome } from '../../hooks/index'
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import type { RootState } from '../../redux/types'
-import { GetAllBusiness } from '../../redux/Actions'
+
+import { getAllBusiness } from '../../redux/actions'
 
 const Home: React.FC = () => {
-  const { searchResults, handleOnSearch } = useSearchBarHome(users)
+  const allServices = useSelector((state: RootState) => state.allServices)
+  const { searchResults, handleOnSearch } = useSearchBarHome(allServices)
   const [showCards, setShowCards] = useState(false)
   const dispatch = useDispatch()
 
@@ -23,29 +22,25 @@ const Home: React.FC = () => {
     setShowCards(hasQuery)
   }
 
-  // const cards = useSelector((state: RootState) => state.allServices)
-
   useEffect(() => {
-    dispatch(GetAllBusiness())
+    dispatch(getAllBusiness())
   }, [dispatch, showCards])
 
   return (
     <div>
       <SearchBar onSearch={handleOnSearch} updateShowCards={updateShowCards} />
-      {showCards
-        ? (
-          <Cards searchUsers={searchResults.length > 0 ? searchResults : users} />
-          )
-        : (
-          <>
-            <Description />
-            <Carousel cardstoshow={users} carouselName="Recomended" />
-            <Carousel cardstoshow={users} carouselName="Most Liked" />
-            <Carousel cardstoshow={users} carouselName="Nearest" />
-            <Description2 />
-            <FAQ />
-          </>
-          )}
+      {showCards ? (
+        <Cards searchUsers={searchResults.length > 0 ? searchResults : allServices} />
+      ) : (
+        <>
+          <Description />
+          <Carousel cardstoshow={allServices} carouselName='Recomended' />
+          <Carousel cardstoshow={allServices} carouselName='Most Liked' />
+          <Carousel cardstoshow={allServices} carouselName='Nearest' />
+          <Description2 />
+          <FAQ />
+        </>
+      )}
     </div>
   )
 }
