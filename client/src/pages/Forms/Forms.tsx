@@ -1,25 +1,25 @@
-import React, { useState } from 'react';
-import FormRegister from '../../components/FormRegister/FormRegister';
-import FormLogin from '../../components/FormLogin/FormLogin';
-import style from './Forms.module.css';
+import React, { useState } from 'react'
+import FormRegister from '../../components/FormRegister/FormRegister'
+import FormLogin from '../../components/FormLogin/FormLogin'
+import style from './Forms.module.css'
 
-const Forms: React.FC = () => {
-  const [showLoginForm, setShowLoginForm] = useState(true);
+const Forms: React.FC = ({ setIsAuth }) => {
+  const [showLoginForm, setShowLoginForm] = useState(true)
 
   const toggleForm = () => {
-    setShowLoginForm(!showLoginForm);
-  };
+    setShowLoginForm(!showLoginForm)
+  }
 
   return (
-    <div className={style['all']}>
-      <div className={style['content']}>
-        <div className={style['left']}>
-          <h1 className={style['h1']}>Let your work Glow!</h1>
+    <div className={style.all}>
+      <div className={style.content}>
+        <div className={style.left}>
+          <h1 className={style.h1}>Let your work Glow!</h1>
         </div>
-        <div className={style['right']}>
+        <div className={style.right}>
           <div className={style['div-right']}>
             <div className={style['text-log'] + (showLoginForm ? '' : ` ${style['text-log-adjusted']}`)}>
-              <div className={style['text']}>
+              <div className={style.text}>
                 <button
                   className={style['i-log']}
                   onClick={toggleForm}
@@ -27,7 +27,7 @@ const Forms: React.FC = () => {
                 >
                   Login
                 </button>
-                <p className={style['I']}>I</p>
+                <p className={style.I}>I</p>
                 <button
                   className={style['i-reg']}
                   onClick={toggleForm}
@@ -36,9 +36,9 @@ const Forms: React.FC = () => {
                   Register
                 </button>
               </div>
-              <div className={style['forms']}>
+              <div className={style.forms}>
                 <div>
-                  {showLoginForm ? <FormLogin onToggle={toggleForm} /> : <FormRegister onToggle={toggleForm} />}
+                  {showLoginForm ? <FormLogin onToggle={toggleForm} setIsAuth={ setIsAuth }/> : <FormRegister onToggle={toggleForm} />}
                 </div>
               </div>
             </div>
@@ -46,7 +46,7 @@ const Forms: React.FC = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Forms;
+export default Forms

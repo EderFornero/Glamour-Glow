@@ -210,14 +210,19 @@ font-weight: bold;
     transition: 0.3s;
 }
   
-  .switch input:checked ~ label {
+.switch input:checked ~ label {
     border-color: var(--primary-color)
-  }
+}
   
-  .switch input:checked ~ label::after {
+.switch input:checked ~ label::after {
     translate: 25px 0;
     background: var(--primary-color)
-  }
+}
+
+.switch input:disabled ~ label {
+    opacity: 0.35;
+    cursor: not-allowed;
+}  
   
 @media (max-width: 1200px) {
     .section{

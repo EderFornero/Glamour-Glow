@@ -9,10 +9,10 @@ import BusiPhoneInput from './inputs/BusiPhoneInput'
 import BusiImgInput from './inputs/BusiImgInput'
 import style from './FormCreateBusiness.module.css'
 import type { RootState } from '../../redux/types'
-import {getCategories, postSeller} from '../../redux/Actions'
+import { getCategories, postSeller } from '../../redux/Actions'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { FormCreateBusi } from '../../interfaces'
+import type { FormCreateBusi } from '../../interfaces'
 
 const FormBusiness: React.FC = () => {
   const dispatch = useDispatch()
@@ -36,8 +36,7 @@ const FormBusiness: React.FC = () => {
 
   const categoryList = useSelector((state: RootState) => state.categories)
 
-  const [arr, setArr] = useState<string[]>([]);
-
+  const [arr, setArr] = useState<string[]>([])
 
   useEffect(() => {
     dispatch(getCategories())
@@ -52,18 +51,17 @@ const FormBusiness: React.FC = () => {
   })
 
   return (
-      <div className={style['all']}>
-        <div className={style['content']}>
-          <div className={style['left']}>
-            <h1 className={style['h1']}>Share your skills with the world!</h1>
+      <div className={style.all}>
+        <div className={style.content}>
+          <div className={style.left}>
+            <h1 className={style.h1}>Share your skills with the world!</h1>
           </div>
-            <div className={style['right']}>
+            <div className={style.right}>
             <div className={style['div-right']}>
-              <div className={style['text']}>
-                <h2 className={style['h2']}>Tell us about your work</h2>
+              <div className={style.text}>
+                <h2 className={style.h2}>Tell us about your work</h2>
               </div>
-                <form onSubmit={onSubmit} className={style['forms']}>
-                
+                <form onSubmit={onSubmit} className={style.forms}>
                   <BusiNameInput register={register} errors={errors} />
                   <BusiEmailInput register={register} errors={errors} />
                   <BusiPhoneInput register={register} errors={errors} />
@@ -73,8 +71,8 @@ const FormBusiness: React.FC = () => {
                     <BusiGenderInput register={register} errors={errors} />
                   </div>
                   <div className={style['buton-div']}>
-                    <button className={style['btn']} onClick={goBack}>Back</button>
-                    <button className={style['btn']} type='submit'>Send</button>
+                    <button className={style.btn} onClick={goBack}>Back</button>
+                    <button className={style.btn} type='submit'>Send</button>
                   </div>
                 </form>
                 </div>

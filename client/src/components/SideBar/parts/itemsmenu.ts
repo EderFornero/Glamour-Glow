@@ -7,29 +7,35 @@ import users from '../../../assets/sidebard-icons/users.svg';
 
 export const menuItems = [
   {
+    id: '1',
     name: 'Home',
-    icon: dashboard,
+    icon: dashboard
   },
   {
+    id: '2',
     name: 'Settings',
     icon: settings,
-    items: ['Display', 'Interface'],
+    items: ['Display', 'Interface']
   },
   {
+    id: '3',
     name: 'Services',
     icon: services,
-    items: ['List', 'Create', 'Edit'],
+    items: ['List', 'Create', 'Edit']
   },
   {
+    id: '4',
     name: 'Calendar',
-    icon: calendar,
+    icon: calendar
   },
   {
+    id: '5',
     name: 'Clients',
-    icon: users,
+    icon: users
   },
   {
+    id: '6',
     name: 'Messages',
-    icon: message,
-  },
-];
+    icon: message
+  }
+]

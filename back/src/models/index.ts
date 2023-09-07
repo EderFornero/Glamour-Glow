@@ -2,7 +2,7 @@ import { getModelForClass } from "@typegoose/typegoose";
 
 import { Category } from "./Category";
 import { User } from "./User";
-import { Seller } from "./Seller";
+import { Seller } from "./Sellers";
 import { Services } from "./Services";
 import { Reviews } from "./Reviews";
 

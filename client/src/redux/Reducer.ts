@@ -1,19 +1,38 @@
-import { GET_ALL_BUSINESS, GET_ALL_CATEGORIES, GET_ALL_USERS, SET_FILTERS, SET_RATING, SET_UPLOAD_IMAGE } from './Action-Types'
-import type { ServiceAction, RootState } from './types'
+import {
+  GET_ALL_BUSINESS,
+  GET_ALL_CATEGORIES,
+  GET_ALL_USERS,
+  SET_FILTERS,
+  SET_RATING,
+  SET_UPLOAD_IMAGE,
+  GET_USER_BY_ID,
+  UPDATE_USER_DETAIL,
+  GET_SELLER_BY_ID,
+  UPDATE_SELLER_DETAIL,
+  SET_AUTH,
+  SET_USER_ID
+} from './Action-Types'
+import type { ServiceAction, RootState, UserDetail, SellerDetail } from './types'
 
 const initialState: RootState = {
   allServices: [],
   categories: [],
   users: [],
+  userdetail: {},
+  sellerdetail: {},
   filter: 'none',
   rating: 0,
-  image: undefined
+  image: undefined,
+  isAuth: false,
+  userId: null
 }
 
 const reducer = (state = initialState, action: ServiceAction): {
   allServices: any[]
   categories: any[]
   users: any[]
+  userdetail: UserDetail
+  sellerdetail: SellerDetail
   filter: string
   rating: number
   image: string | undefined
@@ -53,6 +72,24 @@ const reducer = (state = initialState, action: ServiceAction): {
         ...state,
         users: action.payload
       }
+
+    case GET_USER_BY_ID:
+      return { ...state, userdetail: action.payload }
+
+    case UPDATE_USER_DETAIL:
+      return { ...state, userdetail: action.payload }
+
+    case GET_SELLER_BY_ID:
+      return { ...state, sellerdetail: action.payload }
+
+    case UPDATE_SELLER_DETAIL:
+      return { ...state, sellerdetail: action.payload }
+
+    case SET_AUTH:
+      return { ...state, isAuth: action.payload }
+
+    case SET_USER_ID:
+      return { ...state, userId: action.payload }
 
     default:
       return state

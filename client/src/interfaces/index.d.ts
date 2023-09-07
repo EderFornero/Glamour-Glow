@@ -1,10 +1,10 @@
 export interface ServiceProvider {
-  id: number;
-  businessName: string;
-  businessLocation: string;
-  rating: number;
-  categories: string[];
-  services: Service[];
+  id: number
+  businessName: string
+  businessLocation: string
+  rating: number
+  categories: string[]
+  services: Service[]
 }
 
 export interface Service {
@@ -17,15 +17,16 @@ export interface Service {
 }
 
 export interface FormData {
-  username: string;
-  fullname: string;
-  email: string;
-  password: string;
+  name: string
+  last_name: string
+  email: string
+  password: string
+  phone_number: string
   role: 'customer' | 'seller'
-  date_of_birth: string;
-  image: string;
-  isActive: boolean;
-  confirmPassword?: string;
+  date_of_birth: string
+  image: string
+  isActive: boolean
+  confirmPassword?: string
 }
 
 export interface FormCreateBusi {
@@ -34,10 +35,18 @@ export interface FormCreateBusi {
   seller_phone: string
   seller_gender: 'male' | 'female' | 'any'
   categoriesArray: string[]
-  servicesArray:  string[]
+  servicesArray: string[]
 }
 
 export interface FormLoginData {
   email: string
   password: string
+}
+export interface SellerData {
+  name: string
+  description: string
+  serviceCategories: string
+  price: number
+  rating: number
+  seller: string
 }

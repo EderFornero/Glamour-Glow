@@ -4,12 +4,12 @@ import jwt from "jsonwebtoken";
 config();
 
 export const readUsers = async () => {
-  const allUsers = await UserModel.find({});
+  const allUsers = await UserModel.find({}).select({ password: 0 });
   return allUsers;
 };
 
 export const readUserById = async (id: String) => {
-  const user = await UserModel.findById(id).exec();
+  const user = await UserModel.findById(id).select({ password: 0 }).exec();
   if (!user || !user.isActive) {
     throw Error("User not found");
   }
@@ -24,7 +24,7 @@ export const createUser = async (user: Object) => {
 export const updateUser = async (id: String, updates: Object) => {
   const updatedUser = await UserModel.findByIdAndUpdate(id, updates, {
     new: true,
-  });
+  }).select({ password: 0 });
   return updatedUser;
 };
 
@@ -57,7 +57,7 @@ export const validateLogIn = async (email: any, password: any) => {
     if (!isPasswordValid) {
       return false;
     }
-    return user;
+    return { id: user._id };
   } catch (error: any) {
     throw new Error(error.message);
   }
@@ -67,8 +67,9 @@ export const generateToken = async (email: any) => {
   try {
     const user = await UserModel.findOne({ email }).exec();
     const token = await jwt.sign(
-      { name: user?.username, id: user?._id },
-      process.env.TOKEN_ENCRYPTION!
+      { name: user?.name, id: user?._id, role: user?.role },
+      process.env.TOKEN_ENCRYPTION!,
+      { expiresIn: "1h" }
     );
     return token;
   } catch (error: any) {

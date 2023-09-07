@@ -10,7 +10,7 @@ const BusiEmailInput: React.FC<BusiEmailInputProps> = ({ register, errors }) => 
   return (
     <div>
       <input
-      className={style['input']}
+      className={style.input}
         type="email"
         name="seller_email"
         placeholder='Business Email'
@@ -26,7 +26,7 @@ const BusiEmailInput: React.FC<BusiEmailInputProps> = ({ register, errors }) => 
         })}
       />
       <div>
-      {(Boolean(errors.seller_email)) && <span className={style['span']}>{errors.seller_email.message}</span>}
+      {(Boolean(errors.seller_email)) && <span className={style.span}>{errors.seller_email.message}</span>}
       </div>
     </div>
   )
