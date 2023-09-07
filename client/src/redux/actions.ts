@@ -29,7 +29,7 @@ export const setUserId = (id) => ({
   payload: id
 })
 
-export const getAllBusiness = (): ((dispatch: (action: ServiceAction) => void) => Promise<void>) => {
+export const GetAllBusiness = (): ((dispatch: (action: ServiceAction) => void) => Promise<void>) => {
   const endpoint = `${API_URL}sellers`
 
   return async (dispatch: (action: ServiceAction) => void) => {
@@ -141,13 +141,11 @@ export const getUsers = (): ((dispatch: (action: ServiceAction) => void) => Prom
 export const postValidate = (payload: any) => {
   const endpointLogin = `${API_URL}users/login`
   return async function () {
-    try {
-      const response = await axios.post(endpointLogin, payload)
-
-      return response
-    } catch (error: any) {
-      console.log(error.message)
-    }
+    const jsonLogin = await axios.post(endpointLogin, payload)
+    const token = jsonLogin.data.token
+    //const id = jsonLogin.data.id
+    localStorage.setItem('token', token)
+    return jsonLogin
   }
 }
 
