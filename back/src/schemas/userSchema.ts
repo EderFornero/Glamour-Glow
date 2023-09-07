@@ -58,9 +58,15 @@ export const readAndDeleteUserSchema = z.object({
   }),
 });
 
+export const forgotPasswordSchema = z.object({
+  body: z.object({
+   email: z.string({required_error: "Email is required"})
+   .email("Not a valid email"),
+  }),
+});
+
 export type createUserType = z.infer<typeof CreateUserSchema>["body"];
 export type updateUserTypeBody = z.infer<typeof updateUserSchema>["body"];
 export type updateUserTypeParams = z.infer<typeof updateUserSchema>["params"];
-export type readAndDeleteUserType = z.infer<
-  typeof readAndDeleteUserSchema
->["params"];
+export type readAndDeleteUserType = z.infer<typeof readAndDeleteUserSchema>["params"];
+export type forgotPasswordTypeBody = z.infer<typeof forgotPasswordSchema>["body"];

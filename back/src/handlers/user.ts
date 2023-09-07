@@ -76,3 +76,8 @@ export const generateToken = async (email: any) => {
     throw new Error(error.message);
   }
 };
+
+export const forgotPasswordHandler = async (email: string) => {
+  const user = await UserModel.findOne({email})
+  return user
+}
