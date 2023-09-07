@@ -43,7 +43,7 @@ const FormLogin: React.FC = ({ onToggle }) => {
       <form onSubmit={onSubmit}>
         <p className={style.txt}>Email:</p>
         <EmailLogin register={register} errors={errors} />
-        {errorMessage !== '' && <ErrorMessage message={errorMessage} />}
+        {errorMessage !== "" && <ErrorMessage message={errorMessage} />}
         <p className={style.txt}>Password:</p>
         <PasswordLogin register={register} errors={errors} />
         <div className={style['alt-login']}>
@@ -53,23 +53,23 @@ const FormLogin: React.FC = ({ onToggle }) => {
             <button className={style.ig}></button>
           </div>
         </div>
-        <div className={style['buton-div']}>
+        <div className={style["buton-div"]}>
           <button className={style.btn} onClick={goBack}>
             Back
           </button>
-          <button className={style.btn} type='submit'>
+          <button className={style.btn} type="submit">
             Send
           </button>
           {error && <div className={style['error-login']}>{error}</div>}
         </div>
       </form>
-      <div className={style['link-texts']}>
+      <div className={style["link-texts"]}>
         <button>
-          <p className={style['reg-button']} onClick={onToggle}>
+          <p className={style["reg-button"]} onClick={onToggle}>
             Dont have an account?
           </p>
         </button>
-        <Link to='/recovePassword'>
+        <Link to="/recovePassword">
           <p className={style.forgot}>Forgot Password?</p>
         </Link>
       </div>

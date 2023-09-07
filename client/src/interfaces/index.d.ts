@@ -17,11 +17,18 @@ export interface Service {
 }
 
 export interface FormData {
+<<<<<<< HEAD
+  username: string
+  fullname: string
+  email: string
+  password: string
+=======
   name: string
   last_name: string
   email: string
   password: string
   phone_number: string
+>>>>>>> 099e852aa3bcdbe60cd5173811f671b3505a7e10
   role: 'customer' | 'seller'
   date_of_birth: string
   image: string

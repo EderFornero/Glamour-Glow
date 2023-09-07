@@ -12,11 +12,12 @@ export const paymentOrder = async ( _req: Request,
             try {
               const result = await  mercadopago.preferences.create({
                     items: [{
-                        title: "Hair cut Mexico",
-                        unit_price: 100,
-                        currency_id: "MXN",
-                        quantity: 1,
+                        title: _req.body.title,
+                        unit_price: _req.body.unit_price,
+                        currency_id: _req.body.currency_id,
+                        quantity: _req.body.quantity,
                     }],
+                    
                     back_urls: {
                         success: "http://localhost:3001/payment/sucess",
                         failure: "http://localhost:3001/payment/failure",
@@ -27,7 +28,7 @@ export const paymentOrder = async ( _req: Request,
                     
                 })
                 console.log(result);
-                return res.json(result.body);
+                return res.json(result.body.id);
             } catch (error) {
                return error;  
             }
