@@ -4,9 +4,18 @@ import { useEffect } from 'react'
 import Nav from '../components/Nav/Nav'
 import Footer from '../components/Footer/Footer'
 import style from './Layout.module.css'
+import { useState } from 'react'
 
 const Layout: React.FC = () => {
   const location = useLocation()
+<<<<<<< HEAD
+  const [isAuth, setIsAuth] = useState(false)
+
+  const showNavFooter = location.pathname !== '/admin'
+  return (
+    <>
+      {showNavFooter && <Nav isAuth={isAuth}/>}
+=======
   const { pathname } = useLocation()
 
   useEffect(() => {
@@ -16,7 +25,8 @@ const Layout: React.FC = () => {
   const showNavFooter = location.pathname !== '/admin'
   return (
     <>
-      {showNavFooter && <Nav />}
+      {showNavFooter && <Nav/>}
+>>>>>>> 099e852aa3bcdbe60cd5173811f671b3505a7e10
       <main className={style.main}>
         <Outlet />
       </main>

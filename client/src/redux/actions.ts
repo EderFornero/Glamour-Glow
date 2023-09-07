@@ -1,4 +1,4 @@
-import axios from './axiosService'
+import axios from './axiosService' //{ AxiosResponse } from "axios";
 import {
   GET_ALL_BUSINESS,
   GET_ALL_CATEGORIES,
