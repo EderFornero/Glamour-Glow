@@ -46,7 +46,7 @@ export const getAllBusiness = (): ((dispatch: (action: ServiceAction) => void) =
   }
 }
 
-export const setFiler = (
+export const setFilter = (
   filter: string
 ): {
   type: string
@@ -102,7 +102,7 @@ export const getCategories = (): ((dispatch: (action: ServiceAction) => void) =>
 export const postSeller = (payload: any) => {
   const endpoint = `${API_URL}sellers`
 
-  return async function (dispatch: any) {
+  return async function (_dispatch: any) {
     let json = await axios.post(endpoint, payload)
     return json
   }
@@ -110,7 +110,7 @@ export const postSeller = (payload: any) => {
 
 export const postUser = (payload: any) => {
   const endpoint1 = `${API_URL}users`
-  return async function (dispatch: any) {
+  return async function (_dispatch: any) {
     try {
       const response = await axios.post(endpoint1, payload)
 
