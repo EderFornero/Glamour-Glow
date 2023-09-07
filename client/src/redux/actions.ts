@@ -29,21 +29,19 @@ export const setUserId = (id) => ({
   payload: id
 })
 
-export const GetAllBusiness = (): ((
-  dispatch: (action: ServiceAction) => void
-) => Promise<void>) => {
+export const getAllBusiness = (): ((dispatch: (action: ServiceAction) => void) => Promise<void>) => {
   const endpoint = `${API_URL}sellers`
 
   return async (dispatch: (action: ServiceAction) => void) => {
     try {
-      const { data } = await axios.get(endpoint);
+      const { data } = await axios.get(endpoint)
 
       dispatch({
         type: GET_ALL_BUSINESS,
-        payload: data,
-      });
+        payload: data
+      })
     } catch (error: any) {
-      console.log(error.message);
+      console.log(error.message)
     }
   }
 }
@@ -51,63 +49,61 @@ export const GetAllBusiness = (): ((
 export const setFiler = (
   filter: string
 ): {
-  type: string;
-  payload: string;
+  type: string
+  payload: string
 } => {
   return {
     type: SET_FILTERS,
-    payload: filter,
-  };
+    payload: filter
+  }
 }
 
 export const setRating = (
   rating: number
 ): {
-  type: string;
-  payload: number;
+  type: string
+  payload: number
 } => {
   return {
     type: SET_RATING,
-    payload: rating,
-  };
+    payload: rating
+  }
 }
 
 export const setUploadImage = (
   image: string
 ): {
-  type: string;
-  payload: string;
+  type: string
+  payload: string
 } => {
   return {
     type: SET_UPLOAD_IMAGE,
-    payload: image,
-  };
+    payload: image
+  }
 }
 
-export const getCategories = (): ((
-  dispatch: (action: ServiceAction) => void
-) => Promise<void>) => {
-  const endCategorie = `${API_URL}categories`;
+export const getCategories = (): ((dispatch: (action: ServiceAction) => void) => Promise<void>) => {
+  const endCategorie = `${API_URL}categories`
 
   return async (dispatch: (action: ServiceAction) => void) => {
     try {
-      const { data } = await axios.get(endCategorie);
+      const { data } = await axios.get(endCategorie)
 
       dispatch({
         type: GET_ALL_CATEGORIES,
-        payload: data,
-      });
+        payload: data
+      })
     } catch (error: any) {
-      console.log('Error en el getCategories');
+      console.log('Error en el getCategories')
     }
   }
 }
 
 export const postSeller = (payload: any) => {
-  const endpoint = `${API_URL}sellers`;
+  const endpoint = `${API_URL}sellers`
 
   return async function (dispatch: any) {
-    let json = await axios.post(endpoint, payload);
+    let json = await axios.post(endpoint, payload)
     return json
   }
 }
@@ -125,9 +121,7 @@ export const postUser = (payload: any) => {
   }
 }
 
-export const getUsers = (): ((
-  dispatch: (action: ServiceAction) => void
-) => Promise<void>) => {
+export const getUsers = (): ((dispatch: (action: ServiceAction) => void) => Promise<void>) => {
   const endUser = `${API_URL}users`
 
   return async (dispatch: (action: ServiceAction) => void) => {
