@@ -1,22 +1,23 @@
-import { Outlet, useLocation } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom'
 // components
-import Nav from '../components/Nav/Nav';
-import Footer from '../components/Footer/Footer';
+import Nav from '../components/Nav/Nav'
+import Footer from '../components/Footer/Footer'
 import style from './Layout.module.css'
 
 const Layout: React.FC = () => {
-  const location = useLocation();
+  const location = useLocation()
 
-  const showNavFooter = location.pathname !== '/admin';
+  const showNavFooter = location.pathname !== '/admin'
+
   return (
     <>
-      {showNavFooter && <Nav />}
+      {showNavFooter && <Nav/>}
       <main className={style.main}>
         <Outlet />
       </main>
       {showNavFooter && <Footer />}
     </>
-  );
-};
+  )
+}
 
-export default Layout;
+export default Layout

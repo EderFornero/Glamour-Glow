@@ -85,17 +85,23 @@
     text-decoration: underline;
 }
 
-.error-message {
+.error-message  {
     color: red;
     font-size: small;
     position: absolute;
     margin-top: -30px;
 }
 
+.error-login{
+    color: red;
+    font-size: small;
+    position: absolute;
+}
+
 .txt {
     color: white;
     letter-spacing: 1px;
-  }
+}
 
 .log-with {
     color: white;
