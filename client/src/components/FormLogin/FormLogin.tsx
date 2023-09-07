@@ -3,7 +3,6 @@ import { useForm } from 'react-hook-form'
 import { useGoBack } from '../../hooks'
 import EmailLogin from './inputs/EmailLogin'
 import PasswordLogin from './inputs/PasswordLogin'
-import { Link } from 'react-router-dom'
 import style from './FormLogin.module.css'
 import { getUsers, postValidate } from '../../redux/Actions'
 import { useDispatch, useSelector } from 'react-redux'
@@ -72,9 +71,9 @@ const FormLogin: React.FC = ({ onToggle }: any) => {
             Dont have an account?
           </p>
         </button>
-        <Link to='/recovePassword'>
+        <a href='/passwordRecovery'>
           <p className={style.forgot}>Forgot Password?</p>
-        </Link>
+        </a>
       </div>
       <div className={style['ico-div']}>
         <div className={style.google}></div>

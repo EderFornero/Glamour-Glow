@@ -268,6 +268,7 @@ cellspacing="0"><tr><td style="width:180px" valign="top"><![endif]-->
 <section style="text-align:left;margin:2px 2px 5px 20px;font-weight:500;text-indent:5px;padding:3px">
 <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'trebuchet ms', 'lucida grande', 'lucida sans unicode', 'lucida sans', tahoma, sans-serif;line-height:21px;color:#333333;font-size:14px">Click the link below to reset your password:</p>
 <p class="reset-password" style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'trebuchet ms', 'lucida grande', 'lucida sans unicode', 'lucida sans', tahoma, sans-serif;line-height:21px;color:#333333;font-size:14px"><a href="https://www.tuweb.com/reset-password" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#5EFFB1;font-size:14px">Reset Password</a></p>
+<p>%1</p>
 </section></td>
 </tr>
 </table></td>
