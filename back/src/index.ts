@@ -1,4 +1,5 @@
 import express from "express";
+<<<<<<< HEAD
 import {
   userRouter,
   sellerRouter,
@@ -7,6 +8,10 @@ import {
   reviewsRouter,
 } from "./routes/index.ts";
 import "./db";
+=======
+import {userRouter, sellerRouter, serviceRouter, categoriesRouter, reviewsRouter, nodemailerRouter } from "./routes/index.ts" 
+import "./db"
+>>>>>>> 099e852aa3bcdbe60cd5173811f671b3505a7e10
 import { logErrors } from "./middlewares/logError.middleware.ts";
 import cors, { CorsOptions } from "cors";
 import { paymentRouter } from "./routes/payment/index.ts";
@@ -49,6 +54,7 @@ server.use("/", serviceRouter)
 server.use("/", categoriesRouter)
 server.use("/", reviewsRouter)
 server.use("/", paymentRouter)
+<<<<<<< HEAD
 
 server.use(passport.initialize()); 
 server.use(logErrors)
@@ -59,5 +65,9 @@ server.use("/", categoriesRouter);
 server.use("/", reviewsRouter);
 server.use("/", paymentRouter);
 
+=======
+server.use("/", nodemailerRouter)
+
+>>>>>>> 099e852aa3bcdbe60cd5173811f671b3505a7e10
 server.use(passport.initialize());
 server.use(logErrors);

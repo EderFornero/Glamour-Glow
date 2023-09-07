@@ -9,10 +9,13 @@ export interface RootState {
   allServices: any[]
   categories: any[]
   users: any[]
-  userdetail: any
+  userdetail: object
+  sellerdetail: object
   filter: string
   rating: number
   image: string | undefined
+  isAuth: boolean
+  userId: any
 }
 
 export interface UserDetail {
@@ -25,4 +28,15 @@ export interface UserDetail {
   date_of_birth: string
   image: string
   isActive: boolean
+}
+
+export interface SellerDetail {
+  _id: string
+  seller_name: string
+  seller_email: string
+  seller_phone: string
+  seller__gender: string
+  reviews: any[]
+  categoriesArray: any[]
+  servicesArray: []
 }

@@ -7,12 +7,21 @@ import { useState } from 'react'
 
 const Layout: React.FC = () => {
   const location = useLocation()
+<<<<<<< HEAD
   const [isAuth, setIsAuth] = useState(false)
 
   const showNavFooter = location.pathname !== '/admin'
   return (
     <>
       {showNavFooter && <Nav isAuth={isAuth}/>}
+=======
+
+  const showNavFooter = location.pathname !== '/admin'
+
+  return (
+    <>
+      {showNavFooter && <Nav/>}
+>>>>>>> 099e852aa3bcdbe60cd5173811f671b3505a7e10
       <main className={style.main}>
         <Outlet />
       </main>

@@ -1,4 +1,9 @@
 import {  Request, Response } from "express";
+<<<<<<< HEAD
+=======
+// import mercadopago from "mercadopago";
+
+>>>>>>> 099e852aa3bcdbe60cd5173811f671b3505a7e10
 
 
 export const paymentWebHook = async ( _req: Request, 
