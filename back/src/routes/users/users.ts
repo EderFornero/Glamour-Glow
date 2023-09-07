@@ -3,6 +3,7 @@ import { schemaValidation } from "../../middlewares/schemaValidator.middleware";
 import {
   CreateUserSchema,
   readAndDeleteUserSchema,
+  resetPasswordSchema,
   updateUserSchema,
 } from "../../schemas/userSchema";
 import {
@@ -12,13 +13,11 @@ import {
   getUserByid,
   putUser,
   logInUser,
+  forgotPassword,
 } from "../../controllers/users/index";
-<<<<<<< HEAD
-//import { rolePermissions } from "../../middlewares/rolePermissions.middleware";
-=======
 import { rolePermissions } from "../../middlewares/rolePermissions.middleware";
->>>>>>> 099e852aa3bcdbe60cd5173811f671b3505a7e10
 import passport from "passport";
+import { resetPassword } from "../../controllers/users/resetPassword";
 
 const router = Router();
 
@@ -26,14 +25,13 @@ router.get("/", passport.authenticate("jwt", { session: false }), getUser);
 router.get(
   "/:id",
   passport.authenticate("jwt", { session: false }),
-<<<<<<< HEAD
-  //rolePermissions("customer"),
-=======
   rolePermissions("customer"),
->>>>>>> 099e852aa3bcdbe60cd5173811f671b3505a7e10
   schemaValidation(readAndDeleteUserSchema),
   getUserByid
-);
+  );
+  
+router.post("/forgotPassword", forgotPassword)
+router.post("/resetPassword/:id/:passwordResetCode",schemaValidation(resetPasswordSchema), resetPassword)
 router.post("/", schemaValidation(CreateUserSchema), postUser);
 router.post("/login", logInUser);
 

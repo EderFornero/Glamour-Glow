@@ -58,9 +58,30 @@ export const readAndDeleteUserSchema = z.object({
   }),
 });
 
+export const forgotPasswordSchema = z.object({
+  body: z.object({
+   email: z.string({required_error: "Email is required"})
+   .email("Not a valid email"),
+  }),
+});
+ 
+export const resetPasswordSchema = z.object({
+  params: z.object({
+    id: z.string(),
+    passwordResetCode: z.string()
+  }),
+  body: z.object({
+    password: z.string({required_error: "Password is required"}).min(6, "Password is too short -- should be min 6 chars"),
+    passwordConfirmation: z.string({required_error: "Password confirmation is required"})
+  }).refine((data) => data.password === data.passwordConfirmation, {
+    message: "Passwords do not match",
+    path: ["passwordConfirmation"]
+  })
+})
+
 export type createUserType = z.infer<typeof CreateUserSchema>["body"];
 export type updateUserTypeBody = z.infer<typeof updateUserSchema>["body"];
 export type updateUserTypeParams = z.infer<typeof updateUserSchema>["params"];
-export type readAndDeleteUserType = z.infer<
-  typeof readAndDeleteUserSchema
->["params"];
+export type readAndDeleteUserType = z.infer<typeof readAndDeleteUserSchema>["params"];
+export type forgotPasswordTypeBody = z.infer<typeof forgotPasswordSchema>["body"];
+export type resetPasswordType = z.infer<typeof resetPasswordSchema>;
