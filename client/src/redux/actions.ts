@@ -130,8 +130,6 @@ export const postValidate = (payload: any) => {
     const token = jsonLogin.data.token;
     //const id = jsonLogin.data.id
     localStorage.setItem("token", token);
-    const prueba = localStorage.getItem("token");
-    console.log(prueba);
     return jsonLogin;
   };
 };
