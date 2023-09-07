@@ -35,13 +35,13 @@ export class User {
   password: string;
 
   @prop({ required: true, type: String })
-  phone_number: string;
+  phoneNumber: string;
 
   @prop({ required: true, enum: ROLE, default: ROLE.CUSTOMER })
   role: ROLE;
 
   @prop({ required: true, type: Date })
-  date_of_birth: Date;
+  dateOfBirth: Date;
 
   @prop({ required: true, type: String })
   image: string;

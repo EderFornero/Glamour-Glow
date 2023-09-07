@@ -4,7 +4,7 @@ export const readServices = async () => {
   const allServices = await ServicesModel.find({})
     .populate("seller", {
       _id: 0,
-      seller_name: 1,
+      sellerName: 1,
     })
     .populate("serviceCategories", {
       _id: 0,
@@ -15,7 +15,7 @@ export const readServices = async () => {
 
 export const readServiceById = async (id: string) => {
   const service = await ServicesModel.findById(id)
-    .populate("seller", { _id: 0, seller_name: 1 })
+    .populate("seller", { _id: 0, sellerName: 1 })
     .exec();
   return service;
 };
