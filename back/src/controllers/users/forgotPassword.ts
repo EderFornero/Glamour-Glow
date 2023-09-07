@@ -20,9 +20,9 @@ export const forgotPassword = async (req: Request<{},{},forgotPasswordTypeBody> 
 
     await user.save()
 
-    await sendEmail({
-        to: user.email,
-        from: "glamourglowpf@gmail.com"
-    })
+   // await sendEmail({ 
+     //   to: user.email,
+       // from: "glamourglowpf@gmail.com"
+    //})
 
 }
