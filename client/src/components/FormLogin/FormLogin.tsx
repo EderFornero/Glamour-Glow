@@ -38,14 +38,6 @@ const FormLogin: React.FC = ({ onToggle }) => {
     }
   })
 
-  const singInWithgoogle = () => {
-    signInWithPopup(auth, provider).then((result=>{
-      localStorage.setItem('isAuth', true)
-      setAuth(true)
-      navigate('/')
-    }))
-  }
-
   return (
     <div className={style.content}>
       <form onSubmit={onSubmit}>

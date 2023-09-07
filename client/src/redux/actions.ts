@@ -16,8 +16,6 @@ import {
 import type { ServiceAction } from './types'
 
 const API_URL = 'http://localhost:3001/'
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiR0lPVkEiLCJpZCI6IjY0ZjdkNDRlNGI1MmVjODRjMjJhMzEzYyIsImlhdCI6MTY5Mzk2MzQzMH0.Kc3ArXiNzFPWaA23NnrIk4VEQI2LPxCSvXI3b1QnIpg'
-localStorage.setItem('token', token)
 
 export const setAuth = (isAuth) => ({
   type: SET_AUTH,
@@ -40,10 +38,10 @@ export const GetAllBusiness = (): ((
 
       dispatch({
         type: GET_ALL_BUSINESS,
-        payload: data,
-      });
+        payload: data
+      })
     } catch (error: any) {
-      console.log(error.message);
+      console.log(error.message)
     }
   }
 }
@@ -51,54 +49,54 @@ export const GetAllBusiness = (): ((
 export const setFiler = (
   filter: string
 ): {
-  type: string;
-  payload: string;
+  type: string
+  payload: string
 } => {
   return {
     type: SET_FILTERS,
-    payload: filter,
-  };
+    payload: filter
+  }
 }
 
 export const setRating = (
   rating: number
 ): {
-  type: string;
-  payload: number;
+  type: string
+  payload: number
 } => {
   return {
     type: SET_RATING,
-    payload: rating,
+    payload: rating
   };
 }
 
 export const setUploadImage = (
   image: string
 ): {
-  type: string;
-  payload: string;
+  type: string
+  payload: string
 } => {
   return {
     type: SET_UPLOAD_IMAGE,
-    payload: image,
-  };
+    payload: image
+  }
 }
 
 export const getCategories = (): ((
   dispatch: (action: ServiceAction) => void
 ) => Promise<void>) => {
-  const endCategorie = `${API_URL}categories`;
+  const endCategorie = `${API_URL}categories`
 
   return async (dispatch: (action: ServiceAction) => void) => {
     try {
-      const { data } = await axios.get(endCategorie);
+      const { data } = await axios.get(endCategorie)
 
       dispatch({
         type: GET_ALL_CATEGORIES,
-        payload: data,
-      });
+        payload: data
+      })
     } catch (error: any) {
-      console.log('Error en el getCategories');
+      console.log('Error en el getCategories')
     }
   }
 }
@@ -149,6 +147,8 @@ export const postValidate = (payload: any) => {
   return async function () {
     try {
       const response = await axios.post(endpointLogin, payload)
+
+      localStorage.setItem('token', response.data.token)
 
       return response
     } catch (error: any) {

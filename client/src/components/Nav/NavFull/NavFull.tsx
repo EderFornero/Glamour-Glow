@@ -18,6 +18,7 @@ const NavFull = (): JSX.Element => {
 
   const handleLogout = () => {
     dispatch(setAuth(false))
+    localStorage.removeItem('token')
     localStorage.removeItem('isAuth')
     navigate('/')
   }
