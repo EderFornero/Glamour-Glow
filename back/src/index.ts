@@ -16,7 +16,7 @@ import "dotenv/config";
 
 const server = express();
 const corsOptions: CorsOptions = {
-  origin: "https://test2-mu-roan.vercel.app/",
+  origin: "*",
   credentials: true,
 };
 
