@@ -1,4 +1,4 @@
-import styles from './Sidebar.module.css'
+import styles from './SideBar.module.css'
 import { menuItems } from './parts/itemsmenu'
 import NavHeader from './parts/NavHeader'
 import NavButton from './parts/NavButton'
