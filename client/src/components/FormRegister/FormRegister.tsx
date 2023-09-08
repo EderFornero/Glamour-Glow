@@ -13,7 +13,11 @@ import { useNavigate } from 'react-router-dom'
 import { postUser } from '../../redux/actions'
 import PhoneNumberInput from './inputs/PhoneNumberInput'
 
-const FormRegister: React.FC = ({ onToggle }: any) => {
+interface FormLoginProps {
+  onToggle: () => void
+}
+
+const FormRegister: React.FC<FormLoginProps> = ({ onToggle }: any) => {
   const goBack = useGoBack()
   const dispatch = useDispatch()
   const navigate = useNavigate()

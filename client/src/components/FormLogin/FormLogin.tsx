@@ -18,7 +18,11 @@ import {
 import type { AuthProvider } from 'firebase/auth'
 import axios from 'axios'
 
-const FormLogin: React.FC = ({ onToggle }: any) => {
+interface FormLoginProps {
+  onToggle: () => void
+}
+
+const FormLogin: React.FC<FormLoginProps> = ({ onToggle }) => {
   const dispatch = useDispatch()
   const goBack = useGoBack()
   const navigate = useNavigate()

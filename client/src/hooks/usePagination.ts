@@ -3,13 +3,13 @@ import { useEffect, useState } from 'react'
 export const usePagination = (
   items: any,
   itemsPerPage: number,
-  filter?: string | undefined
+  filter?: string
   // rating?: number
 ): {
     itemsPaginated: any
     currentPage: number
     totalPages: number
-    filters: string
+    // filters: string
     // rating: number
     nextPage: () => void
     prevPage: () => void

@@ -27,7 +27,7 @@ export const setUserId: any = (id: any) => ({
   payload: id
 })
 
-export const getAllBusiness = (): ((dispatch: (action: ServiceAction) => void) => Promise<void>) => {
+export const getAllBusiness = (): any => {
   const endpoint = `${API_URL}sellers`
 
   return async (dispatch: (action: ServiceAction) => void) => {

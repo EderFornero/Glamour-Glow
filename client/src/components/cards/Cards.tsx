@@ -1,6 +1,6 @@
 // components
 import BusinessCard from '../BusinessCard/BusinessCard'
-import Pagination from '../../components/Pagination/Pagination'
+import Pagination from '../Pagination/Pagination'
 import FilterAndOrderCard from '../FilterAndOrderCard/FilterAndOrderCard'
 // interfaces
 // import type { ServiceProvider } from '../../interfaces'
