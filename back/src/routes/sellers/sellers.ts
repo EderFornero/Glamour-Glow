@@ -1,15 +1,15 @@
 import { Router } from "express";
-import { schemaValidation } from "../../middlewares/schemaValidator.middleware.ts";
+import { schemaValidation } from "../../middlewares/schemaValidator.middleware";
 import {
   createSellerSchema,
   readAndDeleteSellerSchema,
   updateSellerSchema,
-} from "../../schemas/sellerSchema.ts";
-import { getSellersController } from "../../controllers/sellers/getSellers.ts";
-import { postSellersController } from "../../controllers/sellers/postSeller.ts";
-import { getSellersByIdController } from "../../controllers/sellers/getSellerById.ts";
-import { putSellersController } from "../../controllers/sellers/putSeller.ts";
-import { deleteSellerController } from "../../controllers/sellers/deleteSeller.ts";
+} from "../../schemas/sellerSchema";
+import { getSellersController } from "../../controllers/sellers/getSellers";
+import { postSellersController } from "../../controllers/sellers/postSeller";
+import { getSellersByIdController } from "../../controllers/sellers/getSellerById";
+import { putSellersController } from "../../controllers/sellers/putSeller";
+import { deleteSellerController } from "../../controllers/sellers/deleteSeller";
 import passport from "passport";
 const router = Router();
 

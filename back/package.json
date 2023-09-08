@@ -6,7 +6,8 @@
   "scripts": {
     "build": "tsc",
     "dev": "ts-node-dev --respawn src",
-    "ngrok": ".\ngrok.exe http 3001"
+    "ngrok": ".\ngrok.exe http 3001",
+    "start": "node build/index.js"
   },
   "keywords": [],
   "author": "",
