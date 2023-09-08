@@ -56,14 +56,14 @@ const BusinessDetail = (): JSX.Element => {
         type: null,
         content: ''
       })
-    }, 5000)
+    }, 10000)
   }, [])
 
   return (
     <div className={style['global-container']}>
       <BusinessInfo sellerName={sellerdetail.sellerName} rating={sellerdetail.reviews} />
       <BusinessImages />
-      {/* {<Services services={sellerdetail.servicesArray} />} */}
+      {/* <Services services={sellerdetail.servicesArray} sellerId={id} /> */}
       {/* <Reviews reviews={sellerdetail.reviews}/> */}
 
       {/* <LeaveAComment /> */}

@@ -2,10 +2,10 @@ import type { Service } from '../../interfaces'
 import style from './ServiceCard.module.css'
 import { useNavigate } from 'react-router-dom'
 
-const ServiceCard = ({ name, time, price }: Service): JSX.Element => {
+const ServiceCard = ({ name, time, price, sellerId }: Service): JSX.Element => {
   const navigate = useNavigate()
   const handleBookNowClick = (): void => {
-    navigate(`/bookaservice/${encodeURIComponent(name)}/${encodeURIComponent(price)}`)
+    navigate(`/bookaservice/${encodeURIComponent(name)}/${encodeURIComponent(price)}/${encodeURIComponent(sellerId)}`)
   }
 
   return (

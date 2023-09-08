@@ -20,6 +20,7 @@ export interface Service {
   category: string
   price: number
   time?: string
+  sellerId?: string
 }
 
 export interface FormData {
