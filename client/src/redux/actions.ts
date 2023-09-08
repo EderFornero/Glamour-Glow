@@ -12,8 +12,6 @@ import {
 import type { ServiceAction } from "./types";
 
 const API_URL = 'http://localhost:3001/'
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiR0lPVkEiLCJpZCI6IjY0ZjdkNDRlNGI1MmVjODRjMjJhMzEzYyIsImlhdCI6MTY5Mzk2MzQzMH0.Kc3ArXiNzFPWaA23NnrIk4VEQI2LPxCSvXI3b1QnIpg'
-localStorage.setItem('token', token)
 
 export const GetAllBusiness = (): ((
   dispatch: (action: ServiceAction) => void
@@ -99,12 +97,12 @@ export const postSeller = (payload: any) => {
 };
 
 export const postUser = (payload: any) => {
-  const endpoint1 = `${API_URL}users`;
+  const endpoint1 = `${API_URL}users`
   return async function (dispatch: any) {
-    let json1 = await axios.post(endpoint1, payload);
-    return json1;
-  };
-};
+    const json1 = await axios.post(endpoint1, payload)
+    return json1
+  }
+}
 
 export const getUsers = (): ((
   dispatch: (action: ServiceAction) => void
@@ -131,8 +129,8 @@ export const postValidate = (payload: any) => {
     const jsonLogin = await axios.post(endpointLogin, payload);
     const token = jsonLogin.data.token;
     //const id = jsonLogin.data.id
-    localStorage.setItem("token", token);
-    const prueba = localStorage.getItem("token");
+    localStorage.setItem("token", token)
+    const prueba = localStorage.getItem("token")
     console.log(prueba);
     return jsonLogin;
   };
@@ -140,16 +138,16 @@ export const postValidate = (payload: any) => {
 
 // User Detail
 export const getUserbyId: any = (id: string) => {
-  const endpoint = `${API_URL}users/${id}`;
+  const endpoint = `${API_URL}users/${id}`
 
   return async (dispatch: (action: ServiceAction) => void) => {
     try {
-      const { data } = await axios.get(endpoint);
+      const { data } = await axios.get(endpoint)
 
       dispatch({
         type: GET_USER_BY_ID,
         payload: data,
-      });
+      })
     } catch (error: any) {
       console.log(error.message);
     }

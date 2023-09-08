@@ -12,6 +12,7 @@ import {
   getUserByid,
   putUser,
   logInUser,
+  logInUserGoogle
 } from "../../controllers/users/index";
 //import { rolePermissions } from "../../middlewares/rolePermissions.middleware";
 import passport from "passport";
@@ -28,6 +29,7 @@ router.get(
 );
 router.post("/", schemaValidation(CreateUserSchema), postUser);
 router.post("/login", logInUser);
+router.post("/auth/login", logInUserGoogle);
 
 router.put(
   "/:id",
