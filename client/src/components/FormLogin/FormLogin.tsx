@@ -104,7 +104,7 @@ const FormLogin: React.FC = ({ onToggle }: any) => {
 
   return (
     <div className={style.content}>
-      <form onSubmit={() => onSubmit}>
+      <form onSubmit={onSubmit}>
         <p className={style.txt}>Email:</p>
         <EmailLogin register={register} errors={errors} />
         {errorMessage !== '' && <ErrorMessage message={errorMessage} />}

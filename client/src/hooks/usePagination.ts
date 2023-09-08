@@ -3,14 +3,14 @@ import { useEffect, useState } from 'react'
 export const usePagination = (
   items: any,
   itemsPerPage: number,
-  filter?: string,
-  rating?: number
+  filter?: string | undefined
+  // rating?: number
 ): {
     itemsPaginated: any
     currentPage: number
     totalPages: number
     filters: string
-    rating: number
+    // rating: number
     nextPage: () => void
     prevPage: () => void
     startPage: () => void
@@ -44,7 +44,7 @@ export const usePagination = (
 
   useEffect(() => {
     setCurrentPage(0)
-  }, [filter, rating])
+  }, [filter])
 
   return {
     itemsPaginated,

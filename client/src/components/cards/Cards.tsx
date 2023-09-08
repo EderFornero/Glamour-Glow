@@ -16,8 +16,8 @@ import type { RootState } from '../../redux/types'
 
 const Cards: React.FC<CardsProps> = ({ searchUsers }: CardsProps) => {
   const { filteredUsers } = useFilterHook(searchUsers)
-  const { filter, rating } = useSelector((state: RootState) => state)
-  const { itemsPaginated, currentPage, totalPages, nextPage, prevPage, startPage, finalPage } = usePagination(filteredUsers, 6, filter, rating)
+  const { filter } = useSelector((state: RootState) => state)
+  const { itemsPaginated, currentPage, totalPages, nextPage, prevPage, startPage, finalPage } = usePagination(filteredUsers, 6, filter)
   const calculateRating = (reviews: any): number => {
     const totalRating = reviews.reduce((accumulator: number, current: any) => {
       return accumulator + current.review
