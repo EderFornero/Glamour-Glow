@@ -12,9 +12,9 @@ const LastNameInput: React.FC<LastNameInputProps> = ({ register, errors }) => {
       <input
         className={style.input}
         type="text"
-        name="last_name"
+        name="lastName"
         placeholder="Last Name"
-        {...register('last_name', {
+        {...register('lastName', {
           required: {
             value: true,
             message: 'Please enter your last name!'
@@ -24,11 +24,11 @@ const LastNameInput: React.FC<LastNameInputProps> = ({ register, errors }) => {
         })}
       />
       <div>
-      {errors.last_name?.type === 'required' && <span className={style.span}>Last Name Required</span>}
-      {errors.last_name?.type === 'maxLength' && (
+      {errors.lastName?.type === 'required' && <span className={style.span}>Last Name Required</span>}
+      {errors.lastName?.type === 'maxLength' && (
         <span className={style.span}>The last name is too longer</span>
       )}
-      {errors.last_name?.type === 'minLength' && (
+      {errors.lastName?.type === 'minLength' && (
         <span className={style.span}>The last name is too short</span>
       )}
       </div>

@@ -24,12 +24,12 @@ const FormRegister: React.FC = ({ onToggle }: any) => {
   } = useForm<FormData>({
     defaultValues: {
       name: '',
-      last_name: '',
+      lastName: '',
       email: '',
       password: '',
-      phone_number: '',
+      phoneNumber: '',
       role: 'customer',
-      date_of_birth: '',
+      dateOfBirth: '',
       image: 'https://cdn.icon-icons.com/icons2/2574/PNG/512/profile_picture_user_icon_153847.png',
       isActive: true,
       confirmPassword: ''

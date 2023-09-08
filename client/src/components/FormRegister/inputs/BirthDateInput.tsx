@@ -15,8 +15,8 @@ const BirthDateInput: React.FC<BirthDateInputProps> = ({
       <input
         className={style.input}
         type="date"
-        name="date_of_birth"
-        {...register('date_of_birth', {
+        name="dateOfBirth"
+        {...register('dateOfBirth', {
           required: {
             value: true,
             message: 'Birth date required'
@@ -29,7 +29,7 @@ const BirthDateInput: React.FC<BirthDateInputProps> = ({
           }
         })}
       />
-      <div>{errors.date_of_birth && <span className={style.span}>{errors.date_of_birth.message}</span>}</div>
+      <div>{errors.dateOfBirth && <span className={style.span}>{errors.dateOfBirth.message}</span>}</div>
     </div>
   )
 }
