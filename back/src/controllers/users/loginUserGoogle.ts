@@ -8,7 +8,6 @@ export const logInUserGoogle = async (req: Request, res: Response) => {
 
     const user = await UserModel.find({ email });
     if (user.length < 1) {
-      console.log("entre en el if");
       const newUser = await UserModel.create({
         email: email,
         password: password,
@@ -19,16 +18,15 @@ export const logInUserGoogle = async (req: Request, res: Response) => {
         lastName: "apellido",
         role: "customer",
       });
-      console.log(newUser);
-      // const id = newUser._id;
+
+      const id = newUser._id.toString();
       const token = await generateToken(email);
-      // console.log(token);
-      return res.status(200).send(token);
+      return res.status(200).send({ token, id });
     }
     const id = user[0]._id.toString();
-    console.log(id);
+
     const token = await generateToken(email);
-    console.log(token);
+
     return res.status(200).send({ token, id });
   } catch (error: any) {
     return res.status(400).send({

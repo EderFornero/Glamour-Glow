@@ -86,7 +86,7 @@ const FormLogin: React.FC = ({ onToggle }) => {
         data
       );
       const { token, id } = response.data;
-      console.log(id);
+
       if (id && token) {
         localStorage.setItem("isAuth", "true");
         dispatch(setAuth(true));
