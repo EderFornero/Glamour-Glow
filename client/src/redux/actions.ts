@@ -15,7 +15,7 @@ import {
 } from './Action-Types'
 import type { ServiceAction } from './types'
 
-const API_URL = process.env.REACT_APP_URL
+const API_URL = import.meta.env.VITE_SERVER_URL
 
 export const setAuth = (isAuth) => ({
   type: SET_AUTH,
