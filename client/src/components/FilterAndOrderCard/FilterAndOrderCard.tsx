@@ -4,8 +4,8 @@ import { categories } from '../../../mocks/categories.json'
 // hooks
 import { useFilterHook } from '../../hooks/index'
 import type { CardsProps } from '../../interfaces/props'
-const FilterAndOrderCard: React.FC<CardsProps> = ({ searchUsers }: CardsProps) => {
-  const { useFilter } = useFilterHook(searchUsers)
+const FilterAndOrderCard: React.FC<CardsProps> = ({ allServices }: CardsProps) => {
+  const { useFilter } = useFilterHook(allServices)
   // const { useRating } = useRatingHook()
   return (
     <div className={style['div-container-order-filter']}>

@@ -30,7 +30,7 @@ const Home: React.FC = () => {
     <div>
       <SearchBar onSearch={handleOnSearch} updateShowCards={updateShowCards} />
       {showCards
-        ? (<Cards searchUsers={searchResults.length > 0 ? searchResults : allServices} />)
+        ? (<Cards allServices={searchResults.length > 0 ? searchResults : allServices} />)
         : (
         <>
           <Description />

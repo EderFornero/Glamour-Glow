@@ -14,8 +14,8 @@ import { useFilterHook, usePagination } from '../../hooks/index'
 import { useSelector } from 'react-redux'
 import type { RootState } from '../../redux/types'
 
-const Cards: React.FC<CardsProps> = ({ searchUsers }: CardsProps) => {
-  const { filteredUsers } = useFilterHook(searchUsers)
+const Cards: React.FC<CardsProps> = ({ allServices }: CardsProps) => {
+  const { filteredUsers } = useFilterHook(allServices)
   const { filter } = useSelector((state: RootState) => state)
   const { itemsPaginated, currentPage, totalPages, nextPage, prevPage, startPage, finalPage } = usePagination(filteredUsers, 6, filter)
   const calculateRating = (reviews: any): number => {
@@ -32,7 +32,7 @@ const Cards: React.FC<CardsProps> = ({ searchUsers }: CardsProps) => {
       <Pagination currentPage={currentPage} totalPages={totalPages} nextPage={nextPage} prevPage={prevPage} startPage={startPage} finalPage={finalPage} />
       <div className={style.test}>
         <div className={style['div-container-order-filter-cards']}>
-          <FilterAndOrderCard searchUsers={searchUsers} />
+          <FilterAndOrderCard allServices={allServices} />
           <section className={style.cardsSection}>
             {itemsPaginated.map(({ _id, sellerName, categoriesArray, servicesArray, reviews }: any) => {
               return <BusinessCard key={_id} _id={_id} sellerName={sellerName} rating={calculateRating(reviews)} categoriesArray={categoriesArray} servicesArray={servicesArray} />
