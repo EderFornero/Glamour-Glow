@@ -1,3 +1,4 @@
+import type { Reducer } from 'react'
 import {
   GET_ALL_BUSINESS,
   GET_ALL_CATEGORIES,
@@ -27,7 +28,7 @@ const initialState: RootState = {
   userId: null
 }
 
-const reducer = (state = initialState, action: ServiceAction): {
+const reducer: Reducer<RootState, ServiceAction> = (state = initialState, action: ServiceAction): {
   allServices: any[]
   categories: any[]
   users: any[]
@@ -36,42 +37,27 @@ const reducer = (state = initialState, action: ServiceAction): {
   filter: string
   rating: number
   image: string | undefined
+  isAuth: false
+  userId: null
 } => {
   switch (action.type) {
     case GET_ALL_BUSINESS:
-      return {
-        ...state,
-        allServices: [...action.payload]
-      }
+      return { ...state, allServices: [...action.payload] }
 
     case SET_FILTERS:
-      return {
-        ...state,
-        filter: action.payload
-      }
+      return { ...state, filter: action.payload }
+
     case SET_RATING:
-      return {
-        ...state,
-        rating: action.payload
-      }
+      return { ...state, rating: action.payload }
 
     case SET_UPLOAD_IMAGE:
-      return {
-        ...state,
-        image: action.payload
-      }
+      return { ...state, image: action.payload }
 
     case GET_ALL_CATEGORIES:
-      return {
-        ...state,
-        categories: action.payload
-      }
+      return { ...state, categories: action.payload }
 
     case GET_ALL_USERS:
-      return {
-        ...state,
-        users: action.payload
-      }
+      return { ...state, users: action.payload }
 
     case GET_USER_BY_ID:
       return { ...state, userdetail: action.payload }

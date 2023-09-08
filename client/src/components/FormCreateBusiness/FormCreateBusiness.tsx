@@ -9,7 +9,7 @@ import BusiPhoneInput from './inputs/BusiPhoneInput'
 import BusiImgInput from './inputs/BusiImgInput'
 import style from './FormCreateBusiness.module.css'
 import type { RootState } from '../../redux/types'
-import { getCategories, postSeller } from '../../redux/Actions'
+import { getCategories, postSeller } from '../../redux/actions'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import type { FormCreateBusi } from '../../interfaces'
@@ -25,10 +25,10 @@ const FormBusiness: React.FC = () => {
     formState: { errors }
   } = useForm<FormCreateBusi>({
     defaultValues: {
-      seller_name: '',
-      seller_email: '',
-      seller_phone: '',
-      seller_gender: 'any',
+      sellerName: '',
+      sellerEmail: '',
+      sellerPhone: '',
+      sellerGender: 'any',
       categoriesArray: [],
       servicesArray: []
     }
@@ -43,9 +43,9 @@ const FormBusiness: React.FC = () => {
   }, [dispatch])
 
   const onSubmit = handleSubmit((data: FormCreateBusi) => {
-    arr.splice(0, 2)
-    data.categoriesArray = arr
-
+  //  arr.splice(0, 2)
+  //  data.categoriesArray = arr
+    console.log(data)
     dispatch(postSeller(data))
     navigate('/')
   })

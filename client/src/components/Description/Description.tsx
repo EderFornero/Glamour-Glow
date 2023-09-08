@@ -1,15 +1,15 @@
-import Landing from '../../Images/Description-images/landing1.png';
-import Landing2 from '../../Images/Description-images/landing2.png';
-import Landing3 from '../../Images/Description-images/landing3.png';
-import Landing4 from '../../Images/Description-images/person.jpg';
-import check from '../../assets/description-icons/check.svg';
+import Landing from '../../Images/Description-images/landing1.png'
+import Landing2 from '../../Images/Description-images/landing2.png'
+import Landing3 from '../../Images/Description-images/landing3.png'
+import Landing4 from '../../Images/Description-images/person.jpg'
+import check from '../../assets/description-icons/check.svg'
 // css
-import styles from './Description.module.css';
+import styles from './Description.module.css'
 // features
-import { useFeatures } from '../../hooks/index';
+import { useFeatures } from '../../hooks/index'
 
-function Description(): JSX.Element {
-  const ecommerceFeatures = useFeatures();
+function Description (): JSX.Element {
+  const ecommerceFeatures = useFeatures()
   return (
     <main className={styles['first-main-description']}>
       <section className={styles['box-header']} id="header">
@@ -47,10 +47,10 @@ function Description(): JSX.Element {
         </div>
       </section>
     </main>
-  );
+  )
 }
 
-function Description2(): JSX.Element {
+function Description2 (): JSX.Element {
   return (
     <main className={styles['second-main-description']}>
       <section className={styles['box-call-to-actions']}>
@@ -126,7 +126,7 @@ function Description2(): JSX.Element {
         </div>
       </section>
     </main>
-  );
+  )
 }
 
-export { Description, Description2 };
+export { Description, Description2 }

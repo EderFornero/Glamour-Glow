@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import styles from './Sidebar.module.css'
 import { menuItems } from './parts/itemsmenu'
 import NavHeader from './parts/NavHeader'

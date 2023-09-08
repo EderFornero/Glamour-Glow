@@ -10,7 +10,7 @@ interface FAQItem {
 const FAQ: React.FC = () => {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null)
 
-  const handleToggleAccordion = (index: number) => {
+  const handleToggleAccordion = (index: number): void => {
     if (expandedIndex === index) {
       setExpandedIndex(null)
     } else {
@@ -25,7 +25,7 @@ const FAQ: React.FC = () => {
         <div className={styles.accordion}>
           {faqs.map((faq: FAQItem, index: number) => (
             <div className={`${styles['accordion-item']} ${styles['accordion-item-' + index]}`} key={index}>
-              <button id={`accordion-button-${index}`} aria-expanded={expandedIndex === index} onClick={() => handleToggleAccordion(index)}>
+              <button id={`accordion-button-${index}`} aria-expanded={expandedIndex === index} onClick={() => { handleToggleAccordion(index) }}>
                 <span className={styles['accordion-title']}>{faq.question}</span>
                 <span className={styles.icon} aria-hidden='true'></span>
               </button>
