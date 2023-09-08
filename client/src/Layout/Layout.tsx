@@ -7,7 +7,6 @@ import style from './Layout.module.css'
 import { useState } from 'react'
 
 const Layout: React.FC = () => {
-  const [isAuth, setIsAuth ] = useState(false) 
   const location = useLocation()
   const { pathname } = useLocation()
   const [isAuth, setIsAuth] = useState<boolean>(false)

@@ -1,20 +1,25 @@
 import { useState } from 'react'
 import imgprofile from '../../../assets/profile-circle.svg'
 import style from './NavMobile.module.css'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import Hamburger from 'hamburger-react'
+import { useDispatch, useSelector } from 'react-redux'
+import type { RootState } from '../../../redux/types'
+import { setAuth } from '../../../redux/actions'
+
 const NavMobile = (): JSX.Element => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
-  const [token, setToken] = useState<{ userId: number, role: string } | null>(null)
-  const login = (): void => {
-    setToken({ userId: 1, role: 'customer' })
-  }
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const userId = useSelector((state: RootState) => state.userId)
+  const isAuth = useSelector((state: RootState) => state.isAuth)
 
-  // Simulate logout by removing the token
-  const logout = (): void => {
-    setToken(null)
+  const handleLogout = (): void => {
+    dispatch(setAuth(false))
+    localStorage.removeItem('token')
+    localStorage.removeItem('isAuth')
+    navigate('/')
   }
-
   return (
     <nav className={style['nav-mobile']}>
       <div className={style.div}>
@@ -22,22 +27,22 @@ const NavMobile = (): JSX.Element => {
       </div>
       {isOpen && (
         <ul className={style.menu}>
-          {token === null && (
-            <li onClick={login} className={style['menu-item']}>
-              <NavLink to='/' className={style.link}>
+          {!isAuth && (
+            <li className={style['menu-item']}>
+              <NavLink to='/login' className={style.link}>
                 Login
               </NavLink>
             </li>
           )}
-          {token !== null && (
+          {isAuth && (
             <li className={style['menu-item-full']}>
-              <NavLink to='/userdetail'>
+              <NavLink to={`/userdetail/${userId}`}>
                 <img className={style['userimg-full']} src={imgprofile} />
               </NavLink>
             </li>
           )}
           <li className={style['menu-item']}>
-            <NavLink to='/' className={style.link}>
+            <NavLink to='/businessRegister' className={style.link}>
               For business
             </NavLink>
           </li>
@@ -46,8 +51,8 @@ const NavMobile = (): JSX.Element => {
               Services
             </NavLink>
           </li>
-          {token !== null && (
-            <li onClick={logout} className={`${style['menu-item']} ${style.link} logout`}>
+          {isAuth && (
+            <li onClick={handleLogout} className={`${style['menu-item']} ${style.link} logout`}>
               Logout
             </li>
           )}
