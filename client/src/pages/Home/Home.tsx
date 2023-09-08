@@ -22,6 +22,8 @@ const Home: React.FC = () => {
     setShowCards(hasQuery)
   }
 
+  console.log('aqui', allServices)
+
   useEffect(() => {
     dispatch(getAllBusiness())
   }, [dispatch, showCards])

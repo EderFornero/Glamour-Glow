@@ -8,8 +8,6 @@ import style from './Layout.module.css'
 const Layout: React.FC = () => {
   const location = useLocation()
   const { pathname } = useLocation()
-  // const [isAuth, setIsAuth] = useState<boolean>(false)
-  // console.log(setIsAuth)
 
   useEffect(() => {
     window.scrollTo(0, 0)
