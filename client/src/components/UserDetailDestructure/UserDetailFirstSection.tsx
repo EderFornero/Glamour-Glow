@@ -8,14 +8,9 @@ import styles from './UserDetailDestructure.module.css'
 import type { RootState } from '../../redux/types'
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect, useState } from 'react'
-<<<<<<< HEAD
-import { getUserbyId, updateUserInfo } from '../../redux/Actions'
 import { UserDetail } from '../../redux/types'
-import { useParams } from 'react-router-dom'
-=======
 import { getUserbyId, updateUserInfo, setAuth } from '../../redux/actions'
 import { useNavigate, useParams } from 'react-router-dom'
->>>>>>> 099e852aa3bcdbe60cd5173811f671b3505a7e10
 
 const UserDetailFirstSection = (): JSX.Element => {
   const dispatch = useDispatch()
@@ -28,11 +23,6 @@ const UserDetailFirstSection = (): JSX.Element => {
 
   const { id } = useParams()
 
-<<<<<<< HEAD
-  const { id } = useParams()
-
-=======
->>>>>>> 099e852aa3bcdbe60cd5173811f671b3505a7e10
   useEffect(
     () => {
       dispatch(getUserbyId(id))
@@ -71,13 +61,9 @@ const UserDetailFirstSection = (): JSX.Element => {
                 <div className={styles['userdetail-header']}>
                     <img src={image ?? noProfileImage} alt='Profile' />
                     <Cloudinary />
-<<<<<<< HEAD
                     <h1> {editing
                       ? (<input type="text" name="name" value={newUserInfo.name} onChange={handleChange} />)
                       : (`${userdetail.name} ${userdetail.last_name}`) } </h1>
-=======
-                    <h1>{userdetail.name} {userdetail.last_name}</h1>
->>>>>>> 099e852aa3bcdbe60cd5173811f671b3505a7e10
                     {editing
                       ? (<a onClick={handleSave}>Save</a>)
                       : (<a onClick={handleEdit}>Edit basic information</a>)}
