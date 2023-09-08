@@ -34,8 +34,8 @@ const Cards: React.FC<CardsProps> = ({ searchUsers }: CardsProps) => {
         <div className={style['div-container-order-filter-cards']}>
           <FilterAndOrderCard searchUsers={searchUsers} />
           <section className={style.cardsSection}>
-            {itemsPaginated.map(({ _id, seller_name, categoriesArray, servicesArray, reviews }: any) => {
-              return <BusinessCard key={_id} id={_id} businessName={seller_name} rating={calculateRating(reviews)} categories={categoriesArray} services={servicesArray} />
+            {itemsPaginated.map(({ _id, sellerName, categoriesArray, servicesArray, reviews }: any) => {
+              return <BusinessCard key={_id} _id={_id} sellerName={sellerName} rating={calculateRating(reviews)} categoriesArray={categoriesArray} servicesArray={servicesArray} />
             })}
           </section>
         </div>

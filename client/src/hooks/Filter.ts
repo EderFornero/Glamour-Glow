@@ -1,5 +1,5 @@
 // actions
-import { setFiler } from '../redux/Actions'
+import { setFilter } from '../redux/actions'
 // redux
 import { useDispatch, useSelector } from 'react-redux'
 // root
@@ -9,7 +9,9 @@ import type { ServiceProvider } from '../interfaces/index'
 // hook
 import { useRatingHook } from '.'
 
-export const useFilterHook = (searchUsers: ServiceProvider[]): {
+export const useFilterHook = (
+  searchUsers: ServiceProvider[]
+): {
   useFilter: (category: string) => void
   filteredUsers: ServiceProvider[]
 } => {
@@ -17,13 +19,13 @@ export const useFilterHook = (searchUsers: ServiceProvider[]): {
   const dispatch = useDispatch()
   const { filteredRating } = useRatingHook()
 
-  const filteredCategories = (category: string): (users: any) => any => {
+  const filteredCategories = (category: string): ((users: any) => any) => {
     if (typeof category === 'string' && category !== 'none') return (users: any) => users.categories.includes(category)
     else return (users: any) => users
   }
 
   const useFilter = (category: string): void => {
-    dispatch(setFiler(category))
+    dispatch(setFilter(category))
   }
 
   const filteredUsers = searchUsers.sort(filteredRating[rating]).filter(filteredCategories(filter))

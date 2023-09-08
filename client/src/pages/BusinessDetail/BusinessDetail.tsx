@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom'
 import style from './BusinessDetail.module.css'
 import Services from './Services/Services'
 import LeaveAComment from '../../components/LeaveAComment/LeaveAComment'
-import Reviews from '../../components/Reviews/Reviews'
+// import Reviews from '../../components/Reviews/Reviews'
 import BusinessInfo from './BusinessInfo/BusinessInfo'
 import BusinessImages from './BusinessImages/BusinessImages'
 import type { RootState } from '../../redux/types'
@@ -11,6 +11,7 @@ import { getSellerbyId, updateSellerInfo } from '../../redux/actions'
 import { useSelector, useDispatch } from 'react-redux'
 import aprroved from '../../assets/approved.svg'
 import failure from '../../assets/failure.svg'
+import type { ServiceProvider } from '../../interfaces'
 
 interface Notification {
   isOpen: boolean
@@ -27,11 +28,11 @@ const BusinessDetail = (): JSX.Element => {
     content: ''
   })
 
-  const sellerdetail = useSelector((state: RootState) => state.sellerdetail)
+  const sellerdetail = useSelector((state: RootState) => state.sellerdetail) as ServiceProvider
 
   useEffect(() => {
     dispatch(getSellerbyId(id))
-  }, [dispatch])
+  }, [dispatch, id])
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search)
@@ -60,11 +61,12 @@ const BusinessDetail = (): JSX.Element => {
 
   return (
     <div className={style['global-container']}>
-      <BusinessInfo sellerdetail={sellerdetail} />
-      {/* <Services services={sellerdetail.servicesArray}/> */}
-      {/* <Reviews reviews={sellerdetail.reviews}/>
-      {<BusinessImages />
-      <LeaveAComment /> */}
+      <BusinessInfo sellerName={sellerdetail.sellerName} rating={sellerdetail.reviews} />
+      <BusinessImages />
+      {/* {<Services services={sellerdetail.servicesArray} />} */}
+      {/* <Reviews reviews={sellerdetail.reviews}/> */}
+
+      {/* <LeaveAComment /> */}
       {notification.isOpen && (
         <div className={style.notification}>
           <div className={style['icon-container']} style={{ backgroundColor: notification.type === 'approved' ? '#00cc99' : '#ee4646' }}>

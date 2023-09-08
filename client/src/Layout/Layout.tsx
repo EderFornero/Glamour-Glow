@@ -8,15 +8,8 @@ import { useState } from 'react'
 
 const Layout: React.FC = () => {
   const location = useLocation()
-<<<<<<< HEAD
-  const [isAuth, setIsAuth] = useState(false)
-
-  const showNavFooter = location.pathname !== '/admin'
-  return (
-    <>
-      {showNavFooter && <Nav isAuth={isAuth}/>}
-=======
   const { pathname } = useLocation()
+  const [isAuth, setIsAuth] = useState<boolean>(false)
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -25,8 +18,7 @@ const Layout: React.FC = () => {
   const showNavFooter = location.pathname !== '/admin'
   return (
     <>
-      {showNavFooter && <Nav/>}
->>>>>>> 099e852aa3bcdbe60cd5173811f671b3505a7e10
+      {showNavFooter && <Nav isAuth={isAuth} />}
       <main className={style.main}>
         <Outlet />
       </main>

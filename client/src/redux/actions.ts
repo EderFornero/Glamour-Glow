@@ -141,11 +141,15 @@ export const getUsers = (): ((dispatch: (action: ServiceAction) => void) => Prom
 export const postValidate = (payload: any) => {
   const endpointLogin = `${API_URL}users/login`
   return async function () {
-    const jsonLogin = await axios.post(endpointLogin, payload)
-    const token = jsonLogin.data.token
-    //const id = jsonLogin.data.id
-    localStorage.setItem('token', token)
-    return jsonLogin
+    try {
+      const response = await axios.post(endpointLogin, payload)
+
+      localStorage.setItem('token', response.data.token)
+
+      return response
+    } catch (error: any) {
+      console.log(error.message)
+    }
   }
 }
 

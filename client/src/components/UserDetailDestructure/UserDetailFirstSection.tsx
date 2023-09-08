@@ -8,14 +8,8 @@ import styles from './UserDetailDestructure.module.css'
 import type { RootState } from '../../redux/types'
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect, useState } from 'react'
-<<<<<<< HEAD
-import { getUserbyId, updateUserInfo } from '../../redux/Actions'
-import { UserDetail } from '../../redux/types'
-import { useParams } from 'react-router-dom'
-=======
 import { getUserbyId, updateUserInfo, setAuth } from '../../redux/actions'
 import { useNavigate, useParams } from 'react-router-dom'
->>>>>>> 099e852aa3bcdbe60cd5173811f671b3505a7e10
 
 const UserDetailFirstSection = (): JSX.Element => {
   const dispatch = useDispatch()
@@ -28,16 +22,9 @@ const UserDetailFirstSection = (): JSX.Element => {
 
   const { id } = useParams()
 
-<<<<<<< HEAD
-  const { id } = useParams()
-
-=======
->>>>>>> 099e852aa3bcdbe60cd5173811f671b3505a7e10
-  useEffect(
-    () => {
-      dispatch(getUserbyId(id))
-    }, [dispatch]
-  )
+  useEffect(() => {
+    dispatch(getUserbyId(id))
+  }, [dispatch])
 
   const handleLogout = (): void => {
     dispatch(setAuth(false))
@@ -66,47 +53,40 @@ const UserDetailFirstSection = (): JSX.Element => {
   }
 
   return (
-        <section className={styles.sectionleft}>
-            <div className={styles.userdetail}>
-                <div className={styles['userdetail-header']}>
-                    <img src={image ?? noProfileImage} alt='Profile' />
-                    <Cloudinary />
-<<<<<<< HEAD
-                    <h1> {editing
-                      ? (<input type="text" name="name" value={newUserInfo.name} onChange={handleChange} />)
-                      : (`${userdetail.name} ${userdetail.last_name}`) } </h1>
-=======
-                    <h1>{userdetail.name} {userdetail.last_name}</h1>
->>>>>>> 099e852aa3bcdbe60cd5173811f671b3505a7e10
-                    {editing
-                      ? (<a onClick={handleSave}>Save</a>)
-                      : (<a onClick={handleEdit}>Edit basic information</a>)}
-                </div>
-                <div className={styles['userdetail-body']}>
-                <ul>
-                  <li>Name <span>{editing
-                    ? (<input type="text" name="name" value={newUserInfo.name} onChange={handleChange} />)
-                    : (userdetail.name)}</span></li>
-                  <li>Last Name <span>{editing
-                    ? (<input type="text" name="last_name" value={newUserInfo.last_name} onChange={handleChange} />)
-                    : (userdetail.last_name)}</span></li>
-                  <li>Phone <span>{editing
-                    ? (<input type="number" name="phone_number" value={newUserInfo.phone_number} onChange={handleChange} />)
-                    : (userdetail.phone_number)}</span></li>
-                  <li>Email <span>{editing
-                    ? (<input type="text" name="email" value={newUserInfo.email} onChange={handleChange} disabled/>)
-                    : (userdetail.email)}</span></li>
-                  <li>Birthdate <span>{editing
-                    ? (<input type="date" name="date_of_birth" value={newUserInfo.date_of_birth} onChange={handleChange} />)
-                    : (formatDateNumbers(userdetail.date_of_birth))}</span></li>
-                </ul>
-
-                </div>
-                <div className={styles['userdetail-bottom']} onClick={handleLogout}>
-                    <a>Sign Out</a>
-                </div>
-            </div>
-        </section>
+    <section className={styles.sectionleft}>
+      <div className={styles.userdetail}>
+        <div className={styles['userdetail-header']}>
+          <img src={image ?? noProfileImage} alt='Profile' />
+          <Cloudinary />
+          <h1>
+            {userdetail.name} {userdetail.lastName}
+          </h1>
+          {editing ? <a onClick={handleSave}>Save</a> : <a onClick={handleEdit}>Edit basic information</a>}
+        </div>
+        <div className={styles['userdetail-body']}>
+          <ul>
+            <li>
+              Name <span>{editing ? <input type='text' name='name' value={newUserInfo.name} onChange={handleChange} /> : userdetail.name}</span>
+            </li>
+            <li>
+              Last Name <span>{editing ? <input type='text' name='last_name' value={newUserInfo.lastName} onChange={handleChange} /> : userdetail.lastName}</span>
+            </li>
+            <li>
+              Phone <span>{editing ? <input type='number' name='phone_number' value={newUserInfo.phoneNumber} onChange={handleChange} /> : userdetail.phoneNumber}</span>
+            </li>
+            <li>
+              Email <span>{editing ? <input type='text' name='email' value={newUserInfo.email} onChange={handleChange} disabled /> : userdetail.email}</span>
+            </li>
+            <li>
+              Birthdate <span>{editing ? <input type='date' name='date_of_birth' value={newUserInfo.dateOfBirth} onChange={handleChange} /> : formatDateNumbers(userdetail.dateOfBirth)}</span>
+            </li>
+          </ul>
+        </div>
+        <div className={styles['userdetail-bottom']} onClick={handleLogout}>
+          <a>Sign Out</a>
+        </div>
+      </div>
+    </section>
   )
 }
 
