@@ -80,7 +80,7 @@ export const setUploadImage = (
   }
 }
 
-export const getCategories = (): ((dispatch: (action: ServiceAction) => void) => Promise<void>) => {
+export const getCategories = (): any => {
   const endCategorie = `${API_URL}categories`
 
   return async (dispatch: (action: ServiceAction) => void) => {

@@ -6,7 +6,7 @@ import style from './Forms.module.css'
 const Forms: React.FC = ({ setIsAuth }: any) => {
   const [showLoginForm, setShowLoginForm] = useState(true)
 
-  const toggleForm = (): void => {
+  const toggleForm = (): any => {
     setShowLoginForm(!showLoginForm)
   }
 

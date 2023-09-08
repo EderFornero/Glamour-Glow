@@ -1,6 +1,6 @@
 import style from './FilterAndOrderCard.module.css'
 // categories
-import { categories } from '../../../../mocks/categories.json'
+import { categories } from '../../../mocks/categories.json'
 // hooks
 import { useFilterHook, useRatingHook } from '../../hooks/index'
 import type { CardsProps } from '../../interfaces/props'

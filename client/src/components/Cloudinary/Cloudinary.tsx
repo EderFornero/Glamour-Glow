@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
 import { setUploadImage } from '../../redux/actions'
 
-const Cloudinary = (): void => {
+const Cloudinary = (): JSX.Element => {
   const dispatch = useDispatch()
   const createWidget = (): void => {
     if ('cloudinary' in window) {

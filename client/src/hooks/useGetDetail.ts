@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { users } from '../../../mocks/fullAPIresponse.json'
+import { users } from '../../mocks/fullAPIresponse.json'
 import type { Service } from '../interfaces'
 
 export interface User {

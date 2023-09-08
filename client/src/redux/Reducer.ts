@@ -1,4 +1,3 @@
-import type { Reducer } from 'react'
 import {
   GET_ALL_BUSINESS,
   GET_ALL_CATEGORIES,
@@ -47,7 +46,7 @@ export const initialState: RootState = {
   userId: null
 }
 
-const reducer: Reducer<RootState, ServiceAction> = (state = initialState, action: ServiceAction): {
+const reducer = (state = initialState, action: ServiceAction): {
   allServices: any[]
   categories: any[]
   users: any[]

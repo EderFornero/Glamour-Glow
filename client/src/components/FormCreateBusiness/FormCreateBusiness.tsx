@@ -37,6 +37,7 @@ const FormBusiness: React.FC = () => {
   const categoryList = useSelector((state: RootState) => state.categories)
 
   const [arr, setArr] = useState<string[]>([])
+  console.log(arr, setArr, watch)
 
   useEffect(() => {
     dispatch(getCategories())
@@ -61,7 +62,7 @@ const FormBusiness: React.FC = () => {
               <div className={style.text}>
                 <h2 className={style.h2}>Tell us about your work</h2>
               </div>
-                <form onSubmit={onSubmit} className={style.forms}>
+                <form onSubmit={() => onSubmit} className={style.forms}>
                   <BusiNameInput register={register} errors={errors} />
                   <BusiEmailInput register={register} errors={errors} />
                   <BusiPhoneInput register={register} errors={errors} />
