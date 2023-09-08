@@ -1,8 +1,8 @@
-import style from './Review.module.css';
-import StarIcon from '@mui/icons-material/Star';
+import style from './Review.module.css'
+import StarIcon from '@mui/icons-material/Star'
 
 const Review = ({ date, comment, rating, serviceName }: any): JSX.Element => {
-    return (
+  return (
         <article className={style.container}>
             <p className={style.date}>Date: {date}</p>
             <div className={style.rating}>
@@ -14,7 +14,7 @@ const Review = ({ date, comment, rating, serviceName }: any): JSX.Element => {
                 <p>{comment}</p>
             </div>
         </article>
-    );
+  )
 }
 
-export default Review;
+export default Review

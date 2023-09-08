@@ -1,7 +1,5 @@
 import style from './LeaveAComment.module.css'
-import style from './LeaveAComment.module.css'
 import { Rating, InputLabel, Select, MenuItem, FormControl } from '@mui/material'
-import { useState } from 'react'
 import { useState } from 'react'
 
 const LeaveAComment = ({ user }: any): JSX.Element => {
@@ -9,6 +7,7 @@ const LeaveAComment = ({ user }: any): JSX.Element => {
   const handleRatingChange = (_event: React.ChangeEvent<{}>, newValue: number | null) => {
     setRatingValue(newValue)
   }
+
   return (
     <form className={style.form}>
       <h2 className={style.title}> Leave a comment for us</h2>

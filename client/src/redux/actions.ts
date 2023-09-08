@@ -17,12 +17,12 @@ import type { ServiceAction } from './types'
 
 const API_URL = import.meta.env.VITE_SERVER_URL
 
-export const setAuth = (isAuth) => ({
+export const setAuth: any = (isAuth: any) => ({
   type: SET_AUTH,
   payload: isAuth
 })
 
-export const setUserId = (id) => ({
+export const setUserId: any = (id: any) => ({
   type: SET_USER_ID,
   payload: id
 })
@@ -97,16 +97,16 @@ export const getCategories = (): ((dispatch: (action: ServiceAction) => void) =>
   }
 }
 
-export const postSeller = (payload: any) => {
+export const postSeller: any = (payload: any) => {
   const endpoint = `${API_URL}sellers`
 
   return async function (_dispatch: any) {
-    let json = await axios.post(endpoint, payload)
-    return json
+    const response = await axios.post(endpoint, payload)
+    return response
   }
 }
 
-export const postUser = (payload: any) => {
+export const postUser: any = (payload: any) => {
   const endpoint1 = `${API_URL}users`
   return async function (_dispatch: any) {
     try {
@@ -136,7 +136,7 @@ export const getUsers = (): ((dispatch: (action: ServiceAction) => void) => Prom
   }
 }
 
-export const postValidate = (payload: any) => {
+export const postValidate: any = (payload: any) => {
   const endpointLogin = `${API_URL}users/login`
   return async function () {
     try {

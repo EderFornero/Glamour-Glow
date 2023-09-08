@@ -1,13 +1,12 @@
 import { Outlet, useLocation } from 'react-router-dom'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 // components
 import Nav from '../components/Nav/Nav'
 import Footer from '../components/Footer/Footer'
 import style from './Layout.module.css'
-import { useState } from 'react'
 
 const Layout: React.FC = () => {
-  const [isAuth, setIsAuth ] = useState(false) 
+  const [isAuth, setIsAuth ] = useState(false)
   const location = useLocation()
   const { pathname } = useLocation()
 

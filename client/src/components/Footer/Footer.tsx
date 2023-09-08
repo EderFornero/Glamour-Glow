@@ -6,7 +6,7 @@ import linkedin from '../../assets/social-icons/linkedin.svg'
 import twitter from '../../assets/social-icons/twitter.svg'
 import ggicon from '../../assets/gg-icon.png'
 
-function Fotter(): JSX.Element {
+function Fotter (): JSX.Element {
   return (
     <footer className={styles.footer}>
       <section className={styles.footertopwrapper}>

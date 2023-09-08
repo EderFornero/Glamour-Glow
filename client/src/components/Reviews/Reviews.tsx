@@ -11,7 +11,7 @@ const Reviews = ({ reviews }: any): JSX.Element => {
             <Pagination currentPage={currentPage} totalPages={totalPages} nextPage={nextPage} prevPage={prevPage} />
             <div className={style.reviews}>
                 {itemsPaginated?.map(({ date, comment, rating, serviceName }: any, index: number) => {
-                    return (
+                  return (
                         <Review
                             key={`review-${index}`}
                             date={date}
