@@ -1,6 +1,6 @@
-import styles from '../Sidebar.module.css';
-import Icon from './Icon';
-import menu from '../../../assets/sidebard-icons/menu.svg';
+import styles from '../SideBar.module.css'
+import Icon from './Icon'
+import menu from '../../../assets/sidebard-icons/menu.svg'
 
 const NavHeader = () => (
   <div className={styles['sidebar-header']}>
@@ -9,6 +9,6 @@ const NavHeader = () => (
     </button>
     <span>Admin</span>
   </div>
-);
+)
 
-export default NavHeader;
+export default NavHeader
