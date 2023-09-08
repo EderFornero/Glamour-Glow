@@ -38,6 +38,14 @@ const FormLogin: React.FC = ({ onToggle }) => {
     }
   })
 
+  const singInWithgoogle = () => {
+    signInWithPopup(auth, provider).then((result=>{
+      localStorage.setItem('isAuth', true)
+      setAuth(true)
+      navigate('/')
+    }))
+  }
+
   return (
     <div className={style.content}>
       <form onSubmit={onSubmit}>
@@ -69,7 +77,7 @@ const FormLogin: React.FC = ({ onToggle }) => {
             Dont have an account?
           </p>
         </button>
-        <Link to="/recovePassword">
+        <Link to='/passwordRecovery'>
           <p className={style.forgot}>Forgot Password?</p>
         </Link>
       </div>

@@ -7,15 +7,20 @@ import { useSearchBarHome } from '../../hooks/index'
 import { users } from '../../../../mocks/fullAPIresponse.json'
 // css
 import style from './BusinessCardsView.module.css'
+// redux
+import { useSelector } from 'react-redux'
+import { RootState } from '../../redux/types'
+
 
 const BusinessCardsView = (): JSX.Element => {
-  const { searchResults, handleOnSearch } = useSearchBarHome(users)
+  const { allServices } = useSelector((state: RootState) => state)
+  // const { searchResults, handleOnSearch } = useSearchBarHome(allServices)
   return (
     <div className={style['div-business-cards-view']}>
       {/* The missing property isnt require */}
-      <SearchBar onSearch={handleOnSearch} />
+      {/* <SearchBar onSearch={handleOnSearch} /> */}
       <div className={style['div-business-cards']}>
-        <Cards searchUsers={searchResults.length > 0 ? searchResults : users} />
+        <Cards allServices={allServices} />
       </div>
     </div>
   )

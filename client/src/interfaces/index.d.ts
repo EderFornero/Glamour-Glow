@@ -1,10 +1,16 @@
 export interface ServiceProvider {
-  id: number
-  businessName: string
-  businessLocation: string
-  rating: number
-  categories: string[]
-  services: Service[]
+  _id: string
+  sellerName: string
+  sellerEmail?: string
+  sellerPhone?: string
+  sellerGender?: string
+  reviews?: any
+  categoriesArray: Category[]
+  servicesArray: any[]
+}
+
+export interface Category {
+  name: string
 }
 
 export interface Service {
@@ -17,20 +23,13 @@ export interface Service {
 }
 
 export interface FormData {
-<<<<<<< HEAD
-  username: string
-  fullname: string
-  email: string
-  password: string
-=======
   name: string
-  last_name: string
+  lastName: string
   email: string
   password: string
-  phone_number: string
->>>>>>> 099e852aa3bcdbe60cd5173811f671b3505a7e10
+  phoneNumber: string
   role: 'customer' | 'seller'
-  date_of_birth: string
+  dateOfBirth: string
   image: string
   isActive: boolean
   confirmPassword?: string
