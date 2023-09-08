@@ -36,11 +36,11 @@ export interface FormData {
 }
 
 export interface FormCreateBusi {
-  seller_name: string
-  seller_email: string
-  seller_phone: string
-  seller_gender: 'male' | 'female' | 'any'
-  categoriesArray: string[]
+  sellerName: string
+  sellerEmail: string
+  sellerPhone: string
+  sellerGender: 'male' | 'female' | 'any'
+  categoriesArray: string
   servicesArray: string[]
 }
 

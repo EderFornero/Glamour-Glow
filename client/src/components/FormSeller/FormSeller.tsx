@@ -23,7 +23,6 @@ const FormSeller: React.FC = () => {
       description: '',
       serviceCategories: '',
       price: 0,
-      rating: 0,
       seller: ''
     }
   })
