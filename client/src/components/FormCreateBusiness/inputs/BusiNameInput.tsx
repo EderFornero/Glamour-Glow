@@ -12,9 +12,9 @@ const BusiNameInput: React.FC<BusiNameInputProps> = ({ register, errors }) => {
       <input
       className={style.input}
         type="text"
-        name="seller_name"
+        name="sellerName"
         placeholder='Business Name'
-        {...register('seller_name', {
+        {...register('sellerName', {
           required: {
             value: true,
             message: 'Please enter your business name!'
@@ -24,11 +24,11 @@ const BusiNameInput: React.FC<BusiNameInputProps> = ({ register, errors }) => {
         })}
       />
       <div>
-      {errors.seller_name?.type === 'required' && <span className={style.span}>Business Name Required</span>}
-      {errors.seller_name?.type === 'maxLength' && (
+      {errors.sellerName?.type === 'required' && <span className={style.span}>Business Name Required</span>}
+      {errors.sellerName?.type === 'maxLength' && (
         <span className={style.span}>The Business name is too longer</span>
       )}
-      {errors.seller_name?.type === 'minLength' && (
+      {errors.sellerName?.type === 'minLength' && (
         <span className={style.span}>The business name is too short</span>
       )}
       </div>

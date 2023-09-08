@@ -11,49 +11,49 @@ export interface ServiceProvider {
 }
 
 export interface Category {
-  name: string
+  name: string;
 }
 
 export interface Service {
-  id: number
-  name: string
-  description: string
-  category: string
-  price: number
-  time?: string
+  id: number;
+  name: string;
+  description: string;
+  category: string;
+  price: number;
+  time?: string;
 }
 
 export interface FormData {
-  name: string
-  lastName: string
-  email: string
-  password: string
-  phoneNumber: string
-  role: 'customer' | 'seller'
-  dateOfBirth: string
-  image: string
-  isActive: boolean
-  confirmPassword?: string
+  name: string;
+  lastName: string;
+  email: string;
+  password: string;
+  phoneNumber: string;
+  role: "customer" | "seller";
+  dateOfBirth: string;
+  image: string;
+  isActive: boolean;
+  confirmPassword?: string;
 }
 
 export interface FormCreateBusi {
-  seller_name: string
-  seller_email: string
-  seller_phone: string
-  seller_gender: 'male' | 'female' | 'any'
-  categoriesArray: string[]
-  servicesArray: string[]
+  sellerName: string;
+  sellerEmail: string;
+  sellerPhone: string;
+  sellerGender: "male" | "female" | "any";
+  categoriesArray: string;
+  servicesArray: string[];
 }
 
 export interface FormLoginData {
-  email: string
-  password: string
+  email: string;
+  password: string;
 }
 export interface SellerData {
-  name: string
-  description: string
-  serviceCategories: string
-  price: number
-  rating: number
-  seller: string
+  name: string;
+  description: string;
+  serviceCategories: string;
+  price: number;
+  rating: number;
+  seller: string;
 }
