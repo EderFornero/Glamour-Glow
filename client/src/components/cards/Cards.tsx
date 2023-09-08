@@ -3,7 +3,7 @@ import BusinessCard from '../BusinessCard/BusinessCard'
 import Pagination from '../../components/Pagination/Pagination'
 import FilterAndOrderCard from '../FilterAndOrderCard/FilterAndOrderCard'
 // interfaces
-import type { ServiceProvider } from '../../interfaces'
+// import type { ServiceProvider } from '../../interfaces'
 // css
 import style from './Cards.module.css'
 // props

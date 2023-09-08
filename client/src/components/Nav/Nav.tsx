@@ -4,7 +4,11 @@ import logoWhite from '../../assets/whitelogo.png'
 import NavMobile from './NavMobile/NavMobile'
 import NavFull from './NavFull/NavFull'
 
-const Nav = ({isAuth}): JSX.Element => {
+interface NavProps {
+  isAuth: boolean
+}
+
+const Nav = ({ isAuth }: any): JSX.Element => {
   return (
     <div className={style.test}>
       <header className={style.header}>

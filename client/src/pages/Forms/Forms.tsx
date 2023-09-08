@@ -3,10 +3,10 @@ import FormRegister from '../../components/FormRegister/FormRegister'
 import FormLogin from '../../components/FormLogin/FormLogin'
 import style from './Forms.module.css'
 
-const Forms: React.FC = ({ setIsAuth }) => {
+const Forms: React.FC = ({ setIsAuth }: any) => {
   const [showLoginForm, setShowLoginForm] = useState(true)
 
-  const toggleForm = () => {
+  const toggleForm = (): void => {
     setShowLoginForm(!showLoginForm)
   }
 

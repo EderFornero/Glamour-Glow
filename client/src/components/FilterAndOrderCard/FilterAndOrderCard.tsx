@@ -20,7 +20,7 @@ const FilterAndOrderCard: React.FC<CardsProps> = ({ searchUsers }: CardsProps) =
             <h5>Filter By</h5>
           <button onClick={() => { useFilter('none') }}>All Categories</button>
           {
-            categories.map((category) => {
+            categories.map((category: any) => {
               return (
                 <div key={category.id}>
                   <button onClick={() => { useFilter(category.name) }}>{category.name}</button>

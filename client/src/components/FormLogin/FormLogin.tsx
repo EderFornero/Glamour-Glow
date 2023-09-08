@@ -13,7 +13,7 @@ import { initializeApp } from 'firebase/app'
 import { getAuth, signInWithPopup, GoogleAuthProvider, AuthProvider } from 'firebase/auth'
 import axios from 'axios'
 
-const FormLogin: React.FC = ({ onToggle }) => {
+const FormLogin: React.FC = ({ onToggle }: any) => {
   const dispatch = useDispatch()
   const goBack = useGoBack()
   const navigate = useNavigate()
@@ -27,6 +27,8 @@ const FormLogin: React.FC = ({ onToggle }) => {
   })
   const [errorMessage, setErrorMessage] = useState('')
   const [error, setError] = useState('')
+
+  console.log(setErrorMessage)
 
   const onSubmit = handleSubmit(async (data: FormLoginData) => {
     try {

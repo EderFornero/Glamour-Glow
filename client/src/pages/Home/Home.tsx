@@ -29,9 +29,9 @@ const Home: React.FC = () => {
   return (
     <div>
       <SearchBar onSearch={handleOnSearch} updateShowCards={updateShowCards} />
-      {showCards ? (
-        <Cards searchUsers={searchResults.length > 0 ? searchResults : allServices} />
-      ) : (
+      {showCards
+        ? (<Cards searchUsers={searchResults.length > 0 ? searchResults : allServices} />)
+        : (
         <>
           <Description />
           <Carousel cardstoshow={allServices} carouselName='Recomended' />
@@ -40,7 +40,7 @@ const Home: React.FC = () => {
           <Description2 />
           <FAQ />
         </>
-      )}
+          )}
     </div>
   )
 }

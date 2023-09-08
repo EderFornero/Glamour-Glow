@@ -15,12 +15,31 @@ import {
 } from './Action-Types'
 import type { ServiceAction, RootState, UserDetail, SellerDetail } from './types'
 
-const initialState: RootState = {
+export const initialState: RootState = {
   allServices: [],
   categories: [],
   users: [],
-  userdetail: {},
-  sellerdetail: {},
+  userdetail: {
+    _id: '',
+    name: '',
+    lastName: '',
+    email: '',
+    phoneNumber: '',
+    role: '',
+    dateOfBirth: '',
+    image: '',
+    isActive: false
+  },
+  sellerdetail: {
+    _id: '',
+    sellerName: '',
+    sellerEmail: '',
+    sellerPhone: '',
+    sellerGender: '',
+    reviews: [],
+    categoriesArray: [],
+    servicesArray: []
+  },
   filter: 'none',
   rating: 0,
   image: undefined,

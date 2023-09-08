@@ -12,9 +12,9 @@ import { useRatingHook } from '.'
 export const useFilterHook = (
   searchUsers: ServiceProvider[]
 ): {
-  useFilter: (category: string) => void
-  filteredUsers: ServiceProvider[]
-} => {
+    useFilter: (category: string) => void
+    filteredUsers: ServiceProvider[]
+  } => {
   const { filter, rating } = useSelector((state: RootState) => state)
   const dispatch = useDispatch()
   const { filteredRating } = useRatingHook()

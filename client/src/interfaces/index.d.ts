@@ -7,6 +7,7 @@ export interface ServiceProvider {
   reviews?: any
   categoriesArray: Category[]
   servicesArray: any[]
+  businessName: string
 }
 
 export interface Category {

@@ -1,5 +1,5 @@
 // actions
-import { setRating } from '../redux/Actions'
+import { setRating } from '../redux/actions'
 // redux
 import { useDispatch } from 'react-redux'
 

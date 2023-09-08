@@ -39,7 +39,7 @@ export enum BusinessGender {
 
 const useGetDetail = (id: number): any => {
   const usuario = useMemo(() => {
-    return users.find((user) => user.id === id)
+    return users.find((user: any) => user.id === id)
   }, [id])
   return usuario
 }

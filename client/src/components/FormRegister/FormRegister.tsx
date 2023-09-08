@@ -10,7 +10,7 @@ import style from './FormRegister.module.css'
 import { useGoBack } from '../../hooks'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { postUser } from '../../redux/Actions'
+import { postUser } from '../../redux/actions'
 import PhoneNumberInput from './inputs/PhoneNumberInput'
 
 const FormRegister: React.FC = ({ onToggle }: any) => {
@@ -24,12 +24,12 @@ const FormRegister: React.FC = ({ onToggle }: any) => {
   } = useForm<FormData>({
     defaultValues: {
       name: '',
-      last_name: '',
+      lastName: '',
       email: '',
       password: '',
-      phone_number: '',
+      phoneNumber: '',
       role: 'customer',
-      date_of_birth: '',
+      dateOfBirth: '',
       image: 'https://cdn.icon-icons.com/icons2/2574/PNG/512/profile_picture_user_icon_153847.png',
       isActive: true,
       confirmPassword: ''

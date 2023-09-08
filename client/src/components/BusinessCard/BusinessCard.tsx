@@ -1,4 +1,3 @@
-import type { ServiceProvider } from '../../interfaces'
 import style from './BusinessCard.module.css'
 import { NavLink } from 'react-router-dom'
 

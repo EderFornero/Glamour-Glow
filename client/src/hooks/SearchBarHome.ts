@@ -5,9 +5,9 @@ import type { SearchResultsProps, SearchBarProps } from '../interfaces/props'
 export const useSearchBarInOwnComponent = ({
   onSearch
 }: SearchBarProps): {
-  searchQuery: string
-  handleOnSearch: (query: string) => void
-} => {
+    searchQuery: string
+    handleOnSearch: (query: string) => void
+  } => {
   const [searchQuery, setSearchQuery] = useState('')
   const handleOnSearch = (query: string): void => {
     setSearchQuery(query)
