@@ -13,7 +13,6 @@ const LastNameInput: React.FC<LastNameInputProps> = ({ register, errors }) => {
         className={style.input}
         type="text"
         name="lastName"
-        name="lastName"
         placeholder="Last Name"
         {...register("lastName", {
           required: {
