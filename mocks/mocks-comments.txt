@@ -1,2 +1,0 @@
-Categories, in the array of categories should reference a categories table.
-Services, in the array of services should reference a services table.
