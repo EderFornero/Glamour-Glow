@@ -1,3 +1,4 @@
+import type { Reducer } from 'react'
 import {
   GET_ALL_BUSINESS,
   GET_ALL_CATEGORIES,
@@ -27,7 +28,7 @@ const initialState: RootState = {
   userId: null
 }
 
-const reducer = (state = initialState, action: ServiceAction): {
+const reducer: Reducer<RootState, ServiceAction> = (state = initialState, action: ServiceAction): {
   allServices: any[]
   categories: any[]
   users: any[]
@@ -36,6 +37,8 @@ const reducer = (state = initialState, action: ServiceAction): {
   filter: string
   rating: number
   image: string | undefined
+  isAuth: false
+  userId: null
 } => {
   switch (action.type) {
     case GET_ALL_BUSINESS:
