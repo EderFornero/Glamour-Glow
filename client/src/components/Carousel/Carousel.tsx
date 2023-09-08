@@ -17,6 +17,7 @@ interface CarouselProps {
 
 const Carousel: React.FC<CarouselProps> = ({ cardstoshow, carouselName }) => {
   const [slidesPerView, setSlidesPerView] = useState(4)
+
   const calculateRating = (reviews: any): number => {
     const totalRating = reviews.reduce((accumulator: number, current: any) => {
       return accumulator + current.review
@@ -25,6 +26,7 @@ const Carousel: React.FC<CarouselProps> = ({ cardstoshow, carouselName }) => {
     const averageRating = totalRating / reviews.length
     return averageRating
   }
+
   const updateSlidesPerView = (): void => {
     const width = window.innerWidth
 
@@ -46,7 +48,7 @@ const Carousel: React.FC<CarouselProps> = ({ cardstoshow, carouselName }) => {
         {cardstoshow.map(({ _id, sellerName, categoriesArray, servicesArray, reviews }: ServiceProvider) => {
           return (
             <SwiperSlide key={_id} className={styles.swiperslide}>
-             <BusinessCard _id={_id} sellerName={sellerName} reviews={reviews.length > 0 && calculateRating(reviews)} categoriesArray={categoriesArray} servicesArray={servicesArray} />
+              <BusinessCard _id={_id} sellerName={sellerName} reviews={reviews?.length > 0 && calculateRating(reviews)} categoriesArray={categoriesArray} servicesArray={servicesArray} />
             </SwiperSlide>
           )
         })}

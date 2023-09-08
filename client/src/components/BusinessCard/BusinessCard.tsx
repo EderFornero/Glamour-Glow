@@ -2,16 +2,14 @@ import type { ServiceProvider } from '../../interfaces'
 import style from './BusinessCard.module.css'
 import { NavLink } from 'react-router-dom'
 
-const BusinessCard: React.FC<ServiceProvider> = ({ _id, sellerName, reviews, categoriesArray }: ServiceProvider) => {
+const BusinessCard = ({ _id, sellerName, rating, categoriesArray }: any): JSX.Element => {
   return (
     <article className={style.card}>
       {/* <img src="source" alt="alt" /> */}
       <h2 className={style.title}> {sellerName}</h2>
-      <p>Rating: {reviews}</p>
+      <p>Rating: {rating}</p>
       <p>Location: </p>
-      {categoriesArray.map((category, index) => {
-        return <p key={index}>{category.name}</p>
-      })}
+      {Array.isArray(categoriesArray) ? categoriesArray.map((category: any, index: number) => <p key={index}>{category.name}</p>) : null}
       <NavLink to={`/sellerdetail/${_id}`} className={style.link}>
         <button>Check it out</button>
       </NavLink>

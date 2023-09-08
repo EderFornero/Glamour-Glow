@@ -1,20 +1,14 @@
-import {  Request, Response } from "express";
+import { Request, Response } from 'express'
 // import mercadopago from "mercadopago";
 
-
-
-export const paymentWebHook = async ( _req: Request, 
-                                       res: Response,
-                                    ) => {
-            try {
-               console.log(_req.query)
-               const payment = _req.query;
-               if(payment.type === "payment"){
-                     
-               }
-                return res.send("Estamos en espera my king 😒")
-            } catch (error) {
-               return error;  
-            }
- };
- 
+export const paymentWebHook = async (_req: Request, res: Response) => {
+  try {
+    console.log(_req.query)
+    const payment = _req.query
+    if (payment.type === 'payment') {
+    }
+    return res.send('Estamos en espera my king 😒')
+  } catch (error) {
+    return error
+  }
+}

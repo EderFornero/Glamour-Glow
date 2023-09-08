@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
-import { postSellersHandler } from "../../handlers/sellers.ts";
-import { createSellerType } from "../../schemas/sellerSchema.ts";
+import { postSellersHandler } from "../../handlers/sellers";
+import { createSellerType } from "../../schemas/sellerSchema";
 
 export const postSellersController = async (
   req: Request<{}, {}, createSellerType>,

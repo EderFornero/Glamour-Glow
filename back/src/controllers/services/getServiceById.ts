@@ -1,6 +1,6 @@
-import { readServiceById } from "../../handlers/index.ts";
+import { readServiceById } from "../../handlers/index";
 import { NextFunction, Request, Response } from "express";
-import { readAndDeleteSellerTypeParams } from "../../schemas/sellerSchema.ts";
+import { readAndDeleteSellerTypeParams } from "../../schemas/sellerSchema";
 
 export const getServiceById = async (
   req: Request<readAndDeleteSellerTypeParams>,
