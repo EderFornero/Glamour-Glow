@@ -3,6 +3,8 @@ import { useState } from 'react'
 import toast, { Toaster } from 'react-hot-toast'
 // utils
 import { sendWelcomeEmail } from '../../utils'
+// router
+import { Link } from 'react-router-dom'
 // css
 import style from './PasswordRecovery.module.css'
 import forgotPasswordImage from '../../Images/Description-images/forgotpassword.png'
@@ -67,7 +69,7 @@ const NodemailerTest = (): JSX.Element => {
 
           <p className={style['signup-link']}>
             Don&apos;t have an account?
-            <a href='/login' className={style['signup-link link']}> Sign Up</a>
+            <Link to='/login' className={style['signup-link link']}> Sign Up</Link>
           </p>
         </div>
       </div>
