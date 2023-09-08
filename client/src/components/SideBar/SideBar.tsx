@@ -14,19 +14,19 @@ function SideBar ({ setActiveItem, activeItem }: any): JSX.Element {
       <NavHeader />
       {menuItems.map((item) => (
         <>
-          {!item.items && (
+          {item.items === undefined && (
             <NavButton
               key={item.id}
               onClick={handleClick}
               name={item.name}
               icon={item.icon}
               isActive={activeItem === item.name}
-              hasSubNav={!!item.items}
+              hasSubNav={false}
             />
           )}
-          {item.items && (
+          {item.items !== undefined && (
             <>
-              <NavButton onClick={handleClick} name={item.name} icon={item.icon} isActive={activeItem === item.name} hasSubNav={!!item.items} />
+              <NavButton onClick={handleClick} name={item.name} icon={item.icon} isActive={activeItem === item.name} hasSubNav={true} />
               <SubMenu activeItem={activeItem} handleClick={handleClick} item={item} />
             </>
           )}
