@@ -1,11 +1,11 @@
 import express from "express";
-import {userRouter, sellerRouter, serviceRouter, categoriesRouter, reviewsRouter, nodemailerRouter } from "./routes/index.ts" 
+import {userRouter, sellerRouter, serviceRouter, categoriesRouter, reviewsRouter, nodemailerRouter } from "./routes/index" 
 import "./db"
-import { logErrors } from "./middlewares/logError.middleware.ts";
+import { logErrors } from "./middlewares/logError.middleware";
 import cors, { CorsOptions } from "cors";
-import { paymentRouter } from "./routes/payment/index.ts";
+import { paymentRouter } from "./routes/payment/index";
 import passport from "passport";
-import passportMiddleware from "./middlewares/passport.ts";
+import passportMiddleware from "./middlewares/passport";
 import session from "express-session";
 import "dotenv/config"
 const {TOKEN_ENCRYPTION, PORT} = process.env

@@ -1,4 +1,4 @@
-import axios from './axiosService' //{ AxiosResponse } from "axios";
+import axios from './axiosService'
 import {
   GET_ALL_BUSINESS,
   GET_ALL_CATEGORIES,
@@ -15,9 +15,7 @@ import {
 } from './Action-Types'
 import type { ServiceAction } from './types'
 
-const API_URL = 'http://localhost:3001/'
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiR0lPVkEiLCJpZCI6IjY0ZjdkNDRlNGI1MmVjODRjMjJhMzEzYyIsImlhdCI6MTY5Mzk2MzQzMH0.Kc3ArXiNzFPWaA23NnrIk4VEQI2LPxCSvXI3b1QnIpg'
-localStorage.setItem('token', token)
+const API_URL = import.meta.env.VITE_SERVER_URL
 
 export const setAuth = (isAuth) => ({
   type: SET_AUTH,

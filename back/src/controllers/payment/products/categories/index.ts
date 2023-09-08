@@ -1,1 +1,1 @@
-export * from "./barber.ts";
+export * from "./barber";

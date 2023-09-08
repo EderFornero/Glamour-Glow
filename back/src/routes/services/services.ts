@@ -1,7 +1,7 @@
 import {Router}  from "express";
-import {deleteService, postService, getService, getServiceById, putService} from "../../controllers/index.ts";
-import { schemaValidation } from "../../middlewares/schemaValidator.middleware.ts";
-import { createServiceSchema, readAndDeleteServiceSchema, updateServiceSchema } from "../../schemas/serviceSchema.ts";
+import {deleteService, postService, getService, getServiceById, putService} from "../../controllers/index";
+import { schemaValidation } from "../../middlewares/schemaValidator.middleware";
+import { createServiceSchema, readAndDeleteServiceSchema, updateServiceSchema } from "../../schemas/serviceSchema";
 import passport from "passport"
 
 const router = Router()

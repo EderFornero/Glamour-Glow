@@ -1,1 +1,1 @@
-export * from "./categories/index.ts"
+export * from "./categories/index"

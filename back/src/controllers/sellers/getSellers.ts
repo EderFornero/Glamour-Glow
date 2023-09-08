@@ -1,7 +1,7 @@
 
 
 import { NextFunction, Request, Response} from "express";
-import { sellerFilterHandler } from "../../handlers/sellers.ts";
+import { sellerFilterHandler } from "../../handlers/sellers";
 export const getSellersController = async (
                                             _req: Request,
                                              res: Response,

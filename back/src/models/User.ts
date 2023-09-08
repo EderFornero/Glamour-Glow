@@ -1,4 +1,4 @@
-import { prop, modelOptions, pre, DocumentType } from "@typegoose/typegoose";
+import { prop, modelOptions, pre, DocumentType, Severity, index } from "@typegoose/typegoose";
 
 import argon2 from "argon2";
 
@@ -15,18 +15,22 @@ export enum ROLE {
   this.password = hash;
   return;
 })
+@index({email: 1})
 @modelOptions({
   schemaOptions: {
     _id: true,
     timestamps: true,
   },
+  options:{
+    allowMixed: Severity.ALLOW
+  }
 })
 export class User {
   @prop({ required: true, type: String })
   name: string;
 
   @prop({ required: true, type: String })
-  last_name: string;
+  lastName: string;
 
   @prop({ required: true, type: String, unique: true, lowercase: true })
   email: string;
@@ -48,6 +52,9 @@ export class User {
 
   @prop({ required: true, default: true, type: Boolean })
   isActive: boolean;
+
+  @prop()
+  passwordResetCode: string | null;
 
   async validatePassword(this: DocumentType<User>, candidatePassword: string) {
     try {

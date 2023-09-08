@@ -9,11 +9,17 @@ import type { RootState } from '../../../redux/types'
 const NavFull = (): JSX.Element => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const userId = useSelector((state: RootState) => state.userId)
-  const isAuth = useSelector((state: RootState) => state.isAuth)
+  const userId = useSelector((state) => state.userId)
+  const isAuth = useSelector((state) => state.isAuth)
+
+  const [token, setToken] = useState<{ userId: number; role: string } | null>(null)
+  const login = (): void => {
+    setToken({ userId: 1, role: 'customer' })
+  }
 
   const handleLogout = () => {
     dispatch(setAuth(false))
+    localStorage.removeItem('token')
     localStorage.removeItem('isAuth')
     navigate('/')
   }
@@ -32,7 +38,7 @@ const NavFull = (): JSX.Element => {
           </NavLink>
         </li>
         {!isAuth ? (
-          <li className={style['menu-item-full']}>
+          <li className={style['menu-item-full']} onClick={login}>
             <NavLink to='/login' className={style['link-full']}>
               Login
             </NavLink>
