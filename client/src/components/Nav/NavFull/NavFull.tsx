@@ -9,8 +9,8 @@ import type { RootState } from '../../../redux/types'
 const NavFull = (): JSX.Element => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const userId = useSelector((state) => state.userId)
-  const isAuth = useSelector((state) => state.isAuth)
+  const userId = useSelector((state: RootState) => state.userId)
+  const isAuth = useSelector((state: RootState) => state.isAuth)
 
   const [token, setToken] = useState<{ userId: number; role: string } | null>(null)
   const login = (): void => {
