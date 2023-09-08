@@ -10,22 +10,22 @@ export const postUser = async (
   try {
     const {
       name,
-      last_name,
+      lastName,
       email,
       password,
-      phone_number,
+      phoneNumber,
       role,
-      date_of_birth,
+      dateOfBirth,
       image,
     } = req.body;
     const savedUser = await createUser({
       name,
-      last_name,
+      lastName,
       email,
       password,
-      phone_number,
+      phoneNumber,
       role,
-      date_of_birth,
+      dateOfBirth,
       image,
     });
     res.status(200).send(savedUser);

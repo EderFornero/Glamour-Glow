@@ -24,7 +24,7 @@ export const createUser = async (user: Object) => {
 export const updateUser = async (id: String, updates: Object) => {
   const updatedUser = await UserModel.findByIdAndUpdate(id, updates, {
     new: true,
-  }).select({ password: 0 });
+  });
   return updatedUser;
 };
 
@@ -76,3 +76,10 @@ export const generateToken = async (email: any) => {
     throw new Error(error.message);
   }
 };
+
+export const forgotPasswordHandler = async (email: string) => {
+  const user = await UserModel.findOne({email})
+  console.log(user)
+  return user
+}
+

@@ -22,16 +22,16 @@ export enum GENDER {
 
 export class Seller {
     @prop({required: true, type: String})
-    seller_name?: string;
+    sellerName?: string;
 
     @prop({required: true, type: String})
-    seller_email?: string;
+    sellerEmail?: string;
 
     @prop({ required: true, type: String})
-    seller_phone?: String;
+    sellerPhone?: String;
 
     @prop({required: true, enum: GENDER})
-    seller_gender: GENDER
+    sellerGender: GENDER
 
     @prop({ref: () => Reviews, default:[]})
     reviews: Ref<Reviews>[];

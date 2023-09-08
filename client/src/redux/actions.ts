@@ -1,4 +1,4 @@
-import axios from "./axiosService"; //{ AxiosResponse } from "axios";
+import axios from './axiosService' //{ AxiosResponse } from "axios";
 import {
   GET_ALL_BUSINESS,
   GET_ALL_CATEGORIES,
@@ -8,133 +8,148 @@ import {
   SET_UPLOAD_IMAGE,
   GET_USER_BY_ID,
   UPDATE_USER_DETAIL,
-} from "./Action-Types";
-import type { ServiceAction } from "./types";
+  GET_SELLER_BY_ID,
+  UPDATE_SELLER_DETAIL,
+  SET_AUTH,
+  SET_USER_ID
+} from './Action-Types'
+import type { ServiceAction } from './types'
 
 const API_URL = 'http://localhost:3001/'
 
-export const GetAllBusiness = (): ((
-  dispatch: (action: ServiceAction) => void
-) => Promise<void>) => {
-  const endpoint = `${API_URL}sellers`;
+export const setAuth = (isAuth) => ({
+  type: SET_AUTH,
+  payload: isAuth
+})
+
+export const setUserId = (id) => ({
+  type: SET_USER_ID,
+  payload: id
+})
+
+export const getAllBusiness = (): ((dispatch: (action: ServiceAction) => void) => Promise<void>) => {
+  const endpoint = `${API_URL}sellers`
 
   return async (dispatch: (action: ServiceAction) => void) => {
     try {
-      const { data } = await axios.get(endpoint);
-
+      const { data } = await axios.get(endpoint)
+      console.log(data)
       dispatch({
         type: GET_ALL_BUSINESS,
-        payload: data,
-      });
+        payload: data
+      })
     } catch (error: any) {
-      console.log(error.message);
+      console.log(error.message)
     }
-  };
-};
+  }
+}
 
-export const setFiler = (
+export const setFilter = (
   filter: string
 ): {
-  type: string;
-  payload: string;
+  type: string
+  payload: string
 } => {
   return {
     type: SET_FILTERS,
-    payload: filter,
-  };
-};
+    payload: filter
+  }
+}
 
 export const setRating = (
   rating: number
 ): {
-  type: string;
-  payload: number;
+  type: string
+  payload: number
 } => {
   return {
     type: SET_RATING,
-    payload: rating,
-  };
-};
+    payload: rating
+  }
+}
 
 export const setUploadImage = (
   image: string
 ): {
-  type: string;
-  payload: string;
+  type: string
+  payload: string
 } => {
   return {
     type: SET_UPLOAD_IMAGE,
-    payload: image,
-  };
-};
-
-export const getCategories = (): ((
-  dispatch: (action: ServiceAction) => void
-) => Promise<void>) => {
-  const endCategorie = `${API_URL}categories`;
-
-  return async (dispatch: (action: ServiceAction) => void) => {
-    try {
-      const { data } = await axios.get(endCategorie);
-
-      dispatch({
-        type: GET_ALL_CATEGORIES,
-        payload: data,
-      });
-    } catch (error: any) {
-      console.log("Error en el getCategories");
-    }
-  };
-};
-
-export const postSeller = (payload: any) => {
-  const endpoint = `${API_URL}sellers`;
-
-  return async function (dispatch: any) {
-    let json = await axios.post(endpoint, payload);
-    return json;
-  };
-};
-
-export const postUser = (payload: any) => {
-  const endpoint1 = `${API_URL}users`
-  return async function (dispatch: any) {
-    const json1 = await axios.post(endpoint1, payload)
-    return json1
+    payload: image
   }
 }
 
-export const getUsers = (): ((
-  dispatch: (action: ServiceAction) => void
-) => Promise<void>) => {
-  const endUser = `${API_URL}users`;
+export const getCategories = (): ((dispatch: (action: ServiceAction) => void) => Promise<void>) => {
+  const endCategorie = `${API_URL}categories`
 
   return async (dispatch: (action: ServiceAction) => void) => {
     try {
-      const { data } = await axios.get(endUser);
+      const { data } = await axios.get(endCategorie)
+
+      dispatch({
+        type: GET_ALL_CATEGORIES,
+        payload: data
+      })
+    } catch (error: any) {
+      console.log('Error en el getCategories')
+    }
+  }
+}
+
+export const postSeller = (payload: any) => {
+  const endpoint = `${API_URL}sellers`
+
+  return async function (_dispatch: any) {
+    let json = await axios.post(endpoint, payload)
+    return json
+  }
+}
+
+export const postUser = (payload: any) => {
+  const endpoint1 = `${API_URL}users`
+  return async function (_dispatch: any) {
+    try {
+      const response = await axios.post(endpoint1, payload)
+
+      return response
+    } catch (error: any) {
+      console.log(error.message)
+    }
+  }
+}
+
+export const getUsers = (): ((dispatch: (action: ServiceAction) => void) => Promise<void>) => {
+  const endUser = `${API_URL}users`
+
+  return async (dispatch: (action: ServiceAction) => void) => {
+    try {
+      const { data } = await axios.get(endUser)
 
       dispatch({
         type: GET_ALL_USERS,
-        payload: data,
-      });
+        payload: data
+      })
     } catch (error: any) {
-      console.log("Error en el getUsers");
+      console.log('Error en el getUsers')
     }
-  };
-};
+  }
+}
 
 export const postValidate = (payload: any) => {
-  const endpointLogin = `${API_URL}users/login`;
+  const endpointLogin = `${API_URL}users/login`
   return async function () {
-    const jsonLogin = await axios.post(endpointLogin, payload);
-    const token = jsonLogin.data.token;
-    //const id = jsonLogin.data.id
-    localStorage.setItem("token", token)
-    const prueba = localStorage.getItem("token")
-    console.log(prueba);
-    return jsonLogin;
-  };
-};
+    try {
+      const response = await axios.post(endpointLogin, payload)
+
+      localStorage.setItem('token', response.data.token)
+
+      return response
+    } catch (error: any) {
+      console.log(error.message)
+    }
+  }
+}
 
 // User Detail
 export const getUserbyId: any = (id: string) => {
@@ -146,35 +161,62 @@ export const getUserbyId: any = (id: string) => {
 
       dispatch({
         type: GET_USER_BY_ID,
-        payload: data,
+        payload: data
       })
     } catch (error: any) {
-      console.log(error.message);
+      console.log(error.message)
     }
-  };
-};
+  }
+}
 
 export const updateUserInfo: any = (id: string, updateinfo: any) => {
-  const endpoint = `${API_URL}users/${id}`;
+  const endpoint = `${API_URL}users/${id}`
 
   return async (dispatch: (action: ServiceAction) => void) => {
     try {
-      const token =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiR0lPVkEiLCJpZCI6IjY0ZjdkNDRlNGI1MmVjODRjMjJhMzEzYyIsImlhdCI6MTY5Mzk2MzQzMH0.Kc3ArXiNzFPWaA23NnrIk4VEQI2LPxCSvXI3b1QnIpg";
-
-      const { data } = await axios.put(endpoint, updateinfo, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      });
+      const { data } = await axios.put(endpoint, updateinfo)
 
       dispatch({
         type: UPDATE_USER_DETAIL,
-        payload: data,
-      });
+        payload: data
+      })
     } catch (error: any) {
-      console.log(error.message);
+      console.log(error.message)
     }
-  };
-};
+  }
+}
+
+// User Detail
+export const getSellerbyId: any = (id: string) => {
+  const endpoint = `${API_URL}sellers/${id}`
+
+  return async (dispatch: (action: ServiceAction) => void) => {
+    try {
+      const { data } = await axios.get(endpoint)
+
+      dispatch({
+        type: GET_SELLER_BY_ID,
+        payload: data
+      })
+    } catch (error: any) {
+      console.log(error.message)
+    }
+  }
+}
+
+export const updateSellerInfo: any = (id: string, updateinfo: any) => {
+  const endpoint = `${API_URL}sellers/${id}`
+
+  return async (dispatch: (action: ServiceAction) => void) => {
+    try {
+      const { data } = await axios.put(endpoint, updateinfo)
+
+      dispatch({
+        type: UPDATE_SELLER_DETAIL,
+        payload: data
+      })
+    } catch (error: any) {
+      console.log(error.message)
+    }
+  }
+}

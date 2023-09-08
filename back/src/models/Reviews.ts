@@ -15,8 +15,8 @@ export class Reviews {
   description: string;
 
   @prop({ ref: () => Seller, default: "" })
-  seller_id: Ref<Seller>;
+  sellerId: Ref<Seller>;
 
   @prop({ ref: () => User, default: "" })
-  user_id: Ref<User>;
+  userId: Ref<User>;
 }

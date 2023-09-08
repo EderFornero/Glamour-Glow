@@ -8,19 +8,19 @@ export const postSellersController = async (
   next: NextFunction
 ) => {
   const {
-    seller_name,
-    seller_email,
-    seller_phone,
-    seller_gender,
+    sellerName,
+    sellerEmail,
+    sellerPhone,
+    sellerGender,
     categoriesArray,
     servicesArray,
   } = req.body;
   try {
     const newSeller = await postSellersHandler({
-      seller_name,
-      seller_email,
-      seller_phone,
-      seller_gender,
+      sellerName,
+      sellerEmail,
+      sellerPhone,
+      sellerGender,
       categoriesArray,
       servicesArray,
     });

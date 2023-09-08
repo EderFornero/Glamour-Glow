@@ -1,18 +1,27 @@
 import style from './NavFull.module.css'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import imgprofile from '../../../assets/profile-circle.svg'
+import { useSelector, useDispatch } from 'react-redux'
+import { setAuth } from '../../../redux/actions'
 
-const NavFull = ({isAuth}): JSX.Element => {
-    const [token, setToken] = useState<{ userId: number, role: string } | null>(null)
-    const login = (): void => {
-        setToken({ userId: 1, role: 'customer' })
-    }
+const NavFull = (): JSX.Element => {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const userId = useSelector(state => state.userId)
+  const isAuth = useSelector(state => state.isAuth)
 
-    // Simulate logout by removing the token
-    const logout = (): void => {
-        setToken(null)
-    }
+  const [token, setToken] = useState<{ userId: number, role: string } | null>(null)
+  const login = (): void => {
+    setToken({ userId: 1, role: 'customer' })
+  }
+
+  const handleLogout = () => {
+    dispatch(setAuth(false))
+    localStorage.removeItem('token')
+    localStorage.removeItem('isAuth')
+    navigate('/')
+  }
 
   return (
         <nav className={style['nav-full']}>
@@ -34,34 +43,16 @@ const NavFull = ({isAuth}): JSX.Element => {
                         </NavLink>
                     </li>)
                   : (<>
-                        <li className={`${style['menu-item-full']} ${style.link} ${style.logout}`} onClick={logout}>
+                        <li className={`${style['menu-item-full']} ${style.link} ${style.logout}`}
+                         onClick={handleLogout}>
                             Logout
                         </li>
                         <li className={style['menu-item-full']}>
-                            <NavLink to='/userdetail'>
+                            <NavLink to={`/userdetail/${userId}`} >
                                 <img className={style['userimg-full']} src={imgprofile} />
                             </NavLink>
                         </li>
                     </>)}
-
-                {/* {token !== null
-                  ? (<>
-                        <li className={`${style['menu-item-full']} ${style.link} ${style.logout}`} onClick={logout}>
-                            Logout
-                        </li>
-                        <li className={style['menu-item-full']}>
-                            <NavLink to='/userdetail'>
-                                <img className={style['userimg-full']} src={imgprofile} />
-                            </NavLink>
-                        </li>
-                    </>)
-                  : (
-                    <li className={style['menu-item-full']} onClick={login}>
-                        <NavLink to='/login' className={style['link-full']}>
-                            Login
-                        </NavLink>
-                    </li>
-                    )} */}
             </ul>
         </nav>
   )

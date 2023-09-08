@@ -1,30 +1,47 @@
 import React, { useState } from 'react'
-import { useForm } from 'react-hook-form'
-import { useGoBack } from '../../hooks'
-import EmailLogin from './inputs/EmailLogin'
-import PasswordLogin from './inputs/PasswordLogin'
-import { Link } from 'react-router-dom'
-import style from './FormLogin.module.css'
+import { useForm } from "react-hook-form";
+import { useGoBack } from "../../hooks";
+import EmailLogin from "./inputs/EmailLogin";
+import PasswordLogin from "./inputs/PasswordLogin";
+import { Link } from "react-router-dom";
+import style from "./FormLogin.module.css";
 import { postValidate } from '../../redux/Actions'
 import { useDispatch } from 'react-redux'
-import type { FormLoginData } from '../../interfaces'
-import ErrorMessage from './handlers/errorMessage'
+import { useNavigate } from "react-router-dom";
+import type { RootState } from "../../redux/types";
+import type { FormLoginData } from "../../interfaces";
+import ErrorMessage from "./handlers/errorMessage";
 import { initializeApp } from 'firebase/app'
 import { getAuth, signInWithPopup, GoogleAuthProvider, AuthProvider } from 'firebase/auth'
 import axios from 'axios'
 
-const FormLogin: React.FC = ({ onToggle }: any, { setIsAuth }) => {
+const FormLogin: React.FC = ({ onToggle }) => {
   const dispatch = useDispatch()
   const goBack = useGoBack()
+  const navigate = useNavigate()
   const {
     register,
     handleSubmit,
-    formState: { errors }
+    formState: { errors },
   } = useForm<FormLoginData>({
     defaultValues: {
-      email: '',
-      password: ''
-    }
+      email: "",
+      password: "",
+    },
+  });
+  const [error, setError] = useState('')
+  // useEffect(() => {
+  //   dispatch(getUsers())
+  // }, [dispatch])
+
+  // const Users = useSelector((state: RootState) => state.users)
+  // console.log(Users)
+
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const onSubmit = handleSubmit((data: FormLoginData) => {
+    console.log(data)
+    return dispatch(postValidate(data))
   })
 
   const firebaseConfig = {
@@ -64,13 +81,6 @@ const FormLogin: React.FC = ({ onToggle }: any, { setIsAuth }) => {
     }
   }
 
-  const [errorMessage, setErrorMessage] = useState("")
-
-  const onSubmit = handleSubmit((data: FormLoginData) => {
-    console.log(data)
-    return dispatch(postValidate(data))
-  })
-
   return (
     <div className={style.content}>
       <form onSubmit={onSubmit}>
@@ -93,6 +103,7 @@ const FormLogin: React.FC = ({ onToggle }: any, { setIsAuth }) => {
           <button className={style.btn} type="submit">
             Send
           </button>
+          {error && <div className={style['error-login']}>{error}</div>}
         </div>
       </form>
       <div className={style['link-texts']}>
@@ -101,7 +112,7 @@ const FormLogin: React.FC = ({ onToggle }: any, { setIsAuth }) => {
             Dont have an account?
           </p>
         </button>
-        <Link to="/recovePassword">
+        <Link to='/passwordRecovery'>
           <p className={style.forgot}>Forgot Password?</p>
         </Link>
       </div>

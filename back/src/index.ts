@@ -1,12 +1,6 @@
 import express from "express";
-import {
-  userRouter,
-  sellerRouter,
-  serviceRouter,
-  categoriesRouter,
-  reviewsRouter,
-} from "./routes/index.ts";
-import "./db";
+import {userRouter, sellerRouter, serviceRouter, categoriesRouter, reviewsRouter, nodemailerRouter } from "./routes/index.ts" 
+import "./db"
 import { logErrors } from "./middlewares/logError.middleware.ts";
 import cors, { CorsOptions } from "cors";
 import { paymentRouter } from "./routes/payment/index.ts";
@@ -43,12 +37,13 @@ server.listen(PORT, ()=> {
     console.log(`Server running  in PORT ${PORT}`)
 });
 
-server.use("/", userRouter);
-server.use("/", sellerRouter);
-server.use("/", serviceRouter);
-server.use("/", categoriesRouter);
-server.use("/", reviewsRouter);
-server.use("/", paymentRouter);
+server.use("/", userRouter)
+server.use("/", sellerRouter)
+server.use("/", serviceRouter)
+server.use("/", categoriesRouter)
+server.use("/", reviewsRouter)
+server.use("/", paymentRouter)
+server.use("/", nodemailerRouter)
 
 server.use(passport.initialize());
 server.use(logErrors);
