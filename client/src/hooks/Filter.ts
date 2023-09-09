@@ -7,26 +7,31 @@ import type { RootState } from '../redux/types'
 // interface
 import type { ServiceProvider } from '../interfaces/index'
 // hook
+import { useRatingHook } from '.'
 
 export const useFilterHook = (
-  searchUsers: ServiceProvider[]
+  allServices: ServiceProvider[]
 ): {
     useFilter: (category: string) => void
     filteredUsers: ServiceProvider[]
   } => {
-  const { filter } = useSelector((state: RootState) => state)
+  const { filteredRating } = useRatingHook()
+  const { filter, rating } = useSelector((state: RootState) => state)
   const dispatch = useDispatch()
 
   const filteredCategories = (category: string): ((users: any) => any) => {
-    if (typeof category === 'string' && category !== 'none') return (users: any) => users.categories.includes(category)
-    else return (users: any) => users
+    if (typeof category === 'string' && category !== 'none') return (users) => users.categoriesArray.some((c: any) => c.name === category)
+    else return (users) => users
   }
 
   const useFilter = (category: string): void => {
     dispatch(setFilter(category))
   }
 
-  const filteredUsers = searchUsers.filter(filteredCategories(filter))
+  const filteredUsers =
+    allServices
+      .sort(filteredRating[rating])
+      .filter(filteredCategories(filter))
 
   return {
     useFilter,
