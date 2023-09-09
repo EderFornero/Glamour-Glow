@@ -9,7 +9,7 @@ interface BusiCategoriesInputProps {
   setArr: any
 }
 
-const BusiCategoriesInput: React.FC<BusiCategoriesInputProps> = ({ register, errors, categoryList, watch, setArr }) => {
+const BusiCategoriesInput: React.FC<BusiCategoriesInputProps> = ({ register, errors, categoryList }) => {
   return (
 
     <div>

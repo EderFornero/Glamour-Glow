@@ -10,25 +10,28 @@ import type { ServiceProvider } from '../interfaces/index'
 import { useRatingHook } from '.'
 
 export const useFilterHook = (
-  searchUsers: ServiceProvider[]
+  allServices: ServiceProvider[]
 ): {
-  useFilter: (category: string) => void
-  filteredUsers: ServiceProvider[]
-} => {
+    useFilter: (category: string) => void
+    filteredUsers: ServiceProvider[]
+  } => {
+  const { filteredRating } = useRatingHook()
   const { filter, rating } = useSelector((state: RootState) => state)
   const dispatch = useDispatch()
-  const { filteredRating } = useRatingHook()
 
   const filteredCategories = (category: string): ((users: any) => any) => {
-    if (typeof category === 'string' && category !== 'none') return (users: any) => users.categories.includes(category)
-    else return (users: any) => users
+    if (typeof category === 'string' && category !== 'none') return (users) => users.categoriesArray.some((c: any) => c.name === category)
+    else return (users) => users
   }
 
   const useFilter = (category: string): void => {
     dispatch(setFilter(category))
   }
 
-  const filteredUsers = searchUsers.sort(filteredRating[rating]).filter(filteredCategories(filter))
+  const filteredUsers =
+    allServices
+      .sort(filteredRating[rating])
+      .filter(filteredCategories(filter))
 
   return {
     useFilter,

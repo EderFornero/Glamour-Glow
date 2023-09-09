@@ -1,7 +1,7 @@
 // import type { GET_ALL_BUSINESS, SET_PAGINATION } from './Action-Types'
 
 export interface ServiceAction {
-  type: any
+  type: string
   payload: any
 }
 
@@ -9,34 +9,34 @@ export interface RootState {
   allServices: any[]
   categories: any[]
   users: any[]
-  userdetail: object
-  sellerdetail: object
+  userdetail: UserDetail
+  sellerdetail: SellerDetail
   filter: string
   rating: number
   image: string | undefined
-  isAuth: boolean
-  userId: any
+  isAuth: any
+  userId: null
 }
 
 export interface UserDetail {
   _id: string
   name: string
-  last_name: string
+  lastName: string
   email: string
-  phone_number: string
+  phoneNumber: string
   role: string
-  date_of_birth: string
+  dateOfBirth: string
   image: string
   isActive: boolean
 }
 
 export interface SellerDetail {
   _id: string
-  seller_name: string
-  seller_email: string
-  seller_phone: string
-  seller__gender: string
+  sellerName: string
+  sellerEmail: string
+  sellerPhone: string
+  sellerGender: string
   reviews: any[]
   categoriesArray: any[]
-  servicesArray: []
+  servicesArray: any[]
 }

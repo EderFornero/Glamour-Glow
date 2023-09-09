@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { users } from '../../../mocks/fullAPIresponse.json'
+import { users } from '../../mocks/fullAPIresponse.json'
 import type { Service } from '../interfaces'
 
 export interface User {
@@ -39,7 +39,7 @@ export enum BusinessGender {
 
 const useGetDetail = (id: number): any => {
   const usuario = useMemo(() => {
-    return users.find((user) => user.id === id)
+    return users.find((user: any) => user.id === id)
   }, [id])
   return usuario
 }

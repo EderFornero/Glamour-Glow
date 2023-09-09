@@ -1,34 +1,15 @@
+// css
 import style from './FilterAndOrderCard.module.css'
-// categories
-import { categories } from '../../../../mocks/categories.json'
-// hooks
-import { useFilterHook, useRatingHook } from '../../hooks/index'
+import FilterElement from './FilterElement/FilterElement'
+// props
 import type { CardsProps } from '../../interfaces/props'
-const FilterAndOrderCard: React.FC<CardsProps> = ({ searchUsers }: CardsProps) => {
-  const { useFilter } = useFilterHook(searchUsers)
-  const { useRating } = useRatingHook()
+// components
+import OrderElement from './OrderElement/OrderElement'
+const FilterAndOrderCard: React.FC<CardsProps> = ({ allServices }: CardsProps) => {
   return (
     <div className={style['div-container-order-filter']}>
-          <div className={style['div-order-by']}>
-          <h5>Order by</h5>
-            <ul className={style['div-order-by-ul']}>
-              <li onClick={() => { useRating(1) }} className={style['div-order-by-li']}>More Rating</li>
-              <li onClick={() => { useRating(2) }} className={style['div-order-by-li']}>Less Rating</li>
-            </ul>
-          </div>
-          <div className={style['div-filter-by']}>
-            <h5>Filter By</h5>
-          <button onClick={() => { useFilter('none') }}>All Categories</button>
-          {
-            categories.map((category) => {
-              return (
-                <div key={category.id}>
-                  <button onClick={() => { useFilter(category.name) }}>{category.name}</button>
-                </div>
-              )
-            })
-          }
-          </div>
+      <OrderElement />
+      <FilterElement allServices={allServices} />
     </div>
   )
 }

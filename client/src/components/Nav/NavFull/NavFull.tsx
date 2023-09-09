@@ -12,7 +12,7 @@ const NavFull = (): JSX.Element => {
   const userId = useSelector((state: RootState) => state.userId)
   const isAuth = useSelector((state: RootState) => state.isAuth)
 
-  const handleLogout = () => {
+  const handleLogout = (): void => {
     dispatch(setAuth(false))
     localStorage.removeItem('token')
     localStorage.removeItem('isAuth')
@@ -32,14 +32,13 @@ const NavFull = (): JSX.Element => {
             For business
           </NavLink>
         </li>
-        {!isAuth ? (
-          <li className={style['menu-item-full']}>
+        {!isAuth 
+          ? (<li className={style['menu-item-full']}>
             <NavLink to='/login' className={style['link-full']}>
               Login
             </NavLink>
-          </li>
-        ) : (
-          <>
+          </li>)
+          : (<>
             <li className={`${style['menu-item-full']} ${style.link} ${style.logout}`} onClick={handleLogout}>
               Logout
             </li>
@@ -49,7 +48,7 @@ const NavFull = (): JSX.Element => {
               </NavLink>
             </li>
           </>
-        )}
+            )}
       </ul>
     </nav>
   )

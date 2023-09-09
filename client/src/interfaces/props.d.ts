@@ -1,7 +1,7 @@
 import type { ServiceProvider } from './index'
 
 export interface CardsProps {
-  searchUsers: ServiceProvider[]
+  allServices: ServiceProvider[]
 }
 
 export interface SearchBarProps {

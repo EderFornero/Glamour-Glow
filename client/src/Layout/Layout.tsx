@@ -1,5 +1,8 @@
 import { Outlet, useLocation } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
+// redux
+import { useDispatch } from 'react-redux'
+import { getAllBusiness, getCategories, getUsers } from '../redux/actions.ts'
 // components
 import Nav from '../components/Nav/Nav'
 import Footer from '../components/Footer/Footer'
@@ -7,17 +10,20 @@ import style from './Layout.module.css'
 
 const Layout: React.FC = () => {
   const location = useLocation()
+  const dispatch = useDispatch()
   const { pathname } = useLocation()
-  const [isAuth, setIsAuth] = useState<boolean>(false)
 
   useEffect(() => {
     window.scrollTo(0, 0)
+    dispatch(getCategories())
+    dispatch(getAllBusiness())
+    dispatch(getUsers())
   }, [pathname])
 
   const showNavFooter = location.pathname !== '/admin'
   return (
     <>
-      {showNavFooter && <Nav isAuth={isAuth} />}
+      {showNavFooter && <Nav />}
       <main className={style.main}>
         <Outlet />
       </main>

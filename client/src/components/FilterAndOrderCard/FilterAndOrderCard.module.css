@@ -1,20 +1,16 @@
 .div-container-order-filter{
-  width: 200px;
-  padding: 30px;
+  width: 100%;
+  min-height: 200px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 
-  .div-order-by{
-    margin-left: 5px;
 
-    .div-order-by-ul{
-      list-style: none;
-
-      .div-order-by-li{
-        cursor: pointer;
-      }
-    }
-  }
-
-  .div-filter-by{
-    margin: 15px 0 0 5px;
+  @media (max-width: 768px){ 
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
   }
 }

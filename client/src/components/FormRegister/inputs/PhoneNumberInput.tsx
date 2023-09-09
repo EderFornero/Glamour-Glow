@@ -1,35 +1,40 @@
-import React from 'react'
-import style from './input.module.css'
+import React from "react";
+import style from "./input.module.css";
 
 interface PhoneNumberInputProps {
-  register: any
-  errors: any
+  register: any;
+  errors: any;
 }
 
-const PhoneNumberInput: React.FC<PhoneNumberInputProps> = ({ register, errors }) => {
+const PhoneNumberInput: React.FC<PhoneNumberInputProps> = ({
+  register,
+  errors,
+}) => {
   return (
     <div>
       <input
         className={style.input}
-        type='text'
-        name="phone_number"
-        placeholder='Phone Number'
-        {...register('phone_number', {
+        type="text"
+        name="phoneNumber"
+        placeholder="Phone Number"
+        {...register("phoneNumber", {
           required: {
             value: true,
-            message: 'Please enter your phone number!'
+            message: "Please enter your phone number!",
           },
           pattern: {
             value: /^\d{6,13}$/,
-            message: 'Phone number not valid'
-          }
+            message: "Phone number not valid",
+          },
         })}
       />
       <div>
-      {(Boolean(errors.phone_number)) && <span className={style.span}>{errors.phone_number.message}</span>}
+        {Boolean(errors.phoneNumber) && (
+          <span className={style.span}>{errors.phoneNumber.message}</span>
+        )}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default PhoneNumberInput
+export default PhoneNumberInput;

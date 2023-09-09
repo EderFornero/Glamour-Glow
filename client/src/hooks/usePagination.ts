@@ -3,19 +3,19 @@ import { useEffect, useState } from 'react'
 export const usePagination = (
   items: any,
   itemsPerPage: number,
-  filter?: string,
-  rating?: number
+  filter?: string
+  // rating?: number
 ): {
-  itemsPaginated: any
-  currentPage: number
-  totalPages: number
-  filters: string
-  rating: number
-  nextPage: () => void
-  prevPage: () => void
-  startPage: () => void
-  finalPage: () => void
-} => {
+    itemsPaginated: any
+    currentPage: number
+    totalPages: number
+    // filters: string
+    // rating: number
+    nextPage: () => void
+    prevPage: () => void
+    startPage: () => void
+    finalPage: () => void
+  } => {
   const [currentPage, setCurrentPage] = useState<number>(0)
   const totalPages = Math.ceil(items.length / itemsPerPage)
   const startIndex = currentPage * itemsPerPage
@@ -44,7 +44,7 @@ export const usePagination = (
 
   useEffect(() => {
     setCurrentPage(0)
-  }, [filter, rating])
+  }, [filter])
 
   return {
     itemsPaginated,

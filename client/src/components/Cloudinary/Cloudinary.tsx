@@ -3,12 +3,13 @@ import { useEffect, useRef } from 'react'
 import { useDispatch } from 'react-redux'
 // css
 import styled from 'styled-components'
-import { setUploadImage } from '../../redux/Actions'
-const Cloudinary = (): void => {
+import { setUploadImage } from '../../redux/actions'
+
+const Cloudinary = (): JSX.Element => {
   const dispatch = useDispatch()
   const createWidget = (): void => {
     if ('cloudinary' in window) {
-      return window.cloudinary.createUploadWidget(
+      return (window.cloudinary as any).createUploadWidget(
         {
           cloudName: import.meta.env.VITE_CLOUDINARY_CLOUD_NAME,
           uploadPreset: import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET,
@@ -52,7 +53,7 @@ const Cloudinary = (): void => {
       // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
       if (!widgetRef.current) {
         // eslint-disable-next-line @typescript-eslint/no-confusing-void-expression
-        widgetRef.current = createWidget()
+        ;(widgetRef.current as any) = createWidget()
       }
     }
 
@@ -66,7 +67,7 @@ const Cloudinary = (): void => {
   const openWidget = (): void => {
     // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
     if (widgetRef.current) {
-      widgetRef.current.open()
+      ;(widgetRef.current as any).open()
     }
   }
 

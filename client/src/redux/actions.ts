@@ -27,13 +27,12 @@ export const setUserId: any = (id: any) => ({
   payload: id
 })
 
-export const getAllBusiness = (): ((dispatch: (action: ServiceAction) => void) => Promise<void>) => {
+export const getAllBusiness = (): any => {
   const endpoint = `${API_URL}sellers`
 
   return async (dispatch: (action: ServiceAction) => void) => {
     try {
       const { data } = await axios.get(endpoint)
-      console.log(data)
       dispatch({
         type: GET_ALL_BUSINESS,
         payload: data
@@ -80,19 +79,18 @@ export const setUploadImage = (
   }
 }
 
-export const getCategories = (): ((dispatch: (action: ServiceAction) => void) => Promise<void>) => {
+export const getCategories = (): any => {
   const endCategorie = `${API_URL}categories`
 
   return async (dispatch: (action: ServiceAction) => void) => {
     try {
       const { data } = await axios.get(endCategorie)
-
       dispatch({
         type: GET_ALL_CATEGORIES,
         payload: data
       })
     } catch (error: any) {
-      console.log('Error en el getCategories')
+      return { error: error.message }
     }
   }
 }
@@ -111,27 +109,26 @@ export const postUser: any = (payload: any) => {
   return async function (_dispatch: any) {
     try {
       const response = await axios.post(endpoint1, payload)
-
       return response
     } catch (error: any) {
-      console.log(error.message)
+      return { error: error.message }
     }
   }
 }
 
-export const getUsers = (): ((dispatch: (action: ServiceAction) => void) => Promise<void>) => {
+export const getUsers: any = () => {
   const endUser = `${API_URL}users`
 
   return async (dispatch: (action: ServiceAction) => void) => {
     try {
       const { data } = await axios.get(endUser)
-
+      console.log(data)
       dispatch({
         type: GET_ALL_USERS,
         payload: data
       })
     } catch (error: any) {
-      console.log('Error en el getUsers')
+      return error.message
     }
   }
 }
@@ -181,7 +178,7 @@ export const updateUserInfo: any = (id: string, updateinfo: any) => {
         payload: data
       })
     } catch (error: any) {
-      console.log(error.message)
+      return { error: error.message }
     }
   }
 }
@@ -199,7 +196,7 @@ export const getSellerbyId: any = (id: string) => {
         payload: data
       })
     } catch (error: any) {
-      console.log(error.message)
+      return { error: error.message }
     }
   }
 }
@@ -216,7 +213,7 @@ export const updateSellerInfo: any = (id: string, updateinfo: any) => {
         payload: data
       })
     } catch (error: any) {
-      console.log(error.message)
+      return { error: error.message }
     }
   }
 }

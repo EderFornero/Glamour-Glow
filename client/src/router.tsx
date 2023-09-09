@@ -14,7 +14,7 @@ import BusinessDetail from './pages/BusinessDetail/BusinessDetail.tsx'
 import FormBusiness from './components/FormCreateBusiness/FormCreateBusiness.tsx'
 import BusinessCardsView from './pages/BusinessCardsView/BusinessCardsView.tsx'
 import UserDetail from './pages/UserDetail/UserDetail.tsx'
-import PasswordRecovery from './components/PasswordRecovery/PasswordRecovery.tsx'
+import PasswordRecovery from './pages/PasswordRecovery/PasswordRecovery.tsx'
 import BookAService from './pages/BookAService/BookAService.tsx'
 
 const router = createBrowserRouter([

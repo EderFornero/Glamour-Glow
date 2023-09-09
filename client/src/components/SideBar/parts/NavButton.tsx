@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import styles from '../Sidebar.module.css'
+import styles from '../SideBar.module.css'
 import arrowup from '../../../assets/sidebard-icons/arrow-up.svg'
 import arrowdown from '../../../assets/sidebard-icons/arrow-down.svg'
 import Icon from './Icon'

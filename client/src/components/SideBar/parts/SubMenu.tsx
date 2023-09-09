@@ -1,5 +1,5 @@
 import { FC, useRef } from 'react'
-import styles from '../Sidebar.module.css'
+import styles from '../SideBar.module.css'
 import NavButton from './NavButton'
 
 type Item = {

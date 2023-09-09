@@ -10,10 +10,19 @@ import type { FormLoginData } from '../../interfaces'
 import ErrorMessage from './handlers/errorMessage'
 import { postValidate, setAuth, setUserId } from '../../redux/actions'
 import { initializeApp } from 'firebase/app'
-import { getAuth, signInWithPopup, GoogleAuthProvider, AuthProvider } from 'firebase/auth'
+import {
+  getAuth,
+  signInWithPopup,
+  GoogleAuthProvider
+} from 'firebase/auth'
+import type { AuthProvider } from 'firebase/auth'
 import axios from 'axios'
 
-const FormLogin: React.FC = ({ onToggle }) => {
+interface FormLoginProps {
+  onToggle: () => void
+}
+
+const FormLogin: React.FC<FormLoginProps> = ({ onToggle }) => {
   const dispatch = useDispatch()
   const goBack = useGoBack()
   const navigate = useNavigate()
@@ -28,12 +37,14 @@ const FormLogin: React.FC = ({ onToggle }) => {
   const [errorMessage, setErrorMessage] = useState('')
   const [error, setError] = useState('')
 
+  console.log(setErrorMessage)
+
   const onSubmit = handleSubmit(async (data: FormLoginData) => {
     try {
       const response = await dispatch(postValidate(data))
       const { id, token } = response.data
 
-      if (id && token) {
+      if (token !== undefined && id !== undefined) {
         localStorage.setItem('isAuth', 'true')
         dispatch(setAuth(true))
         dispatch(setUserId(id))
@@ -57,13 +68,14 @@ const FormLogin: React.FC = ({ onToggle }) => {
 
   const auth = getAuth(app)
 
-  const handleOnClick = async () => {
+  const handleOnClick = async (): Promise<void> => {
     try {
       const googleProvider = new GoogleAuthProvider()
       await singInWithGoogle(googleProvider)
     } catch (error) {}
   }
-  const singInWithGoogle = async (googleProvider: AuthProvider) => {
+
+  const singInWithGoogle = async (googleProvider: AuthProvider): Promise<void> => {
     try {
       const res = await signInWithPopup(auth, googleProvider)
       const email = res.user.email
@@ -76,8 +88,19 @@ const FormLogin: React.FC = ({ onToggle }) => {
         name,
         password
       }
-      const response = await axios.post('http://localhost:3001/users/auth/login', data)
-      localStorage.setItem('token', response.data)
+      const response = await axios.post(
+        'http://localhost:3001/users/auth/login',
+        data
+      )
+      const { token, id } = response.data
+
+      if (token !== undefined && id !== undefined) {
+        localStorage.setItem('isAuth', 'true')
+        dispatch(setAuth(true))
+        dispatch(setUserId(id))
+        navigate('/')
+      }
+      localStorage.setItem('token', token)
     } catch (error) {
       console.log(error)
     }
@@ -94,7 +117,11 @@ const FormLogin: React.FC = ({ onToggle }) => {
         <div className={style['alt-login']}>
           <h4 className={style['log-with']}>or Login With:</h4>
           <div className={style['ico-div']}>
-            <button type='button' onClick={handleOnClick} className={style.google}></button>
+            <button
+              type='button'
+              onClick={() => handleOnClick}
+              className={style.google}
+            ></button>
             <button className={style.ig}></button>
           </div>
         </div>
@@ -105,7 +132,7 @@ const FormLogin: React.FC = ({ onToggle }) => {
           <button className={style.btn} type='submit'>
             Send
           </button>
-          {error && <div className={style['error-login']}>{error}</div>}
+          {error !== undefined && <div className={style['error-login']}>{error}</div>}
         </div>
       </form>
       <div className={style['link-texts']}>
@@ -114,7 +141,7 @@ const FormLogin: React.FC = ({ onToggle }) => {
             Dont have an account?
           </p>
         </button>
-        <Link to='/recovePassword'>
+        <Link to='/passwordRecovery'>
           <p className={style.forgot}>Forgot Password?</p>
         </Link>
       </div>

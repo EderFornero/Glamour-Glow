@@ -7,6 +7,7 @@ export interface ServiceProvider {
   reviews?: any
   categoriesArray: Category[]
   servicesArray: any[]
+  businessName: string
 }
 
 export interface Category {
@@ -41,7 +42,7 @@ export interface FormCreateBusi {
   sellerEmail: string
   sellerPhone: string
   sellerGender: 'male' | 'female' | 'any'
-  categoriesArray: string
+  categoriesArray: string[]
   servicesArray: string[]
 }
 
