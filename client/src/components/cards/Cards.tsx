@@ -13,13 +13,13 @@ import { useFilterHook, usePagination } from '../../hooks/index'
 // redux
 import { useSelector } from 'react-redux'
 import type { RootState } from '../../redux/types'
+import { useEffect, useState } from 'react'
 
 const Cards: React.FC<CardsProps> = ({ allServices }: CardsProps) => {
+  const [key, setKey] = useState(0)
   const { filteredUsers } = useFilterHook(allServices)
   const { filter } = useSelector((state: RootState) => state)
-  const { itemsPaginated, currentPage, totalPages, nextPage, prevPage, startPage, finalPage } = usePagination(filteredUsers, 6, filter)
-
-  console.log(filteredUsers)
+  const { itemsPaginated, currentPage, totalPages, nextPage, prevPage, startPage, finalPage } = usePagination(filteredUsers, 6, filter, key)
 
   const calculateRating = (reviews: any): number => {
     const totalRating = reviews.reduce((accumulator: number, current: any) => {
@@ -30,12 +30,15 @@ const Cards: React.FC<CardsProps> = ({ allServices }: CardsProps) => {
     return averageRating
   }
 
+  useEffect(() => {
+    setKey(key + 1)
+  }, [allServices])
+
   return (
     <>
-      <Pagination currentPage={currentPage} totalPages={totalPages} nextPage={nextPage} prevPage={prevPage} startPage={startPage} finalPage={finalPage} />
       <div className={style.test}>
         <div className={style['div-container-order-filter-cards']}>
-          <FilterAndOrderCard allServices={allServices} />
+        <FilterAndOrderCard allServices={allServices} />
           <section className={style.cardsSection}>
             {itemsPaginated.map(({ _id, sellerName, categoriesArray, servicesArray, reviews }: any) => {
               return <BusinessCard key={_id} _id={_id} sellerName={sellerName} rating={calculateRating(reviews)}
@@ -43,6 +46,7 @@ const Cards: React.FC<CardsProps> = ({ allServices }: CardsProps) => {
             })}
           </section>
         </div>
+        <Pagination currentPage={currentPage} totalPages={totalPages} nextPage={nextPage} prevPage={prevPage} startPage={startPage} finalPage={finalPage} />
       </div>
     </>
   )

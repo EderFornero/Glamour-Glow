@@ -33,7 +33,6 @@ export const getAllBusiness = (): any => {
   return async (dispatch: (action: ServiceAction) => void) => {
     try {
       const { data } = await axios.get(endpoint)
-      console.log(data)
       dispatch({
         type: GET_ALL_BUSINESS,
         payload: data
@@ -119,7 +118,7 @@ export const postUser: any = (payload: any) => {
   }
 }
 
-export const getUsers = (): ((dispatch: (action: ServiceAction) => void) => Promise<void>) => {
+export const getUsers: any = () => {
   const endUser = `${API_URL}users`
 
   return async (dispatch: (action: ServiceAction) => void) => {

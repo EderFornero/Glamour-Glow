@@ -18,8 +18,16 @@ export const useFilterHook = (
   const dispatch = useDispatch()
 
   const filteredCategories = (category: string): ((users: any) => any) => {
-    if (typeof category === 'string' && category !== 'none') return (users: any) => users.categories.includes(category)
-    else return (users: any) => users
+    if (typeof category === 'string' && category !== 'none') {
+      return (users: any) => {
+        if (users && users.categories) {
+          return users.categories.includes(category)
+        }
+        return false
+      }
+    } else {
+      return (users: any) => users
+    }
   }
 
   const useFilter = (category: string): void => {

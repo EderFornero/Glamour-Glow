@@ -18,3 +18,18 @@
     margin: 15px 0 0 5px;
   }
 }
+
+.button {
+  padding: 10px 20px;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  cursor: pointer;
+  margin: 5px;
+}
+
+/* Estilo para el botón seleccionado */
+.selected-button {
+  background-color: #8a2be2; /* Color morado */
+  color: #ffffff; /* Texto blanco para resaltar */
+  font-weight: bold; /* Texto en negrita para resaltar */
+}
