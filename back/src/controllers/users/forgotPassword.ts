@@ -14,7 +14,7 @@ export const forgotPassword = async (req: Request<{}, {}, forgotPasswordTypeBody
 
     if (!user) {
       console.debug(`User with email ${email} does not exists`)
-      return res.send(message)
+      return res.status(404).send(message)
     }
     const passwordResetCode = nanoid()
 
