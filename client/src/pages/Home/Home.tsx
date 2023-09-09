@@ -7,26 +7,20 @@ import FAQ from '../../components/FAQ/FAQ'
 import type { RootState } from '../../redux/types'
 // hooks
 import { useSearchBarHome } from '../../hooks/index'
-import { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-
-import { getAllBusiness } from '../../redux/actions'
+import { useState } from 'react'
+import { useSelector } from 'react-redux'
 
 const Home: React.FC = () => {
   const allServices = useSelector((state: RootState) => state.allServices)
   const { searchResults, handleOnSearch } = useSearchBarHome(allServices)
   const [showCards, setShowCards] = useState(false)
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
 
   console.log(showCards)
 
   const updateShowCards = (hasQuery: boolean): void => {
     setShowCards(hasQuery)
   }
-
-  useEffect(() => {
-    dispatch(getAllBusiness())
-  }, [dispatch, showCards])
 
   return (
     <div>

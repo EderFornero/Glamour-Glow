@@ -1,35 +1,16 @@
 .div-container-order-filter{
-  width: 200px;
-  padding: 30px;
+  width: 100%;
+  min-height: 200px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 
-  .div-order-by{
-    margin-left: 5px;
 
-    .div-order-by-ul{
-      list-style: none;
-
-      .div-order-by-li{
-        cursor: pointer;
-      }
-    }
+  @media (max-width: 768px){ 
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
   }
-
-  .div-filter-by{
-    margin: 15px 0 0 5px;
-  }
-}
-
-.button {
-  padding: 10px 20px;
-  background-color: #ffffff;
-  border: 1px solid #cccccc;
-  cursor: pointer;
-  margin: 5px;
-}
-
-/* Estilo para el botón seleccionado */
-.selected-button {
-  background-color: #8a2be2; /* Color morado */
-  color: #ffffff; /* Texto blanco para resaltar */
-  font-weight: bold; /* Texto en negrita para resaltar */
 }

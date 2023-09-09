@@ -8,14 +8,17 @@ import { Link } from 'react-router-dom'
 // css
 import style from './PasswordRecovery.module.css'
 import forgotPasswordImage from '../../Images/Description-images/forgotpassword.png'
+// import { useDispatch } from 'react-redux'
 
 const NodemailerTest = (): JSX.Element => {
   const [recipientEmail, setRecipientEmail] = useState('')
+  // const dispatch = useDispatch(get)
   // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   const handleSendWelcomeEmail = async (e: any) => {
     e.preventDefault()
     try {
       const response = await sendWelcomeEmail(recipientEmail)
+      console.log('email: ', recipientEmail, response)
       toast.success('Sent, check your mail', {
         style: {
           border: '1px solid #3d36be',
