@@ -12,7 +12,7 @@ const NavMobile = (): JSX.Element => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const userId = useSelector((state: RootState) => state.userId)
-  const isAuth = useSelector((state: RootState) => state.isAuth)
+  const isAuth = localStorage.getItem('isAuth')
 
   const handleLogout = (): void => {
     dispatch(setAuth(false))

@@ -1,24 +1,22 @@
-import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import DatePickUI from '../../assets/booking/undraw_booking_re_gw4j.svg'
 import FancyUI from '../../assets/booking/undraw_date_picker_re_r0p8.svg'
 import 'react-datepicker/dist/react-datepicker.css'
-import { initMercadoPago, Wallet } from '@mercadopago/sdk-react'
+import { initMercadoPago } from '@mercadopago/sdk-react'
 import axios from 'axios'
 
 import style from './BookAService.module.css'
+const API_URL = import.meta.env.VITE_SERVER_URL
+const MERCADO_PAGO = import.meta.env.VITE_MERCADOPAGO_PUBLIC_KEY
 
 const BookAService = (): JSX.Element => {
   const { name, price, sellerId } = useParams()
-  const [preferenceId, setPreferenceId] = useState<null | string>(null)
-  console.log(sellerId)
 
-  initMercadoPago('TEST-dfb77c55-b723-4977-b312-5dbc4f1fd759')
+  initMercadoPago(`${MERCADO_PAGO}`)
 
   const createPreference = async (): Promise<any> => {
     try {
-      console.log('THE PREFERENCE WAS CALLED')
-      const response = await axios.post('http://localhost:3001/payment/order', {
+      const response = await axios.post(`${API_URL}payment/order`, {
         title: name,
         unit_price: price,
         currency_id: 'ARS',
@@ -33,26 +31,20 @@ const BookAService = (): JSX.Element => {
   }
 
   const handleBuy = async (): Promise<void> => {
-    console.log('you clicked the button')
     const id = await createPreference()
     if (id !== null) {
-      setPreferenceId(id)
+      window.location.href = id
     }
   }
-  useEffect(() => {
-    handleBuy()
-  }, [])
 
   return (
     <section className={style['global-container']}>
       <div className={style.form}>
         <h2 className={style.title}>{`Thank you for booking the ${name} service`}</h2>
         <p className={style.price}>{`The cost of the service is: $${price}`}</p>
-        <button onClick={() => handleBuy()} type='button' className={style['submit-button']}>
+        <button onClick={handleBuy} type='button' className={style['submit-button']}>
           Book Now
         </button>
-
-        {preferenceId !== null && <Wallet initialization={{ preferenceId }} />}
       </div>
       <div className={style['image-container']}>
         <img src={DatePickUI} alt='choose-service' />

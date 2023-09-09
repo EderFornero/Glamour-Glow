@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom'
 import style from './BusinessDetail.module.css'
-// import Services from './Services/Services'
+import Services from './Services/Services'
 // import LeaveAComment from '../../components/LeaveAComment/LeaveAComment'
 // import Reviews from '../../components/Reviews/Reviews'
 import BusinessInfo from './BusinessInfo/BusinessInfo'
@@ -63,7 +63,7 @@ const BusinessDetail = (): JSX.Element => {
     <div className={style['global-container']}>
       <BusinessInfo sellerName={sellerdetail.sellerName} rating={sellerdetail.reviews} />
       <BusinessImages />
-      {/* <Services services={sellerdetail.servicesArray} sellerId={id} /> */}
+      <Services services={sellerdetail.servicesArray} sellerId={id} />
       {/* <Reviews reviews={sellerdetail.reviews}/> */}
 
       {/* <LeaveAComment /> */}

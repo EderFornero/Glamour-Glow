@@ -24,7 +24,7 @@ export const paymentOrder = async (req: Request, res: Response) => {
       notification_url: 'https://2876-191-97-30-250.ngrok.io/webhook'
     })
     console.log(result)
-    return res.status(200).json(result.body.id)
+    return res.status(200).json(result.body.init_point)
   } catch (error) {
     return res.status(500).json({ error: 'Hubo un error' })
   }
