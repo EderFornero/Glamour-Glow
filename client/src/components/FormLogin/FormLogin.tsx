@@ -141,7 +141,7 @@ const FormLogin: React.FC<FormLoginProps> = ({ onToggle }) => {
             Dont have an account?
           </p>
         </button>
-        <Link to='/passwordRecovery'>
+        <Link to='/login/passwordRecovery'>
           <p className={style.forgot}>Forgot Password?</p>
         </Link>
       </div>

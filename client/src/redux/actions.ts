@@ -122,7 +122,6 @@ export const getUsers: any = () => {
   return async (dispatch: (action: ServiceAction) => void) => {
     try {
       const { data } = await axios.get(endUser)
-      console.log(data)
       dispatch({
         type: GET_ALL_USERS,
         payload: data

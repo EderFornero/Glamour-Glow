@@ -11,11 +11,13 @@ import NotFound from './pages/NotFound/NotFound.tsx'
 // pages
 import Forms from './pages/Forms/Forms.tsx'
 import BusinessDetail from './pages/BusinessDetail/BusinessDetail.tsx'
-import FormBusiness from './components/FormCreateBusiness/FormCreateBusiness.tsx'
 import BusinessCardsView from './pages/BusinessCardsView/BusinessCardsView.tsx'
 import UserDetail from './pages/UserDetail/UserDetail.tsx'
 import PasswordRecovery from './pages/PasswordRecovery/PasswordRecovery.tsx'
 import BookAService from './pages/BookAService/BookAService.tsx'
+import ResetPassword from './pages/ResetPassword/ResetPassword.tsx'
+// components
+import FormBusiness from './components/FormCreateBusiness/FormCreateBusiness.tsx'
 
 const router = createBrowserRouter([
   {
@@ -70,6 +72,15 @@ const router = createBrowserRouter([
           {
             index: true,
             element: <Forms />
+          },
+          {
+            path: '/login/passwordRecovery',
+            children: [
+              {
+                index: true,
+                element: <PasswordRecovery />
+              }
+            ]
           }
         ]
       },
@@ -96,11 +107,11 @@ const router = createBrowserRouter([
         ]
       },
       {
-        path: '/passwordRecovery',
+        path: '/resetPassword/:id/:passwordResetCode',
         children: [
           {
             index: true,
-            element: <PasswordRecovery />
+            element: <ResetPassword />
           }
         ]
       }
