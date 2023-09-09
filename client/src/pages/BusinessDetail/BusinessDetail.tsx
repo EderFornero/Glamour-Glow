@@ -6,8 +6,8 @@ import LeaveAComment from '../../components/LeaveAComment/LeaveAComment'
 import BusinessInfo from './BusinessInfo/BusinessInfo'
 import BusinessImages from './BusinessImages/BusinessImages'
 import type { RootState } from '../../redux/types'
-import { useEffect, useState } from 'react'
-import { getSellerbyId, updateSellerInfo } from '../../redux/actions'
+import { useEffect, useState, useRef } from 'react'
+import { getSellerbyId } from '../../redux/actions'
 import { useSelector, useDispatch } from 'react-redux'
 import aprroved from '../../assets/approved.svg'
 import failure from '../../assets/failure.svg'
@@ -56,7 +56,7 @@ const BusinessDetail = (): JSX.Element => {
         type: null,
         content: ''
       })
-    }, 10000)
+    }, 3000)
   }, [])
 
   return (

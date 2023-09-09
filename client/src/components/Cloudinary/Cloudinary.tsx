@@ -73,7 +73,9 @@ const Cloudinary = (): void => {
   return (
     <StyledDiv>
       <StyledDivButton>
-        <StyledButtons onClick={openWidget} id="upload-button">Upload Profile Image</StyledButtons>
+        <StyledButtons onClick={openWidget} id='upload-button'>
+          Upload Profile Image
+        </StyledButtons>
       </StyledDivButton>
     </StyledDiv>
   )
