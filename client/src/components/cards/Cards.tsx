@@ -29,7 +29,6 @@ const Cards: React.FC<CardsProps> = ({ allServices }: CardsProps) => {
 
   return (
     <>
-      <Pagination currentPage={currentPage} totalPages={totalPages} nextPage={nextPage} prevPage={prevPage} startPage={startPage} finalPage={finalPage} />
       <div className={style.test}>
         <div className={style['div-container-order-filter-cards']}>
           <FilterAndOrderCard allServices={allServices} />
@@ -40,6 +39,7 @@ const Cards: React.FC<CardsProps> = ({ allServices }: CardsProps) => {
           </section>
         </div>
       </div>
+      <Pagination currentPage={currentPage} totalPages={totalPages} nextPage={nextPage} prevPage={prevPage} startPage={startPage} finalPage={finalPage} />
     </>
   )
 }
