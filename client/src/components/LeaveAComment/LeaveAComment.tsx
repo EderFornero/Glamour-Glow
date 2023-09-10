@@ -33,12 +33,17 @@ const LeaveAComment = ({ userId }: LeaveACommentProps): JSX.Element => {
   }
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
-    event.preventDefault()
-    console.log(formData)
     try {
       const response = await axios.post(`${API_URL}reviews`, formData)
 
       if (response.status === 200) {
+        // Handle success, e.g., display a success message or redirect
+        setFormData({
+          userId,
+          sellerId: id,
+          rating: null,
+          description: ''
+        })
         console.log('Comment submitted successfully')
       } else {
         console.error('Error submitting comment')

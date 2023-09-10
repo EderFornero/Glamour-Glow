@@ -13,7 +13,6 @@ interface DetailProps {
 }
 
 const BusinessInfo: React.FC<DetailProps> = ({ sellerName, reviews }: DetailProps): JSX.Element => {
-  console.log(reviews, 'HOLA SOY LAS REVIEWS')
   const [isFavorite, setIsFavorite] = useState<boolean>(false)
 
   const toggleFavorite = (): void => {

@@ -29,8 +29,6 @@ const BusinessDetail = (): JSX.Element => {
   //   content: ''
   // })
 
-  console.log('SE MONTO EL COMPONENTE DETAIL')
-
   useEffect(() => {
     dispatch(getSellerbyId(id))
     return () => dispatch(cleanSellerDetail())
