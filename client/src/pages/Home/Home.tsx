@@ -26,6 +26,8 @@ const Home: React.FC = () => {
       dispatch(getUserbyId(id))
     }
   }, [])
+
+  console.log(allServices)
   return (
     <div>
       <SearchBar onSearch={handleOnSearch} updateShowCards={updateShowCards} />

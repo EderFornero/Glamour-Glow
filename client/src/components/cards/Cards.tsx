@@ -18,15 +18,6 @@ const Cards: React.FC<CardsProps> = ({ allServices }: CardsProps) => {
   const { filteredUsers } = useFilterHook(allServices)
   const { filter } = useSelector((state: RootState) => state)
   const { itemsPaginated, currentPage, totalPages, nextPage, prevPage, startPage, finalPage } = usePagination(filteredUsers, 6, filter)
-  const calculateRating = (reviews: any): number => {
-    const totalRating = reviews.reduce((accumulator: number, current: any) => {
-      return accumulator + current.review
-    }, 0)
-
-    const averageRating = totalRating / reviews.length
-    return averageRating
-  }
-
   return (
     <>
       <div className={style.test}>
@@ -34,7 +25,7 @@ const Cards: React.FC<CardsProps> = ({ allServices }: CardsProps) => {
           <FilterAndOrderCard allServices={allServices} />
           <section className={style.cardsSection}>
             {itemsPaginated.map(({ _id, sellerName, categoriesArray, servicesArray, reviews }: any) => {
-              return <BusinessCard key={_id} _id={_id} sellerName={sellerName} rating={calculateRating(reviews)} categoriesArray={categoriesArray} servicesArray={servicesArray} />
+              return <BusinessCard key={_id} _id={_id} reviews={reviews} sellerName={sellerName} categoriesArray={categoriesArray} servicesArray={servicesArray} />
             })}
           </section>
         </div>
