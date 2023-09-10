@@ -27,6 +27,9 @@ export class Seller {
     @prop({required: true, type: String})
     sellerEmail?: string;
 
+    @prop({required: true, type: String})
+    sellerPassword?: string;
+
     @prop({ required: true, type: String})
     sellerPhone?: String;
 
