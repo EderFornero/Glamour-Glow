@@ -17,6 +17,9 @@ export const resetPassword = async (
     ) {
       return res.status(404).send("Could not reset user password");
     }
+    if(user.password === password){
+        return res.status(404).send("Input password can't match the current password")
+    }
     await resetPasswordUser(id, password);
 
     return res.status(200).send("Successfully updated password");
