@@ -76,6 +76,7 @@ if (query.categoriesArray && Array.isArray(query.categoriesArray)) {
 filters["categoriesArray.name"] = { $in: query.categoriesArray };
 }
 const sellers = await SellerModel.find(filters)
+.select({ sellerPassword: 0 })
 .populate("categoriesArray", {
   _id: 0,
   name: 1,
