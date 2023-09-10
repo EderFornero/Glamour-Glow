@@ -119,7 +119,7 @@ const FormLogin: React.FC<FormLoginProps> = ({ onToggle }) => {
           <div className={style['ico-div']}>
             <button
               type='button'
-              onClick={() => handleOnClick}
+              onClick={() => handleOnClick()}
               className={style.google}
             ></button>
             <button className={style.ig}></button>

@@ -216,3 +216,12 @@ export const updateSellerInfo: any = (id: string, updateinfo: any) => {
     }
   }
 }
+
+export const postService: any = (payload: any) => {
+  const endpoint = `${API_URL}services`
+
+  return async function (_dispatch: any) {
+    const response = await axios.post(endpoint, payload)
+    return response
+  }
+}
