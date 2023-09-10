@@ -19,14 +19,9 @@ const serviceSchema = z.object({
     
     
     price: z
-    .number({required_error: "You must provide a price"})
-    .nonnegative(),
-     
-    rating: z
-    .number({required_error: "Rating is required between 0 and 5"})
-    .nonnegative()
-    .min(1)
-    .max(5), 
+    .string({ required_error: "A phone number is required" })
+    //.nonnegative() need to add a validation so that the price is not negative
+    ,
      
     seller: z
     .string({required_error: "seller is required"})
