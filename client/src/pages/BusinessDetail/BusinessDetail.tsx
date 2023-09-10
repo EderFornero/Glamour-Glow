@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom'
 import style from './BusinessDetail.module.css'
 import Services from './Services/Services'
 import LeaveAComment from '../../components/LeaveAComment/LeaveAComment'
-// import Reviews from '../../components/Reviews/Reviews'
+import Reviews from '../../components/Reviews/Reviews'
 import BusinessInfo from './BusinessInfo/BusinessInfo'
 import BusinessImages from './BusinessImages/BusinessImages'
 import type { RootState } from '../../redux/types'
@@ -64,9 +64,8 @@ const BusinessDetail = (): JSX.Element => {
       <BusinessInfo sellerName={sellerdetail.sellerName} rating={sellerdetail.reviews} />
       <BusinessImages />
       <Services services={sellerdetail.servicesArray} sellerId={id} />
-      {/* <Reviews reviews={sellerdetail.reviews}/> */}
-
       <LeaveAComment userId={localStorage.getItem('id')} />
+      <Reviews reviews={sellerdetail.reviews} />
       {notification.isOpen && (
         <div className={style.notification}>
           <div className={style['icon-container']} style={{ backgroundColor: notification.type === 'approved' ? '#00cc99' : '#ee4646' }}>

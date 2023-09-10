@@ -7,22 +7,14 @@ const Reviews = ({ reviews }: any): JSX.Element => {
   const { itemsPaginated, currentPage, totalPages, nextPage, prevPage } = usePagination(reviews, 6)
 
   return (
-        <section className={style.container}>
-            <Pagination currentPage={currentPage} totalPages={totalPages} nextPage={nextPage} prevPage={prevPage} />
-            <div className={style.reviews}>
-                {itemsPaginated?.map(({ date, comment, rating, serviceName }: any, index: number) => {
-                  return (
-                        <Review
-                            key={`review-${index}`}
-                            date={date}
-                            comment={comment}
-                            rating={rating}
-                            serviceName={serviceName}
-                        />
-                  )
-                })}
-            </div>
-        </section>
+    <section className={style.container}>
+      <Pagination currentPage={currentPage} totalPages={totalPages} nextPage={nextPage} prevPage={prevPage} />
+      <div className={style.reviews}>
+        {itemsPaginated?.map(({ description, rating, userId }: any, index: number) => {
+          return <Review key={`review-${index}`} description={description} rating={rating} name={userId.name} lastName={userId.lastName} />
+        })}
+      </div>
+    </section>
   )
 }
 
