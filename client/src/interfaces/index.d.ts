@@ -4,7 +4,7 @@ export interface ServiceProvider {
   sellerEmail?: string
   sellerPhone?: string
   sellerGender?: string
-  reviews?: any
+  reviews: any[]
   categoriesArray: Category[]
   servicesArray: any[]
   businessName: string
