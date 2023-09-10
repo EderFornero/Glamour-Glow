@@ -3,7 +3,7 @@ import { createService } from '../../handlers/service'
 import { createServiceType } from '../../schemas/serviceSchema'
 
 export const postService = async (req: Request<{}, {}, createServiceType>, res: Response, next: NextFunction) => {
-  const { name, description, serviceCategories, price, seller} = req.body
+  const { name, description, serviceCategories, price, seller } = req.body
   try {
     const service = await createService({
       name,

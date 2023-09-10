@@ -1,9 +1,13 @@
 import { Request, Response } from 'express'
 import mercadopago from 'mercadopago'
+import dotenv from 'dotenv'
+dotenv.config()
 
-const TOKEN: string = 'TEST-2898003763829382-090613-f7cb3a0c9300b6e7e4d95dca00c8290a-1471102681'
+const MERCADOPAGO_TOKEN: string = process.env.MERCADOPAGO_TOKEN || ''
+const FRONT_URL: string = process.env.FRONT_URL || ''
+
 export const paymentOrder = async (req: Request, res: Response) => {
-  mercadopago.configure({ access_token: TOKEN })
+  mercadopago.configure({ access_token: MERCADOPAGO_TOKEN })
   try {
     const result = await mercadopago.preferences.create({
       items: [
@@ -16,8 +20,8 @@ export const paymentOrder = async (req: Request, res: Response) => {
       ],
 
       back_urls: {
-        success: `http://localhost:5173/sellerdetail/${req.body.sellerId}`,
-        failure: `http://localhost:5173/sellerdetail/${req.body.sellerId}`,
+        success: `${FRONT_URL}/${req.body.sellerId}`,
+        failure: `${FRONT_URL}/${req.body.sellerId}`,
         pending: ''
       },
       auto_return: 'approved',
