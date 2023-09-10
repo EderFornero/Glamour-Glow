@@ -14,13 +14,14 @@ export const forgotPassword = async (req: Request<{}, {}, forgotPasswordTypeBody
 
     if (!user) {
       console.debug(`User with email ${email} does not exists`)
-      return res.send(message)
+      return res.status(404).send(message)
     }
     const passwordResetCode = nanoid()
 
     user.passwordResetCode = passwordResetCode
 
     await user.save()
+     console.log(user);
     const mail_configs = {
       from: 'glamourglowpf@gmail.com',
       to: JSON.stringify(user.email),
@@ -33,6 +34,8 @@ export const forgotPassword = async (req: Request<{}, {}, forgotPasswordTypeBody
         return res.status(400).send(error)
       } else {
         console.log('Email successfully sent')
+       
+        
         return res.status(201).json({ status: 201, info })
       }
     })

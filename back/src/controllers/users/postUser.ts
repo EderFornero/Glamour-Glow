@@ -28,7 +28,7 @@ export const postUser = async (
       dateOfBirth,
       image,
     });
-    res.status(200).send(savedUser);
+    res.status(200).send({name:savedUser.name,id:savedUser._id, role:savedUser.role});
   } catch (error) {
     return next(error);
   }

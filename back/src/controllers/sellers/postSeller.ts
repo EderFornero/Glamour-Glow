@@ -10,6 +10,7 @@ export const postSellersController = async (
   const {
     sellerName,
     sellerEmail,
+    sellerPassword,
     sellerPhone,
     sellerGender,
     categoriesArray,
@@ -19,6 +20,7 @@ export const postSellersController = async (
     const newSeller = await postSellersHandler({
       sellerName,
       sellerEmail,
+      sellerPassword,
       sellerPhone,
       sellerGender,
       categoriesArray,

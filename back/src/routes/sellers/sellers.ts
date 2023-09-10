@@ -11,12 +11,7 @@ const router = Router()
 
 router.get('/', getSellersController)
 router.get('/:id', schemaValidation(readAndDeleteSellerSchema), getSellersByIdController)
-router.post(
-  '/',
-  // passport.authenticate("jwt", { session: false }),
-  schemaValidation(createSellerSchema),
-  postSellersController
-)
+router.post('/', schemaValidation(createSellerSchema), postSellersController)
 router.put('/:id', passport.authenticate('jwt', { session: false }), schemaValidation(updateSellerSchema), putSellersController)
 router.delete('/:id', passport.authenticate('jwt', { session: false }), schemaValidation(readAndDeleteSellerSchema), deleteSellerController)
 

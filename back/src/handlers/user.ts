@@ -44,7 +44,7 @@ export const destroyUserService = async (id: any) => {
   }
 };
 
-export const validateLogIn = async (email: any, password: any) => {
+export const validateLogIn = async (email: string, password: string) => {
   //change "any" type
   try {
     const user = await UserModel.findOne({ email }).exec();
@@ -57,13 +57,13 @@ export const validateLogIn = async (email: any, password: any) => {
     if (!isPasswordValid) {
       return false;
     }
-    return { id: user._id };
+    return { id: user._id, role: user.role};
   } catch (error: any) {
     throw new Error(error.message);
   }
 };
 
-export const generateToken = async (email: any) => {
+export const generateToken = async (email: string) => {
   try {
     const user = await UserModel.findOne({ email }).exec();
     const token = await jwt.sign(
@@ -83,3 +83,13 @@ export const forgotPasswordHandler = async (email: string) => {
   return user
 }
 
+export const resetPasswordUser = async (id: string, newPassword: string) => {
+  const user = await UserModel.findById(id);
+  if(user){
+    user.password = newPassword
+    user.passwordResetCode = null 
+    user.save()
+  }
+  console.log(user);
+  return user
+}
