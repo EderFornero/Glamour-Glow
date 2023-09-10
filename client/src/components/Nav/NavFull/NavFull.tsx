@@ -17,6 +17,7 @@ const NavFull = (): JSX.Element => {
     dispatch(setAuth(false))
     localStorage.removeItem('token')
     localStorage.removeItem('isAuth')
+    localStorage.removeItem('id')
     navigate('/')
   }
 

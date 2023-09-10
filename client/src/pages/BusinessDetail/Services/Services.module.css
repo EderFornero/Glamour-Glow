@@ -2,8 +2,10 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  width: 100%;
-  max-width: 1100px;
+  width: 69%;
+  @media (max-width: 1246px) {
+    width: 100%;
+  }
 }
 
 .services {

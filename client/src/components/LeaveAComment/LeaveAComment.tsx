@@ -1,39 +1,63 @@
+import React, { useState } from 'react'
+import { Rating } from '@mui/material'
 import style from './LeaveAComment.module.css'
-import { Rating, InputLabel, Select, MenuItem, FormControl } from '@mui/material'
-import { useState } from 'react'
+import axios from '../../redux/axiosService'
+import { useParams } from 'react-router-dom'
+const API_URL = import.meta.env.VITE_SERVER_URL
 
-const LeaveAComment = ({ user }: any): JSX.Element => {
-  const [ratingValue, setRatingValue] = useState<number | null>(null)
-  const handleRatingChange = (_event: React.ChangeEvent<{}>, newValue: number | null) => {
-    setRatingValue(newValue)
+interface LeaveACommentProps {
+  userId: string | null
+}
+
+interface FormData extends LeaveACommentProps {
+  rating: number | null
+  description: string
+  sellerId: undefined | string
+}
+
+const LeaveAComment = ({ userId }: LeaveACommentProps): JSX.Element => {
+  const { id } = useParams()
+  const [formData, setFormData] = useState<FormData>({
+    userId,
+    sellerId: id,
+    rating: null,
+    description: ''
+  })
+
+  const handleRatingChange = (_event: React.ChangeEvent<unknown>, newValue: number | null): void => {
+    setFormData({ ...formData, rating: newValue })
+  }
+
+  const handleDescriptionChange = (event: React.ChangeEvent<HTMLTextAreaElement>): void => {
+    setFormData({ ...formData, description: event.target.value })
+  }
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
+    event.preventDefault()
+    console.log(formData)
+    try {
+      const response = await axios.post(`${API_URL}reviews`, formData)
+
+      if (response.status === 200) {
+        console.log('Comment submitted successfully')
+      } else {
+        console.error('Error submitting comment')
+      }
+    } catch (error) {
+      console.error('Error:', error)
+    }
   }
 
   return (
-    <form className={style.form}>
-      <h2 className={style.title}> Leave a comment for us</h2>
-      <div className={style['input-container']}>
-        <FormControl variant='outlined' fullWidth>
-          <InputLabel id='service' className={style['label-comment']}>
-            Service bought in store
-          </InputLabel>
-          <Select labelId='service' label='Which Service did you buy?' className={style['select-comment']}>
-            {user.services.map((service: any) => {
-              return (
-                <MenuItem key={service.id} value={service.name}>
-                  {service.name}
-                </MenuItem>
-              )
-            })}
-          </Select>
-        </FormControl>
-      </div>
+    <form className={style.form} onSubmit={handleSubmit}>
+      <h2 className={style.title}>Leave a comment for us</h2>
       <div className={style['input-container']}>
         <label htmlFor='rating'>Rate the service</label>
-        <Rating name='rating-comment' value={ratingValue} onChange={handleRatingChange} classes={{ iconFilled: style['star-filled'], iconEmpty: style['star-empty'] }} />
+        <Rating name='rating-comment' value={formData.rating} onChange={handleRatingChange} classes={{ iconFilled: style['star-filled'], iconEmpty: style['star-empty'] }} />
       </div>
       <div className={style['input-container']}>
         <label htmlFor='comment'>Leave a comment</label>
-        <textarea name='comment' rows={7} style={{ resize: 'none' }}></textarea>
+        <textarea name='comment' rows={7} style={{ resize: 'none' }} value={formData.description} onChange={handleDescriptionChange}></textarea>
       </div>
       <div className={style['submit-container']}>
         <button className={style.submit} type='submit'>
