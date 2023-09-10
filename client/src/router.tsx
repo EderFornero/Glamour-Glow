@@ -107,7 +107,7 @@ const router = createBrowserRouter([
         ]
       },
       {
-        path: '/resetPassword/:id/:passwordResetCode',
+        path: '/resetPassword',
         children: [
           {
             index: true,
