@@ -16,13 +16,19 @@
     transition: width 0.4s;
     z-index: 2;
   }
-  
+
   .sidebar-header {
     display: flex;
     align-items: center;
     height: 72px;
     border-bottom: 1px solid #6d6d6d;
     margin-bottom: 20px;
+  }
+
+  .sidebar-button{
+    position: absolute;
+    z-index: 3;
+    
   }
   
   .home-link{
@@ -79,3 +85,16 @@
     width: 15px;
   }
 
+@media screen and (max-width: 800px){
+  .sidebar{
+    left: -260px
+  }
+
+  .sidebar-button{
+    left: 20px;
+  }
+
+  .sidebar-button{
+    left: 260px
+  }
+}

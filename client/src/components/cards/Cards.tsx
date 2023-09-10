@@ -48,7 +48,6 @@ const Cards: React.FC<CardsProps> = ({ allServices }: CardsProps) => {
         </div>
         <Pagination currentPage={currentPage} totalPages={totalPages} nextPage={nextPage} prevPage={prevPage} startPage={startPage} finalPage={finalPage} />
       </div>
-      <Pagination currentPage={currentPage} totalPages={totalPages} nextPage={nextPage} prevPage={prevPage} startPage={startPage} finalPage={finalPage} />
     </>
   )
 }

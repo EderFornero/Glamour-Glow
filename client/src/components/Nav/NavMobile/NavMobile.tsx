@@ -53,7 +53,9 @@ const NavMobile = (): JSX.Element => {
           </li>
           {isAuth && (
             <li onClick={handleLogout} className={`${style['menu-item']} ${style.link} logout`}>
-              Logout
+              <NavLink to='/business' className={style.link}>
+                Logout
+              </NavLink>
             </li>
           )}
         </ul>

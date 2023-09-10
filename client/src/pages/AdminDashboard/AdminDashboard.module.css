@@ -1,0 +1,16 @@
+.right-section{
+  border: 2px solid red;
+  min-height: 100vh;
+  max-width: 100vw;
+  min-width: 40vw;
+  margin-left: 260px;
+  display: flex;
+  justify-content: center;
+}
+
+
+@media screen and (max-width: 800px){
+  .right-section{
+    margin-left: 0
+  }
+}

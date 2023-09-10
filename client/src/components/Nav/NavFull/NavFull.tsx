@@ -16,7 +16,6 @@ const NavFull = (): JSX.Element => {
     dispatch(setAuth(false))
     localStorage.removeItem('token')
     localStorage.removeItem('isAuth')
-    navigate('/')
   }
 
   return (
@@ -40,7 +39,9 @@ const NavFull = (): JSX.Element => {
           </li>)
           : (<>
             <li className={`${style['menu-item-full']} ${style.link} ${style.logout}`} onClick={handleLogout}>
+            <NavLink to='/' className={style['link-full']}>
               Logout
+            </NavLink>
             </li>
             <li className={style['menu-item-full']}>
               <NavLink to={`/userdetail/${userId}`}>
