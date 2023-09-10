@@ -4,7 +4,10 @@ import { Services } from "./Services";
 import { Reviews } from "./Reviews";
 
 
-
+export enum ROLE {
+    CUSTOMER = "customer",
+    SELLER = "seller",
+  }
 export enum GENDER {
     ANY = 'any',
     FEMALE = 'female',
@@ -26,6 +29,9 @@ export class Seller {
 
     @prop({required: true, type: String})
     sellerEmail?: string;
+
+    @prop({required: true, type: String})
+    sellerPassword?: string;
 
     @prop({ required: true, type: String})
     sellerPhone?: String;

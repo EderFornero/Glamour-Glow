@@ -11,7 +11,8 @@ import {
   GET_SELLER_BY_ID,
   UPDATE_SELLER_DETAIL,
   SET_AUTH,
-  SET_USER_ID
+  SET_USER_ID,
+  CLEAN_SELLER_DETAIL
 } from './Action-Types'
 import type { ServiceAction } from './types'
 
@@ -122,7 +123,6 @@ export const getUsers: any = () => {
   return async (dispatch: (action: ServiceAction) => void) => {
     try {
       const { data } = await axios.get(endUser)
-      console.log(data)
       dispatch({
         type: GET_ALL_USERS,
         payload: data
@@ -216,4 +216,8 @@ export const updateSellerInfo: any = (id: string, updateinfo: any) => {
       return { error: error.message }
     }
   }
+}
+
+export const cleanSellerDetail: any = (): any => {
+  return { type: CLEAN_SELLER_DETAIL, payload: { _id: '', sellerName: '', sellerEmail: '', sellerPhone: '', sellerGender: '', reviews: [], categoriesArray: [], servicesArray: [] } }
 }

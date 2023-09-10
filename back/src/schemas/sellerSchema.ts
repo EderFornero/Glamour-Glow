@@ -11,6 +11,12 @@ const sellerSchema = z.object({
     .string({ required_error: "Email is required" })
     .email("Must be an Email")
     .nonempty("Must provide an email"),
+  sellerPassword: z
+    .string({ required_error: "password  is required" })
+    .nonempty("You must provide a password")
+    .min(6, "The password should have at least 6 characters")
+    .max(12, "12 characters max")
+    .trim(),
   sellerPhone: z
     .string({ required_error: "A phone number is required" })
     .min(6)
@@ -19,7 +25,7 @@ const sellerSchema = z.object({
     required_error: "Gender must be female, male or any",
   }),
   categoriesArray: z
-    .string()
+    .array(z.string())
     .nonempty("You must provide at least 1 category")
     .min(1, "Min 1 category please"),
   servicesArray: z.array(z.string()).optional(),

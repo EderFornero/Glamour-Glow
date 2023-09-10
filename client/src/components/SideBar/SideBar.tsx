@@ -1,6 +1,5 @@
 import styles from './SideBar.module.css'
 import { menuItems } from './parts/itemsmenu'
-import NavHeader from './parts/NavHeader'
 import NavButton from './parts/NavButton'
 import SubMenu from './parts/SubMenu'
 import Icon from './parts/Icon'
@@ -29,16 +28,7 @@ function SideBar ({ setActiveItem, activeItem }: any): JSX.Element {
       </div>
       {menuItems.map((item) => (
         <>
-          {item.items === undefined && (
-            <NavButton
-              key={item.id}
-              onClick={handleClick}
-              name={item.name}
-              icon={item.icon}
-              isActive={activeItem === item.name}
-              hasSubNav={false}
-            />
-          )}
+          {item.items === undefined && <NavButton key={item.id} onClick={handleClick} name={item.name} icon={item.icon} isActive={activeItem === item.name} hasSubNav={false} />}
           {item.items !== undefined && (
             <>
               <NavButton onClick={handleClick} name={item.name} icon={item.icon} isActive={activeItem === item.name} hasSubNav={true} />

@@ -20,14 +20,15 @@ export const logInUserGoogle = async (req: Request, res: Response) => {
       });
 
       const id = newUser._id.toString();
+      const role = newUser.role
       const token = await generateToken(email);
-      return res.status(200).send({ token, id });
+      return res.status(200).send({ id, role, token});
     }
     const id = user[0]._id.toString();
-
+    const role = user[0].role
     const token = await generateToken(email);
 
-    return res.status(200).send({ token, id });
+    return res.status(200).send({ id, role, token});
   } catch (error: any) {
     return res.status(400).send({
       message: "Failed authentication, incorrect credentials",

@@ -8,11 +8,11 @@ export const logInUser = async (req: Request, res: Response) => {
     res.cookie("MyCookie", "TestingCookie", { maxAge: 10000 });
     if (credentials) {
       const token = await generateToken(email);
-
-      return res.status(200).send({ id: credentials.id, token });
+      const role = credentials.role
+      return res.status(200).send({ id: credentials.id, role, token });
     }
     throw new Error("Failed authentication, incorrect credentials");
-  } catch (error: any) {
+  } catch (error) {
     return res.status(400).send({
       message: "Failed authentication, incorrect credentials",
       token: null,

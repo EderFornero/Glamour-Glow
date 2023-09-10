@@ -10,11 +10,7 @@ import type { FormLoginData } from '../../interfaces'
 import ErrorMessage from './handlers/errorMessage'
 import { postValidate, setAuth, setUserId } from '../../redux/actions'
 import { initializeApp } from 'firebase/app'
-import {
-  getAuth,
-  signInWithPopup,
-  GoogleAuthProvider
-} from 'firebase/auth'
+import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
 import type { AuthProvider } from 'firebase/auth'
 import axios from 'axios'
 
@@ -46,6 +42,7 @@ const FormLogin: React.FC<FormLoginProps> = ({ onToggle }) => {
 
       if (token !== undefined && id !== undefined) {
         localStorage.setItem('isAuth', 'true')
+        localStorage.setItem('id', id)
         dispatch(setAuth(true))
         dispatch(setUserId(id))
         navigate('/')
@@ -88,10 +85,7 @@ const FormLogin: React.FC<FormLoginProps> = ({ onToggle }) => {
         name,
         password
       }
-      const response = await axios.post(
-        'http://localhost:3001/users/auth/login',
-        data
-      )
+      const response = await axios.post('http://localhost:3001/users/auth/login', data)
       const { token, id } = response.data
 
       if (token !== undefined && id !== undefined) {
@@ -117,11 +111,7 @@ const FormLogin: React.FC<FormLoginProps> = ({ onToggle }) => {
         <div className={style['alt-login']}>
           <h4 className={style['log-with']}>or Login With:</h4>
           <div className={style['ico-div']}>
-            <button
-              type='button'
-              onClick={() => handleOnClick}
-              className={style.google}
-            ></button>
+            <button type='button' onClick={() => handleOnClick} className={style.google}></button>
             <button className={style.ig}></button>
           </div>
         </div>
@@ -141,7 +131,7 @@ const FormLogin: React.FC<FormLoginProps> = ({ onToggle }) => {
             Dont have an account?
           </p>
         </button>
-        <Link to='/passwordRecovery'>
+        <Link to='/login/passwordRecovery'>
           <p className={style.forgot}>Forgot Password?</p>
         </Link>
       </div>

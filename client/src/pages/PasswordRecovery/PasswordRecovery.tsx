@@ -2,7 +2,7 @@ import { useState } from 'react'
 // toaster
 import toast, { Toaster } from 'react-hot-toast'
 // utils
-import { sendWelcomeEmail } from '../../utils'
+import { sendResetPasswordEmail } from '../../utils'
 // router
 import { Link } from 'react-router-dom'
 // css
@@ -12,14 +12,13 @@ import style from './PasswordRecovery.module.css'
 const forgotPasswordImage = 'https://res.cloudinary.com/dgl4t7gvo/image/upload/v1694385759/Glamour-Glow/forgotpassword_ksnzhx.png'
 
 const NodemailerTest = (): JSX.Element => {
-  const [recipientEmail, setRecipientEmail] = useState('')
-  // const dispatch = useDispatch(get)
+  const [email, setEmail] = useState('')
   // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   const handleSendWelcomeEmail = async (e: any) => {
     e.preventDefault()
     try {
-      const response = await sendWelcomeEmail(recipientEmail)
-      console.log('email: ', recipientEmail, response)
+      const response = await sendResetPasswordEmail(email)
+      console.log(response)
       toast.success('Sent, check your mail', {
         style: {
           border: '1px solid #3d36be',
@@ -60,7 +59,7 @@ const NodemailerTest = (): JSX.Element => {
             <div className={style['form-group']}>
               <label htmlFor='email'>Email</label>
               <input
-                onChange={e => { setRecipientEmail(e.target.value) }}
+                onChange={e => { setEmail(e.target.value) }}
                 type='text'
                 id='email'
                 name='email'

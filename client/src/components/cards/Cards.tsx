@@ -41,8 +41,7 @@ const Cards: React.FC<CardsProps> = ({ allServices }: CardsProps) => {
         <FilterAndOrderCard allServices={allServices} />
           <section className={style.cardsSection}>
             {itemsPaginated.map(({ _id, sellerName, categoriesArray, servicesArray, reviews }: any) => {
-              return <BusinessCard key={_id} _id={_id} sellerName={sellerName} rating={calculateRating(reviews)}
-              categoriesArray={categoriesArray} servicesArray={servicesArray} />
+              return <BusinessCard key={_id} _id={_id} reviews={reviews} sellerName={sellerName} categoriesArray={categoriesArray} servicesArray={servicesArray} />
             })}
           </section>
         </div>

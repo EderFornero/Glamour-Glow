@@ -28,8 +28,8 @@ export const getSellersByIdHandler = async (id: String) => {
       path: "reviews",
       select: { _id: 0, rating: 1, description: 1 },
       populate: {
-        path: "user_id",
-        select: { _id: 0, username: 1,image: 1},
+        path: "userId",
+        select: { _id: 0, name: 1, lastName: 1,image: 1},
       },
     })
   return sellerById;
@@ -76,6 +76,7 @@ if (query.categoriesArray && Array.isArray(query.categoriesArray)) {
 filters["categoriesArray.name"] = { $in: query.categoriesArray };
 }
 const sellers = await SellerModel.find(filters)
+.select({ sellerPassword: 0 })
 .populate("categoriesArray", {
   _id: 0,
   name: 1,

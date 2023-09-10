@@ -1,58 +1,51 @@
-import { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import DatePickUI from '../../assets/booking/undraw_booking_re_gw4j.svg'
 import FancyUI from '../../assets/booking/undraw_date_picker_re_r0p8.svg'
 import 'react-datepicker/dist/react-datepicker.css'
-import { initMercadoPago, Wallet } from '@mercadopago/sdk-react'
+import { initMercadoPago } from '@mercadopago/sdk-react'
 import axios from 'axios'
 
 import style from './BookAService.module.css'
+const API_URL = import.meta.env.VITE_SERVER_URL
+const MERCADO_PAGO = import.meta.env.VITE_MERCADOPAGO_PUBLIC_KEY
 
 const BookAService = (): JSX.Element => {
-  const { name, price } = useParams()
-  const [preferenceId, setPreferenceId] = useState<null>(null)
+  const { name, price, sellerId } = useParams()
 
-  initMercadoPago('TEST-dfb77c55-b723-4977-b312-5dbc4f1fd759')
+  initMercadoPago(`${MERCADO_PAGO}`)
 
   const createPreference = async (): Promise<any> => {
     try {
-      const response = await axios.post('http://localhost:3001/payment/order', {
+      const response = await axios.post(`${API_URL}payment/order`, {
         title: name,
         unit_price: price,
         currency_id: 'ARS',
-        quantity: 1
+        quantity: 1,
+        sellerId
       })
-
-      const { id } = response.data
+      const id = response.data
       return id
     } catch (error) {
       console.log(error)
     }
   }
 
-  const handleBuy = (): void => {
-    createPreference()
-      .then((id) => {
-        if (id !== null) {
-          setPreferenceId(id)
-        }
-      })
-      .catch((error) => {
-        console.error(error)
-      })
+  const handleBuy = async (): Promise<void> => {
+    const id = await createPreference()
+    if (id !== null) {
+      window.location.href = id
+    }
   }
 
   return (
     <section className={style['global-container']}>
-      <form className={style.form}>
+      <div className={style.form}>
         <h2 className={style.title}>{`Thank you for booking the ${name} service`}</h2>
         <p className={style.price}>{`The cost of the service is: $${price}`}</p>
-        <button onClick={handleBuy} type='submit' className={style['submit-button']}>
+        <button onClick={handleBuy} type='button' className={style['submit-button']}>
           Book Now
         </button>
-
-        {preferenceId !== null && <Wallet initialization={{ preferenceId }} />}
-      </form>
+      </div>
       <div className={style['image-container']}>
         <img src={DatePickUI} alt='choose-service' />
         <img src={FancyUI} alt='datepicker' />

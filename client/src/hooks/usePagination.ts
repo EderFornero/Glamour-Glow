@@ -7,16 +7,16 @@ export const usePagination = (
   key: number
   // rating?: number
 ): {
-    itemsPaginated: any
-    currentPage: number
-    totalPages: number
-    // filters: string
-    // rating: number
-    nextPage: () => void
-    prevPage: () => void
-    startPage: () => void
-    finalPage: () => void
-  } => {
+  itemsPaginated: any
+  currentPage: number
+  totalPages: number
+  // filters: string
+  // rating: number
+  nextPage: () => void
+  prevPage: () => void
+  startPage: () => void
+  finalPage: () => void
+} => {
   const [currentPage, setCurrentPage] = useState<number>(0)
   const totalPages = Math.ceil(items.length / itemsPerPage)
   const startIndex = currentPage * itemsPerPage

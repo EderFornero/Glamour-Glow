@@ -1,5 +1,4 @@
 import { Request, Response } from 'express'
-// import mercadopago from "mercadopago";
 
 export const paymentWebHook = async (_req: Request, res: Response) => {
   try {
