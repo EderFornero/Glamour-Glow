@@ -2,7 +2,7 @@ import { Outlet, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 // redux
 import { useDispatch } from 'react-redux'
-import { getAllBusiness, getCategories, getUsers } from '../redux/actions.ts'
+import { getAllBusiness, getCategories } from '../redux/actions.ts'
 // components
 import Nav from '../components/Nav/Nav'
 import Footer from '../components/Footer/Footer'
@@ -17,7 +17,6 @@ const Layout: React.FC = () => {
     window.scrollTo(0, 0)
     dispatch(getCategories())
     dispatch(getAllBusiness())
-    dispatch(getUsers())
   }, [pathname])
 
   const showNavFooter = location.pathname !== '/admin'

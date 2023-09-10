@@ -57,7 +57,7 @@ export const validateLogIn = async (email: string, password: string) => {
     if (!isPasswordValid) {
       return false;
     }
-    return { id: user._id };
+    return { id: user._id, role: user.role};
   } catch (error: any) {
     throw new Error(error.message);
   }

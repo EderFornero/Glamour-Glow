@@ -4,7 +4,7 @@ import NavHeader from './parts/NavHeader'
 import NavButton from './parts/NavButton'
 import SubMenu from './parts/SubMenu'
 
-function SideBar ({ setActiveItem, activeItem }: any): JSX.Element {
+function SideBar({ setActiveItem, activeItem }: any): JSX.Element {
   const handleClick = (item: string): void => {
     setActiveItem(item !== activeItem ? item : '')
   }
@@ -14,16 +14,7 @@ function SideBar ({ setActiveItem, activeItem }: any): JSX.Element {
       <NavHeader />
       {menuItems.map((item) => (
         <>
-          {item.items === undefined && (
-            <NavButton
-              key={item.id}
-              onClick={handleClick}
-              name={item.name}
-              icon={item.icon}
-              isActive={activeItem === item.name}
-              hasSubNav={false}
-            />
-          )}
+          {item.items === undefined && <NavButton key={item.id} onClick={handleClick} name={item.name} icon={item.icon} isActive={activeItem === item.name} hasSubNav={false} />}
           {item.items !== undefined && (
             <>
               <NavButton onClick={handleClick} name={item.name} icon={item.icon} isActive={activeItem === item.name} hasSubNav={true} />

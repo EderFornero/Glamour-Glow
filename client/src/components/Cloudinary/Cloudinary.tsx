@@ -53,7 +53,7 @@ const Cloudinary = (): JSX.Element => {
       // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
       if (!widgetRef.current) {
         // eslint-disable-next-line @typescript-eslint/no-confusing-void-expression
-        (widgetRef.current as any) = createWidget()
+        ;(widgetRef.current as any) = createWidget()
       }
     }
 
@@ -67,16 +67,16 @@ const Cloudinary = (): JSX.Element => {
   const openWidget = (): void => {
     // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
     if (widgetRef.current) {
-      (widgetRef.current as any).open()
+      ;(widgetRef.current as any).open()
     }
   }
 
   return (
     <StyledDiv>
       <StyledDivButton>
-        <StyledButtons onClick={openWidget} id="upload-button">
+        <StyledButtons onClick={openWidget} id='upload-button'>
           Upload Profile Image
-          </StyledButtons>
+        </StyledButtons>
       </StyledDivButton>
     </StyledDiv>
   )

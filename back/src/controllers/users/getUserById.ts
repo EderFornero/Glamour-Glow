@@ -10,9 +10,9 @@ export const getUserByid = async (
   try {
     const id  = req.params.id;
     const user = await readUserById(id);
-    // if (!user || !user.isActive) {
-    //   return res.status(404).send({ message: "User not found" });
-    // }
+    if (!user || !user.isActive) {
+      return res.status(404).send({ message: "User not found" });
+    }
 
     return res.status(200).json(user);
   } catch (error) {
