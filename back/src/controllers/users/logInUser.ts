@@ -12,7 +12,7 @@ export const logInUser = async (req: Request, res: Response) => {
       return res.status(200).send({ id: credentials.id, token });
     }
     throw new Error("Failed authentication, incorrect credentials");
-  } catch (error: any) {
+  } catch (error) {
     return res.status(400).send({
       message: "Failed authentication, incorrect credentials",
       token: null,
