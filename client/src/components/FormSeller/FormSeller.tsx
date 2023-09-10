@@ -26,7 +26,7 @@ const FormSeller: React.FC = () => {
       seller: ''
     }
   })
-
+//nota
   useEffect(() => {
     dispatch(getCategories())
   }, [dispatch])
