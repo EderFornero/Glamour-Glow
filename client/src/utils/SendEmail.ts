@@ -6,6 +6,7 @@ export const sendWelcomeEmail = async (recipientEmail: string) => {
   const response = await axios.post('http://localhost:3001/welcomeEmail', {
     recipientEmail
   })
+  console.log(response)
   return response
 }
 
@@ -15,6 +16,7 @@ export const sendResetPasswordEmail = async (email: string) => {
   const response = await axios.post('http://localhost:3001/users/forgotPassword', {
     email
   })
+  console.log(response)
   return response
 }
 
@@ -24,10 +26,6 @@ export const confirmResetPassword = async (id: any, passwordResetCode: any, pass
   const url = `http://localhost:3001/users/resetPassword/${id}/${passwordResetCode}`
   const data = { password, passwordConfirmation }
 
-  try {
-    const response = await axios.post(url, data)
-    return response
-  } catch (error) {
-    throw error
-  }
+  const response = await axios.post(url, data)
+  return response
 }
