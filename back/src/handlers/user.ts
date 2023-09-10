@@ -86,7 +86,7 @@ export const forgotPasswordHandler = async (email: string) => {
 export const resetPasswordUser = async (id: string, newPassword: string) => {
   const user = await UserModel.findById(id);
   if(user){
-    if(user.password === newPassword){
+    if(newPassword === user.password){
       throw Error("Input password can't match the current password")
     }
     user.password = newPassword
