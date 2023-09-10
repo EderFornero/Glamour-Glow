@@ -1,35 +1,31 @@
-import {  Request, Response } from "express";
-import mercadopago from "mercadopago";
+import { Request, Response } from 'express'
+import mercadopago from 'mercadopago'
 
+const TOKEN: string = 'TEST-2898003763829382-090613-f7cb3a0c9300b6e7e4d95dca00c8290a-1471102681'
+export const paymentOrder = async (req: Request, res: Response) => {
+  mercadopago.configure({ access_token: TOKEN })
+  try {
+    const result = await mercadopago.preferences.create({
+      items: [
+        {
+          title: req.body.title,
+          unit_price: Number(req.body.unit_price),
+          currency_id: req.body.currency_id,
+          quantity: Number(req.body.quantity)
+        }
+      ],
 
-
-const TOKEN: string =  "TEST-1804449312324495-090605-fb86103bee1a2ca5427dd9b4cc0965f3-1472015382"
-export const paymentOrder = async ( _req: Request, 
-                                      res: Response,
-                                   ) => {
-            
-            mercadopago.configure({access_token: TOKEN })
-            try {
-              const result = await  mercadopago.preferences.create({
-                    items: [{
-                        title: _req.body.title,
-                        unit_price: _req.body.unit_price,
-                        currency_id: _req.body.currency_id,
-                        quantity: _req.body.quantity,
-                    }],
-                    
-                    back_urls: {
-                        success: "http://localhost:3001/payment/sucess",
-                        failure: "http://localhost:3001/payment/failure",
-                        pending: "http://localhost:3001/payment/pending"
-
-                    },
-                    notification_url: "https://0237-2806-2f0-5520-9e39-3814-99bb-63f6-c301.ngrok.io/webhook"
-                    
-                })
-                console.log(result);
-                return res.json(result.body.id);
-            } catch (error) {
-               return error;  
-            }
- }
+      back_urls: {
+        success: `http://localhost:5173/sellerdetail/${req.body.sellerId}`,
+        failure: `http://localhost:5173/sellerdetail/${req.body.sellerId}`,
+        pending: ''
+      },
+      auto_return: 'approved',
+      notification_url: 'https://2876-191-97-30-250.ngrok.io/webhook'
+    })
+    console.log(result)
+    return res.status(200).json(result.body.init_point)
+  } catch (error) {
+    return res.status(500).json({ error: 'Hubo un error' })
+  }
+}

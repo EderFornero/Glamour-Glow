@@ -40,7 +40,7 @@ const router = createBrowserRouter([
         ]
       },
       {
-        path: '/bookaservice/:name/:price',
+        path: '/bookaservice/:name/:price/:sellerId',
         children: [
           {
             index: true,
