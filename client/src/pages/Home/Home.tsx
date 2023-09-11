@@ -29,7 +29,6 @@ const Home: React.FC = () => {
     }
   }, [])
 
-  console.log(allServices)
   return (
     <div>
       <SearchBar onSearch={handleOnSearch} updateShowCards={updateShowCards} />

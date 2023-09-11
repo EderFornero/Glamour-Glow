@@ -22,6 +22,11 @@ const UserDetailFirstSection = (): JSX.Element => {
 
   const { id } = useParams()
 
+  console.log(newUserInfo)
+
+  useEffect(() => { image ?? dispatch(updateUserInfo(id, { 'image': image })) }
+    , [image])
+
   useEffect(() => {
     dispatch(getUserbyId(id))
   }, [dispatch])
@@ -56,7 +61,7 @@ const UserDetailFirstSection = (): JSX.Element => {
     <section className={styles.sectionleft}>
       <div className={styles.userdetail}>
         <div className={styles['userdetail-header']}>
-          <img src={image ?? noProfileImage} alt='Profile' />
+          <img src={userdetail.image ?? noProfileImage} alt='Profile' />
           <Cloudinary />
           <h1>
             {userdetail.name} {userdetail.lastName}
@@ -69,16 +74,16 @@ const UserDetailFirstSection = (): JSX.Element => {
               Name <span>{editing ? <input type='text' name='name' value={newUserInfo.name} onChange={handleChange} /> : userdetail.name}</span>
             </li>
             <li>
-              Last Name <span>{editing ? <input type='text' name='last_name' value={newUserInfo.lastName} onChange={handleChange} /> : userdetail.lastName}</span>
+              Last Name <span>{editing ? <input type='text' name='lastName' value={newUserInfo.lastName} onChange={handleChange} /> : userdetail.lastName}</span>
             </li>
             <li>
-              Phone <span>{editing ? <input type='number' name='phone_number' value={newUserInfo.phoneNumber} onChange={handleChange} /> : userdetail.phoneNumber}</span>
+              Phone <span>{editing ? <input type='number' name='phoneNumber' value={newUserInfo.phoneNumber} onChange={handleChange} /> : userdetail.phoneNumber}</span>
             </li>
             <li>
               Email <span>{editing ? <input type='text' name='email' value={newUserInfo.email} onChange={handleChange} disabled /> : userdetail.email}</span>
             </li>
             <li>
-              Birthdate <span>{editing ? <input type='date' name='date_of_birth' value={newUserInfo.dateOfBirth} onChange={handleChange} /> : formatDateNumbers(userdetail.dateOfBirth)}</span>
+              Birthdate <span>{editing ? <input type='date' name='dateOfBirth' value={newUserInfo.dateOfBirth} onChange={handleChange} /> : formatDateNumbers(userdetail.dateOfBirth)}</span>
             </li>
           </ul>
         </div>

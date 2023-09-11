@@ -1,6 +1,5 @@
 import style from './NavFull.module.css'
-import { NavLink, useNavigate } from 'react-router-dom'
-
+import { NavLink } from 'react-router-dom'
 import imgprofile from '../../../assets/profile-circle.svg'
 import { useSelector, useDispatch } from 'react-redux'
 import { setAuth } from '../../../redux/actions'
@@ -27,19 +26,18 @@ const NavFull = (): JSX.Element => {
             Services
           </NavLink>
         </li>
-        <li className={style['menu-item-full']}>
-          <NavLink to='/admin' className={style['link-full']}>
-            For business
-          </NavLink>
-        </li>
-        {!isAuth ? (
-          <li className={style['menu-item-full']}>
+        {!isAuth
+          ? (<li className={style['menu-item-full']}>
             <NavLink to='/login' className={style['link-full']}>
               Login
             </NavLink>
-          </li>
-        ) : (
-          <>
+          </li>)
+          : (<>
+            <li className={style['menu-item-full']}>
+              <NavLink to='/admin' className={style['link-full']}>
+                For business
+              </NavLink>
+            </li>
             <li className={`${style['menu-item-full']} ${style.link} ${style.logout}`} onClick={handleLogout}>
             <NavLink to='/' className={style['link-full']}>
               Logout
@@ -51,7 +49,7 @@ const NavFull = (): JSX.Element => {
               </NavLink>
             </li>
           </>
-        )}
+            )}
       </ul>
     </nav>
   )
