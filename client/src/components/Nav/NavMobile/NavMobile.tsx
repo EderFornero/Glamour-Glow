@@ -1,19 +1,18 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import imgprofile from '../../../assets/profile-circle.svg'
 import style from './NavMobile.module.css'
 import { NavLink, useNavigate } from 'react-router-dom'
 import Hamburger from 'hamburger-react'
-import { useDispatch, useSelector } from 'react-redux'
-import type { RootState } from '../../../redux/types'
-import { setAuth } from '../../../redux/actions'
+import { useDispatch } from 'react-redux'
+import { setAuth, getUserbyId } from '../../../redux/actions'
 
 const NavMobile = (): JSX.Element => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const userId = useSelector((state: RootState) => state.userId)
   const isAuth = localStorage.getItem('isAuth')
   const role = localStorage.getItem('role')
+  const id = localStorage.getItem('id')
 
   const handleLogout = (): void => {
     dispatch(setAuth(false))
@@ -23,6 +22,10 @@ const NavMobile = (): JSX.Element => {
     localStorage.removeItem('role')
     navigate('/')
   }
+
+  useEffect(() => {
+    dispatch(getUserbyId(id))
+  }, [id])
   return (
     <nav className={style['nav-mobile']}>
       <div className={style.div}>
@@ -39,7 +42,7 @@ const NavMobile = (): JSX.Element => {
           )}
           {isAuth === 'true' && (
             <li className={style['menu-item-full']}>
-              <NavLink to={role !== null && role === 'seller' ? '/admin' : `/userdetail/${userId}`}>
+              <NavLink to={role !== null && role === 'seller' ? '/admin' : `/userdetail/${id}`}>
                 <img className={style['userimg-full']} src={imgprofile} />
               </NavLink>
             </li>

@@ -6,14 +6,15 @@ import { Fab, Tooltip } from '@mui/material'
 import { useState } from 'react'
 import useRating from '../../../hooks/useRating'
 // import type { ServiceProvider } from '../../../interfaces'
+import type { ReviewsProps } from '../../../components/Reviews/Reviews'
 
-interface DetailProps {
+interface DetailProps extends ReviewsProps {
   sellerName: string
-  reviews: any[]
 }
 
-const BusinessInfo: React.FC<DetailProps> = ({ sellerName, reviews }: DetailProps): JSX.Element => {
+const BusinessInfo: React.FC<DetailProps> = ({ sellerName, reviews }) => {
   const [isFavorite, setIsFavorite] = useState<boolean>(false)
+  const isAuth = localStorage.getItem('isAuth')
 
   const toggleFavorite = (): void => {
     setIsFavorite((prevState) => !prevState)
@@ -27,10 +28,9 @@ const BusinessInfo: React.FC<DetailProps> = ({ sellerName, reviews }: DetailProp
           <StarIcon className={style.rating}></StarIcon>
           <p>{averageRating}</p>
         </div>
-        {/* <p className={style.location}>{sellerdetail.sellerPhone}</p> */}
       </div>
       <div className={style.wrapper}>
-        <Tooltip title='Must be logged in to add to favorites' placement='top'>
+        <Tooltip title={isAuth !== null ? 'Add to favourites' : 'Must be logged in to add to favourites'} placement='top'>
           <Fab className={style.fav} onClick={toggleFavorite}>
             {isFavorite ? <FavoriteIcon className={style['favorite-button-filled']} /> : <FavoriteIconEmpty className={style['favorite-button']} />}
           </Fab>

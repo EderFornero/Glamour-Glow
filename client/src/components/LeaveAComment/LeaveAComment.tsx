@@ -9,15 +9,15 @@ interface LeaveACommentProps {
   userId: string | null
 }
 
-interface FormData extends LeaveACommentProps {
+interface FormReviewData extends LeaveACommentProps {
   rating: number | null
   description: string
   sellerId: undefined | string
 }
 
-const LeaveAComment = ({ userId }: LeaveACommentProps): JSX.Element => {
+const LeaveAComment: React.FC<LeaveACommentProps> = ({ userId }) => {
   const { id } = useParams()
-  const [formData, setFormData] = useState<FormData>({
+  const [formData, setFormData] = useState<FormReviewData>({
     userId,
     sellerId: id,
     rating: null,
@@ -32,7 +32,7 @@ const LeaveAComment = ({ userId }: LeaveACommentProps): JSX.Element => {
     setFormData({ ...formData, description: event.target.value })
   }
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
+  const handleSubmit = async (_event: React.FormEvent<HTMLFormElement>): Promise<void> => {
     try {
       const response = await axios.post(`${API_URL}reviews`, formData)
 

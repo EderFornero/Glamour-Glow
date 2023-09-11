@@ -22,8 +22,9 @@ const UserDetailFirstSection = (): JSX.Element => {
 
   const { id } = useParams()
 
-  useEffect(() => { image ?  dispatch(updateUserInfo(id, { 'image': image })) : '' }
-    , [image])
+  useEffect(() => {
+    image ? dispatch(updateUserInfo(id, { image: image })) : ''
+  }, [image])
 
   useEffect(() => {
     dispatch(getUserbyId(id))
