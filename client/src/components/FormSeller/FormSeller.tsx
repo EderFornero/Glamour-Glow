@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import style from './FormSeller.module.css'
 import type { RootState } from '../../redux/types'
-import { getCategories } from '../../redux/actions'
+import { getCategories, postService } from '../../redux/actions'
 import { useDispatch, useSelector } from 'react-redux'
 import type { SellerData } from '../../interfaces'
 import ServiceNameInput from './inputs/ServiceNameInput'
@@ -34,7 +34,13 @@ const FormSeller: React.FC = () => {
   const categoryList = useSelector((state: RootState) => state.categories)
 
   const onSubmit = handleSubmit((data: SellerData) => {
+    // const idSeller = localStorage.getItem('id')
+    const idPrueba = '64fa9ddc2e7590e95ebe78f0'
+    data.seller = idPrueba
     console.log(data)
+    
+    dispatch(postService(data))
+    
   })
 
   return (
@@ -59,9 +65,9 @@ const FormSeller: React.FC = () => {
               <p className={style.text}>Service Description:</p>
               <ServiceDescriptionInput register={register} errors={errors} />
             </div>
+        <button className={style.submit} type='submit'>Add Service</button>
           </form>
         </div>
-        <button className={style.submit} type='submit'>Add Service</button>
       </div>
     </div>
   )
