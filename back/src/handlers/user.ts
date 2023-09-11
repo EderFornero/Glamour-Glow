@@ -24,7 +24,7 @@ export const createUser = async (user: Object) => {
 export const updateUser = async (id: String, updates: Object) => {
   const updatedUser = await UserModel.findByIdAndUpdate(id, updates, {
     new: true,
-  });
+  }).select({password:0});
   return updatedUser;
 };
 
@@ -36,7 +36,7 @@ export const destroyUserService = async (id: any) => {
       {
         new: true,
       }
-    ).select({password:0});
+    );
 
     return user;
   } catch (error) {
