@@ -13,7 +13,7 @@ const ServicePriceInput: React.FC<ServicePriceInputProps> = ({ register, errors 
         className={style.input}
         type='text'
         name="price"
-        placeholder='Service price'
+        placeholder='$800'
         {...register('price', {
           required: {
             value: true,

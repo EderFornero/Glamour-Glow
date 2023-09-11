@@ -13,7 +13,7 @@ const ServiceNameInput: React.FC<NameInputProps> = ({ register, errors }) => {
         className={style.input}
         type="text"
         name="name"
-        placeholder="Name"
+        placeholder="Profesional Haircut"
         {...register('name', {
           required: {
             value: true,

@@ -43,6 +43,7 @@
   cursor: pointer;
   transition: box-shadow 0.3s ease, background-color 0.3s ease;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  margin-left: 16px;
 }
 
 .submit:hover {
