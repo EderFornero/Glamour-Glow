@@ -45,6 +45,6 @@
 
 @media (max-width: 767px) {
     .reg-button {
-        margin-top: 20px;
+        margin-top: -20px;
     }
 }
