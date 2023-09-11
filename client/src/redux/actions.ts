@@ -226,3 +226,6 @@ export const postService: any = (payload: any) => {
     return response
   }
 }
+export const cleanSellerDetail: any = (): any => {
+  return { type: CLEAN_SELLER_DETAIL, payload: { _id: '', sellerName: '', sellerEmail: '', sellerPhone: '', sellerGender: '', reviews: [], categoriesArray: [], servicesArray: [] } }
+}

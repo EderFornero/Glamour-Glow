@@ -1,12 +1,13 @@
-import Landing from '../../Images/Description-images/landing1.png'
-import Landing2 from '../../Images/Description-images/landing2.png'
-import Landing3 from '../../Images/Description-images/landing3.png'
-import Landing4 from '../../Images/Description-images/person.jpg'
 import check from '../../assets/description-icons/check.svg'
 // css
 import styles from './Description.module.css'
 // features
 import { useFeatures } from '../../hooks/index'
+
+const Landing = 'https://res.cloudinary.com/dgl4t7gvo/image/upload/v1694387217/Glamour-Glow/landing1_de38go.png'
+const Landing2 = 'https://res.cloudinary.com/dgl4t7gvo/image/upload/v1694385759/Glamour-Glow/landing2_jc4lgk.png'
+const Landing3 = 'https://res.cloudinary.com/dgl4t7gvo/image/upload/v1694385759/Glamour-Glow/landing3_m8to1p.png'
+const Landing4 = 'https://res.cloudinary.com/dgl4t7gvo/image/upload/v1694386980/Glamour-Glow/person_zbmouo.jpg'
 
 function Description (): JSX.Element {
   const ecommerceFeatures = useFeatures()

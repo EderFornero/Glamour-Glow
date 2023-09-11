@@ -1,19 +1,20 @@
 // css
-import styled from 'styled-components';
-import NotFoundImage from '../../Images/notfound.png';
+import styled from 'styled-components'
 // hooks
-import { useGoBack } from '../../hooks/index';
+import { useGoBack } from '../../hooks/index'
+
+const NotFoundImage = 'https://res.cloudinary.com/dgl4t7gvo/image/upload/v1694386985/Glamour-Glow/notfound_ofcgzg.png'
 
 const NotFound = (): JSX.Element => {
-  const goBack = useGoBack();
+  const goBack = useGoBack()
   return (
     <DivGoBack>
       <ButtonGoBack onClick={goBack}>GO BACK</ButtonGoBack>
     </DivGoBack>
-  );
-};
+  )
+}
 
-export default NotFound;
+export default NotFound
 
 const DivGoBack = styled.div`
   width: 100%;
@@ -41,7 +42,7 @@ const DivGoBack = styled.div`
       background-size: 90% 90%;
     }
   }
-`;
+`
 const ButtonGoBack = styled.button`
   border: 0.125em solid var(--primary-color);
   border-radius: 1em;
@@ -66,4 +67,4 @@ const ButtonGoBack = styled.button`
     box-shadow: var(--secondary-color) 0 8px 15px;
     transform: translateY(-2px);
   }
-`;
+`
