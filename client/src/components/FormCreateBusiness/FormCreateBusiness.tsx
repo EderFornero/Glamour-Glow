@@ -6,7 +6,6 @@ import BusiGenderInput from './inputs/BusiGenderInput'
 import BusiNameInput from './inputs/BusiNameInput'
 import BusiEmailInput from './inputs/BusiEmailInput'
 import BusiPhoneInput from './inputs/BusiPhoneInput'
-import BusiImgInput from './inputs/BusiImgInput'
 import style from './FormCreateBusiness.module.css'
 import type { RootState } from '../../redux/types'
 import { getCategories, postSeller } from '../../redux/actions'
@@ -66,7 +65,6 @@ const FormBusiness: React.FC = () => {
                   <BusiNameInput register={register} errors={errors} />
                   <BusiEmailInput register={register} errors={errors} />
                   <BusiPhoneInput register={register} errors={errors} />
-                  <BusiImgInput register={register} errors={errors} />
                   <div className={style['div-inputs-bottom']}>
                     <BusiCategoriesInput register={register} errors={errors} categoryList={categoryList} watch={watch} setArr={setArr} />
                     <BusiGenderInput register={register} errors={errors} />
