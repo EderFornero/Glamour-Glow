@@ -17,7 +17,7 @@ export class Services {
   @prop({ ref: () => Category, default: "" })
   serviceCategories: Ref<Category>;
 
-  @prop({ required: true, type: String, min: 0 })
+  @prop({ required: true, type: String })
   price: string;
 
   @prop({ ref: () => Seller })
