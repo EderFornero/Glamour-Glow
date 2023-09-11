@@ -36,7 +36,7 @@ export const destroyUserService = async (id: any) => {
       {
         new: true,
       }
-    );
+    ).select({password:0});
 
     return user;
   } catch (error) {
