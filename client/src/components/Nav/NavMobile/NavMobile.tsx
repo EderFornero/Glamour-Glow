@@ -13,12 +13,14 @@ const NavMobile = (): JSX.Element => {
   const navigate = useNavigate()
   const userId = useSelector((state: RootState) => state.userId)
   const isAuth = localStorage.getItem('isAuth')
+  const role = localStorage.getItem('role')
 
   const handleLogout = (): void => {
     dispatch(setAuth(false))
     localStorage.removeItem('token')
     localStorage.removeItem('isAuth')
     localStorage.removeItem('id')
+    localStorage.removeItem('role')
     navigate('/')
   }
   return (
@@ -28,23 +30,23 @@ const NavMobile = (): JSX.Element => {
       </div>
       {isOpen && (
         <ul className={style.menu}>
-          {!isAuth && (
+          {isAuth === null && (
             <li className={style['menu-item']}>
               <NavLink to='/login' className={style.link}>
                 Login
               </NavLink>
             </li>
           )}
-          {isAuth && (
+          {isAuth === 'true' && (
             <li className={style['menu-item-full']}>
-              <NavLink to={`/userdetail/${userId}`}>
+              <NavLink to={role !== null && role === 'seller' ? '/admin' : `/userdetail/${userId}`}>
                 <img className={style['userimg-full']} src={imgprofile} />
               </NavLink>
             </li>
           )}
           <li className={style['menu-item']}>
-            <NavLink to='/businessRegister' className={style.link}>
-              For business
+            <NavLink to={role !== null && role === 'seller' ? '/businessRegister' : '/businessLogin'} className={style.link}>
+              {role !== null && role === 'seller' ? 'Register your business' : 'For Business'}
             </NavLink>
           </li>
           <li className={style['menu-item']}>
@@ -52,7 +54,7 @@ const NavMobile = (): JSX.Element => {
               Services
             </NavLink>
           </li>
-          {isAuth && (
+          {isAuth === 'true' && (
             <li onClick={handleLogout} className={`${style['menu-item']} ${style.link} logout`}>
               <NavLink to='/business' className={style.link}>
                 Logout

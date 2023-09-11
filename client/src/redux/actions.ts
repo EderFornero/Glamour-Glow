@@ -138,7 +138,6 @@ export const postValidate: any = (payload: any) => {
   return async function () {
     try {
       const response = await axios.post(endpointLogin, payload)
-
       localStorage.setItem('token', response.data.token)
 
       return response
