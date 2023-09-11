@@ -218,6 +218,11 @@ export const updateSellerInfo: any = (id: string, updateinfo: any) => {
   }
 }
 
-export const cleanSellerDetail: any = (): any => {
-  return { type: CLEAN_SELLER_DETAIL, payload: { _id: '', sellerName: '', sellerEmail: '', sellerPhone: '', sellerGender: '', reviews: [], categoriesArray: [], servicesArray: [] } }
+export const postService: any = (payload: any) => {
+  const endpoint = `${API_URL}services`
+
+  return async function (_dispatch: any) {
+    const response = await axios.post(endpoint, payload)
+    return response
+  }
 }
