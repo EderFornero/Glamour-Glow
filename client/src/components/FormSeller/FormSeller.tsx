@@ -22,7 +22,7 @@ const FormSeller: React.FC = () => {
       name: '',
       description: '',
       serviceCategories: '',
-      price: 0,
+      price: '',
       seller: ''
     }
   })

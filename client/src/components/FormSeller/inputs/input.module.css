@@ -7,7 +7,7 @@
   font-family: 'FontText';
   width: 330px;
   margin-bottom: 30px;
-  color: white;
+  color: rgb(255, 255, 255);
 }
 
 .input::placeholder {
@@ -37,5 +37,19 @@
 }
 
 .textarea::placeholder {
+  color: white;
+}
+
+.option {
+  color: black;
+}
+
+.priceInput {
+  display: flex;
+}
+
+.dollarSign {
+  margin-left: -3px;
+  margin-right: 2px;
   color: white;
 }
