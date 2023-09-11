@@ -12,11 +12,10 @@ import forgotPasswordImage from '../../Images/Description-images/forgotpassword.
 const NodemailerTest = (): JSX.Element => {
   const [email, setEmail] = useState('')
   // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-  const handleSendWelcomeEmail = async (e: any) => {
+  const handleSendResetPassword = async (e: any) => {
     e.preventDefault()
     try {
       const response = await sendResetPasswordEmail(email)
-      console.log(response)
       toast.success('Sent, check your mail', {
         style: {
           border: '1px solid #3d36be',
@@ -65,7 +64,7 @@ const NodemailerTest = (): JSX.Element => {
               />
             </div>
 
-            <button onClick={(e) => { void handleSendWelcomeEmail(e) }} className={style['form-submit-btn']} type='submit'>Send Email</button>
+            <button onClick={(e) => { void handleSendResetPassword(e) }} className={style['form-submit-btn']} type='submit'>Send Email</button>
           </form>
 
           <p className={style['signup-link']}>
@@ -77,7 +76,8 @@ const NodemailerTest = (): JSX.Element => {
       <div>
         <Toaster
           position="top-center"
-          reverseOrder={false} />
+          reverseOrder={false}
+        />
       </div>
     </>
   )
