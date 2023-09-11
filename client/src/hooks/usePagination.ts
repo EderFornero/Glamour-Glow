@@ -3,7 +3,8 @@ import { useEffect, useState } from 'react'
 export const usePagination = (
   items: any,
   itemsPerPage: number,
-  filter?: string
+  filter: string,
+  key: number
   // rating?: number
 ): {
   itemsPaginated: any
@@ -44,7 +45,7 @@ export const usePagination = (
 
   useEffect(() => {
     setCurrentPage(0)
-  }, [filter])
+  }, [key, filter])
 
   return {
     itemsPaginated,

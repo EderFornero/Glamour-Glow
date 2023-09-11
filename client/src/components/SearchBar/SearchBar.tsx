@@ -12,10 +12,7 @@ import style from './SearchBar.module.css'
 // import { useDispatch } from 'react-redux'
 // import { setPages } from '../../redux/Actions'
 
-const SearchBar: React.FC<SearchBarProps> = ({
-  onSearch,
-  updateShowCards
-}: SearchBarProps) => {
+const SearchBar: React.FC<SearchBarProps> = ({ onSearch, updateShowCards }) => {
   const { searchQuery, handleOnSearch } = useSearchBarInOwnComponent({
     onSearch,
     updateShowCards

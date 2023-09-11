@@ -19,11 +19,12 @@ export const useSearchBarInOwnComponent = ({
   }
 }
 
-export const useSearchBarHome = (users: ServiceProvider[]): SearchResultsProps => {
+export const useSearchBarHome = (allservices: any): SearchResultsProps => {
   const [searchResults, setSearchResults] = useState<ServiceProvider[]>([])
 
   const handleOnSearch = (query: string): void => {
-    const filteredResults = users.filter((user) => user.businessName.toLowerCase().includes(query.toLowerCase()))
+    const filteredResults = allservices.filter((seller: any) =>
+      seller !== undefined && seller.sellerName.toLowerCase().includes(query.toLowerCase()))
     setSearchResults(filteredResults)
   }
 

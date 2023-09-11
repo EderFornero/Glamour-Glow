@@ -17,6 +17,8 @@ const Home: React.FC = () => {
   const [showCards, setShowCards] = useState(false)
   const dispatch = useDispatch()
 
+  console.log(showCards)
+
   const updateShowCards = (hasQuery: boolean): void => {
     setShowCards(hasQuery)
   }
@@ -27,7 +29,6 @@ const Home: React.FC = () => {
     }
   }, [])
 
-  console.log(allServices)
   return (
     <div>
       <SearchBar onSearch={handleOnSearch} updateShowCards={updateShowCards} />
