@@ -10,7 +10,8 @@ import {
   GET_SELLER_BY_ID,
   UPDATE_SELLER_DETAIL,
   SET_AUTH,
-  SET_USER_ID
+  SET_USER_ID,
+  CLEAN_SELLER_DETAIL
 } from './Action-Types'
 import type { ServiceAction, RootState, UserDetail, SellerDetail } from './types'
 
@@ -46,7 +47,10 @@ export const initialState: RootState = {
   userId: null
 }
 
-const reducer = (state = initialState, action: ServiceAction): {
+const reducer = (
+  state = initialState,
+  action: ServiceAction
+): {
   allServices: any[]
   categories: any[]
   users: any[]
@@ -94,6 +98,9 @@ const reducer = (state = initialState, action: ServiceAction): {
 
     case SET_USER_ID:
       return { ...state, userId: action.payload }
+
+    case CLEAN_SELLER_DETAIL:
+      return { ...state, sellerdetail: action.payload }
 
     default:
       return state

@@ -12,6 +12,7 @@ import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { postUser } from '../../redux/actions'
 import PhoneNumberInput from './inputs/PhoneNumberInput'
+import { sendWelcomeEmail } from '../../utils'
 
 interface FormLoginProps {
   onToggle: () => void
@@ -40,16 +41,22 @@ const FormRegister: React.FC<FormLoginProps> = ({ onToggle }: any) => {
     }
   })
 
-  const onSubmit = (): void => {
+  const onSubmit = async (e: any): Promise<void> => {
+    e.preventDefault()
     const data: FormData = getValues()
     delete data.confirmPassword
     console.log(data)
-    dispatch(postUser(data))
-    navigate('/')
+    try {
+      await dispatch(postUser(data))
+      await sendWelcomeEmail(data.email)
+      navigate('/')
+    } catch (error) {
+      throw new Error()
+    }
   }
   return (
     <div className={style['div-form']}>
-      <form className={style['form-box']} onSubmit={onSubmit}>
+      <form className={style['form-box']} onSubmit={(e) => { void onSubmit(e) }}>
         <NameInput register={register} errors={errors} />
         <LastNameInput register={register} errors={errors} />
         <EmailInput register={register} errors={errors} />

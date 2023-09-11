@@ -40,7 +40,7 @@ const router = createBrowserRouter([
         ]
       },
       {
-        path: '/bookaservice/:name/:price',
+        path: '/bookaservice/:name/:price/:sellerId',
         children: [
           {
             index: true,
@@ -107,7 +107,7 @@ const router = createBrowserRouter([
         ]
       },
       {
-        path: '/resetPassword/:id/:passwordResetCode',
+        path: '/resetPassword',
         children: [
           {
             index: true,

@@ -11,7 +11,8 @@ import {
   GET_SELLER_BY_ID,
   UPDATE_SELLER_DETAIL,
   SET_AUTH,
-  SET_USER_ID
+  SET_USER_ID,
+  CLEAN_SELLER_DETAIL
 } from './Action-Types'
 import type { ServiceAction } from './types'
 
