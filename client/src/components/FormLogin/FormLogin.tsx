@@ -116,7 +116,6 @@ const FormLogin: React.FC<FormLoginProps> = ({ onToggle }) => {
               onClick={() => handleOnClick()}
               className={style.google}
             ></button>
-            <button className={style.ig}></button>
           </div>
         </div>
         <div className={style['buton-div']}>
