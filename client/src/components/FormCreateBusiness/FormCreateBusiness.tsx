@@ -13,7 +13,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import type { FormCreateBusi } from '../../interfaces'
 
-const FormBusiness: React.FC = () => {
+interface FormLoginProps {
+  onToggle: () => void
+}
+
+const FormBusiness: React.FC<FormLoginProps> = ({ onToggle }: any) => {
   const dispatch = useDispatch()
   const goBack = useGoBack()
   const navigate = useNavigate()
