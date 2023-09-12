@@ -1,5 +1,5 @@
 import express from 'express'
-import { userRouter, sellerRouter, serviceRouter, categoriesRouter, reviewsRouter, nodemailerRouter, paymentRouter } from './routes/index'
+import { userRouter, sellerRouter, serviceRouter, categoriesRouter, reviewsRouter, nodemailerRouter, paymentRouter, favoritesRouter } from './routes/index'
 import './db'
 import { logErrors } from './middlewares/logError.middleware'
 import cors, { CorsOptions } from 'cors'
@@ -41,6 +41,7 @@ server.use('/', categoriesRouter)
 server.use('/', reviewsRouter)
 server.use('/', paymentRouter)
 server.use('/', nodemailerRouter)
+server.use('/', favoritesRouter)
 
 server.use(passport.initialize())
 server.use(logErrors)

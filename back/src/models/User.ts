@@ -1,6 +1,7 @@
-import { prop, modelOptions, pre, DocumentType, Severity, index } from "@typegoose/typegoose";
+import { prop, modelOptions, pre, DocumentType, Severity, index, Ref } from "@typegoose/typegoose";
 
 import argon2 from "argon2";
+import { Favorites } from "./Favorites";
 
 export enum ROLE {
   CUSTOMER = "customer",
@@ -55,6 +56,9 @@ export class User {
 
   @prop()
   passwordResetCode: string | null;
+
+  @prop({ref: () => Favorites, default: []})
+  favorites: Ref<Favorites>[];
 
   async validatePassword(this: DocumentType<User>, candidatePassword: string) {
     try {

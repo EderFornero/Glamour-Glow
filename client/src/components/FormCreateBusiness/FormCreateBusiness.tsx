@@ -13,7 +13,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import type { FormCreateBusi } from '../../interfaces'
 
-const FormBusiness: React.FC = () => {
+interface FormLoginProps {
+  onToggle: () => void
+}
+
+const FormBusiness: React.FC<FormLoginProps> = ({ onToggle }: any) => {
   const dispatch = useDispatch()
   const goBack = useGoBack()
   const navigate = useNavigate()
@@ -66,7 +70,7 @@ const FormBusiness: React.FC = () => {
               <BusiEmailInput register={register} errors={errors} />
               <BusiPhoneInput register={register} errors={errors} />
               <div className={style['div-inputs-bottom']}>
-                <BusiCategoriesInput register={register} errors={errors} categoryList={categoryList} watch={watch} setArr={setArr} />
+                <BusiCategoriesInput register={register} errors={errors} categoryList={categoryList} />
                 <BusiGenderInput register={register} errors={errors} />
               </div>
               <div className={style['buton-div']}>

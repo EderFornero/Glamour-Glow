@@ -229,3 +229,17 @@ export const postService: any = (payload: any) => {
 export const cleanSellerDetail: any = (): SellerDetailAction => {
   return { type: CLEAN_SELLER_DETAIL, payload: { _id: '', sellerName: '', sellerEmail: '', sellerPhone: '', sellerGender: '', reviews: [], categoriesArray: [], servicesArray: [] } }
 }
+
+export const postSellerValidate: any = (payload: any) => {
+  const endpointLogin = `${API_URL}sellers/login`
+  return async function () {
+    try {
+      const response = await axios.post(endpointLogin, payload)
+      localStorage.setItem('token', response.data.token)
+
+      return response
+    } catch (error: any) {
+      console.log(error.message)
+    }
+  }
+}
