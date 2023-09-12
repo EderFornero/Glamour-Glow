@@ -12,8 +12,10 @@ nav {
         transition: text-decoration 0.5s;
       }
       .userimg-full{
+        width: 55px;
+        height: 50px;
         border-radius: 50%;
-        width: 2.5rem;
+        border: solid 1px var(--accent-color);
       }
   }
 
