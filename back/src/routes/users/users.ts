@@ -22,7 +22,7 @@ import { resetPassword } from "../../controllers/users/resetPassword";
 
 const router = Router();
 
-router.get("/", passport.authenticate("jwt", { session: false }), getUser);
+router.get("/",  getUser);
 router.get(
   "/:id",
   passport.authenticate("jwt", { session: false }),
