@@ -10,6 +10,7 @@ const NavFull = (): JSX.Element => {
   const userId = useSelector((state: RootState) => state.userId)
   // const isAuth = useSelector((state: RootState) => state.isAuth)
   const isAuth = localStorage.getItem('isAuth')
+  const { userdetail } = useSelector((state: RootState) => state)
 
   const handleLogout = (): void => {
     dispatch(setAuth(false))
@@ -45,7 +46,7 @@ const NavFull = (): JSX.Element => {
             </li>
             <li className={style['menu-item-full']}>
               <NavLink to={`/userdetail/${userId}`}>
-                <img className={style['userimg-full']} src={imgprofile} />
+                <img className={style['userimg-full']} src={userdetail.image ?? imgprofile} />
               </NavLink>
             </li>
           </>

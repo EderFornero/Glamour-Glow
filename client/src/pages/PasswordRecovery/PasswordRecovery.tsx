@@ -7,9 +7,7 @@ import { sendResetPasswordEmail } from '../../utils'
 import { Link } from 'react-router-dom'
 // css
 import style from './PasswordRecovery.module.css'
-// import { useDispatch } from 'react-redux'
-
-const forgotPasswordImage = 'https://res.cloudinary.com/dgl4t7gvo/image/upload/v1694385759/Glamour-Glow/forgotpassword_ksnzhx.png'
+import { forgotPasswordImage } from '../../Images/FormImages'
 
 const NodemailerTest = (): JSX.Element => {
   const [email, setEmail] = useState('')

@@ -1,0 +1,8 @@
+export const LolaImage = 'https://res.cloudinary.com/dgl4t7gvo/image/upload/v1694514776/Glamour-Glow/About%20Us/o4p9oktbtjrb6dnu0gk8.jpg'
+export const EderImage = 'https://res.cloudinary.com/dgl4t7gvo/image/upload/v1694514777/Glamour-Glow/About%20Us/mz74unk81psbyxdsqoff.jpg'
+export const GiovanniImage = 'https://res.cloudinary.com/dgl4t7gvo/image/upload/v1694514777/Glamour-Glow/About%20Us/fm4q0mxolgl88h6dlxge.jpg'
+export const RicardoImage = 'https://res.cloudinary.com/dgl4t7gvo/image/upload/v1694514776/Glamour-Glow/About%20Us/u9k4glnhimfvlpbd25ql.jpg'
+export const LucasImage = 'https://res.cloudinary.com/dgl4t7gvo/image/upload/v1694514776/Glamour-Glow/About%20Us/pkauzmicxfs0y0uy0kvj.jpg'
+export const SebastianImage = 'https://res.cloudinary.com/dgl4t7gvo/image/upload/v1694514776/Glamour-Glow/About%20Us/xokeeg7t8gbabpu5boif.jpg'
+export const MoisesImage = 'https://res.cloudinary.com/dgl4t7gvo/image/upload/v1694514776/Glamour-Glow/About%20Us/rjvgyo8fsegzwxm19uz0.jpg'
+export const LautaroImage = 'https://res.cloudinary.com/dgl4t7gvo/image/upload/v1694514777/Glamour-Glow/About%20Us/jo4pvx9dkxs0xhu8rimw.jpg'

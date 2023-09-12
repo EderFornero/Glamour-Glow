@@ -1,9 +1,8 @@
 // css
 import styled from 'styled-components'
+import { NotFoundImage } from '../../Images/LandingImages'
 // hooks
 import { useGoBack } from '../../hooks/index'
-
-const NotFoundImage = 'https://res.cloudinary.com/dgl4t7gvo/image/upload/v1694386985/Glamour-Glow/notfound_ofcgzg.png'
 
 const NotFound = (): JSX.Element => {
   const goBack = useGoBack()
