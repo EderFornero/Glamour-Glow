@@ -67,9 +67,7 @@ const pipeline = [
     $unset: [
       "favorites.createdAt",
       "favorites.userId",
-      "favorites.sellerId",
       "favorites.seller.sellerEmail",
-      "favorites.seller._id",
       "favorites.seller.sellerPhone",
       "favorites.seller.sellerGender",
       "favorites.seller.servicesArray",
