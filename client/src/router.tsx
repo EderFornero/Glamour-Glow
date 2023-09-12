@@ -10,6 +10,7 @@ import AdminDashboard from './pages/AdminDashboard/AdminDashboard.tsx'
 import NotFound from './pages/NotFound/NotFound.tsx'
 // pages
 import Forms from './pages/Forms/Forms.tsx'
+import BusinessForms from './pages/BusinessForms/BusinessForms.tsx'
 import BusinessDetail from './pages/BusinessDetail/BusinessDetail.tsx'
 import BusinessCardsView from './pages/BusinessCardsView/BusinessCardsView.tsx'
 import UserDetail from './pages/UserDetail/UserDetail.tsx'
@@ -81,6 +82,15 @@ const router = createBrowserRouter([
                 element: <PasswordRecovery />
               }
             ]
+          }
+        ]
+      },
+      {
+        path: '/businessLogin',
+        children: [
+          {
+            index: true,
+            element: <BusinessForms />
           }
         ]
       },

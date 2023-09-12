@@ -75,3 +75,8 @@ export interface SellerDetailAction {
   type: string
   payload: ServiceProvider
 }
+
+export interface SellerLoginData {
+  sellerEmail: string
+  sellerPassword: string
+}
