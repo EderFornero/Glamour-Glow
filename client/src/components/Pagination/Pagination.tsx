@@ -1,6 +1,15 @@
 import style from './Pagination.module.css'
 
-const Pagination = ({ currentPage, totalPages, nextPage, prevPage, startPage, finalPage }: any): JSX.Element => {
+interface PaginationProps {
+  currentPage: number
+  totalPages: number
+  nextPage: () => void
+  prevPage: () => void
+  startPage: () => void
+  finalPage: () => void
+}
+
+const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages, nextPage, prevPage, startPage, finalPage }) => {
   return (
     <div className={style.pagination}>
       <button disabled={currentPage === 0} onClick={prevPage}>

@@ -17,8 +17,6 @@ const Home: React.FC = () => {
   const [showCards, setShowCards] = useState(false)
   const dispatch = useDispatch()
 
-  console.log(showCards)
-
   const updateShowCards = (hasQuery: boolean): void => {
     setShowCards(hasQuery)
   }
