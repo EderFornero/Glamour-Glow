@@ -11,6 +11,7 @@ export const postSellersController = async (
     sellerName,
     sellerEmail,
     sellerPassword,
+    role,
     sellerPhone,
     sellerGender,
     categoriesArray,
@@ -21,12 +22,13 @@ export const postSellersController = async (
       sellerName,
       sellerEmail,
       sellerPassword,
+      role,
       sellerPhone,
       sellerGender,
       categoriesArray,
       servicesArray,
     });
-    return res.status(200).json(newSeller);
+    return res.status(200).json({name:newSeller.sellerName,id:newSeller._id, role:newSeller.role});
   } catch (error) {
     return next(error);
   }

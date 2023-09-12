@@ -30,10 +30,13 @@ const PasswordInput: React.FC<PasswordInputProps> = ({ register, errors }) => {
             message: 'The password is too short'
           }
         })}
-        onChange={handlePasswordChange}
+        onSubmit={handlePasswordChange}
       />
-      <div>{errors.password && <span className={style.span}>{errors.password.message}</span>}</div>
-
+      <div>
+      {errors.password?.type === 'required' && (
+          <span className={style.span}>Password required</span>
+      )}
+      </div>
       <input
         className={style.input}
         type="password"
@@ -49,7 +52,7 @@ const PasswordInput: React.FC<PasswordInputProps> = ({ register, errors }) => {
         })}
       />
       <div>
-        {errors.confirmPassword && (
+        {(Boolean(errors.confirmPassword)) && (
           <span className={style.span}>{errors.confirmPassword.message}</span>
         )}
       </div>

@@ -15,6 +15,7 @@ import {
   CLEAN_SELLER_DETAIL
 } from './Action-Types'
 import type { ServiceAction } from './types'
+import type { SellerDetailAction } from '../interfaces'
 
 const API_URL = import.meta.env.VITE_SERVER_URL
 
@@ -138,7 +139,6 @@ export const postValidate: any = (payload: any) => {
   return async function () {
     try {
       const response = await axios.post(endpointLogin, payload)
-
       localStorage.setItem('token', response.data.token)
 
       return response
@@ -226,6 +226,6 @@ export const postService: any = (payload: any) => {
     return response
   }
 }
-export const cleanSellerDetail: any = (): any => {
+export const cleanSellerDetail: any = (): SellerDetailAction => {
   return { type: CLEAN_SELLER_DETAIL, payload: { _id: '', sellerName: '', sellerEmail: '', sellerPhone: '', sellerGender: '', reviews: [], categoriesArray: [], servicesArray: [] } }
 }
