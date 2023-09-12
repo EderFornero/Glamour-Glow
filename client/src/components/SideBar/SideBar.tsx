@@ -13,7 +13,7 @@ function SideBar ({ setActiveItem, activeItem }: any): JSX.Element {
     setActiveItem(item !== activeItem ? item : '')
   }
 
-  const toggleSidebar = () => {
+  const toggleSidebar = (): void => {
     setSidebarVisible(!sidebarVisible)
   }
 

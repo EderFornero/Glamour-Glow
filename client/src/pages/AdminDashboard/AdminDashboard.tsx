@@ -1,16 +1,33 @@
 import SideBar from '../../components/SideBar/SideBar'
+import SellerServices from './AdminParts/ServiceList'
+import Clients from './AdminParts/Clients'
 import FormSeller from '../../components/FormSeller/FormSeller'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import style from './AdminDashboard.module.css'
+import { useParams } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { getSellerbyId, getUsers } from '../../redux/actions'
 
 const AdminDashboard: React.FC = () => {
   const [activeItem, setActiveItem] = useState<string>('')
+  const dispatch = useDispatch()
+  const { id } = useParams()
+  const sellerdetail = useSelector((state) => state.sellerdetail) as ServiceProvider
+  const users = useSelector((state) => state.users)
+
+  useEffect(() => {
+    dispatch(getSellerbyId(id))
+    dispatch(getUsers())}
+  , [])
 
   return (
     <div>
       <SideBar setActiveItem={setActiveItem} activeItem={activeItem}/>
       <div className={style['right-section']}>
       {activeItem === 'Create' && <FormSeller />}
+      {activeItem === 'List' | activeItem === 'Services' && <SellerServices sellerName={sellerdetail.sellerName}
+      services={sellerdetail.servicesArray} setActiveItem={setActiveItem}/>}
+      {activeItem === 'Clients' && <Clients services={users} />}
       </div>
     </div>
   )

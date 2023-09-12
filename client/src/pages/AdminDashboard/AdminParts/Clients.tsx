@@ -11,10 +11,8 @@ interface Props {
   services: Service[]
 }
 
-const SellerServices: React.FC<Props> = ({ sellerName, services, setActiveItem }) => {
+const Clients: React.FC<Props> = ({ services }) => {
   const [editedServiceId, setEditedServiceId] = useState<number | null>(null)
-  
-  console.log(services)
 
   const handleEditClick = (id: number) => {
     setEditedServiceId(id)
@@ -27,8 +25,7 @@ const SellerServices: React.FC<Props> = ({ sellerName, services, setActiveItem }
   return (
     <div className= {style['seller-services-container']}>
       <div className= {style['seller-services-header']}>
-        <h2>Servicios de {sellerName}</h2>
-        <button onClick={()=>setActiveItem('Create')}>ADD NEW</button>
+        <h2>Clients</h2>
       </div>
       <ul className={style['service-list']}>
         {services.map((service, index) => (
@@ -48,9 +45,8 @@ const SellerServices: React.FC<Props> = ({ sellerName, services, setActiveItem }
               <>
                 <span> {index + 1}</span>
                 <span className={style['service-name']}> {service.name}</span>
-                <span className={style['service-price']}> $ {service.price}</span>
-                <button className={style['edit-button']} onClick={() => handleEditClick(service.id)}>Editar</button>
-                <button className={style['delete-button']} onClick={() => handleDeleteClick(service.id)}>Eliminar</button>
+                <button className={style['edit-button']} onClick={() => handleEditClick(service.id)}>View</button>
+                <button className={style['delete-button']} onClick={() => handleDeleteClick(service.id)}>Delete</button>
               </>
                 )}
           </li>
@@ -60,4 +56,4 @@ const SellerServices: React.FC<Props> = ({ sellerName, services, setActiveItem }
   )
 }
 
-export default SellerServices
+export default Clients
