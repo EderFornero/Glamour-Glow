@@ -1,24 +1,19 @@
 import { useState } from 'react'
 import style from './ServiceList.module.css'
 
-interface Service {
-  id: number
-  name: string
-}
-
 interface Props {
   sellerName: string
-  services: Service[]
+  services: any[]
 }
 
 const Clients: React.FC<Props> = ({ services }) => {
   const [editedServiceId, setEditedServiceId] = useState<number | null>(null)
 
-  const handleEditClick = (id: number) => {
+  const handleEditClick = (id: number): void => {
     setEditedServiceId(id)
   }
 
-  const handleDeleteClick = (id: number) => {
+  const handleDeleteClick = (id: number): void => {
     console.log(`Eliminar servicio con ID: ${id}`)
   }
 
@@ -39,16 +34,32 @@ const Clients: React.FC<Props> = ({ services }) => {
                     console.log(`Editar servicio con ID ${service.id}: ${e.target.value}`)
                   }}
                 />
-                <button onClick={() => setEditedServiceId(null)}>Guardar</button>
+                <button
+                  onClick={() => {
+                    setEditedServiceId(null)
+                  }}
+                >
+                  Guardar
+                </button>
               </>
             ) : (
               <>
                 <span> {index + 1}</span>
                 <span className={style['service-name']}> {service.name}</span>
-                <button className={style['edit-button']} onClick={() => handleEditClick(service.id)}>
+                <button
+                  className={style['edit-button']}
+                  onClick={() => {
+                    handleEditClick(service.id)
+                  }}
+                >
                   View
                 </button>
-                <button className={style['delete-button']} onClick={() => handleDeleteClick(service.id)}>
+                <button
+                  className={style['delete-button']}
+                  onClick={() => {
+                    handleDeleteClick(service.id)
+                  }}
+                >
                   Delete
                 </button>
               </>

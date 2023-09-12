@@ -48,6 +48,9 @@ export class Seller {
 
     @prop({ required: true, type: String})
     sellerPhone: String;
+      
+    @prop({ required: true, type: [String] }) 
+    images: string[];
 
     @prop({ required: true, enum: ROLE, default: ROLE.SELLER })
     role: ROLE;

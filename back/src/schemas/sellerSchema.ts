@@ -27,6 +27,9 @@ const sellerSchema = z.object({
     .string({ required_error: "A phone number is required" })
     .min(6)
     .max(20),
+  images: z
+    .array(z.string())
+    .max(3, "Maximum of 3 images allowed"),
   sellerGender: z.enum([GENDER.ANY, GENDER.FEMALE, GENDER.MALE], {
     required_error: "Gender must be female, male or any",
   }),
