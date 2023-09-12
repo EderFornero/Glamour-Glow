@@ -1,13 +1,20 @@
 export interface ServiceProvider {
-  _id: string
-  sellerName: string
-  sellerEmail?: string
-  sellerPhone?: string
-  sellerGender?: string
-  reviews: any[]
-  categoriesArray: Category[]
-  servicesArray: any[]
-  businessName: string
+  _id: string | ''
+  sellerName: string | ''
+  sellerEmail: string | ''
+  sellerPhone: string | ''
+  sellerGender: string | ''
+  reviews: ReviewType[] | []
+  categoriesArray: Category[] | []
+  servicesArray: Service[] | []
+}
+
+export interface ReviewRating {
+  rating: number
+}
+export interface ReviewType extends ReviewRating {
+  description: string
+  userId: UserId
 }
 
 export interface Category {
@@ -20,8 +27,13 @@ export interface Service {
   description: string
   category: string
   price: number
-  time?: string
-  sellerId?: string
+  sellerId: string
+}
+
+export interface UserId {
+  name: string
+  lastName: string
+  image: string
 }
 
 export interface FormData {
@@ -57,4 +69,9 @@ export interface SellerData {
   price: number
   rating: number
   seller: string
+}
+
+export interface SellerDetailAction {
+  type: string
+  payload: ServiceProvider
 }

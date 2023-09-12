@@ -1,5 +1,6 @@
 import { SellerModel } from "../models";
 import { NextFunction, Request, Response} from "express";
+import jwt from "jsonwebtoken";
 
 
 // get Handlers
@@ -18,7 +19,9 @@ import { NextFunction, Request, Response} from "express";
 };
  */
 export const getSellersByIdHandler = async (id: String) => {
-  const sellerById = await SellerModel.findById(id)
+  
+  const sellerById = await SellerModel.findOne({_id: id, isActive:true})
+    .select({sellerPassword:0, role:0, isActive:0, accountBalance: 0})
     .populate("categoriesArray", {
       _id: 0,
       name: 1,
@@ -32,6 +35,7 @@ export const getSellersByIdHandler = async (id: String) => {
         select: { _id: 0, name: 1, lastName: 1,image: 1},
       },
     })
+  if(!sellerById) return "Seller not found"
   return sellerById;
 };
 
@@ -45,14 +49,14 @@ export const postSellersHandler = async (seller: Object) => {
 export const putSellersHandler = async (id: String, update: Object) => {
   const sellerUpdate = await SellerModel.findByIdAndUpdate(id, update, {
     new: true,
-  });
+  }).select({sellerPassword:0, role:0, isActive:0, accountBalance: 0, passwordResetCode:0 });
   return sellerUpdate;
 };
 
 // delete Handlers
 export const deleteSellerHandler = async (id: String) => {
-  await SellerModel.findByIdAndDelete(id);
-  return "Delete seller succesfuly";
+  await SellerModel.findByIdAndUpdate(id, {isActive: false});
+  return "Seller has been successfully deleted";
 };
 
 export const sellerFilterHandler = async ( _req: Request,
@@ -75,8 +79,10 @@ filters.sellerGender = query.sellerGender;
 if (query.categoriesArray && Array.isArray(query.categoriesArray)) {
 filters["categoriesArray.name"] = { $in: query.categoriesArray };
 }
-const sellers = await SellerModel.find(filters)
-.select({ sellerPassword: 0 })
+
+//filters.isActive = true;
+const sellers = await SellerModel.find({...filters, isActive:true})
+.select({sellerPassword:0, role:0, isActive:0, accountBalance: 0, passwordResetCode:0 })
 .populate("categoriesArray", {
   _id: 0,
   name: 1,
@@ -90,3 +96,55 @@ return next(error);
 }
 }
 
+export const validateLogInSeller = async (sellerEmail: string, sellerPassword: string) => {
+  //change "any" type
+  try {
+    const seller = await SellerModel.findOne({ sellerEmail }).exec();
+    if (!seller || !seller.isActive) {
+      throw new Error("Seller is not registered");
+    }
+
+    const isPasswordValid = await seller.validatePassword(sellerPassword);
+
+    if (!isPasswordValid) {
+      return false;
+    }
+    return { id: seller._id, role: seller.role};
+  } catch (error: any) {
+    throw new Error(error.message);
+  }
+};
+
+export const generateTokenSeller = async (email: string) => {
+  try {
+    const seller = await SellerModel.findOne({ email }).exec();
+    const token = await jwt.sign(
+      { name: seller?.sellerName, id: seller?._id, role: seller?.role },
+      process.env.TOKEN_ENCRYPTION!,
+      { expiresIn: "1h" }
+    );
+    return token;
+  } catch (error: any) {
+    throw new Error(error.message);
+  }
+};
+
+export const forgotSellerPasswordHandler = async (sellerEmail: string) => {
+  const user = await SellerModel.findOne({sellerEmail})
+  console.log("user", user)
+  return user
+}
+
+export const resetSellerPasswordHandler = async (id: string, newPassword: string) => {
+  const user = await SellerModel.findById(id);
+  if(user){
+    if(newPassword === user.sellerPassword){
+      throw Error("Input password can't match the current password")
+    }
+    user.sellerPassword = newPassword
+    user.passwordResetCode = null 
+    user.save()
+  }
+  console.log(user);
+  return user
+}
