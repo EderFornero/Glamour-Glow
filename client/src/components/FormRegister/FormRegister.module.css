@@ -24,27 +24,3 @@
 .botn:hover {
     background-color: #ff0000;
 }
-
-.reg-button {
-    margin-top: 15px;
-    color: #f3f3e6;
-    font-size: 14px;
-    transition: color 0.3s ease;
-}
-
-.reg-button:hover {
-    color: #ffffff;
-}
-
-.reg-button {
-    width: 160px;
-    color: black;
-    text-decoration: underline;
-    margin-top: 40px;
-}
-
-@media (max-width: 767px) {
-    .reg-button {
-        margin-top: -20px;
-    }
-}

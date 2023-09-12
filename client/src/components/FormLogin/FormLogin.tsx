@@ -119,7 +119,7 @@ const FormLogin: React.FC<FormLoginProps> = ({ onToggle }) => {
           <button className={style.btn} onClick={goBack}>
             Back
           </button>
-          <button className={style.btn} type='submit'>
+          <button className={style.btnSubmit} type='submit'>
             Send
           </button>
           {error !== undefined && <div className={style['error-login']}>{error}</div>}

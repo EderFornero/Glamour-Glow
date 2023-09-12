@@ -51,13 +51,6 @@
     margin-right: 0;
 }
 
-.btn:last-child:hover {
-    background-color: #06ec5e;
-}
-.btn:hover {
-    background-color: #ff0000;
-}
-
 .link-texts {
     margin-top: 20px;
 }
@@ -106,4 +99,27 @@
 .log-with {
     color: white;
     letter-spacing: 1px;
+}
+.btn:hover {
+    background-color: #ff0000;
+}
+
+.btnSubmit {
+    margin-top: 20px;
+    border-radius: 10px;
+    height: 25px;
+    width: 80px;
+        background-color: #3e38b6;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 0px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    margin-right: 40px;
+}
+
+.btnSubmit:hover {
+    background-color: #00ff00;
 }
