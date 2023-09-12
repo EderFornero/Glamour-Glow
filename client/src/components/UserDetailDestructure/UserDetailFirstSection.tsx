@@ -1,7 +1,7 @@
 // components
 import Cloudinary from '../../components/Cloudinary/Cloudinary'
 // assets
-import noProfileImage from '../../assets/UserDetail/no-profile-image.png'
+import { NoProfileImage } from '../../Images/LandingImages'
 // css
 import styles from './UserDetailDestructure.module.css'
 // redux
@@ -23,8 +23,8 @@ const UserDetailFirstSection = (): JSX.Element => {
   const { id } = useParams()
 
   useEffect(() => {
-    image ? dispatch(updateUserInfo(id, { image: image })) : ''
-  }, [image])
+    image ?  dispatch(updateUserInfo(id, { 'image': image })) : '' }
+  , [image])
 
   useEffect(() => {
     dispatch(getUserbyId(id))
@@ -60,7 +60,7 @@ const UserDetailFirstSection = (): JSX.Element => {
     <section className={styles.sectionleft}>
       <div className={styles.userdetail}>
         <div className={styles['userdetail-header']}>
-          <img src={userdetail.image ?? noProfileImage} alt='Profile' />
+          <img src={userdetail.image ?? NoProfileImage} alt='Profile' />
           <Cloudinary />
           <h1>
             {userdetail.name} {userdetail.lastName}

@@ -1,11 +1,11 @@
-import data from '../../ecommerceFeatures.json';
+import { data } from '../../ecommerceFeatures'
 
 interface Features {
-  icon: string;
-  title: string;
-  description: string;
+  icon: string
+  title: string
+  description: string
 }
 
 export const useFeatures = (): Features[] => {
-  return data;
-};
+  return data
+}
