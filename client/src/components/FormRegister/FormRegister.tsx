@@ -25,6 +25,7 @@ const FormRegister: React.FC<FormLoginProps> = ({ onToggle }: any) => {
   const {
     register,
     getValues,
+    handleSubmit, // Importa handleSubmit
     formState: { errors }
   } = useForm<FormData>({
     defaultValues: {
@@ -54,9 +55,10 @@ const FormRegister: React.FC<FormLoginProps> = ({ onToggle }: any) => {
       throw new Error()
     }
   }
+
   return (
     <div className={style['div-form']}>
-      <form className={style['form-box']} onSubmit={(e) => { void onSubmit(e) }}>
+      <form className={style['form-box']} onSubmit={handleSubmit(onSubmit)}>
         <NameInput register={register} errors={errors} />
         <LastNameInput register={register} errors={errors} />
         <EmailInput register={register} errors={errors} />
@@ -72,11 +74,6 @@ const FormRegister: React.FC<FormLoginProps> = ({ onToggle }: any) => {
           </button>
         </div>
       </form>
-      <button>
-        <p className={style['reg-button']} onClick={onToggle}>
-          You have an account?
-        </p>
-      </button>
     </div>
   )
 }
