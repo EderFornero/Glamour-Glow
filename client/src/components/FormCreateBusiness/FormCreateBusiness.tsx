@@ -70,7 +70,7 @@ const FormBusiness: React.FC<FormLoginProps> = ({ onToggle }: any) => {
               <BusiEmailInput register={register} errors={errors} />
               <BusiPhoneInput register={register} errors={errors} />
               <div className={style['div-inputs-bottom']}>
-                <BusiCategoriesInput register={register} errors={errors} categoryList={categoryList} watch={watch} setArr={setArr} />
+                <BusiCategoriesInput register={register} errors={errors} categoryList={categoryList} />
                 <BusiGenderInput register={register} errors={errors} />
               </div>
               <div className={style['buton-div']}>
