@@ -49,7 +49,7 @@ export class Seller {
     @prop({ required: true, type: String})
     sellerPhone: String;
 
-    @prop({ required: true, enum: ROLE, default: ROLE.CUSTOMER })
+    @prop({ required: true, enum: ROLE, default: ROLE.SELLER })
     role: ROLE;
 
     @prop({required: true, enum: GENDER})
