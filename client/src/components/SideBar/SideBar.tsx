@@ -6,8 +6,13 @@ import Icon from './parts/Icon'
 import menu from '../../assets/sidebard-icons/menu.svg'
 import { useState } from 'react'
 
-function SideBar ({ setActiveItem, activeItem }: any): JSX.Element {
-  const [sidebarVisible, setSidebarVisible] = useState(false)
+interface SideBarProps {
+  setActiveItem: (item: string) => void
+  activeItem: string
+}
+
+const SideBar: React.FC<SideBarProps> = ({ setActiveItem, activeItem }) => {
+  const [sidebarVisible, setSidebarVisible] = useState<boolean>(false)
 
   const handleClick = (item: string): void => {
     setActiveItem(item !== activeItem ? item : '')
@@ -20,8 +25,7 @@ function SideBar ({ setActiveItem, activeItem }: any): JSX.Element {
   return (
     <aside className={styles.sidebar}>
       <div className={styles['sidebar-header']}>
-        <button type="button" className={'sidebar-button'}
-        onClick={toggleSidebar}>
+        <button type='button' className={'sidebar-button'} onClick={toggleSidebar}>
           <Icon icon={menu} />
         </button>
         <span>Admin</span>

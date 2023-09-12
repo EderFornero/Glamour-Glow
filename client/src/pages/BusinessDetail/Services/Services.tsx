@@ -6,10 +6,15 @@ import style from './Services.module.css'
 // import { useSelector } from 'react-redux'
 // import type { RootState } from '../../../redux/types'
 
-const Services = ({ sellerId, services }: any): JSX.Element => {
+interface ServicesProps {
+  sellerId: string
+  services: Service[]
+}
+
+const Services: React.FC<ServicesProps> = ({ sellerId, services }) => {
   // const services = useSelector((state: RootState) => state.sellerdetail.servicesArray)
   // const { itemsPaginated, currentPage, totalPages, nextPage, prevPage } = usePagination(services, 3)
-
+  console.log(services, 'MIRA SOY LOS SERVICIOS')
   return (
     <>
       <section className={style.container}>
