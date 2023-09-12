@@ -11,17 +11,7 @@ export const createFavoritesHandler = async (data: createFavoriteType) => {
 
 }
 
-// export const readFavorites = async () => {
-//     const allFavorites = await FavoritesModel
-//     .find({})
-//     .populate("sellerId", {
-//         _id: 0,
-//         sellerName: 1,
-//         reviews: 1,
-//         categoriesArray: 1
-//     });
-//     return allFavorites;
-// }
+
 
 export const deleteFavorites = async(id: string) => {
     const removeFavorite = await FavoritesModel.findByIdAndDelete(id)
