@@ -2,6 +2,7 @@ import { Router } from "express";
 import { schemaValidation } from "../../middlewares/schemaValidator.middleware";
 import {
   CreateUserSchema,
+  loginUserSchema,
   readAndDeleteUserSchema,
   resetPasswordSchema,
   updateUserSchema,
@@ -16,7 +17,7 @@ import {
   logInUserGoogle,
   forgotPassword,
 } from "../../controllers/users/index";
-import { rolePermissions } from "../../middlewares/rolePermissions.middleware";
+import { rolePermissions } from "../../middlewares/authorization.middleware";
 import passport from "passport";
 import { resetPassword } from "../../controllers/users/resetPassword";
 
@@ -33,7 +34,7 @@ router.get(
 router.post("/forgotPassword", forgotPassword)
 router.post("/resetPassword/:id/:passwordResetCode",schemaValidation(resetPasswordSchema), resetPassword)
 router.post("/", schemaValidation(CreateUserSchema), postUser);
-router.post("/login", logInUser);
+router.post("/login",schemaValidation(loginUserSchema) ,logInUser);
 router.post("/auth/login", logInUserGoogle);
 router.put(
   "/:id",

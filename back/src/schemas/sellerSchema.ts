@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { GENDER } from "../models/Sellers";
+import { GENDER, ROLE } from "../models/Sellers";
 
 const sellerSchema = z.object({
   sellerName: z
@@ -17,10 +17,19 @@ const sellerSchema = z.object({
     .min(6, "The password should have at least 6 characters")
     .max(12, "12 characters max")
     .trim(),
+
+  role: z
+    .enum([ROLE.CUSTOMER, ROLE.SELLER], {
+    required_error: "Role must be customer or seller",
+    }),
+  
   sellerPhone: z
     .string({ required_error: "A phone number is required" })
     .min(6)
     .max(20),
+  images: z
+    .array(z.string())
+    .max(3, "Maximum of 3 images allowed"),
   sellerGender: z.enum([GENDER.ANY, GENDER.FEMALE, GENDER.MALE], {
     required_error: "Gender must be female, male or any",
   }),
@@ -49,6 +58,40 @@ export const readAndDeleteSellerSchema = z.object({
   }),
 });
 
+ export const loginSellerSchema = z.object({
+   body: z.object({
+    sellerEmail: z.string({required_error: "Email is required"})
+    .email("Not a valid email"),
+    sellerPassword: z
+    .string({ required_error: "Password  is required" })
+    .nonempty("You must provide a password")
+    .min(6, "The password should have at least 6 characters")
+    .max(12, "12 characters max")
+    .trim()
+   }),
+ });
+
+ export const forgotSellerPasswordSchema = z.object({
+  body: z.object({
+   sellerEmail: z.string({required_error: "Email is required"})
+   .email("Not a valid email"),
+  }),
+});
+
+export const resetSellerPasswordSchema = z.object({
+  params: z.object({
+    id: z.string(),
+    passwordResetCode: z.string()
+  }),
+  body: z.object({
+    sellerPassword: z.string({required_error: "Password is required"}).min(6, "Password is too short -- should be min 6 chars"),
+    passwordConfirmation: z.string({required_error: "Password confirmation is required"})
+  }).refine((data) => data.sellerPassword === data.passwordConfirmation, {
+    message: "Passwords do not match",
+    path: ["passwordConfirmation"]
+  })
+})
+
 export type createSellerType = z.infer<typeof createSellerSchema>["body"];
 export type updateSellerTypeBody = z.infer<typeof updateSellerSchema>["body"];
 export type updateSellerTypeParams = z.infer<
@@ -57,3 +100,7 @@ export type updateSellerTypeParams = z.infer<
 export type readAndDeleteSellerTypeParams = z.infer<
   typeof readAndDeleteSellerSchema
 >["params"];
+ export type loginSellerType = z.infer<typeof loginSellerSchema>["body"]
+ export type forgotSellerPasswordTypeBody = z.infer<typeof forgotSellerPasswordSchema>["body"]
+ export type resetSellerPasswordTypeParams = z.infer<typeof resetSellerPasswordSchema>["params"]
+ export type resetSellerPasswordTypeBody = z.infer<typeof resetSellerPasswordSchema>["body"]

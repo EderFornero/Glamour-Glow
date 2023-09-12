@@ -1,0 +1,59 @@
+.seller-services-container {
+  border: 1px solid #ccc;
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+.seller-services-header{
+  display: flex;
+  justify-content: space-between;
+}
+
+.service-list {
+  list-style: none;
+  margin-top: 20px;
+  padding: 0;
+  width: 65vw;
+  min-width: 25rem;
+}
+
+.service-item {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  padding: 10px;
+  border-bottom: 1px solid black;
+}
+
+.service-name {
+  flex-grow: 1;
+  margin-inline: 20px;
+}
+
+.service-price{
+  flex-grow: 1;
+  margin-right: 10px;
+  text-align: right;
+}
+
+.edit-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-inline: 5px;
+}
+
+.delete-button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-inline: 5px;
+}

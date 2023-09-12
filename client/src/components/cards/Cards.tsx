@@ -14,21 +14,13 @@ import { useFilterHook, usePagination } from '../../hooks/index'
 import { useSelector } from 'react-redux'
 import type { RootState } from '../../redux/types'
 import { useEffect, useState } from 'react'
+import type { ServiceProvider } from '../../interfaces'
 
-const Cards: React.FC<CardsProps> = ({ allServices }: CardsProps) => {
+const Cards: React.FC<CardsProps> = ({ allServices }) => {
   const [key, setKey] = useState(0)
   const { filteredUsers } = useFilterHook(allServices)
   const { filter } = useSelector((state: RootState) => state)
   const { itemsPaginated, currentPage, totalPages, nextPage, prevPage, startPage, finalPage } = usePagination(filteredUsers, 6, filter, key)
-
-  const calculateRating = (reviews: any): number => {
-    const totalRating = reviews.reduce((accumulator: number, current: any) => {
-      return accumulator + current.review
-    }, 0)
-
-    const averageRating = totalRating / reviews.length
-    return averageRating
-  }
 
   useEffect(() => {
     setKey(key + 1)
@@ -37,15 +29,15 @@ const Cards: React.FC<CardsProps> = ({ allServices }: CardsProps) => {
   return (
     <>
       <div className={style.test}>
+      <Pagination currentPage={currentPage} totalPages={totalPages} nextPage={nextPage} prevPage={prevPage} startPage={startPage} finalPage={finalPage} />
         <div className={style['div-container-order-filter-cards']}>
-        <FilterAndOrderCard allServices={allServices} />
+          <FilterAndOrderCard allServices={allServices} />
           <section className={style.cardsSection}>
-            {itemsPaginated.map(({ _id, sellerName, categoriesArray, servicesArray, reviews }: any) => {
-              return <BusinessCard key={_id} _id={_id} reviews={reviews} sellerName={sellerName} categoriesArray={categoriesArray} servicesArray={servicesArray} />
+            {itemsPaginated.map(({ _id, sellerName, categoriesArray, reviews }: ServiceProvider) => {
+              return <BusinessCard key={_id} _id={_id} reviews={reviews} sellerName={sellerName} categoriesArray={categoriesArray} />
             })}
           </section>
         </div>
-        <Pagination currentPage={currentPage} totalPages={totalPages} nextPage={nextPage} prevPage={prevPage} startPage={startPage} finalPage={finalPage} />
       </div>
     </>
   )

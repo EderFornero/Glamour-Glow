@@ -38,11 +38,12 @@ const FormLogin: React.FC<FormLoginProps> = ({ onToggle }) => {
   const onSubmit = handleSubmit(async (data: FormLoginData) => {
     try {
       const response = await dispatch(postValidate(data))
-      const { id, token } = response.data
+      const { id, token, role } = response.data
 
       if (token !== undefined && id !== undefined) {
         localStorage.setItem('isAuth', 'true')
         localStorage.setItem('id', id)
+        localStorage.setItem('role', role)
         dispatch(setAuth(true))
         dispatch(setUserId(id))
         navigate('/')
@@ -111,18 +112,14 @@ const FormLogin: React.FC<FormLoginProps> = ({ onToggle }) => {
         <div className={style['alt-login']}>
           <h4 className={style['log-with']}>or Login With:</h4>
           <div className={style['ico-div']}>
-            <button
-              type='button'
-              onClick={() => handleOnClick()}
-              className={style.google}
-            ></button>
+            <button type='button' onClick={handleOnClick} className={style.google}></button>
           </div>
         </div>
         <div className={style['buton-div']}>
           <button className={style.btn} onClick={goBack}>
             Back
           </button>
-          <button className={style.btn} type='submit'>
+          <button className={style.btnSubmit} type='submit'>
             Send
           </button>
           {error !== undefined && <div className={style['error-login']}>{error}</div>}

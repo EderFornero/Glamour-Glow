@@ -4,14 +4,14 @@ import facebook from '../../assets/social-icons/facebook.svg'
 import instagram from '../../assets/social-icons/instagram.svg'
 import linkedin from '../../assets/social-icons/linkedin.svg'
 import twitter from '../../assets/social-icons/twitter.svg'
-import ggicon from '../../assets/gg-icon.png'
+import { FooterLogo } from '../../Images/LogoImages'
 
 function Fotter (): JSX.Element {
   return (
     <footer className={styles.footer}>
       <section className={styles.footertopwrapper}>
         <section className={styles.footertop}>
-          <img className={styles.logo} src={ggicon} title='Logo' alt='Logo' />
+          <img className={styles.logo} src={FooterLogo} title='Logo' alt='Logo' />
           <span className={styles.sociallinks}>
             <a target='_blank' rel='noreferrer'>
               <img src={instagram} title='Instagram' alt='Instagram' />

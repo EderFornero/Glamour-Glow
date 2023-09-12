@@ -1,7 +1,8 @@
-import { prop, Ref, modelOptions} from "@typegoose/typegoose";
+import { prop, pre ,Ref, DocumentType, modelOptions, Severity} from "@typegoose/typegoose";
 import { Category } from "./Category";
 import { Services } from "./Services";
 import { Reviews } from "./Reviews";
+import argon2 from "argon2";
 
 
 export enum ROLE {
@@ -14,30 +15,57 @@ export enum GENDER {
     MALE = 'male'
 }
 
+@pre<Seller>("save",async function () {
+    if (!this.isModified("sellerPassword")) {
+      return;
+    }
+  
+    const hash = await argon2.hash(this.sellerPassword);
+    this.sellerPassword = hash;
+    return;
+  })
 
 @modelOptions({
     schemaOptions: {
         _id: true,
         timestamps: true
+    },
+    options:{
+      allowMixed: Severity.ALLOW
     }
 })
 
 
 export class Seller {
     @prop({required: true, type: String})
-    sellerName?: string;
+    sellerName: string;
 
     @prop({required: true, type: String})
-    sellerEmail?: string;
+    sellerEmail: string;
 
     @prop({required: true, type: String})
-    sellerPassword?: string;
+    sellerPassword: string;
 
     @prop({ required: true, type: String})
-    sellerPhone?: String;
+    sellerPhone: String;
+      
+    @prop({ required: true, type: [String] }) 
+    images: string[];
+
+    @prop({ required: true, enum: ROLE, default: ROLE.SELLER })
+    role: ROLE;
 
     @prop({required: true, enum: GENDER})
-    sellerGender: GENDER
+    sellerGender: GENDER;
+
+    @prop({ required: true, default: true, type: Boolean })
+    isActive: boolean;
+
+    @prop({default: 0, type: Number})
+    accountBalance: number;
+
+    @prop()
+    passwordResetCode: string | null;
 
     @prop({ref: () => Reviews, default:[]})
     reviews: Ref<Reviews>[];
@@ -47,5 +75,15 @@ export class Seller {
 
     @prop({ref: () => Services, default: []})
     servicesArray: Ref<Services>[];
+
+    async validatePassword(this: DocumentType<Seller>, candidatePassword: string) {
+        try {
+          return await argon2.verify(this.sellerPassword, candidatePassword);
+        } catch (error) {
+          console.log(error, "Could not validate password");
+          return false;
+        }
+      }
+    }
    
-}
+

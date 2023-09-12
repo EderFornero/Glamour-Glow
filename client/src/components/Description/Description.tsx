@@ -3,11 +3,8 @@ import check from '../../assets/description-icons/check.svg'
 import styles from './Description.module.css'
 // features
 import { useFeatures } from '../../hooks/index'
-
-const Landing = 'https://res.cloudinary.com/dgl4t7gvo/image/upload/v1694387217/Glamour-Glow/landing1_de38go.png'
-const Landing2 = 'https://res.cloudinary.com/dgl4t7gvo/image/upload/v1694385759/Glamour-Glow/landing2_jc4lgk.png'
-const Landing3 = 'https://res.cloudinary.com/dgl4t7gvo/image/upload/v1694385759/Glamour-Glow/landing3_m8to1p.png'
-const Landing4 = 'https://res.cloudinary.com/dgl4t7gvo/image/upload/v1694386980/Glamour-Glow/person_zbmouo.jpg'
+// images
+import { Landing, Landing2, Landing3, Landing4 } from '../../Images/LandingImages'
 
 function Description (): JSX.Element {
   const ecommerceFeatures = useFeatures()

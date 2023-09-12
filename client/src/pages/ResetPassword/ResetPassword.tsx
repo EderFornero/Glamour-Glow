@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 // css
 import style from './ResetPassword.module.css'
-import resetPasswordImage from '../../Images/Description-images/resetpassword.png'
+import { resetPasswordImage } from '../../Images/FormImages'
 // svg
 import closeEye from '../../assets/PasswordEyes/close-eye.svg'
 import openEye from '../../assets/PasswordEyes/open-eye.svg'

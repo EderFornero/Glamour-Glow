@@ -129,11 +129,13 @@ export const destroyUserService = async (id: any) => {
 export const validateLogIn = async (email: string, password: string) => {
   //change "any" type
   try {
-    const user = await UserModel.findOne({ email }).exec();
-    if (!user) {
-      throw new Error("User is not registered");
-    }
 
+    const user = await UserModel.findOne({ email});
+     if (!user || !user.isActive) {
+      
+       throw new Error("User is not registered");
+     }
+    
     const isPasswordValid = await user.validatePassword(password);
 
     if (!isPasswordValid) {
