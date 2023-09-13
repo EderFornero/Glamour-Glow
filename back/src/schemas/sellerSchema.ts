@@ -1,5 +1,6 @@
 import { z } from "zod";
-import { GENDER, ROLE } from "../models/Sellers";
+import { GENDER } from "../models/Sellers";
+import { ROLE } from "../models/User";
 
 const sellerSchema = z.object({
   sellerName: z

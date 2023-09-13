@@ -133,13 +133,7 @@ export const disableUserService = async (id: any) => {
   }
 };
 
-export const deleteUserHandler = async (id: String) => {
-  const userdeleted = await UserModel.findByIdAndDelete(id)
-  if(!userdeleted){
-    throw Error("user does not exist")
-  }
-  return id;
-}
+
 
 export const validateLogIn = async (email: string, password: string) => {
   //change "any" type

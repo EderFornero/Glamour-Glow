@@ -16,7 +16,6 @@ import {
   logInUser,
   logInUserGoogle,
   forgotPassword,
-  deleteUser,
 } from "../../controllers/users/index";
 import { rolePermissions } from "../../middlewares/authorization.middleware";
 import passport from "passport";
@@ -51,10 +50,6 @@ router.delete(
   schemaValidation(readAndDeleteUserSchema),
   disableUser
 );
-router.delete("/drop/:id", passport.authenticate("jwt", {session: false}),
-rolePermissions("customer"),
-schemaValidation(readAndDeleteUserSchema),
-deleteUser
-);
+
 
 export default router;

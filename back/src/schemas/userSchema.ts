@@ -12,8 +12,8 @@ const UserSchema = z.object({
     .nonempty("You must provide a full name")
     .max(50, "Max 50 characters")
     .trim(),
-  role: z.enum([ROLE.CUSTOMER, ROLE.SELLER], {
-    required_error: "Role must be customer or seller",
+  role: z.enum([ROLE.CUSTOMER], {
+    required_error: "Role must be customer",
   }),
   phoneNumber: z
     .string({ required_error: "A phone number is required" })

@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { validateLogIn, generateToken} from "../../handlers";
 
+
 export const logInUser = async (req: Request, res: Response) => {
   try {
     const { email, password } = req.body;
@@ -9,7 +10,7 @@ export const logInUser = async (req: Request, res: Response) => {
 
     if (credentials) {
        const token = await generateToken(email);
-       const role = credentials.role
+       const role = credentials.role 
        return res.status(200).send({ id: credentials.id, role, token });
      }
     throw new Error("Failed authentication, incorrect credentials");

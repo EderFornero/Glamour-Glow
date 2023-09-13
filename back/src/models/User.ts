@@ -1,5 +1,4 @@
 import { prop, modelOptions, pre, DocumentType, Severity, index, Ref } from "@typegoose/typegoose";
-
 import argon2 from "argon2";
 import { Favorites } from "./Favorites";
 
