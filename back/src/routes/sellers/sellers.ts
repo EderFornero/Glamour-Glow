@@ -19,7 +19,7 @@ router.post('/', schemaValidation(createSellerSchema), postSellersController)
 router.post('/login',schemaValidation(loginSellerSchema), logInSeller)
 router.post("/forgotPassword", forgotSellerPassword)
 router.post("/resetPassword/:id/:passwordResetCode",schemaValidation(resetSellerPasswordSchema), resetSellerPassword)
-router.put('/:id', passport.authenticate('jwt', { session: false }), schemaValidation(updateSellerSchema), putSellersController)
+router.put('/:id',/*  passport.authenticate('jwt', { session: false }), */ schemaValidation(updateSellerSchema), putSellersController)
 router.delete('/:id',  passport.authenticate('jwt', { session: false }), schemaValidation(readAndDeleteSellerSchema), deleteSellerController)
 
 export default router
