@@ -67,7 +67,11 @@ const pipeline = [
     $unset: [
       "favorites.createdAt",
       "favorites.userId",
+      "favorites.seller.sellerPassword",
       "favorites.seller.sellerEmail",
+      "favorites.seller.role",
+      "favorites.seller.isActive",
+      "favorites.seller.accountBalance",
       "favorites.seller.sellerPhone",
       "favorites.seller.sellerGender",
       "favorites.seller.servicesArray",
@@ -89,7 +93,12 @@ export const readUsers = async () => {
 };
 
 export const readUserById = async (id: String) => {
-  const user = await UserModel.findById(id).select({ password: 0 }).exec();
+  const [user] = await UserModel.aggregate([
+    { $match: { $expr : { $eq: [ '$_id' , { $toObjectId: id } ] } } }, 
+    ...pipeline, 
+  ])
+
+  
   if (!user || !user.isActive) {
     throw Error("User not found");
   }
