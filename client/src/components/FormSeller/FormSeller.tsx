@@ -34,13 +34,10 @@ const FormSeller: React.FC = () => {
   const categoryList = useSelector((state: RootState) => state.categories)
 
   const onSubmit = handleSubmit((data: SellerData) => {
-    // const idSeller = localStorage.getItem('id')
-    const idPrueba = '64fa9ddc2e7590e95ebe78f0'
-    data.seller = idPrueba
+    const idSeller = localStorage.getItem('id')
+    data.seller = idSeller
     console.log(data)
-    
     dispatch(postService(data))
-    
   })
 
   return (
