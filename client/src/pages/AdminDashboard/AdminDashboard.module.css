@@ -8,6 +8,11 @@
   justify-content: center;
 }
 
+.Display-business{
+  display: flex;
+  flex-direction: column;
+}
+
 
 @media screen and (max-width: 800px){
   .right-section{
