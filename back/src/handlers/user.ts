@@ -160,10 +160,12 @@ export const generateToken = async (email: string) => {
 };
 
 export const forgotPasswordHandler = async (email: string) => {
+
   const user = await UserModel.findOne({ email });
   console.log("user", user);
   return user;
 };
+
 
 export const resetPasswordUser = async (id: string, newPassword: string) => {
   const user = await UserModel.findById(id);
