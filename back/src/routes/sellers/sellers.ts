@@ -5,7 +5,7 @@ import { getSellersController } from '../../controllers/sellers/getSellers'
 import { postSellersController } from '../../controllers/sellers/postSeller'
 import { getSellersByIdController } from '../../controllers/sellers/getSellerById'
 import { putSellersController } from '../../controllers/sellers/putSeller'
-import { deleteSellerController } from '../../controllers/sellers/deleteSeller'
+import { disableSellerController, deleteSellerController } from '../../controllers/sellers/deleteSeller'
 import { logInSeller } from '../../controllers/sellers/loginSeller'
 import { resetSellerPassword } from '../../controllers/sellers/resetSellerPassword'
 import { forgotSellerPassword } from '../../controllers/sellers/forgotSellerPassword'
@@ -20,6 +20,7 @@ router.post('/login',schemaValidation(loginSellerSchema), logInSeller)
 router.post("/forgotPassword", forgotSellerPassword)
 router.post("/resetPassword/:id/:passwordResetCode",schemaValidation(resetSellerPasswordSchema), resetSellerPassword)
 router.put('/:id',/*  passport.authenticate('jwt', { session: false }), */ schemaValidation(updateSellerSchema), putSellersController)
-router.delete('/:id',  passport.authenticate('jwt', { session: false }), schemaValidation(readAndDeleteSellerSchema), deleteSellerController)
+router.delete('/:id',  passport.authenticate('jwt', { session: false }), schemaValidation(readAndDeleteSellerSchema), disableSellerController)
+router.delete("/drop/:id", passport.authenticate("jwt", {session: false}), schemaValidation(readAndDeleteSellerSchema), deleteSellerController )
 
-export default router
+export default router;

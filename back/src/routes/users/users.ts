@@ -8,7 +8,7 @@ import {
   updateUserSchema,
 } from "../../schemas/userSchema";
 import {
-  deleteUser,
+  disableUser,
   getUser,
   postUser,
   getUserByid,
@@ -16,6 +16,7 @@ import {
   logInUser,
   logInUserGoogle,
   forgotPassword,
+  deleteUser,
 } from "../../controllers/users/index";
 import { rolePermissions } from "../../middlewares/authorization.middleware";
 import passport from "passport";
@@ -48,7 +49,12 @@ router.delete(
   passport.authenticate("jwt", { session: false }),
   rolePermissions("customer"),
   schemaValidation(readAndDeleteUserSchema),
-  deleteUser
+  disableUser
+);
+router.delete("/drop/:id", passport.authenticate("jwt", {session: false}),
+rolePermissions("customer"),
+schemaValidation(readAndDeleteUserSchema),
+deleteUser
 );
 
 export default router;

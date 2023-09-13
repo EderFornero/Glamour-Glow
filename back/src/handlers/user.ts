@@ -88,7 +88,7 @@ const pipeline = [
 ];
 
 export const readUsers = async () => {
-  const allUsers = await UserModel.aggregate(pipeline);
+  const allUsers = await UserModel.find({}).select({password: 0}).exec();
   return allUsers;
 };
 
@@ -117,7 +117,7 @@ export const updateUser = async (id: String, updates: Object) => {
   return updatedUser;
 };
 
-export const destroyUserService = async (id: any) => {
+export const disableUserService = async (id: any) => {
   try {
     const user = await UserModel.findByIdAndUpdate(
       id,
@@ -132,6 +132,14 @@ export const destroyUserService = async (id: any) => {
     throw Error("Something went wrong");
   }
 };
+
+export const deleteUserHandler = async (id: String) => {
+  const userdeleted = await UserModel.findByIdAndDelete(id)
+  if(!userdeleted){
+    throw Error("user does not exist")
+  }
+  return id;
+}
 
 export const validateLogIn = async (email: string, password: string) => {
   //change "any" type

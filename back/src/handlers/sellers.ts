@@ -64,10 +64,18 @@ export const patchSellerImages = async (id: string, images: string[]) => {
 };
 
 // delete Handlers
-export const deleteSellerHandler = async (id: String) => {
+export const disableSellerHandler = async (id: String) => {
   await SellerModel.findByIdAndUpdate(id, { isActive: false });
   return "Seller has been successfully deleted";
 };
+
+export const deleteSellerHandler = async (id: String) => {
+  const sellerDeleted = await SellerModel.findByIdAndDelete(id)
+  if(!sellerDeleted){
+    throw Error("user does not exist")
+  }
+  return id;
+}
 
 export const validateLogInSeller = async (
   sellerEmail: string,
