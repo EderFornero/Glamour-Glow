@@ -3,22 +3,58 @@ import FavoriteIconEmpty from '@mui/icons-material/FavoriteBorder'
 import StarIcon from '@mui/icons-material/Star'
 import FavoriteIcon from '@mui/icons-material/Favorite'
 import { Fab, Tooltip } from '@mui/material'
-import { useState } from 'react'
 import useRating from '../../../hooks/useRating'
-// import type { ServiceProvider } from '../../../interfaces'
 import type { ReviewsProps } from '../../../components/Reviews/Reviews'
+import { postFavourite, checkFavourite, removeFavourite, findFavId } from '../../../utils/index'
+import { useNavigate } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import type { RootState } from '../../../redux/types'
+import { useEffect, useState } from 'react'
+import { getUserbyId } from '../../../redux/actions'
 
 interface DetailProps extends ReviewsProps {
   sellerName: string
+  sellerId: string | undefined
+  favourites: any[]
 }
 
-const BusinessInfo: React.FC<DetailProps> = ({ sellerName, reviews }) => {
+const BusinessInfo: React.FC<DetailProps> = ({ sellerName, reviews, sellerId, favourites }) => {
   const [isFavorite, setIsFavorite] = useState<boolean>(false)
   const isAuth = localStorage.getItem('isAuth')
+  const role = localStorage.getItem('role')
+  const userId = useSelector((state: RootState) => state.userdetail._id)
+  const userdetail = useSelector((state: RootState) => state.userdetail)
 
-  const toggleFavorite = (): void => {
-    setIsFavorite((prevState) => !prevState)
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+
+  console.log(userdetail, 'Soy el console.log del user detail') // PROBLEMA, FAVOURITES SE LOADEA EL ID DEL FAVOURITE NO TODAS LAS CARDS
+  useEffect(() => {
+    if (isAuth === 'true' && role === 'customer' && favourites !== undefined && favourites.length > 0) {
+      const isSellerFavourite = checkFavourite(favourites, sellerId)
+      const isFavoriteInStorage = localStorage.getItem(`favorite_${sellerId}`)
+      setIsFavorite(isSellerFavourite || isFavoriteInStorage === 'true')
+    }
+  }, [isAuth, role, favourites, sellerId])
+
+  const handleFavClick = async (): Promise<void> => {
+    if (isAuth === 'true' && role === 'customer') {
+      if (isFavorite) {
+        const favId = await findFavId(favourites, sellerId)
+        await removeFavourite(favId)
+        setIsFavorite(false)
+        localStorage.removeItem(`favorite_${sellerId}`)
+      } else {
+        await postFavourite(userId, sellerId)
+        setIsFavorite(true)
+        localStorage.setItem(`favorite_${sellerId}`, 'true')
+        dispatch(getUserbyId(userId))
+      }
+    } else {
+      navigate('/login')
+    }
   }
+
   const averageRating = useRating(reviews)
   return (
     <div className={style['business-info-container']}>
@@ -30,8 +66,8 @@ const BusinessInfo: React.FC<DetailProps> = ({ sellerName, reviews }) => {
         </div>
       </div>
       <div className={style.wrapper}>
-        <Tooltip title={isAuth !== null ? 'Add to favourites' : 'Must be logged in to add to favourites'} placement='top'>
-          <Fab className={style.fav} onClick={toggleFavorite}>
+        <Tooltip title={isAuth === 'true' && role === 'customer' ? (isFavorite ? 'Remove from favorites' : 'Add to favorites') : 'Must be logged in to add to favorites'} placement='top'>
+          <Fab className={style.fav} onClick={handleFavClick}>
             {isFavorite ? <FavoriteIcon className={style['favorite-button-filled']} /> : <FavoriteIconEmpty className={style['favorite-button']} />}
           </Fab>
         </Tooltip>

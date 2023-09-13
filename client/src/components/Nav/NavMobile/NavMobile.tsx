@@ -18,10 +18,7 @@ const NavMobile = (): JSX.Element => {
 
   const handleLogout = (): void => {
     dispatch(setAuth(false))
-    localStorage.removeItem('token')
-    localStorage.removeItem('isAuth')
-    localStorage.removeItem('id')
-    localStorage.removeItem('role')
+    localStorage.clear()
     navigate('/')
   }
 

@@ -23,7 +23,8 @@ const BusinessDetail = (): JSX.Element => {
   const dispatch = useDispatch()
   const { id } = useParams()
   const sellerdetail = useSelector((state: RootState) => state.sellerdetail) as ServiceProvider
-  console.log(sellerdetail, 'ACA ESTA EL SELLER DETAIL')
+  console.log(sellerdetail, 'SOY EL SELLER DETAIL')
+  const userdetail = useSelector((state: RootState) => state.userdetail)
   const [notification, setNotification] = useState<Notification>({
     isOpen: false,
     type: null,
@@ -60,7 +61,7 @@ const BusinessDetail = (): JSX.Element => {
 
   return (
     <div className={style['global-container']}>
-      <BusinessInfo sellerName={sellerdetail.sellerName} reviews={sellerdetail.reviews} />
+      <BusinessInfo sellerName={sellerdetail.sellerName} reviews={sellerdetail.reviews} sellerId={id} favourites={userdetail.favorites} />
       <BusinessImages />
       <Services sellerId={id as string} services={sellerdetail.servicesArray} />
       <LeaveAComment userId={localStorage.getItem('id')} />
