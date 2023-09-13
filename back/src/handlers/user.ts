@@ -13,7 +13,10 @@ const pipeline = [
     },
   },
   {
-    $unwind: "$favorites",
+    $unwind: {
+      path: "$favorites",
+      preserveNullAndEmptyArrays: true, 
+    },
   },
   {
     $lookup: {
@@ -24,7 +27,10 @@ const pipeline = [
     },
   },
   {
-    $unwind: "$favorites.seller",
+    $unwind: {
+      path: "$favorites.seller",
+      preserveNullAndEmptyArrays: true, 
+    },
   },
   {
     $lookup: {
@@ -119,7 +125,7 @@ export const updateUser = async (id: String, updates: Object) => {
 
 export const disableUserService = async (id: any) => {
   try {
-    const user = await UserModel.findByIdAndUpdate(
+     await UserModel.findByIdAndUpdate(
       id,
       { isActive: false },
       {
@@ -127,7 +133,7 @@ export const disableUserService = async (id: any) => {
       }
     );
 
-    return user;
+    return "User has been successfully deleted";
   } catch (error) {
     throw Error("Something went wrong");
   }
