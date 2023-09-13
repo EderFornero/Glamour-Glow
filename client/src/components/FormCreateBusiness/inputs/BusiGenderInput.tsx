@@ -20,6 +20,9 @@ const BusiGenderInput: React.FC<BusiGenderInputProps> = ({ register, errors }) =
             message: 'Please enter at least one Gender'
           }
         })}>
+        <option value='' disabled>
+          Focused Gender:
+        </option>
           <option className={style.option} value='any'>Any</option>
           <option className={style.option} value='male'>Male</option>
           <option className={style.option} value='female'>Female</option>
