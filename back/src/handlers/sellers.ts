@@ -115,11 +115,11 @@ export const validateLogInSeller = async (sellerEmail: string, sellerPassword: s
   }
 };
 
-export const generateTokenSeller = async (email: string) => {
+export const generateTokenSeller = async (sellerEmail: string) => {
   try {
-    const seller = await SellerModel.findOne({ email }).exec();
+    const seller = await SellerModel.findOne({ sellerEmail:sellerEmail })
     const token = await jwt.sign(
-      { name: seller?.sellerName, id: seller?._id, role: seller?.role },
+      { sellerName: seller?.sellerName, id: seller?._id, role: seller?.role },
       process.env.TOKEN_ENCRYPTION!,
       { expiresIn: "1h" }
     );
