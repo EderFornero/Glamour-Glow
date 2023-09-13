@@ -39,4 +39,5 @@ export interface SellerDetail {
   reviews: any[]
   categoriesArray: any[]
   servicesArray: any[]
+  images: string[]
 }

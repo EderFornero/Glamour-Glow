@@ -38,7 +38,8 @@ export const initialState: RootState = {
     sellerGender: '',
     reviews: [],
     categoriesArray: [],
-    servicesArray: []
+    servicesArray: [],
+    images: []
   },
   filter: 'none',
   rating: 0,
