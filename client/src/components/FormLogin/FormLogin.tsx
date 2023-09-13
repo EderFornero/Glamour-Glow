@@ -87,10 +87,12 @@ const FormLogin: React.FC<FormLoginProps> = ({ onToggle }) => {
         password
       }
       const response = await axios.post('http://localhost:3001/users/auth/login', data)
-      const { token, id } = response.data
+      const { token, id, role } = response.data
 
       if (token !== undefined && id !== undefined) {
         localStorage.setItem('isAuth', 'true')
+        localStorage.setItem('id', id)
+        localStorage.setItem('role', role)
         dispatch(setAuth(true))
         dispatch(setUserId(id))
         navigate('/')

@@ -14,7 +14,7 @@ interface Props {
 }
 
 const SellerServices: React.FC<Props> = ({ sellerName, services, setActiveItem }) => {
-  const [editedServiceId, setEditedServiceId] = useState<number | null>(null) 
+  const [editedServiceId, setEditedServiceId] = useState<number | null>(null)
   console.log(services)
 
   const handleEditClick = (id: number): void => {
