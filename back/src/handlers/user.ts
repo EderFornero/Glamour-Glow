@@ -3,8 +3,88 @@ import { config } from "dotenv";
 import jwt from "jsonwebtoken";
 config();
 
+const pipeline = [
+  {
+    $lookup: {
+      from: "favorites",
+      localField: "favorites",
+      foreignField: "_id",
+      as: "favorites",
+    },
+  },
+  {
+    $unwind: "$favorites",
+  },
+  {
+    $lookup: {
+      from: "sellers",
+      localField: "favorites.sellerId",
+      foreignField: "_id",
+      as: "favorites.seller",
+    },
+  },
+  {
+    $unwind: "$favorites.seller",
+  },
+  {
+    $lookup: {
+      from: "categories",
+      localField: "favorites.seller.categoriesArray",
+      foreignField: "_id",
+      as: "favorites.seller.categoriesArray",
+    },
+  },
+  {
+    $lookup: {
+      from: "reviews",
+      localField: "favorites.seller.reviews",
+      foreignField: "_id",
+      as: "favorites.seller.reviews",
+    },
+  },
+  {
+    $set: {
+      "favorites.seller.totalRating": {
+        $avg: "$favorites.seller.reviews.rating",
+      },
+    },
+  },
+  {
+    $group: {
+      _id: "$_id",
+      name: { $first: "$name" },
+      lastName: { $first: "$lastName" },
+      email: { $first: "$email" },
+      phoneNumber: { $first: "$phoneNumber" },
+      role: { $first: "$role" },
+      dateOfBirth: { $first: "$dateOfBirth" },
+      image: { $first: "$image" },
+      isActive: { $first: "$isActive" },
+      favorites: { $push: "$favorites" },
+    },
+  },
+  {
+    $unset: [
+      "favorites.createdAt",
+      "favorites.userId",
+      "favorites.seller.sellerEmail",
+      "favorites.seller.sellerPhone",
+      "favorites.seller.sellerGender",
+      "favorites.seller.servicesArray",
+      "favorites.seller.categoriesArray._id",
+      "favorites.seller.reviews._id",
+      "favorites.seller.reviews.description",
+      "favorites.seller.reviews.userId",
+      "favorites.seller.reviews.sellerId",
+      "favorites.seller.createdAt",
+      "favorites.seller.updatedAt",
+      "favorites.updatedAt",
+    ],
+  },
+];
+
 export const readUsers = async () => {
-  const allUsers = await UserModel.find({}).select({ password: 0 });
+  const allUsers = await UserModel.aggregate(pipeline);
   return allUsers;
 };
 
@@ -24,7 +104,7 @@ export const createUser = async (user: Object) => {
 export const updateUser = async (id: String, updates: Object) => {
   const updatedUser = await UserModel.findByIdAndUpdate(id, updates, {
     new: true,
-  }).select({password:0});
+  }).select({ password: 0 });
   return updatedUser;
 };
 
@@ -59,7 +139,7 @@ export const validateLogIn = async (email: string, password: string) => {
     if (!isPasswordValid) {
       return false;
     }
-    return { id: user._id, role: user.role};
+    return { id: user._id, role: user.role };
   } catch (error: any) {
     throw new Error(error.message);
   }
@@ -80,20 +160,23 @@ export const generateToken = async (email: string) => {
 };
 
 export const forgotPasswordHandler = async (email: string) => {
-  const user = await UserModel.findOne({email})
-  return user
-}
+
+  const user = await UserModel.findOne({ email });
+  console.log("user", user);
+  return user;
+};
+
 
 export const resetPasswordUser = async (id: string, newPassword: string) => {
   const user = await UserModel.findById(id);
-  if(user){
-    if(newPassword === user.password){
-      throw Error("Input password can't match the current password")
+  if (user) {
+    if (newPassword === user.password) {
+      throw Error("Input password can't match the current password");
     }
-    user.password = newPassword
-    user.passwordResetCode = null 
-    user.save()
+    user.password = newPassword;
+    user.passwordResetCode = null;
+    user.save();
   }
   console.log(user);
-  return user
-}
+  return user;
+};

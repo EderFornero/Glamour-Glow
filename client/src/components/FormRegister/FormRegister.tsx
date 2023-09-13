@@ -36,7 +36,7 @@ const FormRegister: React.FC<FormLoginProps> = ({ onToggle }: any) => {
       phoneNumber: '',
       role: 'customer',
       dateOfBirth: '',
-      image: 'https://cdn.icon-icons.com/icons2/2574/PNG/512/profile_picture_user_icon_153847.png',
+      image: '',
       isActive: true,
       confirmPassword: ''
     }
