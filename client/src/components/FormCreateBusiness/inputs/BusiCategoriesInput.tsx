@@ -25,7 +25,7 @@ const BusiCategoriesInput: React.FC<BusiCategoriesInputProps> = ({
           }
         })}
       >
-        <option value='' disabled selected>
+        <option value='' disabled>
           Business Category
         </option>
         {categoryList.map((el, index) => (
