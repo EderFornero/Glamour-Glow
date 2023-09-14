@@ -12,7 +12,8 @@ import {
   UPDATE_SELLER_DETAIL,
   SET_AUTH,
   SET_USER_ID,
-  CLEAN_SELLER_DETAIL
+  CLEAN_SELLER_DETAIL,
+  UPDATE_SELLER_IMAGE_INDEX
 } from './Action-Types'
 import type { ServiceAction } from './types'
 import type { SellerDetailAction } from '../interfaces'
@@ -228,4 +229,10 @@ export const postService: any = (payload: any) => {
 }
 export const cleanSellerDetail: any = (): SellerDetailAction => {
   return { type: CLEAN_SELLER_DETAIL, payload: { _id: '', sellerName: '', sellerEmail: '', sellerPhone: '', sellerGender: '', reviews: [], categoriesArray: [], servicesArray: [], images: [] } }
+}
+
+export const updateSellerImageIndex: any = (payload: number) => {
+  return {
+    type: UPDATE_SELLER_IMAGE_INDEX, payload
+  }
 }

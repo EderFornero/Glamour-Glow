@@ -16,6 +16,7 @@ export interface RootState {
   image: string | undefined
   isAuth: any
   userId: null
+  sellerImageIndex: number
 }
 
 export interface UserDetail {

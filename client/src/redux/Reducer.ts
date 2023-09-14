@@ -11,7 +11,8 @@ import {
   UPDATE_SELLER_DETAIL,
   SET_AUTH,
   SET_USER_ID,
-  CLEAN_SELLER_DETAIL
+  CLEAN_SELLER_DETAIL,
+  UPDATE_SELLER_IMAGE_INDEX
 } from './Action-Types'
 import type { ServiceAction, RootState, UserDetail, SellerDetail } from './types'
 
@@ -45,7 +46,8 @@ export const initialState: RootState = {
   rating: 0,
   image: undefined,
   isAuth: false,
-  userId: null
+  userId: null,
+  sellerImageIndex: 0
 }
 
 const reducer = (
@@ -62,6 +64,7 @@ const reducer = (
   image: string | undefined
   isAuth: false
   userId: null
+  sellerImageIndex: number
 } => {
   switch (action.type) {
     case GET_ALL_BUSINESS:
@@ -102,6 +105,9 @@ const reducer = (
 
     case CLEAN_SELLER_DETAIL:
       return { ...state, sellerdetail: action.payload }
+
+    case UPDATE_SELLER_IMAGE_INDEX:
+      return { ...state, sellerImageIndex: action.payload }
 
     default:
       return state

@@ -4,16 +4,15 @@ import Cloudinary from '../../../components/Cloudinary/Cloudinary'
 import { useDispatch, useSelector } from 'react-redux'
 import type { RootState } from '../../../redux/types'
 import { NotAvailableImage } from '../../../Images/LandingImages'
-import { updateSellerInfo, cleanSellerDetail } from '../../../redux/actions'
+import { updateSellerInfo, cleanSellerDetail, updateSellerImageIndex } from '../../../redux/actions'
 import { useParams } from 'react-router-dom'
 
 const BusinessImages = (): JSX.Element => {
   const [isMainHovered, setIsMainHovered] = useState(false)
   const [isSecondHovered, setIsSecondHovered] = useState(false)
   const [isThirdHovered, setIsThirdHovered] = useState(false)
-  const [imagen, setImage] = useState('')
   const [updateCount, setUpdateCount] = useState(0)
-  const { sellerdetail, image } = useSelector((state: RootState) => state)
+  const { sellerdetail, image, sellerImageIndex } = useSelector((state: RootState) => state)
   const dispatch = useDispatch()
   const { id } = useParams()
 
@@ -21,16 +20,17 @@ const BusinessImages = (): JSX.Element => {
     return () => dispatch(cleanSellerDetail())
   }, [])
 
-  const onClick = (e: number): void => {
-    if (image !== undefined && sellerdetail.images.length > 0) {
-      const updatedImages = [...sellerdetail.images, image]
-      dispatch(updateSellerInfo(id, { images: updatedImages }))
-      sellerdetail.images[e] = image
-      setImage(image)
-      setUpdateCount(updateCount + 1)
+  useEffect(() => {
+    if (image) {
+      sellerdetail.images[sellerImageIndex] = image
+      dispatch(updateSellerInfo(id, { images: [...sellerdetail.images] }))
+      console.log('POST UPDATE', sellerdetail.images)
     }
-    console.log('Image:', image)
-    console.log('Seller Detail Images:', sellerdetail.images)
+  }, [image])
+
+  const onClick = async (e: number): Promise<void> => {
+    await dispatch(updateSellerImageIndex(e))
+    setUpdateCount(updateCount + 1)
   }
 
   return (
@@ -40,7 +40,7 @@ const BusinessImages = (): JSX.Element => {
         onMouseLeave={() => { setIsMainHovered(false) }}
       >
         <img src={sellerdetail.images[0] ?? NotAvailableImage} alt='' className={style['main-img']} />
-        <div onClick={(e) => { onClick(0) }} className={style['upload-image-container']}>
+        <div onClick={(e) => { void onClick(0) }} className={style['upload-image-container']}>
           <Cloudinary />
         </div>
       </div>
@@ -52,7 +52,7 @@ const BusinessImages = (): JSX.Element => {
             onMouseLeave={() => { setIsSecondHovered(false) }}
           >
             <img className={style['second-image']} src={sellerdetail.images[1] ?? NotAvailableImage} alt='' />
-            <div onClick={(e) => { onClick(1) }} className={style['upload-image-container']}>
+            <div onClick={(e) => { void onClick(1) }} className={style['upload-image-container']}>
               <Cloudinary />
             </div>
           </div>
@@ -64,7 +64,7 @@ const BusinessImages = (): JSX.Element => {
             onMouseLeave={() => { setIsThirdHovered(false) }}
           >
             <img className={style['third-image']} src={sellerdetail.images[2] ?? NotAvailableImage} alt='' />
-            <div onClick={(e) => { onClick(2) }} className={style['upload-image-container']}>
+            <div onClick={(e) => { void onClick(2) }} className={style['upload-image-container']}>
               <Cloudinary />
             </div>
           </div>

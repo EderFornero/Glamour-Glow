@@ -7,6 +7,7 @@ export interface ServiceProvider {
   reviews: ReviewType[] | []
   categoriesArray: Category[] | []
   servicesArray: Service[] | []
+  images: string[]
 }
 
 export interface ReviewRating {
