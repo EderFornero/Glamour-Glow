@@ -22,6 +22,6 @@
 
 @media screen and (max-width: 800px){
   .right-section{
-    margin-left: 0
+    margin-left: 85px;
   }
 }

@@ -30,7 +30,7 @@
       @media (max-width: 1000px){ 
         width: 500px;
         height: 300px;
-        margin: 0;
+        margin: 15px 0 15px 0;
       }
     }
   }
@@ -60,7 +60,11 @@
       @media (max-width: 1000px){ 
         width: 500px;
         height: 200px;
-        margin: 0;
+        margin: 15px 0 15px 0;
+      }
+
+      @media (max-width: 630px){ 
+        
       }
     }
   }
@@ -72,15 +76,6 @@
   }
     .side-images-relative {
       position: relative;
-      height: 50%;
-    }
-    .other-img-container-hovered{
-      width: 100%;
-      height: 100%;
-    }
-    .other-img-container{
-      width: 100%;
-      height: 100%;
     }
     .second-image {
       width: 1000px;
@@ -100,7 +95,7 @@
       @media (max-width: 1000px){ 
         width: 500px;
         height: 300px;
-        margin: 0;
+        margin: 15px 0 15px 0;
       }
     }
     .third-image {
@@ -121,7 +116,7 @@
       @media (max-width: 1000px){ 
         width: 500px;
         height: 300px;
-        margin: 0;
+        margin: 15px 0 15px 0;
       }
     }
   }

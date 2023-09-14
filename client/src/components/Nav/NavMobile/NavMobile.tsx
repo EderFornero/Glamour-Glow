@@ -52,7 +52,7 @@ const NavMobile = (): JSX.Element => {
             {role === 'seller'
               ? (<>
               <li className={style['menu-item']}>
-                <NavLink to={`/admin/${id}`} className={style.link}>
+                <NavLink to={`/admin/seller/${id}`} className={style.link}>
                   MyBusiness
                 </NavLink>
               </li>

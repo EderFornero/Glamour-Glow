@@ -56,7 +56,7 @@ const NavFull = (): JSX.Element => {
             {role === 'seller'
               ? (<>
               <li className={style['menu-item-full']}>
-                <NavLink to={`/admin/${id}`} className={style['link-full']}>
+                <NavLink to={`/admin/seller/${id}`} className={style['link-full']}>
                   MyBusiness
                 </NavLink>
               </li>

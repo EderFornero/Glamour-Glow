@@ -17,7 +17,7 @@ const Cloudinary = (): JSX.Element => {
           cloudName: import.meta.env.VITE_CLOUDINARY_CLOUD_NAME,
           uploadPreset: import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET,
           maxFiles: 1,
-          sources: ['local', 'image_search', 'unsplash'],
+          sources: ['local', 'unsplash'],
           searchBySites: ['https://unsplash.com/', 'https://pixabay.com/'],
           resourceType: 'image',
           googleApiKey: import.meta.env.VITE_GOOGLE_API_KEY,
