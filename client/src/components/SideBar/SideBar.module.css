@@ -62,8 +62,8 @@
   }
   
   .sidebar button.active {
-    background: #5448de;
-    color: #f9f9f9;
+    background: #cafede;
+    color: #000;
   }
   
   .sub-nav {
