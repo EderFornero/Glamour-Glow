@@ -7,6 +7,7 @@ import passport from 'passport'
 import passportMiddleware from './middlewares/passport'
 import session from 'express-session'
 import 'dotenv/config'
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
 const { TOKEN_ENCRYPTION, PORT } = process.env
 import cookieParser from 'cookie-parser'
 
