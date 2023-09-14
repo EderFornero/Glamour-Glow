@@ -8,7 +8,7 @@ import { deleteUser, deleteSellerController } from "../../controllers/admin";
 const router = Router()
 
 router.delete("/dropUser/:id", passport.authenticate("jwt", {session: false}),
-rolePermissions("customer"),
+rolePermissions("admin"),
 schemaValidation(readAndDeleteUserSchema),
 deleteUser
 );

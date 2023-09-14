@@ -8,6 +8,7 @@
     width: 330px;
     margin-bottom: 30px;
     color: white;
+    font-size: small;
   }
   
   .input::placeholder {
@@ -23,4 +24,34 @@
 
   .option {
     color: black;
+  }
+
+  .category {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid white;
+    outline: none;
+    padding: 0;
+    font-family: 'FontText';
+    width: 330px;
+    margin-bottom: 30px;
+    color: white;
+    font-size: small;
+    cursor: pointer;
+  }
+
+  .checkboxContainer {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+  }
+  
+  input[type="checkbox"] {
+    margin-right: 5px;
+  }
+  
+  label {
+    font-family: 'FontText';
+    color: white;
+    cursor: pointer;
   }
