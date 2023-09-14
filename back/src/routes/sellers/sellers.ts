@@ -9,12 +9,13 @@ import { disableSellerController } from '../../controllers/sellers/deleteSeller'
 import { logInSeller } from '../../controllers/sellers/loginSeller'
 import { resetSellerPassword } from '../../controllers/sellers/resetSellerPassword'
 import { forgotSellerPassword } from '../../controllers/sellers/forgotSellerPassword'
+import { visitsLogger } from '../../middlewares/visitsLogger'
 import passport from 'passport'
 
 const router = Router()
 
-router.get('/', getSellersController)
-router.get('/:id', schemaValidation(readAndDeleteSellerSchema), getSellersByIdController)
+router.get('/', visitsLogger, getSellersController)
+router.get('/:id',visitsLogger, schemaValidation(readAndDeleteSellerSchema), getSellersByIdController)
 router.post('/', schemaValidation(createSellerSchema), postSellersController)
 router.post('/login',schemaValidation(loginSellerSchema), logInSeller)
 router.post("/forgotPassword", forgotSellerPassword)

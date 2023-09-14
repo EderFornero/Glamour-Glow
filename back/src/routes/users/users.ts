@@ -22,6 +22,7 @@ import { rolePermissions } from "../../middlewares/authorization.middleware";
 import passport from "passport";
 import { resetPassword } from "../../controllers/users/resetPassword";
 import { enableUser } from "../../controllers/users/reActiveUser";
+import { visitsLogger } from "../../middlewares/visitsLogger";
 
 const router = Router();
 
@@ -35,7 +36,7 @@ router.get(
 );
 router.post("/forgotPassword", forgotPassword)
 router.post("/resetPassword/:id/:passwordResetCode",schemaValidation(resetPasswordSchema), resetPassword)
-router.post("/", schemaValidation(CreateUserSchema), postUser);
+router.post("/", visitsLogger, schemaValidation(CreateUserSchema), postUser);
 router.post("/login",schemaValidation(loginUserSchema) ,logInUser);
 router.post("/auth/login", logInUserGoogle);
 router.put(

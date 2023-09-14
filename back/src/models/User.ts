@@ -5,6 +5,7 @@ import { Favorites } from "./Favorites";
 export enum ROLE {
   CUSTOMER = "customer",
   SELLER = "seller",
+  
 }
 @pre<User>("save", async function () {
   if (!this.isModified("password")) {
