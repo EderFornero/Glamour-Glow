@@ -35,37 +35,55 @@ const NavMobile = (): JSX.Element => {
       </div>
       {isOpen && (
         <ul className={style.menu}>
-          {isAuth === null && (
-            <li className={style['menu-item']}>
-              <NavLink to='/login' className={style.link}>
-                Login
-              </NavLink>
-            </li>
-          )}
-          {isAuth === 'true' && (
-            <li className={style['menu-item-full']}>
-              <NavLink to={role !== null && role === 'seller' ? '/admin' : `/userdetail/${id}`}>
-                <img className={style['userimg-full']} src={userdetail.image ?? imgprofile} />
-              </NavLink>
-            </li>
-          )}
+          {isAuth === null
+            ? <>
           <li className={style['menu-item']}>
-            <NavLink to={role !== null && role === 'seller' ? '/businessRegister' : '/businessLogin'} className={style.link}>
-              {role !== null && role === 'seller' ? 'Register your business' : 'For Business'}
+            <NavLink to='/login' className={style.link}>
+              Login
             </NavLink>
           </li>
+          <li className={style['menu-item']}>
+            <NavLink to='/businessLogin' className={style.link}>
+              For Business
+            </NavLink>
+          </li>
+            </>
+            : <>
+            {role === 'seller'
+              ? (<>
+              <li className={style['menu-item']}>
+                <NavLink to={`/admin/seller/${id}`} className={style.link}>
+                  MyBusiness
+                </NavLink>
+              </li>
+                </>
+                )
+              : (<>
+              <li className={style['menu-item']}>
+                <NavLink to={`/userdetail/${id}`}>
+                 <img className={style.userimg} src={userdetail.image ?? imgprofile} />
+               </NavLink>
+              </li>
+              <li className={style['menu-item']}>
+                <NavLink to='/businessLogin' className={style.link}>
+                  For Business
+                </NavLink>
+              </li>
+            </>
+                )
+            }
+            <li className={`${style['menu-item']} ${style.link} ${style.logout}`} onClick={handleLogout}>
+            <NavLink to='/' className={style.link}>
+              Logout
+            </NavLink>
+          </li>
+            </>
+        }
           <li className={style['menu-item']}>
             <NavLink to='/business' className={style.link}>
               Services
             </NavLink>
           </li>
-          {isAuth === 'true' && (
-            <li onClick={handleLogout} className={`${style['menu-item']} ${style.link} logout`}>
-              <NavLink to='/business' className={style.link}>
-                Logout
-              </NavLink>
-            </li>
-          )}
         </ul>
       )}
     </nav>

@@ -1,17 +1,13 @@
 import style from './Review.module.css'
 import StarIcon from '@mui/icons-material/Star'
 
-interface ReviewProps {
-  description: string
-  rating: number
-  name: string
-  lastName: string
-}
-
-const Review: React.FC<ReviewProps> = ({ description, rating, name, lastName }) => {
+const Review = ({ description, rating, name, lastName, image }: any): JSX.Element => {
   return (
     <article className={style.container}>
-      <p className={style.date}>{`${name} ${lastName}`}</p>
+      <div className={style['div-img-name-review']}>
+        <img className={style['div-img-review']} src={image} alt={name} />
+        <p className={style.date}>{`${name} ${lastName}`}</p>
+      </div>
       <div className={style.rating}>
         <StarIcon />
         <p>{rating}</p>

@@ -12,7 +12,8 @@ import {
   UPDATE_SELLER_DETAIL,
   SET_AUTH,
   SET_USER_ID,
-  CLEAN_SELLER_DETAIL
+  CLEAN_SELLER_DETAIL,
+  UPDATE_SELLER_IMAGE_INDEX
 } from './Action-Types'
 import type { ServiceAction } from './types'
 import type { SellerDetailAction } from '../interfaces'
@@ -183,7 +184,7 @@ export const updateUserInfo: any = (id: string, updateinfo: any) => {
   }
 }
 
-// User Detail
+// Seller Detail
 export const getSellerbyId: any = (id: string) => {
   const endpoint = `${API_URL}sellers/${id}`
 
@@ -226,8 +227,33 @@ export const postService: any = (payload: any) => {
     return response
   }
 }
+
+export const updateService: any = (id: string, payload: any) => {
+  const endpoint = `${API_URL}services/${id}`
+
+  return async function (_dispatch: any) {
+    const response = await axios.put(endpoint, payload)
+    return response
+  }
+}
+
+export const deleteService: any = (id: string) => {
+  const endpoint = `${API_URL}services/${id}`
+
+  return async function () {
+    const response = await axios.delete(endpoint)
+    return response
+  }
+}
+
 export const cleanSellerDetail: any = (): SellerDetailAction => {
-  return { type: CLEAN_SELLER_DETAIL, payload: { _id: '', sellerName: '', sellerEmail: '', sellerPhone: '', sellerGender: '', reviews: [], categoriesArray: [], servicesArray: [] } }
+  return { type: CLEAN_SELLER_DETAIL, payload: { _id: '', sellerName: '', sellerEmail: '', sellerPhone: '', sellerGender: '', reviews: [], categoriesArray: [], servicesArray: [], images: [] } }
+}
+
+export const updateSellerImageIndex: any = (payload: number) => {
+  return {
+    type: UPDATE_SELLER_IMAGE_INDEX, payload
+  }
 }
 
 export const postSellerValidate: any = (payload: any) => {
