@@ -12,7 +12,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import approved from '../../assets/approved.svg'
 import failure from '../../assets/failure.svg'
 import type { ServiceProvider } from '../../interfaces'
-// import { paymentConfirmation, sendSellerEmail } from '../../utils'
+import { paymentConfirmation, sendSellerEmail } from '../../utils'
 
 interface Notification {
   isOpen: boolean
@@ -42,8 +42,9 @@ const BusinessDetail = (): JSX.Element => {
         isOpen: true,
         type: 'approved'
       })
-      // paymentConfirmation()
-      // sendSellerEmail()
+      const { productPrice, productName } = useParams()
+      paymentConfirmation(userdetail.email, productPrice, sellerdetail.sellerEmail, sellerdetail.sellerPhone, sellerdetail.sellerName, productName)
+      sendSellerEmail(userdetail.email, productPrice, sellerdetail.sellerEmail, userdetail.phoneNumber, `${userdetail.name} ${userdetail.lastName}`, productName)
     } else if (status === 'failure') {
       setNotification({
         content: 'Payment failed',
