@@ -1,0 +1,88 @@
+.all {
+  display: flex;
+  flex-direction: column;
+  background-color: #6e66ff;
+  height: 350px;
+  width: 250px;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  transition: all 0.2s ease;
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.8);
+  color: white;
+  justify-content: space-between;
+  margin: 10px;
+  border: 2px solid #000;
+}
+
+.img {
+  margin-top: 10px;
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #000;
+  align-self: center;
+  background-color: white;
+}
+
+.bottom {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+.btn {
+  color: white;
+}
+
+.phone {
+  background-image: url('../../assets/formIcons/tiniPhone.png');
+  width: 15px;
+  height: 15px;
+  background-size: cover;
+  margin-right: 2px;
+}
+
+.email {
+  background-image: url('../../assets/formIcons/tiniEmail.png');
+  width: 15px;
+  height: 15px;
+  background-size: cover;
+  margin-right: 5px;
+  margin-top: 4px;
+}
+
+.email-div {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5px 0;
+  display: flex;
+}
+
+.btn-disable,
+.btn-delete {
+  background-color: #3e38b6;
+  padding: 10px 15px;
+  color: white;
+  border-radius: 5px;
+  border: 2px solid #000;
+  transition: background-color 0.3s;
+}
+
+.btn-disable {
+  margin-left: 70px;
+}
+
+.btn-disable:hover {
+  background-color: black;
+  cursor: pointer;
+  border: 2px solid #ffff;
+}
+
+.btn-delete:hover {
+  background-color: red;
+  cursor: pointer;
+}

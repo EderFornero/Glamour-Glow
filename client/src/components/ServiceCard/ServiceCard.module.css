@@ -1,0 +1,47 @@
+.container {
+  display: flex;
+  height: 175px;
+  border: 1px solid #ccc;
+  padding: 30px;
+  border-radius: 10px;
+  align-self: flex-start;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  min-width: 200px;
+}
+
+.title {
+  padding: 0;
+  font-size: 1rem;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-grow: 1;
+  gap: 15px;
+}
+
+.booking-container {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+}
+
+.button {
+  background-color: var(--primary-color);
+  padding: 15px;
+  border-radius: 10px;
+  color: #ffffff;
+  transition: background-color 0.3s;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: nowrap;
+}
+
+.button:hover {
+  background-color: var(--secondary-color);
+}

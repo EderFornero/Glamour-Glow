@@ -1,0 +1,51 @@
+.global-container {
+  width: 100%;
+  padding: 3em;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  box-sizing: border-box;
+  @media (max-width: 900px) {
+    padding: 1em;
+  }
+  .notification {
+    bottom: 0;
+    right: 0;
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+    transition-duration: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation-name: fade-in;
+    animation-duration: 1s;
+    opacity: 0;
+    padding-left: 0;
+    color: #ffffff;
+    .icon-container {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      padding: 1rem 0.5rem;
+      border-radius: 4px 0 0 4px;
+    }
+    & p {
+      background-color: #2f3032;
+      padding: 1rem;
+      border-radius: 0 4px 4px 0;
+      font-weight: 500;
+    }
+    :hover {
+      transform: rotate(-3deg) scale(1.1);
+    }
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

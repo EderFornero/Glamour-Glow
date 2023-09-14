@@ -1,0 +1,38 @@
+.test {
+  margin: 0;
+  padding: 0;
+}
+.header {
+  height: 4rem;
+  background-color: var(--primary-color);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  color: #ffffff;
+  font-size: 1.2rem;
+}  
+
+.logo {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: #ffffff;
+  
+  justify-content: flex-start;
+ 
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  z-index: 999;
+}
+.title {
+  font-size: 1.6rem;
+}
+

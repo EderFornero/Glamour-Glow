@@ -1,0 +1,11 @@
+.swiper {
+  cursor: grab;
+  width: 85%;
+  height: 33rem;
+}
+
+.title {
+  color: black;
+  margin: 30px;
+  font-weight: bold;
+}

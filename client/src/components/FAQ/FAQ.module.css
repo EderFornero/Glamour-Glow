@@ -1,0 +1,114 @@
+.general {
+  background-color: white;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 2rem;
+  max-width: 48rem;
+  width: 100%;
+}
+
+.accordion .accordion-item {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.accordion .accordion-item button[aria-expanded='true'] {
+  border-bottom: 1px solid var(--primary-color);
+}
+
+.accordion button {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 1em 0;
+  color: var(--secondary-color);
+  font-size: 1.15rem;
+  transition:
+    color 0.3s ease,
+    border-bottom 0.3s ease;
+}
+
+.accordion button:hover,
+.accordion button:focus {
+  cursor: pointer;
+  color: var(--secondary-color);
+}
+
+.accordion button:hover::after,
+.accordion button:focus::after {
+  cursor: pointer;
+  color: var(--secondary-color);
+  border: 1px solid var(--secondary-color);
+}
+
+.accordion button .accordion-title {
+  padding: 1em 1em 1em 0em;
+}
+
+.accordion button .icon {
+  display: inline-block;
+  position: absolute;
+  top: 18px;
+  right: 0;
+  width: 22px;
+  height: 22px;
+  border: 1px solid;
+  border-radius: 22px;
+  transition: transform 0.3s ease;
+}
+
+.accordion button .icon::before {
+  display: block;
+  position: absolute;
+  content: '';
+  top: 9px;
+  left: 5px;
+  width: 10px;
+  height: 2px;
+  background: currentColor;
+  transition: transform 0.3s ease;
+}
+
+.accordion button .icon::after {
+  display: block;
+  position: absolute;
+  content: '';
+  top: 5px;
+  left: 9px;
+  width: 2px;
+  height: 10px;
+  background: currentColor;
+  transition: transform 0.3s ease;
+}
+
+.accordion button[aria-expanded='true'] {
+  color: var(--primary-color);
+}
+
+.accordion button[aria-expanded='true'] .icon::after {
+  width: 0;
+}
+
+.accordion button[aria-expanded='true'] .icon {
+  transform: rotate(180deg);
+}
+
+.accordion button[aria-expanded='true'] + .accordion-content {
+  opacity: 1;
+  max-height: 10em;
+}
+
+.accordion .accordion-content p {
+  font-size: 1rem;
+  margin: 2em 0;
+}
+
+@media (max-width: 900px) {
+  .accordion-item-4,
+  .accordion-item-5,
+  .accordion-item-6,
+  .accordion-item-7 {
+    display: none;
+  }
+}

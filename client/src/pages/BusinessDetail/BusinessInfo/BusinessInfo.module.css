@@ -1,0 +1,50 @@
+.business-info-container{
+    display: flex;
+    margin-bottom: 20px;
+    width: 100%;
+ }
+
+ .business-info {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-grow: 1;
+    gap: 30px;
+    flex-wrap: nowrap;
+    @media (max-width: 435px) {
+        flex-direction: column;
+        padding: 10px;
+        gap: 5px;
+        align-items: flex-start;
+      }
+    
+    .title {
+        color: black;
+        font-size: 1.8rem;
+    }
+    .rating-container {
+        display: flex;
+        gap: 4px;
+        align-items: center;
+    }
+}
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    box-shadow: none;
+    transition: none;
+    z-index: 0;
+    .fav{
+        box-shadow: none;
+    }
+    .favorite-button-filled{
+        color: var(--primary-color);
+        box-shadow: none;
+        transition: none;
+    }
+    .favorite-button{
+        box-shadow: none;
+        transition: none;
+    }
+}

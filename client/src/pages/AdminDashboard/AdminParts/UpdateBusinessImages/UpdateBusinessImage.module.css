@@ -1,0 +1,212 @@
+.div-container-update-images{
+  flex-direction: column;
+}
+
+.update-business-images-h6{
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  margin-bottom: 15px;
+  font-size: 35px;
+  text-decoration: underline;
+
+  @media (max-width: 650px){
+    font-size: 30px;
+  }
+
+  @media (max-width: 460px){
+    font-size: 20px;
+  }
+}
+
+.images {
+  flex-direction: column;
+
+  @media (min-width: 910px) {
+    display: flex;
+    gap: 15px;
+  }
+
+  .main-img-container {
+    width: 100%;
+    @media (min-width: 910px) {
+      display: flex;
+      flex-grow: 1;
+    }
+    .main-img {
+      width: 1000px;
+      height: 700px;
+      display: flex;
+      border-radius: 10px;
+      object-fit: fill;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+      cursor: auto;
+      margin: 15px 0 15px 0;
+
+      @media (max-width: 1300px){ 
+        width: 700px;
+        height: 500px;
+      }
+
+      @media (max-width: 1000px){ 
+        width: 500px;
+        height: 300px;
+        margin: 15px 0 15px 0;
+      }
+
+      @media (max-width: 630px){ 
+        width: 350px;
+        height: 200px;
+      }
+
+      @media (max-width: 460px){ 
+        width: 250px;
+        height: 150px;
+        margin: 20px 0 50px 0; 
+      }
+    }
+  }
+
+  .main-img-container-hovered{ 
+    width: 100%;
+    @media (min-width: 910px) {
+      display: flex;
+      flex-grow: 1;
+    }
+    .main-img {
+      width: 1000px;
+      height: 700px;
+      display: flex;
+      border-radius: 10px;
+      object-fit: fill;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+      cursor: auto;
+      margin: 15px 0 15px 0;
+      filter: blur(2px);
+
+      @media (max-width: 1300px){ 
+        width: 700px;
+        height: 500px;
+      }
+
+      @media (max-width: 1000px){ 
+        width: 500px;
+        height: 200px;
+        margin: 15px 0 15px 0;
+      }
+
+      @media (max-width: 630px){ 
+        width: 350px;
+        height: 200px;
+      }
+
+      @media (max-width: 460px){ 
+        width: 250px;
+        height: 150px;
+        margin: 20px 0 50px 0; 
+      }
+    }
+  }
+
+
+  .main-img-container-hovered:hover .upload-image-container {
+    transform: translateY(-50%);
+    opacity: 1;
+  }
+    .side-images-relative {
+      position: relative;
+    }
+    .second-image {
+      width: 1000px;
+      height: 700px;
+      display: flex;
+      border-radius: 10px;
+      object-fit: cover;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+      cursor: auto;
+      margin: 15px 0 15px 0;
+
+      @media (max-width: 1300px){ 
+        width: 700px;
+        height: 500px;
+      }
+
+      @media (max-width: 1000px){ 
+        width: 500px;
+        height: 300px;
+        margin: 15px 0 15px 0;
+      }
+
+      @media (max-width: 630px){ 
+        width: 350px;
+        height: 200px;
+      }
+
+      @media (max-width: 460px){ 
+        width: 250px;
+        height: 150px;
+        margin: 20px 0 50px 0; 
+      }
+    }
+    .third-image {
+      width: 1000px;
+      height: 700px; 
+      display: flex;
+      border-radius: 10px;
+      object-fit: cover;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+      cursor: auto;
+      margin: 15px 0 15px 0;
+
+      @media (max-width: 1300px){ 
+        width: 700px;
+        height: 500px;
+      }
+
+      @media (max-width: 1000px){ 
+        width: 500px;
+        height: 300px;
+        margin: 15px 0 15px 0;
+      }
+
+      @media (max-width: 630px){ 
+        width: 350px;
+        height: 200px;
+      }
+
+      @media (max-width: 460px){ 
+        width: 250px;
+        height: 150px;
+        margin: 20px 0 50px 0; 
+      }
+    }
+  }
+
+
+.other-img-container-hovered:hover .upload-image-container {
+  transform: translateY(-50%);
+  opacity: 1;
+}
+
+.other-img-container-hovered:hover .second-image{
+  filter: blur(2px);
+}
+
+.other-img-container-hovered:hover .third-image{
+  filter: blur(2px);
+}
+
+.upload-image-container {
+  transform: translateY(200%);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0;
+  opacity: 0;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+  position: absolute;
+  bottom: 0;
+  right: 20px;
+}

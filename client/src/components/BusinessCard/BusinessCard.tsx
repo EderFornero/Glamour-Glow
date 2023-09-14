@@ -1,0 +1,29 @@
+import useRating from '../../hooks/useRating'
+import type { Category, ReviewRating } from '../../interfaces'
+import style from './BusinessCard.module.css'
+import { NavLink } from 'react-router-dom'
+
+interface BusinessCardProps {
+  _id: string
+  sellerName: string
+  reviews: ReviewRating[]
+  categoriesArray: Category[]
+}
+
+const BusinessCard: React.FC<BusinessCardProps> = ({ _id, sellerName, reviews, categoriesArray }) => {
+  const averageRating = useRating(reviews)
+  return (
+    <article className={style.card}>
+      {/* <img src="source" alt="alt" /> */}
+      <h2 className={style.title}> {sellerName}</h2>
+      <p>Rating: {averageRating}</p>
+      <p>Location: </p>
+      {Array.isArray(categoriesArray) ? categoriesArray.map((category: Category, index: number) => <p key={index}>{category.name}</p>) : null}
+      <NavLink to={`/sellerdetail/${_id}`} className={style.link}>
+        <button>Check it out</button>
+      </NavLink>
+    </article>
+  )
+}
+
+export default BusinessCard

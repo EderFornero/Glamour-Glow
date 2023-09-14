@@ -1,0 +1,26 @@
+
+.botn {
+    border-radius: 10px;
+    height: 25px;
+    width: 80px;
+        background-color: #3e38b6;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 0px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    margin-right: 40px;
+}
+
+.botn:last-child {
+    margin-right: 0;
+}
+
+.botn:last-child:hover {
+    background-color: #06ec5e;
+}
+.botn:hover {
+    background-color: #ff0000;
+}

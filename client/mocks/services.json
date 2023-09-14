@@ -1,0 +1,39 @@
+{
+  "services": [
+    {
+      "id": 1,
+      "name": "Haircut",
+      "description": "Professional haircut service",
+      "category": "Hair Services",
+      "price": 40.0
+    },
+    {
+      "id": 2,
+      "name": "Massage",
+      "description": "Relaxing massage service",
+      "category": "Spa Services",
+      "price": 60.0
+    },
+    {
+      "id": 3,
+      "name": "Manicure",
+      "description": "Professional manicure service",
+      "category": "Nail Services",
+      "price": 25.0
+    },
+    {
+      "id": 4,
+      "name": "Facial Spa",
+      "description": "Rejuvenating facial spa",
+      "category": "Spa Services",
+      "price": 50.0
+    },
+    {
+      "id": 5,
+      "name": "Eyelash Extension",
+      "description": "Eyelash extension service",
+      "category": "Eyelash Services",
+      "price": 35.0
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+.input {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid white;
+  outline: none;
+  padding: 0;
+  font-family: 'FontText';
+  width: 330px;
+  margin-bottom: 30px;
+  color: rgb(255, 255, 255);
+}
+
+.input::placeholder {
+  color: white;
+}
+
+.span {
+  color: red;
+  font-size: small;
+  position: absolute;
+  margin-top: -30px;
+}
+
+.textarea {
+  background-color: #5850f7;
+  border: none;
+  border-bottom: 1px solid white;
+  outline: none;
+  padding: 5px;
+  font-family: 'FontText';
+  width: 330px;
+  margin-bottom: 30px;
+  height: 50px;
+  border-radius: 8px;
+  resize: none;
+  color: white;
+}
+
+.textarea::placeholder {
+  color: white;
+}
+
+.option {
+  color: black;
+}
+
+.priceInput {
+  display: flex;
+}
+
+.dollarSign {
+  margin-left: -3px;
+  margin-right: 2px;
+  color: white;
+}

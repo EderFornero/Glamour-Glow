@@ -1,0 +1,27 @@
+.div-sidebar-container{
+  @media (max-width: 800px){
+    flex-direction: column;
+  }
+}
+
+.right-section{
+  min-height: 100vh;
+  max-width: 100vw;
+  min-width: 40vw;
+  margin-left: 220px;
+  display: flex;
+  justify-content: center;
+}
+
+.Display-business{
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+
+@media screen and (max-width: 800px){
+  .right-section{
+    margin-left: 85px;
+  }
+}

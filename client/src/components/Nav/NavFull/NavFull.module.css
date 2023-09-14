@@ -1,0 +1,28 @@
+nav {
+    display: flex;
+    .menu-full {
+        display: flex;
+        list-style: none;
+        gap: 3rem;
+        align-items: center;
+        margin-right: 25px;
+      }
+      .link-full {
+        color: #ffffff;
+        transition: text-decoration 0.5s;
+        font-size: 1.2rem;
+        font-weight: bold;
+      }
+      .userimg-full{
+        width: 55px;
+        height: 50px;
+        border-radius: 50%;
+        border: solid 1px var(--accent-color);
+      }
+  }
+
+@media (max-width: 916px) {
+    .nav-full {
+      display: none;
+    }
+  }

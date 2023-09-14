@@ -1,0 +1,110 @@
+.all {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.content {
+        margin-top: 80px;
+        margin-bottom: 120px;
+        width: 70vw;
+        min-width: 400px;
+        height: 70vh;
+        flex-direction: row;
+        display: flex;
+        border-radius: 15px;
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.left {
+    background-color: #3e38b6;
+    flex: 50;
+    border-bottom-left-radius: 15px;
+    border-top-left-radius: 15px;
+}
+
+.right {
+    background-color: #6e66ff;
+    flex: 50;
+    min-width: 400px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    position: relative;
+    border-bottom-right-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.forms {
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.left {
+    background-image: url('../../assets/Features/FormBusiImg.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: transparent;
+    min-width: 300px;
+    max-width: 600px;
+    background-color: white;
+    position: relative;
+}
+
+.h1 {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 70px;
+}
+
+.text {
+    display: flex;
+    justify-content: center;
+    font-size: large;
+    cursor: pointer;
+}
+
+.h2 {
+    font-size: xx-large;
+    color: white;
+    display: flex;
+    vertical-align: top;
+}
+
+.btn {
+    margin-top: 20px;
+    border-radius: 10px;
+    height: 25px;
+    width: 80px;
+        background-color: #3e38b6;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 0px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    margin-right: 180px;
+}
+.btn:last-child {
+    margin-right: 0;
+}
+
+.btn:last-child:hover {
+    background-color: #06ec5e;
+}
+.btn:hover {
+    background-color: #ff0000;
+}
+
+@media (max-width: 768px) {
+    .left {
+        display: none;
+    }
+}

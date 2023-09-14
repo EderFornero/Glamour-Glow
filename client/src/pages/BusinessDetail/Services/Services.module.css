@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 69%;
+  @media (max-width: 1246px) {
+    width: 100%;
+  }
+}
+
+.services {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
