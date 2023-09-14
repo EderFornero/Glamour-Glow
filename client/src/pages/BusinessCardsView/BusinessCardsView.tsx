@@ -1,6 +1,6 @@
 // components
 import SearchBar from '../../components/SearchBar/SearchBar'
-import Cards from '../../components/Cards/Cards'
+import Cards from '../../components/CardsContainer/Cards'
 // hooks
 // import { useSearchBarHome } from '../../hooks/index'
 // // mock
