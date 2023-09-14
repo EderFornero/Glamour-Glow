@@ -15,7 +15,10 @@ const NavFull = (): JSX.Element => {
 
   const handleLogout = (): void => {
     dispatch(setAuth(false))
-    localStorage.clear()
+    localStorage.removeItem('token')
+    localStorage.removeItem('isAuth')
+    localStorage.removeItem('id')
+    localStorage.removeItem('role')
   }
 
   useEffect(() => {

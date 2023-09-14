@@ -12,6 +12,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import approved from '../../assets/approved.svg'
 import failure from '../../assets/failure.svg'
 import type { ServiceProvider } from '../../interfaces'
+// import { paymentConfirmation, sendSellerEmail } from '../../utils'
 
 interface Notification {
   isOpen: boolean
@@ -21,9 +22,9 @@ interface Notification {
 
 const BusinessDetail = (): JSX.Element => {
   const dispatch = useDispatch()
+
   const { id } = useParams()
   const sellerdetail = useSelector((state: RootState) => state.sellerdetail) as ServiceProvider
-  console.log(sellerdetail, 'SOY EL SELLER DETAIL')
   const userdetail = useSelector((state: RootState) => state.userdetail)
   const [notification, setNotification] = useState<Notification>({
     isOpen: false,
@@ -41,6 +42,8 @@ const BusinessDetail = (): JSX.Element => {
         isOpen: true,
         type: 'approved'
       })
+      // paymentConfirmation()
+      // sendSellerEmail()
     } else if (status === 'failure') {
       setNotification({
         content: 'Payment failed',
