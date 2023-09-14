@@ -9,6 +9,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { getSellerbyId, getUsers } from '../../redux/actions'
 import type { RootState } from '../../redux/types'
 import type { ServiceProvider } from '../../interfaces'
+import UpdateBusinessImages from './AdminParts/UpdateBusinessImages/UpdateBusinessImage'
 
 const AdminDashboard: React.FC = () => {
   const [activeItem, setActiveItem] = useState<string>('')
@@ -29,6 +30,7 @@ const AdminDashboard: React.FC = () => {
         {activeItem === 'Create' && <FormSeller />}
         {(activeItem === 'List' || activeItem === 'Services') && <SellerServices sellerName={sellerdetail.sellerName} services={sellerdetail.servicesArray} setActiveItem={setActiveItem} />}
         {activeItem === 'Clients' && <Clients sellerName='Hola' services={users} />}
+        {activeItem === 'Interface' && <UpdateBusinessImages />}
       </div>
     </div>
   )

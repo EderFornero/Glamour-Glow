@@ -74,7 +74,7 @@ const Cloudinary = (): JSX.Element => {
     }
   }
 
-  const updateBusinessImage = location.pathname === `/sellerdetail/${id}`
+  const updateBusinessImage = location.pathname === `/admin/seller/${id}`
   return (
     <StyledDiv>
       {

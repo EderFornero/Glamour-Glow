@@ -28,7 +28,7 @@ const SellerServices: React.FC<Props> = ({ sellerName, services, setActiveItem }
   return (
     <div className= {style['seller-services-container']}>
       <div className= {style['seller-services-header']}>
-        <h2>Servicios de {sellerName}</h2>
+        <h2>{sellerName}&apos;s Services</h2>
         <button onClick={() => { setActiveItem('Create') }}>ADD NEW</button>
       </div>
       <ul className={style['service-list']}>
@@ -43,15 +43,15 @@ const SellerServices: React.FC<Props> = ({ sellerName, services, setActiveItem }
                     console.log(`Editar servicio con ID ${service.id}: ${e.target.value}`)
                   }}
                 />
-                <button onClick={() => { setEditedServiceId(null) }}>Guardar</button>
+                <button onClick={() => { setEditedServiceId(null) }}>Save</button>
               </>)
               : (
               <>
                 <span> {index + 1}</span>
                 <span className={style['service-name']}> {service.name}</span>
                 <span className={style['service-price']}> $ {service.price}</span>
-                <button className={style['edit-button']} onClick={() => { handleEditClick(service.id) }}>Editar</button>
-                <button className={style['delete-button']} onClick={() => { handleDeleteClick(service.id) }}>Eliminar</button>
+                <button className={style['edit-button']} onClick={() => { handleEditClick(service.id) }}>Edit</button>
+                <button className={style['delete-button']} onClick={() => { handleDeleteClick(service.id) }}>Delete</button>
               </>
                 )}
           </li>

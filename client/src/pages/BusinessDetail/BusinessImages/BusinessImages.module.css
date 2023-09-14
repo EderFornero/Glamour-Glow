@@ -14,32 +14,14 @@
     }
     .main-img {
       width: 100%;
-      object-fit: cover;
-      display: flex;
-      border-radius: 10px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-    }
-  }
-
-  .main-img-container-hovered {
-    position: relative;
-    width: 100%;
-    height: 500px;
-    @media (min-width: 910px) {
-      display: flex;
-      flex-grow: 1;
-    }
-
-    .main-img {
-      width: 100%;
       display: flex;
       border-radius: 10px;
       object-fit: cover;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-      filter: blur(2px);
       cursor: auto;
     }
   }
+
 
   .main-img-container-hovered:hover .upload-image-container {
     transform: translateY(-50%);

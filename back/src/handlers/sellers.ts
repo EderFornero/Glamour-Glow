@@ -53,14 +53,7 @@ export const putSellersHandler = async (id: String, update: object) => {
 };
 
 export const patchSellerImages = async (id: string, images: string[]) => {
-  let sellerUpdate = await SellerModel.findOne({ _id: id });
-  let updateImages = sellerUpdate?.images
-    images.map((image) => {
-    updateImages?.includes(image)
-      ? updateImages = updateImages?.filter(img => img !== image)
-      : updateImages?.push(image)
-  })
-  await SellerModel.findOneAndUpdate({_id: id} , {images : updateImages})
+  await SellerModel.findOneAndUpdate({_id: id} , {images : images})
 };
 
 // delete Handlers

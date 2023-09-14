@@ -118,7 +118,7 @@ const router = createBrowserRouter([
         element: <AboutUs />
       },
       {
-        path: '/admin/:id',
+        path: '/admin/seller/:id',
         children: [
           {
             index: true,

@@ -39,7 +39,7 @@ const Clients: React.FC<Props> = ({ services }) => {
                     setEditedServiceId(null)
                   }}
                 >
-                  Guardar
+                  Save
                 </button>
               </>
             ) : (
