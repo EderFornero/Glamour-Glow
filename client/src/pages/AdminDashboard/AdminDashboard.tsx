@@ -1,5 +1,5 @@
 import SideBar from '../../components/SideBar/SideBar'
-import SellerServices from './AdminParts/ServiceList'
+// import SellerServices from './AdminParts/ServiceList'
 import Clients from './AdminParts/Clients'
 import FormSeller from '../../components/FormSeller/FormSeller'
 import { useEffect, useState } from 'react'
@@ -38,7 +38,8 @@ const AdminDashboard: React.FC = () => {
       <SideBar setActiveItem={setActiveItem} activeItem={activeItem} />
       <div className={style['right-section']}>
         {activeItem === 'Create' && <FormSeller />}
-        {(activeItem === 'List' || activeItem === 'Services') && <SellerServices sellerid={sellerdetail.sellerid} services={sellerdetail.servicesArray} setActiveItem={setActiveItem} />}
+        {(activeItem === 'List' || activeItem === 'Services')}
+        {/* &&  <SellerServices sellerid={sellerdetail.sellerid} services={sellerdetail.servicesArray}  setActiveItem={setActiveItem} />  */}
         {activeItem === 'Clients' && <Clients sellerName='Hola' services={users} />}
         {activeItem === 'Interface' && <UpdateBusinessImages />}
         {activeItem === 'Display' && <div className={style['Display-business']}>
