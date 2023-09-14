@@ -11,49 +11,135 @@
   justify-content: space-between;
 }
 
+.seller-services-header button{
+  background-color: var(--secondary-color);
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-weight: bold;
+  color: white;
+}
+
+.seller-services-header button:hover{
+  box-shadow: 1px 1px 10px var(--secondary-color);
+}
+
 .service-list {
   list-style: none;
   margin-top: 20px;
   padding: 0;
   width: 65vw;
   min-width: 25rem;
+  font-weight: bol;
+}
+
+.list-number{
+  font-weight: bold;
+  font-size: 20px;
 }
 
 .service-item {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   margin: 10px 0;
   padding: 10px;
   border-bottom: 1px solid black;
 }
 
+.service-item input{
+  padding: 5px;
+  margin: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.service-item input:focus{
+  border-color: var(--primary-color); 
+  box-shadow: 0 0 5px var(--primary-color);
+}
+
+.price-input{
+  width: 100px;
+}
+
+.service-left{
+  display: flex;
+  flex-direction: column;
+}
+
+.service-buttons{
+display: flex;
+flex-direction: column;
+}
+
+.service-buttons button{
+  background-color: var(--secondary-color);
+  border: 1px solid black;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+.service-left-full{
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+}
+
 .service-name {
   flex-grow: 1;
-  margin-inline: 20px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.service-description{
+  margin-top: 5px;
+  font-size: 15px;
 }
 
 .service-price{
   flex-grow: 1;
   margin-right: 10px;
   text-align: right;
+  font-weight: bold;
+  font-size: 20px;
+  margin-right: 20px;
 }
 
 .edit-button {
-  background-color: #007bff;
+  background-color: var(--secondary-color);
   color: white;
   border: none;
   padding: 5px 10px;
   cursor: pointer;
   border-radius: 5px;
-  margin-inline: 5px;
+  margin: 5px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.edit-button:hover {
+  box-shadow: 1px 1px 5px var(--secondary-color);
 }
 
 .delete-button {
-  background-color: #dc3545;
+  background-color: rgb(255, 72, 72);
   color: white;
   border: none;
   padding: 5px 10px;
   cursor: pointer;
   border-radius: 5px;
-  margin-inline: 5px;
+  margin: 5px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.delete-button:hover {
+  box-shadow: 1px 1px 5px red;
 }

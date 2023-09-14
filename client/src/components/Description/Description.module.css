@@ -207,13 +207,13 @@ h3 {
 }
 
 .card-features p {
-  font-size: 13px;
+  font-size: 15px;
   color: #9c9c9c;
   height: 65px;
   align-items: start;
   margin-top: 10px;
   @media (max-width: 680px) {
-    font-size: 11px;
+    font-size: 12px;
   }
 }
 

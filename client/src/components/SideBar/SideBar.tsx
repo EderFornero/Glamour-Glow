@@ -5,6 +5,7 @@ import SubMenu from './parts/SubMenu'
 import Icon from './parts/Icon'
 import menu from '../../assets/sidebard-icons/menu.svg'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 interface SideBarProps {
   setActiveItem: (item: string) => void
@@ -25,10 +26,12 @@ const SideBar: React.FC<SideBarProps> = ({ setActiveItem, activeItem }) => {
   return (
     <aside className={styles.sidebar}>
       <div className={styles['sidebar-header']}>
-        <button type='button' className={'sidebar-button'} onClick={toggleSidebar}>
-          <Icon icon={menu} />
-        </button>
-        <span>Admin</span>
+        <Link to='/'>
+          <button type='button' className={styles['sidebar-button']} onClick={toggleSidebar}>
+            <Icon icon={menu} />
+            <p>Home</p>
+          </button>
+        </Link>
       </div>
       {menuItems.map((item) => (
         <>

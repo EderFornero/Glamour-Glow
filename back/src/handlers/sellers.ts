@@ -19,7 +19,7 @@ export const getSellersByIdHandler = async (id: String) => {
       _id: 0,
       name: 1,
     })
-    .populate("servicesArray", { _id: 0, name: 1, price: 1, description: 1 })
+    .populate("servicesArray", { _id: 1, name: 1, price: 1, description: 1 })
     .populate({
       path: "reviews",
       select: { _id: 0, rating: 1, description: 1},
@@ -53,14 +53,7 @@ export const putSellersHandler = async (id: String, update: object) => {
 };
 
 export const patchSellerImages = async (id: string, images: string[]) => {
-  let sellerUpdate = await SellerModel.findOne({ _id: id });
-  let updateImages = sellerUpdate?.images
-    images.map((image) => {
-    updateImages?.includes(image)
-      ? updateImages = updateImages?.filter(img => img !== image)
-      : updateImages?.push(image)
-  })
-  await SellerModel.findOneAndUpdate({_id: id} , {images : updateImages})
+  await SellerModel.findOneAndUpdate({_id: id} , {images : images})
 };
 
 // delete Handlers
