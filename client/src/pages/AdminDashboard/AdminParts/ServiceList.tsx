@@ -65,7 +65,7 @@ const SellerServices: React.FC<Props> = ({ setActiveItem }) => {
   return (
     <div className= {style['seller-services-container']}>
       <div className= {style['seller-services-header']}>
-        <h2>{sellerName}</h2>
+        <h2>{sellerName}&apos;s Services</h2>
         <button onClick={() => { setActiveItem('Create') }}>ADD NEW</button>
       </div>
       <ul className={style['service-list']}>
@@ -80,8 +80,8 @@ const SellerServices: React.FC<Props> = ({ setActiveItem }) => {
               </div>
                 $ <input className={style['price-input']} type="number" name="price" value={Service?.price.toString()} onChange={handleChange}/>
               <div className={style['service-buttons']}>
-                <button onClick={handleSaveClick}>Guardar</button>
-                <button onClick={handleCancelClick}>Cancelar</button>
+                <button onClick={handleSaveClick}>Save</button>
+                <button onClick={handleCancelClick}>Cancel</button>
               </div>
               </>)
               : (
@@ -92,8 +92,8 @@ const SellerServices: React.FC<Props> = ({ setActiveItem }) => {
                 </div>
                 <span className={style['service-price']}> $ {service.price}</span>
                 <div className={style['service-left-full']}>
-                  <button className={style['edit-button']} onClick={() => { handleEditClick(service._id) }}>Editar</button>
-                  <button className={style['delete-button']} onClick={() => { handleDeleteClick(service._id) }}>Eliminar</button>
+                  <button className={style['edit-button']} onClick={() => { handleEditClick(service._id) }}>Edit</button>
+                  <button className={style['delete-button']} onClick={() => { handleDeleteClick(service._id) }}>Delete</button>
                 </div>
               </>
                 )}

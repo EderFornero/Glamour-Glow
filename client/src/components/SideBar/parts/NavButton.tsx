@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import React from 'react'
 import styles from '../SideBar.module.css'
 import arrowup from '../../../assets/sidebard-icons/arrow-up.svg'
 import arrowdown from '../../../assets/sidebard-icons/arrow-down.svg'
@@ -13,7 +13,7 @@ interface ButtonProps {
   hasSubNav?: boolean
 }
 
-const NavButton: FC<ButtonProps> = ({
+const NavButton: React.FC<ButtonProps> = ({
   onClick,
   name,
   icon,
@@ -23,19 +23,24 @@ const NavButton: FC<ButtonProps> = ({
   <button
     type="button"
     onClick={() => {
-      onClick(name);
+      onClick(name)
     }}
     className={`${isActive ? styles.active : ''}`}
   >
     {icon && <Icon icon={icon} />}
     <span>
-      {name === 'Home' ? (
+      {name === 'Home'
+        ? (
         <Link className={styles['home-link']} to="/">
           {name}
         </Link>
-      ) : (
-        name
-      )}
+          )
+        : (
+          <p
+          className={`${name === 'Settings' || name === 'Services' || name === 'Calendar' || name === 'Clients' || name === 'Messages'
+          ? styles['other-links']
+          : styles['drop-down-menu']}`}>{name}</p>
+          )}
     </span>
     {hasSubNav && (
       <img
@@ -44,6 +49,6 @@ const NavButton: FC<ButtonProps> = ({
       />
     )}
   </button>
-);
+)
 
-export default NavButton;
+export default NavButton

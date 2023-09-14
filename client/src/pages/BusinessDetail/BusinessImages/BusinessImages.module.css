@@ -1,43 +1,96 @@
 .images {
-    @media (min-width: 910px) {
+  @media (min-width: 910px) {
     display: flex;
     gap: 15px;
-    
+  }
+
+  .main-img-container {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    @media (min-width: 910px) {
+      display: flex;
+      flex-grow: 1;
+    }
+    .main-img {
+      width: 100%;
+      display: flex;
+      border-radius: 10px;
+      object-fit: cover;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+      cursor: auto;
+    }
+  }
+
+
+  .main-img-container-hovered:hover .upload-image-container {
+    transform: translateY(-50%);
+    opacity: 1;
+  }
+
+  .side-images {
+    display: none;
+    height: 480px;
+    @media (min-width: 910px) {
+      display: flex;
+      width: 50%;
+
+      flex-direction: column;
+      gap: 20px;
+    }
+    .side-images-relative {
+      position: relative;
+      height: 50%;
+    }
+    .other-img-container-hovered{
+      width: 100%;
+      height: 100%;
+    }
+    .other-img-container{
+      width: 100%;
+      height: 100%;
+    }
+    .second-image {
+      width: 500px;
+      height: 240px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    .third-image {
+      width: 500px;
+      height: 240px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    }
+  }
 }
 
-.main-img-container{
-    
-    width: 100%;
-    @media (min-width: 910px) {
-        display: flex;
-        flex-grow: 1;
-      }
-     .main-img {
-        width: 100%;
-        display: flex;
-        border-radius: 10px;
-        object-fit: cover;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.50);
-    }
+.other-img-container-hovered:hover .upload-image-container {
+  transform: translateY(-50%);
+  opacity: 1;
 }
-.side-images{
-    display: none;
-    @media (min-width: 910px) {
-        display: flex;
-        width: 50%;
-        
-        flex-direction: column;
-        gap: 20px;
-      }
-      :first-child{
-        width: 100%;
-        border-radius: 10px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.50);
-      }
-      :last-child{
-        width: 100%;
-        border-radius: 10px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.50);
-      }
+
+.other-img-container-hovered:hover .second-image{
+  filter: blur(2px);
 }
+
+.other-img-container-hovered:hover .third-image{
+  filter: blur(2px);
+}
+
+.upload-image-container {
+  transform: translateY(200%);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0;
+  opacity: 0;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+  position: absolute;
+  bottom: 0;
+  right: 20px;
 }

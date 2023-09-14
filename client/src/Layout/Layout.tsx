@@ -1,4 +1,4 @@
-import { Outlet, useLocation } from 'react-router-dom'
+import { Outlet, useLocation, useParams } from 'react-router-dom'
 import { useEffect } from 'react'
 // redux
 import { useDispatch } from 'react-redux'
@@ -12,6 +12,7 @@ const Layout: React.FC = () => {
   const location = useLocation()
   const dispatch = useDispatch()
   const { pathname } = useLocation()
+  const { id } = useParams()
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -19,7 +20,7 @@ const Layout: React.FC = () => {
     dispatch(getAllBusiness())
   }, [pathname])
 
-  const showNavFooter = location.pathname !== '/admin/:id'
+  const showNavFooter = location.pathname !== '/admin/glamour' && location.pathname !== `/admin/seller/${id}`
   return (
     <>
       {showNavFooter && <Nav />}

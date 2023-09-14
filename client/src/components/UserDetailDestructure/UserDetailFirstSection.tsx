@@ -60,7 +60,7 @@ const UserDetailFirstSection = (): JSX.Element => {
     <section className={styles.sectionleft}>
       <div className={styles.userdetail}>
         <div className={styles['userdetail-header']}>
-          <img src={userdetail.image ?? NoProfileImage} alt='Profile' />
+          <img src={userdetail.image ?? NoProfileImage} alt={userdetail.name} />
           <Cloudinary />
           <h1>
             {userdetail.name} {userdetail.lastName}

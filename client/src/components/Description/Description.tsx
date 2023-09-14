@@ -37,9 +37,6 @@ function Description (): JSX.Element {
               </span>
               <h4>{service.title}</h4>
               <p>{service.description}</p>
-              <div className={styles['div-card-features-a']}>
-                <a href="#">Learn More</a>
-              </div>
             </div>
           ))}
         </div>

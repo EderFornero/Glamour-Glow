@@ -12,3 +12,4 @@ export const Feature6 = 'https://res.cloudinary.com/dgl4t7gvo/image/upload/v1694
 
 export const NotFoundImage = 'https://res.cloudinary.com/dgl4t7gvo/image/upload/v1694386985/Glamour-Glow/notfound_ofcgzg.png'
 export const NoProfileImage = 'https://res.cloudinary.com/dgl4t7gvo/image/upload/v1694510465/Glamour-Glow/jsaroyrbgcallxetswra.png'
+export const NotAvailableImage = 'https://res.cloudinary.com/dgl4t7gvo/image/upload/v1694610693/Glamour-Glow/nzyoeo15mvxj9v05bipf.png'

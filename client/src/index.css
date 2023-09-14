@@ -17,7 +17,7 @@
 body {
   background-color: var(--neutral-color);
   overflow-x: hidden;
-  
+  overflow-y: scroll; 
 
 }
 

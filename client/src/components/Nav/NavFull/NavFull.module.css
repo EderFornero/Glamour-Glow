@@ -14,10 +14,10 @@ nav {
         font-weight: bold;
       }
       .userimg-full{
-        width: 3rem;
-        height: 3rem;
+        width: 55px;
+        height: 50px;
         border-radius: 50%;
-        border: 1px solid white;
+        border: solid 1px var(--accent-color);
       }
   }
 
