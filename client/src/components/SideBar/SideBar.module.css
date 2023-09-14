@@ -8,11 +8,12 @@
   
   .sidebar {
     position: fixed;
-    top: 0;
+    top: 65px;
     left: 0;
-    width: 260px;
+    width: 220px;
     height: 100%;
     background: #ffffff;
+    transform: translateX(0);
     transition: width 0.4s;
     z-index: 2;
   }
@@ -20,15 +21,8 @@
   .sidebar-header {
     display: flex;
     align-items: center;
-    height: 72px;
     border-bottom: 1px solid #6d6d6d;
     margin-bottom: 20px;
-  }
-
-  .sidebar-button{
-    position: absolute;
-    z-index: 3;
-    
   }
   
   .home-link{

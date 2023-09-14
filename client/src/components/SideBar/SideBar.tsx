@@ -12,7 +12,7 @@ interface SideBarProps {
 }
 
 const SideBar: React.FC<SideBarProps> = ({ setActiveItem, activeItem }) => {
-  const [sidebarVisible, setSidebarVisible] = useState<boolean>(false)
+  const [sidebarVisible, setSidebarVisible] = useState<boolean>(true)
 
   const handleClick = (item: string): void => {
     setActiveItem(item !== activeItem ? item : '')
@@ -28,7 +28,6 @@ const SideBar: React.FC<SideBarProps> = ({ setActiveItem, activeItem }) => {
         <button type='button' className={'sidebar-button'} onClick={toggleSidebar}>
           <Icon icon={menu} />
         </button>
-        <span>Admin</span>
       </div>
       {menuItems.map((item) => (
         <>

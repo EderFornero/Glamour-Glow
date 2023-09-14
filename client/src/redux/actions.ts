@@ -227,11 +227,20 @@ export const postService: any = (payload: any) => {
   }
 }
 
-export const updateService: any = (payload: any) => {
-  const endpoint = `${API_URL}services`
+export const updateService: any = (id: string, payload: any) => {
+  const endpoint = `${API_URL}services/${id}`
 
   return async function (_dispatch: any) {
-    const response = await axios.post(endpoint, payload)
+    const response = await axios.put(endpoint, payload)
+    return response
+  }
+}
+
+export const deleteService: any = (id: string) => {
+  const endpoint = `${API_URL}services/${id}`
+
+  return async function () {
+    const response = await axios.delete(endpoint)
     return response
   }
 }

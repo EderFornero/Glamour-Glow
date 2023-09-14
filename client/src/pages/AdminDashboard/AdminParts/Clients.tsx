@@ -25,6 +25,7 @@ const Clients: React.FC<Props> = ({ services }) => {
       <ul className={style['service-list']}>
         {services.map((service, index) => (
           <li key={service.id} className={style['service-item']}>
+            <span className={style['list-number']}> {index + 1}</span>
             {editedServiceId === service.id
               ? (<>
                 <input
@@ -44,7 +45,6 @@ const Clients: React.FC<Props> = ({ services }) => {
               </>)
               : (
               <>
-                <span> {index + 1}</span>
                 <span className={style['service-name']}> {service.name}</span>
                 <button
                   className={style['edit-button']}

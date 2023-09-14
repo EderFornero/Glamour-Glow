@@ -19,7 +19,7 @@ const Layout: React.FC = () => {
     dispatch(getAllBusiness())
   }, [pathname])
 
-  const showNavFooter = location.pathname !== '/admin'
+  const showNavFooter = location.pathname !== '/admin/:id'
   return (
     <>
       {showNavFooter && <Nav />}

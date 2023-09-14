@@ -15,10 +15,10 @@ const NavFull = (): JSX.Element => {
 
   const handleLogout = (): void => {
     dispatch(setAuth(false))
-    localStorage.removeItem('token')
-    localStorage.removeItem('isAuth')
     localStorage.removeItem('id')
     localStorage.removeItem('role')
+    localStorage.removeItem('token')
+    localStorage.removeItem('isAuth')
   }
 
   useEffect(() => {
@@ -55,15 +55,25 @@ const NavFull = (): JSX.Element => {
           </li>
             {role === 'seller'
               ? (<>
-              <NavLink to={`/admin/${id}`} className={style['link-full']}>
-                MyBusiness
-              </NavLink>
+              <li className={style['menu-item-full']}>
+                <NavLink to={`/admin/${id}`} className={style['link-full']}>
+                  MyBusiness
+                </NavLink>
+              </li>
                 </>
                 )
-              : (
-              <NavLink to={`/userdetail/${id}`}>
-                <img className={style['userimg-full']} src={userdetail.image ?? imgprofile} />
-              </NavLink>
+              : (<>
+              <li className={style['menu-item-full']}>
+                <NavLink to='/businessLogin' className={style['link-full']}>
+                  For Business
+                </NavLink>
+              </li>
+              <li className={style['menu-item-full']}>
+                <NavLink to={`/userdetail/${id}`}>
+                 <img className={style['userimg-full']} src={userdetail.image ?? imgprofile} />
+               </NavLink>
+              </li>
+            </>
                 )
             }
             </>

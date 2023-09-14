@@ -30,7 +30,7 @@ const AdminDashboard: React.FC = () => {
       <SideBar setActiveItem={setActiveItem} activeItem={activeItem} />
       <div className={style['right-section']}>
         {activeItem === 'Create' && <FormSeller />}
-        {(activeItem === 'List' || activeItem === 'Services') && <SellerServices sellerName={sellerdetail.sellerName} services={sellerdetail.servicesArray} setActiveItem={setActiveItem} />}
+        {(activeItem === 'List' || activeItem === 'Services') && <SellerServices sellerid={sellerdetail.sellerid} services={sellerdetail.servicesArray} setActiveItem={setActiveItem} />}
         {activeItem === 'Clients' && <Clients sellerName='Hola' services={users} />}
         {activeItem === 'Display' && <div className={style['Display-business']}>
                                         <BusinessInfo sellerName={sellerdetail.sellerName} reviews={sellerdetail.reviews} />

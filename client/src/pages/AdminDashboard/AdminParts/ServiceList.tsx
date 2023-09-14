@@ -1,8 +1,12 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import style from './ServiceList.module.css'
+import { useDispatch, useSelector } from 'react-redux'
+import { updateService, deleteService, getSellerbyId } from '../../../redux/actions'
+import { useParams } from 'react-router-dom'
+import type { RootState } from '../../../redux/types'
 
 interface Service {
-  id: number
+  _id: string
   name: string
   price: number
   description: string
@@ -10,17 +14,23 @@ interface Service {
 }
 
 interface Props {
-  sellerName: string
-  services: Service[]
+  sellerid: string
   setActiveItem: (activeItem: string) => void
 }
 
-const SellerServices: React.FC<Props> = ({ sellerName, services, setActiveItem }) => {
+const SellerServices: React.FC<Props> = ({ setActiveItem }) => {
   const [ServiceId, setServiceId] = useState<string | null>(null)
   const [Service, setService] = useState<Service | null>(null)
+  const dispatch = useDispatch()
+  const { id } = useParams()
+  const { servicesArray, sellerName } = useSelector((state: RootState) => state.sellerdetail)
+
+  useEffect(() => {
+    dispatch(getSellerbyId(id))
+  }, [id])
 
   const handleEditClick = (id: any): void => {
-    const serviceToEdit = services.find((service) => service.name === id)
+    const serviceToEdit = servicesArray.find((service: any) => service._id === id)
     if (serviceToEdit !== null) {
       setServiceId(id)
       setService(serviceToEdit)
@@ -29,7 +39,7 @@ const SellerServices: React.FC<Props> = ({ sellerName, services, setActiveItem }
 
   const handleSaveClick = (): void => {
     if (Service !== null) {
-      console.log('Guardar cambios:', Service)
+      dispatch(updateService(ServiceId, Service))
     }
     setServiceId(null)
     setService(null)
@@ -40,8 +50,8 @@ const SellerServices: React.FC<Props> = ({ sellerName, services, setActiveItem }
     setService(null)
   }
 
-  const handleDeleteClick = (id: any): void => {
-    console.log(`Eliminar servicio con ID: ${id}`)
+  const handleDeleteClick = (ServiceId: any): void => {
+    dispatch(deleteService(ServiceId))
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
@@ -55,34 +65,36 @@ const SellerServices: React.FC<Props> = ({ sellerName, services, setActiveItem }
   return (
     <div className= {style['seller-services-container']}>
       <div className= {style['seller-services-header']}>
-        <h2>Servicios de {sellerName}</h2>
+        <h2>{sellerName}</h2>
         <button onClick={() => { setActiveItem('Create') }}>ADD NEW</button>
       </div>
       <ul className={style['service-list']}>
-        {services.map((service, index) => (
-          <li key={service.name} className={style['service-item']}>
-            {ServiceId === service.name
+        {servicesArray.map((service, index) => (
+          <li key={service._id} className={style['service-item']}>
+            <span className={style['list-number']}> {index + 1}</span>
+            {ServiceId === service._id
               ? (<>
-              <span> {index + 1}</span>
-              <div>
+              <div className={style['service-left']}>
                 <input type="text" name="name" value={Service?.name} onChange={handleChange}/>
                 <input type="text" name="description" value={Service?.description} onChange={handleChange}/>
-                <input type="text" name="serviceCategories" value={Service?.serviceCategories} onChange={handleChange}/>
               </div>
-                <input type="text" name="price" value={Service?.price.toString()} onChange={handleChange}/>
+                $ <input className={style['price-input']} type="number" name="price" value={Service?.price.toString()} onChange={handleChange}/>
+              <div className={style['service-buttons']}>
                 <button onClick={handleSaveClick}>Guardar</button>
                 <button onClick={handleCancelClick}>Cancelar</button>
+              </div>
               </>)
               : (
               <>
-                <span> {index + 1}</span>
-                <div>
+                <div className={style['service-left-full']}>
                   <span className={style['service-name']}> {service.name}</span>
                   <span className={style['service-description']}> {service.description}</span>
                 </div>
                 <span className={style['service-price']}> $ {service.price}</span>
-                <button className={style['edit-button']} onClick={() => { handleEditClick(service.name) }}>Editar</button>
-                <button className={style['delete-button']} onClick={() => { handleDeleteClick(service.name) }}>Eliminar</button>
+                <div className={style['service-left-full']}>
+                  <button className={style['edit-button']} onClick={() => { handleEditClick(service._id) }}>Editar</button>
+                  <button className={style['delete-button']} onClick={() => { handleDeleteClick(service._id) }}>Eliminar</button>
+                </div>
               </>
                 )}
           </li>
