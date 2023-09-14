@@ -4,7 +4,6 @@
   font-family: FontText;
   scroll-behavior: smooth;
   box-sizing: border-box;
-  
 }
 
 :root {
@@ -18,8 +17,22 @@
 body {
   background-color: var(--neutral-color);
   overflow-x: hidden;
-  
+  overflow-y: scroll; 
 
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 8px var(--accent-color);
+  
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-color);
+  border-radius: 5px;
 }
 
 @font-face {

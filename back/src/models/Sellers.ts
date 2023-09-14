@@ -3,12 +3,12 @@ import { Category } from "./Category";
 import { Services } from "./Services";
 import { Reviews } from "./Reviews";
 import argon2 from "argon2";
-
+// import { ROLE } from "./User";
 
 export enum ROLE {
-    CUSTOMER = "customer",
-    SELLER = "seller",
-  }
+  CUSTOMER = "customer",
+  SELLER = "seller",
+}
 export enum GENDER {
     ANY = 'any',
     FEMALE = 'female',

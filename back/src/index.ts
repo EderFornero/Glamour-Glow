@@ -1,5 +1,5 @@
 import express from 'express'
-import { userRouter, sellerRouter, serviceRouter, categoriesRouter, reviewsRouter, nodemailerRouter, paymentRouter, favoritesRouter } from './routes/index'
+import { userRouter, sellerRouter, serviceRouter, categoriesRouter, reviewsRouter, nodemailerRouter, paymentRouter, favoritesRouter, adminRouter } from './routes/index'
 import './db'
 import { logErrors } from './middlewares/logError.middleware'
 import cors, { CorsOptions } from 'cors'
@@ -9,7 +9,7 @@ import session from 'express-session'
 import 'dotenv/config'
 const { TOKEN_ENCRYPTION, PORT } = process.env
 import cookieParser from 'cookie-parser'
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
+
 const server = express()
 const corsOptions: CorsOptions = {
   origin: '*',
@@ -41,6 +41,7 @@ server.use('/', reviewsRouter)
 server.use('/', paymentRouter)
 server.use('/', nodemailerRouter)
 server.use('/', favoritesRouter)
+server.use('/', adminRouter)
 
 server.use(passport.initialize())
 server.use(logErrors)

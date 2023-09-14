@@ -12,7 +12,8 @@ export const logInSeller = async (req: Request, res: Response) => {
        const token = await generateTokenSeller(sellerEmail);
        const role = credentials.role
        const id = credentials.id
-       return res.status(200).send({ id, role, token });
+       const isActive = credentials.isActive
+       return res.status(200).send({ id, role, token , isActive});
      }
     throw new Error("Failed authentication, incorrect credentials");
   } catch (error) {

@@ -19,10 +19,10 @@ export const getSellersByIdHandler = async (id: String) => {
       _id: 0,
       name: 1,
     })
-    .populate("servicesArray", { _id: 0, name: 1, price: 1, description: 1 })
+    .populate("servicesArray", { _id: 1, name: 1, price: 1, description: 1 })
     .populate({
       path: "reviews",
-      select: { _id: 0, rating: 1, description: 1 },
+      select: { _id: 0, rating: 1, description: 1},
       populate: {
         path: "userId",
         select: { _id: 0, name: 1, lastName: 1, image: 1 },
@@ -53,29 +53,20 @@ export const putSellersHandler = async (id: String, update: object) => {
 };
 
 export const patchSellerImages = async (id: string, images: string[]) => {
-  let sellerUpdate = await SellerModel.findOne({ _id: id });
-  let updateImages = sellerUpdate?.images
-    images.map((image) => {
-    updateImages?.includes(image)
-      ? updateImages = updateImages?.filter(img => img !== image)
-      : updateImages?.push(image)
-  })
-  await SellerModel.findOneAndUpdate({_id: id} , {images : updateImages})
+  await SellerModel.findOneAndUpdate({_id: id} , {images : images})
 };
 
 // delete Handlers
 export const disableSellerHandler = async (id: String) => {
   await SellerModel.findByIdAndUpdate(id, { isActive: false });
-  return "Seller has been successfully deleted";
+  return "Seller has been successfully disabled";
 };
 
-export const deleteSellerHandler = async (id: String) => {
-  const sellerDeleted = await SellerModel.findByIdAndDelete(id)
-  if(!sellerDeleted){
-    throw Error("user does not exist")
-  }
-  return id;
-}
+export const enableSellerHandler = async (id: String) => {
+  await SellerModel.findByIdAndUpdate(id, { isActive: true });
+  return "Seller has been successfully enabled";
+};
+
 
 export const validateLogInSeller = async (
   sellerEmail: string,
@@ -84,7 +75,7 @@ export const validateLogInSeller = async (
   //change "any" type
   try {
     const seller = await SellerModel.findOne({ sellerEmail }).exec();
-    if (!seller || !seller.isActive) {
+    if (!seller) {
       throw new Error("Seller is not registered");
     }
 
@@ -93,7 +84,7 @@ export const validateLogInSeller = async (
     if (!isPasswordValid) {
       return false;
     }
-    return { id: seller._id, role: seller.role };
+    return { id: seller._id, role: seller.role , isActive : seller.isActive};
   } catch (error: any) {
     throw new Error(error.message);
   }

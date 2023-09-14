@@ -9,7 +9,7 @@ interface PasswordInputProps {
 const BusiPasswordInput: React.FC<PasswordInputProps> = ({ register, errors }) => {
   const passwordRef = useRef<string | undefined>('')
 
-  const handlePasswordBlur = (event: React.FocusEvent<HTMLInputElement>): void => {
+  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>): any => {
     passwordRef.current = event.target.value
   }
 
@@ -30,7 +30,8 @@ const BusiPasswordInput: React.FC<PasswordInputProps> = ({ register, errors }) =
             message: 'The password is too short'
           }
         })}
-        onBlur={handlePasswordBlur}
+        onBlur={handlePasswordChange}
+        onSubmit={handlePasswordChange}
       />
       <div>
       {errors.sellerPassword?.type === 'required' && (
@@ -48,7 +49,7 @@ const BusiPasswordInput: React.FC<PasswordInputProps> = ({ register, errors }) =
             message: 'Please confirm your password'
           },
           validate: (value: string) =>
-            value === passwordRef.current || 'The passwords don\'t match' // Corrección en el mensaje
+            value === passwordRef.current || 'The passwords don\'t match'
         })}
       />
       <div>

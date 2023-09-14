@@ -9,16 +9,16 @@ import type { RootState } from '../../../redux/types'
 const NavFull = (): JSX.Element => {
   const dispatch = useDispatch()
   const id = localStorage.getItem('id')
+  const role = localStorage.getItem('role')
   const isAuth = localStorage.getItem('isAuth')
   const { userdetail } = useSelector((state: RootState) => state)
-  const role = localStorage.getItem('role')
 
   const handleLogout = (): void => {
     dispatch(setAuth(false))
-    localStorage.removeItem('token')
-    localStorage.removeItem('isAuth')
     localStorage.removeItem('id')
     localStorage.removeItem('role')
+    localStorage.removeItem('token')
+    localStorage.removeItem('isAuth')
   }
 
   useEffect(() => {
@@ -33,31 +33,51 @@ const NavFull = (): JSX.Element => {
             Services
           </NavLink>
         </li>
-        <li className={style['menu-item-full']}>
-          <NavLink to={role !== null && role === 'seller' ? '/businessRegister' : '/businessLogin'} className={style['link-full']}>
-            {role !== null && role === 'seller' ? 'Register your business' : 'For Business'}
-          </NavLink>
-        </li>
-        {isAuth === null ? (
+
+        {isAuth === null
+          ? <>
           <li className={style['menu-item-full']}>
             <NavLink to='/login' className={style['link-full']}>
               Login
             </NavLink>
           </li>
-        ) : (
-          <>
-            <li className={`${style['menu-item-full']} ${style.link} ${style.logout}`} onClick={handleLogout}>
-              <NavLink to='/' className={style['link-full']}>
-                Logout
-              </NavLink>
-            </li>
-            <li className={style['menu-item-full']}>
-              <NavLink to={role !== null && role === 'seller' ? '/admin' : `/userdetail/${id}`}>
-                <img className={style['userimg-full']} src={userdetail.image ?? imgprofile} />
-              </NavLink>
-            </li>
-          </>
-        )}
+          <li className={style['menu-item-full']}>
+            <NavLink to='/businessLogin' className={style['link-full']}>
+              For Business
+            </NavLink>
+          </li>
+            </>
+          : <>
+          <li className={`${style['menu-item-full']} ${style.link} ${style.logout}`} onClick={handleLogout}>
+            <NavLink to='/' className={style['link-full']}>
+              Logout
+            </NavLink>
+          </li>
+            {role === 'seller'
+              ? (<>
+              <li className={style['menu-item-full']}>
+                <NavLink to={`/admin/seller/${id}`} className={style['link-full']}>
+                  MyBusiness
+                </NavLink>
+              </li>
+                </>
+                )
+              : (<>
+              <li className={style['menu-item-full']}>
+                <NavLink to='/businessLogin' className={style['link-full']}>
+                  For Business
+                </NavLink>
+              </li>
+              <li className={style['menu-item-full']}>
+                <NavLink to={`/userdetail/${id}`}>
+                 <img className={style['userimg-full']} src={userdetail.image ?? imgprofile} />
+               </NavLink>
+              </li>
+            </>
+                )
+            }
+            </>
+        }
       </ul>
     </nav>
   )

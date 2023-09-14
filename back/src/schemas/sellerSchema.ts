@@ -1,5 +1,6 @@
 import { z } from "zod";
-import { GENDER, ROLE } from "../models/Sellers";
+import { GENDER } from "../models/Sellers";
+import { ROLE } from "../models/User";
 
 const sellerSchema = z.object({
   sellerName: z
@@ -57,6 +58,12 @@ export const readAndDeleteSellerSchema = z.object({
   }),
 });
 
+export const readAndActiveSellerSchema = z.object({
+  params: z.object({
+    id: z.string(),
+  }),
+});
+
 export const loginSellerSchema = z.object({
   body: z.object({
     sellerEmail: z
@@ -106,6 +113,9 @@ export type updateSellerTypeParams = z.infer<
 >["params"];
 export type readAndDeleteSellerTypeParams = z.infer<
   typeof readAndDeleteSellerSchema
+>["params"];
+export type readAndActiveSellerTypeParams = z.infer<
+  typeof readAndActiveSellerSchema
 >["params"];
 export type loginSellerType = z.infer<typeof loginSellerSchema>["body"];
 export type forgotSellerPasswordTypeBody = z.infer<

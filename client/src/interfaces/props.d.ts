@@ -13,3 +13,12 @@ export interface SearchResultsProps {
   searchResults: ServiceProvider[]
   handleOnSearch: (query: string) => void
 }
+
+export interface UserCardProps {
+  name: string
+  lastName: string
+  email: string
+  image: string
+  _id: string
+  phoneNumber: string
+}
