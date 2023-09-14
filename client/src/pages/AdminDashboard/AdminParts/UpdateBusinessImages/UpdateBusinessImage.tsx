@@ -28,18 +28,23 @@ const UpdateBusinessImages = (): JSX.Element => {
   }
 
   return (
-    <div className={style.images}>
-      <div className={style['side-images-relative']}>
-      <div className={`${isMainHovered ? style['main-img-container-hovered'] : style['main-img-container']}`}
-        onMouseEnter={() => { setIsMainHovered(true) }}
-        onMouseLeave={() => { setIsMainHovered(false) }}
-      >
-        <img src={sellerdetail.images[0] ?? NotAvailableImage} alt={sellerdetail.sellerName} className={style['main-img']} />
-        <div onClick={(e) => { void onClick(0) }} className={style['upload-image-container']}>
-          <Cloudinary />
+    <div className={style['div-container-update-images']}>
+      <div className={style['update-business-images-h6']}>
+        <h5>Update Your Business Images</h5>
+      </div>
+
+      <div className={style.images}>
+        <div className={style['side-images-relative']}>
+          <div className={`${isMainHovered ? style['main-img-container-hovered'] : style['main-img-container']}`}
+            onMouseEnter={() => { setIsMainHovered(true) }}
+            onMouseLeave={() => { setIsMainHovered(false) }}
+          >
+            <img src={sellerdetail.images[0] ?? NotAvailableImage} alt={sellerdetail.sellerName} className={style['main-img']} />
+            <div onClick={(e) => { void onClick(0) }} className={style['upload-image-container']}>
+              <Cloudinary />
+            </div>
+          </div>
         </div>
-      </div>
-      </div>
 
         <div className={style['side-images-relative']}>
           <div className={`${isSecondHovered ? style['other-img-container-hovered'] : style['other-img-container']}`}
@@ -65,6 +70,7 @@ const UpdateBusinessImages = (): JSX.Element => {
           </div>
         </div>
 
+      </div>
     </div>
   )
 }
