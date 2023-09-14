@@ -24,7 +24,7 @@ const AdminDashboard: React.FC = () => {
   }, [])
 
   return (
-    <div>
+    <div className={style['div-sidebar-container']}>
       <SideBar setActiveItem={setActiveItem} activeItem={activeItem} />
       <div className={style['right-section']}>
         {activeItem === 'Create' && <FormSeller />}

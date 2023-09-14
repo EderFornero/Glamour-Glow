@@ -16,10 +16,6 @@ const UpdateBusinessImages = (): JSX.Element => {
   const { id } = useParams()
 
   useEffect(() => {
-    return () => dispatch(cleanSellerDetail())
-  }, [])
-
-  useEffect(() => {
     if (image) {
       sellerdetail.images[sellerImageIndex] = image
       dispatch(updateSellerInfo(id, { images: [...sellerdetail.images] }))
@@ -33,23 +29,24 @@ const UpdateBusinessImages = (): JSX.Element => {
 
   return (
     <div className={style.images}>
+      <div className={style['side-images-relative']}>
       <div className={`${isMainHovered ? style['main-img-container-hovered'] : style['main-img-container']}`}
         onMouseEnter={() => { setIsMainHovered(true) }}
         onMouseLeave={() => { setIsMainHovered(false) }}
       >
-        <img src={sellerdetail.images[0] ?? NotAvailableImage} alt='' className={style['main-img']} />
+        <img src={sellerdetail.images[0] ?? NotAvailableImage} alt={sellerdetail.sellerName} className={style['main-img']} />
         <div onClick={(e) => { void onClick(0) }} className={style['upload-image-container']}>
           <Cloudinary />
         </div>
       </div>
+      </div>
 
-      <div className={style['side-images']}>
         <div className={style['side-images-relative']}>
           <div className={`${isSecondHovered ? style['other-img-container-hovered'] : style['other-img-container']}`}
             onMouseEnter={() => { setIsSecondHovered(true) }}
             onMouseLeave={() => { setIsSecondHovered(false) }}
           >
-            <img className={style['second-image']} src={sellerdetail.images[1] ?? NotAvailableImage} alt='' />
+            <img className={style['second-image']} src={sellerdetail.images[1] ?? NotAvailableImage} alt={sellerdetail.sellerName} />
             <div onClick={(e) => { void onClick(1) }} className={style['upload-image-container']}>
               <Cloudinary />
             </div>
@@ -61,16 +58,14 @@ const UpdateBusinessImages = (): JSX.Element => {
             onMouseEnter={() => { setIsThirdHovered(true) }}
             onMouseLeave={() => { setIsThirdHovered(false) }}
           >
-            <img className={style['third-image']} src={sellerdetail.images[2] ?? NotAvailableImage} alt='' />
+            <img className={style['third-image']} src={sellerdetail.images[2] ?? NotAvailableImage} alt={sellerdetail.sellerName} />
             <div onClick={(e) => { void onClick(2) }} className={style['upload-image-container']}>
               <Cloudinary />
             </div>
           </div>
         </div>
-      </div>
 
     </div>
   )
 }
 export default UpdateBusinessImages
-
