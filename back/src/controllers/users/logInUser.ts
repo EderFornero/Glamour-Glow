@@ -11,7 +11,7 @@ export const logInUser = async (req: Request, res: Response) => {
     if (credentials) {
        const token = await generateToken(email);
        const role = credentials.role 
-       return res.status(200).send({ id: credentials.id, role, token });
+       return res.status(200).send({ id: credentials.id, isActive: credentials.isActive, role, token });
      }
     throw new Error("Failed authentication, incorrect credentials");
   } catch (error) {

@@ -58,6 +58,12 @@ export const readAndDeleteSellerSchema = z.object({
   }),
 });
 
+export const readAndActiveSellerSchema = z.object({
+  params: z.object({
+    id: z.string(),
+  }),
+});
+
 export const loginSellerSchema = z.object({
   body: z.object({
     sellerEmail: z
@@ -107,6 +113,9 @@ export type updateSellerTypeParams = z.infer<
 >["params"];
 export type readAndDeleteSellerTypeParams = z.infer<
   typeof readAndDeleteSellerSchema
+>["params"];
+export type readAndActiveSellerTypeParams = z.infer<
+  typeof readAndActiveSellerSchema
 >["params"];
 export type loginSellerType = z.infer<typeof loginSellerSchema>["body"];
 export type forgotSellerPasswordTypeBody = z.infer<

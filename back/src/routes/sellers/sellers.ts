@@ -1,6 +1,6 @@
 import { Router } from 'express'
 import { schemaValidation } from '../../middlewares/schemaValidator.middleware'
-import { createSellerSchema, loginSellerSchema, readAndDeleteSellerSchema, updateSellerSchema, resetSellerPasswordSchema } from '../../schemas/sellerSchema'
+import { createSellerSchema, loginSellerSchema, readAndDeleteSellerSchema, updateSellerSchema, resetSellerPasswordSchema, readAndActiveSellerSchema } from '../../schemas/sellerSchema'
 import { getSellersController } from '../../controllers/sellers/getSellers'
 import { postSellersController } from '../../controllers/sellers/postSeller'
 import { getSellersByIdController } from '../../controllers/sellers/getSellerById'
@@ -19,8 +19,8 @@ router.post('/', schemaValidation(createSellerSchema), postSellersController)
 router.post('/login',schemaValidation(loginSellerSchema), logInSeller)
 router.post("/forgotPassword", forgotSellerPassword)
 router.post("/resetPassword/:id/:passwordResetCode",schemaValidation(resetSellerPasswordSchema), resetSellerPassword)
-router.put('/:id',/*  passport.authenticate('jwt', { session: false }), */ schemaValidation(updateSellerSchema), putSellersController)
-router.delete('/:id',  passport.authenticate('jwt', { session: false }), schemaValidation(readAndDeleteSellerSchema), disableSellerController)
-
+router.put('/:id', passport.authenticate('jwt', { session: false }), schemaValidation(updateSellerSchema), putSellersController)
+router.put('/disable/:id', passport.authenticate('jwt', { session: false }), schemaValidation(readAndDeleteSellerSchema), disableSellerController)
+router.put('/enable/:id', passport.authenticate('jwt', { session: false }), schemaValidation(readAndActiveSellerSchema), disableSellerController)
 
 export default router;
