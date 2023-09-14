@@ -13,7 +13,10 @@ const pipeline = [
     },
   },
   {
-    $unwind: "$favorites",
+    $unwind: {
+      path: "$favorites",
+      preserveNullAndEmptyArrays: true,
+    },
   },
   {
     $lookup: {
@@ -24,7 +27,10 @@ const pipeline = [
     },
   },
   {
-    $unwind: "$favorites.seller",
+    $unwind: {
+      path: "$favorites.seller",
+      preserveNullAndEmptyArrays: true,
+    },
   },
   {
     $lookup: {
@@ -67,7 +73,11 @@ const pipeline = [
     $unset: [
       "favorites.createdAt",
       "favorites.userId",
+      "favorites.seller.sellerPassword",
       "favorites.seller.sellerEmail",
+      "favorites.seller.role",
+      "favorites.seller.isActive",
+      "favorites.seller.accountBalance",
       "favorites.seller.sellerPhone",
       "favorites.seller.sellerGender",
       "favorites.seller.servicesArray",
@@ -84,13 +94,16 @@ const pipeline = [
 ];
 
 export const readUsers = async () => {
-  const allUsers = await UserModel.aggregate(pipeline);
+  const allUsers = await UserModel.find({}).select({ password: 0 }).exec();
   return allUsers;
 };
 
 export const readUserById = async (id: String) => {
-  const user = await UserModel.findById(id).select({ password: 0 }).exec();
-  if (!user || !user.isActive) {
+  const [user] = await UserModel.aggregate([
+    { $match: { $expr: { $eq: ["$_id", { $toObjectId: id }] } } },
+    ...pipeline,
+  ]);
+  if (!user) {
     throw Error("User not found");
   }
   return user;
@@ -108,17 +121,31 @@ export const updateUser = async (id: String, updates: Object) => {
   return updatedUser;
 };
 
-export const destroyUserService = async (id: any) => {
+export const reActiveUser = async (id : String) => {
   try {
-    const user = await UserModel.findByIdAndUpdate(
+    await UserModel.findByIdAndUpdate(
+      id,
+      { isActive: true },
+      {
+        new: true,
+      }
+    );
+    return "User has been successfully enabled";
+  } catch (error) {
+    throw Error("Something went wrong");
+  }
+}
+
+export const disableUserService = async (id: string) => {
+  try {
+    await UserModel.findByIdAndUpdate(
       id,
       { isActive: false },
       {
         new: true,
       }
     );
-
-    return user;
+    return "User has been successfully disabled";
   } catch (error) {
     throw Error("Something went wrong");
   }
@@ -127,19 +154,15 @@ export const destroyUserService = async (id: any) => {
 export const validateLogIn = async (email: string, password: string) => {
   //change "any" type
   try {
-
-    const user = await UserModel.findOne({ email});
-     if (!user || !user.isActive) {
-      
-       throw new Error("User is not registered");
-     }
-    
+    const user = await UserModel.findOne({ email });
+    if (!user) {
+      throw new Error("User is not registered");
+    }
     const isPasswordValid = await user.validatePassword(password);
-
     if (!isPasswordValid) {
       return false;
     }
-    return { id: user._id, role: user.role };
+    return { id: user._id, isActive : user.isActive, role: user.role };
   } catch (error: any) {
     throw new Error(error.message);
   }

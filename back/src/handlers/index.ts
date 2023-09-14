@@ -5,3 +5,4 @@ export * from "./category";
 export * from "./reviews";
 export * from "./nodemailer";
 export * from "./favorites"
+export * from "./admin"

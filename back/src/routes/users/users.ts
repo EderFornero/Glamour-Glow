@@ -6,9 +6,10 @@ import {
   readAndDeleteUserSchema,
   resetPasswordSchema,
   updateUserSchema,
+  readAndReActiveUserSchema
 } from "../../schemas/userSchema";
 import {
-  deleteUser,
+  disableUser,
   getUser,
   postUser,
   getUserByid,
@@ -20,6 +21,7 @@ import {
 import { rolePermissions } from "../../middlewares/authorization.middleware";
 import passport from "passport";
 import { resetPassword } from "../../controllers/users/resetPassword";
+import { enableUser } from "../../controllers/users/reActiveUser";
 
 const router = Router();
 
@@ -43,12 +45,17 @@ router.put(
   schemaValidation(updateUserSchema),
   putUser
 );
-router.delete(
-  "/:id",
+router.put(
+  "/disable/:id",
   passport.authenticate("jwt", { session: false }),
-  rolePermissions("customer"),
+  rolePermissions("admin"),
   schemaValidation(readAndDeleteUserSchema),
-  deleteUser
+  disableUser
 );
+router.put("/enable/:id",passport.authenticate("jwt", { session: false }),
+rolePermissions("customer"),
+schemaValidation(readAndReActiveUserSchema),
+enableUser)
+
 
 export default router;

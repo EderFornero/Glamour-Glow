@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useGoBack } from '../../hooks'
 import { useForm } from 'react-hook-form'
 import BusiCategoriesInput from './inputs/BusiCategoriesInput'
@@ -43,6 +43,7 @@ const FormBusiness: React.FC<FormLoginProps> = ({ onToggle }: any) => {
     }
   })
 
+  const [showOtherInputs, setShowOtherInputs] = useState(true)
   const categoryList = useSelector((state: RootState) => state.categories)
   const { image } = useSelector((state: RootState) => state)
   useEffect(() => {
@@ -50,9 +51,8 @@ const FormBusiness: React.FC<FormLoginProps> = ({ onToggle }: any) => {
   }, [dispatch])
 
   const onSubmit = handleSubmit((data: FormCreateBusi) => {
-    //  arr.splice(0, 2)
-    //  data.categoriesArray = arr
     delete data.confirmPassword
+
     const businessImage: string[] = []
     if (image !== undefined) {
       businessImage.push(image)
@@ -60,10 +60,19 @@ const FormBusiness: React.FC<FormLoginProps> = ({ onToggle }: any) => {
       businessImage.push('https://mirplaysalon.com/wp-content/uploads/2022/03/img_0033-1024x724.jpg')
     }
     data.images = businessImage
+
+    if (Array.isArray(data.categoriesArray)) {
+      data.categoriesArray = data.categoriesArray.filter((item) => typeof item === 'string')
+    }
+
     console.log(data)
     dispatch(postSeller(data))
     navigate('/')
   })
+
+  const toggleOtherInputs = (): void => {
+    setShowOtherInputs(!showOtherInputs)
+  }
 
   return (
     <div className={style.all}>
@@ -77,15 +86,22 @@ const FormBusiness: React.FC<FormLoginProps> = ({ onToggle }: any) => {
               <h2 className={style.h2}>Tell us about your work</h2>
             </div>
             <form onSubmit={onSubmit} className={style.forms}>
-              <BusiNameInput register={register} errors={errors} />
-              <BusiEmailInput register={register} errors={errors} />
-              <BusiPhoneInput register={register} errors={errors} />
-              <BusiPasswordInput register={register} errors={errors} />
-              <Cloudinary />
-              <div className={style['div-inputs-bottom']}>
-                <BusiCategoriesInput register={register} errors={errors} categoryList={categoryList} />
-                <BusiGenderInput register={register} errors={errors} />
-              </div>
+              <BusiCategoriesInput
+                register={register}
+                errors={errors}
+                categoryList={categoryList}
+                toggleOtherInputs={toggleOtherInputs}
+              />
+              {showOtherInputs && (
+                <>
+                  <BusiNameInput register={register} errors={errors} />
+                  <BusiEmailInput register={register} errors={errors} />
+                  <BusiPhoneInput register={register} errors={errors} />
+                  <BusiPasswordInput register={register} errors={errors} />
+                  <BusiGenderInput register={register} errors={errors} />
+                  <Cloudinary />
+                </>
+              )}
               <div className={style['buton-div']}>
                 <button className={style.btn} onClick={goBack}>
                   Back
