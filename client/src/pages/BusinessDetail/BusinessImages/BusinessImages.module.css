@@ -48,7 +48,7 @@
 
   .side-images {
     display: none;
-    height: 500px;
+    height: 480px;
     @media (min-width: 910px) {
       display: flex;
       width: 50%;
@@ -69,15 +69,15 @@
       height: 100%;
     }
     .second-image {
-      width: 100%;
-      height: 100%;
+      width: 500px;
+      height: 240px;
       object-fit: fill;
       border-radius: 10px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     }
     .third-image {
-      width: 100%;
-      height: 100%;
+      width: 500px;
+      height: 240px;
       object-fit: fill;
       border-radius: 10px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);

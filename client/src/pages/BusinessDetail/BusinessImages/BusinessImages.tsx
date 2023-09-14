@@ -4,29 +4,31 @@ import Cloudinary from '../../../components/Cloudinary/Cloudinary'
 import { useDispatch, useSelector } from 'react-redux'
 import type { RootState } from '../../../redux/types'
 import { NotAvailableImage } from '../../../Images/LandingImages'
-import { updateSellerInfo } from '../../../redux/actions'
+import { updateSellerInfo, cleanSellerDetail } from '../../../redux/actions'
 import { useParams } from 'react-router-dom'
 
 const BusinessImages = (): JSX.Element => {
   const [isMainHovered, setIsMainHovered] = useState(false)
   const [isSecondHovered, setIsSecondHovered] = useState(false)
   const [isThirdHovered, setIsThirdHovered] = useState(false)
+  const [imagen, setImage] = useState('')
+  const [updateCount, setUpdateCount] = useState(0)
   const { sellerdetail, image } = useSelector((state: RootState) => state)
   const dispatch = useDispatch()
   const { id } = useParams()
 
   useEffect(() => {
-    console.log('Image:', image)
-    console.log('Seller Detail Images:', sellerdetail.images)
-    if (image !== undefined && sellerdetail?.images && sellerdetail.images.length > 0) {
-      sellerdetail.images.push(image)
-      const updatedImages = [...sellerdetail.images, image]
-      dispatch(updateSellerInfo(id, { images: updatedImages }))
-    }
-  }, [image])
+    return () => dispatch(cleanSellerDetail())
+  }, [])
 
   const onClick = (e: number): void => {
-    if (image !== undefined && sellerdetail?.images && sellerdetail.images.length > 0) sellerdetail.images[e] = image
+    if (image !== undefined && sellerdetail.images.length > 0) {
+      const updatedImages = [...sellerdetail.images, image]
+      dispatch(updateSellerInfo(id, { images: updatedImages }))
+      sellerdetail.images[e] = image
+      setImage(image)
+      setUpdateCount(updateCount + 1)
+    }
     console.log('Image:', image)
     console.log('Seller Detail Images:', sellerdetail.images)
   }

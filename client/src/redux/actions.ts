@@ -227,5 +227,5 @@ export const postService: any = (payload: any) => {
   }
 }
 export const cleanSellerDetail: any = (): SellerDetailAction => {
-  return { type: CLEAN_SELLER_DETAIL, payload: { _id: '', sellerName: '', sellerEmail: '', sellerPhone: '', sellerGender: '', reviews: [], categoriesArray: [], servicesArray: [] } }
+  return { type: CLEAN_SELLER_DETAIL, payload: { _id: '', sellerName: '', sellerEmail: '', sellerPhone: '', sellerGender: '', reviews: [], categoriesArray: [], servicesArray: [], images: [] } }
 }
