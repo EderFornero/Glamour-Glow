@@ -22,7 +22,7 @@ export const getSellersByIdHandler = async (id: String) => {
     .populate("servicesArray", { _id: 0, name: 1, price: 1, description: 1 })
     .populate({
       path: "reviews",
-      select: { _id: 0, rating: 1, description: 1 },
+      select: { _id: 0, rating: 1, description: 1},
       populate: {
         path: "userId",
         select: { _id: 0, name: 1, lastName: 1, image: 1 },
@@ -66,9 +66,13 @@ export const patchSellerImages = async (id: string, images: string[]) => {
 // delete Handlers
 export const disableSellerHandler = async (id: String) => {
   await SellerModel.findByIdAndUpdate(id, { isActive: false });
-  return "Seller has been successfully deleted";
+  return "Seller has been successfully disabled";
 };
 
+export const enableSellerHandler = async (id: String) => {
+  await SellerModel.findByIdAndUpdate(id, { isActive: true });
+  return "Seller has been successfully enabled";
+};
 
 
 export const validateLogInSeller = async (
@@ -78,7 +82,7 @@ export const validateLogInSeller = async (
   //change "any" type
   try {
     const seller = await SellerModel.findOne({ sellerEmail }).exec();
-    if (!seller || !seller.isActive) {
+    if (!seller) {
       throw new Error("Seller is not registered");
     }
 
@@ -87,7 +91,7 @@ export const validateLogInSeller = async (
     if (!isPasswordValid) {
       return false;
     }
-    return { id: seller._id, role: seller.role };
+    return { id: seller._id, role: seller.role , isActive : seller.isActive};
   } catch (error: any) {
     throw new Error(error.message);
   }
