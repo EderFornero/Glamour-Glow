@@ -19,7 +19,7 @@ export const getSellersByIdHandler = async (id: String) => {
       _id: 0,
       name: 1,
     })
-    .populate("servicesArray", { _id: 0, name: 1, price: 1, description: 1 })
+    .populate("servicesArray", { _id: 1, name: 1, price: 1, description: 1 })
     .populate({
       path: "reviews",
       select: { _id: 0, rating: 1, description: 1},

@@ -8,9 +8,15 @@
   min-height: 100vh;
   max-width: 100vw;
   min-width: 40vw;
-  margin-left: 260px;
+  margin-left: 220px;
   display: flex;
   justify-content: center;
+}
+
+.Display-business{
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
 }
 
 

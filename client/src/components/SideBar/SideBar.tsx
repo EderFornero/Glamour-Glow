@@ -13,7 +13,7 @@ interface SideBarProps {
 }
 
 const SideBar: React.FC<SideBarProps> = ({ setActiveItem, activeItem }) => {
-  const [sidebarVisible, setSidebarVisible] = useState<boolean>(false)
+  const [sidebarVisible, setSidebarVisible] = useState<boolean>(true)
 
   const handleClick = (item: string): void => {
     setActiveItem(item !== activeItem ? item : '')

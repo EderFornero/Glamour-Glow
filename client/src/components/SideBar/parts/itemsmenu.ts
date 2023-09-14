@@ -15,7 +15,7 @@ export const menuItems = [
     id: '3',
     name: 'Services',
     icon: services,
-    items: ['List', 'Create', 'Edit']
+    items: ['List', 'Create']
   },
   {
     id: '4',

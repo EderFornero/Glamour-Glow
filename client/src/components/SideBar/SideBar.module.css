@@ -7,9 +7,9 @@
   }
   .sidebar {
     position: fixed;
-    top: 0;
+    top: 65px;
     left: 0;
-    width: 260px;
+    width: 220px;
     height: 100%;
     background: var(--accent-color);
     transition: width 0.4s;
@@ -19,7 +19,6 @@
   .sidebar-header {
     display: flex;
     align-items: center;
-    height: 72px;
     border-bottom: 1px solid #6d6d6d;
     margin-bottom: 20px;
   }
