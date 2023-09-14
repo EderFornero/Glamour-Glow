@@ -18,7 +18,9 @@ const BusinessImages = (): JSX.Element => {
   }, [])
 
   return (
+    
     <div className={style.images}>
+      <div></div>
       <div className={style['main-img-container']}>
         <img src={sellerdetail.images[0] ?? NotAvailableImage} alt='' className={style['main-img']} />
       </div>
