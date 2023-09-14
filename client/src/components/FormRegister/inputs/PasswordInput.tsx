@@ -30,7 +30,7 @@ const PasswordInput: React.FC<PasswordInputProps> = ({ register, errors }) => {
             message: 'The password is too short'
           }
         })}
-        onSubmit={handlePasswordChange}
+        onBlur={handlePasswordChange}
       />
       <div>
       {errors.password?.type === 'required' && (

@@ -36,6 +36,7 @@ const BusinessLogin: React.FC<BusinessLoginProps> = ({ onToggle }) => {
     try {
       const response = await dispatch(postSellerValidate(data))
       const { id, token, role } = response.data
+      console.log(response.data)
 
       if (token !== undefined && id !== undefined) {
         localStorage.setItem('isAuth', 'true')

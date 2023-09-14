@@ -36,21 +36,20 @@ const FormRegister: React.FC<FormLoginProps> = ({ onToggle }: any) => {
       phoneNumber: '',
       role: 'customer',
       dateOfBirth: '',
-      image: '',
+      image: 'https://www.pngall.com/wp-content/uploads/5/Profile-PNG-Image.png',
       isActive: true,
       confirmPassword: ''
     }
   })
 
   const onSubmit = async (e: any): Promise<void> => {
-    e.preventDefault()
     const data: FormData = getValues()
     delete data.confirmPassword
     console.log(data)
     try {
       await dispatch(postUser(data))
       await sendWelcomeEmail(data.email)
-      navigate('/')
+      navigate('/login')
     } catch (error) {
       throw new Error()
     }
