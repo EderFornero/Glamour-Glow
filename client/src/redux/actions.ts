@@ -236,3 +236,43 @@ export const updateSellerImageIndex: any = (payload: number) => {
     type: UPDATE_SELLER_IMAGE_INDEX, payload
   }
 }
+
+export const postSellerValidate: any = (payload: any) => {
+  const endpointLogin = `${API_URL}sellers/login`
+  return async function () {
+    try {
+      const response = await axios.post(endpointLogin, payload)
+      localStorage.setItem('token', response.data.token)
+
+      return response
+    } catch (error: any) {
+      console.log(error.message)
+    }
+  }
+}
+
+export const deleteUser: any = (id: string) => {
+  const endpointDelete = `${API_URL}admin/dropUser/${id}`
+
+  return async function () {
+    try {
+      const response = await axios.delete(endpointDelete)
+      return response
+    } catch (error: any) {
+      console.log(error.message)
+    }
+  }
+}
+
+export const disableUser: any = (id: string) => {
+  const endpointDisable = `${API_URL}users/disable/${id}`
+
+  return async function () {
+    try {
+      const response = await axios.put(endpointDisable)
+      return response
+    } catch (error: any) {
+      console.log(error.message)
+    }
+  }
+}

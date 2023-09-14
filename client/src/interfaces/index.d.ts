@@ -54,6 +54,11 @@ export interface FormCreateBusi {
   sellerName: string
   sellerEmail: string
   sellerPhone: string
+  sellerPassword: string
+  confirmPassword?: string
+  isActive: boolean
+  images: string[]
+  role: 'customer' | 'seller'
   sellerGender: 'male' | 'female' | 'any'
   categoriesArray: string[]
   servicesArray: string[]
@@ -67,12 +72,17 @@ export interface SellerData {
   name: string
   description: string
   serviceCategories: string
-  price: number
+  price: string
   rating: number
-  seller: string
+  seller: string | null
 }
 
 export interface SellerDetailAction {
   type: string
   payload: ServiceProvider
+}
+
+export interface SellerLoginData {
+  sellerEmail: string
+  sellerPassword: string
 }
