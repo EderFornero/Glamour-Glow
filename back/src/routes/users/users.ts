@@ -48,7 +48,7 @@ router.put(
 router.put(
   "/disable/:id",
   passport.authenticate("jwt", { session: false }),
-  rolePermissions("customer"),
+  rolePermissions("admin"),
   schemaValidation(readAndDeleteUserSchema),
   disableUser
 );

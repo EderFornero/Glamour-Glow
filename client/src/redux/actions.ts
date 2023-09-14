@@ -243,3 +243,29 @@ export const postSellerValidate: any = (payload: any) => {
     }
   }
 }
+
+export const deleteUser: any = (id: string) => {
+  const endpointDelete = `${API_URL}admin/dropUser/${id}`
+
+  return async function () {
+    try {
+      const response = await axios.delete(endpointDelete)
+      return response
+    } catch (error: any) {
+      console.log(error.message)
+    }
+  }
+}
+
+export const disableUser: any = (id: string) => {
+  const endpointDisable = `${API_URL}users/disable/${id}`
+
+  return async function () {
+    try {
+      const response = await axios.put(endpointDisable)
+      return response
+    } catch (error: any) {
+      console.log(error.message)
+    }
+  }
+}

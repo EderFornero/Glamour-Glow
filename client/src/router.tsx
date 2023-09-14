@@ -19,6 +19,7 @@ import BookAService from './pages/BookAService/BookAService.tsx'
 import ResetPassword from './pages/ResetPassword/ResetPassword.tsx'
 // components
 import FormBusiness from './components/FormCreateBusiness/FormCreateBusiness.tsx'
+import UsersCards from './components/UsersCards/UsersCards'
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,15 @@ const router = createBrowserRouter([
           {
             index: true,
             element: <BusinessDetail />
+          }
+        ]
+      },
+      {
+        path: '/admin',
+        children: [
+          {
+            index: true,
+            element: <UsersCards />
           }
         ]
       },
