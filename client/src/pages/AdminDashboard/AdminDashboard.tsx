@@ -13,6 +13,7 @@ import UpdateBusinessImages from './AdminParts/UpdateBusinessImages/UpdateBusine
 import BusinessInfo from '../BusinessDetail/BusinessInfo/BusinessInfo'
 import BusinessImages from '../BusinessDetail/BusinessImages/BusinessImages'
 import Services from '../BusinessDetail/Services/Services'
+import { menuItems } from '../../components/SideBar/parts/itemsmenu'
 
 const AdminDashboard: React.FC = () => {
   const [activeItem, setActiveItem] = useState<string>('')
@@ -35,7 +36,7 @@ const AdminDashboard: React.FC = () => {
 
   return (
     <div className={style['div-sidebar-container']}>
-      <SideBar setActiveItem={setActiveItem} activeItem={activeItem} />
+      <SideBar setActiveItem={setActiveItem} activeItem={activeItem} menuItems={menuItems} />
       <div className={style['right-section']}>
         {activeItem === 'Create' && <FormSeller />}
         {(activeItem === 'List' || activeItem === 'Services') && <ServiceList sellerid={sellerdetail.sellerid} services={sellerdetail.servicesArray} setActiveItem={setActiveItem} />}
