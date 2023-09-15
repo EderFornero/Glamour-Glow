@@ -31,7 +31,6 @@ const BusinessDetail = (): JSX.Element => {
   const sellerdetail = useSelector((state: RootState) => state.sellerdetail) as ServiceProvider
   const userdetail = useSelector((state: RootState) => state.userdetail)
   const sendEmailRef = useRef(0)
-  console.log(userdetail._id)
 
   const sendEmail = async (): Promise<any> => {
     try {
@@ -40,7 +39,7 @@ const BusinessDetail = (): JSX.Element => {
       await sendSellerEmail(userdetail.email, price, sellerdetail.sellerEmail, userdetail.phoneNumber, `${userdetail.name} ${userdetail.lastName}`, service)
       await postTransaction(transactionId, userdetail._id, sellerdetail._id, price)
     } catch (error) {
-      console.log('SALIO TODO HORRENDO')
+      console.log('Email could not be sent')
     }
   }
   useEffect(() => {
