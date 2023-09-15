@@ -23,7 +23,6 @@ const BusinessInfo: React.FC<DetailProps> = ({ sellerName, reviews, sellerId, fa
   const isAuth = localStorage.getItem('isAuth')
   const role = localStorage.getItem('role')
   const userId = useSelector((state: RootState) => state.userdetail._id)
-  const userdetail = useSelector((state: RootState) => state.userdetail)
 
   const navigate = useNavigate()
   const dispatch = useDispatch()
