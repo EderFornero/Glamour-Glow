@@ -4,7 +4,7 @@ import Cloudinary from '../../../../components/Cloudinary/Cloudinary'
 import { useDispatch, useSelector } from 'react-redux'
 import type { RootState } from '../../../../redux/types'
 import { NotAvailableImage } from '../../../../Images/LandingImages'
-import { updateSellerInfo, cleanSellerDetail, updateSellerImageIndex } from '../../../../redux/actions'
+import { updateSellerInfo, updateSellerImageIndex } from '../../../../redux/actions'
 import { useParams } from 'react-router-dom'
 
 const UpdateBusinessImages = (): JSX.Element => {
@@ -16,7 +16,7 @@ const UpdateBusinessImages = (): JSX.Element => {
   const { id } = useParams()
 
   useEffect(() => {
-    if (image) {
+    if (image != null) {
       sellerdetail.images[sellerImageIndex] = image
       dispatch(updateSellerInfo(id, { images: [...sellerdetail.images] }))
       console.log('POST UPDATE', sellerdetail.images)
@@ -40,7 +40,7 @@ const UpdateBusinessImages = (): JSX.Element => {
             onMouseLeave={() => { setIsMainHovered(false) }}
           >
             <img src={sellerdetail.images[0] ?? NotAvailableImage} alt={sellerdetail.sellerName} className={style['main-img']} />
-            <div onClick={(e) => { void onClick(0) }} className={style['upload-image-container']}>
+            <div onClick={(_e) => { void onClick(0) }} className={style['upload-image-container']}>
               <Cloudinary />
             </div>
           </div>
@@ -52,7 +52,7 @@ const UpdateBusinessImages = (): JSX.Element => {
             onMouseLeave={() => { setIsSecondHovered(false) }}
           >
             <img className={style['second-image']} src={sellerdetail.images[1] ?? NotAvailableImage} alt={sellerdetail.sellerName} />
-            <div onClick={(e) => { void onClick(1) }} className={style['upload-image-container']}>
+            <div onClick={(_e) => { void onClick(1) }} className={style['upload-image-container']}>
               <Cloudinary />
             </div>
           </div>
@@ -64,7 +64,7 @@ const UpdateBusinessImages = (): JSX.Element => {
             onMouseLeave={() => { setIsThirdHovered(false) }}
           >
             <img className={style['third-image']} src={sellerdetail.images[2] ?? NotAvailableImage} alt={sellerdetail.sellerName} />
-            <div onClick={(e) => { void onClick(2) }} className={style['upload-image-container']}>
+            <div onClick={(_e) => { void onClick(2) }} className={style['upload-image-container']}>
               <Cloudinary />
             </div>
           </div>

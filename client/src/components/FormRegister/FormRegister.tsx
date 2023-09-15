@@ -18,7 +18,7 @@ interface FormLoginProps {
   onToggle: () => void
 }
 
-const FormRegister: React.FC<FormLoginProps> = ({ onToggle }: any) => {
+const FormRegister: React.FC<FormLoginProps> = () => {
   const goBack = useGoBack()
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -42,7 +42,7 @@ const FormRegister: React.FC<FormLoginProps> = ({ onToggle }: any) => {
     }
   })
 
-  const onSubmit = async (_e: any): Promise<void> => {
+  const onSubmit = async (): Promise<void> => {
     const data: FormData = getValues()
     delete data.confirmPassword
     console.log(data)

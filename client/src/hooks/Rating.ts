@@ -10,8 +10,8 @@ export const useRatingHook = (): {
 } => {
   const dispatch = useDispatch()
   const filteredRating: Record<number, (a: ServiceProvider, b: ServiceProvider) => number> = {
-    1: (a, b) => b.reviews.rating - a.reviews.rating,
-    2: (a, b) => a.reviews.rating - b.reviews.rating
+    // 1: (a, b) => b.reviews.rating - a.reviews.rating,
+    // 2: (a, b) => a.reviews.rating - b.reviews.rating
   }
 
   const useRating = (rating: number): void => {
