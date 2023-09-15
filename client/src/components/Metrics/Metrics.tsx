@@ -1,4 +1,3 @@
-import React from 'react'
 import Pies from './Charts/UsersChart'
 import SellersPies from './Charts/SellersChart'
 
