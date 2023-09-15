@@ -147,5 +147,13 @@ flex-direction: column;
 }
 
 @media screen and (max-width: 800px) {
-  
+  .service-list {
+    width: 70vw;
+    min-width: 20rem;
+  }
+
+  .service-item {
+    justify-content: space-between;
+    width: 100%;
+  }
 }

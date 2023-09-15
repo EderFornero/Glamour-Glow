@@ -1,16 +1,15 @@
-
 .botn {
     border-radius: 10px;
     height: 25px;
     width: 80px;
-        background-color: #3e38b6;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        padding: 0px 20px;
-        font-size: 16px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
+    background-color: #3e38b6;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 0px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
     margin-right: 40px;
 }
 
@@ -23,4 +22,31 @@
 }
 .botn:hover {
     background-color: #ff0000;
+}
+
+.div-buttons{
+  margin-bottom: 20px;
+}
+
+.terms-and-conditions {
+  display: none;
+}
+  
+.terms-and-conditions-show-terms {
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  background-color: white;
+  overflow-y: auto; 
+  max-height: 300px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  z-index: 2
+}
+
+.terms-conditions{
+    color: white;
+    font-size: 15px;
 }
