@@ -12,7 +12,7 @@ import { useSelector, useDispatch } from 'react-redux'
 // import approved from '../../assets/approved.svg'
 // import failure from '../../assets/failure.svg'
 import type { ServiceProvider } from '../../interfaces'
-import { sendSellerEmail, paymentConfirmation } from '../../utils'
+import { sendSellerEmail, paymentConfirmation, postTransaction } from '../../utils'
 
 // interface Notification {
 //   isOpen: boolean
@@ -27,6 +27,7 @@ const BusinessDetail = (): JSX.Element => {
   const queryParams = new URLSearchParams(location.search)
   const price = queryParams.get('price')
   const service = queryParams.get('service')
+  const transactionId = queryParams.get('payment_id')
   const sellerdetail = useSelector((state: RootState) => state.sellerdetail) as ServiceProvider
   const userdetail = useSelector((state: RootState) => state.userdetail)
   const sendEmailRef = useRef(0)
@@ -36,6 +37,7 @@ const BusinessDetail = (): JSX.Element => {
       console.log(userdetail.email, price, sellerdetail.sellerEmail, sellerdetail.sellerPhone, sellerdetail.sellerName, service, 'ACA ESTA EL CONSOLE LOG')
       await paymentConfirmation(userdetail.email, price, sellerdetail.sellerEmail, sellerdetail.sellerPhone, sellerdetail.sellerName, service)
       await sendSellerEmail(userdetail.email, price, sellerdetail.sellerEmail, userdetail.phoneNumber, `${userdetail.name} ${userdetail.lastName}`, service)
+      await postTransaction(transactionId, userdetail._id, sellerdetail._id, price)
     } catch (error) {
       console.log('SALIO TODO HORRENDO')
     }
