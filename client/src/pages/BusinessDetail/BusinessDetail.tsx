@@ -28,16 +28,17 @@ const BusinessDetail = (): JSX.Element => {
   const price = queryParams.get('price')
   const service = queryParams.get('service')
   const transactionId = queryParams.get('payment_id')
+  const status = queryParams.get('status')
   const sellerdetail = useSelector((state: RootState) => state.sellerdetail) as ServiceProvider
   const userdetail = useSelector((state: RootState) => state.userdetail)
   const sendEmailRef = useRef(0)
+  console.log(sendEmailRef, 'LA REF')
 
   const sendEmail = async (): Promise<any> => {
     try {
-      console.log(userdetail.email, price, sellerdetail.sellerEmail, sellerdetail.sellerPhone, sellerdetail.sellerName, service, 'ACA ESTA EL CONSOLE LOG')
       await paymentConfirmation(userdetail.email, price, sellerdetail.sellerEmail, sellerdetail.sellerPhone, sellerdetail.sellerName, service)
       await sendSellerEmail(userdetail.email, price, sellerdetail.sellerEmail, userdetail.phoneNumber, `${userdetail.name} ${userdetail.lastName}`, service)
-      await postTransaction(transactionId, userdetail._id, sellerdetail._id, price)
+      await postTransaction(transactionId, userdetail._id, sellerdetail._id, price, status)
     } catch (error) {
       console.log('Email could not be sent')
     }
