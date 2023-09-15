@@ -19,7 +19,7 @@ import BookAService from './pages/BookAService/BookAService.tsx'
 import ResetPassword from './pages/ResetPassword/ResetPassword.tsx'
 // components
 import FormBusiness from './components/FormCreateBusiness/FormCreateBusiness.tsx'
-import UsersCards from './components/UsersCards/UsersCards'
+import GlamourAdmin from './pages/GlamourAdmin/GlamourAdmin.tsx'
 
 const router = createBrowserRouter([
   {
@@ -42,11 +42,11 @@ const router = createBrowserRouter([
         ]
       },
       {
-        path: '/admin',
+        path: '/admin/glamour',
         children: [
           {
             index: true,
-            element: <UsersCards />
+            element: <GlamourAdmin />
           }
         ]
       },
