@@ -42,7 +42,7 @@ const FormRegister: React.FC<FormLoginProps> = ({ onToggle }: any) => {
     }
   })
 
-  const onSubmit = async (e: any): Promise<void> => {
+  const onSubmit = async (_e: any): Promise<void> => {
     const data: FormData = getValues()
     delete data.confirmPassword
     console.log(data)

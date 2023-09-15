@@ -20,7 +20,7 @@ export const paymentOrder = async (req: Request, res: Response) => {
       ],
 
       back_urls: {
-        success: `${FRONT_URL}/${req.body.sellerId}/?productName=${req.body.title}&productPrice=${req.body.unit_price}`,
+        success: `${FRONT_URL}/${req.body.sellerId}/?service=${req.body.title}&price=${req.body.unit_price}`,
         failure: `${FRONT_URL}/${req.body.sellerId}`,
         pending: ''
       },

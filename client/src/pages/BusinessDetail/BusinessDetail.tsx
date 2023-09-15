@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom'
+import { useParams, useLocation } from 'react-router-dom'
 import style from './BusinessDetail.module.css'
 import Services from './Services/Services'
 import LeaveAComment from '../../components/LeaveAComment/LeaveAComment'
@@ -6,63 +6,61 @@ import Reviews from '../../components/Reviews/Reviews'
 import BusinessInfo from './BusinessInfo/BusinessInfo'
 import BusinessImages from './BusinessImages/BusinessImages'
 import type { RootState } from '../../redux/types'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { cleanSellerDetail, getSellerbyId } from '../../redux/actions'
 import { useSelector, useDispatch } from 'react-redux'
-import approved from '../../assets/approved.svg'
-import failure from '../../assets/failure.svg'
+// import approved from '../../assets/approved.svg'
+// import failure from '../../assets/failure.svg'
 import type { ServiceProvider } from '../../interfaces'
-import { paymentConfirmation, sendSellerEmail } from '../../utils'
+import { sendSellerEmail, paymentConfirmation } from '../../utils'
 
-interface Notification {
-  isOpen: boolean
-  type: 'approved' | 'failure' | null
-  content: string
-}
+// interface Notification {
+//   isOpen: boolean
+//   type: 'approved' | 'failure' | null
+//   content: string
+// }
 
 const BusinessDetail = (): JSX.Element => {
   const dispatch = useDispatch()
-
+  const location = useLocation()
   const { id } = useParams()
+  const queryParams = new URLSearchParams(location.search)
+  const price = queryParams.get('price')
+  const service = queryParams.get('service')
   const sellerdetail = useSelector((state: RootState) => state.sellerdetail) as ServiceProvider
   const userdetail = useSelector((state: RootState) => state.userdetail)
-  const [notification, setNotification] = useState<Notification>({
-    isOpen: false,
-    type: null,
-    content: ''
-  })
+  const sendEmailRef = useRef(0)
+  console.log(sendEmailRef, 'LA REF')
+  console.log(userdetail, 'EL USER DETAIL')
+
+  const sendEmail = async (): Promise<any> => {
+    try {
+      await paymentConfirmation(userdetail.email, price, sellerdetail.sellerEmail, sellerdetail.sellerPhone, sellerdetail.sellerName, service)
+      await sendSellerEmail(userdetail.email, price, sellerdetail.sellerEmail, userdetail.phoneNumber, `${userdetail.name} ${userdetail.lastName}`, service)
+    } catch (error) {
+      console.log('SALIO TODO HORRENDO')
+    }
+  }
+  useEffect(() => {
+    dispatch(getSellerbyId(id))
+    // Increment the ref counter when the component renders
+
+    console.log('SE TRIGGEREO EL PRIMERO')
+    return () => dispatch(cleanSellerDetail())
+  }, [id])
 
   useEffect(() => {
     dispatch(getSellerbyId(id))
     const urlParams = new URLSearchParams(window.location.search)
     const status = urlParams.get('status')
-    if (status === 'approved') {
-      setNotification({
-        content: 'Payment approved',
-        isOpen: true,
-        type: 'approved'
-      })
-      const { productPrice, productName } = useParams()
-      paymentConfirmation(userdetail.email, productPrice, sellerdetail.sellerEmail, sellerdetail.sellerPhone, sellerdetail.sellerName, productName)
-      sendSellerEmail(userdetail.email, productPrice, sellerdetail.sellerEmail, userdetail.phoneNumber, `${userdetail.name} ${userdetail.lastName}`, productName)
-    } else if (status === 'failure') {
-      setNotification({
-        content: 'Payment failed',
-        isOpen: true,
-        type: 'failure'
-      })
+    sendEmailRef.current++
+    if (status === 'approved' && sendEmailRef.current === 2) {
+      // Execute sendEmail only if the ref counter is 1
+      sendEmail()
     }
-    setTimeout(() => {
-      setNotification({
-        isOpen: false,
-        type: null,
-        content: ''
-      })
-    }, 3000)
 
-    return () => dispatch(cleanSellerDetail())
-  }, [id])
-
+    console.log('SE TRIGGEREO EL SEGUNDO')
+  }, [id, userdetail])
   return (
     <div className={style['global-container']}>
       <BusinessInfo sellerName={sellerdetail.sellerName} reviews={sellerdetail.reviews} sellerId={id} favourites={userdetail.favorites} />
@@ -70,14 +68,6 @@ const BusinessDetail = (): JSX.Element => {
       <Services sellerId={id as string} services={sellerdetail.servicesArray} />
       <LeaveAComment userId={localStorage.getItem('id')} />
       <Reviews reviews={sellerdetail.reviews} />
-      {notification.isOpen && (
-        <div className={style.notification}>
-          <div className={style['icon-container']} style={{ backgroundColor: notification.type === 'approved' ? '#00cc99' : '#ee4646' }}>
-            <img src={notification.type === 'approved' ? approved : failure} alt='' width={25} height={25} />
-          </div>
-          <p>{notification.content}</p>
-        </div>
-      )}
     </div>
   )
 }
