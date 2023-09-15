@@ -126,3 +126,30 @@ export const resetSellerPasswordHandler = async (
   console.log(user);
   return user;
 };
+
+export const increaseSellerAccount = async (sellerEmail: string, price:string) => {
+  try {
+  const seller = await SellerModel.findOne({sellerEmail})
+  if(!seller) throw new Error("Seller doesn't exist")
+  const servicePrice = Number(price)
+  if(isNaN(servicePrice)) throw new Error("Price must be a number")
+  if(servicePrice<=0) throw new Error("Price is not valid")
+  seller.updateAccountBalance(servicePrice)
+  } catch (error:any) {
+      throw new Error(error.message)
+  }
+}
+
+export const decreaseSellerAccount = async (id:string, payment:string) => {
+  try {
+    const seller = await SellerModel.findOne({_id:id})
+    if(!seller) throw new Error("Seller doesn't exist")
+    const paymentRequested = Number(payment)
+    if(isNaN(paymentRequested)) throw new Error("Payment must be a number")
+    if(paymentRequested<=0) throw new Error("Payment is not valid")
+    seller.updateAccountBalance(-paymentRequested)
+    return true
+  } catch (error:any) {
+    throw new Error(error.message)
+  }
+}

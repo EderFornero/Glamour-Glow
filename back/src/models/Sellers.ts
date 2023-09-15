@@ -84,6 +84,18 @@ export class Seller {
           return false;
         }
       }
+  
+
+    async updateAccountBalance(this: DocumentType<Seller>, servicePrice:number) {
+      try {
+        this.accountBalance += servicePrice
+        await this.save();
+        return  true
+      } catch (error) {
+        console.log(error, "Could not update account balance")
+        return false
+      }
     }
+}
    
 
