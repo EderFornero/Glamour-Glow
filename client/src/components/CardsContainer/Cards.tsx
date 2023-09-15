@@ -50,7 +50,7 @@ const Cards: React.FC<CardsProps> = ({ allServices }) => {
   return (
     <>
       <div className={style.test}>
-      <Pagination currentPage={currentPage} totalPages={totalPages} nextPage={nextPage} prevPage={prevPage} startPage={startPage} finalPage={finalPage} />
+        <Pagination currentPage={currentPage} totalPages={totalPages} nextPage={nextPage} prevPage={prevPage} startPage={startPage} finalPage={finalPage} />
         <div className={style['div-container-order-filter-cards']}>
           <FilterAndOrderCard allServices={allServices} setSortOption={setSortOption}/>
           <section className={style.cardsSection}>

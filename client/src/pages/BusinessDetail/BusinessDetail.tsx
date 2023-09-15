@@ -12,7 +12,7 @@ import { useSelector, useDispatch } from 'react-redux'
 // import approved from '../../assets/approved.svg'
 // import failure from '../../assets/failure.svg'
 import type { ServiceProvider } from '../../interfaces'
-import { sendSellerEmail, paymentConfirmation } from '../../utils'
+import { sendSellerEmail, paymentConfirmation, postTransaction } from '../../utils'
 
 // interface Notification {
 //   isOpen: boolean
@@ -27,25 +27,25 @@ const BusinessDetail = (): JSX.Element => {
   const queryParams = new URLSearchParams(location.search)
   const price = queryParams.get('price')
   const service = queryParams.get('service')
+  const transactionId = queryParams.get('payment_id')
+  const status = queryParams.get('status')
   const sellerdetail = useSelector((state: RootState) => state.sellerdetail) as ServiceProvider
   const userdetail = useSelector((state: RootState) => state.userdetail)
   const sendEmailRef = useRef(0)
   console.log(sendEmailRef, 'LA REF')
-  console.log(userdetail, 'EL USER DETAIL')
 
   const sendEmail = async (): Promise<any> => {
     try {
       await paymentConfirmation(userdetail.email, price, sellerdetail.sellerEmail, sellerdetail.sellerPhone, sellerdetail.sellerName, service)
       await sendSellerEmail(userdetail.email, price, sellerdetail.sellerEmail, userdetail.phoneNumber, `${userdetail.name} ${userdetail.lastName}`, service)
+      await postTransaction(transactionId, userdetail._id, sellerdetail._id, price, status)
     } catch (error) {
-      console.log('SALIO TODO HORRENDO')
+      console.log('Email could not be sent')
     }
   }
   useEffect(() => {
     dispatch(getSellerbyId(id))
-    // Increment the ref counter when the component renders
 
-    console.log('SE TRIGGEREO EL PRIMERO')
     return () => dispatch(cleanSellerDetail())
   }, [id])
 
@@ -54,12 +54,10 @@ const BusinessDetail = (): JSX.Element => {
     const urlParams = new URLSearchParams(window.location.search)
     const status = urlParams.get('status')
     sendEmailRef.current++
-    if (status === 'approved' && sendEmailRef.current === 2) {
+    if (status === 'approved' && sendEmailRef.current === 3) {
       // Execute sendEmail only if the ref counter is 1
       sendEmail()
     }
-
-    console.log('SE TRIGGEREO EL SEGUNDO')
   }, [id, userdetail])
   return (
     <div className={style['global-container']}>
