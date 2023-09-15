@@ -1,18 +1,19 @@
-import Pies from './Charts/UsersChart'
-import SellersPies from './Charts/SellersChart'
+// import React from 'react'
+// import Pies from './Charts/UsersChart'
+// import SellersPies from './Charts/SellersChart'
 
-const Metrics = (): JSX.Element => {
-  return (
-    <div>
-      <div>
-        <SellersPies />
-      </div>
-      <div>
-        <Pies />
-      </div>
+// const Metrics = (): JSX.Element => {
+//   return (
+//     <div>
+//       <div>
+//         <SellersPies />
+//       </div>
+//       <div>
+//         <Pies />
+//       </div>
 
-    </div>
-  )
-}
+//     </div>
+//   )
+// }
 
-export default Metrics
+// export default Metrics

@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
-import UserCard from '../UserCard/UserCard'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUsers } from '../../redux/actions'
 import style from './UsersCards.module.css'
 import type { RootState } from '../../redux/types'
+import EnhancedTable from '../UsersTable/UsersTable'
 
 const UsersCards: React.FC = () => {
   const dispatch = useDispatch()
@@ -13,19 +13,22 @@ const UsersCards: React.FC = () => {
     dispatch(getUsers())
   }, [])
 
+  const rows = users.map((user) => ({
+    _id: user._id,
+    name: user.name,
+    lastName: user.lastName,
+    image: user.image,
+    email: user.email,
+    phoneNumber: user.phoneNumber,
+    dateOfBirth: user.dateOfBirth,
+    isActive: user.isActive,
+    role: user.role,
+    createdAt: user.createdAt
+  }))
+
   return (
     <div className={style.usersContainer}>
-      {users.map((user) => (
-        <UserCard
-          key={user._id}
-          _id={user._id}
-          name={user.name}
-          lastName={user.lastName}
-          image={user.image}
-          email={user.email}
-          phoneNumber={user.phoneNumber}
-        />
-      ))}
+      <EnhancedTable rows={rows} />
     </div>
   )
 }

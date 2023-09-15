@@ -2,7 +2,7 @@ import UsersCards from '../../components/UsersCards/UsersCards'
 import SideBar from '../../components/SideBar/SideBar'
 import { menuItems } from './parts/itemsmenu'
 import { useState } from 'react'
-import Metrics from '../../components/Metrics/Metrics'
+// import Metrics from '../../components/Metrics/Metrics'
 
 const GlamourAdmin = (): JSX.Element => {
   const [activeItem, setActiveItem] = useState<string>('')
@@ -12,7 +12,7 @@ const GlamourAdmin = (): JSX.Element => {
       <SideBar setActiveItem={setActiveItem} activeItem={activeItem} menuItems={menuItems}/>
       <div>
       {activeItem === 'Users' && <UsersCards />}
-      {activeItem === 'Analytics' && <Metrics />}
+      {/* {activeItem === 'Analytics' && <Metrics />} */}
       </div>
     </div>
   )

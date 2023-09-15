@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form'
 import { useGoBack } from '../../hooks'
 import { useNavigate, Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import type { SellerLoginData } from '../../interfaces'
+import type { ReviewRating, SellerLoginData } from '../../interfaces'
 import EmailLogin from './inputs/EmailLogin'
 import PasswordLogin from './inputs/PasswordLogin'
 import { postSellerValidate, setAuth, setUserId } from '../../redux/actions'
@@ -58,10 +58,10 @@ const BusinessLogin: React.FC<BusinessLoginProps> = ({ onToggle }) => {
           <h1 className={style.h1}>Ready to Glow again?</h1>
         </div>
         <div className={style.right}>
-        <div className={style['div-right']}>
-          <div className={style.text}>
-            <h2 className={style.h2}></h2>
-          </div>
+          <div className={style['div-right']}>
+            <div className={style.text}>
+              <h2 className={style.h2}></h2>
+            </div>
             <form onSubmit={onSubmit}>
               <p className={style.txt}>Email:</p>
               <EmailLogin register={register} errors={errors} />

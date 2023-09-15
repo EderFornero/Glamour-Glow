@@ -1,6 +1,7 @@
-import { UserModel } from "../models";
+import { PaymentsModel, UserModel } from "../models";
 import { config } from "dotenv";
 import jwt from "jsonwebtoken";
+import { createPaymentsSchemaType } from "../schemas/paymentsSchema";
 config();
 
 const pipeline = [
@@ -201,3 +202,10 @@ export const resetPasswordUser = async (id: string, newPassword: string) => {
   console.log(user);
   return user;
 };
+export const postTransactionsHandler = async (data: createPaymentsSchemaType) => {
+  const payment = await PaymentsModel.create(data)
+  if(!data) {
+    throw new Error("There is no payments related to this credentials")
+  }
+  return payment;
+}

@@ -22,4 +22,8 @@ export interface UserCardProps {
   image: string
   _id: string
   phoneNumber: string
+  dateOfBirth: string
+  isActive: boolean
+  role: string
+  createdAt: string
 }

@@ -11,12 +11,18 @@ import {
   deleteServiceAdminController,
   readSellersMetricsController,
   readUsersMetricsController,
-  getPagesVisitsController
+  getPagesVisitsController,
+  getPaymentsController
 } from "../../controllers/admin";
 import { deleteReviewSchema } from "../../schemas/reviewSchema";
 import { readAndDeleteServiceSchema } from "../../schemas/serviceSchema";
 
 const router = Router();
+
+router.get("/payments",
+passport.authenticate("jwt", {session: false}),
+rolePermissions("admin"),
+getPaymentsController)
 
 router.get(
   "/userMetrics",

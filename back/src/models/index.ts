@@ -7,7 +7,7 @@ import { Services } from "./Services";
 import { Reviews } from "./Reviews";
 import { Favorites } from "./Favorites";
 import { Visits } from "./Visits";
-
+import { Payments } from "./Payments";
 
 export const CategoryModel = getModelForClass(Category);
 export const UserModel = getModelForClass(User);
@@ -16,4 +16,5 @@ export const ServicesModel = getModelForClass(Services);
 export const ReviewsModel = getModelForClass(Reviews);
 export const FavoritesModel = getModelForClass(Favorites);
 export const VisistModel = getModelForClass(Visits);
+export const PaymentsModel = getModelForClass(Payments);
 

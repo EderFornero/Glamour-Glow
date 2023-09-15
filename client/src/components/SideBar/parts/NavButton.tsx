@@ -37,7 +37,7 @@ const NavButton: React.FC<ButtonProps> = ({
           )
         : (
           <p
-          className={`${name === 'Settings' || name === 'Services' || name === 'Clients'
+          className={`${name === 'Settings' || name === 'Services' || name === 'Clients' || name === 'Users' || name === 'Reports' || name === 'Analytics'
           ? styles['other-links']
           : styles['drop-down-menu']}`}>{name}</p>
           )}
