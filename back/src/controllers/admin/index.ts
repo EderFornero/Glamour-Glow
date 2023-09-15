@@ -1,2 +1,7 @@
 export * from "./deleteUser"
 export * from "./deleteSeller"
+export * from "./deleteReviews"
+export * from "./deleteService"
+export * from "./getUsersMetrics"
+export * from "./getSellerMetrics"
+export * from "./getPagesVisits"
