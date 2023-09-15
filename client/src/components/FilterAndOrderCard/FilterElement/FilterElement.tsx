@@ -9,13 +9,20 @@ import type { RootState } from '../../../redux/types'
 import { useSelector } from 'react-redux'
 // props
 import type { CardsProps } from '../../../interfaces/props'
+
 const FilterElement: React.FC<CardsProps> = ({ allServices }: CardsProps) => {
   const { useFilter } = useFilterHook(allServices)
   const { categories } = useSelector((state: RootState) => state)
   const [isOpen, setIsOpen] = useState(false)
+  const [selectedCategory, setSelectedCategory] = useState<string | null>('none')
 
   const toggleSort = (): void => {
     setIsOpen(!isOpen)
+  }
+
+  const handleCategoryClick = (categoryName: string): void => {
+    useFilter(categoryName)
+    setSelectedCategory(categoryName)
   }
 
   return (
@@ -26,14 +33,15 @@ const FilterElement: React.FC<CardsProps> = ({ allServices }: CardsProps) => {
 
       <div className={`${isOpen ? style['div-filter-opened'] : style['div-filter-closed']}`}>
         <div className={style['div-container-buttons']}>
-          <button className={style['button-categories']} onClick={() => { useFilter('none') }}>All Categories</button>
+          <button className={`${style['button-categories']} ${selectedCategory === 'none' ? style['selected-button'] : ''}`}
+          onClick={() => { handleCategoryClick('none') }}>All Categories</button>
           {
             categories?.map((category) => {
               return (
                 <button
-                  className={style['button-categories']}
+                  className={`${style['button-categories']} ${selectedCategory === category.name ? style['selected-button'] : ''}`}
                   key={category.id}
-                  onClick={() => { useFilter(category.name) }}>
+                  onClick={() => { handleCategoryClick(category.name) }}>
                     {category.name.charAt(0).toUpperCase() + category.name.slice(1)}
                   </button>
               )

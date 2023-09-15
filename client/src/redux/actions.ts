@@ -13,7 +13,9 @@ import {
   SET_AUTH,
   SET_USER_ID,
   CLEAN_SELLER_DETAIL,
-  UPDATE_SELLER_IMAGE_INDEX
+  UPDATE_SELLER_IMAGE_INDEX,
+  GET_USER_METRICS,
+  GET_SELLER_METRICS
 } from './Action-Types'
 import type { ServiceAction } from './types'
 import type { SellerDetailAction } from '../interfaces'
@@ -292,6 +294,40 @@ export const disableUser: any = (id: string) => {
       return response
     } catch (error: any) {
       console.log(error.message)
+    }
+  }
+}
+
+export const getUserMetrics: any = () => {
+  const endpoint = `${API_URL}admin/userMetrics`
+
+  return async (dispatch: (action: ServiceAction) => void) => {
+    try {
+      const { data } = await axios.get(endpoint)
+
+      dispatch({
+        type: GET_USER_METRICS,
+        payload: data
+      })
+    } catch (error: any) {
+      return { error: error.message }
+    }
+  }
+}
+
+export const getSellerMetrics: any = () => {
+  const endpoint = `${API_URL}admin/sellerMetrics`
+
+  return async (dispatch: (action: ServiceAction) => void) => {
+    try {
+      const { data } = await axios.get(endpoint)
+
+      dispatch({
+        type: GET_SELLER_METRICS,
+        payload: data
+      })
+    } catch (error: any) {
+      return { error: error.message }
     }
   }
 }

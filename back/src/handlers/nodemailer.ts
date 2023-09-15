@@ -1,4 +1,6 @@
-import { UserModel } from "../models"
+
+import { UserModel} from "../models"
+import { Error } from "mongoose"
 
 export const findUserByEmailHandler = async (recipientEmail: string) => {
     const userEmail = await UserModel.findOne({email: recipientEmail})

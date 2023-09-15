@@ -64,12 +64,12 @@
 
 .button-categories{
   background: none;
-  border: 2px solid var(--accent-color);
+  border: 2px solid var(--primary-color);
   background-color: var(--neutral-color);
   border-radius: 10px;
-  width: auto;
-  height: 30px;
-  margin: 8px;
+  width: 90px;
+  height: 45px;
+  margin: 5px;
   padding: 3px 8px 10px 8px;
   min-height: 18px;
   font-size: 14px;
@@ -78,6 +78,13 @@
   position: relative;
   z-index: 2;
   text-align: center;
+
+  &.selected-button {
+    background-color: var(--accent-color);
+    color: #fff;
+    font-weight: bold;
+    border-color: var(---primary-color);
+  }
 
   &:hover {
     transform: scale(1.1);
