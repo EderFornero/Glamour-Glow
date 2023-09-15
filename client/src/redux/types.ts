@@ -9,6 +9,8 @@ export interface RootState {
   allServices: any[]
   categories: any[]
   users: any[]
+  userMetrics: any
+  sellerMetrics: any
   userdetail: UserDetail
   sellerdetail: SellerDetail
   filter: string
