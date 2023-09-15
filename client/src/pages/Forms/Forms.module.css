@@ -5,16 +5,14 @@
 }
 
 .content {
-        margin-top: 50px;
-        margin-bottom: 120px;
-        width: 70vw;
-        min-width: 400px;
-        height: 70vh;
-        flex-direction: row;
-        display: flex;
-        border-radius: 15px;
-        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
-        min-height: 530px;
+    margin-bottom: 150px;
+    width: 70vw;
+    min-width: 400px;
+    height: 70vh;
+    flex-direction: row;
+    display: flex;
+    border-radius: 15px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
 }
 
 .left {
@@ -22,6 +20,7 @@
     flex: 50;
     border-bottom-left-radius: 15px;
     border-top-left-radius: 15px;
+    min-height: 620px;
 }
 
 .right {
@@ -34,7 +33,7 @@
     position: relative;
     border-bottom-right-radius: 15px;
     border-top-right-radius: 15px;
-    min-height: 500px;
+    min-height: 620px;
 }
 
 .log-reg {
@@ -44,6 +43,7 @@
     right: 0;
     padding-right: 100px;
 }
+
 .forms {
     justify-content: center;
     align-items: center;

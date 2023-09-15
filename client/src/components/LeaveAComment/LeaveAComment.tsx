@@ -17,6 +17,8 @@ interface FormReviewData extends LeaveACommentProps {
 
 const LeaveAComment: React.FC<LeaveACommentProps> = ({ userId }) => {
   const { id } = useParams()
+
+  const role = localStorage.getItem('role')
   const [formData, setFormData] = useState<FormReviewData>({
     userId,
     sellerId: id,
@@ -34,10 +36,10 @@ const LeaveAComment: React.FC<LeaveACommentProps> = ({ userId }) => {
 
   const handleSubmit = async (_event: React.FormEvent<HTMLFormElement>): Promise<void> => {
     try {
+      event?.preventDefault()
       const response = await axios.post(`${API_URL}reviews`, formData)
 
       if (response.status === 200) {
-        // Handle success, e.g., display a success message or redirect
         setFormData({
           userId,
           sellerId: id,
@@ -65,8 +67,8 @@ const LeaveAComment: React.FC<LeaveACommentProps> = ({ userId }) => {
         <textarea name='comment' rows={7} style={{ resize: 'none' }} value={formData.description} onChange={handleDescriptionChange}></textarea>
       </div>
       <div className={style['submit-container']}>
-        <button className={style.submit} type='submit'>
-          Leave comment
+        <button className={style.submit} type='submit' disabled={role !== 'customer'}>
+          {role !== 'customer' ? 'Log in as user to post a review' : 'Leave comment'}
         </button>
       </div>
     </form>

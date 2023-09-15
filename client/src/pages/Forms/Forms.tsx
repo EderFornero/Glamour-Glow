@@ -17,7 +17,6 @@ const Forms: React.FC = () => {
           <h1 className={style.h1}>Let your work Glow!</h1>
         </div>
         <div className={style.right}>
-          <div className={style['div-right']}>
             <div className={style['text-log'] + (showLoginForm ? '' : ` ${style['text-log-adjusted']}`)}>
               <div className={style.text}>
                 <button
@@ -42,7 +41,6 @@ const Forms: React.FC = () => {
                 </div>
               </div>
             </div>
-          </div>
         </div>
       </div>
     </div>

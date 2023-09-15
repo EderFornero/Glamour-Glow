@@ -1,5 +1,5 @@
 import styles from './SideBar.module.css'
-import { menuItems } from './parts/itemsmenu'
+
 import NavButton from './parts/NavButton'
 import SubMenu from './parts/SubMenu'
 import Icon from './parts/Icon'
@@ -10,10 +10,11 @@ import { Link } from 'react-router-dom'
 interface SideBarProps {
   setActiveItem: (item: string) => void
   activeItem: string
+  menuItems: any
 }
 
-const SideBar: React.FC<SideBarProps> = ({ setActiveItem, activeItem }) => {
-  const [sidebarVisible, setSidebarVisible] = useState<boolean>(false)
+const SideBar: React.FC<SideBarProps> = ({ setActiveItem, activeItem, menuItems }) => {
+  const [sidebarVisible, setSidebarVisible] = useState<boolean>(true)
 
   const handleClick = (item: string): void => {
     setActiveItem(item !== activeItem ? item : '')

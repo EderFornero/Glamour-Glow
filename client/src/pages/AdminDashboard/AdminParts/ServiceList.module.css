@@ -17,6 +17,9 @@
   border-radius: 5px;
   font-weight: bold;
   color: white;
+  margin-left: 10px;
+  min-width: 100px;
+  height: 40px;
 }
 
 .seller-services-header button:hover{
@@ -29,7 +32,6 @@
   padding: 0;
   width: 65vw;
   min-width: 25rem;
-  font-weight: bol;
 }
 
 .list-number{
@@ -142,4 +144,16 @@ flex-direction: column;
 
 .delete-button:hover {
   box-shadow: 1px 1px 5px red;
+}
+
+@media screen and (max-width: 800px) {
+  .service-list {
+    width: 70vw;
+    min-width: 20rem;
+  }
+
+  .service-item {
+    justify-content: space-between;
+    width: 100%;
+  }
 }

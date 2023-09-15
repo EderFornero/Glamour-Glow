@@ -1,1 +1,5 @@
 export * from './SendEmail'
+export * from './PostFavourite'
+export * from './CheckIfFavourite'
+export * from './RemoveFavourite'
+export * from './FindFavId'

@@ -18,7 +18,7 @@ interface Props {
   setActiveItem: (activeItem: string) => void
 }
 
-const SellerServices: React.FC<Props> = ({ setActiveItem }) => {
+const ServiceList: React.FC<Props> = ({ setActiveItem }) => {
   const [ServiceId, setServiceId] = useState<string | null>(null)
   const [Service, setService] = useState<Service | null>(null)
   const dispatch = useDispatch()
@@ -91,7 +91,7 @@ const SellerServices: React.FC<Props> = ({ setActiveItem }) => {
                   <span className={style['service-description']}> {service.description}</span>
                 </div>
                 <span className={style['service-price']}> $ {service.price}</span>
-                <div className={style['service-left-full']}>
+                <div className={style['service-rigth-full']}>
                   <button className={style['edit-button']} onClick={() => { handleEditClick(service._id) }}>Edit</button>
                   <button className={style['delete-button']} onClick={() => { handleDeleteClick(service._id) }}>Delete</button>
                 </div>
@@ -104,4 +104,4 @@ const SellerServices: React.FC<Props> = ({ setActiveItem }) => {
   )
 }
 
-export default SellerServices
+export default ServiceList

@@ -22,6 +22,8 @@ const Cards: React.FC<CardsProps> = ({ allServices }) => {
   const { filter } = useSelector((state: RootState) => state)
   const { itemsPaginated, currentPage, totalPages, nextPage, prevPage, startPage, finalPage } = usePagination(filteredUsers, 6, filter, key)
 
+  console.log(itemsPaginated)
+  
   useEffect(() => {
     setKey(key + 1)
   }, [allServices])

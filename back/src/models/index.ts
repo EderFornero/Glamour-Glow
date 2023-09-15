@@ -6,6 +6,7 @@ import { Seller } from "./Sellers";
 import { Services } from "./Services";
 import { Reviews } from "./Reviews";
 import { Favorites } from "./Favorites";
+import { Visits } from "./Visits";
 
 
 export const CategoryModel = getModelForClass(Category);
@@ -14,4 +15,5 @@ export const SellerModel = getModelForClass(Seller);
 export const ServicesModel = getModelForClass(Services);
 export const ReviewsModel = getModelForClass(Reviews);
 export const FavoritesModel = getModelForClass(Favorites);
+export const VisistModel = getModelForClass(Visits);
 
