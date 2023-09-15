@@ -1,0 +1,38 @@
+.table-container{
+  height: 50em;
+  overflow: hidden;
+}
+
+.table-head{
+  width: auto;
+  height: 150px;
+  text-align: center;
+}
+
+.table-cell{ 
+  min-width: 100px;
+}
+
+.table-cell p{
+  text-align: center;
+  color: #000;
+  font-size: 13px;
+}
+
+.div-profile-image{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-delete-disable{
+  display: flex;
+  justify-content: center;
+  margin: 8px;
+}
+
+.table-pagination{
+  display: flex;
+}

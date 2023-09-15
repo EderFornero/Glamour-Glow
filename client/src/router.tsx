@@ -116,8 +116,13 @@ const router = createBrowserRouter([
         ]
       },
       {
-        path: '/about',
-        element: <AboutUs />
+        path: '/know/us',
+        children: [
+          {
+            index: true,
+            element: <AboutUs />
+          }
+        ]
       },
       {
         path: '/admin/seller/:id',
