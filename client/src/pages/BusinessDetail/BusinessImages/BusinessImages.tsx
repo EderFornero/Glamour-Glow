@@ -8,19 +8,17 @@ const BusinessImages = (): JSX.Element => {
 
   return (
     <div className={style.images}>
-      <div className={style['main-img-container']}>
-        <img src={sellerdetail.images[0] ?? NotAvailableImage} alt='' className={style['main-img']} />
+      <div className={style.sideImageFirst}>
+        <img src={sellerdetail.images[0] ?? NotAvailableImage} alt={sellerdetail.images[0] ?? NotAvailableImage} />
       </div>
 
-      <div className={style['side-images']}>
-        <div className={style['side-images-relative']}>
-            <img className={style['second-image']} src={sellerdetail.images[1] ?? NotAvailableImage} alt='' />
+        <div className={style.sideImageOne}>
+            <img src={sellerdetail.images[1] ?? NotAvailableImage} alt={sellerdetail.images[1] ?? NotAvailableImage} />
         </div>
 
-        <div className={style['side-images-relative']}>
-            <img className={style['third-image']} src={sellerdetail.images[2] ?? NotAvailableImage} alt='' />
+        <div className={style.sideImageTwo}>
+            <img src={sellerdetail.images[2] ?? NotAvailableImage} alt={sellerdetail.images[2] ?? NotAvailableImage} />
         </div>
-      </div>
     </div>
   )
 }

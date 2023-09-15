@@ -9,7 +9,6 @@
     padding: 1em;
   }
   .notification {
-    position: absolute;
     bottom: 0;
     right: 0;
     margin-right: 2rem;

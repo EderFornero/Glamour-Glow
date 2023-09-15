@@ -13,7 +13,7 @@ interface SideBarProps {
 }
 
 const SideBar: React.FC<SideBarProps> = ({ setActiveItem, activeItem }) => {
-  const [sidebarVisible, setSidebarVisible] = useState<boolean>(true)
+  const [sidebarVisible, setSidebarVisible] = useState<boolean>(false)
 
   const handleClick = (item: string): void => {
     setActiveItem(item !== activeItem ? item : '')
@@ -26,12 +26,12 @@ const SideBar: React.FC<SideBarProps> = ({ setActiveItem, activeItem }) => {
   return (
     <aside className={styles.sidebar}>
       <div className={styles['sidebar-header']}>
-        <button type='button' className={styles['sidebar-button']} onClick={toggleSidebar}>
-          <Link to='/'>
+        <Link to='/'>
+          <button type='button' className={styles['sidebar-button']} onClick={toggleSidebar}>
             <Icon icon={menu} />
-          </Link>
-          <p>Home</p>
-        </button>
+            <p>Home</p>
+          </button>
+        </Link>
       </div>
       {menuItems.map((item) => (
         <>

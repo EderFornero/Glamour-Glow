@@ -19,7 +19,7 @@ interface FormLoginProps {
   onToggle: () => void
 }
 
-const FormBusiness: React.FC<FormLoginProps> = ({ onToggle }: any) => {
+const FormBusiness: React.FC<FormLoginProps> = () => {
   const dispatch = useDispatch()
   const goBack = useGoBack()
   const navigate = useNavigate()
