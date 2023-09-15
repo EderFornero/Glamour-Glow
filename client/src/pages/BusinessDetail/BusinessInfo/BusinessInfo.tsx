@@ -23,10 +23,12 @@ const BusinessInfo: React.FC<DetailProps> = ({ sellerName, reviews, sellerId, fa
   const isAuth = localStorage.getItem('isAuth')
   const role = localStorage.getItem('role')
   const userId = useSelector((state: RootState) => state.userdetail._id)
+  const userdetail = useSelector((state: RootState) => state.userdetail)
 
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
+  console.log(userdetail, 'Soy el console.log del user detail') // PROBLEMA, FAVOURITES SE LOADEA EL ID DEL FAVOURITE NO TODAS LAS CARDS
   useEffect(() => {
     if (isAuth === 'true' && role === 'customer' && favourites !== undefined && favourites.length > 0) {
       const isSellerFavourite = checkFavourite(favourites, sellerId)
