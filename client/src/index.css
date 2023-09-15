@@ -21,6 +21,20 @@ body {
 
 }
 
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 8px var(--accent-color);
+  
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-color);
+  border-radius: 5px;
+}
+
 @font-face {
   font-family: FontText;
   src: url('./assets/Fonts/FontRegular.ttf');

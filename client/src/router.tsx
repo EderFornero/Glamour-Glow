@@ -109,7 +109,9 @@ const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <FormBusiness />
+            element: <FormBusiness onToggle={function (): void {
+              throw new Error('Function not implemented.')
+            } } />
           }
         ]
       },

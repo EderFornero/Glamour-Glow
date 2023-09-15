@@ -29,6 +29,7 @@ export interface UserDetail {
   dateOfBirth: string
   image: string
   isActive: boolean
+  favorites: any[]
 }
 
 export interface SellerDetail {

@@ -1,10 +1,10 @@
 import SideBar from '../../components/SideBar/SideBar'
-import SellerServices from './AdminParts/ServiceList'
+// import SellerServices from './AdminParts/ServiceList'
 import Clients from './AdminParts/Clients'
 import FormSeller from '../../components/FormSeller/FormSeller'
 import { useEffect, useState } from 'react'
 import style from './AdminDashboard.module.css'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { getSellerbyId, getUsers } from '../../redux/actions'
 import type { RootState } from '../../redux/types'
@@ -19,10 +19,17 @@ const AdminDashboard: React.FC = () => {
   const [activeItem, setActiveItem] = useState<string>('')
   const dispatch = useDispatch()
   const { id } = useParams()
+  const ID = localStorage.getItem('id')
   const sellerdetail = useSelector((state: RootState) => state.sellerdetail) as ServiceProvider
   const users = useSelector((state: RootState) => state.users)
+  const navigate = useNavigate()
 
   useEffect(() => {
+    if (id !== null) {
+      if (id !== ID) {
+        navigate('/')
+      }
+    }
     dispatch(getSellerbyId(id))
     dispatch(getUsers())
   }, [])
@@ -32,7 +39,8 @@ const AdminDashboard: React.FC = () => {
       <SideBar setActiveItem={setActiveItem} activeItem={activeItem} menuItems={menuItems} />
       <div className={style['right-section']}>
         {activeItem === 'Create' && <FormSeller />}
-        {(activeItem === 'List' || activeItem === 'Services') && <SellerServices sellerid={sellerdetail.sellerid} services={sellerdetail.servicesArray} setActiveItem={setActiveItem} />}
+        {(activeItem === 'List' || activeItem === 'Services')}
+        {/* &&  <SellerServices sellerid={sellerdetail.sellerid} services={sellerdetail.servicesArray}  setActiveItem={setActiveItem} />  */}
         {activeItem === 'Clients' && <Clients sellerName='Hola' services={users} />}
         {activeItem === 'Interface' && <UpdateBusinessImages />}
         {activeItem === 'Display' && <div className={style['Display-business']}>

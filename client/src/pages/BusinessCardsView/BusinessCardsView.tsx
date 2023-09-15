@@ -1,6 +1,6 @@
 // components
 import SearchBar from '../../components/SearchBar/SearchBar'
-import Cards from '../../components/cards/Cards'
+import Cards from '../../components/CardsContainer/Cards'
 // hooks
 // import { useSearchBarHome } from '../../hooks/index'
 // // mock
@@ -25,8 +25,9 @@ const BusinessCardsView = (): JSX.Element => {
 
   return (
     <div className={style['div-business-cards-view']}>
-      {/* The missing property isnt require */}
-      <SearchBar onSearch={handleOnSearch} />
+      <SearchBar onSearch={handleOnSearch} updateShowCards={function (_hasQuery: boolean): void {
+        throw new Error('Function not implemented.')
+      } } />
       <div className={style['div-business-cards']}>
         <Cards allServices={searchResults.length > 0 ? searchResults : allServices} />
       </div>

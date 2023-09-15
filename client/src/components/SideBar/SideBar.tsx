@@ -27,12 +27,12 @@ const SideBar: React.FC<SideBarProps> = ({ setActiveItem, activeItem, menuItems 
   return (
     <aside className={styles.sidebar}>
       <div className={styles['sidebar-header']}>
-        <button type='button' className={styles['sidebar-button']} onClick={toggleSidebar}>
-          <Link to='/'>
+        <Link to='/'>
+          <button type='button' className={styles['sidebar-button']} onClick={toggleSidebar}>
             <Icon icon={menu} />
-          </Link>
-          <p>Home</p>
-        </button>
+            <p>Home</p>
+          </button>
+        </Link>
       </div>
       {menuItems.map((item) => (
         <>
