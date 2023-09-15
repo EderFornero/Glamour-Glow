@@ -116,7 +116,7 @@ const router = createBrowserRouter([
         ]
       },
       {
-        path: '/about',
+        path: '/know/us',
         children: [
           {
             index: true,

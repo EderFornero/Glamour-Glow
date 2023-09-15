@@ -84,7 +84,7 @@ function Fotter (): JSX.Element {
           <menu>
             <h2>Company</h2>
             <li>
-              <a href='/about'>About Us</a>
+              <a href='/know/us'>About Us</a>
             </li>
             <li>
               <a>Contact</a>
