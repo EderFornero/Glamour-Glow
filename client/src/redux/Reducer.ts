@@ -29,7 +29,8 @@ export const initialState: RootState = {
     role: '',
     dateOfBirth: '',
     image: '',
-    isActive: false
+    isActive: false,
+    favorites: []
   },
   sellerdetail: {
     _id: '',

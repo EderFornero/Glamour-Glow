@@ -20,14 +20,13 @@ export const paymentOrder = async (req: Request, res: Response) => {
       ],
 
       back_urls: {
-        success: `${FRONT_URL}/${req.body.sellerId}`,
+        success: `${FRONT_URL}/${req.body.sellerId}/?service=${req.body.title}&price=${req.body.unit_price}`,
         failure: `${FRONT_URL}/${req.body.sellerId}`,
         pending: ''
       },
       auto_return: 'approved',
       notification_url: 'https://2876-191-97-30-250.ngrok.io/webhook'
     })
-    console.log(result)
     return res.status(200).json(result.body.init_point)
   } catch (error) {
     return res.status(500).json({ error: 'Hubo un error' })
