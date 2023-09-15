@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import type { FormData } from '../../interfaces'
 import NameInput from './inputs/NameInput'
@@ -13,6 +13,7 @@ import { useNavigate } from 'react-router-dom'
 import { postUser } from '../../redux/actions'
 import PhoneNumberInput from './inputs/PhoneNumberInput'
 import { sendWelcomeEmail } from '../../utils'
+import TermsAndConditions from '../TermsAndConditions/TermsAndConditions'
 
 interface FormLoginProps {
   onToggle: () => void
@@ -41,6 +42,12 @@ const FormRegister: React.FC<FormLoginProps> = () => {
       confirmPassword: ''
     }
   })
+  const [showTerms, setShowTerms] = useState(false)
+
+  const toggleTerms = (): void => {
+    setShowTerms(!showTerms)
+  }
+  console.log(showTerms)
 
   const onSubmit = async (): Promise<void> => {
     const data: FormData = getValues()
@@ -72,7 +79,11 @@ const FormRegister: React.FC<FormLoginProps> = () => {
             Send
           </button>
         </div>
-      </form>
+        </form>
+        <a href="#" className={style['terms-conditions']} onClick={toggleTerms}>Ver Términos y Condiciones</a>
+        <div className={style[`terms-and-conditions${showTerms ? '-show-terms' : ''}`]}>
+          <TermsAndConditions />
+        </div>
     </div>
   )
 }

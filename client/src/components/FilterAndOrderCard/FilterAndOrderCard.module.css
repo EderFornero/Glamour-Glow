@@ -1,10 +1,9 @@
 .div-container-order-filter{
   width: 100%;
-  min-height: 200px;
+  min-height: 50px;
   display: flex;
   justify-content: space-around;
   align-items: center;
-
 
   @media (max-width: 768px){ 
     display: flex;

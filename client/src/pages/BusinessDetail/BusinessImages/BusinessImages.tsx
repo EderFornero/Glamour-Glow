@@ -1,17 +1,10 @@
 import style from './BusinessImages.module.css'
-import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import type { RootState } from '../../../redux/types'
 import { NotAvailableImage } from '../../../Images/LandingImages'
-import { cleanSellerDetail } from '../../../redux/actions'
 
 const BusinessImages = (): JSX.Element => {
   const { sellerdetail } = useSelector((state: RootState) => state)
-  const dispatch = useDispatch()
-
-  useEffect(() => {
-    return () => dispatch(cleanSellerDetail())
-  }, [])
 
   return (
     <div className={style.images}>
