@@ -6,3 +6,4 @@ export * from "./postUser";
 export * from "./logInUser";
 export * from "./loginUserGoogle";
 export * from "./forgotPassword";
+export * from "./postTransaction";
