@@ -2,8 +2,9 @@
   border: 1px solid #ccc;
   background-color: white;
   padding: 20px;
-  border-radius: 5px;
-  margin: 10px;
+  border-radius: 10px;
+  width: 90vw;
+  margin-left: 1vw;
 }
 
 .seller-services-header{
@@ -29,8 +30,7 @@
 .service-list {
   list-style: none;
   margin-top: 20px;
-  padding: 0;
-  width: 65vw;
+  width: 100%;
   min-width: 25rem;
 }
 
@@ -146,14 +146,21 @@ flex-direction: column;
   box-shadow: 1px 1px 5px red;
 }
 
-@media screen and (max-width: 800px) {
-  .service-list {
-    width: 70vw;
-    min-width: 20rem;
+@media screen and (max-width: 900px) {
+  .seller-services-container{
+    min-width: 17rem;
+    width: 87%;
   }
-
   .service-item {
+    flex-direction: column;
+    width: 63vw;
+    min-width: 14rem;
+  }
+  .service-left-full{
+    max-width: 100%;
+    min-height: 50px;
+    align-items: center;
     justify-content: space-between;
-    width: 100%;
+    border: 1px solid red;
   }
 }

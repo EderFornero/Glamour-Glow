@@ -2,6 +2,7 @@
   background: #ffffff;
   display: flex;
   flex-direction: column;
+  margin: auto;
   gap: 30px;
   padding: 30px;
   width: 100%;

@@ -34,13 +34,13 @@
   .home-link{
     color: #0a0e12;
 
-    @media (max-width: 800px){ 
+    @media (max-width: 900px){ 
       display: none;
     }
   }
 
   .other-links{
-    @media (max-width: 800px){ 
+    @media (max-width: 900px){ 
       display: none;
     }
   }
@@ -96,12 +96,12 @@
   .arrow-icon {
     width: 15px;
 
-    @media (max-width: 800px){ 
+    @media (max-width: 900px){ 
       display: none;
     }
   }
 
-@media screen and (max-width: 800px){
+@media screen and (max-width: 900px){
 
   .sidebar{
     width: 85px;
