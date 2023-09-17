@@ -28,7 +28,7 @@ const NameInput: React.FC<NameInputProps> = ({ register, errors }) => {
         })}
       />
       <div>
-      {errors.name && <span className={style.span}>{errors.name.message}</span>}
+      {(Boolean(errors.name)) && <span className={style.span}>{errors.name.message}</span>}
       {errors.name?.type === 'maxLength' && (
         <span className={style.span}>The name is too longer</span>
       )}

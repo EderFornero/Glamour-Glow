@@ -59,7 +59,7 @@ export interface FormCreateBusi {
   isActive: boolean
   images: string[]
   role: 'customer' | 'seller'
-  sellerGender: 'male' | 'female' | 'any'
+  sellerGender: 'male' | 'female' | 'any' | ''
   categoriesArray: string[]
   servicesArray: string[]
 }
