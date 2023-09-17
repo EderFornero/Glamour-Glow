@@ -10,7 +10,7 @@ import style from './FormRegister.module.css'
 import { useGoBack } from '../../hooks'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { postUser } from '../../redux/actions'
+import { postUser, postValidate, setAuth, setUserId } from '../../redux/actions'
 import PhoneNumberInput from './inputs/PhoneNumberInput'
 import { sendWelcomeEmail } from '../../utils'
 import TermsAndConditions from '../TermsAndConditions/TermsAndConditions'
@@ -26,7 +26,7 @@ const FormRegister: React.FC<FormLoginProps> = () => {
   const {
     register,
     getValues,
-    handleSubmit, // Importa handleSubmit
+    handleSubmit,
     formState: { errors }
   } = useForm<FormData>({
     defaultValues: {
@@ -44,6 +44,11 @@ const FormRegister: React.FC<FormLoginProps> = () => {
   })
   const [showTerms, setShowTerms] = useState(false)
 
+  const autoLogin = {
+    email: '',
+    password: ''
+  }
+
   const toggleTerms = (): void => {
     setShowTerms(!showTerms)
   }
@@ -52,11 +57,26 @@ const FormRegister: React.FC<FormLoginProps> = () => {
   const onSubmit = async (): Promise<void> => {
     const data: FormData = getValues()
     delete data.confirmPassword
-    console.log(data)
     try {
       await dispatch(postUser(data))
       await sendWelcomeEmail(data.email)
-      navigate('/login')
+      try {
+        autoLogin.email = data.email
+        autoLogin.password = data.password
+        const response = await dispatch(postValidate(autoLogin))
+        const { id, token, role } = response.data
+
+        if (token !== undefined && id !== undefined) {
+          localStorage.setItem('isAuth', 'true')
+          localStorage.setItem('id', id)
+          localStorage.setItem('role', role)
+          dispatch(setAuth(true))
+          dispatch(setUserId(id))
+          navigate('/')
+        }
+      } catch (error: any) {
+        throw new Error()
+      }
     } catch (error) {
       throw new Error()
     }
