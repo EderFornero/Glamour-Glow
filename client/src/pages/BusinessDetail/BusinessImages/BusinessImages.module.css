@@ -11,6 +11,7 @@
     margin: 1vw;
     grid-row: 1/2;
     max-height: 400px;
+
   }
   .sideImageTwo{
     margin: 1vw;
@@ -32,7 +33,13 @@
       display: flex;
       flex-direction: column;
       margin: auto;
+      margin-bottom: 100vh;
     }  
+    .sideImageTwo{ 
+    margin-top: 20vh;
+        
+
+    }
   }
 
   /*

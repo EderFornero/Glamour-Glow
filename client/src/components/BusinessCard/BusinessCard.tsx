@@ -24,8 +24,11 @@ const BusinessCard: React.FC<BusinessCardProps> = ({ _id, sellerName, reviews, c
       <div className={style.itemsContainer}>
         
         <p>Rating: {averageRating}</p>
+        <div className={style.categories}>
+          {Array.isArray(categoriesArray) ? categoriesArray.map((category: Category, index: number) => <p className={style.category} key={index}>{category.name} -</p>) : null}
+        </div>
         <p>Location: </p>
-        {Array.isArray(categoriesArray) ? categoriesArray.map((category: Category, index: number) => <p key={index}>{category.name}</p>) : null}
+        
         
       </div>
         <NavLink to={`/sellerdetail/${_id}`} className={style.link}>
