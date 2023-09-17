@@ -26,6 +26,8 @@ const FormBusiness: React.FC<FormLoginProps> = () => {
   const {
     register,
     handleSubmit,
+    setError,
+    clearErrors,
     formState: { errors }
   } = useForm<FormCreateBusi>({
     defaultValues: {
@@ -35,7 +37,7 @@ const FormBusiness: React.FC<FormLoginProps> = () => {
       sellerPhone: '',
       role: 'seller',
       images: [],
-      sellerGender: 'any',
+      sellerGender: '',
       categoriesArray: [],
       servicesArray: [],
       isActive: true,
@@ -47,17 +49,17 @@ const FormBusiness: React.FC<FormLoginProps> = () => {
     sellerEmail: '',
     sellerPassword: ''
   }
-
   const [showOtherInputs, setShowOtherInputs] = useState(true)
   const categoryList = useSelector((state: RootState) => state.categories)
-  const { image } = useSelector((state: RootState) => state)
   useEffect(() => {
     dispatch(getCategories())
   }, [dispatch])
 
+  const { image } = useSelector((state: RootState) => state)
+  console.log(image)
+
   const onSubmit = handleSubmit(async (data: FormCreateBusi) => {
     delete data.confirmPassword
-
     const businessImage: string[] = []
     if (image !== undefined) {
       businessImage.push(image)
@@ -69,8 +71,16 @@ const FormBusiness: React.FC<FormLoginProps> = () => {
     }
     autoLoginSeller.sellerEmail = data.sellerEmail
     autoLoginSeller.sellerPassword = data.sellerPassword
+    if (data.images.length === 0) {
+      setError('images', {
+        type: 'manual',
+        message: 'image required'
+      })
+      return
+    }
     console.log(data)
-    await dispatch(postSeller(data))
+    const response = await dispatch(postSeller(data))
+    console.log(response.data)
     try {
       console.log(autoLoginSeller)
       const response = await dispatch(postSellerValidate(autoLoginSeller))
@@ -120,13 +130,16 @@ const FormBusiness: React.FC<FormLoginProps> = () => {
                   <BusiPasswordInput register={register} errors={errors} />
                   <BusiGenderInput register={register} errors={errors} />
                   <Cloudinary />
+                  {errors.images !== undefined && (
+                  <span>Image required</span>
+                  )}
                 </>
               )}
               <div className={style['buton-div']}>
                 <button className={style.btn} onClick={goBack}>
                   Back
                 </button>
-                <button className={style.btn} type='submit'>
+                <button className={style.btn} onClick={() => { clearErrors('images') }} type='submit'>
                   Send
                 </button>
               </div>

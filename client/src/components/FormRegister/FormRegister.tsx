@@ -27,6 +27,7 @@ const FormRegister: React.FC<FormLoginProps> = () => {
     register,
     getValues,
     handleSubmit,
+    setError,
     formState: { errors }
   } = useForm<FormData>({
     defaultValues: {
@@ -58,24 +59,32 @@ const FormRegister: React.FC<FormLoginProps> = () => {
     const data: FormData = getValues()
     delete data.confirmPassword
     try {
-      await dispatch(postUser(data))
+      const response = await dispatch(postUser(data))
+      console.log(response.data)
       await sendWelcomeEmail(data.email)
-      try {
-        autoLogin.email = data.email
-        autoLogin.password = data.password
-        const response = await dispatch(postValidate(autoLogin))
-        const { id, token, role } = response.data
-
-        if (token !== undefined && id !== undefined) {
-          localStorage.setItem('isAuth', 'true')
-          localStorage.setItem('id', id)
-          localStorage.setItem('role', role)
-          dispatch(setAuth(true))
-          dispatch(setUserId(id))
-          navigate('/')
+      if (response.data !== undefined) {
+        try {
+          autoLogin.email = data.email
+          autoLogin.password = data.password
+          const response = await dispatch(postValidate(autoLogin))
+          const { id, token, role } = response.data
+          console.log(response.data)
+          if (token !== undefined && id !== undefined) {
+            localStorage.setItem('isAuth', 'true')
+            localStorage.setItem('id', id)
+            localStorage.setItem('role', role)
+            dispatch(setAuth(true))
+            dispatch(setUserId(id))
+            navigate('/')
+          }
+        } catch (error: any) {
+          throw new Error()
         }
-      } catch (error: any) {
-        throw new Error()
+      } else {
+        setError('email', {
+          type: 'manual',
+          message: 'The email is already in use'
+        })
       }
     } catch (error) {
       throw new Error()
