@@ -9,7 +9,7 @@ import BusiPhoneInput from './inputs/BusiPhoneInput'
 import BusiPasswordInput from './inputs/BusiPasswordInput'
 import style from './FormCreateBusiness.module.css'
 import type { RootState } from '../../redux/types'
-import { getCategories, postSeller } from '../../redux/actions'
+import { getCategories, postSeller, postSellerValidate, setAuth, setUserId } from '../../redux/actions'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import type { FormCreateBusi } from '../../interfaces'
@@ -43,6 +43,11 @@ const FormBusiness: React.FC<FormLoginProps> = () => {
     }
   })
 
+  const autoLoginSeller = {
+    sellerEmail: '',
+    sellerPassword: ''
+  }
+
   const [showOtherInputs, setShowOtherInputs] = useState(true)
   const categoryList = useSelector((state: RootState) => state.categories)
   const { image } = useSelector((state: RootState) => state)
@@ -50,24 +55,39 @@ const FormBusiness: React.FC<FormLoginProps> = () => {
     dispatch(getCategories())
   }, [dispatch])
 
-  const onSubmit = handleSubmit((data: FormCreateBusi) => {
+  const onSubmit = handleSubmit(async (data: FormCreateBusi) => {
     delete data.confirmPassword
 
     const businessImage: string[] = []
     if (image !== undefined) {
       businessImage.push(image)
-    } else if (image === undefined) {
-      businessImage.push('https://mirplaysalon.com/wp-content/uploads/2022/03/img_0033-1024x724.jpg')
     }
     data.images = businessImage
 
     if (Array.isArray(data.categoriesArray)) {
       data.categoriesArray = data.categoriesArray.filter((item) => typeof item === 'string')
     }
-
+    autoLoginSeller.sellerEmail = data.sellerEmail
+    autoLoginSeller.sellerPassword = data.sellerPassword
     console.log(data)
-    dispatch(postSeller(data))
-    navigate('/')
+    await dispatch(postSeller(data))
+    try {
+      console.log(autoLoginSeller)
+      const response = await dispatch(postSellerValidate(autoLoginSeller))
+      const { id, token, role } = response.data
+      console.log(response.data)
+
+      if (token !== undefined && id !== undefined) {
+        localStorage.setItem('isAuth', 'true')
+        localStorage.setItem('id', id)
+        localStorage.setItem('role', role)
+        dispatch(setAuth(true))
+        dispatch(setUserId(id))
+        navigate('/')
+      }
+    } catch (error: any) {
+      console.log(error)
+    }
   })
 
   const toggleOtherInputs = (): void => {
