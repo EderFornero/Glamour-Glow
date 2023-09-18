@@ -1,11 +1,11 @@
 import { Request, Response} from "express";
-import { decreaseSellerAccount } from "../../handlers";
+import { transferPaymentHandler } from "../../handlers";
 
-export const paymentRequest = async (req:Request, res:Response) => {
+export const transferPayment = async (req:Request, res:Response) => {
     const {payment}   = req.body
     const {id} = req.params
     try {
-    await decreaseSellerAccount(id, payment)
+    await transferPaymentHandler(id, payment)
     const message = `$${payment} has been deducted from your account`
     res.status(200).send(message)
     } catch (error:any) {

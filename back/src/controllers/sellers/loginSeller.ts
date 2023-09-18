@@ -6,14 +6,15 @@ export const logInSeller = async (req: Request, res: Response) => {
   
     const { sellerEmail, sellerPassword } = req.body;
   
-    const credentials = await validateLogInSeller(sellerEmail, sellerPassword);
+    const validUser = await validateLogInSeller(sellerEmail, sellerPassword);
 
-     if (credentials) {
+     if (validUser) {
        const token = await generateTokenSeller(sellerEmail);
-       const role = credentials.role
-       const id = credentials.id
-       const isActive = credentials.isActive
-       return res.status(200).send({ id, role, token , isActive});
+       const role = validUser.role
+       const id = validUser.id
+       const isActive = validUser.isActive
+       const accountBalance = validUser.accountBalance
+       return res.status(200).send({ id, role, token , isActive, accountBalance});
      }
     throw new Error("Failed authentication, incorrect credentials");
   } catch (error) {

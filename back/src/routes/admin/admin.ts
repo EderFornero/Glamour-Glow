@@ -18,6 +18,7 @@ import { deleteReviewSchema } from "../../schemas/reviewSchema";
 import { readAndDeleteServiceSchema } from "../../schemas/serviceSchema";
 import { deleteReportSchema } from "../../schemas/reportSchema";
 import { deleteReport, getReports} from "../../controllers/reports";
+import { transferPayment } from "../../controllers/admin/transferPayment";
 
 const router = Router();
 
@@ -81,6 +82,11 @@ router.get(
   rolePermissions("admin"),
   getReports
 );
+router.post("/payment/:id",
+  passport.authenticate("jwt", { session: false }),
+  rolePermissions("admin"),
+ transferPayment)
+
 router.delete(
   "/reports/:id",
   passport.authenticate("jwt", { session: false }),

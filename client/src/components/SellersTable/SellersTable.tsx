@@ -10,9 +10,10 @@ import TablePagination from '@mui/material/TablePagination'
 import styled from 'styled-components'
 import style from './SellersTable.module.css'
 import { useDispatch } from 'react-redux'
-import { deleteUser, disableUser } from '../../redux/actions'
+import { deleteUser, disableSeller } from '../../redux/actions'
 import DeleteButton from '../../assets/UserTableButtons/DeleteSvg'
 import DisableButton from '../../assets/UserTableButtons/DisableSvg'
+import DolarButton from '../../assets/UserTableButtons/DollarSvg'
 
 interface Data {
   _id: string
@@ -23,6 +24,7 @@ interface Data {
   isActive: boolean
   role: string
   createdAt: string
+  accountBalance: number
 }
 
 interface EnhancedTableProps {
@@ -56,7 +58,11 @@ export default function UsersTable (props: EnhancedTableProps): JSX.Element {
   }
 
   const handleDisable = (_id: string): void => {
-    dispatch(disableUser(_id))
+    dispatch(disableSeller(_id))
+    console.log(_id)
+  }
+
+  const handleDolar = (_id: string): void => {
     console.log(_id)
   }
 
@@ -69,6 +75,7 @@ export default function UsersTable (props: EnhancedTableProps): JSX.Element {
               <TableCell className={style['table-cell']}><p>Seller Image</p></TableCell>
               <TableCell className={style['table-cell']}><p>Name</p></TableCell>
               <TableCell className={style['table-cell']}><p>Email</p></TableCell>
+              <TableCell className={style['table-cell']}><p>Balance</p></TableCell>
               <TableCell className={style['table-cell']}><p>Phone Number</p></TableCell>
               <TableCell className={style['table-cell']}><p>Is Active</p></TableCell>
               <TableCell className={style['table-cell']}><p>Role</p></TableCell>
@@ -84,10 +91,12 @@ export default function UsersTable (props: EnhancedTableProps): JSX.Element {
                     <div className={style.bottom}>
                       <button className={style['btn-delete-disable']} onClick={(): void => { handleDelete(row._id) }}><DeleteButton /></button>
                       <button className={style['btn-delete-disable']} onClick={(): void => { handleDisable(row._id) }}><DisableButton /></button>
+                      <button className={style['btn-delete-disable']} onClick={(): void => { handleDolar(row._id) }}><DolarButton /></button>
                     </div>
                   </div>
                   <TableCell className={style['table-cell']}><p>{row.sellerName}</p></TableCell>
                   <TableCell className={style['table-cell']}><p>{row.sellerEmail}</p></TableCell>
+                  <TableCell className={style['table-cell']}><p>${row.accountBalance}</p></TableCell>
                   <TableCell className={style['table-cell']}><p>{row.sellerPhone}</p></TableCell>
                   <TableCell className={style['table-cell']}><p>{row.isActive ? 'Yes' : 'No'}</p></TableCell>
                   <TableCell className={style['table-cell']}><p>{row.role}</p></TableCell>

@@ -81,3 +81,16 @@ export const getPayments = async() => {
   return allPayments
 }
 
+export const transferPaymentHandler = async (id:string, payment:string) => {
+  try {
+    const seller = await SellerModel.findOne({_id:id})
+    if(!seller) throw new Error("Seller doesn't exist")
+    const paymentRequested = Number(payment)
+    if(isNaN(paymentRequested)) throw new Error("Payment must be a number")
+    if(paymentRequested<=0) throw new Error("Payment is not valid")
+    seller.updateAccountBalance(-paymentRequested)
+    return true
+  } catch (error:any) {
+    throw new Error(error.message)
+  }
+}
