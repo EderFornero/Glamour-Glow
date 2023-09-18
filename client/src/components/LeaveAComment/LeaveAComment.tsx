@@ -36,7 +36,6 @@ const LeaveAComment: React.FC<LeaveACommentProps> = ({ userId }) => {
 
   const handleSubmit = async (_event: React.FormEvent<HTMLFormElement>): Promise<void> => {
     try {
-      event?.preventDefault()
       const response = await axios.post(`${API_URL}reviews`, formData)
 
       if (response.status === 200) {
