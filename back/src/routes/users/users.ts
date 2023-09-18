@@ -24,7 +24,8 @@ import passport from "passport";
 import { resetPassword } from "../../controllers/users/resetPassword";
 import { enableUser } from "../../controllers/users/reActiveUser";
 import { createPaymentesSchema } from "../../schemas/paymentsSchema";
-
+import { createReportSchema } from "../../schemas/reportSchema";
+import { postReport } from "../../controllers/reports";
 
 const router = Router();
 
@@ -42,6 +43,8 @@ router.post("/", schemaValidation(CreateUserSchema), postUser);
 router.post("/login",schemaValidation(loginUserSchema) ,logInUser);
 router.post("/auth/login", logInUserGoogle);
 router.post("/transactions", schemaValidation(createPaymentesSchema),postTransactions)
+router.post("/reports",schemaValidation(createReportSchema), postReport)
+
 router.put(
   "/:id",
   passport.authenticate("jwt", { session: false }),
