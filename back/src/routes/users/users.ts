@@ -44,7 +44,6 @@ router.post("/login",schemaValidation(loginUserSchema) ,logInUser);
 router.post("/auth/login", logInUserGoogle);
 router.post("/transactions", schemaValidation(createPaymentesSchema),postTransactions)
 router.post("/reports",schemaValidation(createReportSchema), postReport)
-
 router.put(
   "/:id",
   passport.authenticate("jwt", { session: false }),
