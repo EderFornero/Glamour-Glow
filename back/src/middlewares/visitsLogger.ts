@@ -7,9 +7,10 @@ export const visitsLogger = async (
   next: NextFunction
 ) => {
   try {
-    const { originalUrl } = req;
+    const { originalUrl} = req;
+    const visitDate = new Date();
     
-    const pageVisit = new VisistModel({ path: originalUrl });
+    const pageVisit = new VisistModel({ path: originalUrl, date: visitDate });
     pageVisit.save();
     
     return next();

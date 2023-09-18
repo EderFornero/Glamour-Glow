@@ -26,7 +26,6 @@ export const confirmResetPassword = async (id: any, passwordResetCode: any, pass
   // eslint-disable-next-line no-useless-catch
   const url = `${API_URL}users/resetPassword/${id}/${passwordResetCode}`
   const data = { password, passwordConfirmation }
-
   const response = await axios.post(url, data)
   return response
 }
@@ -36,6 +35,7 @@ export const paymentConfirmation = async (userEmail: string, price: string | nul
     const url = `${API_URL}successfulPayment`
     const data = { userEmail, price, sellerEmail, sellerPhone, sellerName, service }
     await axios.post(url, data)
+    console.log('EMAIL USER')
   } catch (error) {
     console.log('SALIO MAL')
   }
@@ -46,6 +46,7 @@ export const sendSellerEmail = async (userEmail: string, price: string | null, s
     const url = `${API_URL}successfulSale`
     const data = { userEmail, price, sellerEmail, userPhone, userName, service }
     await axios.post(url, data)
+    console.log('EMAIL SELLER')
   } catch (error) {
     console.log('SALIO ALGO MAL EN SEND SELLER EMAIL')
   }

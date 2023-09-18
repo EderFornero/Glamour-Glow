@@ -12,13 +12,13 @@ const BusinessImages = (): JSX.Element => {
         <img src={sellerdetail.images[0] ?? NotAvailableImage} alt={sellerdetail.images[0] ?? NotAvailableImage} />
       </div>
 
-        <div className={style.sideImageOne}>
-            <img src={sellerdetail.images[1] ?? NotAvailableImage} alt={sellerdetail.images[1] ?? NotAvailableImage} />
-        </div>
+      <div className={style.sideImageOne}>
+        <img src={sellerdetail.images[1] ?? NotAvailableImage} alt={sellerdetail.images[1] ?? NotAvailableImage} />
+      </div>
 
-        <div className={style.sideImageTwo}>
-            <img src={sellerdetail.images[2] ?? NotAvailableImage} alt={sellerdetail.images[2] ?? NotAvailableImage} />
-        </div>
+      <div className={style.sideImageTwo}>
+        <img src={sellerdetail.images[2] ?? NotAvailableImage} alt={sellerdetail.images[2] ?? NotAvailableImage} />
+      </div>
     </div>
   )
 }

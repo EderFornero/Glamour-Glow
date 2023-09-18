@@ -1,4 +1,12 @@
-import { UserModel, SellerModel, ReviewsModel, ServicesModel, VisistModel } from "../models";
+import {
+  UserModel,
+  SellerModel,
+  ReviewsModel,
+  ServicesModel,
+  VisistModel,
+  PaymentsModel
+} from "../models";
+
 
 export const deleteUserHandler = async (id: String) => {
   const userdeleted = await UserModel.findByIdAndDelete(id);
@@ -50,6 +58,26 @@ export const readSellersMetrics = async () => {
 };
 
 export const getPagesVisits = async () => {
-  const pagesVisited = await VisistModel.countDocuments();
-  return {totalPagesVisited: pagesVisited};
+  const [totalVisits, uniquePaths] = await Promise.all([
+    await VisistModel.countDocuments(),
+    await VisistModel.distinct("path"),
+  ]);
+
+  const visitsByPath: { [key: string]: number } = {};
+
+  for (const path of uniquePaths) {
+    const visitCount = await VisistModel.countDocuments({ path });
+    visitsByPath[path] = visitCount;
+  }
+
+  return {
+    totalPagesVisited: totalVisits,
+    visitsByPath: visitsByPath,
+  };
+};
+
+export const getPayments = async() => {
+  const allPayments = await PaymentsModel.find({})
+  return allPayments
 }
+

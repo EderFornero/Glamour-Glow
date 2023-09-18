@@ -8,17 +8,22 @@ interface BusinessCardProps {
   sellerName: string
   reviews: ReviewRating[]
   categoriesArray: Category[]
+  images: string[]
 }
 
-const BusinessCard: React.FC<BusinessCardProps> = ({ _id, sellerName, reviews, categoriesArray }) => {
+const BusinessCard: React.FC<BusinessCardProps> = ({ _id, sellerName, reviews, categoriesArray /* images */ }) => {
   const averageRating = useRating(reviews)
   return (
     <article className={style.card}>
-      {/* <img src="source" alt="alt" /> */}
-      <h2 className={style.title}> {sellerName}</h2>
-      <p>Rating: {averageRating}</p>
-      <p>Location: </p>
-      {Array.isArray(categoriesArray) ? categoriesArray.map((category: Category, index: number) => <p key={index}>{category.name}</p>) : null}
+      {/* <div className={style.imageContainer}>{<img className={style.image} src={images[0]} alt='sellerImage' />}</div> */}
+      <div className={style.titleContainer}>
+        <h2 className={style.title}> {sellerName}</h2>
+      </div>
+      <div className={style.itemsContainer}>
+        <p>Rating: {averageRating}</p>
+        <p>Location: </p>
+        {Array.isArray(categoriesArray) ? categoriesArray.map((category: Category, index: number) => <p key={index}>{category.name}</p>) : null}
+      </div>
       <NavLink to={`/sellerdetail/${_id}`} className={style.link}>
         <button>Check it out</button>
       </NavLink>
