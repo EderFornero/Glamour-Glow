@@ -1,9 +1,4 @@
 import styles from './Footer.module.css'
-
-import facebook from '../../assets/social-icons/facebook.svg'
-import instagram from '../../assets/social-icons/instagram.svg'
-import linkedin from '../../assets/social-icons/linkedin.svg'
-import twitter from '../../assets/social-icons/twitter.svg'
 import { FooterLogo } from '../../Images/LogoImages'
 import { Link } from 'react-router-dom'
 
@@ -13,20 +8,6 @@ function Fotter (): JSX.Element {
       <section className={styles.footertopwrapper}>
         <section className={styles.footertop}>
           <img className={styles.logo} src={FooterLogo} title='Logo' alt='Logo' />
-          <span className={styles.sociallinks}>
-            <a target='_blank' rel='noreferrer'>
-              <img src={instagram} title='Instagram' alt='Instagram' />
-            </a>
-            <a target='_blank' rel='noreferrer'>
-              <img src={facebook} title='Facebook' alt='Facebook' />
-            </a>
-            <a target='_blank' rel='noreferrer'>
-              <img src={linkedin} title='Linkedin' alt='Linkedin' />
-            </a>
-            <a target='_blank' rel='noreferrer'>
-              <img src={twitter} title='Twitter' alt='Twitter' />
-            </a>
-          </span>
         </section>
       </section>
       <div className={styles.separator}></div>

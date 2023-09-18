@@ -16,6 +16,8 @@ import {
 } from "../../controllers/admin";
 import { deleteReviewSchema } from "../../schemas/reviewSchema";
 import { readAndDeleteServiceSchema } from "../../schemas/serviceSchema";
+import { deleteReportSchema } from "../../schemas/reportSchema";
+import { deleteReport, getReports} from "../../controllers/reports";
 
 const router = Router();
 
@@ -71,6 +73,20 @@ router.delete(
   rolePermissions("admin"),
   schemaValidation(readAndDeleteServiceSchema),
   deleteServiceAdminController
+);
+
+router.get(
+  "/reports",
+  passport.authenticate("jwt", { session: false }),
+  rolePermissions("admin"),
+  getReports
+);
+router.delete(
+  "/reports/:id",
+  passport.authenticate("jwt", { session: false }),
+  rolePermissions("admin"),
+  schemaValidation(deleteReportSchema),
+  deleteReport
 );
 
 export default router;

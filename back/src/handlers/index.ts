@@ -6,3 +6,4 @@ export * from "./reviews";
 export * from "./nodemailer";
 export * from "./favorites"
 export * from "./admin"
+export * from "./reports"
