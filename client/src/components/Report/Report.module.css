@@ -1,0 +1,32 @@
+.report-popup {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 10px;
+  .label {
+    color: black;
+    font-size: 1.2rem;
+  }
+  .report {
+    padding: 5px;
+    font-size: 1.2rem;
+    resize: none;
+  }
+  .buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+
+    .submit,
+    .cancel {
+      background-color: var(--primary-color);
+      padding: 10px;
+      color: white;
+      border-radius: 10px;
+      text-align: center;
+      width: 150px;
+      align-self: center;
+      font-size: 1.2rem;
+    }
+  }
+}

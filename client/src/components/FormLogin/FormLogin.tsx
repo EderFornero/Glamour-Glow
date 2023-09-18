@@ -106,10 +106,10 @@ const FormLogin: React.FC<FormLoginProps> = ({ onToggle }) => {
   return (
     <div className={style.content}>
       <form onSubmit={onSubmit}>
-        <p className={style.txt}>Email:</p>
+        <label className={style.txt}>Email:</label>
         <EmailLogin register={register} errors={errors} />
         {errorMessage !== '' && <ErrorMessage message={errorMessage} />}
-        <p className={style.txt}>Password:</p>
+        <label className={style.txt}>Password:</label>
         <PasswordLogin register={register} errors={errors} />
         <div className={style['alt-login']}>
           <h4 className={style['log-with']}>or Login With:</h4>
@@ -121,7 +121,7 @@ const FormLogin: React.FC<FormLoginProps> = ({ onToggle }) => {
           <button className={style.btn} onClick={goBack}>
             Back
           </button>
-          <button className={style.btnSubmit} type='submit'>
+          <button className={style.btn} type='submit'>
             Send
           </button>
           {error !== undefined && <div className={style['error-login']}>{error}</div>}

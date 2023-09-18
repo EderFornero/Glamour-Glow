@@ -1,5 +1,6 @@
 // components
 import Cloudinary from '../../components/Cloudinary/Cloudinary'
+import Report from '../Report/Report'
 // assets
 import { NoProfileImage } from '../../Images/LandingImages'
 // css
@@ -8,32 +9,33 @@ import styles from './UserDetailDestructure.module.css'
 import type { RootState } from '../../redux/types'
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect, useState } from 'react'
-import { getUserbyId, updateUserInfo, setAuth } from '../../redux/actions'
-import { useNavigate, useParams } from 'react-router-dom'
+import { getUserbyId, updateUserInfo } from '../../redux/actions'
+import { useParams } from 'react-router-dom'
 
 const UserDetailFirstSection = (): JSX.Element => {
   const dispatch = useDispatch()
-  const navigate = useNavigate()
   const { image } = useSelector((state: RootState) => state)
   const userdetail = useSelector((state: RootState) => state.userdetail)
-
+  const [isReportPopupOpen, setIsReportPopupOpen] = useState<boolean>(false)
   const [editing, setEditing] = useState(false)
   const [newUserInfo, setNewUserInfo] = useState({ ...userdetail })
 
   const { id } = useParams()
 
   useEffect(() => {
-    image ?  dispatch(updateUserInfo(id, { 'image': image })) : '' }
-  , [image])
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+    image !== null ? dispatch(updateUserInfo(id, { image })) : ''
+  }, [image])
 
   useEffect(() => {
     dispatch(getUserbyId(id))
   }, [dispatch])
+  const openReportPopup = (): void => {
+    setIsReportPopupOpen(true)
+  }
 
-  const handleLogout = (): void => {
-    dispatch(setAuth(false))
-    localStorage.removeItem('isAuth')
-    navigate('/')
+  const closeReportPopup = (): void => {
+    setIsReportPopupOpen(false)
   }
 
   const handleEdit = (): void => {
@@ -86,9 +88,10 @@ const UserDetailFirstSection = (): JSX.Element => {
             </li>
           </ul>
         </div>
-        <div className={styles['userdetail-bottom']} onClick={handleLogout}>
-          <a>Sign Out</a>
+        <div className={styles['userdetail-bottom']}>
+          <p onClick={openReportPopup}>Got a report?</p>
         </div>
+        {isReportPopupOpen && <Report id={userdetail._id} onClose={closeReportPopup} isOpen={isReportPopupOpen} route='users' />}
       </div>
     </section>
   )
