@@ -9,16 +9,9 @@ import type { RootState } from '../../redux/types'
 import { useEffect, useRef } from 'react'
 import { cleanSellerDetail, getSellerbyId } from '../../redux/actions'
 import { useSelector, useDispatch } from 'react-redux'
-// import approved from '../../assets/approved.svg'
-// import failure from '../../assets/failure.svg'
 import type { ServiceProvider } from '../../interfaces'
 import { sendSellerEmail, paymentConfirmation, postTransaction } from '../../utils'
-
-// interface Notification {
-//   isOpen: boolean
-//   type: 'approved' | 'failure' | null
-//   content: string
-// }
+import toast, { Toaster } from 'react-hot-toast'
 
 const BusinessDetail = (): JSX.Element => {
   const dispatch = useDispatch()
@@ -32,7 +25,6 @@ const BusinessDetail = (): JSX.Element => {
   const sellerdetail = useSelector((state: RootState) => state.sellerdetail) as ServiceProvider
   const userdetail = useSelector((state: RootState) => state.userdetail)
   const sendEmailRef = useRef(0)
-  console.log(sendEmailRef, 'LA REF')
 
   const sendEmail = async (): Promise<any> => {
     try {
@@ -40,12 +32,11 @@ const BusinessDetail = (): JSX.Element => {
       await sendSellerEmail(userdetail.email, price, sellerdetail.sellerEmail, userdetail.phoneNumber, `${userdetail.name} ${userdetail.lastName}`, service)
       await postTransaction(transactionId, userdetail._id, sellerdetail._id, price, status)
     } catch (error) {
-      console.log('Email could not be sent')
+      console.log(error)
     }
   }
   useEffect(() => {
     dispatch(getSellerbyId(id))
-
     return () => dispatch(cleanSellerDetail())
   }, [id])
 
@@ -55,12 +46,21 @@ const BusinessDetail = (): JSX.Element => {
     const status = urlParams.get('status')
     sendEmailRef.current++
     if (status === 'approved' && sendEmailRef.current === 3) {
-      // Execute sendEmail only if the ref counter is 1
+      toast.success('Purchase successful, check your e-mail')
       sendEmail()
+    } else if (status === 'failure' && sendEmailRef.current === 3) {
+      toast.error('An error occurred while purchasing')
     }
   }, [id, userdetail])
   return (
     <div className={style['global-container']}>
+      <Toaster
+        toastOptions={{
+          style: {
+            marginTop: '100px'
+          }
+        }}
+      />
       <BusinessInfo sellerName={sellerdetail.sellerName} reviews={sellerdetail.reviews} sellerId={id} favourites={userdetail.favorites} />
       <BusinessImages />
       <Services sellerId={id as string} services={sellerdetail.servicesArray} />
