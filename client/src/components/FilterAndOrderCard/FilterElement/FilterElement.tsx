@@ -23,30 +23,40 @@ const FilterElement: React.FC<CardsProps> = ({ allServices }: CardsProps) => {
   const handleCategoryClick = (categoryName: string): void => {
     useFilter(categoryName)
     setSelectedCategory(categoryName)
+    toggleSort()
   }
 
   return (
     <div className={style['div-filter-by']}>
       <div className={style['filter-by-categories']}>
-        <button className={style['filter-button-toggle']} onClick={toggleSort}>Filter By</button>
+        <button className={style['filter-button-toggle']} onClick={toggleSort}>
+          Filter By
+        </button>
       </div>
 
       <div className={`${isOpen ? style['div-filter-opened'] : style['div-filter-closed']}`}>
         <div className={style['div-container-buttons']}>
-          <button className={`${style['button-categories']} ${selectedCategory === 'none' ? style['selected-button'] : ''}`}
-          onClick={() => { handleCategoryClick('none') }}>All Categories</button>
-          {
-            categories?.map((category) => {
-              return (
-                <button
-                  className={`${style['button-categories']} ${selectedCategory === category.name ? style['selected-button'] : ''}`}
-                  key={category.id}
-                  onClick={() => { handleCategoryClick(category.name) }}>
-                    {category.name.charAt(0).toUpperCase() + category.name.slice(1)}
-                  </button>
-              )
-            })
-          }
+          <button
+            className={`${style['button-categories']} ${selectedCategory === 'none' ? style['selected-button'] : ''}`}
+            onClick={() => {
+              handleCategoryClick('none')
+            }}
+          >
+            All Categories
+          </button>
+          {categories?.map((category) => {
+            return (
+              <button
+                className={`${style['button-categories']} ${selectedCategory === category.name ? style['selected-button'] : ''}`}
+                key={category.id}
+                onClick={() => {
+                  handleCategoryClick(category.name)
+                }}
+              >
+                {category.name.charAt(0).toUpperCase() + category.name.slice(1)}
+              </button>
+            )
+          })}
         </div>
       </div>
     </div>

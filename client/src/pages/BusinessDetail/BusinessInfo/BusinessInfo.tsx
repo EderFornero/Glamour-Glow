@@ -6,7 +6,7 @@ import { Fab, Tooltip } from '@mui/material'
 import useRating from '../../../hooks/useRating'
 import type { ReviewsProps } from '../../../components/Reviews/Reviews'
 import { postFavourite, checkFavourite, removeFavourite, findFavId } from '../../../utils/index'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import type { RootState } from '../../../redux/types'
 import { useEffect, useState } from 'react'
@@ -23,6 +23,7 @@ const BusinessInfo: React.FC<DetailProps> = ({ sellerName, reviews, sellerId, fa
   const isAuth = localStorage.getItem('isAuth')
   const role = localStorage.getItem('role')
   const userId = useSelector((state: RootState) => state.userdetail._id)
+  const location = useLocation()
 
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -63,7 +64,7 @@ const BusinessInfo: React.FC<DetailProps> = ({ sellerName, reviews, sellerId, fa
           <p>{typeof averageRating === 'number' && averageRating.toFixed(2)}</p>
         </div>
       </div>
-      <div className={style.wrapper}>
+      <div className={location.pathname.startsWith('/admin') ? style.hide : style.wrapper}>
         <Tooltip title={isAuth === 'true' && role === 'customer' ? (isFavorite ? 'Remove from favorites' : 'Add to favorites') : 'Must be logged in to add to favorites'} placement='top'>
           <Fab className={style.fav} onClick={handleFavClick}>
             {isFavorite ? <FavoriteIcon className={style['favorite-button-filled']} /> : <FavoriteIconEmpty className={style['favorite-button']} />}

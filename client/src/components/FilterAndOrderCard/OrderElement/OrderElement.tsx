@@ -15,20 +15,37 @@ const OrderElement = ({ setSortOption }: any): JSX.Element => {
   const handleOptionClick = (option: string): void => {
     setSortOption(option)
     setSelectedOption(option)
+    toggleSort()
   }
 
   return (
     <div className={style['div-order-by']}>
-        <div className={style['sort-by-reviews']}>
-          <button className={style['sort-button-toggle']} onClick={toggleSort}>Order by</button>
-        </div>
-        <div className={`${isOpen ? style['div-sort-opened'] : style['div-sort-closed']}`}>
-          <div className={style['div-all-sort']}>
-            <button onClick={() => { handleOptionClick('1') }} className={`${style['sort-button']} ${selectedOption === '1' ? style['selected-button'] : ''}`}>More Rating</button>
-            <button onClick={() => { handleOptionClick('2') }} className={`${style['sort-button']} ${selectedOption === '2' ? style['selected-button'] : ''}`}>Less Rating</button>
-          </div>
+      <div className={style['sort-by-reviews']}>
+        <button className={style['sort-button-toggle']} onClick={toggleSort}>
+          Order by
+        </button>
+      </div>
+      <div className={`${isOpen ? style['div-sort-opened'] : style['div-sort-closed']}`}>
+        <div className={style['div-all-sort']}>
+          <button
+            onClick={() => {
+              handleOptionClick('1')
+            }}
+            className={`${style['sort-button']} ${selectedOption === '1' ? style['selected-button'] : ''}`}
+          >
+            More Rating
+          </button>
+          <button
+            onClick={() => {
+              handleOptionClick('2')
+            }}
+            className={`${style['sort-button']} ${selectedOption === '2' ? style['selected-button'] : ''}`}
+          >
+            Less Rating
+          </button>
         </div>
       </div>
+    </div>
   )
 }
 

@@ -2,7 +2,7 @@ import { SellerModel } from "../models";
 import jwt from "jsonwebtoken";
 
 export const readSellers = async () => {
-  const allSellers = await SellerModel.find({})
+  const allSellers = await SellerModel.find().select({sellerPassword:0, __v:0, updatedAt:0})
     .populate("categoriesArray", {
       _id: 0,
       name: 1,
@@ -13,8 +13,8 @@ export const readSellers = async () => {
 };
 
 export const getSellersByIdHandler = async (id: String) => {
-  const sellerById = await SellerModel.findOne({ _id: id, isActive: true })
-    .select({ sellerPassword: 0, role: 0, isActive: 0, accountBalance: 0 })
+  const sellerById = await SellerModel.findOne({ _id: id})
+    .select({ sellerPassword: 0, role: 0})
     .populate("categoriesArray", {
       _id: 0,
       name: 1,
@@ -84,7 +84,7 @@ export const validateLogInSeller = async (
     if (!isPasswordValid) {
       return false;
     }
-    return { id: seller._id, role: seller.role , isActive : seller.isActive};
+    return { id: seller._id, role: seller.role , isActive : seller.isActive, accountBalance: seller.accountBalance};
   } catch (error: any) {
     throw new Error(error.message);
   }
@@ -151,5 +151,16 @@ export const decreaseSellerAccount = async (id:string, payment:string) => {
     return true
   } catch (error:any) {
     throw new Error(error.message)
+  }
+}
+
+export const validateSellerAccount = async (id:string, payment:string) => {
+  try {
+    const paymentRequested = Number(payment)
+    const seller = await SellerModel.findById(id)
+    if(seller?.accountBalance!==paymentRequested) throw new Error("Invalid amount") 
+    return 
+  } catch (error) {
+    throw error
   }
 }
