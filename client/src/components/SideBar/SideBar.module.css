@@ -124,8 +124,3 @@ button {
     display: none;
   }
 }
-.report {
-  z-index: 4;
-  width: 100vw;
-  border: 10px solid red;
-}
