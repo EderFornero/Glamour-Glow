@@ -15,7 +15,9 @@ import {
   CLEAN_SELLER_DETAIL,
   UPDATE_SELLER_IMAGE_INDEX,
   GET_USER_METRICS,
-  GET_SELLER_METRICS
+  GET_SELLER_METRICS,
+  UPDATE_SELLER_BALANCE,
+  SELLER_EMAIL
 } from './Action-Types'
 import type { ServiceAction } from './types'
 import type { SellerDetailAction } from '../interfaces'
@@ -259,11 +261,18 @@ export const updateSellerImageIndex: any = (payload: number) => {
 
 export const postSellerValidate: any = (payload: any) => {
   const endpointLogin = `${API_URL}sellers/login`
-  return async function () {
+  return async function (dispatch: (action: ServiceAction) => void) {
     try {
       const response = await axios.post(endpointLogin, payload)
       localStorage.setItem('token', response.data.token)
-
+      dispatch({
+        type: UPDATE_SELLER_BALANCE,
+        payload: response.data.accountBalance
+      })
+      dispatch({
+        type: SELLER_EMAIL,
+        payload: payload.sellerEmail
+      })
       return response
     } catch (error: any) {
       console.log(error.message)
@@ -327,6 +336,19 @@ export const getSellerMetrics: any = () => {
       })
     } catch (error: any) {
       return { error: error.message }
+    }
+  }
+}
+
+export const disableSeller: any = (id: string) => {
+  const endpointDisable = `${API_URL}sellers/disable/${id}`
+
+  return async function () {
+    try {
+      const response = await axios.put(endpointDisable)
+      return response
+    } catch (error: any) {
+      console.log(error.message)
     }
   }
 }

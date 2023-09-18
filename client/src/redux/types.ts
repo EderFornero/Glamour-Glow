@@ -14,6 +14,8 @@ export interface RootState {
   userdetail: UserDetail
   sellerdetail: SellerDetail
   filter: string
+  sellerEmail: string
+  accountBalance: number
   rating: number
   image: string | undefined
   isAuth: any

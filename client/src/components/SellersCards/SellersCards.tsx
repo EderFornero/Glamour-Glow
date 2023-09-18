@@ -23,7 +23,8 @@ const SellersCards: React.FC = () => {
     sellerPhone: seller.sellerPhone,
     isActive: seller.isActive,
     role: seller.role,
-    createdAt: seller.createdAt
+    createdAt: seller.createdAt,
+    accountBalance: seller.accountBalance
   }))
 
   return (

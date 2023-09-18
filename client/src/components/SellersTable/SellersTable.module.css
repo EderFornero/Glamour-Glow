@@ -30,9 +30,13 @@
 .btn-delete-disable{
   display: flex;
   justify-content: center;
-  margin: 8px;
+  margin: 4px;
 }
 
 .table-pagination{
+  display: flex;
+}
+
+.bottom {
   display: flex;
 }
