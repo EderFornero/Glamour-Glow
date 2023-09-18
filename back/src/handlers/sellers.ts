@@ -2,7 +2,7 @@ import { SellerModel } from "../models";
 import jwt from "jsonwebtoken";
 
 export const readSellers = async () => {
-  const allSellers = await SellerModel.find({isActive:true}).select({sellerPassword:0, __v:0, isActive: 0, updatedAt:0})
+  const allSellers = await SellerModel.find().select({sellerPassword:0, __v:0, isActive: 0, updatedAt:0})
     .populate("categoriesArray", {
       _id: 0,
       name: 1,
@@ -13,7 +13,7 @@ export const readSellers = async () => {
 };
 
 export const getSellersByIdHandler = async (id: String) => {
-  const sellerById = await SellerModel.findOne({ _id: id, isActive: true })
+  const sellerById = await SellerModel.findOne({ _id: id})
     .select({ sellerPassword: 0, role: 0, isActive: 0 })
     .populate("categoriesArray", {
       _id: 0,
