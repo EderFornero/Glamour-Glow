@@ -1,0 +1,7 @@
+.usersContainer {
+  margin-left: 220px;
+   
+  @media (max-width: 800px){ 
+    margin-left: 85px;
+  }
+}

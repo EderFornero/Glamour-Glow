@@ -28,7 +28,6 @@ const FormRegister: React.FC<FormLoginProps> = () => {
     register,
     getValues,
     handleSubmit,
-    setError,
     formState: { errors }
   } = useForm<FormData>({
     defaultValues: {
@@ -68,7 +67,12 @@ const FormRegister: React.FC<FormLoginProps> = () => {
           const response = await dispatch(postValidate(autoLogin))
           const { id, token, role } = response.data
           if (token !== undefined && id !== undefined) {
-            navigate('/login')
+            localStorage.setItem('isAuth', 'true')
+            localStorage.setItem('id', id)
+            localStorage.setItem('role', role)
+            dispatch(setAuth(true))
+            dispatch(setUserId(id))
+            navigate('/')
           }
           toast.success('Successfully registered', {
             style: {
