@@ -12,6 +12,8 @@ import { forgotSellerPassword } from '../../controllers/sellers/forgotSellerPass
 import { paymentRequest } from '../../controllers/sellers/paymentRequest'
 import { visitsLogger } from '../../middlewares/visitsLogger'
 import passport from 'passport'
+import { createReportSchema } from "../../schemas/reportSchema";
+import { postReport } from "../../controllers/reports";
 
 const router = Router()
 
@@ -22,6 +24,7 @@ router.post('/login',schemaValidation(loginSellerSchema), logInSeller)
 router.post("/forgotPassword", forgotSellerPassword)
 router.post("/resetPassword/:id/:passwordResetCode",schemaValidation(resetSellerPasswordSchema), resetSellerPassword)
 router.post("/payment/:id", paymentRequest)
+router.post("/reports",schemaValidation(createReportSchema), postReport)
 router.put('/:id', passport.authenticate('jwt', { session: false }), schemaValidation(updateSellerSchema), putSellersController)
 router.put('/disable/:id', passport.authenticate('jwt', { session: false }), schemaValidation(readAndDeleteSellerSchema), disableSellerController)
 router.put('/enable/:id', passport.authenticate('jwt', { session: false }), schemaValidation(readAndActiveSellerSchema), disableSellerController)
