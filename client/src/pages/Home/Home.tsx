@@ -39,7 +39,6 @@ const Home: React.FC = () => {
           <Description />
           <Carousel cardstoshow={allServices} carouselName='Recomended' />
           <Carousel cardstoshow={allServices} carouselName='Most Liked' />
-          <Carousel cardstoshow={allServices} carouselName='Nearest' />
           <Description2 />
           <FAQ />
         </>

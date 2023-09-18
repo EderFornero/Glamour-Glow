@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import type { FormCreateBusi } from '../../interfaces'
 import Cloudinary from '../Cloudinary/Cloudinary'
+import toast, { Toaster } from 'react-hot-toast'
 
 interface FormLoginProps {
   onToggle: () => void
@@ -56,7 +57,6 @@ const FormBusiness: React.FC<FormLoginProps> = () => {
   }, [dispatch])
 
   const { image } = useSelector((state: RootState) => state)
-  console.log(image)
 
   const onSubmit = handleSubmit(async (data: FormCreateBusi) => {
     delete data.confirmPassword
@@ -78,25 +78,46 @@ const FormBusiness: React.FC<FormLoginProps> = () => {
       })
       return
     }
-    console.log(data)
     const response = await dispatch(postSeller(data))
     console.log(response.data)
+
     try {
-      console.log(autoLoginSeller)
       const response = await dispatch(postSellerValidate(autoLoginSeller))
       const { id, token, role } = response.data
-      console.log(response.data)
 
       if (token !== undefined && id !== undefined) {
+        toast.success('Successfully registered', {
+          style: {
+            border: '1px solid #3d36be',
+            padding: '16px',
+            color: '#1eb66d'
+          },
+          iconTheme: {
+            primary: '#6e66ff',
+            secondary: '#FFFAEE'
+          }
+        })
         localStorage.setItem('isAuth', 'true')
         localStorage.setItem('id', id)
         localStorage.setItem('role', role)
         dispatch(setAuth(true))
         dispatch(setUserId(id))
-        navigate('/')
+        setTimeout(() => {
+          navigate('/')
+        }, 1000)
       }
     } catch (error: any) {
-      console.log(error)
+      toast.error('Ops! Credential(s) incorrect', {
+        style: {
+          border: '1px solid #3d36be',
+          padding: '16px',
+          color: 'red'
+        },
+        iconTheme: {
+          primary: 'red',
+          secondary: '#FFFAEE'
+        }
+      })
     }
   })
 
@@ -146,6 +167,12 @@ const FormBusiness: React.FC<FormLoginProps> = () => {
             </form>
           </div>
         </div>
+      </div>
+      <div>
+        <Toaster
+          position="top-center"
+          reverseOrder={false}
+        />
       </div>
     </div>
   )

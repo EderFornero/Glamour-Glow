@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { updateService, deleteService, getSellerbyId } from '../../../redux/actions'
 import { useParams } from 'react-router-dom'
 import type { RootState } from '../../../redux/types'
+import toast, { Toaster } from 'react-hot-toast'
 
 interface Service {
   _id: string
@@ -27,7 +28,7 @@ const ServiceList: React.FC<Props> = ({ setActiveItem }) => {
 
   useEffect(() => {
     dispatch(getSellerbyId(id))
-  }, [id])
+  })
 
   const handleEditClick = (id: any): void => {
     const serviceToEdit = servicesArray.find((service: any) => service._id === id)
@@ -38,11 +39,36 @@ const ServiceList: React.FC<Props> = ({ setActiveItem }) => {
   }
 
   const handleSaveClick = (): void => {
-    if (Service !== null) {
-      dispatch(updateService(ServiceId, Service))
+    try {
+      if (Service !== null) {
+        dispatch(updateService(ServiceId, Service))
+      }
+      setServiceId(null)
+      setService(null)
+      toast.success('Successfully edited', {
+        style: {
+          border: '1px solid #3d36be',
+          padding: '16px',
+          color: '#1eb66d'
+        },
+        iconTheme: {
+          primary: '#6e66ff',
+          secondary: '#FFFAEE'
+        }
+      })
+    } catch (error) {
+      toast.error('Ops! Something went wrong', {
+        style: {
+          border: '1px solid #3d36be',
+          padding: '16px',
+          color: 'red'
+        },
+        iconTheme: {
+          primary: 'red',
+          secondary: '#FFFAEE'
+        }
+      })
     }
-    setServiceId(null)
-    setService(null)
   }
 
   const handleCancelClick = (): void => {
@@ -51,15 +77,44 @@ const ServiceList: React.FC<Props> = ({ setActiveItem }) => {
   }
 
   const handleDeleteClick = (ServiceId: any): void => {
-    dispatch(deleteService(ServiceId))
+    const isConfirmed = window.confirm('Are you sure you want to delete this service?')
+    if (isConfirmed) {
+      try {
+        dispatch(deleteService(ServiceId))
+        toast.success('Successfully deleted', {
+          style: {
+            border: '1px solid #3d36be',
+            padding: '16px',
+            color: '#1eb66d'
+          },
+          iconTheme: {
+            primary: '#6e66ff',
+            secondary: '#FFFAEE'
+          }
+        })
+      } catch (error) {
+        toast.error('Ops! Something went wrong', {
+          style: {
+            border: '1px solid #3d36be',
+            padding: '16px',
+            color: 'red'
+          },
+          iconTheme: {
+            primary: 'red',
+            secondary: '#FFFAEE'
+          }
+        })
+      }
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
     const { name, value } = e.target
     setService((prevService) => ({
       ...prevService,
-      [name]: name === 'price' ? parseFloat(value) : value
+      [name]: value
     }) as Service)
+    dispatch(getSellerbyId(id))
   }
 
   return (
@@ -100,6 +155,12 @@ const ServiceList: React.FC<Props> = ({ setActiveItem }) => {
           </li>
         ))}
       </ul>
+      <div>
+        <Toaster
+          position="top-center"
+          reverseOrder={false}
+        />
+      </div>
     </div>
   )
 }

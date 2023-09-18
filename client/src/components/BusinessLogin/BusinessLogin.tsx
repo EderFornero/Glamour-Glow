@@ -3,12 +3,13 @@ import { useForm } from 'react-hook-form'
 import { useGoBack } from '../../hooks'
 import { useNavigate, Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import type { ReviewRating, SellerLoginData } from '../../interfaces'
+import type { SellerLoginData } from '../../interfaces'
 import EmailLogin from './inputs/EmailLogin'
 import PasswordLogin from './inputs/PasswordLogin'
 import { postSellerValidate, setAuth, setUserId } from '../../redux/actions'
 import style from './BusinessLogin.module.css'
 import ErrorMessage from './handlers/errorMessage'
+import toast, { Toaster } from 'react-hot-toast'
 
 interface BusinessLoginProps {
   onToggle: () => void
@@ -28,26 +29,45 @@ const BusinessLogin: React.FC<BusinessLoginProps> = ({ onToggle }) => {
   })
 
   const [errorMessage, setErrorMessage] = useState('')
-  const [error, setError] = useState('')
-
-  console.log(setErrorMessage)
 
   const onSubmit = handleSubmit(async (data: SellerLoginData) => {
     try {
       const response = await dispatch(postSellerValidate(data))
       const { id, token, role } = response.data
-      console.log(response.data)
 
       if (token !== undefined && id !== undefined) {
+        toast.success('Logged in successfully', {
+          style: {
+            border: '1px solid #3d36be',
+            padding: '16px',
+            color: '#1eb66d'
+          },
+          iconTheme: {
+            primary: '#6e66ff',
+            secondary: '#FFFAEE'
+          }
+        })
         localStorage.setItem('isAuth', 'true')
         localStorage.setItem('id', id)
         localStorage.setItem('role', role)
         dispatch(setAuth(true))
         dispatch(setUserId(id))
-        navigate('/')
+        setTimeout(() => {
+          navigate('/')
+        }, 1000)
       }
     } catch (error: any) {
-      setError('Incorrect credentials')
+      toast.error('Ops! Credential(s) incorrect', {
+        style: {
+          border: '1px solid #3d36be',
+          padding: '16px',
+          color: 'red'
+        },
+        iconTheme: {
+          primary: 'red',
+          secondary: '#FFFAEE'
+        }
+      })
     }
   })
 
@@ -82,7 +102,6 @@ const BusinessLogin: React.FC<BusinessLoginProps> = ({ onToggle }) => {
                   Send
                 </button>
               </div>
-              {error !== undefined && <div className={style['error-login']}>{error}</div>}
             </form>
             <div className={style['link-texts']}>
               <button>
@@ -96,6 +115,12 @@ const BusinessLogin: React.FC<BusinessLoginProps> = ({ onToggle }) => {
             </div>
           </div>
         </div>
+      </div>
+      <div>
+        <Toaster
+          position="top-center"
+          reverseOrder={false}
+        />
       </div>
     </div>
   )

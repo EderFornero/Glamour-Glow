@@ -14,6 +14,7 @@ import { postUser, postValidate, setAuth, setUserId } from '../../redux/actions'
 import PhoneNumberInput from './inputs/PhoneNumberInput'
 import { sendWelcomeEmail } from '../../utils'
 import TermsAndConditions from '../TermsAndConditions/TermsAndConditions'
+import toast, { Toaster } from 'react-hot-toast'
 
 interface FormLoginProps {
   onToggle: () => void
@@ -53,14 +54,12 @@ const FormRegister: React.FC<FormLoginProps> = () => {
   const toggleTerms = (): void => {
     setShowTerms(!showTerms)
   }
-  console.log(showTerms)
 
   const onSubmit = async (): Promise<void> => {
     const data: FormData = getValues()
     delete data.confirmPassword
     try {
       const response = await dispatch(postUser(data))
-      console.log(response.data)
       await sendWelcomeEmail(data.email)
       if (response.data !== undefined) {
         try {
@@ -68,22 +67,44 @@ const FormRegister: React.FC<FormLoginProps> = () => {
           autoLogin.password = data.password
           const response = await dispatch(postValidate(autoLogin))
           const { id, token, role } = response.data
-          console.log(response.data)
           if (token !== undefined && id !== undefined) {
-            localStorage.setItem('isAuth', 'true')
-            localStorage.setItem('id', id)
-            localStorage.setItem('role', role)
-            dispatch(setAuth(true))
-            dispatch(setUserId(id))
-            navigate('/')
+            navigate('/login')
           }
+          toast.success('Successfully registered', {
+            style: {
+              border: '1px solid #3d36be',
+              padding: '16px',
+              color: '#1eb66d'
+            },
+            iconTheme: {
+              primary: '#6e66ff',
+              secondary: '#FFFAEE'
+            }
+          })
         } catch (error: any) {
-          throw new Error()
+          toast.error('Ops! Something went wrong', {
+            style: {
+              border: '1px solid #3d36be',
+              padding: '16px',
+              color: 'red'
+            },
+            iconTheme: {
+              primary: 'red',
+              secondary: '#FFFAEE'
+            }
+          })
         }
       } else {
-        setError('email', {
-          type: 'manual',
-          message: 'The email is already in use'
+        toast.error('The email is already in use', {
+          style: {
+            border: '1px solid #3d36be',
+            padding: '16px',
+            color: 'red'
+          },
+          iconTheme: {
+            primary: 'red',
+            secondary: '#FFFAEE'
+          }
         })
       }
     } catch (error) {
@@ -113,6 +134,12 @@ const FormRegister: React.FC<FormLoginProps> = () => {
         <div className={style[`terms-and-conditions${showTerms ? '-show-terms' : ''}`]}>
           <TermsAndConditions />
         </div>
+      <div>
+        <Toaster
+          position="top-center"
+          reverseOrder={false}
+        />
+      </div>
     </div>
   )
 }

@@ -13,6 +13,7 @@ import { initializeApp } from 'firebase/app'
 import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
 import type { AuthProvider } from 'firebase/auth'
 import axios from 'axios'
+import toast, { Toaster } from 'react-hot-toast'
 
 interface FormLoginProps {
   onToggle: () => void
@@ -31,9 +32,6 @@ const FormLogin: React.FC<FormLoginProps> = ({ onToggle }) => {
     defaultValues: { email: '', password: '' }
   })
   const [errorMessage, setErrorMessage] = useState('')
-  const [error, setError] = useState('')
-
-  console.log(setErrorMessage)
 
   const onSubmit = handleSubmit(async (data: FormLoginData) => {
     try {
@@ -41,15 +39,38 @@ const FormLogin: React.FC<FormLoginProps> = ({ onToggle }) => {
       const { id, token, role } = response.data
 
       if (token !== undefined && id !== undefined) {
+        toast.success('Logged in successfully', {
+          style: {
+            border: '1px solid #3d36be',
+            padding: '16px',
+            color: '#1eb66d'
+          },
+          iconTheme: {
+            primary: '#6e66ff',
+            secondary: '#FFFAEE'
+          }
+        })
         localStorage.setItem('isAuth', 'true')
         localStorage.setItem('id', id)
         localStorage.setItem('role', role)
         dispatch(setAuth(true))
         dispatch(setUserId(id))
-        navigate('/')
+        setTimeout(() => {
+          navigate('/')
+        }, 1000)
       }
     } catch (error: any) {
-      setError('Incorrect credentials')
+      toast.error('Ops! Credential(s) incorrect', {
+        style: {
+          border: '1px solid #3d36be',
+          padding: '16px',
+          color: 'red'
+        },
+        iconTheme: {
+          primary: 'red',
+          secondary: '#FFFAEE'
+        }
+      })
     }
   })
 
@@ -99,7 +120,17 @@ const FormLogin: React.FC<FormLoginProps> = ({ onToggle }) => {
       }
       localStorage.setItem('token', token)
     } catch (error) {
-      console.log(error)
+      toast.error('Ops! An error occurred', {
+        style: {
+          border: '1px solid #3d36be',
+          padding: '16px',
+          color: 'red'
+        },
+        iconTheme: {
+          primary: 'red',
+          secondary: '#FFFAEE'
+        }
+      })
     }
   }
 
@@ -107,10 +138,10 @@ const FormLogin: React.FC<FormLoginProps> = ({ onToggle }) => {
     <div className={style.content}>
       <form onSubmit={onSubmit}>
         <p className={style.txt}>Email:</p>
-        <EmailLogin register={register} errors={errors} />
+        <EmailLogin register={register} errors={errors}/>
         {errorMessage !== '' && <ErrorMessage message={errorMessage} />}
         <p className={style.txt}>Password:</p>
-        <PasswordLogin register={register} errors={errors} />
+        <PasswordLogin register={register} errors={errors}/>
         <div className={style['alt-login']}>
           <h4 className={style['log-with']}>or Login With:</h4>
           <div className={style['ico-div']}>
@@ -124,7 +155,6 @@ const FormLogin: React.FC<FormLoginProps> = ({ onToggle }) => {
           <button className={style.btnSubmit} type='submit'>
             Send
           </button>
-          {error !== undefined && <div className={style['error-login']}>{error}</div>}
         </div>
       </form>
       <div className={style['link-texts']}>
@@ -136,6 +166,12 @@ const FormLogin: React.FC<FormLoginProps> = ({ onToggle }) => {
         <Link to='/login/passwordRecovery'>
           <p className={style.forgot}>Forgot Password?</p>
         </Link>
+      </div>
+      <div>
+        <Toaster
+          position="top-center"
+          reverseOrder={false}
+        />
       </div>
     </div>
   )

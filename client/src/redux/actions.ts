@@ -163,7 +163,7 @@ export const getUserbyId: any = (id: string) => {
         payload: data
       })
     } catch (error: any) {
-      console.log(error.message)
+      return { error: error.message }
     }
   }
 }
@@ -179,6 +179,8 @@ export const updateUserInfo: any = (id: string, updateinfo: any) => {
         type: UPDATE_USER_DETAIL,
         payload: data
       })
+
+      return { success: true }
     } catch (error: any) {
       return { error: error.message }
     }

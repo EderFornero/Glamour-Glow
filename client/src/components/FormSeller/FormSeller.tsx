@@ -10,6 +10,7 @@ import ServiceDescriptionInput from './inputs/ServiceDescriptionInput'
 import ServiceCategoriesInput from './inputs/ServiceCategoryInput'
 import ServicePriceInput from './inputs/ServicePriceInput'
 import { createServiceImage } from '../../Images/FormImages'
+import toast, { Toaster } from 'react-hot-toast'
 
 const FormSeller: React.FC = () => {
   const dispatch = useDispatch()
@@ -37,8 +38,32 @@ const FormSeller: React.FC = () => {
   const onSubmit = handleSubmit((data: SellerData) => {
     const idSeller = localStorage.getItem('id')
     data.seller = idSeller
-    console.log(data)
-    dispatch(postService(data))
+    try {
+      dispatch(postService(data))
+      toast.success('Successfully created', {
+        style: {
+          border: '1px solid #3d36be',
+          padding: '16px',
+          color: '#1eb66d'
+        },
+        iconTheme: {
+          primary: '#6e66ff',
+          secondary: '#FFFAEE'
+        }
+      })
+    } catch (error) {
+      toast.error('Ops! Something went wrong', {
+        style: {
+          border: '1px solid #3d36be',
+          padding: '16px',
+          color: 'red'
+        },
+        iconTheme: {
+          primary: 'red',
+          secondary: '#FFFAEE'
+        }
+      })
+    }
   })
 
   return (
@@ -70,6 +95,12 @@ const FormSeller: React.FC = () => {
               <button className={style.submit} type='submit'>Add Service</button>
             </form>
         </div>
+      </div>
+      <div>
+        <Toaster
+          position="top-center"
+          reverseOrder={false}
+        />
       </div>
     </div>
   )

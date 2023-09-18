@@ -9,7 +9,7 @@ import UserDetailFavoritesDelete from '../../components/UserDetailDestructure/Se
 
 function UserDetail (): JSX.Element {
   return (
-        <div className={styles.section}>
+      <div className={styles.section}>
           <UserDetailFirstSection />
           <section className={styles.sectionright}>
             {/* <DivDirectionsPaymentWays />
@@ -17,7 +17,7 @@ function UserDetail (): JSX.Element {
             <UserDetailNotification /> */}
             <UserDetailFavoritesDelete />
           </section>
-        </div>
+      </div>
   )
 }
 

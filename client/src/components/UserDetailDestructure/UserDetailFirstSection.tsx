@@ -10,15 +10,21 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useEffect, useState } from 'react'
 import { getUserbyId, updateUserInfo, setAuth } from '../../redux/actions'
 import { useNavigate, useParams } from 'react-router-dom'
+import toast, { Toaster } from 'react-hot-toast'
 
 const UserDetailFirstSection = (): JSX.Element => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const { image } = useSelector((state: RootState) => state)
   const userdetail = useSelector((state: RootState) => state.userdetail)
-
   const [editing, setEditing] = useState(false)
-  const [newUserInfo, setNewUserInfo] = useState({ ...userdetail })
+  const [newUserInfo, setNewUserInfo] = useState({
+    name: userdetail.name,
+    lastName: userdetail.lastName,
+    dateOfBirth: userdetail.dateOfBirth,
+    phoneNumber: userdetail.phoneNumber,
+    email: userdetail.email
+  })
 
   const { id } = useParams()
 
@@ -38,12 +44,40 @@ const UserDetailFirstSection = (): JSX.Element => {
 
   const handleEdit = (): void => {
     setEditing(true)
-    setNewUserInfo({ ...userdetail })
   }
 
-  const handleSave = (): void => {
-    setEditing(false)
-    dispatch(updateUserInfo(id, newUserInfo))
+  const handleSave = async (): Promise<void> => {
+    try {
+      setEditing(false)
+      const result = await dispatch(updateUserInfo(id, newUserInfo))
+      if (result.success !== undefined) {
+        toast.success('Information updated successfully', {
+          style: {
+            border: '1px solid #3d36be',
+            padding: '16px',
+            color: '#1eb66d'
+          },
+          iconTheme: {
+            primary: '#6e66ff',
+            secondary: '#FFFAEE'
+          }
+        })
+      } else {
+        throw new Error('Ops! Something went wrong')
+      }
+    } catch (error) {
+      toast.error('Ops! Something went wrong', {
+        style: {
+          border: '1px solid #3d36be',
+          padding: '16px',
+          color: 'red'
+        },
+        iconTheme: {
+          primary: 'red',
+          secondary: '#FFFAEE'
+        }
+      })
+    }
   }
 
   const handleChange = (event: any): void => {
@@ -53,7 +87,7 @@ const UserDetailFirstSection = (): JSX.Element => {
 
   const formatDateNumbers = (birthdate: any): string => {
     const date = new Date(birthdate)
-    return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
+    return `${date.getDate() + 1}/${date.getMonth() + 1}/${date.getFullYear()}`
   }
 
   return (
@@ -90,6 +124,12 @@ const UserDetailFirstSection = (): JSX.Element => {
           <a>Sign Out</a>
         </div>
       </div>
+      <div>
+          <Toaster
+            position="top-center"
+            reverseOrder={false}
+          />
+        </div>
     </section>
   )
 }
