@@ -45,3 +45,8 @@
 .button:hover {
   background-color: var(--secondary-color);
 }
+
+.button:disabled {
+  background-color: #ccc;
+  color: var(--primary-color);
+}

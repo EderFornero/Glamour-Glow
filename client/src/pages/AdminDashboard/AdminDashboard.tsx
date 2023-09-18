@@ -1,5 +1,6 @@
 import SideBar from '../../components/SideBar/SideBar'
 import ServiceList from './AdminParts/ServiceList'
+import Report from '../../components/Report/Report'
 import Clients from './AdminParts/Clients'
 import FormSeller from '../../components/FormSeller/FormSeller'
 import { useEffect, useState } from 'react'
@@ -17,9 +18,20 @@ import { menuItems } from '../../components/SideBar/parts/itemsmenu'
 
 const AdminDashboard: React.FC = () => {
   const [activeItem, setActiveItem] = useState<string>('')
+  const [isReportPopupOpen, setIsReportPopupOpen] = useState<boolean>(false)
+
+  const openReportPopup = (): void => {
+    setIsReportPopupOpen(true)
+  }
+
+  const closeReportPopup = (): void => {
+    setIsReportPopupOpen(false)
+  }
+
   const dispatch = useDispatch()
   const { id } = useParams()
   const ID = localStorage.getItem('id')
+
   const sellerdetail = useSelector((state: RootState) => state.sellerdetail) as ServiceProvider
   const users = useSelector((state: RootState) => state.users)
   const navigate = useNavigate()
@@ -36,16 +48,23 @@ const AdminDashboard: React.FC = () => {
 
   return (
     <div className={style['div-sidebar-container']}>
+      <div className={style['report-container']}>
+        <p onClick={openReportPopup}>Got a report?</p>
+        <div className={style.form}>{isReportPopupOpen && <Report id={ID} onClose={closeReportPopup} isOpen={isReportPopupOpen} route='sellers' />}</div>
+      </div>
       <SideBar setActiveItem={setActiveItem} activeItem={activeItem} menuItems={menuItems} />
       <div className={style['right-section']}>
         {activeItem === 'Create' && <FormSeller />}
         {(activeItem === 'List' || activeItem === 'Services') && <ServiceList sellerid={sellerdetail.sellerid} services={sellerdetail.servicesArray} setActiveItem={setActiveItem} />}
         {activeItem === 'Clients' && <Clients sellerName='Hola' services={users} />}
         {activeItem === 'Interface' && <UpdateBusinessImages />}
-        {activeItem === 'Display' && <div className={style['Display-business']}>
-                                        <BusinessInfo sellerName={sellerdetail.sellerName} reviews={sellerdetail.reviews} />
-                                        <BusinessImages />
-                                        <Services sellerId={id as string} services={sellerdetail.servicesArray} /></div>}
+        {activeItem === 'Display' && (
+          <div className={style['Display-business']}>
+            <BusinessInfo sellerName={sellerdetail.sellerName} reviews={sellerdetail.reviews} />
+            <BusinessImages />
+            <Services sellerId={id as string} services={sellerdetail.servicesArray} />
+          </div>
+        )}
       </div>
     </div>
   )
