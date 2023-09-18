@@ -10,12 +10,26 @@ import { useSearchBarHome } from '../../hooks/index'
 import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { getUserbyId } from '../../redux/actions'
+import useRating from '../../hooks/useRating'
 
 const Home: React.FC = () => {
   const allServices = useSelector((state: RootState) => state.allServices)
   const { searchResults, handleOnSearch } = useSearchBarHome(allServices)
   const [showCards, setShowCards] = useState(false)
   const dispatch = useDispatch()
+
+  // al rato arreglo los anys queria que funcara :**
+  const recomendedServices: any = allServices.filter((seller) => {
+    const { reviews } = seller;
+    const avg: any = useRating(reviews)
+    return avg >= 4 && avg <= 5
+  })
+
+  const mostServices: any =  allServices.filter((seller) => {
+    const { reviews } = seller;
+    const avg: any = useRating(reviews)
+    return avg < 4
+  })
 
   const updateShowCards = (hasQuery: boolean): void => {
     setShowCards(hasQuery)
@@ -24,6 +38,7 @@ const Home: React.FC = () => {
     const id = localStorage.getItem('id')
     if (id !== null) {
       dispatch(getUserbyId(id))
+      
     }
   }, [])
 
@@ -37,9 +52,8 @@ const Home: React.FC = () => {
         : (
         <>
           <Description />
-          <Carousel cardstoshow={allServices} carouselName='Recomended' />
-          <Carousel cardstoshow={allServices} carouselName='Most Liked' />
-          <Carousel cardstoshow={allServices} carouselName='Nearest' />
+          <Carousel cardstoshow={recomendedServices} carouselName='Recomended' />
+          <Carousel cardstoshow={mostServices} carouselName='More services' />
           <Description2 />
           <FAQ />
         </>

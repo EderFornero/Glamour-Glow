@@ -11,11 +11,11 @@ interface BusinessCardProps {
   images: string[]
 }
 
-const BusinessCard: React.FC<BusinessCardProps> = ({ _id, sellerName, reviews, categoriesArray /* images */ }) => {
+const BusinessCard: React.FC<BusinessCardProps> = ({ _id, sellerName, reviews, categoriesArray,  images  }) => {
   const averageRating = useRating(reviews)
   return (
     <article className={style.card}>
-      {/* <div className={style.imageContainer}>{<img className={style.image} src={images[0]} alt='sellerImage' />}</div> */}
+      { <div className={style.imageContainer}>{<img className={style.image} src={images[0]} alt='sellerImage' />}</div> }
       <div className={style.titleContainer}>
         <h2 className={style.title}> {sellerName}</h2>
       </div>
