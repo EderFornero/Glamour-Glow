@@ -153,3 +153,14 @@ export const decreaseSellerAccount = async (id:string, payment:string) => {
     throw new Error(error.message)
   }
 }
+
+export const validateSellerAccount = async (id:string, payment:string) => {
+  try {
+    const paymentRequested = Number(payment)
+    const seller = await SellerModel.findById(id)
+    if(seller?.accountBalance!==paymentRequested) throw new Error("Invalid amount") 
+    return 
+  } catch (error) {
+    throw error
+  }
+}
