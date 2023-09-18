@@ -9,7 +9,6 @@ import { disableSellerController } from '../../controllers/sellers/deleteSeller'
 import { logInSeller } from '../../controllers/sellers/loginSeller'
 import { resetSellerPassword } from '../../controllers/sellers/resetSellerPassword'
 import { forgotSellerPassword } from '../../controllers/sellers/forgotSellerPassword'
-import { paymentRequest } from '../../controllers/sellers/paymentRequest'
 import { visitsLogger } from '../../middlewares/visitsLogger'
 import passport from 'passport'
 import { postReport } from '../../controllers/reports'
@@ -23,10 +22,8 @@ router.post('/', schemaValidation(createSellerSchema), postSellersController)
 router.post('/login',schemaValidation(loginSellerSchema), logInSeller)
 router.post("/forgotPassword", forgotSellerPassword)
 router.post("/resetPassword/:id/:passwordResetCode",schemaValidation(resetSellerPasswordSchema), resetSellerPassword)
-router.post("/payment/:id", paymentRequest)
 router.post("/reports",schemaValidation(createReportSchema), postReport)
 router.put('/:id', passport.authenticate('jwt', { session: false }), schemaValidation(updateSellerSchema), putSellersController)
 router.put('/disable/:id', passport.authenticate('jwt', { session: false }), schemaValidation(readAndDeleteSellerSchema), disableSellerController)
 router.put('/enable/:id', passport.authenticate('jwt', { session: false }), schemaValidation(readAndActiveSellerSchema), disableSellerController)
-
 export default router;
