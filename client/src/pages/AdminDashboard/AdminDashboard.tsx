@@ -48,7 +48,7 @@ const AdminDashboard: React.FC = () => {
     <div className={style['div-sidebar-container']}>
       <SideBar setActiveItem={setActiveItem} activeItem={activeItem} menuItems={menuItems} />
       <div className={style['right-section']}>
-        {activeItem === 'Request Payout' && <RequestPayout balance={accountBalance} id={ID} sellerName={sellerdetail.sellerName} sellerPhone={sellerdetail.sellerPhone} />}
+        {activeItem === 'Request Payout' && <RequestPayout accountBalance={accountBalance} sellerName={sellerdetail.sellerName} sellerPhone={sellerdetail.sellerPhone} />}
         {activeItem === 'Report' && <Report id={ID} onClose={closeReportPopup} isOpen={isReportPopupOpen} route='sellers' />}
         {activeItem === 'Create' && <FormSeller />}
         {(activeItem === 'List' || activeItem === 'Services') && <ServiceList sellerid={sellerdetail.sellerid} services={sellerdetail.servicesArray} setActiveItem={setActiveItem} />}
