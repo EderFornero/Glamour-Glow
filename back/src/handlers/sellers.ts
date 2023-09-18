@@ -84,7 +84,7 @@ export const validateLogInSeller = async (
     if (!isPasswordValid) {
       return false;
     }
-    return { id: seller._id, role: seller.role , isActive : seller.isActive};
+    return { id: seller._id, role: seller.role , isActive : seller.isActive, accountBalance: seller.accountBalance};
   } catch (error: any) {
     throw new Error(error.message);
   }
