@@ -20,6 +20,7 @@ import {
   SELLER_EMAIL,
   POST_SERVICES,
   PUT_SERVICES,
+  SEE_REPORTS,
   DELETE_SERVICES
 } from './Action-Types'
 import type { ServiceAction } from './types'
@@ -383,6 +384,23 @@ export const disableSeller: any = (id: string) => {
       return response
     } catch (error: any) {
       console.log(error.message)
+    }
+  }
+}
+
+export const getReports: any = () => {
+  const endpoint = `${API_URL}admin/reports`
+
+  return async (dispatch: (action: ServiceAction) => void) => {
+    try {
+      const { data } = await axios.get(endpoint)
+
+      dispatch({
+        type: SEE_REPORTS,
+        payload: data
+      })
+    } catch (error: any) {
+      return { error: error.message }
     }
   }
 }
