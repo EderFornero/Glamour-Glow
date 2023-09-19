@@ -25,7 +25,6 @@ const BusinessDetail = (): JSX.Element => {
   const sellerdetail = useSelector((state: RootState) => state.sellerdetail) as ServiceProvider
   const userdetail = useSelector((state: RootState) => state.userdetail)
   const sendEmailRef = useRef(0)
-  console.log(sendEmailRef)
 
   const sendEmail = async (): Promise<any> => {
     try {
