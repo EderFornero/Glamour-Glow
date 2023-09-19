@@ -14,6 +14,7 @@ import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
 import type { AuthProvider } from 'firebase/auth'
 import axios from 'axios'
 import toast, { Toaster } from 'react-hot-toast'
+const API_URL = import.meta.env.VITE_SERVER_URL
 
 interface FormLoginProps {
   onToggle: () => void
@@ -56,7 +57,9 @@ const FormLogin: React.FC<FormLoginProps> = ({ onToggle }) => {
         dispatch(setAuth(true))
         dispatch(setUserId(id))
         setTimeout(() => {
-          navigate('/')
+          if (data.email === 'glamourglowpf@gmail.com') {
+            navigate('/admin/glamour')
+          } else { navigate('/') }
         }, 1000)
       }
     } catch (error: any) {
@@ -107,7 +110,7 @@ const FormLogin: React.FC<FormLoginProps> = ({ onToggle }) => {
         name,
         password
       }
-      const response = await axios.post('http://localhost:3001/users/auth/login', data)
+      const response = await axios.post(`${API_URL}/users/auth/login`, data)
       const { token, id, role } = response.data
 
       if (token !== undefined && id !== undefined) {
