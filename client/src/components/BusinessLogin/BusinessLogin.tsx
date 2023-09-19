@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { useGoBack } from '../../hooks'
 import { useNavigate, Link } from 'react-router-dom'
@@ -27,6 +27,20 @@ const BusinessLogin: React.FC<BusinessLoginProps> = ({ onToggle }) => {
   } = useForm<SellerLoginData>({
     defaultValues: { sellerEmail: '', sellerPassword: '' }
   })
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent): void => {
+      if (event.key === 'Enter') {
+        event.preventDefault()
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [])
 
   const [errorMessage] = useState('')
 

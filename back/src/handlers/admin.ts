@@ -77,7 +77,9 @@ export const getPagesVisits = async () => {
 };
 
 export const getPayments = async() => {
-  const allPayments = await PaymentsModel.find({})
+  const allPayments = await PaymentsModel.find({}).populate("userId",{
+    name: 1
+  })
   return allPayments
 }
 
