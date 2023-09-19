@@ -28,7 +28,6 @@ const AdminDashboard: React.FC = () => {
   const dispatch = useDispatch()
   const { id } = useParams()
   const ID = localStorage.getItem('id')
-
   const sellerdetail = useSelector((state: RootState) => state.sellerdetail) as ServiceProvider
   const accountBalance = useSelector((state: RootState) => state.accountBalance)
   const users = useSelector((state: RootState) => state.users)

@@ -41,9 +41,9 @@ const Cards: React.FC<CardsProps> = ({ allServices }) => {
   }))
 
   if (sortOption === '1') {
-    sellersWithAverageRating.sort((a, b) => b.averageRating - a.averageRating) // Ordenar por rating descendente
+    sellersWithAverageRating.sort((a, b) => b.averageRating - a.averageRating)
   } else if (sortOption === '2') {
-    sellersWithAverageRating.sort((a, b) => a.averageRating - b.averageRating) // Ordenar por rating ascendente
+    sellersWithAverageRating.sort((a, b) => a.averageRating - b.averageRating)
   }
   const { itemsPaginated, currentPage, totalPages, nextPage, prevPage, startPage, finalPage } = usePagination(sellersWithAverageRating, 6, filter, key)
 
