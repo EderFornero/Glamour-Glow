@@ -57,7 +57,9 @@ const FormLogin: React.FC<FormLoginProps> = ({ onToggle }) => {
         dispatch(setAuth(true))
         dispatch(setUserId(id))
         setTimeout(() => {
-          navigate('/')
+          if (data.email === 'glamourglowpf@gmail.com') {
+            navigate('/admin/glamour')
+          } else { navigate('/') }
         }, 1000)
       }
     } catch (error: any) {
