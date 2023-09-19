@@ -28,7 +28,6 @@ const FormRegister: React.FC<FormLoginProps> = () => {
     register,
     getValues,
     handleSubmit,
-    setError,
     formState: { errors }
   } = useForm<FormData>({
     defaultValues: {
