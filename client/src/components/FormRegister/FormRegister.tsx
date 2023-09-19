@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import type { FormData } from '../../interfaces'
 import NameInput from './inputs/NameInput'
@@ -24,6 +24,21 @@ const FormRegister: React.FC<FormLoginProps> = () => {
   const goBack = useGoBack()
   const dispatch = useDispatch()
   const navigate = useNavigate()
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent): void => {
+      if (event.key === 'Enter') {
+        event.preventDefault()
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [])
+
   const {
     register,
     getValues,
