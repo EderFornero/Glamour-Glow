@@ -1,6 +1,7 @@
 import styles from './Report.module.css'
 import { useState } from 'react'
 import axios from '../../redux/axiosService'
+import toast, { Toaster } from 'react-hot-toast'
 const API_URL = import.meta.env.VITE_SERVER_URL
 
 interface ReportProps {
@@ -18,15 +19,22 @@ const Report: React.FC<ReportProps> = ({ isOpen, onClose, id, route }) => {
     try {
       const endpoint = `${API_URL}${route}/reports`
       await axios.post(endpoint, { id, description })
-      console.log('REPORT GENERADO')
+      toast.success('Report Submitted. We will review it as soon as possible')
       setDescription('')
     } catch (error) {
-      console.log(error)
+      toast.error('Sorry, there was a problem. Please try again')
     }
   }
 
   return (
     <form className={`${styles['report-popup']} ${isOpen ? styles.open : ''}`} onSubmit={handleReportSubmit}>
+      <Toaster
+        toastOptions={{
+          style: {
+            marginTop: '100px'
+          }
+        }}
+      />
       <label htmlFor='report' className={styles.label}>
         Provide a description:
       </label>
