@@ -13,6 +13,7 @@ export interface RootState {
   sellerMetrics: any
   userdetail: UserDetail
   sellerdetail: SellerDetail
+  reports: any[]
   filter: string
   sellerEmail: string
   accountBalance: number
