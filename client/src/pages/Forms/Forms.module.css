@@ -12,7 +12,7 @@
   flex-direction: row;
   display: flex;
   border-radius: 15px;
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+  transition: margin-left 0.3s ease;
 }
 
 .left {
@@ -21,6 +21,8 @@
   border-bottom-left-radius: 15px;
   border-top-left-radius: 15px;
   min-height: 620px;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+  max-height: 620px;
 }
 
 .right {
@@ -33,7 +35,9 @@
   position: relative;
   border-bottom-right-radius: 15px;
   border-top-right-radius: 15px;
-  min-height: 620px;
+  height: 620px;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+  min-height: 580px;
 }
 
 .log-reg {
@@ -61,16 +65,6 @@
   margin-left: -60px;
 }
 
-.left {
-  background-image: url('../../assets/Features/logImg.png');
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-color: transparent;
-  min-width: 300px;
-  max-width: 600px;
-  background-color: white;
-  position: relative;
-}
 
 .h1 {
   display: flex;
@@ -134,12 +128,63 @@
   margin-bottom: 70px;
 }
 
+.left {
+  background-color: transparent;
+  min-width: 300px;
+  max-width: 600px;
+  background-color: white;
+  position: relative;
+}
+
+.leftImg {
+  background-repeat: no-repeat;
+  background-image: url('../../assets/Features/logImg.png');
+  background-size: cover;
+  background-position: center;
+  position:initial;
+  height: 500px;
+  width: 100%;
+  justify-content: center center;
+  align-items: center;
+  margin-right: 100px;
+  transition: width 0.3s ease;
+}
+
 @media (max-width: 767px) {
   .left {
     display: none;
   }
-
+  
   .content {
     margin-top: 10px;
+  }
+}
+
+@media (max-width: 1057px) and (min-width: 767px) {
+  
+  .content {
+    margin-left: -90px;
+    transition: margin-left 0.3s ease;
+  }
+}
+
+@media (max-width: 861px) and (min-width: 767px) {
+  
+  .content {
+    margin-left: -120px;
+  }
+}
+
+@media (max-width: 371px) {
+  
+  .right {
+    margin-left: 10px;
+  }
+}
+
+@media (max-width: 290px) {
+  
+  .right {
+    margin-left: 50px;
   }
 }
