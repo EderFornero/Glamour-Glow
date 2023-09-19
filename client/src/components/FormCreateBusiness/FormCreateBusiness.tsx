@@ -24,6 +24,21 @@ const FormBusiness: React.FC<FormLoginProps> = () => {
   const dispatch = useDispatch()
   const goBack = useGoBack()
   const navigate = useNavigate()
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent): void => {
+      if (event.key === 'Enter') {
+        event.preventDefault()
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [])
+
   const {
     register,
     handleSubmit,
