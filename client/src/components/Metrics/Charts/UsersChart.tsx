@@ -24,15 +24,15 @@ const Pies: React.FC<UsersPiesProps> = ({ userMetrics }): JSX.Element => {
         label: 'Users Analytics',
         data: [userMetrics.activeUsers, userMetrics.inactiveUsers],
         backgroundColor: [
-          'rgba(62, 56, 182, 0.2)',
           'rgba(62, 56, 182, 1)',
+          'rgba(62, 56, 182, 0.2)',
           'rgba(54, 162, 235, 0.2)',
           'rgba(75, 192, 192, 0.2)',
           'rgba(153, 102, 255, 0.2)'
         ],
         borderColor: [
-          'rgba(62, 56, 182, 1)',
           'rgba(0, 0, 0, 1)',
+          'rgba(62, 56, 182, 1)',
           'rgba(54, 162, 235, 1)',
           'rgba(75, 192, 192, 1)',
           'rgba(153, 102, 255, 1)'
