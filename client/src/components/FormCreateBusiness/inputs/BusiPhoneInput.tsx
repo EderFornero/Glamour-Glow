@@ -20,7 +20,7 @@ const BusiPhoneInput: React.FC<BusiPhoneInputProps> = ({ register, errors }) => 
             message: 'Please enter your phone number!'
           },
           pattern: {
-            value: /^\d{6,13}$/,
+            value: /^\d{6,17}$/,
             message: 'Phone number not valid'
           }
         })}

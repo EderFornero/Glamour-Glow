@@ -64,7 +64,7 @@ const BusiCategoriesInput: React.FC<BusiCategoriesInputProps> = ({
 
   return (
     <div>
-      <div className={style.category} onClick={() => {
+      <div className={`${style.category} ${isOpen ? style.redText : ''}`} onClick={() => {
         toggleAccordion()
         toggleOtherInputs()
       }}>
