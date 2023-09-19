@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { useGoBack } from '../../hooks'
 import EmailLogin from './inputs/EmailLogin'
@@ -24,6 +24,20 @@ const FormLogin: React.FC<FormLoginProps> = ({ onToggle }) => {
   const dispatch = useDispatch()
   const goBack = useGoBack()
   const navigate = useNavigate()
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent): void => {
+      if (event.key === 'Enter') {
+        event.preventDefault()
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [])
 
   const {
     register,
@@ -129,7 +143,10 @@ const FormLogin: React.FC<FormLoginProps> = ({ onToggle }) => {
 
   return (
     <div className={style.content}>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={(event) => {
+        event.preventDefault()
+        void onSubmit(event)
+      }}>
         <label className={style.txt}>Email:</label>
         <EmailLogin register={register} errors={errors} />
         {errorMessage !== '' && <ErrorMessage message={errorMessage} />}

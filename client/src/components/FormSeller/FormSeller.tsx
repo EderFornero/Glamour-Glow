@@ -34,6 +34,20 @@ const FormSeller: React.FC<FormSellerProps> = ({ setActiveItem }) => {
   })
 
   useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent): void => {
+      if (event.key === 'Enter') {
+        event.preventDefault()
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [])
+
+  useEffect(() => {
     dispatch(getCategories())
   }, [dispatch])
 
