@@ -110,7 +110,7 @@ const FormLogin: React.FC<FormLoginProps> = ({ onToggle }) => {
         name,
         password
       }
-      const response = await axios.post(`${API_URL}/users/auth/login`, data)
+      const response = await axios.post(`${API_URL}users/auth/login`, data)
       const { token, id, role } = response.data
 
       if (token !== undefined && id !== undefined) {
