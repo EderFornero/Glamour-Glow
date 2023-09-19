@@ -31,8 +31,9 @@ const BusinessDetail = (): JSX.Element => {
       await paymentConfirmation(userdetail.email, price, sellerdetail.sellerEmail, sellerdetail.sellerPhone, sellerdetail.sellerName, service)
       await sendSellerEmail(userdetail.email, price, sellerdetail.sellerEmail, userdetail.phoneNumber, `${userdetail.name} ${userdetail.lastName}`, service)
       await postTransaction(transactionId, userdetail._id, sellerdetail._id, price, status)
+      toast.success('Purchase successful, check your e-mail')
     } catch (error) {
-      console.log(error)
+      toast.error('An error occurred while purchasing')
     }
   }
   useEffect(() => {
@@ -46,10 +47,7 @@ const BusinessDetail = (): JSX.Element => {
     const status = urlParams.get('status')
     sendEmailRef.current++
     if (status === 'approved' && sendEmailRef.current === 3) {
-      toast.success('Purchase successful, check your e-mail')
       sendEmail()
-    } else if (status === 'failure' && sendEmailRef.current === 3) {
-      toast.error('An error occurred while purchasing')
     }
   }, [id, userdetail])
   return (

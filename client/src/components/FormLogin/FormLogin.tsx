@@ -178,10 +178,7 @@ const FormLogin: React.FC<FormLoginProps> = ({ onToggle }) => {
         </Link>
       </div>
       <div>
-        <Toaster
-          position="top-center"
-          reverseOrder={false}
-        />
+        <Toaster position='top-center' reverseOrder={false} />
       </div>
     </div>
   )
