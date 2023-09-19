@@ -27,7 +27,7 @@ const ServiceList: React.FC<Props> = ({ setActiveItem }) => {
   const dispatch = useDispatch()
   const { id } = useParams()
   const { servicesArray, sellerName } = useSelector((state: RootState) => state.sellerdetail)
-
+  console.log(Service)
   useEffect(() => {
     dispatch(getSellerbyId(id))
   }, [Service, dispatch])

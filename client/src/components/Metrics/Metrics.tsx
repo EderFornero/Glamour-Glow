@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import UsersPies from './Charts/UsersChart'
 import SellersPies from './Charts/SellersChart'
 import style from './Metrics.module.css'

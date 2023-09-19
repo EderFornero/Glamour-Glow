@@ -2,7 +2,7 @@ import type { ServiceProvider } from './index'
 
 export interface CardsProps {
   allServices: ServiceProvider[]
-  setSortOption?: string
+  setSortOption?: Dispatch<SetStateAction<string>>
 }
 
 export interface SearchBarProps {
