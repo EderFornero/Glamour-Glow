@@ -20,13 +20,13 @@ const Home: React.FC = () => {
 
   // al rato arreglo los anys queria que funcara :**     n.n
   const recomendedServices: any = allServices.filter((seller) => {
-    const { reviews } = seller;
+    const { reviews } = seller
     const avg: any = useRating(reviews)
     return avg >= 4 && avg <= 5
   })
 
   const mostServices: any =  allServices.filter((seller) => {
-    const { reviews } = seller;
+    const { reviews } = seller
     const avg: any = useRating(reviews)
     return avg < 4
   })
@@ -38,7 +38,6 @@ const Home: React.FC = () => {
     const id = localStorage.getItem('id')
     if (id !== null) {
       dispatch(getUserbyId(id))
-      
     }
   }, [])
   const emailRedux = useSelector((state: RootState) => state.sellerEmail)

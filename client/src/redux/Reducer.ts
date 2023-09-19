@@ -16,7 +16,10 @@ import {
   GET_USER_METRICS,
   GET_SELLER_METRICS,
   UPDATE_SELLER_BALANCE,
-  SELLER_EMAIL
+  SELLER_EMAIL,
+  POST_SERVICES,
+  PUT_SERVICES,
+  DELETE_SERVICES
 } from './Action-Types'
 import type { ServiceAction, RootState, UserDetail, SellerDetail } from './types'
 
@@ -133,6 +136,15 @@ const reducer = (
 
     case SELLER_EMAIL:
       return { ...state, sellerEmail: action.payload }
+
+    case POST_SERVICES:
+      return { ...state }
+
+    case PUT_SERVICES:
+      return { ...state }
+
+    case DELETE_SERVICES:
+      return { ...state }
 
     default:
       return state

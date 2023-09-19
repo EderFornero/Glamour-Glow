@@ -247,3 +247,7 @@
     min-width: 100%;
   }
 }
+
+.BusinessCard{
+  max-width: 20px;
+}

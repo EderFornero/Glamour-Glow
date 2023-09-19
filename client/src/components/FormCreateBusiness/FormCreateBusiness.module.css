@@ -108,3 +108,10 @@
         display: none;
     }
 }
+
+.imgspan {
+    color: red;
+    font-size: small;
+    position: absolute;
+    margin-top: -30px;
+}
