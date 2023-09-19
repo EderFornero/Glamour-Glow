@@ -51,12 +51,12 @@ const AdminDashboard: React.FC = () => {
         {activeItem === 'Request Payout' && <RequestPayout accountBalance={accountBalance} sellerName={sellerdetail.sellerName} sellerPhone={sellerdetail.sellerPhone} />}
         {activeItem === 'Report' && <Report id={ID} onClose={closeReportPopup} isOpen={isReportPopupOpen} route='sellers' />}
         {activeItem === 'Create' && <FormSeller setActiveItem={setActiveItem}/>}
-        {(activeItem === 'List' || activeItem === 'Services') && <ServiceList setActiveItem={setActiveItem} />}
+        {(activeItem === 'List' || activeItem === 'Services') && <ServiceList setActiveItem={setActiveItem} sellerid={''} />}
         {activeItem === 'Clients' && <Clients sellerName='Hola' services={users} />}
         {activeItem === 'Interface' && <UpdateBusinessImages />}
         {activeItem === 'Display' && (
           <div className={style['Display-business']}>
-            <BusinessInfo sellerName={sellerdetail.sellerName} reviews={sellerdetail.reviews} />
+            <BusinessInfo sellerName={sellerdetail.sellerName} reviews={sellerdetail.reviews} sellerId={undefined} favourites={[]} />
             <BusinessImages />
             <Services sellerId={id as string} services={sellerdetail.servicesArray} />
           </div>

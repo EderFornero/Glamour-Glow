@@ -12,7 +12,11 @@ import ServicePriceInput from './inputs/ServicePriceInput'
 import { createServiceImage } from '../../Images/FormImages'
 import toast, { Toaster } from 'react-hot-toast'
 
-const FormSeller: React.FC = ({ setActiveItem }: any) => {
+interface FormSellerProps {
+  setActiveItem: React.Dispatch<React.SetStateAction<string>>
+}
+
+const FormSeller: React.FC<FormSellerProps> = ({ setActiveItem }) => {
   const dispatch = useDispatch()
 
   const {

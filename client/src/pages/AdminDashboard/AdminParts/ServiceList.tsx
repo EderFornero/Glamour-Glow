@@ -6,12 +6,10 @@ import { useParams } from 'react-router-dom'
 import type { RootState } from '../../../redux/types'
 import toast, { Toaster } from 'react-hot-toast'
 
-interface Service {
-  _id: string
+interface ServiceData {
   name: string
-  price: number
+  price: string
   description: string
-  serviceCategories: string
 }
 
 interface Props {
@@ -21,7 +19,7 @@ interface Props {
 
 const ServiceList: React.FC<Props> = ({ setActiveItem }) => {
   const [ServiceId, setServiceId] = useState<string | null>(null)
-  const [Service, setService] = useState({
+  const [Service, setService] = useState<ServiceData>({
     name: '',
     description: '',
     price: ''
@@ -29,7 +27,7 @@ const ServiceList: React.FC<Props> = ({ setActiveItem }) => {
   const dispatch = useDispatch()
   const { id } = useParams()
   const { servicesArray, sellerName } = useSelector((state: RootState) => state.sellerdetail)
-
+  console.log(Service)
   useEffect(() => {
     dispatch(getSellerbyId(id))
   }, [Service, dispatch])
@@ -134,7 +132,7 @@ const ServiceList: React.FC<Props> = ({ setActiveItem }) => {
     setService((prevService) => ({
       ...prevService,
       [name]: value
-    }) as Service)
+    }))
   }
 
   return (
@@ -168,7 +166,7 @@ const ServiceList: React.FC<Props> = ({ setActiveItem }) => {
                 <span className={style['service-price']}> $ {service.price}</span>
                 <div className={style['service-rigth-full']}>
                   <button className={style['edit-button']} onClick={() => { handleEditClick(service._id) }}>Edit</button>
-                  <button className={style['delete-button']} onClick={() => { handleDeleteClick(service._id) }}>Delete</button>
+                  <button className={style['delete-button']} onClick={() => { void handleDeleteClick(service._id) }}>Delete</button>
                 </div>
               </>
                 )}
