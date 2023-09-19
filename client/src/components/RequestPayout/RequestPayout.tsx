@@ -1,6 +1,7 @@
 import style from './RequestPayout.module.css'
 import toast, { Toaster } from 'react-hot-toast'
 import axios from '../../redux/axiosService'
+import Loader from '../Loader/Loader'
 import { useState } from 'react'
 const API_URL = import.meta.env.VITE_SERVER_URL
 
@@ -40,7 +41,7 @@ const RequestPayout: React.FC<RequestPayoutProps> = ({ accountBalance, sellerNam
       <h2 className={style.title}>You are about to request a payment</h2>
       <p>{`$${accountBalance}.- will be deducted from your account`}</p>
       <button type='submit' className={style.submit}>
-        {loading ? '|' : 'Request'}
+        {loading ? <Loader /> : 'Request'}
       </button>
     </form>
   )
