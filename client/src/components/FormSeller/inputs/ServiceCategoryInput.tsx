@@ -1,10 +1,10 @@
-import React from 'react';
-import style from './input.module.css';
+import React from 'react'
+import style from './input.module.css'
 
 interface SellerCategoriesInputProps {
-  register: any;
-  errors: any;
-  categoryList: any[];
+  register: any
+  errors: any
+  categoryList: any[]
 }
 
 const SellerCategoriesInput: React.FC<SellerCategoriesInputProps> = ({ register, errors, categoryList }) => {
@@ -17,8 +17,8 @@ const SellerCategoriesInput: React.FC<SellerCategoriesInputProps> = ({ register,
         {...register('serviceCategories', {
           required: {
             value: true,
-            message: 'Please enter at least one category',
-          },
+            message: 'Please enter at least one category'
+          }
         })}
       >
         <option value='' disabled selected>
@@ -36,7 +36,7 @@ const SellerCategoriesInput: React.FC<SellerCategoriesInputProps> = ({ register,
         )}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default SellerCategoriesInput;
+export default SellerCategoriesInput
