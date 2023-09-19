@@ -5,10 +5,11 @@ import FilterElement from './FilterElement/FilterElement'
 import type { CardsProps } from '../../interfaces/props'
 // components
 import OrderElement from './OrderElement/OrderElement'
-const FilterAndOrderCard: React.FC<CardsProps> = ({ allServices }: CardsProps) => {
+
+const FilterAndOrderCard: React.FC<CardsProps> = ({ allServices, setSortOption }: CardsProps) => {
   return (
     <div className={style['div-container-order-filter']}>
-      <OrderElement />
+      <OrderElement setSortOption={setSortOption} />
       <FilterElement allServices={allServices} />
     </div>
   )

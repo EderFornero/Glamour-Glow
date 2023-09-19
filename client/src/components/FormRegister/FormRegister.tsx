@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import type { FormData } from '../../interfaces'
 import NameInput from './inputs/NameInput'
@@ -10,9 +10,11 @@ import style from './FormRegister.module.css'
 import { useGoBack } from '../../hooks'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { postUser } from '../../redux/actions'
+import { postUser, postValidate, setAuth, setUserId } from '../../redux/actions'
 import PhoneNumberInput from './inputs/PhoneNumberInput'
 import { sendWelcomeEmail } from '../../utils'
+import TermsAndConditions from '../TermsAndConditions/TermsAndConditions'
+import toast, { Toaster } from 'react-hot-toast'
 
 interface FormLoginProps {
   onToggle: () => void
@@ -25,7 +27,8 @@ const FormRegister: React.FC<FormLoginProps> = () => {
   const {
     register,
     getValues,
-    handleSubmit, // Importa handleSubmit
+    handleSubmit,
+    setError,
     formState: { errors }
   } = useForm<FormData>({
     defaultValues: {
@@ -41,15 +44,74 @@ const FormRegister: React.FC<FormLoginProps> = () => {
       confirmPassword: ''
     }
   })
+  const [showTerms, setShowTerms] = useState(false)
+
+  const autoLogin = {
+    email: '',
+    password: ''
+  }
+
+  const toggleTerms = (): void => {
+    setShowTerms(!showTerms)
+  }
 
   const onSubmit = async (): Promise<void> => {
     const data: FormData = getValues()
     delete data.confirmPassword
-    console.log(data)
     try {
-      await dispatch(postUser(data))
+      const response = await dispatch(postUser(data))
       await sendWelcomeEmail(data.email)
-      navigate('/login')
+      if (response.data !== undefined) {
+        try {
+          autoLogin.email = data.email
+          autoLogin.password = data.password
+          const response = await dispatch(postValidate(autoLogin))
+          const { id, token, role } = response.data
+          if (token !== undefined && id !== undefined) {
+            localStorage.setItem('isAuth', 'true')
+            localStorage.setItem('id', id)
+            localStorage.setItem('role', role)
+            dispatch(setAuth(true))
+            dispatch(setUserId(id))
+            navigate('/')
+          }
+          toast.success('Successfully registered', {
+            style: {
+              border: '1px solid #3d36be',
+              padding: '16px',
+              color: '#1eb66d'
+            },
+            iconTheme: {
+              primary: '#6e66ff',
+              secondary: '#FFFAEE'
+            }
+          })
+        } catch (error: any) {
+          toast.error('Ops! Something went wrong', {
+            style: {
+              border: '1px solid #3d36be',
+              padding: '16px',
+              color: 'red'
+            },
+            iconTheme: {
+              primary: 'red',
+              secondary: '#FFFAEE'
+            }
+          })
+        }
+      } else {
+        toast.error('The email is already in use', {
+          style: {
+            border: '1px solid #3d36be',
+            padding: '16px',
+            color: 'red'
+          },
+          iconTheme: {
+            primary: 'red',
+            secondary: '#FFFAEE'
+          }
+        })
+      }
     } catch (error) {
       throw new Error()
     }
@@ -72,7 +134,17 @@ const FormRegister: React.FC<FormLoginProps> = () => {
             Send
           </button>
         </div>
-      </form>
+        </form>
+        <a href="#" className={style['terms-conditions']} onClick={toggleTerms}>Ver Términos y Condiciones</a>
+        <div className={style[`terms-and-conditions${showTerms ? '-show-terms' : ''}`]}>
+          <TermsAndConditions />
+        </div>
+        <div>
+        <Toaster
+          position="top-center"
+          reverseOrder={false}
+        />
+      </div>
     </div>
   )
 }

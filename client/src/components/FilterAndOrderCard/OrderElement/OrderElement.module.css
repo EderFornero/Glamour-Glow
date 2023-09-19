@@ -33,7 +33,6 @@
   display: none;
 }
 
-
 .div-all-sort{
   width: 300px;
   display: grid;
@@ -67,7 +66,7 @@
 
 .sort-button{ 
   background: none;
-  border: 2px solid var(--accent-color);
+  border: 2px solid var(--primary-color);
   background-color: var(--neutral-color);
   border-radius: 10px;
   width: auto;
@@ -80,6 +79,13 @@
   color: #000;
   position: relative;
   z-index: 2;
+}
+
+.selected-button {
+  background-color: var(--accent-color);
+  color: #fff;
+  font-weight: bold;
+  border-color: var(--accent-color);
 }
 
 .sort-button:hover{

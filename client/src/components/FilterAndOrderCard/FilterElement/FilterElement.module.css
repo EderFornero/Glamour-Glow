@@ -1,8 +1,8 @@
-.div-filter-by{
+.div-filter-by {
   position: relative;
 }
 
-.filter-by-categories{
+.filter-by-categories {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,8 +10,7 @@
   margin: 5px;
 }
 
-
-.div-filter-opened{
+.div-filter-opened {
   min-height: 100px;
   display: flex;
   justify-content: center;
@@ -22,19 +21,18 @@
   background-color: #fff;
   background-position: relative;
   z-index: 1;
-  
 
-  @media (max-width: 768px){
+  @media (max-width: 768px) {
     position: absolute;
     left: calc(50% - 150px);
   }
 }
 
-.div-filter-closed{
+.div-filter-closed {
   display: none;
 }
 
-.filter-button-toggle{
+.filter-button-toggle {
   background: none;
   height: 35px;
   width: 130px;
@@ -52,25 +50,25 @@
   }
 }
 
-.div-container-buttons{
+.div-container-buttons {
   width: 500px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-
-  @media (max-width: 768px){
+  gap: 10px;
+  padding: 10px 0;
+  place-items: center;
+  @media (max-width: 768px) {
     width: 300px;
   }
 }
 
-.button-categories{
+.button-categories {
   background: none;
-  border: 2px solid var(--accent-color);
+  border: 2px solid var(--primary-color);
   background-color: var(--neutral-color);
   border-radius: 10px;
-  width: auto;
-  height: 30px;
-  margin: 8px;
-  padding: 3px 8px 10px 8px;
+  width: 90px;
+  height: 45px;
   min-height: 18px;
   font-size: 14px;
   cursor: pointer;
@@ -79,8 +77,16 @@
   z-index: 2;
   text-align: center;
 
+  &.selected-button {
+    background-color: var(--accent-color);
+    color: #fff;
+    font-weight: bold;
+    border-color: var(---primary-color);
+    text-align: center;
+    vertical-align: middle;
+  }
+
   &:hover {
     transform: scale(1.1);
   }
 }
-

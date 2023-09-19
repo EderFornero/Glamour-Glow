@@ -14,8 +14,8 @@
   background: #ffffff;
   border-radius: 24px;
   box-shadow: gray;
-  gap: 15px;
-  margin: 10px;
+  gap: 10px;
+  margin: 12px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   height: 460px;
   @media(max-width: 800px){
@@ -32,6 +32,8 @@
 } */
 
 .card .title {
+  font-size: 21px;
+  position: relative;
   text-align: center;
   color: var(--primary-color);
 }
@@ -42,10 +44,26 @@
 
 .card .link {
   align-self: center;
-  margin-top: auto;
+}
+
+.imageContainer{
+  width: 340px;
+  height: 220px;
+  margin: -30px 0 0 0;
+  @media(max-width: 800px){
+    width: 230px;
+  }
+}
+
+.image{
+  border-radius: 15px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .card button {
+  margin: 30px 0 0 0;
   border: 0;
   background: #5448de;
   color: #f8f8f8;
@@ -55,4 +73,18 @@
   border-radius: 40px;
   width: 10rem;
   text-align: center;
+  transition: 200ms;
+}
+.card button:hover{
+  background: var(--accent-color);
+  color: var(--primary-color);
+  
+
+}
+.itemsContainer{
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  font-size: 15px;
+
 }

@@ -12,7 +12,14 @@ import {
   SET_AUTH,
   SET_USER_ID,
   CLEAN_SELLER_DETAIL,
-  UPDATE_SELLER_IMAGE_INDEX
+  UPDATE_SELLER_IMAGE_INDEX,
+  GET_USER_METRICS,
+  GET_SELLER_METRICS,
+  UPDATE_SELLER_BALANCE,
+  SELLER_EMAIL,
+  POST_SERVICES,
+  PUT_SERVICES,
+  DELETE_SERVICES
 } from './Action-Types'
 import type { ServiceAction, RootState, UserDetail, SellerDetail } from './types'
 
@@ -20,6 +27,10 @@ export const initialState: RootState = {
   allServices: [],
   categories: [],
   users: [],
+  userMetrics: [],
+  sellerMetrics: [],
+  accountBalance: 0,
+  sellerEmail: '',
   userdetail: {
     _id: '',
     name: '',
@@ -29,7 +40,8 @@ export const initialState: RootState = {
     role: '',
     dateOfBirth: '',
     image: '',
-    isActive: false
+    isActive: false,
+    favorites: []
   },
   sellerdetail: {
     _id: '',
@@ -57,8 +69,12 @@ const reducer = (
   allServices: any[]
   categories: any[]
   users: any[]
+  userMetrics: any[]
+  sellerMetrics: any[]
+  sellerEmail: string
   userdetail: UserDetail
   sellerdetail: SellerDetail
+  accountBalance: number
   filter: string
   rating: number
   image: string | undefined
@@ -108,6 +124,27 @@ const reducer = (
 
     case UPDATE_SELLER_IMAGE_INDEX:
       return { ...state, sellerImageIndex: action.payload }
+
+    case GET_USER_METRICS:
+      return { ...state, userMetrics: action.payload }
+
+    case GET_SELLER_METRICS:
+      return { ...state, sellerMetrics: action.payload }
+
+    case UPDATE_SELLER_BALANCE:
+      return { ...state, accountBalance: action.payload }
+
+    case SELLER_EMAIL:
+      return { ...state, sellerEmail: action.payload }
+
+    case POST_SERVICES:
+      return { ...state }
+
+    case PUT_SERVICES:
+      return { ...state }
+
+    case DELETE_SERVICES:
+      return { ...state }
 
     default:
       return state

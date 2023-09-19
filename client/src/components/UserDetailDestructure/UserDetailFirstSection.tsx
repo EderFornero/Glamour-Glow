@@ -1,5 +1,6 @@
 // components
 import Cloudinary from '../../components/Cloudinary/Cloudinary'
+import Report from '../Report/Report'
 // assets
 import { NoProfileImage } from '../../Images/LandingImages'
 // css
@@ -8,17 +9,23 @@ import styles from './UserDetailDestructure.module.css'
 import type { RootState } from '../../redux/types'
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect, useState } from 'react'
-import { getUserbyId, updateUserInfo, setAuth } from '../../redux/actions'
-import { useNavigate, useParams } from 'react-router-dom'
+import { getUserbyId, updateUserInfo } from '../../redux/actions'
+import { useParams } from 'react-router-dom'
+import toast, { Toaster } from 'react-hot-toast'
 
 const UserDetailFirstSection = (): JSX.Element => {
   const dispatch = useDispatch()
-  const navigate = useNavigate()
   const { image } = useSelector((state: RootState) => state)
   const userdetail = useSelector((state: RootState) => state.userdetail)
-
+  const [isReportPopupOpen, setIsReportPopupOpen] = useState<boolean>(false)
   const [editing, setEditing] = useState(false)
-  const [newUserInfo, setNewUserInfo] = useState({ ...userdetail })
+  const [newUserInfo, setNewUserInfo] = useState({
+    name: userdetail.name,
+    lastName: userdetail.lastName,
+    dateOfBirth: userdetail.dateOfBirth,
+    phoneNumber: userdetail.phoneNumber,
+    email: userdetail.email
+  })
 
   const { id } = useParams()
 
@@ -30,20 +37,48 @@ const UserDetailFirstSection = (): JSX.Element => {
     dispatch(getUserbyId(id))
   }, [dispatch])
 
-  const handleLogout = (): void => {
-    dispatch(setAuth(false))
-    localStorage.removeItem('isAuth')
-    navigate('/')
+  const openReportPopup = (): void => {
+    setIsReportPopupOpen(true)
+  }
+
+  const closeReportPopup = (): void => {
+    setIsReportPopupOpen(false)
   }
 
   const handleEdit = (): void => {
     setEditing(true)
-    setNewUserInfo({ ...userdetail })
   }
 
-  const handleSave = (): void => {
-    setEditing(false)
-    dispatch(updateUserInfo(id, newUserInfo))
+  const handleSave = async (): Promise<void> => {
+    try {
+      setEditing(false)
+      const result = await dispatch(updateUserInfo(id, newUserInfo))
+      if (result.success === true) {
+        toast.success('Information updated successfully', {
+          style: {
+            border: '1px solid #3d36be',
+            padding: '16px',
+            color: '#1eb66d'
+          },
+          iconTheme: {
+            primary: '#6e66ff',
+            secondary: '#FFFAEE'
+          }
+        })
+      }
+    } catch (error) {
+      toast.error('Ops! Something went wrong', {
+        style: {
+          border: '1px solid #3d36be',
+          padding: '16px',
+          color: 'red'
+        },
+        iconTheme: {
+          primary: 'red',
+          secondary: '#FFFAEE'
+        }
+      })
+    }
   }
 
   const handleChange = (event: any): void => {
@@ -86,9 +121,16 @@ const UserDetailFirstSection = (): JSX.Element => {
             </li>
           </ul>
         </div>
-        <div className={styles['userdetail-bottom']} onClick={handleLogout}>
-          <a>Sign Out</a>
+        <div className={styles['userdetail-bottom']}>
+          <p onClick={openReportPopup}>Got a report?</p>
         </div>
+        {isReportPopupOpen && <Report id={userdetail._id} onClose={closeReportPopup} isOpen={isReportPopupOpen} route='users' />}
+      </div>
+      <div>
+        <Toaster
+          position="top-center"
+          reverseOrder={false}
+        />
       </div>
     </section>
   )

@@ -1,5 +1,7 @@
 import SideBar from '../../components/SideBar/SideBar'
-// import SellerServices from './AdminParts/ServiceList'
+import ServiceList from './AdminParts/ServiceList'
+import RequestPayout from '../../components/RequestPayout/RequestPayout'
+import Report from '../../components/Report/Report'
 import Clients from './AdminParts/Clients'
 import FormSeller from '../../components/FormSeller/FormSeller'
 import { useEffect, useState } from 'react'
@@ -13,13 +15,22 @@ import UpdateBusinessImages from './AdminParts/UpdateBusinessImages/UpdateBusine
 import BusinessInfo from '../BusinessDetail/BusinessInfo/BusinessInfo'
 import BusinessImages from '../BusinessDetail/BusinessImages/BusinessImages'
 import Services from '../BusinessDetail/Services/Services'
+import { menuItems } from '../../components/SideBar/parts/itemsmenu'
 
 const AdminDashboard: React.FC = () => {
   const [activeItem, setActiveItem] = useState<string>('')
+  const [isReportPopupOpen, setIsReportPopupOpen] = useState<boolean>(false)
+
+  const closeReportPopup = (): void => {
+    setIsReportPopupOpen(false)
+  }
+
   const dispatch = useDispatch()
   const { id } = useParams()
   const ID = localStorage.getItem('id')
+
   const sellerdetail = useSelector((state: RootState) => state.sellerdetail) as ServiceProvider
+  const accountBalance = useSelector((state: RootState) => state.accountBalance)
   const users = useSelector((state: RootState) => state.users)
   const navigate = useNavigate()
 
@@ -35,17 +46,21 @@ const AdminDashboard: React.FC = () => {
 
   return (
     <div className={style['div-sidebar-container']}>
-      <SideBar setActiveItem={setActiveItem} activeItem={activeItem} />
+      <SideBar setActiveItem={setActiveItem} activeItem={activeItem} menuItems={menuItems} />
       <div className={style['right-section']}>
-        {activeItem === 'Create' && <FormSeller />}
-        {(activeItem === 'List' || activeItem === 'Services')}
-        {/* &&  <SellerServices sellerid={sellerdetail.sellerid} services={sellerdetail.servicesArray}  setActiveItem={setActiveItem} />  */}
+        {activeItem === 'Request Payout' && <RequestPayout accountBalance={accountBalance} sellerName={sellerdetail.sellerName} sellerPhone={sellerdetail.sellerPhone} />}
+        {activeItem === 'Report' && <Report id={ID} onClose={closeReportPopup} isOpen={isReportPopupOpen} route='sellers' />}
+        {activeItem === 'Create' && <FormSeller setActiveItem={setActiveItem}/>}
+        {(activeItem === 'List' || activeItem === 'Services') && <ServiceList setActiveItem={setActiveItem} />}
         {activeItem === 'Clients' && <Clients sellerName='Hola' services={users} />}
         {activeItem === 'Interface' && <UpdateBusinessImages />}
-        {activeItem === 'Display' && <div className={style['Display-business']}>
-                                        <BusinessInfo sellerName={sellerdetail.sellerName} reviews={sellerdetail.reviews} />
-                                        <BusinessImages />
-                                        <Services sellerId={id as string} services={sellerdetail.servicesArray} /></div>}
+        {activeItem === 'Display' && (
+          <div className={style['Display-business']}>
+            <BusinessInfo sellerName={sellerdetail.sellerName} reviews={sellerdetail.reviews} />
+            <BusinessImages />
+            <Services sellerId={id as string} services={sellerdetail.servicesArray} />
+          </div>
+        )}
       </div>
     </div>
   )

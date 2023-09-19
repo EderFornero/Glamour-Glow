@@ -19,11 +19,16 @@ const LastNameInput: React.FC<LastNameInputProps> = ({ register, errors }) => {
             value: true,
             message: 'Please enter your last name!'
           },
+          pattern: {
+            value: /^[A-Za-z\s]+$/,
+            message: 'Only use Letters'
+          },
           maxLength: 20,
           minLength: 3
         })}
       />
       <div>
+        {(Boolean(errors.name)) && <span className={style.span}>{errors.name.message}</span>}
         {errors.lastName?.type === 'required' && (
           <span className={style.span}>Last Name Required</span>
         )}

@@ -1,29 +1,29 @@
-.my-adress-h4{
+.my-adress-h4 {
   color: rgb(0, 0, 0);
   font-weight: bold;
   font-size: 1.25rem;
 }
 
-.section{
+.section {
   display: flex;
   justify-content: space-around;
   min-height: 50rem;
   margin: 0 auto;
 }
 
-.sectionleft{
+.sectionleft {
   flex: 1;
   max-width: 40%;
   padding: 1rem;
 }
 
-.sectionright{
+.sectionright {
   flex: 1;
   max-width: 60%;
   padding: 1rem;
 }
 
-.userdetail{
+.userdetail {
   background-color: #ffffff;
   padding: 2rem;
   width: 35vw;
@@ -33,7 +33,7 @@
   border-radius: 1rem;
 }
 
-.userdetail-header{
+.userdetail-header {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -42,7 +42,7 @@
 }
 
 .userdetail-header img {
-  width: 200px; 
+  width: 200px;
   height: 200px;
   border-radius: 50%;
   margin: 10px;
@@ -59,14 +59,13 @@
 
 .userdetail-body {
   list-style: none;
-  
 }
 
-.userdetail-body ul{
+.userdetail-body ul {
   list-style: none;
 }
 
-.userdetail-body li{
+.userdetail-body li {
   font-weight: bold;
   margin-bottom: 1.5rem;
   display: flex;
@@ -74,14 +73,14 @@
   font-size: 1.25rem;
 }
 
-.userdetail-body span{
+.userdetail-body span {
   font-weight: lighter;
   margin-top: 0.5rem;
 }
 
-.userdetail-bottom{
+.userdetail-bottom {
   margin-top: 2rem;
-  color: #ffffff; 
+  color: #ffffff;
   padding: 10px 20px;
   border: none;
   cursor: pointer;
@@ -90,7 +89,7 @@
   padding-top: 1.5rem;
 }
 
-.userdetail-bottom a {
+.userdetail-bottom p {
   color: #ff0000;
   font-weight: bold;
   font-size: 1.25rem;
@@ -101,7 +100,7 @@
 .right-socials,
 .right-notifications,
 .right-favorites,
-.right-delete{
+.right-delete {
   background-color: #ffffff;
   padding: 20px;
   width: 70vw;
@@ -117,66 +116,66 @@
 .paymentways-body,
 .notifications-body,
 .favorites-body,
-.delete-body{
+.delete-body {
   margin-top: 1rem;
 }
 
-.delete-body a{
+.delete-body a {
   color: red;
 }
 
-.directions-body ,
-.paymentways-body{
-display: flex;
-align-items: center;
-font-weight: bold;
+.directions-body,
+.paymentways-body {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
 }
 
-.iconplussvg{
+.iconplussvg {
   width: 1.5rem;
-  fill:blue;
+  fill: blue;
   margin-right: 0.75rem;
 }
 
-.sectionright h4{
+.sectionright h4 {
   margin-bottom: 1rem;
 }
 
-.sectionright p{
-  font-size:0.95rem;
+.sectionright p {
+  font-size: 0.95rem;
 }
 
-.socials-icon{
+.socials-icon {
   display: flex;
   align-items: center;
-  justify-content:space-between;
+  justify-content: space-between;
   padding: 0.75rem;
   border-top: 1px solid rgba(0, 0, 0, 0.13);
   margin-top: 0.75rem;
   font-weight: 600;
 }
 
-.socials-icon-left{
+.socials-icon-left {
   display: flex;
   align-items: center;
   gap: 1rem;
 }
 
-.socials-icon img{
+.socials-icon img {
   width: 2rem;
 }
 
-.notifications-body h5{
+.notifications-body h5 {
   font-size: 0.9rem;
   margin-bottom: 0.5rem;
 }
 
-.notifications-body p{
+.notifications-body p {
   font-size: 0.8rem;
   color: rgba(0, 0, 0, 0.669);
 }
 
-.notification-style{
+.notification-style {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -201,7 +200,7 @@ font-weight: bold;
 }
 
 .switch label::after {
-  content: "";
+  content: '';
   display: inherit;
   width: 15px;
   height: 15px;
@@ -211,32 +210,32 @@ font-weight: bold;
 }
 
 .switch input:checked ~ label {
-  border-color: var(--primary-color)
+  border-color: var(--primary-color);
 }
 
 .switch input:checked ~ label::after {
   translate: 25px 0;
-  background: var(--primary-color)
+  background: var(--primary-color);
 }
 
 @media (max-width: 1200px) {
-  .section{
-      flex-direction: column;
-      width: 95%;
-  }
-  
-  .sectionleft{
-      order: 1;
-      min-width: 100%;
-  }
-  
-  .sectionright{
-      order: 2; 
-      min-width: 100%;
+  .section {
+    flex-direction: column;
+    width: 95%;
   }
 
-  .userdetail{
-      min-width: 100%;
+  .sectionleft {
+    order: 1;
+    min-width: 100%;
+  }
+
+  .sectionright {
+    order: 2;
+    min-width: 100%;
+  }
+
+  .userdetail {
+    min-width: 100%;
   }
 
   .right-directions,
@@ -244,8 +243,11 @@ font-weight: bold;
   .right-socials,
   .right-notifications,
   .right-favorites,
-  .right-delete{
-      min-width: 100%;
+  .right-delete {
+    min-width: 100%;
+  }
 }
-  
+
+.BusinessCard{
+  max-width: 20px;
 }

@@ -20,21 +20,45 @@ const Cards: React.FC<CardsProps> = ({ allServices }) => {
   const [key, setKey] = useState(0)
   const { filteredUsers } = useFilterHook(allServices)
   const { filter } = useSelector((state: RootState) => state)
-  const { itemsPaginated, currentPage, totalPages, nextPage, prevPage, startPage, finalPage } = usePagination(filteredUsers, 6, filter, key)
 
   useEffect(() => {
     setKey(key + 1)
   }, [allServices])
 
+  const [sortOption, setSortOption] = useState('default')
+
+  function calcularRatingPromedio (reviews: any): any {
+    if (reviews.length === 0) {
+      return 0
+    }
+    const totalRatings = reviews.reduce((sum: any, review: any) => sum + review.rating, 0)
+    return totalRatings / reviews.length
+  }
+
+  const sellersWithAverageRating = filteredUsers.map((seller) => ({
+    ...seller,
+    averageRating: calcularRatingPromedio(seller.reviews)
+  }))
+
+  if (sortOption === '1') {
+    sellersWithAverageRating.sort((a, b) => b.averageRating - a.averageRating) // Ordenar por rating descendente
+  } else if (sortOption === '2') {
+    sellersWithAverageRating.sort((a, b) => a.averageRating - b.averageRating) // Ordenar por rating ascendente
+  }
+  const { itemsPaginated, currentPage, totalPages, nextPage, prevPage, startPage, finalPage } = usePagination(sellersWithAverageRating, 6, filter, key)
+
+  console.log(itemsPaginated)
+
   return (
     <>
       <div className={style.test}>
-      <Pagination currentPage={currentPage} totalPages={totalPages} nextPage={nextPage} prevPage={prevPage} startPage={startPage} finalPage={finalPage} />
+        <Pagination currentPage={currentPage} totalPages={totalPages} nextPage={nextPage} prevPage={prevPage} startPage={startPage} finalPage={finalPage} />
         <div className={style['div-container-order-filter-cards']}>
-          <FilterAndOrderCard allServices={allServices} />
+          <FilterAndOrderCard allServices={allServices} setSortOption={setSortOption}/>
           <section className={style.cardsSection}>
-            {itemsPaginated.map(({ _id, sellerName, categoriesArray, reviews }: ServiceProvider) => {
-              return <BusinessCard key={_id} _id={_id} reviews={reviews} sellerName={sellerName} categoriesArray={categoriesArray} />
+            {itemsPaginated.map(({ _id, sellerName, categoriesArray, reviews, images }: ServiceProvider) => {
+              return <BusinessCard key={_id} _id={_id} reviews={reviews} sellerName={sellerName}
+              categoriesArray={categoriesArray} images={images}/>
             })}
           </section>
         </div>

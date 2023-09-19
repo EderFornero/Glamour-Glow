@@ -9,11 +9,12 @@ import BusiPhoneInput from './inputs/BusiPhoneInput'
 import BusiPasswordInput from './inputs/BusiPasswordInput'
 import style from './FormCreateBusiness.module.css'
 import type { RootState } from '../../redux/types'
-import { getCategories, postSeller } from '../../redux/actions'
+import { getCategories, postSeller, postSellerValidate, setAuth, setUserId } from '../../redux/actions'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import type { FormCreateBusi } from '../../interfaces'
 import Cloudinary from '../Cloudinary/Cloudinary'
+import toast, { Toaster } from 'react-hot-toast'
 
 interface FormLoginProps {
   onToggle: () => void
@@ -26,6 +27,8 @@ const FormBusiness: React.FC<FormLoginProps> = () => {
   const {
     register,
     handleSubmit,
+    setError,
+    clearErrors,
     formState: { errors }
   } = useForm<FormCreateBusi>({
     defaultValues: {
@@ -35,7 +38,7 @@ const FormBusiness: React.FC<FormLoginProps> = () => {
       sellerPhone: '',
       role: 'seller',
       images: [],
-      sellerGender: 'any',
+      sellerGender: '',
       categoriesArray: [],
       servicesArray: [],
       isActive: true,
@@ -43,31 +46,78 @@ const FormBusiness: React.FC<FormLoginProps> = () => {
     }
   })
 
+  const autoLoginSeller = {
+    sellerEmail: '',
+    sellerPassword: ''
+  }
   const [showOtherInputs, setShowOtherInputs] = useState(true)
   const categoryList = useSelector((state: RootState) => state.categories)
-  const { image } = useSelector((state: RootState) => state)
   useEffect(() => {
     dispatch(getCategories())
   }, [dispatch])
 
-  const onSubmit = handleSubmit((data: FormCreateBusi) => {
-    delete data.confirmPassword
+  const { image } = useSelector((state: RootState) => state)
+  console.log(image)
 
+  const onSubmit = handleSubmit(async (data: FormCreateBusi) => {
+    delete data.confirmPassword
     const businessImage: string[] = []
     if (image !== undefined) {
       businessImage.push(image)
-    } else if (image === undefined) {
-      businessImage.push('https://mirplaysalon.com/wp-content/uploads/2022/03/img_0033-1024x724.jpg')
     }
     data.images = businessImage
 
     if (Array.isArray(data.categoriesArray)) {
       data.categoriesArray = data.categoriesArray.filter((item) => typeof item === 'string')
     }
+    autoLoginSeller.sellerEmail = data.sellerEmail
+    autoLoginSeller.sellerPassword = data.sellerPassword
+    if (data.images.length === 0) {
+      setError('images', {
+        type: 'manual',
+        message: 'image required'
+      })
+      return
+    }
+    await dispatch(postSeller(data))
+    try {
+      const response = await dispatch(postSellerValidate(autoLoginSeller))
+      const { id, token, role } = response.data
 
-    console.log(data)
-    dispatch(postSeller(data))
-    navigate('/')
+      if (token !== undefined && id !== undefined) {
+        toast.success('Successfully registered', {
+          style: {
+            border: '1px solid #3d36be',
+            padding: '16px',
+            color: '#1eb66d'
+          },
+          iconTheme: {
+            primary: '#6e66ff',
+            secondary: '#FFFAEE'
+          }
+        })
+        localStorage.setItem('isAuth', 'true')
+        localStorage.setItem('id', id)
+        localStorage.setItem('role', role)
+        dispatch(setAuth(true))
+        dispatch(setUserId(id))
+        setTimeout(() => {
+          navigate('/')
+        }, 1000)
+      }
+    } catch (error: any) {
+      toast.error('Ops! Credential(s) incorrect', {
+        style: {
+          border: '1px solid #3d36be',
+          padding: '16px',
+          color: 'red'
+        },
+        iconTheme: {
+          primary: 'red',
+          secondary: '#FFFAEE'
+        }
+      })
+    }
   })
 
   const toggleOtherInputs = (): void => {
@@ -100,19 +150,28 @@ const FormBusiness: React.FC<FormLoginProps> = () => {
                   <BusiPasswordInput register={register} errors={errors} />
                   <BusiGenderInput register={register} errors={errors} />
                   <Cloudinary />
+                  {errors.images !== undefined && (
+                  <span className={style.imgspan}>Image required</span>
+                  )}
+                  <div className={style['buton-div']}>
+                    <button className={style.btn} onClick={goBack}>
+                      Back
+                    </button>
+                    <button className={style.btn} onClick={() => { clearErrors('images') }} type='submit'>
+                      Send
+                    </button>
+                  </div>
                 </>
               )}
-              <div className={style['buton-div']}>
-                <button className={style.btn} onClick={goBack}>
-                  Back
-                </button>
-                <button className={style.btn} type='submit'>
-                  Send
-                </button>
-              </div>
             </form>
           </div>
         </div>
+      </div>
+      <div>
+        <Toaster
+          position="top-center"
+          reverseOrder={false}
+        />
       </div>
     </div>
   )

@@ -13,7 +13,7 @@ const DivDirectionsPaymentWays = (): JSX.Element => {
         </div>
       </div>
 
-      <div className={styles['right-paymentways']}>
+      {/* <div className={styles['right-paymentways']}>
         <div className={styles['paymentways-header']}>
           <h4>My Payment Methods</h4>
           <p>Save your card details securely and pay without any issues.</p>
@@ -21,7 +21,7 @@ const DivDirectionsPaymentWays = (): JSX.Element => {
         <div className={styles['paymentways-body']}>
           <img src={plus} className={styles.iconplussvg} /><a href="">Add payment method</a>
         </div>
-      </div>
+      </div> */}
     </>
   )
 }

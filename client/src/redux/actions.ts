@@ -13,7 +13,14 @@ import {
   SET_AUTH,
   SET_USER_ID,
   CLEAN_SELLER_DETAIL,
-  UPDATE_SELLER_IMAGE_INDEX
+  UPDATE_SELLER_IMAGE_INDEX,
+  GET_USER_METRICS,
+  GET_SELLER_METRICS,
+  UPDATE_SELLER_BALANCE,
+  SELLER_EMAIL,
+  POST_SERVICES,
+  PUT_SERVICES,
+  DELETE_SERVICES
 } from './Action-Types'
 import type { ServiceAction } from './types'
 import type { SellerDetailAction } from '../interfaces'
@@ -141,7 +148,6 @@ export const postValidate: any = (payload: any) => {
     try {
       const response = await axios.post(endpointLogin, payload)
       localStorage.setItem('token', response.data.token)
-
       return response
     } catch (error: any) {
       console.log(error.message)
@@ -162,7 +168,7 @@ export const getUserbyId: any = (id: string) => {
         payload: data
       })
     } catch (error: any) {
-      console.log(error.message)
+      return { error: error.message }
     }
   }
 }
@@ -178,12 +184,13 @@ export const updateUserInfo: any = (id: string, updateinfo: any) => {
         type: UPDATE_USER_DETAIL,
         payload: data
       })
+
+      return { success: true }
     } catch (error: any) {
       return { error: error.message }
     }
   }
 }
-
 // Seller Detail
 export const getSellerbyId: any = (id: string) => {
   const endpoint = `${API_URL}sellers/${id}`
@@ -219,32 +226,62 @@ export const updateSellerInfo: any = (id: string, updateinfo: any) => {
   }
 }
 
+// Services
 export const postService: any = (payload: any) => {
   const endpoint = `${API_URL}services`
 
-  return async function (_dispatch: any) {
-    const response = await axios.post(endpoint, payload)
-    return response
+  return async (dispatch: (action: ServiceAction) => void) => {
+    try {
+      const { data } = await axios.post(endpoint, payload)
+
+      dispatch({
+        type: POST_SERVICES,
+        payload: data
+      })
+      return { success: true }
+    } catch (error: any) {
+      return { error: error.message }
+    }
   }
 }
 
 export const updateService: any = (id: string, payload: any) => {
   const endpoint = `${API_URL}services/${id}`
 
-  return async function (_dispatch: any) {
-    const response = await axios.put(endpoint, payload)
-    return response
+  return async (dispatch: (action: ServiceAction) => void) => {
+    try {
+      const { data } = await axios.put(endpoint, payload)
+
+      dispatch({
+        type: PUT_SERVICES,
+        payload: data
+      })
+      return { success: true }
+    } catch (error: any) {
+      return { error: error.message }
+    }
   }
 }
 
 export const deleteService: any = (id: string) => {
   const endpoint = `${API_URL}services/${id}`
 
-  return async function () {
-    const response = await axios.delete(endpoint)
-    return response
+  return async (dispatch: (action: ServiceAction) => void) => {
+    try {
+      const { data } = await axios.delete(endpoint)
+
+      dispatch({
+        type: DELETE_SERVICES,
+        payload: data
+      })
+      return { success: true }
+    } catch (error: any) {
+      return { error: error.message }
+    }
   }
 }
+
+//
 
 export const cleanSellerDetail: any = (): SellerDetailAction => {
   return { type: CLEAN_SELLER_DETAIL, payload: { _id: '', sellerName: '', sellerEmail: '', sellerPhone: '', sellerGender: '', reviews: [], categoriesArray: [], servicesArray: [], images: [] } }
@@ -258,11 +295,18 @@ export const updateSellerImageIndex: any = (payload: number) => {
 
 export const postSellerValidate: any = (payload: any) => {
   const endpointLogin = `${API_URL}sellers/login`
-  return async function () {
+  return async function (dispatch: (action: ServiceAction) => void) {
     try {
       const response = await axios.post(endpointLogin, payload)
       localStorage.setItem('token', response.data.token)
-
+      dispatch({
+        type: UPDATE_SELLER_BALANCE,
+        payload: response.data.accountBalance
+      })
+      dispatch({
+        type: SELLER_EMAIL,
+        payload: payload.sellerEmail
+      })
       return response
     } catch (error: any) {
       console.log(error.message)
@@ -285,6 +329,53 @@ export const deleteUser: any = (id: string) => {
 
 export const disableUser: any = (id: string) => {
   const endpointDisable = `${API_URL}users/disable/${id}`
+
+  return async function () {
+    try {
+      const response = await axios.put(endpointDisable)
+      return response
+    } catch (error: any) {
+      console.log(error.message)
+    }
+  }
+}
+
+export const getUserMetrics: any = () => {
+  const endpoint = `${API_URL}admin/userMetrics`
+
+  return async (dispatch: (action: ServiceAction) => void) => {
+    try {
+      const { data } = await axios.get(endpoint)
+
+      dispatch({
+        type: GET_USER_METRICS,
+        payload: data
+      })
+    } catch (error: any) {
+      return { error: error.message }
+    }
+  }
+}
+
+export const getSellerMetrics: any = () => {
+  const endpoint = `${API_URL}admin/sellerMetrics`
+
+  return async (dispatch: (action: ServiceAction) => void) => {
+    try {
+      const { data } = await axios.get(endpoint)
+
+      dispatch({
+        type: GET_SELLER_METRICS,
+        payload: data
+      })
+    } catch (error: any) {
+      return { error: error.message }
+    }
+  }
+}
+
+export const disableSeller: any = (id: string) => {
+  const endpointDisable = `${API_URL}sellers/disable/${id}`
 
   return async function () {
     try {
