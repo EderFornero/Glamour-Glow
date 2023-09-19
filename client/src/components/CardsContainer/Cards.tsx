@@ -47,6 +47,8 @@ const Cards: React.FC<CardsProps> = ({ allServices }) => {
   }
   const { itemsPaginated, currentPage, totalPages, nextPage, prevPage, startPage, finalPage } = usePagination(sellersWithAverageRating, 6, filter, key)
 
+  console.log(itemsPaginated)
+
   return (
     <>
       <div className={style.test}>
@@ -54,8 +56,9 @@ const Cards: React.FC<CardsProps> = ({ allServices }) => {
         <div className={style['div-container-order-filter-cards']}>
           <FilterAndOrderCard allServices={allServices} setSortOption={setSortOption}/>
           <section className={style.cardsSection}>
-            {itemsPaginated.map(({ _id, sellerName, categoriesArray, reviews }: ServiceProvider) => {
-              return <BusinessCard key={_id} _id={_id} reviews={reviews} sellerName={sellerName} categoriesArray={categoriesArray} />
+            {itemsPaginated.map(({ _id, sellerName, categoriesArray, reviews, images }: ServiceProvider) => {
+              return <BusinessCard key={_id} _id={_id} reviews={reviews} sellerName={sellerName}
+              categoriesArray={categoriesArray} images={images}/>
             })}
           </section>
         </div>

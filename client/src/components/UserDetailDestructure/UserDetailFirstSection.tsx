@@ -11,6 +11,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useEffect, useState } from 'react'
 import { getUserbyId, updateUserInfo } from '../../redux/actions'
 import { useParams } from 'react-router-dom'
+import toast, { Toaster } from 'react-hot-toast'
 
 const UserDetailFirstSection = (): JSX.Element => {
   const dispatch = useDispatch()
@@ -18,18 +19,24 @@ const UserDetailFirstSection = (): JSX.Element => {
   const userdetail = useSelector((state: RootState) => state.userdetail)
   const [isReportPopupOpen, setIsReportPopupOpen] = useState<boolean>(false)
   const [editing, setEditing] = useState(false)
-  const [newUserInfo, setNewUserInfo] = useState({ ...userdetail })
+  const [newUserInfo, setNewUserInfo] = useState({
+    name: userdetail.name,
+    lastName: userdetail.lastName,
+    dateOfBirth: userdetail.dateOfBirth,
+    phoneNumber: userdetail.phoneNumber,
+    email: userdetail.email
+  })
 
   const { id } = useParams()
 
   useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-    image !== null ? dispatch(updateUserInfo(id, { image })) : ''
-  }, [image])
+    image ?  dispatch(updateUserInfo(id, { 'image': image })) : '' }
+  , [image])
 
   useEffect(() => {
     dispatch(getUserbyId(id))
   }, [dispatch])
+
   const openReportPopup = (): void => {
     setIsReportPopupOpen(true)
   }
@@ -40,12 +47,38 @@ const UserDetailFirstSection = (): JSX.Element => {
 
   const handleEdit = (): void => {
     setEditing(true)
-    setNewUserInfo({ ...userdetail })
   }
 
-  const handleSave = (): void => {
-    setEditing(false)
-    dispatch(updateUserInfo(id, newUserInfo))
+  const handleSave = async (): Promise<void> => {
+    try {
+      setEditing(false)
+      const result = await dispatch(updateUserInfo(id, newUserInfo))
+      if (result.success === true) {
+        toast.success('Information updated successfully', {
+          style: {
+            border: '1px solid #3d36be',
+            padding: '16px',
+            color: '#1eb66d'
+          },
+          iconTheme: {
+            primary: '#6e66ff',
+            secondary: '#FFFAEE'
+          }
+        })
+      }
+    } catch (error) {
+      toast.error('Ops! Something went wrong', {
+        style: {
+          border: '1px solid #3d36be',
+          padding: '16px',
+          color: 'red'
+        },
+        iconTheme: {
+          primary: 'red',
+          secondary: '#FFFAEE'
+        }
+      })
+    }
   }
 
   const handleChange = (event: any): void => {
@@ -92,6 +125,12 @@ const UserDetailFirstSection = (): JSX.Element => {
           <p onClick={openReportPopup}>Got a report?</p>
         </div>
         {isReportPopupOpen && <Report id={userdetail._id} onClose={closeReportPopup} isOpen={isReportPopupOpen} route='users' />}
+      </div>
+      <div>
+        <Toaster
+          position="top-center"
+          reverseOrder={false}
+        />
       </div>
     </section>
   )

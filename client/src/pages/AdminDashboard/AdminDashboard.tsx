@@ -50,8 +50,8 @@ const AdminDashboard: React.FC = () => {
       <div className={style['right-section']}>
         {activeItem === 'Request Payout' && <RequestPayout accountBalance={accountBalance} sellerName={sellerdetail.sellerName} sellerPhone={sellerdetail.sellerPhone} />}
         {activeItem === 'Report' && <Report id={ID} onClose={closeReportPopup} isOpen={isReportPopupOpen} route='sellers' />}
-        {activeItem === 'Create' && <FormSeller />}
-        {(activeItem === 'List' || activeItem === 'Services') && <ServiceList sellerid={sellerdetail.sellerid} services={sellerdetail.servicesArray} setActiveItem={setActiveItem} />}
+        {activeItem === 'Create' && <FormSeller setActiveItem={setActiveItem}/>}
+        {(activeItem === 'List' || activeItem === 'Services') && <ServiceList setActiveItem={setActiveItem} />}
         {activeItem === 'Clients' && <Clients sellerName='Hola' services={users} />}
         {activeItem === 'Interface' && <UpdateBusinessImages />}
         {activeItem === 'Display' && (

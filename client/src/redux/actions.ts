@@ -17,7 +17,10 @@ import {
   GET_USER_METRICS,
   GET_SELLER_METRICS,
   UPDATE_SELLER_BALANCE,
-  SELLER_EMAIL
+  SELLER_EMAIL,
+  POST_SERVICES,
+  PUT_SERVICES,
+  DELETE_SERVICES
 } from './Action-Types'
 import type { ServiceAction } from './types'
 import type { SellerDetailAction } from '../interfaces'
@@ -165,7 +168,7 @@ export const getUserbyId: any = (id: string) => {
         payload: data
       })
     } catch (error: any) {
-      console.log(error.message)
+      return { error: error.message }
     }
   }
 }
@@ -181,12 +184,13 @@ export const updateUserInfo: any = (id: string, updateinfo: any) => {
         type: UPDATE_USER_DETAIL,
         payload: data
       })
+
+      return { success: true }
     } catch (error: any) {
       return { error: error.message }
     }
   }
 }
-
 // Seller Detail
 export const getSellerbyId: any = (id: string) => {
   const endpoint = `${API_URL}sellers/${id}`
@@ -222,32 +226,62 @@ export const updateSellerInfo: any = (id: string, updateinfo: any) => {
   }
 }
 
+// Services
 export const postService: any = (payload: any) => {
   const endpoint = `${API_URL}services`
 
-  return async function (_dispatch: any) {
-    const response = await axios.post(endpoint, payload)
-    return response
+  return async (dispatch: (action: ServiceAction) => void) => {
+    try {
+      const { data } = await axios.post(endpoint, payload)
+
+      dispatch({
+        type: POST_SERVICES,
+        payload: data
+      })
+      return { success: true }
+    } catch (error: any) {
+      return { error: error.message }
+    }
   }
 }
 
 export const updateService: any = (id: string, payload: any) => {
   const endpoint = `${API_URL}services/${id}`
 
-  return async function (_dispatch: any) {
-    const response = await axios.put(endpoint, payload)
-    return response
+  return async (dispatch: (action: ServiceAction) => void) => {
+    try {
+      const { data } = await axios.put(endpoint, payload)
+
+      dispatch({
+        type: PUT_SERVICES,
+        payload: data
+      })
+      return { success: true }
+    } catch (error: any) {
+      return { error: error.message }
+    }
   }
 }
 
 export const deleteService: any = (id: string) => {
   const endpoint = `${API_URL}services/${id}`
 
-  return async function () {
-    const response = await axios.delete(endpoint)
-    return response
+  return async (dispatch: (action: ServiceAction) => void) => {
+    try {
+      const { data } = await axios.delete(endpoint)
+
+      dispatch({
+        type: DELETE_SERVICES,
+        payload: data
+      })
+      return { success: true }
+    } catch (error: any) {
+      return { error: error.message }
+    }
   }
 }
+
+//
 
 export const cleanSellerDetail: any = (): SellerDetailAction => {
   return { type: CLEAN_SELLER_DETAIL, payload: { _id: '', sellerName: '', sellerEmail: '', sellerPhone: '', sellerGender: '', reviews: [], categoriesArray: [], servicesArray: [], images: [] } }
