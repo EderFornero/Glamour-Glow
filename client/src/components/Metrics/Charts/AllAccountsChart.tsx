@@ -28,17 +28,17 @@ const AllAccountPies: React.FC<AllAccountPiesProps> = ({ sellerMetrics, userMetr
         label: 'Accounts Analytics',
         data: [sellerMetrics.activeSellers, userMetrics.activeUsers, userMetrics.inactiveUsers, sellerMetrics.inactiveSellers],
         backgroundColor: [
-          'rgba(94, 255, 177, 0.2)',
-          'rgba(62, 56, 182, 0.2)',
-          'rgba(62, 56, 182, 1)',
           'rgba(94, 255, 177, 1)',
+          'rgba(62, 56, 182, 1)',
+          'rgba(62, 56, 182, 0.2)',
+          'rgba(94, 255, 177, 0.2)',
           'rgba(153, 102, 255, 0.2)'
         ],
         borderColor: [
-          'rgba(94, 255, 177, 1)',
+          'rgba(0, 0, 0, 1)',
+          'rgba(0, 0, 0, 1)',
           'rgba(62, 56, 182, 1)',
-          'rgba(0, 0, 0, 1)',
-          'rgba(0, 0, 0, 1)',
+          'rgba(94, 255, 177, 1)',
           'rgba(153, 102, 255, 1)'
         ],
         borderWidth: 1
