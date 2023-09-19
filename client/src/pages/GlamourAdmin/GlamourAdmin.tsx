@@ -4,6 +4,7 @@ import { menuItems } from './parts/itemsmenu'
 import { useState } from 'react'
 import Metrics from '../../components/Metrics/Metrics'
 import SellersCards from '../../components/SellersCards/SellersCards'
+import ReportsList from '../../components/ReportsList/ReportsList'
 
 const GlamourAdmin = (): JSX.Element => {
   const [activeItem, setActiveItem] = useState<string>('')
@@ -15,6 +16,7 @@ const GlamourAdmin = (): JSX.Element => {
       {activeItem === 'Users' && <UsersCards />}
       {activeItem === 'Analytics' && <Metrics />}
       {activeItem === 'Sellers' && <SellersCards />}
+      {activeItem === 'Reports' && <ReportsList />}
       </div>
     </div>
   )
