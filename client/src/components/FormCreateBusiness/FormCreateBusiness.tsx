@@ -131,18 +131,18 @@ const FormBusiness: React.FC<FormLoginProps> = () => {
                   <BusiGenderInput register={register} errors={errors} />
                   <Cloudinary />
                   {errors.images !== undefined && (
-                  <span>Image required</span>
+                  <span className={style.imgspan}>Image required</span>
                   )}
+                  <div className={style['buton-div']}>
+                    <button className={style.btn} onClick={goBack}>
+                      Back
+                    </button>
+                    <button className={style.btn} onClick={() => { clearErrors('images') }} type='submit'>
+                      Send
+                    </button>
+                  </div>
                 </>
               )}
-              <div className={style['buton-div']}>
-                <button className={style.btn} onClick={goBack}>
-                  Back
-                </button>
-                <button className={style.btn} onClick={() => { clearErrors('images') }} type='submit'>
-                  Send
-                </button>
-              </div>
             </form>
           </div>
         </div>

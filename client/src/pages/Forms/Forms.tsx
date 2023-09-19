@@ -14,6 +14,7 @@ const Forms: React.FC = () => {
     <div className={style.all}>
       <div className={style.content}>
         <div className={style.left}>
+          <div className={style.leftImg}></div>
           <h1 className={style.h1}>Let your work Glow!</h1>
         </div>
         <div className={style.right}>

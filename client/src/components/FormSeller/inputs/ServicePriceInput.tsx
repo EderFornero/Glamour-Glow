@@ -1,9 +1,9 @@
-import React from 'react';
-import style from './input.module.css';
+import React from 'react'
+import style from './input.module.css'
 
 interface ServicePriceInputProps {
-  register: any;
-  errors: any;
+  register: any
+  errors: any
 }
 
 const ServicePriceInput: React.FC<ServicePriceInputProps> = ({ register, errors }) => {
@@ -14,16 +14,16 @@ const ServicePriceInput: React.FC<ServicePriceInputProps> = ({ register, errors 
         className={style.input}
         type='text'
         name="price"
-        placeholder='800' // Sin el signo de dólar en el placeholder
+        placeholder='800'
         {...register('price', {
           required: {
             value: true,
-            message: 'Please enter a price number',
+            message: 'Please enter a price number'
           },
           pattern: {
             value: /^[1-9]\d*$/,
-            message: 'Only Numbers are allowed and must be higher than 0',
-          },
+            message: 'Only Numbers are allowed and must be higher than 0'
+          }
         })}
       />
       <div>
@@ -32,7 +32,7 @@ const ServicePriceInput: React.FC<ServicePriceInputProps> = ({ register, errors 
         )}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ServicePriceInput;
+export default ServicePriceInput
