@@ -98,7 +98,7 @@ const UserDetailFirstSection = (): JSX.Element => {
           <img src={userdetail.image ?? NoProfileImage} alt={userdetail.name} />
           <Cloudinary />
           <h1>
-            {userdetail.name} {userdetail.lastName}
+            {userdetail.name} {userdetail.lastName === 'apellido' ? '' : userdetail.lastName}
           </h1>
           {editing ? <a onClick={handleSave}>Save</a> : <a onClick={handleEdit}>Edit basic information</a>}
         </div>
@@ -108,7 +108,7 @@ const UserDetailFirstSection = (): JSX.Element => {
               Name <span>{editing ? <input type='text' name='name' value={newUserInfo.name} onChange={handleChange} /> : userdetail.name}</span>
             </li>
             <li>
-              Last Name <span>{editing ? <input type='text' name='lastName' value={newUserInfo.lastName} onChange={handleChange} /> : userdetail.lastName}</span>
+              Last Name <span>{editing ? <input type='text' name='lastName' value={newUserInfo.lastName} onChange={handleChange} /> : (userdetail.lastName === 'apellido' ? '' : userdetail.lastName)}</span>
             </li>
             <li>
               Phone <span>{editing ? <input type='number' name='phoneNumber' value={newUserInfo.phoneNumber} onChange={handleChange} /> : userdetail.phoneNumber}</span>
