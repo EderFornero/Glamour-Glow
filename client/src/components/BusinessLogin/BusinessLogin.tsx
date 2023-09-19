@@ -27,10 +27,8 @@ const BusinessLogin: React.FC<BusinessLoginProps> = ({ onToggle }) => {
     defaultValues: { sellerEmail: '', sellerPassword: '' }
   })
 
-  const [errorMessage, setErrorMessage] = useState('')
+  const [errorMessage] = useState('')
   const [error, setError] = useState('')
-
-  console.log(setErrorMessage)
 
   const onSubmit = handleSubmit(async (data: SellerLoginData) => {
     try {

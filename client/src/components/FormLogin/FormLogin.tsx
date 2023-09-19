@@ -30,10 +30,8 @@ const FormLogin: React.FC<FormLoginProps> = ({ onToggle }) => {
   } = useForm<FormLoginData>({
     defaultValues: { email: '', password: '' }
   })
-  const [errorMessage, setErrorMessage] = useState('')
+  const [errorMessage] = useState('')
   const [error, setError] = useState('')
-
-  console.log(setErrorMessage)
 
   const onSubmit = handleSubmit(async (data: FormLoginData) => {
     try {
