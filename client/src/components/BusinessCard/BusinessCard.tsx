@@ -21,7 +21,6 @@ const BusinessCard: React.FC<BusinessCardProps> = ({ _id, sellerName, reviews, c
       </div>
       <div className={style.itemsContainer}>
         <p>Rating: {typeof averageRating === 'number' && averageRating.toFixed(2)}</p>
-        <p>Location: </p>
         {Array.isArray(categoriesArray) ? categoriesArray.map((category: Category, index: number) => <p key={index}>{category.name}</p>) : null}
       </div>
       <NavLink to={`/sellerdetail/${_id}`} className={style.link}>
