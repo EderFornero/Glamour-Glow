@@ -18,7 +18,7 @@ const Home: React.FC = () => {
   const [showCards, setShowCards] = useState(false)
   const dispatch = useDispatch()
 
-  // al rato arreglo los anys queria que funcara :**
+  // al rato arreglo los anys queria que funcara :**     n.n
   const recomendedServices: any = allServices.filter((seller) => {
     const { reviews } = seller;
     const avg: any = useRating(reviews)
