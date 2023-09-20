@@ -201,7 +201,7 @@ export const readClientsBySellerId = async (id: string ) => {
         },
         {
           $replaceRoot: {
-            newRoot: "$user", // Promote the "user" field to the top level
+            newRoot: "$user"
           },
         },
     ])
