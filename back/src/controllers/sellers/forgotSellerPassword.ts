@@ -33,7 +33,7 @@ export const forgotSellerPassword = async (
       from: "glamourglowpf@gmail.com",
       to: JSON.stringify(sellerEmail),
       subject: 'Password recovery',
-      html: replaceHtml(PASSWORD_RECOVERY, `http://localhost:5173/resetPassword?key=${seller.passwordResetCode}&email=${seller.sellerEmail}&id=${seller._id}`)
+      html: replaceHtml(PASSWORD_RECOVERY, `http://localhost:5173/resetPasswordSeller?key=${seller.passwordResetCode}&email=${seller.sellerEmail}&id=${seller._id}`)
     }
 
     transporter.sendMail(mail_configs, (error: any, info: any) => {
