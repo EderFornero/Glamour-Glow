@@ -8,8 +8,8 @@
 }
 
 .div-forms-container{
-  min-width: 1000px;
-  min-height: 500px;
+  width: 1000px;
+  min-height: 600px;
   font-size: 14px;
   display: flex;
   justify-content: center;
@@ -71,7 +71,7 @@
 
 
 .right {
-  min-height: 580px;
+  min-height: 600px;
   background-color: #6e66ff;
   flex: 50;
   justify-content: center;
@@ -80,7 +80,6 @@
   position: relative;
   border-bottom-right-radius: 15px;
   border-top-right-radius: 15px;
-  height: 620px;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
 
   @media (max-width: 800px){ 
@@ -90,19 +89,11 @@
   }
 }
 
-.log-reg {
-  position: absolute;
-  width: 90px;
-  top: 0;
-  right: 0;
-  padding-right: 100px;
-}
-
 .forms {
   justify-content: center;
   align-items: center;
   display: flex;
-  margin-top: 40px;
+  margin-top: 15px;
 }
 
 .text-log {
