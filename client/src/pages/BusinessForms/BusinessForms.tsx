@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import BusinessLogin from '../../components/BusinessLogin/BusinessLogin'
-import style from './BusinessForms.module.css'
 import FormBusiness from '../../components/FormCreateBusiness/FormCreateBusiness'
 
 const BusinessForms: React.FC = () => {
@@ -11,7 +10,7 @@ const BusinessForms: React.FC = () => {
   }
 
   return (
-    <div className={style['div-business-forms']}>
+    <div>
       {showBusinessForm ? <BusinessLogin onToggle={toggleForm} /> : <FormBusiness onToggle={toggleForm} />}
     </div>
   )

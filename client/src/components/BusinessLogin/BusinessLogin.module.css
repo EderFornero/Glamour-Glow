@@ -79,7 +79,7 @@
 .right {
   background-color: #6e66ff;
   flex: 50;
-  min-height: 400px;
+  min-height: 600px;
   justify-content: center;
   display: flex;
   align-items: center;
