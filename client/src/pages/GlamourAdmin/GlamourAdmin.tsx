@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom'
 import style from './GlamourAdmin.module.css'
 
 const GlamourAdmin = (): JSX.Element => {
-  const [activeItem, setActiveItem] = useState<string>('')
+  const [activeItem, setActiveItem] = useState<string>('Analytics')
   const navigate = useNavigate()
 
   useEffect(() => {

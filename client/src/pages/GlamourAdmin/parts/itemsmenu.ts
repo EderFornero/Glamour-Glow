@@ -7,14 +7,9 @@ import pay from '../../../assets/sidebard-icons/pay.svg'
 export const menuItems = [
 
   {
-    id: '5',
-    name: 'Users',
-    icon: users
-  },
-  {
-    id: '6',
-    name: 'Payments',
-    icon: pay
+    id: '8',
+    name: 'Analytics',
+    icon: analytic
   },
   {
     id: '7',
@@ -22,9 +17,14 @@ export const menuItems = [
     icon: report
   },
   {
-    id: '8',
-    name: 'Analytics',
-    icon: analytic
+    id: '6',
+    name: 'Payments',
+    icon: pay
+  },
+  {
+    id: '5',
+    name: 'Users',
+    icon: users
   },
   {
     id: '9',

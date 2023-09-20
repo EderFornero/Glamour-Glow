@@ -11,7 +11,7 @@ const UsersCards: React.FC = () => {
 
   useEffect(() => {
     dispatch(getUsers())
-  }, [])
+  }, [users])
 
   const rows = users.map((user) => ({
     _id: user._id,
