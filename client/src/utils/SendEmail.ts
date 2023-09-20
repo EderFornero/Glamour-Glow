@@ -14,9 +14,7 @@ export const sendWelcomeEmail = async (recipientEmail: string) => {
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export const sendResetPasswordEmail = async (email: string) => {
   // eslint-disable-next-line no-useless-catch
-  const response = await axios.post(`${API_URL}users/forgotPassword`, {
-    email
-  })
+  const response = await axios.post(`${API_URL}users/forgotPassword`, { email })
   console.log(response)
   return response
 }
