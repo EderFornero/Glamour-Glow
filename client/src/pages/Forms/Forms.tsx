@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import FormRegister from '../../components/FormRegister/FormRegister'
 import FormLogin from '../../components/FormLogin/FormLogin'
 import style from './Forms.module.css'
+import { LoginImage } from '../../Images/FormImages'
 
 const Forms: React.FC = () => {
   const [showLoginForm, setShowLoginForm] = useState(true)
@@ -11,12 +12,15 @@ const Forms: React.FC = () => {
   }
 
   return (
-    <div className={style.all}>
-      <div className={style.content}>
-        <div className={style.left}>
-          <div className={style.leftImg}></div>
-          <h1 className={style.h1}>Let your work Glow!</h1>
+    <div className={style['div-forms']}>
+      <div className={style['div-forms-container']}>
+        <div className={style['image-h3-container']}>
+          <h3 className={style['h3-form-user']}>
+            Let your work Glow!
+          </h3>
+          <img src={LoginImage} alt='Login' className={style['image-form-user']} />
         </div>
+
         <div className={style.right}>
           <div className={style['text-log'] + (showLoginForm ? '' : ` ${style['text-log-adjusted']}`)}>
             <div className={style.text}>
