@@ -10,6 +10,7 @@ import style from './BusinessLogin.module.css'
 import ErrorMessage from './handlers/errorMessage'
 import toast, { Toaster } from 'react-hot-toast'
 import StandardButton from '../StandardButton/StandardButton'
+import { BusinessLoginImage } from '../../Images/FormImages'
 
 interface BusinessLoginProps {
   onToggle: () => void
@@ -85,11 +86,16 @@ const BusinessLogin: React.FC<BusinessLoginProps> = ({ onToggle }) => {
   })
 
   return (
-    <div className={style.all}>
-      <div className={style.content}>
-        <div className={style.left}>
-          <h1 className={style.h1}>Ready to Glow again?</h1>
+    <div className={style['div-business-login']}>
+      <div className={style['div-business-login-container']}>
+
+        <div className={style['image-h3-container']}>
+          <h3 className={style['h3-form-user']}>
+          Ready to Glow again?
+          </h3>
+          <img src={BusinessLoginImage} alt='Business Login' className={style['image-form-user']} />
         </div>
+
         <div className={style.right}>
           <div className={style['div-right']}>
             <div className={style.text}>

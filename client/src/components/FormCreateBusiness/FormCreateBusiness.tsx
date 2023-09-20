@@ -17,6 +17,7 @@ import toast, { Toaster } from 'react-hot-toast'
 import TermsAndConditions from '../TermsAndConditions/TermsAndConditions'
 import styles from '../FormRegister/FormRegister.module.css'
 import StandardButton from '../StandardButton/StandardButton'
+import { BusinessRegisterImage } from '../../Images/FormImages'
 
 interface FormLoginProps {
   onToggle: () => void
@@ -145,11 +146,16 @@ const FormBusiness: React.FC<FormLoginProps> = () => {
   }
 
   return (
-    <div className={style.all}>
-      <div className={style.content}>
-        <div className={style.left}>
-          <h1 className={style.h1}>Share your skills with the world!</h1>
+    <div className={style['div-business-register']}>
+      <div className={style['div-business-register-container']}>
+
+        <div className={style['image-h3-container']}>
+          <h3 className={style['h3-form-user']}>
+          Share your skills with the world!
+          </h3>
+          <img src={BusinessRegisterImage} alt='Business Register' className={style['image-form-user']} />
         </div>
+
         <div className={style.right}>
           <div className={style['div-right']}>
             <div className={style.text}>

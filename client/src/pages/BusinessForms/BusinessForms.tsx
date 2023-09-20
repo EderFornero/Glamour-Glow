@@ -11,20 +11,8 @@ const BusinessForms: React.FC = () => {
   }
 
   return (
-    <div className={style.all}>
-      <div className={style.content}>
-        <div className={style.right}>
-          <div className={style['div-right']}>
-            <div className={style['text-log'] + (showBusinessForm ? '' : ` ${style['text-log-adjusted']}`)}>
-              <div className={style.forms}>
-                <div>
-                  {showBusinessForm ? <BusinessLogin onToggle={toggleForm} /> : <FormBusiness onToggle={toggleForm} />}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div className={style['div-business-forms']}>
+      {showBusinessForm ? <BusinessLogin onToggle={toggleForm} /> : <FormBusiness onToggle={toggleForm} />}
     </div>
   )
 }
