@@ -24,7 +24,7 @@ const ReportsList: React.FC = () => {
 
   useEffect(() => {
     dispatch(getReports())
-  }, [])
+  }, [reports])
 
   const handleChangePage = (_event: React.MouseEvent<HTMLButtonElement> | null, newPage: number): void => {
     setPage(newPage)
