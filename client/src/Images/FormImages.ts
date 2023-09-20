@@ -6,3 +6,6 @@ export const forgotPasswordImage = 'https://res.cloudinary.com/dgl4t7gvo/image/u
 export const resetPasswordImage = 'https://res.cloudinary.com/dgl4t7gvo/image/upload/v1694511416/Glamour-Glow/Forms/rujpafjvnrs3achzipfh.png'
 
 export const createServiceImage = 'https://res.cloudinary.com/dgl4t7gvo/image/upload/v1694666566/Glamour-Glow/Forms/undraw_Well_done_re_3hpo_x4obof.png'
+
+export const submitReportImage = 'https://res.cloudinary.com/dgl4t7gvo/image/upload/v1695243377/Glamour-Glow/Forms/ttlvxfngox9mq1mleeun.png'
+export const requestPayoutImage = 'https://res.cloudinary.com/dgl4t7gvo/image/upload/v1695243377/Glamour-Glow/Forms/y3fw1l6u1p9ra62pvy3a.png'
