@@ -149,7 +149,7 @@ const FormRegister: React.FC<FormLoginProps> = () => {
           </button>
         </div>
         </form>
-        <a href="#" className={style['terms-conditions']} onClick={toggleTerms}>Ver Términos y Condiciones</a>
+        <a href="#" className={style['terms-conditions']} onClick={toggleTerms}>Terms and Conditions</a>
         <div className={style[`terms-and-conditions${showTerms ? '-show-terms' : ''}`]}>
           <TermsAndConditions />
         </div>
