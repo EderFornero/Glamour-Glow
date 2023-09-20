@@ -61,7 +61,7 @@ const BusinessInfo: React.FC<DetailProps> = ({ sellerName, reviews, sellerId, fa
         <h2 className={style.title}>{sellerName}</h2>
         <div className={style['rating-container']}>
           <StarIcon className={style.rating}></StarIcon>
-          <p>{typeof averageRating === 'number' && averageRating.toFixed(2)}</p>
+          <p>{typeof averageRating === 'number' ? averageRating.toFixed(2) : averageRating}</p>
         </div>
       </div>
       <div className={location.pathname.startsWith('/admin') ? style.hide : style.wrapper}>
