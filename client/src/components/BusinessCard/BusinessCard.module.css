@@ -78,9 +78,8 @@
 .card button:hover{
   background: var(--accent-color);
   color: var(--primary-color);
-  
-
 }
+
 .itemsContainer{
   display: flex;
   flex-direction: column;

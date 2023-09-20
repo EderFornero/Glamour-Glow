@@ -53,6 +53,7 @@ const UserDetailFirstSection = (): JSX.Element => {
     try {
       setEditing(false)
       const result = await dispatch(updateUserInfo(id, newUserInfo))
+      dispatch(getUserbyId(id))
       if (result.success === true) {
         toast.success('Information updated successfully', {
           style: {

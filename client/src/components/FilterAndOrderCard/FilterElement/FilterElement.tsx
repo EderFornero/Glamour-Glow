@@ -29,7 +29,7 @@ const FilterElement: React.FC<CardsProps> = ({ allServices }: CardsProps) => {
   return (
     <div className={style['div-filter-by']}>
       <div className={style['filter-by-categories']}>
-        <button className={style['filter-button-toggle']} onClick={toggleSort}>
+        <button className={`${style['filter-button-toggle']} ${isOpen ? style['active-button'] : ''}`} onClick={toggleSort}>
           Filter By
         </button>
       </div>

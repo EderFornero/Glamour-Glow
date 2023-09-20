@@ -14,9 +14,15 @@ export const sendWelcomeEmail = async (recipientEmail: string) => {
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export const sendResetPasswordEmail = async (email: string) => {
   // eslint-disable-next-line no-useless-catch
-  const response = await axios.post(`${API_URL}users/forgotPassword`, {
-    email
-  })
+  const response = await axios.post(`${API_URL}users/forgotPassword`, { email })
+  console.log(response)
+  return response
+}
+
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+export const sendResetPasswordEmailSeller = async (sellerEmail: string) => {
+  // eslint-disable-next-line no-useless-catch
+  const response = await axios.post(`${API_URL}sellers/forgotPassword`, { sellerEmail })
   console.log(response)
   return response
 }
@@ -26,6 +32,15 @@ export const confirmResetPassword = async (id: any, passwordResetCode: any, pass
   // eslint-disable-next-line no-useless-catch
   const url = `${API_URL}users/resetPassword/${id}/${passwordResetCode}`
   const data = { password, passwordConfirmation }
+  const response = await axios.post(url, data)
+  return response
+}
+
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+export const confirmResetPasswordSeller = async (id: any, passwordResetCode: any, sellerPassword: string, passwordConfirmation: string) => {
+  // eslint-disable-next-line no-useless-catch
+  const url = `${API_URL}sellers/resetPassword/${id}/${passwordResetCode}`
+  const data = { sellerPassword, passwordConfirmation }
   const response = await axios.post(url, data)
   return response
 }

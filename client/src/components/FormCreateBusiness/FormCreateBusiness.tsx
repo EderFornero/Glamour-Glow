@@ -15,6 +15,8 @@ import { useNavigate } from 'react-router-dom'
 import type { FormCreateBusi } from '../../interfaces'
 import Cloudinary from '../Cloudinary/Cloudinary'
 import toast, { Toaster } from 'react-hot-toast'
+import TermsAndConditions from '../TermsAndConditions/TermsAndConditions'
+import styles from '../FormRegister/FormRegister.module.css'
 
 interface FormLoginProps {
   onToggle: () => void
@@ -24,6 +26,11 @@ const FormBusiness: React.FC<FormLoginProps> = () => {
   const dispatch = useDispatch()
   const goBack = useGoBack()
   const navigate = useNavigate()
+  const [showTerms, setShowTerms] = useState(false)
+
+  const toggleTerms = (): void => {
+    setShowTerms(!showTerms)
+  }
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent): void => {
@@ -178,6 +185,10 @@ const FormBusiness: React.FC<FormLoginProps> = () => {
                   </div>
                 </>
               )}
+              <a href="#" className={styles['terms-conditions']} onClick={toggleTerms}>Terms and Conditions</a>
+                <div className={styles[`terms-and-conditions${showTerms ? '-show-terms' : ''}`]}>
+                  <TermsAndConditions />
+                </div>
             </form>
           </div>
         </div>

@@ -31,8 +31,28 @@
   display: flex;
   justify-content: center;
   margin: 8px;
+  position: relative;
 }
 
 .table-pagination{
   display: flex;
+}
+
+.tooltip-text {
+  visibility: hidden;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 4px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.btn-delete-disable:hover .tooltip-text {
+  visibility: visible;
 }
