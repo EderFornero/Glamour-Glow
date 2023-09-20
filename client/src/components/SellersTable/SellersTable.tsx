@@ -78,7 +78,10 @@ export default function UsersTable (props: EnhancedTableProps): JSX.Element {
 
   const handleDisable = (_id: string, isActive: boolean): void => {
     if (isActive) {
-      dispatch(disableSeller(_id))
+      const response = dispatch(disableSeller(_id))
+      if (response !== null) {
+        toast.success('Seller disabled succesfully')
+      }
     } else {
       setActiveInfo({ ...activeInfo, sellerId: _id, isActive: false })
       setisActiveOpen(true)
