@@ -18,9 +18,16 @@
   text-align: center;
   color: #000;
   font-size: 15px;
-  margin-left: 220px;
   height: 70px;
   width: 75vw;
+}
+.table-cell h2{
+  text-align: center;
+  color: #000;
+  font-size: 15px;
+  height: 70px;
+  width: 2svw;
+  margin-left: 400px;
 }
 
 .table-cell h1{
@@ -36,17 +43,19 @@
   padding-left: 200px;
 }
 
+.btn-delete-disable {
+  display: flex;
+  position: relative;
+  align-items: center;
+}
+
 .div-profile-image{
   height: 100%;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-.btn-delete-disable{
-  display: flex;
-  justify-content: center;
-  margin: 8px;
+  margin-left: 220px;
+  width: 90px;
 }
 
 @media (max-width: 900px) {
@@ -64,5 +73,8 @@
 
   .table-container{
     margin-top: 10px;
+  }
+  .div-profile-image{
+    margin-left: 80px;
   }
 }
