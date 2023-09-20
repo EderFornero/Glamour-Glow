@@ -47,11 +47,11 @@ interface ActiveInfo {
   isActive: boolean
 }
 
-export default function UsersTable (props: EnhancedTableProps): JSX.Element {
-  const { rows } = props
+export default function UsersTable ({ rows }: EnhancedTableProps): JSX.Element {
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(5)
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
+
   const [sellerInfo, setSellerInfo] = useState<SellerInfo>({
     sellerId: '',
     sellerName: '',

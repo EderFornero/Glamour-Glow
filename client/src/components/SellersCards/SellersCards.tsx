@@ -11,7 +11,7 @@ const SellersCards: React.FC = () => {
 
   useEffect(() => {
     dispatch(getAllBusiness())
-  }, [])
+  }, [sellers])
 
   const rows = sellers.map((seller) => ({
     _id: seller._id,
