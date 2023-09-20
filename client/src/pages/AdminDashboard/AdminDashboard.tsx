@@ -31,7 +31,7 @@ const AdminDashboard: React.FC = () => {
   const ID = localStorage.getItem('id')
   const sellerdetail = useSelector((state: RootState) => state.sellerdetail) as ServiceProvider
   const accountBalance = useSelector((state: RootState) => state.accountBalance)
-  const users = useSelector((state: RootState) => state.users)
+  const users = useSelector((state: RootState) => state.clients)
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -59,7 +59,7 @@ const AdminDashboard: React.FC = () => {
         )}
         {activeItem === 'Create' && <FormSeller setActiveItem={setActiveItem} />}
         {(activeItem === 'List' || activeItem === 'Services') && <ServiceList setActiveItem={setActiveItem} sellerid={''} />}
-        {activeItem === 'Clients' && <Clients clients={users} />}
+        {activeItem === 'Clients' && <Clients clients={users} id={id}/>}
         {activeItem === 'Interface' && <UpdateBusinessImages />}
         {(activeItem === 'Display' || activeItem === 'Settings' || activeItem === '') && (
           <div className={style['Display-business']}>

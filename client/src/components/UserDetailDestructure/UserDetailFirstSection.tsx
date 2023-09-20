@@ -89,7 +89,7 @@ const UserDetailFirstSection = (): JSX.Element => {
 
   const formatDateNumbers = (birthdate: any): string => {
     const date = new Date(birthdate)
-    return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
+    return `${date.getDate() + 1}/${date.getMonth() + 1}/${date.getFullYear()}`
   }
 
   return (
