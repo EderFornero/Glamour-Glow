@@ -4,8 +4,5 @@ export const postFavourite = async (userId: string, sellerId: string | undefined
   try {
     const endpoint = `${API_URL}favorites`
     await axios.post(endpoint, { userId, sellerId })
-    console.log('Se creo el favorito')
-  } catch (error) {
-    console.log('NO SE PUDO POSTEAR EL SERVICIO')
-  }
+  } catch (error) {}
 }

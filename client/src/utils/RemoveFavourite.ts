@@ -9,8 +9,5 @@ export const removeFavourite = async (favouriteId: string): Promise<void> => {
         favouriteId
       }
     })
-    console.log('Fav Could Successfully removed')
-  } catch (error) {
-    console.log('Fav Could not be removed')
-  }
+  } catch (error) {}
 }
