@@ -7,13 +7,12 @@ export const resetPassword = async (
   res: Response,
   next: NextFunction
 ) => {
-  const { id, passwordResetCode } = req.params;
+const { id } = req.params;
   const { password } = req.body;
   try {
     const user = await readUserById(id);
     if (
-      !user.passwordResetCode ||
-      user.passwordResetCode !== passwordResetCode
+      user.passwordResetCode === null
     ) {
       return res.status(404).send("Could not reset user password");
     }
