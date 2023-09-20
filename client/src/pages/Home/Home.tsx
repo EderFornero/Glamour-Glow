@@ -20,14 +20,12 @@ const Home: React.FC = () => {
 
   // al rato arreglo los anys queria que funcara :**     n.n
   const recomendedServices: any = allServices.filter((seller) => {
-    const { reviews } = seller;
     const { reviews } = seller
     const avg: any = useRating(reviews)
     return avg >= 4 && avg <= 5
   })
 
-  const mostServices: any =  allServices.filter((seller) => {
-    const { reviews } = seller;
+  const mostServices: any = allServices.filter((seller) => {
     const { reviews } = seller
     const avg: any = useRating(reviews)
     return avg < 4
@@ -40,7 +38,6 @@ const Home: React.FC = () => {
     const id = localStorage.getItem('id')
     if (id !== null) {
       dispatch(getUserbyId(id))
-      
     }
   }, [])
   const emailRedux = useSelector((state: RootState) => state.sellerEmail)
@@ -52,16 +49,16 @@ const Home: React.FC = () => {
       <SearchBar onSearch={handleOnSearch} updateShowCards={updateShowCards} />
       {showCards
         ? (
-        <Cards allServices={searchResults.length > 0 ? searchResults : allServices} />
+          <Cards allServices={searchResults.length > 0 ? searchResults : allServices} />
           )
         : (
-        <>
-          <Description />
-          <Carousel cardstoshow={recomendedServices} carouselName='Recomended' />
-          <Carousel cardstoshow={mostServices} carouselName='More services' />
-          <Description2 />
-          <FAQ />
-        </>
+          <>
+            <Description />
+            <Carousel cardstoshow={recomendedServices} carouselName='Recomended' />
+            <Carousel cardstoshow={mostServices} carouselName='More services' />
+            <Description2 />
+            <FAQ />
+          </>
           )}
     </div>
   )
