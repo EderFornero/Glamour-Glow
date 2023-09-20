@@ -133,22 +133,6 @@
   margin-top: 3px;
 }
 
-.google {
-  width: 25px;
-  height: 25px;
-  background-image: url('../../assets/formIcons/google.png');
-  background-size: cover;
-  cursor: pointer;
-}
-
-
-.log-with {
-  margin-right: 20px;
-  cursor: default;
-  color: white;
-  letter-spacing: 1px;
-}
-
 .ico-div {
   display: flex;
   margin-top: 10px;

@@ -102,12 +102,6 @@ const BusinessLogin: React.FC<BusinessLoginProps> = ({ onToggle }) => {
               {errorMessage !== '' && <ErrorMessage message={errorMessage} />}
               <p className={style.txt}>Password:</p>
               <PasswordLogin register={register} errors={errors} />
-              <div className={style['alt-login']}>
-                <h4 className={style['log-with']}>or Login With:</h4>
-                <div className={style['ico-div']}>
-                  <button type='button' className={style.google}></button>
-                </div>
-              </div>
               <div className={style['buton-div']}>
                 <button className={style.btn} onClick={goBack}>
                   Back

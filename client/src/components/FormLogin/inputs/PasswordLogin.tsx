@@ -18,10 +18,6 @@ const PasswordLogin: React.FC<PasswordLoginProps> = ({ register, errors }) => {
           required: {
             value: true,
             message: 'Password required'
-          },
-          minLength: {
-            value: 6,
-            message: 'Password Not Valid'
           }
         })}
       />
