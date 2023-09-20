@@ -14,8 +14,11 @@ const AboutUs = (): JSX.Element => {
       </div>
       <div>
       <div className={styles['card-container']}>
+        
         {aboutUsData.map((us) => (
+          
           <div className={styles['card-about']} key={us.id}>
+            <div className={styles.border}>
             <div className={styles['card-about-info']}>
               <div>
                 <img src={us.image} className={styles['card-avatar']} />
@@ -28,21 +31,25 @@ const AboutUs = (): JSX.Element => {
             <div className={styles['card-about-description']}>
               <p>{us.description}</p>
             </div>
-            <div className={styles['card-about-social']}>
+            <div className={styles.iconos}>
               <a href={us.linkedin} target="_blank" rel="noreferrer">
-                <li className={styles['card-social__item']}>
-                  <LinkedInSvg />
-                </li>
-              </a>
-              <a href={us.github} target="_blank" rel="noreferrer">
-                <li className={styles['card-social__item']}>
-                  <GitHubSvg />
-                </li>
-              </a>
+                  <li className={styles['card-social__item']}>
+                    <LinkedInSvg />
+                  </li>
+                </a>
+                <a href={us.github} target="_blank" rel="noreferrer">
+                  <li className={styles['card-social__item']}>
+                    <GitHubSvg />
+                  </li>
+                </a>
             </div>
           </div>
+          </div>
         ))}
-      </div>
+      
+
+        </div>
+       
       </div>
     </div>
   )

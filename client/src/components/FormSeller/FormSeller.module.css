@@ -10,16 +10,22 @@
   display: flex;
   padding: 30px;
   justify-content: space-around;
+  margin-top: 100px;
+  margin-left: 0;
 }
 
 .content-left{
   flex: 1;
-  width: 30vw;
-  min-width: 25rem;
+  width: 25vw;
+  min-width: 20rem;
+  min-height: 31rem;
   display: flex;
   flex-direction: column;
   background-color: white;
   padding: 1rem;
+  max-width: 40rem;
+  max-height: 40rem;
+  text-align: center;
 }
 
 .form{
@@ -27,19 +33,26 @@
 }
 
 .content-left img{
-  width: 27rem;
+  width: 30vw;
+  min-width: 20rem;
+  max-width: 40rem;
+  max-height: 30rem;
+  margin: 0 auto;
 }
 
 .content-left h2{
   padding-top: 2rem;
   width: 20rem;
-  margin: 0px 0px 0px 20px
+  margin: 0 auto
 }
 
 .content-right{
   flex: 1;
-  width: 30vw;
-  min-width: 24rem;
+  width: 40vw;
+  min-width: 23rem;
+  min-height: 31rem;
+  max-width: 40rem;
+  max-height: 40rem;
   justify-content: center;
   background-color: var(--secondary-color);
   color: white;
@@ -52,9 +65,19 @@
   margin: 5px;
 }
 
+.form{
+  justify-content: center;
+}
+.inputContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .text {
   margin-bottom: 10px;
   width: 100%;
+  text-align: center;
 }
 
 .submit {
@@ -68,7 +91,7 @@
   cursor: pointer;
   transition: box-shadow 0.3s ease, background-color 0.3s ease;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  margin-left: 16px;
+  margin: 0 auto;
   color:  white;
   font-weight: bold;
 }
@@ -87,6 +110,9 @@
   .content {
     display: flex;
     flex-direction: column;
+    @media (max-width: 600px) {
+      margin-left: 55px;
+    }
   }
 
   .content-left{

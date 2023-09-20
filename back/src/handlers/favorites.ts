@@ -4,7 +4,6 @@ import { createFavoriteType } from "../schemas/favoritesSchema";
 export const createFavoritesHandler = async (data: createFavoriteType) => {
 
     let newFavorite = await FavoritesModel.create(data)
-   // console.log(newFavorite)
     const userInformation = await UserModel.findByIdAndUpdate({_id: newFavorite.userId}, {"$push": {favorites: newFavorite}})
    console.log(userInformation)
     return newFavorite;

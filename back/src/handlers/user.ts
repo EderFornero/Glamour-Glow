@@ -185,7 +185,6 @@ export const generateToken = async (email: string) => {
 
 export const forgotPasswordHandler = async (email: string) => {
   const user = await UserModel.findOne({ email });
-  console.log("user", user);
   return user;
 };
 
@@ -199,7 +198,6 @@ export const resetPasswordUser = async (id: string, newPassword: string) => {
     user.passwordResetCode = null;
     user.save();
   }
-  console.log(user);
   return user;
 };
 export const postTransactionsHandler = async (data: createPaymentsSchemaType) => {

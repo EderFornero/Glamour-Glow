@@ -113,7 +113,6 @@ export const generateTokenSeller = async (sellerEmail: string) => {
 
 export const forgotSellerPasswordHandler = async (sellerEmail: string) => {
   const user = await SellerModel.findOne({ sellerEmail });
-  console.log("user", user);
   return user;
 };
 
@@ -130,7 +129,6 @@ export const resetSellerPasswordHandler = async (
     user.passwordResetCode = null;
     user.save();
   }
-  console.log(user);
   return user;
 };
 
@@ -198,6 +196,8 @@ export const readClientsBySellerId = async (id: string ) => {
             "user.lastName": 1,
             "user.image": 1,
             "user.email": 1,
+            "user.phoneNumber": 1,
+            "user.dateOfBirth":1
           },
         },
         {
@@ -206,7 +206,6 @@ export const readClientsBySellerId = async (id: string ) => {
           },
         },
     ])
-    console.log(clients)
     if(!clients) throw new Error("No clients for this Seller")
     return clients
   } catch (error) {

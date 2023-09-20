@@ -5,21 +5,23 @@
 }
 
 .right-section {
+  margin-top: -40px;
   min-height: 100vh;
   margin-left: 220px;
   display: flex;
-  width: 80%;
+  width: calc(100% - 220px);
 }
 
 .Display-business {
   display: flex;
   flex-direction: column;
   padding: 20px;
-  width: 100%;
+  width: 100;
 }
 
 @media screen and (max-width: 900px) {
   .right-section {
+    width: calc(100% - 85px);
     margin-left: 85px;
   }
 }
@@ -35,8 +37,8 @@
   border: 1px solid var(--primary-color);
   border-radius: 10px;
   @media (max-width: 1400px) {
-    margin-left: 15px;
-    margin-right: 50px;
+    width: calc(100% - 85px);
+    margin-right: 120px;
   }
 
   @media (max-width: 880px) {
@@ -45,10 +47,7 @@
     margin: 0 auto;
     align-items: center;
     max-width: 400px;
-  }
-  @media (max-width: 400px) {
-    margin-right: 40px;
-    margin-left: 10px;
+    max-height: 600px;
   }
   .image {
     object-fit: contain;

@@ -38,11 +38,6 @@ const Carousel: React.FC<CarouselProps> = ({ cardstoshow, carouselName }) => {
       setSpace(50)
     }
   }
-  // const updateSlidesPerView = (): void => {
-  //   const width = window.innerWidth
-
-  //   setSlidesPerView(width < 2000 ? (width < 1400 ? (width < 1000 ? 1 : 2) : 3) : 4)
-  // }
 
   useEffect(() => {
     updateSlidesPerView()

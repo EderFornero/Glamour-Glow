@@ -22,7 +22,8 @@ import {
   PUT_SERVICES,
   SEE_REPORTS,
   DELETE_SERVICES,
-  SEE_PAYMENTS
+  SEE_PAYMENTS,
+  GET_CLIENTS_BY_ID
 } from './Action-Types'
 import type { ServiceAction } from './types'
 import type { SellerDetailAction } from '../interfaces'
@@ -283,7 +284,24 @@ export const deleteService: any = (id: string) => {
   }
 }
 
-//
+// Clients by ID
+
+export const getClientsById: any = (id: string) => {
+  const endpoint = `${API_URL}sellers/${id}/clients`
+
+  return async (dispatch: (action: ServiceAction) => void) => {
+    try {
+      const { data } = await axios.get(endpoint)
+
+      dispatch({
+        type: GET_CLIENTS_BY_ID,
+        payload: data
+      })
+    } catch (error: any) {
+      return { error: error.message }
+    }
+  }
+}
 
 export const cleanSellerDetail: any = (): SellerDetailAction => {
   return { type: CLEAN_SELLER_DETAIL, payload: { _id: '', sellerName: '', sellerEmail: '', sellerPhone: '', sellerGender: '', reviews: [], categoriesArray: [], servicesArray: [], images: [] } }
