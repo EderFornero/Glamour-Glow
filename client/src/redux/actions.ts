@@ -329,8 +329,21 @@ export const deleteUser: any = (id: string) => {
   }
 }
 
+export const deleteReport: any = (id: string) => {
+  const endpointDelete = `${API_URL}admin/reports/${id}`
+
+  return async function () {
+    try {
+      const response = await axios.delete(endpointDelete)
+      return response
+    } catch (error: any) {
+      console.log(error.message)
+    }
+  }
+}
+
 export const disableUser: any = (id: string) => {
-  const endpointDisable = `${API_URL}users/disable/${id}`
+  const endpointDisable = `${API_URL}admin/user/disable/${id}`
 
   return async function () {
     try {
@@ -343,7 +356,7 @@ export const disableUser: any = (id: string) => {
 }
 
 export const enableUser: any = (id: string) => {
-  const endpointEnable = `${API_URL}users/enable/${id}`
+  const endpointEnable = `${API_URL}admin/user/enable/${id}`
 
   return async function () {
     try {
@@ -389,8 +402,8 @@ export const getSellerMetrics: any = () => {
   }
 }
 
-export const disableSeller: any = (id: string) => {
-  const endpointDisable = `${API_URL}sellers/disable/${id}`
+export const disableSellerAdmin: any = (id: string) => {
+  const endpointDisable = `${API_URL}admin/seller/disable/${id}`
 
   return async function () {
     try {
@@ -402,8 +415,8 @@ export const disableSeller: any = (id: string) => {
   }
 }
 
-export const enableSeller: any = (id: string) => {
-  const endpointEnable = `${API_URL}sellers/enable/${id}`
+export const enableSellerAdmin: any = (id: string) => {
+  const endpointEnable = `${API_URL}admin/seller/enable/${id}`
   console.log('holaa', id)
   return async function () {
     try {

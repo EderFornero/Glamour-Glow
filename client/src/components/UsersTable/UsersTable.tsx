@@ -72,8 +72,9 @@ export default function UsersTable(props: EnhancedTableProps): JSX.Element {
   const handleEnable = async (): Promise<void> => {
     const response = dispatch(enableUser(activeInfo._id))
     setisActiveOpen(false)
-    if (response.PromiseResult === undefined) {
-      toast.error('A problem has occurred')
+    console.log(response)
+    if (response !== null) {
+      toast.success('User enable succesfully')
     }
   }
 

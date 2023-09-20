@@ -7,8 +7,8 @@ import {
   replaceHtml,
 } from "../nodemailer/Templates/templatesHtml";
 import { transporter } from "../../config/transportmailer";
-import 'dotenv/config'
-const { FRONT_FORGOT_PASSWORD_URL} = process.env
+import "dotenv/config";
+const {FRONT_FORGOT_PASSWORD_URL} = process.env;
 
 export const forgotSellerPassword = async (
   req: Request<{}, {}, forgotSellerPasswordTypeBody>,

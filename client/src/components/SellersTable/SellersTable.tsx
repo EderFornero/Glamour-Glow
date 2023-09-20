@@ -11,7 +11,7 @@ import ConfirmationReleasePay from '../ConfirmationReleasePay/ConfirmationReleas
 import styled from 'styled-components'
 import style from './SellersTable.module.css'
 import { useDispatch } from 'react-redux'
-import { disableSeller, enableSeller } from '../../redux/actions'
+import { disableSellerAdmin, enableSellerAdmin } from '../../redux/actions'
 import DisableButton from '../../assets/UserTableButtons/DisableSvg'
 import DolarButton from '../../assets/UserTableButtons/DollarSvg'
 import axios from '../../redux/axiosService'
@@ -78,7 +78,7 @@ export default function UsersTable(props: EnhancedTableProps): JSX.Element {
 
   const handleDisable = (_id: string, isActive: boolean): void => {
     if (isActive) {
-      const response = dispatch(disableSeller(_id))
+      const response = dispatch(disableSellerAdmin(_id))
       if (response !== null) {
         toast.success('Seller disabled succesfully')
       }
@@ -134,7 +134,7 @@ export default function UsersTable(props: EnhancedTableProps): JSX.Element {
   }
 
   const handleEnable = async (): Promise<void> => {
-    dispatch(enableSeller(activeInfo.sellerId))
+    dispatch(enableSellerAdmin(activeInfo.sellerId))
     setisActiveOpen(false)
   }
 

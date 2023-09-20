@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { useGoBack } from '../../hooks'
 import { useForm } from 'react-hook-form'
 import BusiCategoriesInput from './inputs/BusiCategoriesInput'
 import BusiGenderInput from './inputs/BusiGenderInput'
@@ -24,12 +23,15 @@ interface FormLoginProps {
 
 const FormBusiness: React.FC<FormLoginProps> = () => {
   const dispatch = useDispatch()
-  const goBack = useGoBack()
   const navigate = useNavigate()
   const [showTerms, setShowTerms] = useState(false)
 
   const toggleTerms = (): void => {
     setShowTerms(!showTerms)
+  }
+
+  const goBack = (): void => {
+    navigate('/')
   }
 
   useEffect(() => {
@@ -178,7 +180,7 @@ const FormBusiness: React.FC<FormLoginProps> = () => {
                       }}
                       type='submit'
                     >
-                      Send
+                      Register
                     </button>
                   </div>
                 </>
