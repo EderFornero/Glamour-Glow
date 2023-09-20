@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
-import { useGoBack } from '../../hooks'
 import EmailLogin from './inputs/EmailLogin'
 import PasswordLogin from './inputs/PasswordLogin'
 import { Link, useNavigate } from 'react-router-dom'
@@ -22,8 +21,11 @@ interface FormLoginProps {
 
 const FormLogin: React.FC<FormLoginProps> = ({ onToggle }) => {
   const dispatch = useDispatch()
-  const goBack = useGoBack()
   const navigate = useNavigate()
+
+  const goBack = (): void => {
+    navigate('/')
+  }
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent): void => {
@@ -137,7 +139,17 @@ const FormLogin: React.FC<FormLoginProps> = ({ onToggle }) => {
       }
       localStorage.setItem('token', token)
     } catch (error) {
-      console.log(error)
+      toast.error('Ops! Something went wrong', {
+        style: {
+          border: '1px solid #3d36be',
+          padding: '16px',
+          color: 'red'
+        },
+        iconTheme: {
+          primary: 'red',
+          secondary: '#FFFAEE'
+        }
+      })
     }
   }
 
@@ -163,7 +175,7 @@ const FormLogin: React.FC<FormLoginProps> = ({ onToggle }) => {
             Back
           </button>
           <button className={style.btn} type='submit'>
-            Send
+            Login
           </button>
         </div>
       </form>
