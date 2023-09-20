@@ -66,7 +66,7 @@ const Clients: React.FC<Props> = ({ clients, id }) => {
                       Email <span>{client.email}</span>
                     </li>
                     <li>
-                      Birthdate <span>{client.dateOfBirth}</span>
+                      Birthdate <span>{client.dateOfBirth.slice(0, 10)}</span>
                     </li>
                   </ul>
                 </div>
