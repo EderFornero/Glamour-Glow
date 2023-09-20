@@ -9,6 +9,7 @@ import { postSellerValidate, setAuth, setUserId } from '../../redux/actions'
 import style from './BusinessLogin.module.css'
 import ErrorMessage from './handlers/errorMessage'
 import toast, { Toaster } from 'react-hot-toast'
+import StandardButton from '../StandardButton/StandardButton'
 
 interface BusinessLoginProps {
   onToggle: () => void
@@ -41,10 +42,6 @@ const BusinessLogin: React.FC<BusinessLoginProps> = ({ onToggle }) => {
   }, [])
 
   const [errorMessage] = useState('')
-
-  const goBack = (): void => {
-    navigate('/')
-  }
 
   const onSubmit = handleSubmit(async (data: SellerLoginData) => {
     try {
@@ -105,18 +102,15 @@ const BusinessLogin: React.FC<BusinessLoginProps> = ({ onToggle }) => {
               <p className={style.txt}>Password:</p>
               <PasswordLogin register={register} errors={errors} />
               <div className={style['buton-div']}>
-                <button className={style.btn} onClick={goBack}>
-                  Back
-                </button>
-                <button className={style.btn} type='submit'>
-                  Login
-                </button>
+                <StandardButton variant='sizeForms' type='submit'>
+                  Log In
+                </StandardButton>
               </div>
             </form>
             <div className={style['link-texts']}>
               <button>
                 <p className={style['reg-button']} onClick={onToggle}>
-                  Dont have an business account?
+                  Do not have a business account?
                 </p>
               </button>
               <Link to='/businessLogin/passwordRecovery'>

@@ -1,4 +1,5 @@
 import style from './Pagination.module.css'
+import StandardButton from '../StandardButton/StandardButton'
 
 interface PaginationProps {
   currentPage: number
@@ -12,21 +13,21 @@ interface PaginationProps {
 const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages, nextPage, prevPage, startPage, finalPage }) => {
   return (
     <div className={style.pagination}>
-      <button disabled={currentPage === 0} onClick={prevPage}>
+      <StandardButton variant='sizePagination' disabled={currentPage === 0} onClick={prevPage}>
         Previous
-      </button>
+      </StandardButton>
       <span onClick={startPage} className={style['span-go-to-start-final']}>
         1
       </span>
       ...
-      <p>{currentPage + 1}</p>
+      <p className={style.p}>{currentPage + 1}</p>
       ...
       <span className={style['span-go-to-start-final']} onClick={finalPage}>
         {totalPages}
       </span>
-      <button disabled={currentPage === totalPages - 1} onClick={nextPage}>
+      <StandardButton variant='sizePagination' disabled={currentPage === totalPages - 1} onClick={nextPage}>
         Next
-      </button>
+      </StandardButton>
     </div>
   )
 }

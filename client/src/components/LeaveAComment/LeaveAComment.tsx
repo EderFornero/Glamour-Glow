@@ -4,6 +4,7 @@ import style from './LeaveAComment.module.css'
 import axios from '../../redux/axiosService'
 import { useParams } from 'react-router-dom'
 import toast, { Toaster } from 'react-hot-toast'
+import StandardButton from '../StandardButton/StandardButton'
 const API_URL = import.meta.env.VITE_SERVER_URL
 
 interface LeaveACommentProps {
@@ -65,9 +66,9 @@ const LeaveAComment: React.FC<LeaveACommentProps> = ({ userId }) => {
         <textarea name='comment' rows={7} style={{ resize: 'none' }} value={formData.description} onChange={handleDescriptionChange}></textarea>
       </div>
       <div className={style['submit-container']}>
-        <button className={style.submit} type='submit' disabled={role !== 'customer'}>
+        <StandardButton variant='sizeComment' type='submit' disabled={role !== 'customer'}>
           {role !== 'customer' ? 'Log in as user to post a review' : 'Leave comment'}
-        </button>
+        </StandardButton>
       </div>
     </form>
   )

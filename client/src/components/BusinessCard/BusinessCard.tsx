@@ -1,5 +1,6 @@
 import useRating from '../../hooks/useRating'
 import type { Category, ReviewRating } from '../../interfaces'
+import StandardButton from '../StandardButton/StandardButton'
 import style from './BusinessCard.module.css'
 import { NavLink } from 'react-router-dom'
 
@@ -24,7 +25,7 @@ const BusinessCard: React.FC<BusinessCardProps> = ({ _id, sellerName, reviews, c
         {Array.isArray(categoriesArray) ? categoriesArray.map((category: Category, index: number) => <p key={index}>{category.name}</p>) : null}
       </div>
       <NavLink to={`/sellerdetail/${_id}`} className={style.link}>
-        <button>Check it out</button>
+        <StandardButton variant='sizeCards'>Check it out</StandardButton>
       </NavLink>
     </article>
   )

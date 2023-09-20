@@ -13,6 +13,7 @@ import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
 import type { AuthProvider } from 'firebase/auth'
 import axios from 'axios'
 import toast, { Toaster } from 'react-hot-toast'
+import StandardButton from '../StandardButton/StandardButton'
 const API_URL = import.meta.env.VITE_SERVER_URL
 
 interface FormLoginProps {
@@ -22,10 +23,6 @@ interface FormLoginProps {
 const FormLogin: React.FC<FormLoginProps> = ({ onToggle }) => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
-
-  const goBack = (): void => {
-    navigate('/')
-  }
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent): void => {
@@ -171,18 +168,15 @@ const FormLogin: React.FC<FormLoginProps> = ({ onToggle }) => {
           </div>
         </div>
         <div className={style['buton-div']}>
-          <button className={style.btn} onClick={goBack}>
-            Back
-          </button>
-          <button className={style.btn} type='submit'>
-            Login
-          </button>
+          <StandardButton variant='sizeForms' type='submit'>
+            Log In
+          </StandardButton>
         </div>
       </form>
       <div className={style['link-texts']}>
-        <button>
+        <button className={style['do-not-have-account']}>
           <p className={style['reg-button']} onClick={onToggle}>
-            Dont have an account?
+            Do not have an account?
           </p>
         </button>
         <Link to='/login/passwordRecovery'>

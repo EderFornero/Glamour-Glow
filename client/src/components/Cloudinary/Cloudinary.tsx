@@ -83,9 +83,9 @@ const Cloudinary = (): JSX.Element => {
             Update Image
           </UpdateImageButton>
           : <StyledDivButton>
-            <StyledButtons onClick={openWidget} id='upload-button'>
+            <UpdateImageButton onClick={openWidget} id='upload-button'>
               Upload Profile Image
-            </StyledButtons>
+            </UpdateImageButton>
           </StyledDivButton>
       }
     </StyledDiv>

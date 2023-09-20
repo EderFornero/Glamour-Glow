@@ -16,6 +16,7 @@ import Cloudinary from '../Cloudinary/Cloudinary'
 import toast, { Toaster } from 'react-hot-toast'
 import TermsAndConditions from '../TermsAndConditions/TermsAndConditions'
 import styles from '../FormRegister/FormRegister.module.css'
+import StandardButton from '../StandardButton/StandardButton'
 
 interface FormLoginProps {
   onToggle: () => void
@@ -28,10 +29,6 @@ const FormBusiness: React.FC<FormLoginProps> = () => {
 
   const toggleTerms = (): void => {
     setShowTerms(!showTerms)
-  }
-
-  const goBack = (): void => {
-    navigate('/')
   }
 
   useEffect(() => {
@@ -168,20 +165,13 @@ const FormBusiness: React.FC<FormLoginProps> = () => {
                   <BusiPasswordInput register={register} errors={errors} />
                   <BusiGenderInput register={register} errors={errors} />
                   <Cloudinary />
-                  {errors.images !== undefined && <span className={style.imgspan}>Image required</span>}
-                  <div className={style['buton-div']}>
-                    <button className={style.btn} onClick={goBack}>
-                      Back
-                    </button>
-                    <button
-                      className={style.btn}
-                      onClick={() => {
-                        clearErrors('images')
-                      }}
-                      type='submit'
-                    >
+                  {errors.images !== undefined && (
+                  <span className={style.imgspan}>Image required</span>
+                  )}
+                  <div className={style['button-div']}>
+                    <StandardButton variant='sizeForms' onClick={() => { clearErrors('images') }} type='submit'>
                       Register
-                    </button>
+                    </StandardButton>
                   </div>
                 </>
               )}

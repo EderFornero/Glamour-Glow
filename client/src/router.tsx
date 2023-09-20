@@ -18,7 +18,7 @@ import PasswordRecovery from './pages/PasswordRecovery/PasswordRecovery.tsx'
 import SellerRecovery from './pages/SellerRecovery/SellerRecovery.tsx'
 import BookAService from './pages/BookAService/BookAService.tsx'
 import ResetPassword from './pages/ResetPassword/ResetPassword.tsx'
-import ResetPasswordSeller from './pages/ResetPasswordSeller.tsx/ResetPasswordSeller.tsx'
+import ResetPasswordSeller from './pages/ResetPasswordSeller/ResetPasswordSeller.tsx'
 // components
 import FormBusiness from './components/FormCreateBusiness/FormCreateBusiness.tsx'
 import GlamourAdmin from './pages/GlamourAdmin/GlamourAdmin.tsx'
