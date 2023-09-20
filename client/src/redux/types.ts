@@ -13,12 +13,16 @@ export interface RootState {
   sellerMetrics: any
   userdetail: UserDetail
   sellerdetail: SellerDetail
+  reports: any[]
   filter: string
+  sellerEmail: string
+  accountBalance: number
   rating: number
   image: string | undefined
   isAuth: any
   userId: null
   sellerImageIndex: number
+  payments: any[]
 }
 
 export interface UserDetail {

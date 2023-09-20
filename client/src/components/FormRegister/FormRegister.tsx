@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import type { FormData } from '../../interfaces'
 import NameInput from './inputs/NameInput'
@@ -14,6 +14,7 @@ import { postUser, postValidate, setAuth, setUserId } from '../../redux/actions'
 import PhoneNumberInput from './inputs/PhoneNumberInput'
 import { sendWelcomeEmail } from '../../utils'
 import TermsAndConditions from '../TermsAndConditions/TermsAndConditions'
+import toast, { Toaster } from 'react-hot-toast'
 
 interface FormLoginProps {
   onToggle: () => void
@@ -23,11 +24,25 @@ const FormRegister: React.FC<FormLoginProps> = () => {
   const goBack = useGoBack()
   const dispatch = useDispatch()
   const navigate = useNavigate()
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent): void => {
+      if (event.key === 'Enter') {
+        event.preventDefault()
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [])
+
   const {
     register,
     getValues,
     handleSubmit,
-    setError,
     formState: { errors }
   } = useForm<FormData>({
     defaultValues: {
@@ -53,14 +68,12 @@ const FormRegister: React.FC<FormLoginProps> = () => {
   const toggleTerms = (): void => {
     setShowTerms(!showTerms)
   }
-  console.log(showTerms)
 
   const onSubmit = async (): Promise<void> => {
     const data: FormData = getValues()
     delete data.confirmPassword
     try {
       const response = await dispatch(postUser(data))
-      console.log(response.data)
       await sendWelcomeEmail(data.email)
       if (response.data !== undefined) {
         try {
@@ -68,7 +81,6 @@ const FormRegister: React.FC<FormLoginProps> = () => {
           autoLogin.password = data.password
           const response = await dispatch(postValidate(autoLogin))
           const { id, token, role } = response.data
-          console.log(response.data)
           if (token !== undefined && id !== undefined) {
             localStorage.setItem('isAuth', 'true')
             localStorage.setItem('id', id)
@@ -77,13 +89,41 @@ const FormRegister: React.FC<FormLoginProps> = () => {
             dispatch(setUserId(id))
             navigate('/')
           }
+          toast.success('Successfully registered', {
+            style: {
+              border: '1px solid #3d36be',
+              padding: '16px',
+              color: '#1eb66d'
+            },
+            iconTheme: {
+              primary: '#6e66ff',
+              secondary: '#FFFAEE'
+            }
+          })
         } catch (error: any) {
-          throw new Error()
+          toast.error('Ops! Something went wrong', {
+            style: {
+              border: '1px solid #3d36be',
+              padding: '16px',
+              color: 'red'
+            },
+            iconTheme: {
+              primary: 'red',
+              secondary: '#FFFAEE'
+            }
+          })
         }
       } else {
-        setError('email', {
-          type: 'manual',
-          message: 'The email is already in use'
+        toast.error('The email is already in use', {
+          style: {
+            border: '1px solid #3d36be',
+            padding: '16px',
+            color: 'red'
+          },
+          iconTheme: {
+            primary: 'red',
+            secondary: '#FFFAEE'
+          }
         })
       }
     } catch (error) {
@@ -109,10 +149,16 @@ const FormRegister: React.FC<FormLoginProps> = () => {
           </button>
         </div>
         </form>
-        <a href="#" className={style['terms-conditions']} onClick={toggleTerms}>Ver Términos y Condiciones</a>
+        <a href="#" className={style['terms-conditions']} onClick={toggleTerms}>Terms and Conditions</a>
         <div className={style[`terms-and-conditions${showTerms ? '-show-terms' : ''}`]}>
           <TermsAndConditions />
         </div>
+        <div>
+        <Toaster
+          position="top-center"
+          reverseOrder={false}
+        />
+      </div>
     </div>
   )
 }

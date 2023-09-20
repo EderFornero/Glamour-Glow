@@ -14,6 +14,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import type { FormCreateBusi } from '../../interfaces'
 import Cloudinary from '../Cloudinary/Cloudinary'
+import toast, { Toaster } from 'react-hot-toast'
+import TermsAndConditions from '../TermsAndConditions/TermsAndConditions'
+import styles from '../FormRegister/FormRegister.module.css'
 
 interface FormLoginProps {
   onToggle: () => void
@@ -23,6 +26,26 @@ const FormBusiness: React.FC<FormLoginProps> = () => {
   const dispatch = useDispatch()
   const goBack = useGoBack()
   const navigate = useNavigate()
+  const [showTerms, setShowTerms] = useState(false)
+
+  const toggleTerms = (): void => {
+    setShowTerms(!showTerms)
+  }
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent): void => {
+      if (event.key === 'Enter') {
+        event.preventDefault()
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [])
+
   const {
     register,
     handleSubmit,
@@ -78,25 +101,44 @@ const FormBusiness: React.FC<FormLoginProps> = () => {
       })
       return
     }
-    console.log(data)
-    const response = await dispatch(postSeller(data))
-    console.log(response.data)
+    await dispatch(postSeller(data))
     try {
-      console.log(autoLoginSeller)
       const response = await dispatch(postSellerValidate(autoLoginSeller))
       const { id, token, role } = response.data
-      console.log(response.data)
 
       if (token !== undefined && id !== undefined) {
+        toast.success('Successfully registered', {
+          style: {
+            border: '1px solid #3d36be',
+            padding: '16px',
+            color: '#1eb66d'
+          },
+          iconTheme: {
+            primary: '#6e66ff',
+            secondary: '#FFFAEE'
+          }
+        })
         localStorage.setItem('isAuth', 'true')
         localStorage.setItem('id', id)
         localStorage.setItem('role', role)
         dispatch(setAuth(true))
         dispatch(setUserId(id))
-        navigate('/')
+        setTimeout(() => {
+          navigate('/')
+        }, 1000)
       }
     } catch (error: any) {
-      console.log(error)
+      toast.error('Ops! Credential(s) incorrect', {
+        style: {
+          border: '1px solid #3d36be',
+          padding: '16px',
+          color: 'red'
+        },
+        iconTheme: {
+          primary: 'red',
+          secondary: '#FFFAEE'
+        }
+      })
     }
   })
 
@@ -131,21 +173,31 @@ const FormBusiness: React.FC<FormLoginProps> = () => {
                   <BusiGenderInput register={register} errors={errors} />
                   <Cloudinary />
                   {errors.images !== undefined && (
-                  <span>Image required</span>
+                  <span className={style.imgspan}>Image required</span>
                   )}
+                  <div className={style['buton-div']}>
+                    <button className={style.btn} onClick={goBack}>
+                      Back
+                    </button>
+                    <button className={style.btn} onClick={() => { clearErrors('images') }} type='submit'>
+                      Send
+                    </button>
+                  </div>
                 </>
               )}
-              <div className={style['buton-div']}>
-                <button className={style.btn} onClick={goBack}>
-                  Back
-                </button>
-                <button className={style.btn} onClick={() => { clearErrors('images') }} type='submit'>
-                  Send
-                </button>
-              </div>
+              <a href="#" className={styles['terms-conditions']} onClick={toggleTerms}>Terms and Conditions</a>
+                <div className={styles[`terms-and-conditions${showTerms ? '-show-terms' : ''}`]}>
+                  <TermsAndConditions />
+                </div>
             </form>
           </div>
         </div>
+      </div>
+      <div>
+        <Toaster
+          position="top-center"
+          reverseOrder={false}
+        />
       </div>
     </div>
   )

@@ -55,8 +55,8 @@ const NavMobile = (): JSX.Element => {
       </div>
       {isOpen && (
         <ul className={style.menu}>
-          {isAuth === null ? (
-            <>
+          {isAuth === null
+            ? (<>
               <li
                 className={style['menu-item']}
                 onClick={() => {
@@ -77,11 +77,11 @@ const NavMobile = (): JSX.Element => {
                   For Business
                 </NavLink>
               </li>
-            </>
-          ) : (
+            </>)
+            : (
             <>
-              {role === 'seller' ? (
-                <>
+              {role === 'seller'
+                ? (<>
                   <li
                     className={style['menu-item']}
                     onClick={() => {
@@ -92,38 +92,52 @@ const NavMobile = (): JSX.Element => {
                       MyBusiness
                     </NavLink>
                   </li>
+                </>)
+                : (<>
+                    {role === 'admin'
+                      ? <li
+                        className={style['menu-item']}
+                        onClick={() => {
+                          setIsOpen(false)
+                        }}
+                      >
+                        <NavLink to='/admin/glamour' className={style.link}>
+                          Admin
+                        </NavLink>
+                      </li>
+                      : <>
+                        <li
+                          className={style['menu-item']}
+                          onClick={() => {
+                            setIsOpen(false)
+                          }}
+                        >
+                          <NavLink to={`/userdetail/${id}`}>
+                            <img className={style.userimg} src={userdetail.image ?? imgprofile} />
+                          </NavLink>
+                        </li>
+                        <li
+                          className={style['menu-item']}
+                          onClick={() => {
+                            setIsOpen(false)
+                          }}
+                        >
+                          <NavLink to='/businessLogin' className={style.link}>
+                            For Business
+                          </NavLink>
+                        </li>
+                  </>
+                    }
                 </>
-              ) : (
-                <>
-                  <li
-                    className={style['menu-item']}
-                    onClick={() => {
-                      setIsOpen(false)
-                    }}
-                  >
-                    <NavLink to={`/userdetail/${id}`}>
-                      <img className={style.userimg} src={userdetail.image ?? imgprofile} />
-                    </NavLink>
-                  </li>
-                  <li
-                    className={style['menu-item']}
-                    onClick={() => {
-                      setIsOpen(false)
-                    }}
-                  >
-                    <NavLink to='/businessLogin' className={style.link}>
-                      For Business
-                    </NavLink>
-                  </li>
-                </>
-              )}
+                  )}
               <li className={`${style['menu-item']} ${style.link} ${style.logout}`} onClick={handleLogout}>
                 <NavLink to='/' className={style.link}>
                   Logout
                 </NavLink>
               </li>
             </>
-          )}
+              )}
+
           <li
             className={style['menu-item']}
             onClick={() => {

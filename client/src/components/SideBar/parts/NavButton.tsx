@@ -13,15 +13,9 @@ interface ButtonProps {
   hasSubNav?: boolean
 }
 
-const NavButton: React.FC<ButtonProps> = ({
-  onClick,
-  name,
-  icon,
-  isActive,
-  hasSubNav
-}) => (
+const NavButton: React.FC<ButtonProps> = ({ onClick, name, icon, isActive, hasSubNav }) => (
   <button
-    type="button"
+    type='button'
     onClick={() => {
       onClick(name)
     }}
@@ -29,25 +23,32 @@ const NavButton: React.FC<ButtonProps> = ({
   >
     {icon && <Icon icon={icon} />}
     <span>
-      {name === 'Home'
-        ? (
-        <Link className={styles['home-link']} to="/">
+      {name === 'Home' ? (
+        <Link className={styles['home-link']} to='/'>
           {name}
         </Link>
-          )
-        : (
-          <p
-          className={`${name === 'Settings' || name === 'Services' || name === 'Clients' || name === 'Users' || name === 'Reports' || name === 'Analytics'
-          ? styles['other-links']
-          : styles['drop-down-menu']}`}>{name}</p>
-          )}
+      ) : (
+        <p
+          className={`${
+            name === 'Report' ||
+            name === 'Request Payout' ||
+            name === 'Settings' ||
+            name === 'Services' ||
+            name === 'Clients' ||
+            name === 'Users' ||
+            name === 'Reports' ||
+            name === 'Analytics' ||
+            name === 'Sellers' ||
+            name === 'Payments'
+              ? styles['other-links']
+              : styles['drop-down-menu']
+          }`}
+        >
+          {name}
+        </p>
+      )}
     </span>
-    {hasSubNav && (
-      <img
-        className={styles['arrow-icon']}
-        src={isActive ? arrowup : arrowdown}
-      />
-    )}
+    {hasSubNav && <img className={styles['arrow-icon']} src={isActive ? arrowup : arrowdown} />}
   </button>
 )
 

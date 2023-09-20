@@ -37,7 +37,9 @@
 .list-number{
   font-weight: bold;
   font-size: 20px;
+  margin-right: 15px;
 }
+
 
 .service-item {
   display: flex;
@@ -91,7 +93,7 @@ flex-direction: column;
 .service-left-full{
   display: flex;
   flex-direction: column;
-  margin-left: 20px;
+  margin-left: 10px;
 }
 
 .service-name {
@@ -161,6 +163,5 @@ flex-direction: column;
     min-height: 50px;
     align-items: center;
     justify-content: space-between;
-    border: 1px solid red;
   }
 }

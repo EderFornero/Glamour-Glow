@@ -41,21 +41,24 @@ const Cards: React.FC<CardsProps> = ({ allServices }) => {
   }))
 
   if (sortOption === '1') {
-    sellersWithAverageRating.sort((a, b) => b.averageRating - a.averageRating) // Ordenar por rating descendente
+    sellersWithAverageRating.sort((a, b) => b.averageRating - a.averageRating)
   } else if (sortOption === '2') {
-    sellersWithAverageRating.sort((a, b) => a.averageRating - b.averageRating) // Ordenar por rating ascendente
+    sellersWithAverageRating.sort((a, b) => a.averageRating - b.averageRating)
   }
   const { itemsPaginated, currentPage, totalPages, nextPage, prevPage, startPage, finalPage } = usePagination(sellersWithAverageRating, 6, filter, key)
 
+  console.log(itemsPaginated)
+
   return (
     <>
-      <div className={style.test}>
+      <div className={style.general}>
         <Pagination currentPage={currentPage} totalPages={totalPages} nextPage={nextPage} prevPage={prevPage} startPage={startPage} finalPage={finalPage} />
         <div className={style['div-container-order-filter-cards']}>
           <FilterAndOrderCard allServices={allServices} setSortOption={setSortOption}/>
           <section className={style.cardsSection}>
-            {itemsPaginated.map(({ _id, sellerName, categoriesArray, reviews }: ServiceProvider) => {
-              return <BusinessCard key={_id} _id={_id} reviews={reviews} sellerName={sellerName} categoriesArray={categoriesArray} />
+            {itemsPaginated.map(({ _id, sellerName, categoriesArray, reviews, images }: ServiceProvider) => {
+              return <BusinessCard key={_id} _id={_id} reviews={reviews} sellerName={sellerName}
+              categoriesArray={categoriesArray} images={images}/>
             })}
           </section>
         </div>

@@ -21,7 +21,7 @@ const OrderElement = ({ setSortOption }: any): JSX.Element => {
   return (
     <div className={style['div-order-by']}>
       <div className={style['sort-by-reviews']}>
-        <button className={style['sort-button-toggle']} onClick={toggleSort}>
+        <button className={`${style['sort-button-toggle']} ${isOpen ? style['active-button'] : ''}`} onClick={toggleSort}>
           Order by
         </button>
       </div>

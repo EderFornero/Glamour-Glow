@@ -34,7 +34,7 @@ const SideBar: React.FC<SideBarProps> = ({ setActiveItem, activeItem, menuItems 
           </button>
         </Link>
       </div>
-      {menuItems.map((item) => (
+      {menuItems.map((item: { items: string[], id?: string, name: string, icon?: string }) => (
         <>
           {item.items === undefined && <NavButton key={item.id} onClick={handleClick} name={item.name} icon={item.icon} isActive={activeItem === item.name} hasSubNav={false} />}
           {item.items !== undefined && (

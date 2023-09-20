@@ -16,12 +16,16 @@ const BusinessCard: React.FC<BusinessCardProps> = ({ _id, sellerName, reviews, c
   return (
     <article className={style.card}>
       { <div className={style.imageContainer}>{<img className={style.image} src={images[0]} alt='sellerImage' />}</div> }
+const BusinessCard: React.FC<BusinessCardProps> = ({ _id, sellerName, reviews, categoriesArray, images }) => {
+  const averageRating = useRating(reviews)
+  return (
+    <article className={style.card}>
+      <div className={style.imageContainer}>{images !== undefined && images.length > 0 ? <img className={style.image} src={images[0]} alt='sellerImage' /> : <p>No image available</p>}</div>
       <div className={style.titleContainer}>
         <h2 className={style.title}> {sellerName}</h2>
       </div>
       <div className={style.itemsContainer}>
-        <p>Rating: {averageRating}</p>
-        <p>Location: </p>
+        <p>Rating: {typeof averageRating === 'number' && averageRating.toFixed(2)}</p>
         {Array.isArray(categoriesArray) ? categoriesArray.map((category: Category, index: number) => <p key={index}>{category.name}</p>) : null}
       </div>
       <NavLink to={`/sellerdetail/${_id}`} className={style.link}>

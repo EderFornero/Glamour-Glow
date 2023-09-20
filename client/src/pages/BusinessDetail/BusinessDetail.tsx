@@ -31,8 +31,29 @@ const BusinessDetail = (): JSX.Element => {
       await paymentConfirmation(userdetail.email, price, sellerdetail.sellerEmail, sellerdetail.sellerPhone, sellerdetail.sellerName, service)
       await sendSellerEmail(userdetail.email, price, sellerdetail.sellerEmail, userdetail.phoneNumber, `${userdetail.name} ${userdetail.lastName}`, service)
       await postTransaction(transactionId, userdetail._id, sellerdetail._id, price, status)
+      toast.success('Purchase successful, check your e-mail', {
+        style: {
+          border: '1px solid #3d36be',
+          padding: '16px',
+          color: '#1eb66d'
+        },
+        iconTheme: {
+          primary: '#6e66ff',
+          secondary: '#FFFAEE'
+        }
+      })
     } catch (error) {
-      console.log(error)
+      toast.error('An error occurred while purchasing', {
+        style: {
+          border: '1px solid #3d36be',
+          padding: '16px',
+          color: 'red'
+        },
+        iconTheme: {
+          primary: 'red',
+          secondary: '#FFFAEE'
+        }
+      })
     }
   }
   useEffect(() => {
@@ -46,21 +67,12 @@ const BusinessDetail = (): JSX.Element => {
     const status = urlParams.get('status')
     sendEmailRef.current++
     if (status === 'approved' && sendEmailRef.current === 3) {
-      toast.success('Purchase successful, check your e-mail')
       sendEmail()
-    } else if (status === 'failure' && sendEmailRef.current === 3) {
-      toast.error('An error occurred while purchasing')
     }
   }, [id, userdetail])
   return (
     <div className={style['global-container']}>
-      <Toaster
-        toastOptions={{
-          style: {
-            marginTop: '100px'
-          }
-        }}
-      />
+      <Toaster />
       <BusinessInfo sellerName={sellerdetail.sellerName} reviews={sellerdetail.reviews} sellerId={id} favourites={userdetail.favorites} />
       <BusinessImages />
       <Services sellerId={id as string} services={sellerdetail.servicesArray} />

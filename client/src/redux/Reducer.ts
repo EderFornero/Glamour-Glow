@@ -14,7 +14,14 @@ import {
   CLEAN_SELLER_DETAIL,
   UPDATE_SELLER_IMAGE_INDEX,
   GET_USER_METRICS,
-  GET_SELLER_METRICS
+  GET_SELLER_METRICS,
+  UPDATE_SELLER_BALANCE,
+  SELLER_EMAIL,
+  POST_SERVICES,
+  PUT_SERVICES,
+  SEE_REPORTS,
+  DELETE_SERVICES,
+  SEE_PAYMENTS
 } from './Action-Types'
 import type { ServiceAction, RootState, UserDetail, SellerDetail } from './types'
 
@@ -23,7 +30,11 @@ export const initialState: RootState = {
   categories: [],
   users: [],
   userMetrics: [],
+  payments: [],
   sellerMetrics: [],
+  accountBalance: 0,
+  sellerEmail: '',
+  reports: [],
   userdetail: {
     _id: '',
     name: '',
@@ -62,10 +73,14 @@ const reducer = (
   allServices: any[]
   categories: any[]
   users: any[]
+  payments: any[]
   userMetrics: any[]
   sellerMetrics: any[]
+  sellerEmail: string
+  reports: any[]
   userdetail: UserDetail
   sellerdetail: SellerDetail
+  accountBalance: number
   filter: string
   rating: number
   image: string | undefined
@@ -121,6 +136,27 @@ const reducer = (
 
     case GET_SELLER_METRICS:
       return { ...state, sellerMetrics: action.payload }
+
+    case UPDATE_SELLER_BALANCE:
+      return { ...state, accountBalance: action.payload }
+
+    case SELLER_EMAIL:
+      return { ...state, sellerEmail: action.payload }
+
+    case SEE_REPORTS:
+      return { ...state, reports: action.payload }
+
+    case SEE_PAYMENTS:
+      return { ...state, payments: action.payload }
+
+    case POST_SERVICES:
+      return { ...state }
+
+    case PUT_SERVICES:
+      return { ...state }
+
+    case DELETE_SERVICES:
+      return { ...state }
 
     default:
       return state

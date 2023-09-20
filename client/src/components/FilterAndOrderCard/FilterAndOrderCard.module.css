@@ -1,15 +1,22 @@
 .div-container-order-filter{
-  width: 100%;
-  min-height: 50px;
+  position: sticky;
+  top: 100px;
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  width: 350px;
+  height: 580px;
+  flex-direction: column;
+  gap: 20px;
+  border: 2px solid var(--secondary-color);
+  border-radius: 10px;
+  padding: 20px;
+  margin: 0 10px 30px 0;
 
-  @media (max-width: 768px){ 
-    display: flex;
-    justify-content: center;
+  @media (max-width: 633px){
+    border: 0px;
+    width: auto;
+    height: auto;
+    position: inherit;
     flex-direction: column;
-    align-items: center;
     gap: 0;
   }
 }

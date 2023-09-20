@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { useGoBack } from '../../hooks'
 import EmailLogin from './inputs/EmailLogin'
@@ -13,6 +13,8 @@ import { initializeApp } from 'firebase/app'
 import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
 import type { AuthProvider } from 'firebase/auth'
 import axios from 'axios'
+import toast, { Toaster } from 'react-hot-toast'
+const API_URL = import.meta.env.VITE_SERVER_URL
 
 interface FormLoginProps {
   onToggle: () => void
@@ -23,6 +25,20 @@ const FormLogin: React.FC<FormLoginProps> = ({ onToggle }) => {
   const goBack = useGoBack()
   const navigate = useNavigate()
 
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent): void => {
+      if (event.key === 'Enter') {
+        event.preventDefault()
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [])
+
   const {
     register,
     handleSubmit,
@@ -30,10 +46,7 @@ const FormLogin: React.FC<FormLoginProps> = ({ onToggle }) => {
   } = useForm<FormLoginData>({
     defaultValues: { email: '', password: '' }
   })
-  const [errorMessage, setErrorMessage] = useState('')
-  const [error, setError] = useState('')
-
-  console.log(setErrorMessage)
+  const [errorMessage] = useState('')
 
   const onSubmit = handleSubmit(async (data: FormLoginData) => {
     try {
@@ -41,15 +54,40 @@ const FormLogin: React.FC<FormLoginProps> = ({ onToggle }) => {
       const { id, token, role } = response.data
 
       if (token !== undefined && id !== undefined) {
+        toast.success('Logged in successfully', {
+          style: {
+            border: '1px solid #3d36be',
+            padding: '16px',
+            color: '#1eb66d'
+          },
+          iconTheme: {
+            primary: '#6e66ff',
+            secondary: '#FFFAEE'
+          }
+        })
         localStorage.setItem('isAuth', 'true')
         localStorage.setItem('id', id)
         localStorage.setItem('role', role)
         dispatch(setAuth(true))
         dispatch(setUserId(id))
-        navigate('/')
+        setTimeout(() => {
+          if (data.email === 'glamourglowpf@gmail.com') {
+            navigate('/admin/glamour')
+          } else { navigate('/') }
+        }, 1000)
       }
     } catch (error: any) {
-      setError('Incorrect credentials')
+      toast.error('Ops! Credential(s) incorrect', {
+        style: {
+          border: '1px solid #3d36be',
+          padding: '16px',
+          color: 'red'
+        },
+        iconTheme: {
+          primary: 'red',
+          secondary: '#FFFAEE'
+        }
+      })
     }
   })
 
@@ -86,7 +124,7 @@ const FormLogin: React.FC<FormLoginProps> = ({ onToggle }) => {
         name,
         password
       }
-      const response = await axios.post('http://localhost:3001/users/auth/login', data)
+      const response = await axios.post(`${API_URL}users/auth/login`, data)
       const { token, id, role } = response.data
 
       if (token !== undefined && id !== undefined) {
@@ -105,7 +143,10 @@ const FormLogin: React.FC<FormLoginProps> = ({ onToggle }) => {
 
   return (
     <div className={style.content}>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={(event) => {
+        event.preventDefault()
+        void onSubmit(event)
+      }}>
         <label className={style.txt}>Email:</label>
         <EmailLogin register={register} errors={errors} />
         {errorMessage !== '' && <ErrorMessage message={errorMessage} />}
@@ -124,7 +165,6 @@ const FormLogin: React.FC<FormLoginProps> = ({ onToggle }) => {
           <button className={style.btn} type='submit'>
             Send
           </button>
-          {error !== undefined && <div className={style['error-login']}>{error}</div>}
         </div>
       </form>
       <div className={style['link-texts']}>
@@ -136,6 +176,9 @@ const FormLogin: React.FC<FormLoginProps> = ({ onToggle }) => {
         <Link to='/login/passwordRecovery'>
           <p className={style.forgot}>Forgot Password?</p>
         </Link>
+      </div>
+      <div>
+        <Toaster position='top-center' reverseOrder={false} />
       </div>
     </div>
   )

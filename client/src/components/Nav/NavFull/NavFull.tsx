@@ -63,17 +63,26 @@ const NavFull = (): JSX.Element => {
                 </>
                 )
               : (<>
-              <li className={style['menu-item-full']}>
-                <NavLink to='/businessLogin' className={style['link-full']}>
-                  For Business
-                </NavLink>
-              </li>
-              <li className={style['menu-item-full']}>
-                <NavLink to={`/userdetail/${id}`}>
-                 <img className={style['userimg-full']} src={userdetail.image ?? imgprofile} />
-               </NavLink>
-              </li>
-            </>
+                {role === 'admin'
+                  ? <li className={style['menu-item-full']}>
+                      <NavLink to='/admin/glamour' className={style['link-full']}>
+                        Admin
+                      </NavLink>
+                    </li>
+                  : <>
+                      <li className={style['menu-item-full']}>
+                        <NavLink to='/businessLogin' className={style['link-full']}>
+                          For Business
+                        </NavLink>
+                      </li>
+                    <li className={style['menu-item-full']}>
+                      <NavLink to={`/userdetail/${id}`}>
+                      <img className={style['userimg-full']} src={userdetail.image ?? imgprofile} />
+                     </NavLink>
+                    </li>
+                  </>
+                }
+                </>
                 )
             }
             </>

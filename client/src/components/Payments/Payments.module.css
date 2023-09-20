@@ -1,0 +1,47 @@
+.table-container{
+  height: 35em;
+  overflow: hidden;
+}
+
+.table-head{
+  width: auto;
+  height: 80px;
+  text-align: center;
+  margin-right: 5px;
+}
+
+.table-cell{ 
+  min-width: 50px;
+  width: 0px;
+}
+
+.table-cell p{
+  text-align: center;
+  color: #000;
+  font-size: 15px;
+  margin-left: 220px;
+  height: 70px;
+}
+
+.table-pagination{
+  display: flex;
+  padding-left: 200px;
+}
+
+@media (max-width: 900px) {
+  .table-pagination{
+    padding-left: 0px;
+  }
+
+  .table-cell p{
+    margin-left: 80px;
+  }
+
+  .table-head{
+    height: 10px;
+  }
+
+  .table-container{
+    margin-top: 10px;
+  }
+}
