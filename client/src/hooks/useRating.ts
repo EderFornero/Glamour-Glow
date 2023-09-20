@@ -1,6 +1,6 @@
 const useRating = (reviews: any[]): number | string => {
   if (reviews?.length === 0) {
-    const averageRating = 'User does not have enough reviews'
+    const averageRating = 'Shop does not have enough reviews'
     return averageRating
   }
 

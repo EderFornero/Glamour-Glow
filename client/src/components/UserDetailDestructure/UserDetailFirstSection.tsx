@@ -98,9 +98,9 @@ const UserDetailFirstSection = (): JSX.Element => {
         <div className={styles['userdetail-header']}>
           <img src={userdetail.image ?? NoProfileImage} alt={userdetail.name} />
           <Cloudinary />
-          <h1>
+          <h3>
             {userdetail.name} {userdetail.lastName === 'apellido' ? '' : userdetail.lastName}
-          </h1>
+          </h3>
           {editing ? <a onClick={handleSave}>Save</a> : <a onClick={handleEdit}>Edit basic information</a>}
         </div>
         <div className={styles['userdetail-body']}>

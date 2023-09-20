@@ -16,7 +16,7 @@ import BusinessInfo from '../BusinessDetail/BusinessInfo/BusinessInfo'
 import BusinessImages from '../BusinessDetail/BusinessImages/BusinessImages'
 import Services from '../BusinessDetail/Services/Services'
 import { menuItems } from '../../components/SideBar/parts/itemsmenu'
-import image from '../../Images/Report.png'
+import { submitReportImage } from '../../Images/FormImages'
 
 const AdminDashboard: React.FC = () => {
   const [activeItem, setActiveItem] = useState<string>('Settings')
@@ -50,7 +50,7 @@ const AdminDashboard: React.FC = () => {
         {activeItem === 'Request Payout' && <RequestPayout accountBalance={accountBalance} sellerName={sellerdetail.sellerName} sellerPhone={sellerdetail.sellerPhone} />}
         {activeItem === 'Report' && (
           <div className={style['report-container']}>
-            <img src={image} alt='' className={style.image} />
+            <img src={submitReportImage} alt='Submit Report' className={style.image} />
             <div className={style.report}>
               <Report id={ID} onClose={closeReportPopup} isOpen={isReportPopupOpen} route='sellers' />
             </div>
@@ -58,7 +58,7 @@ const AdminDashboard: React.FC = () => {
         )}
         {activeItem === 'Create' && <FormSeller setActiveItem={setActiveItem} />}
         {(activeItem === 'List' || activeItem === 'Services') && <ServiceList setActiveItem={setActiveItem} sellerid={''} />}
-        {activeItem === 'Clients' && <Clients clients={users} id={id}/>}
+        {activeItem === 'Clients' && <Clients clients={users} id={id} />}
         {activeItem === 'Interface' && <UpdateBusinessImages />}
         {(activeItem === 'Display' || activeItem === 'Settings' || activeItem === '') && (
           <div className={style['Display-business']}>

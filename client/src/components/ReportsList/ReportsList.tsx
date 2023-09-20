@@ -66,7 +66,7 @@ const ReportsList: React.FC = () => {
                 <h2></h2>
               </TableCell>
               <TableCell className={style['table-cell']}>
-                <h1>Reports List</h1>
+                <h3>Reports List</h3>
               </TableCell>
             </TableRow>
           </TableHead>

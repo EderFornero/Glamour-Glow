@@ -3,6 +3,7 @@ import type { Category, ReviewRating } from '../../interfaces'
 import StandardButton from '../StandardButton/StandardButton'
 import style from './BusinessCard.module.css'
 import { NavLink } from 'react-router-dom'
+import StarIcon from '@mui/icons-material/Star'
 
 interface BusinessCardProps {
   _id: string
@@ -25,7 +26,9 @@ const BusinessCard: React.FC<BusinessCardProps> = ({ _id, sellerName, reviews, c
         <h2 className={style.title}> {sellerName}</h2>
       </div>
       <div className={style.itemsContainer}>
-        <p>Rating: {typeof averageRating === 'number' && averageRating.toFixed(2)}</p>
+        <p className={style.rating}>
+          <StarIcon style={{ fontSize: '1.1rem' }} /> {typeof averageRating === 'number' ? averageRating.toFixed(2) : averageRating}
+        </p>
         {Array.isArray(categoriesArray) ? categoriesArray.map((category: Category, index: number) => <p key={index}>{category.name}</p>) : null}
       </div>
       <NavLink to={`/sellerdetail/${_id}`} className={style.link}>
