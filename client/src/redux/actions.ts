@@ -21,7 +21,8 @@ import {
   POST_SERVICES,
   PUT_SERVICES,
   SEE_REPORTS,
-  DELETE_SERVICES
+  DELETE_SERVICES,
+  SEE_PAYMENTS
 } from './Action-Types'
 import type { ServiceAction } from './types'
 import type { SellerDetailAction } from '../interfaces'
@@ -388,6 +389,20 @@ export const disableSeller: any = (id: string) => {
   }
 }
 
+export const enableSeller: any = (id: string) => {
+  const endpointEnable = `${API_URL}sellers/enable/${id}`
+  console.log('holaa', id)
+  return async function () {
+    try {
+      const response = await axios.put(endpointEnable)
+      console.log(response)
+      return response
+    } catch (error: any) {
+      console.log(error.message)
+    }
+  }
+}
+
 export const getReports: any = () => {
   const endpoint = `${API_URL}admin/reports`
 
@@ -397,6 +412,23 @@ export const getReports: any = () => {
 
       dispatch({
         type: SEE_REPORTS,
+        payload: data
+      })
+    } catch (error: any) {
+      return { error: error.message }
+    }
+  }
+}
+
+export const getPayments: any = () => {
+  const endpoint = `${API_URL}admin/payments`
+
+  return async (dispatch: (action: ServiceAction) => void) => {
+    try {
+      const { data } = await axios.get(endpoint)
+
+      dispatch({
+        type: SEE_PAYMENTS,
         payload: data
       })
     } catch (error: any) {
