@@ -1,7 +1,6 @@
 .table-container{
   height: 35em;
   overflow: hidden;
-  margin-top: -30px;
 }
 
 .table-head{
@@ -35,7 +34,6 @@
   color: #000;
   font-size: 20px;
   font-weight: bold;
-  text-decoration: underline;
 }
 
 .table-pagination{

@@ -9,6 +9,17 @@
 .unit {
   width: 400px;
   height: 300px;
+  margin: 30px;
+}
+
+.unit p {
+  color: white;
+  text-align: center;
+  background-color: #6e66ff;
+  border-radius: 50px;
+  border: 1px solid black;
+  padding: 3px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
 }
 
 @media screen and (max-width: 900px) {

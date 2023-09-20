@@ -7,6 +7,7 @@ import SellersCards from '../../components/SellersCards/SellersCards'
 import ReportsList from '../../components/ReportsList/ReportsList'
 import Payments from '../../components/Payments/Payments'
 import { useNavigate } from 'react-router-dom'
+import style from './GlamourAdmin.module.css'
 
 const GlamourAdmin = (): JSX.Element => {
   const [activeItem, setActiveItem] = useState<string>('')
@@ -22,7 +23,7 @@ const GlamourAdmin = (): JSX.Element => {
   return (
     <div>
       <SideBar setActiveItem={setActiveItem} activeItem={activeItem} menuItems={menuItems}/>
-      <div>
+      <div className={style['rigth-section']}>
       {activeItem === 'Users' && <UsersCards />}
       {activeItem === 'Analytics' && <Metrics />}
       {activeItem === 'Sellers' && <SellersCards />}

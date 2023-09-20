@@ -20,15 +20,19 @@ const Metrics = (): JSX.Element => {
   return (
     <div className={style.content}>
       <div className={style.unit}>
+      <p>Sellers Data</p>
         <SellersPies sellerMetrics={sellerMetrics}/>
       </div>
       <div className={style.unit}>
+        <p>Users Data</p>
         <UsersPies userMetrics={userMetrics}/>
       </div>
       <div className={style.unit}>
+        <p>Actives Accounts Data</p>
         <SellerUsersPie userMetrics={userMetrics} sellerMetrics={sellerMetrics}/>
       </div>
       <div className={style.unit}>
+        <p>All Accounts Data</p>
         <AllAccountPies userMetrics={userMetrics} sellerMetrics={sellerMetrics}/>
       </div>
     </div>
