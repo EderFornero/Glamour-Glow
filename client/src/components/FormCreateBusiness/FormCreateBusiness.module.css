@@ -77,30 +77,10 @@
     vertical-align: top;
 }
 
-.btn {
-    margin-top: 20px;
-    border-radius: 10px;
-    height: 25px;
-    width: 80px;
-        background-color: #3e38b6;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        padding: 0px 20px;
-        font-size: 16px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-    margin-right: 180px;
-}
-.btn:last-child {
-    margin-right: 0;
-}
-
-.btn:last-child:hover {
-    background-color: #06ec5e;
-}
-.btn:hover {
-    background-color: #ff0000;
+.button-div {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 @media (max-width: 768px) {

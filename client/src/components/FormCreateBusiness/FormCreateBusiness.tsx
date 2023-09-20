@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { useGoBack } from '../../hooks'
 import { useForm } from 'react-hook-form'
 import BusiCategoriesInput from './inputs/BusiCategoriesInput'
 import BusiGenderInput from './inputs/BusiGenderInput'
@@ -17,6 +16,7 @@ import Cloudinary from '../Cloudinary/Cloudinary'
 import toast, { Toaster } from 'react-hot-toast'
 import TermsAndConditions from '../TermsAndConditions/TermsAndConditions'
 import styles from '../FormRegister/FormRegister.module.css'
+import StandardButton from '../StandardButton/StandardButton'
 
 interface FormLoginProps {
   onToggle: () => void
@@ -24,7 +24,6 @@ interface FormLoginProps {
 
 const FormBusiness: React.FC<FormLoginProps> = () => {
   const dispatch = useDispatch()
-  const goBack = useGoBack()
   const navigate = useNavigate()
   const [showTerms, setShowTerms] = useState(false)
 
@@ -175,13 +174,10 @@ const FormBusiness: React.FC<FormLoginProps> = () => {
                   {errors.images !== undefined && (
                   <span className={style.imgspan}>Image required</span>
                   )}
-                  <div className={style['buton-div']}>
-                    <button className={style.btn} onClick={goBack}>
-                      Back
-                    </button>
-                    <button className={style.btn} onClick={() => { clearErrors('images') }} type='submit'>
-                      Send
-                    </button>
+                  <div className={style['button-div']}>
+                    <StandardButton variant='sizeForms' onClick={() => { clearErrors('images') }} type='submit'>
+                      Register
+                    </StandardButton>
                   </div>
                 </>
               )}
