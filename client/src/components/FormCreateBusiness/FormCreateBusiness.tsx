@@ -79,7 +79,6 @@ const FormBusiness: React.FC<FormLoginProps> = () => {
   }, [dispatch])
 
   const { image } = useSelector((state: RootState) => state)
-  console.log(image)
 
   const onSubmit = handleSubmit(async (data: FormCreateBusi) => {
     delete data.confirmPassword
@@ -158,12 +157,7 @@ const FormBusiness: React.FC<FormLoginProps> = () => {
               <h2 className={style.h2}>Tell us about your work</h2>
             </div>
             <form onSubmit={onSubmit} className={style.forms}>
-              <BusiCategoriesInput
-                register={register}
-                errors={errors}
-                categoryList={categoryList}
-                toggleOtherInputs={toggleOtherInputs}
-              />
+              <BusiCategoriesInput register={register} errors={errors} categoryList={categoryList} toggleOtherInputs={toggleOtherInputs} />
               {showOtherInputs && (
                 <>
                   <BusiNameInput register={register} errors={errors} />
@@ -172,32 +166,35 @@ const FormBusiness: React.FC<FormLoginProps> = () => {
                   <BusiPasswordInput register={register} errors={errors} />
                   <BusiGenderInput register={register} errors={errors} />
                   <Cloudinary />
-                  {errors.images !== undefined && (
-                  <span className={style.imgspan}>Image required</span>
-                  )}
+                  {errors.images !== undefined && <span className={style.imgspan}>Image required</span>}
                   <div className={style['buton-div']}>
                     <button className={style.btn} onClick={goBack}>
                       Back
                     </button>
-                    <button className={style.btn} onClick={() => { clearErrors('images') }} type='submit'>
+                    <button
+                      className={style.btn}
+                      onClick={() => {
+                        clearErrors('images')
+                      }}
+                      type='submit'
+                    >
                       Send
                     </button>
                   </div>
                 </>
               )}
-              <a href="#" className={styles['terms-conditions']} onClick={toggleTerms}>Terms and Conditions</a>
-                <div className={styles[`terms-and-conditions${showTerms ? '-show-terms' : ''}`]}>
-                  <TermsAndConditions />
-                </div>
+              <a href='#' className={styles['terms-conditions']} onClick={toggleTerms}>
+                Terms and Conditions
+              </a>
+              <div className={styles[`terms-and-conditions${showTerms ? '-show-terms' : ''}`]}>
+                <TermsAndConditions />
+              </div>
             </form>
           </div>
         </div>
       </div>
       <div>
-        <Toaster
-          position="top-center"
-          reverseOrder={false}
-        />
+        <Toaster position='top-center' reverseOrder={false} />
       </div>
     </div>
   )

@@ -65,9 +65,22 @@ const BusinessDetail = (): JSX.Element => {
     dispatch(getSellerbyId(id))
     const urlParams = new URLSearchParams(window.location.search)
     const status = urlParams.get('status')
+    const rating = urlParams.get('rating-comment')
     sendEmailRef.current++
     if (status === 'approved' && sendEmailRef.current === 3) {
       sendEmail()
+    } else if (rating !== null && +rating > 0 && sendEmailRef.current === 3) {
+      toast.success('Thank you for submitting a review', {
+        style: {
+          border: '1px solid #3d36be',
+          padding: '16px',
+          color: 'red'
+        },
+        iconTheme: {
+          primary: 'red',
+          secondary: '#FFFAEE'
+        }
+      })
     }
   }, [id, userdetail])
   return (

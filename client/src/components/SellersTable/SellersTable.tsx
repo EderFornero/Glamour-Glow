@@ -135,7 +135,6 @@ export default function UsersTable(props: EnhancedTableProps): JSX.Element {
 
   const handleEnable = async (): Promise<void> => {
     dispatch(enableSeller(activeInfo.sellerId))
-    console.log(activeInfo.sellerId)
     setisActiveOpen(false)
   }
 
