@@ -3,16 +3,21 @@
   flex-direction: column;
   padding: 20px;
   gap: 10px;
-
+  background-color: #ffffff;
+  border-radius: 10px;
+  height: 100%;
   .label {
     color: black;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
+    font-weight: 600;
   }
   .report {
     padding: 10px;
     font-size: 1.2rem;
     resize: none;
     border-radius: 10px;
+    background: var(--neutral-color);
+    flex-grow: 1;
   }
   .buttons {
     display: flex;

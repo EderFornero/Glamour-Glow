@@ -16,6 +16,8 @@ import BusinessInfo from '../BusinessDetail/BusinessInfo/BusinessInfo'
 import BusinessImages from '../BusinessDetail/BusinessImages/BusinessImages'
 import Services from '../BusinessDetail/Services/Services'
 import { menuItems } from '../../components/SideBar/parts/itemsmenu'
+import image from '../../Images/Report.png'
+import { stepLabelClasses } from '@mui/material'
 
 const AdminDashboard: React.FC = () => {
   const [activeItem, setActiveItem] = useState<string>('Settings')
@@ -47,7 +49,14 @@ const AdminDashboard: React.FC = () => {
       <SideBar setActiveItem={setActiveItem} activeItem={activeItem} menuItems={menuItems} />
       <div className={style['right-section']}>
         {activeItem === 'Request Payout' && <RequestPayout accountBalance={accountBalance} sellerName={sellerdetail.sellerName} sellerPhone={sellerdetail.sellerPhone} />}
-        {activeItem === 'Report' && <Report id={ID} onClose={closeReportPopup} isOpen={isReportPopupOpen} route='sellers' />}
+        {activeItem === 'Report' && (
+          <div className={style['report-container']}>
+            <img src={image} alt='' className={style.image} />
+            <div className={style.report}>
+              <Report id={ID} onClose={closeReportPopup} isOpen={isReportPopupOpen} route='sellers' />
+            </div>
+          </div>
+        )}
         {activeItem === 'Create' && <FormSeller setActiveItem={setActiveItem} />}
         {(activeItem === 'List' || activeItem === 'Services') && <ServiceList setActiveItem={setActiveItem} sellerid={''} />}
         {activeItem === 'Clients' && <Clients clients={users} />}

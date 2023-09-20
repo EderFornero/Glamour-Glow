@@ -75,9 +75,12 @@ const Report: React.FC<ReportProps> = ({ isOpen, onClose, id, route }) => {
         rows={6}
       ></textarea>
       <div className={styles.buttons}>
-        <button type='button' className={styles.cancel} onClick={onClose}>
-          Cancel
-        </button>
+        {!location.pathname.startsWith('/admin') && (
+          <button type='button' className={styles.cancel} onClick={onClose}>
+            Cancel
+          </button>
+        )}
+
         <button type='submit' className={styles.submit}>
           Submit
         </button>
