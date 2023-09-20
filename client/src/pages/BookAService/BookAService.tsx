@@ -24,7 +24,7 @@ const BookAService = (): JSX.Element => {
         sellerId
       })
       const id = response.data.init_point
-      console.log(id)
+
       return id
     } catch (error) {
       console.log(error)

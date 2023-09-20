@@ -13,8 +13,6 @@ const SellersCards: React.FC = () => {
     dispatch(getAllBusiness())
   }, [])
 
-  console.log(sellers)
-
   const rows = sellers.map((seller) => ({
     _id: seller._id,
     sellerName: seller.sellerName,

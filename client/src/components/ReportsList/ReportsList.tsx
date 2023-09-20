@@ -26,16 +26,11 @@ const ReportsList: React.FC = () => {
     dispatch(getReports())
   }, [])
 
-  const handleChangePage = (
-    _event: React.MouseEvent<HTMLButtonElement> | null,
-    newPage: number
-  ): void => {
+  const handleChangePage = (_event: React.MouseEvent<HTMLButtonElement> | null, newPage: number): void => {
     setPage(newPage)
   }
 
-  const handleChangeRowsPerPage = (
-    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ): void => {
+  const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
     setRowsPerPage(parseInt(event.target.value, 10))
     setPage(0)
   }
@@ -64,39 +59,44 @@ const ReportsList: React.FC = () => {
         }}
       />
       <TableContainer>
-        <Table aria-labelledby="tableTitle" size='medium' className={style['table-container']}>
+        <Table aria-labelledby='tableTitle' size='medium' className={style['table-container']}>
           <TableHead className={style['table-head']}>
             <TableRow className={style['table-row']}>
-            <TableCell><h2></h2></TableCell>
-              <TableCell className={style['table-cell']}><h1>Reports List</h1></TableCell>
+              <TableCell>
+                <h2></h2>
+              </TableCell>
+              <TableCell className={style['table-cell']}>
+                <h1>Reports List</h1>
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((row) => (
-                <TableRow key={row._id}>
-                    <div className={style['div-profile-image']}>
-                    <div className={style.bottom}>
+            {rows?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => (
+              <TableRow key={row._id}>
+                <div className={style['div-profile-image']}>
+                  <div className={style.bottom}>
                     <Tooltip title='Check Report' placement='top'>
-                      <button className={style['btn-delete-disable']} onClick={(): void => { handleReport(row._id) }}><CheckSvg /></button>
+                      <button
+                        className={style['btn-delete-disable']}
+                        onClick={(): void => {
+                          handleReport(row._id)
+                        }}
+                      >
+                        <CheckSvg />
+                      </button>
                     </Tooltip>
                   </div>
-                  </div>
-                  <TableCell className={style['table-cell']}><p>{row.description}</p></TableCell>
-                </TableRow>
-              ))}
+                </div>
+                <TableCell className={style['table-cell']}>
+                  <p>{row.description}</p>
+                </TableCell>
+              </TableRow>
+            ))}
           </TableBody>
         </Table>
       </TableContainer>
       <div className={style['table-pagination']}>
-      <TablePagination
-        component="div"
-        count={rows?.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onPageChange={handleChangePage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
-      />
+        <TablePagination component='div' count={rows?.length} rowsPerPage={rowsPerPage} page={page} onPageChange={handleChangePage} onRowsPerPageChange={handleChangeRowsPerPage} />
       </div>
     </Box>
   )
