@@ -5,7 +5,6 @@ import { getSellersController } from '../../controllers/sellers/getSellers'
 import { postSellersController } from '../../controllers/sellers/postSeller'
 import { getSellersByIdController } from '../../controllers/sellers/getSellerById'
 import { putSellersController } from '../../controllers/sellers/putSeller'
-import { disableSeller } from '../../controllers/sellers/deleteSeller'
 import { logInSeller } from '../../controllers/sellers/loginSeller'
 import { resetSellerPassword } from '../../controllers/sellers/resetSellerPassword'
 import { forgotSellerPassword } from '../../controllers/sellers/forgotSellerPassword'
@@ -14,6 +13,7 @@ import passport from 'passport'
 import { postReport } from '../../controllers/reports'
 import { createReportSchema } from '../../schemas/reportSchema'
 import { enableSellerHandler } from '../../handlers'
+import { disableSeller } from '../../controllers/sellers'
 
 const router = Router()
 
