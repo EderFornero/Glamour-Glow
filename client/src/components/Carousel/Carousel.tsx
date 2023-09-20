@@ -51,10 +51,12 @@ const Carousel: React.FC<CarouselProps> = ({ cardstoshow, carouselName }) => {
     <section className={styles.carousel}>
       <h3 className={styles.title}>{carouselName}</h3>
       <Swiper modules={[Pagination, A11y, Autoplay]} className={styles.swiper} spaceBetween={space} slidesPerView={slidesPerView} pagination={{ clickable: true }} autoplay={{ delay: 3000 }}>
-        {cardstoshow.map(({ _id, sellerName, categoriesArray, reviews, images }: ServiceProvider) => {
+        {cardstoshow.map(({ _id, sellerName, categoriesArray, reviews, images, isActive }: ServiceProvider) => {
           return (
             <SwiperSlide key={_id} className={styles.swiperslide}>
-              <BusinessCard _id={_id} sellerName={sellerName} categoriesArray={categoriesArray} reviews={reviews} images={images} />
+              <div className={styles.container}>
+                <BusinessCard _id={_id} sellerName={sellerName} categoriesArray={categoriesArray} reviews={reviews} images={images} isActive={isActive} />
+              </div>
             </SwiperSlide>
           )
         })}

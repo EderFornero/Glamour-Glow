@@ -7,7 +7,7 @@ import type { RootState } from '../../../redux/types'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import BusinessCard from '../../BusinessCard/BusinessCard'
 import { useEffect, useState } from 'react'
-import style from '../../Carousel/Carousel.module.css'
+import style from './UserDetailFavoritesDelete.module.css'
 import { useNavigate } from 'react-router-dom'
 
 const UserDetailFavoritesDelete = (): JSX.Element => {
@@ -15,6 +15,7 @@ const UserDetailFavoritesDelete = (): JSX.Element => {
   const [slidesPerView, setSlidesPerView] = useState(3)
   const [space, setSpace] = useState(0)
   const userdetail = useSelector((state: RootState) => state.userdetail)
+  console.log(userdetail.favorites, 'ACA')
 
   const updateSlidesPerView = (): void => {
     const width = window.innerWidth
@@ -53,11 +54,13 @@ const UserDetailFavoritesDelete = (): JSX.Element => {
         </div>
         <div className={styles['favorites-body']}>
           {userdetail.favorites !== undefined && userdetail.favorites[0]?.seller?.categoriesArray?.length > 0 ? (
-            <Swiper modules={[Pagination, A11y, Autoplay]} className={style.swiper} spaceBetween={space} slidesPerView={slidesPerView} pagination={{ clickable: true }} autoplay={{ delay: 3000 }}>
+            <Swiper modules={[Pagination, A11y, Autoplay]} className={style.swipers} spaceBetween={space} slidesPerView={slidesPerView} pagination={{ clickable: true }} autoplay={{ delay: 3000 }}>
               {userdetail.favorites?.map(({ _id, seller }) => {
                 return (
-                  <SwiperSlide key={_id} className={styles.swiperslide}>
-                    <BusinessCard _id={seller?._id} sellerName={seller?.sellerName} categoriesArray={seller?.categoriesArray} reviews={seller?.reviews} images={seller?.images} />
+                  <SwiperSlide key={_id} className={style.swiperslides}>
+                    <div className={style.container}>
+                      <BusinessCard _id={seller?._id} sellerName={seller?.sellerName} categoriesArray={seller?.categoriesArray} reviews={seller?.reviews} images={seller?.images} isActive />
+                    </div>
                   </SwiperSlide>
                 )
               })}
