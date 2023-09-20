@@ -30,7 +30,7 @@ export const forgotSellerPassword = async (
     seller.passwordResetCode = passwordResetCode;
 
     await seller.save();
-    console.log(seller);
+
     const mail_configs = {
       from: "glamourglowpf@gmail.com",
       to: JSON.stringify(sellerEmail),
