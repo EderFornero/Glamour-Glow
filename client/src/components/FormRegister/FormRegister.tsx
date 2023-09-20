@@ -24,10 +24,6 @@ const FormRegister: React.FC<FormLoginProps> = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const goBack = (): void => {
-    navigate('/')
-  }
-
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent): void => {
       if (event.key === 'Enter') {
@@ -56,7 +52,7 @@ const FormRegister: React.FC<FormLoginProps> = () => {
       phoneNumber: '',
       role: 'customer',
       dateOfBirth: '',
-      image: 'https://www.pngall.com/wp-content/uploads/5/Profile-PNG-Image.png',
+      image: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png',
       isActive: true,
       confirmPassword: ''
     }
