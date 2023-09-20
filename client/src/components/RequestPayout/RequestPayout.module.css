@@ -1,20 +1,16 @@
 .global {
   display: flex;
-  margin: 0 auto 50px auto;
-  margin-left: 85px;
+  margin: 0 auto;
   border-radius: 10px;
   border: 1px solid var(--primary-color);
   height: fit-content;
+  max-height: 41rem;
   background: #ffffff;
-  width: fit-content;
-  border: 1pz solid red;
+  width: 90%;
 
   @media (max-width: 880px) {
     flex-direction: column;
     height: auto;
-  }
-  @media (max-width: 1400px) {
-    margin-left: 20px;
   }
   .image {
     object-fit: contain;

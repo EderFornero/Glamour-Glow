@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import style from './ServiceList.module.css'
 import styles from './Clients.module.css'
-import { getClientsById, getUserbyId } from '../../../redux/actions'
+import { getClientsById } from '../../../redux/actions'
 import { useDispatch } from 'react-redux'
 
 interface Props {
@@ -35,7 +35,7 @@ const Clients: React.FC<Props> = ({ clients, id }) => {
           <>
           <li key={client.id} className={style['service-item']}>
             <span className={style['list-number']}> {index + 1}</span>
-            <img className={styles['service-image']} src={client.image}/>
+            <img className={styles['client-image']} src={client.image}/>
             <span className={style['service-name']}> {client.name + client.lastName}</span>
             <button className={style['edit-button']} onClick={() => { ClientView(index) }}>
               View
