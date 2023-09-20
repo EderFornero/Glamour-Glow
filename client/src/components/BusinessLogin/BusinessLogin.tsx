@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
-import { useGoBack } from '../../hooks'
 import { useNavigate, Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import type { SellerLoginData } from '../../interfaces'
@@ -17,7 +16,6 @@ interface BusinessLoginProps {
 
 const BusinessLogin: React.FC<BusinessLoginProps> = ({ onToggle }) => {
   const dispatch = useDispatch()
-  const goBack = useGoBack()
   const navigate = useNavigate()
 
   const {
@@ -43,6 +41,10 @@ const BusinessLogin: React.FC<BusinessLoginProps> = ({ onToggle }) => {
   }, [])
 
   const [errorMessage] = useState('')
+
+  const goBack = (): void => {
+    navigate('/')
+  }
 
   const onSubmit = handleSubmit(async (data: SellerLoginData) => {
     try {
@@ -107,7 +109,7 @@ const BusinessLogin: React.FC<BusinessLoginProps> = ({ onToggle }) => {
                   Back
                 </button>
                 <button className={style.btn} type='submit'>
-                  Send
+                  Login
                 </button>
               </div>
             </form>

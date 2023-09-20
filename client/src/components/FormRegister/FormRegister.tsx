@@ -7,7 +7,6 @@ import BirthDateInput from './inputs/BirthDateInput'
 import PasswordInput from './inputs/PasswordInput'
 import LastNameInput from './inputs/LastNameInput'
 import style from './FormRegister.module.css'
-import { useGoBack } from '../../hooks'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { postUser, postValidate, setAuth, setUserId } from '../../redux/actions'
@@ -21,9 +20,12 @@ interface FormLoginProps {
 }
 
 const FormRegister: React.FC<FormLoginProps> = () => {
-  const goBack = useGoBack()
   const dispatch = useDispatch()
   const navigate = useNavigate()
+
+  const goBack = (): void => {
+    navigate('/')
+  }
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent): void => {

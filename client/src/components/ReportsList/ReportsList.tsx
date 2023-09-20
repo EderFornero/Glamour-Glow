@@ -47,7 +47,9 @@ const ReportsList: React.FC = () => {
     }
   }
 
-  const rows = reports.map((report) => ({
+  const reversedReports = [...reports].reverse()
+
+  const rows = reversedReports.map((report) => ({
     description: report.description,
     _id: report._id
   }))
