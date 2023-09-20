@@ -5,8 +5,6 @@ import passport from 'passport'
 import { readAndDeleteUserSchema } from '../../schemas/userSchema'
 import { readAndDeleteSellerSchema } from '../../schemas/sellerSchema'
 import {
-  deleteUser,
-  deleteSellerController,
   deleteReviewsAdminController,
   deleteServiceAdminController,
   readSellersMetricsController,
@@ -19,6 +17,8 @@ import { readAndDeleteServiceSchema } from '../../schemas/serviceSchema'
 import { deleteReportSchema } from '../../schemas/reportSchema'
 import { deleteReport, getReports } from '../../controllers/reports'
 import { transferPayment } from '../../controllers/admin/transferPayment'
+import { disableSellerController } from '../../controllers/sellers'
+import { disableUser } from '../../controllers'
 
 const router = Router()
 
@@ -29,8 +29,14 @@ router.get('/userMetrics', passport.authenticate('jwt', { session: false }), rol
 router.get('/sellerMetrics', passport.authenticate('jwt', { session: false }), rolePermissions('admin'), readSellersMetricsController)
 router.get('/visits', passport.authenticate('jwt', { session: false }), rolePermissions('admin'), getPagesVisitsController)
 
-router.delete('/dropUser/:id', passport.authenticate('jwt', { session: false }), rolePermissions('admin'), schemaValidation(readAndDeleteUserSchema), deleteUser)
-router.delete('/dropSeller/:id', passport.authenticate('jwt', { session: false }), rolePermissions('admin'), schemaValidation(readAndDeleteSellerSchema), deleteSellerController)
+router.put(
+  "/disable/:id",
+  passport.authenticate("jwt", { session: false }),
+  rolePermissions("admin"),
+  schemaValidation(readAndDeleteUserSchema),
+  disableUser
+);
+router.put('/disable/:id', passport.authenticate('jwt', { session: false }), schemaValidation(readAndDeleteSellerSchema), disableSellerController)
 
 router.delete('/dropReview/:id', passport.authenticate('jwt', { session: false }), rolePermissions('admin'), schemaValidation(deleteReviewSchema), deleteReviewsAdminController)
 
