@@ -17,12 +17,32 @@ interface CarouselProps {
 
 const Carousel: React.FC<CarouselProps> = ({ cardstoshow, carouselName }) => {
   const [slidesPerView, setSlidesPerView] = useState(4)
+  const [space, setSpace] = useState(0)
 
   const updateSlidesPerView = (): void => {
     const width = window.innerWidth
-
-    setSlidesPerView(width < 2000 ? (width < 1400 ? (width < 1000 ? 1 : 2) : 3) : 4)
+    if (width < 1000) {
+      setSlidesPerView(1)
+      setSpace(50)
+    } else if (width > 1000 && width < 1550) {
+      setSlidesPerView(2)
+      setSpace(0)
+    } else if (width > 1550 && width < 2000) {
+      setSlidesPerView(3)
+      setSpace(0)
+    } else if (width > 2000 && width < 2600) {
+      setSlidesPerView(4)
+      setSpace(0)
+    } else if (width > 2550) {
+      setSlidesPerView(5)
+      setSpace(50)
+    }
   }
+  // const updateSlidesPerView = (): void => {
+  //   const width = window.innerWidth
+
+  //   setSlidesPerView(width < 2000 ? (width < 1400 ? (width < 1000 ? 1 : 2) : 3) : 4)
+  // }
 
   useEffect(() => {
     updateSlidesPerView()
@@ -35,7 +55,7 @@ const Carousel: React.FC<CarouselProps> = ({ cardstoshow, carouselName }) => {
   return (
     <section className={styles.carousel}>
       <h3 className={styles.title}>{carouselName}</h3>
-      <Swiper modules={[Pagination, A11y, Autoplay]} className={styles.swiper} spaceBetween={160} slidesPerView={slidesPerView} pagination={{ clickable: true }} autoplay={{ delay: 3000 }}>
+      <Swiper modules={[Pagination, A11y, Autoplay]} className={styles.swiper} spaceBetween={space} slidesPerView={slidesPerView} pagination={{ clickable: true }} autoplay={{ delay: 3000 }}>
         {cardstoshow.map(({ _id, sellerName, categoriesArray, reviews, images }: ServiceProvider) => {
           return (
             <SwiperSlide key={_id} className={styles.swiperslide}>
