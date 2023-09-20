@@ -3,6 +3,8 @@ import { Rating } from '@mui/material'
 import style from './LeaveAComment.module.css'
 import axios from '../../redux/axiosService'
 import { useParams } from 'react-router-dom'
+import toast, { Toaster } from 'react-hot-toast'
+import StandardButton from '../StandardButton/StandardButton'
 const API_URL = import.meta.env.VITE_SERVER_URL
 
 interface LeaveACommentProps {
@@ -44,17 +46,16 @@ const LeaveAComment: React.FC<LeaveACommentProps> = ({ userId }) => {
           rating: null,
           description: ''
         })
-        console.log('Comment submitted successfully')
-      } else {
-        console.error('Error submitting comment')
       }
+      toast.success('Thank you for your review')
     } catch (error) {
-      console.error('Error:', error)
+      toast.error('Review could not be submitted')
     }
   }
 
   return (
     <form className={style.form} onSubmit={handleSubmit}>
+      <Toaster />
       <h2 className={style.title}>Leave a comment for us</h2>
       <div className={style['input-container']}>
         <label htmlFor='rating'>Rate the service</label>
@@ -65,9 +66,9 @@ const LeaveAComment: React.FC<LeaveACommentProps> = ({ userId }) => {
         <textarea name='comment' rows={7} style={{ resize: 'none' }} value={formData.description} onChange={handleDescriptionChange}></textarea>
       </div>
       <div className={style['submit-container']}>
-        <button className={style.submit} type='submit' disabled={role !== 'customer'}>
+        <StandardButton variant='sizeComment' type='submit' disabled={role !== 'customer'}>
           {role !== 'customer' ? 'Log in as user to post a review' : 'Leave comment'}
-        </button>
+        </StandardButton>
       </div>
     </form>
   )

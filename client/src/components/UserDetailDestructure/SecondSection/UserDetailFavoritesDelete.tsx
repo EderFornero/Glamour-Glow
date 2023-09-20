@@ -52,24 +52,29 @@ const UserDetailFavoritesDelete = (): JSX.Element => {
           <p>Services you&apos;ve liked</p>
         </div>
         <div className={styles['favorites-body']}>
-          {userdetail.favorites !== undefined && userdetail.favorites[0]?.seller?.categoriesArray?.length > 0
-            ? (<Swiper modules={[Pagination, A11y, Autoplay]} className={style.swiper} spaceBetween={space}
-                slidesPerView={slidesPerView} pagination={{ clickable: true }} autoplay={{ delay: 3000 }}>
-                {userdetail.favorites?.map(({ _id, seller }) => {
-                  return (
+          {userdetail.favorites !== undefined && userdetail.favorites[0]?.seller?.categoriesArray?.length > 0 ? (
+            <Swiper modules={[Pagination, A11y, Autoplay]} className={style.swiper} spaceBetween={space} slidesPerView={slidesPerView} pagination={{ clickable: true }} autoplay={{ delay: 3000 }}>
+              {userdetail.favorites?.map(({ _id, seller }) => {
+                return (
                   <SwiperSlide key={_id} className={styles.swiperslide}>
-                    <BusinessCard _id={seller?._id} sellerName={seller?.sellerName} categoriesArray={seller?.categoriesArray}
-                    reviews={seller?.reviews} images={seller?.images} />
+                    <BusinessCard _id={seller?._id} sellerName={seller?.sellerName} categoriesArray={seller?.categoriesArray} reviews={seller?.reviews} images={seller?.images} />
                   </SwiperSlide>
-                  )
-                })}
-              </Swiper>)
-            : (
+                )
+              })}
+            </Swiper>
+          ) : (
             <div className={styles['no-favorites']}>
               <p>Don&apos;t have favorites yet</p>
-              <button onClick={() => { navigate('/business') }}> Let&apos;s Explore </button>
+              <button
+                onClick={() => {
+                  navigate('/business')
+                }}
+              >
+                {' '}
+                Let&apos;s Explore{' '}
+              </button>
             </div>
-              )}
+          )}
         </div>
       </div>
 

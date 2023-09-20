@@ -5,6 +5,9 @@ import styles from './Description.module.css'
 import { useFeatures } from '../../hooks/index'
 // images
 import { Landing, Landing2, Landing3, Landing4 } from '../../Images/LandingImages'
+import StandardButton from '../StandardButton/StandardButton'
+// router dom
+import { useNavigate } from 'react-router-dom'
 
 function Description (): JSX.Element {
   const ecommerceFeatures = useFeatures()
@@ -46,6 +49,10 @@ function Description (): JSX.Element {
 }
 
 function Description2 (): JSX.Element {
+  const navigate = useNavigate()
+  const goToBusinessLogin = (): void => {
+    navigate('/businessLogin')
+  }
   return (
     <main className={styles['second-main-description']}>
       <section className={styles['box-call-to-actions']}>
@@ -114,9 +121,9 @@ function Description2 (): JSX.Element {
               platform. Gain more clients, enhance your skills, and become a
               sought-after fashion influencer.
             </p>
-            <a className={styles['boton-get-started']} href="#">
+            <StandardButton variant='sizePagination' onClick={goToBusinessLogin}>
               Learn More
-            </a>
+            </StandardButton>
           </article>
         </div>
       </section>

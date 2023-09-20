@@ -51,11 +51,19 @@
 }
 
 .link-texts {
+  flex-direction: column;
   margin-top: 20px;
 }
+
+/* .do-not-have-account {
+  width: 500px;
+  margin: 5px;
+} */
+
 .forgot,
 .reg-button {
-  margin-top: 5px;
+  min-width: 180px;
+  margin-top: 10px;
   color: #f3f3e6;
   font-size: 14px;
   transition: color 0.3s ease;

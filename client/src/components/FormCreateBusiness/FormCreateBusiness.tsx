@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { useGoBack } from '../../hooks'
 import { useForm } from 'react-hook-form'
 import BusiCategoriesInput from './inputs/BusiCategoriesInput'
 import BusiGenderInput from './inputs/BusiGenderInput'
@@ -17,6 +16,7 @@ import Cloudinary from '../Cloudinary/Cloudinary'
 import toast, { Toaster } from 'react-hot-toast'
 import TermsAndConditions from '../TermsAndConditions/TermsAndConditions'
 import styles from '../FormRegister/FormRegister.module.css'
+import StandardButton from '../StandardButton/StandardButton'
 
 interface FormLoginProps {
   onToggle: () => void
@@ -24,7 +24,6 @@ interface FormLoginProps {
 
 const FormBusiness: React.FC<FormLoginProps> = () => {
   const dispatch = useDispatch()
-  const goBack = useGoBack()
   const navigate = useNavigate()
   const [showTerms, setShowTerms] = useState(false)
 
@@ -79,7 +78,6 @@ const FormBusiness: React.FC<FormLoginProps> = () => {
   }, [dispatch])
 
   const { image } = useSelector((state: RootState) => state)
-  console.log(image)
 
   const onSubmit = handleSubmit(async (data: FormCreateBusi) => {
     delete data.confirmPassword
@@ -158,12 +156,7 @@ const FormBusiness: React.FC<FormLoginProps> = () => {
               <h2 className={style.h2}>Tell us about your work</h2>
             </div>
             <form onSubmit={onSubmit} className={style.forms}>
-              <BusiCategoriesInput
-                register={register}
-                errors={errors}
-                categoryList={categoryList}
-                toggleOtherInputs={toggleOtherInputs}
-              />
+              <BusiCategoriesInput register={register} errors={errors} categoryList={categoryList} toggleOtherInputs={toggleOtherInputs} />
               {showOtherInputs && (
                 <>
                   <BusiNameInput register={register} errors={errors} />
@@ -175,29 +168,25 @@ const FormBusiness: React.FC<FormLoginProps> = () => {
                   {errors.images !== undefined && (
                   <span className={style.imgspan}>Image required</span>
                   )}
-                  <div className={style['buton-div']}>
-                    <button className={style.btn} onClick={goBack}>
-                      Back
-                    </button>
-                    <button className={style.btn} onClick={() => { clearErrors('images') }} type='submit'>
-                      Send
-                    </button>
+                  <div className={style['button-div']}>
+                    <StandardButton variant='sizeForms' onClick={() => { clearErrors('images') }} type='submit'>
+                      Register
+                    </StandardButton>
                   </div>
                 </>
               )}
-              <a href="#" className={styles['terms-conditions']} onClick={toggleTerms}>Terms and Conditions</a>
-                <div className={styles[`terms-and-conditions${showTerms ? '-show-terms' : ''}`]}>
-                  <TermsAndConditions />
-                </div>
+              <a href='#' className={styles['terms-conditions']} onClick={toggleTerms}>
+                Terms and Conditions
+              </a>
+              <div className={styles[`terms-and-conditions${showTerms ? '-show-terms' : ''}`]}>
+                <TermsAndConditions />
+              </div>
             </form>
           </div>
         </div>
       </div>
       <div>
-        <Toaster
-          position="top-center"
-          reverseOrder={false}
-        />
+        <Toaster position='top-center' reverseOrder={false} />
       </div>
     </div>
   )

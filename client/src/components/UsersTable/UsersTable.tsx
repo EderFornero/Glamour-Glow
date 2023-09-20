@@ -37,7 +37,7 @@ interface ActiveInfo {
   _id: string
 }
 
-export default function UsersTable (props: EnhancedTableProps): JSX.Element {
+export default function UsersTable(props: EnhancedTableProps): JSX.Element {
   const { rows } = props
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(5)
@@ -46,16 +46,11 @@ export default function UsersTable (props: EnhancedTableProps): JSX.Element {
     _id: ''
   })
 
-  const handleChangePage = (
-    _event: React.MouseEvent<HTMLButtonElement> | null,
-    newPage: number
-  ): void => {
+  const handleChangePage = (_event: React.MouseEvent<HTMLButtonElement> | null, newPage: number): void => {
     setPage(newPage)
   }
 
-  const handleChangeRowsPerPage = (
-    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ): void => {
+  const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
     setRowsPerPage(parseInt(event.target.value, 10))
     setPage(0)
   }
@@ -76,7 +71,6 @@ export default function UsersTable (props: EnhancedTableProps): JSX.Element {
 
   const handleEnable = async (): Promise<void> => {
     const response = dispatch(enableUser(activeInfo._id))
-    console.log(activeInfo._id)
     setisActiveOpen(false)
     console.log(response)
     if (response !== null) {
@@ -99,55 +93,95 @@ export default function UsersTable (props: EnhancedTableProps): JSX.Element {
         }}
       />
       <TableContainer>
-        <Table aria-labelledby="tableTitle" size='medium' className={style['table-container']}>
+        <Table aria-labelledby='tableTitle' size='medium' className={style['table-container']}>
           <TableHead className={style['table-head']}>
             <TableRow className={style['table-row']}>
-              <TableCell className={style['table-cell']}><p>Profile Image</p></TableCell>
-              <TableCell className={style['table-cell']}><p>Name</p></TableCell>
-              <TableCell className={style['table-cell']}><p>Last Name</p></TableCell>
-              <TableCell className={style['table-cell']}><p>Email</p></TableCell>
-              <TableCell className={style['table-cell']}><p>Phone Number</p></TableCell>
-              <TableCell className={style['table-cell']}><p>Date of Birth</p></TableCell>
-              <TableCell className={style['table-cell']}><p>Is Active</p></TableCell>
-              <TableCell className={style['table-cell']}><p>Role</p></TableCell>
-              <TableCell className={style['table-cell']}><p>Created At</p></TableCell>
+              <TableCell className={style['table-cell']}>
+                <p>Profile Image</p>
+              </TableCell>
+              <TableCell className={style['table-cell']}>
+                <p>Name</p>
+              </TableCell>
+              <TableCell className={style['table-cell']}>
+                <p>Last Name</p>
+              </TableCell>
+              <TableCell className={style['table-cell']}>
+                <p>Email</p>
+              </TableCell>
+              <TableCell className={style['table-cell']}>
+                <p>Phone Number</p>
+              </TableCell>
+              <TableCell className={style['table-cell']}>
+                <p>Date of Birth</p>
+              </TableCell>
+              <TableCell className={style['table-cell']}>
+                <p>Is Active</p>
+              </TableCell>
+              <TableCell className={style['table-cell']}>
+                <p>Role</p>
+              </TableCell>
+              <TableCell className={style['table-cell']}>
+                <p>Created At</p>
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((row) => (
-                <TableRow key={row._id}>
-                  <div className={style['div-profile-image']}>
-                    <ProfileImage src={row.image}></ProfileImage>
-                    <div className={style.bottom}>
+            {rows?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => (
+              <TableRow key={row._id}>
+                <div className={style['div-profile-image']}>
+                  <ProfileImage src={row.image}></ProfileImage>
+                  <div className={style.bottom}>
                     <Tooltip title='Disable User' placement='top'>
-                      <button className={style['btn-delete-disable']} onClick={(): void => { handleDisable(row._id, row.isActive) }}><DisableButton /></button>
+                      <button
+                        className={style['btn-delete-disable']}
+                        onClick={(): void => {
+                          handleDisable(row._id, row.isActive)
+                        }}
+                      >
+                        <DisableButton />
+                      </button>
                     </Tooltip>
-                    </div>
                   </div>
-                  <TableCell className={style['table-cell']}><p>{row.name}</p></TableCell>
-                  <TableCell className={style['table-cell']}><p>{row.lastName}</p></TableCell>
-                  <TableCell className={style['table-cell']}><p>{row.email}</p></TableCell>
-                  <TableCell className={style['table-cell']}><p>{row.phoneNumber}</p></TableCell>
-                  <TableCell className={style['table-cell']}><p>{row.dateOfBirth}</p></TableCell>
-                  <TableCell className={style['table-cell']}><p>{row.isActive ? 'Yes' : 'No'}</p></TableCell>
-                  <TableCell className={style['table-cell']}><p>{row.role}</p></TableCell>
-                  <TableCell className={style['table-cell']}><p>{row.createdAt}</p></TableCell>
-                </TableRow>
-              ))}
+                </div>
+                <TableCell className={style['table-cell']}>
+                  <p>{row.name}</p>
+                </TableCell>
+                <TableCell className={style['table-cell']}>
+                  <p>{row.lastName}</p>
+                </TableCell>
+                <TableCell className={style['table-cell']}>
+                  <p>{row.email}</p>
+                </TableCell>
+                <TableCell className={style['table-cell']}>
+                  <p>{row.phoneNumber}</p>
+                </TableCell>
+                <TableCell className={style['table-cell']}>
+                  <p>{row.dateOfBirth}</p>
+                </TableCell>
+                <TableCell className={style['table-cell']}>
+                  <p>{row.isActive ? 'Yes' : 'No'}</p>
+                </TableCell>
+                <TableCell className={style['table-cell']}>
+                  <p>{row.role}</p>
+                </TableCell>
+                <TableCell className={style['table-cell']}>
+                  <p>{row.createdAt}</p>
+                </TableCell>
+              </TableRow>
+            ))}
           </TableBody>
         </Table>
       </TableContainer>
       <div className={style['table-pagination']}>
-      <TablePagination
-        rowsPerPageOptions={[5, 10, 25]}
-        component="div"
-        count={rows?.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onPageChange={handleChangePage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
-      />
+        <TablePagination
+          rowsPerPageOptions={[5, 10, 25]}
+          component='div'
+          count={rows?.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+        />
       </div>
       {isActiveOpen && <ConfirmationReleasePay message='This seller are disable, you want to change to enable?' onConfirm={handleEnable} onCancel={closeActive} />}
     </Box>

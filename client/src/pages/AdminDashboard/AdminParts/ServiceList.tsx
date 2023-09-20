@@ -27,7 +27,6 @@ const ServiceList: React.FC<Props> = ({ setActiveItem }) => {
   const dispatch = useDispatch()
   const { id } = useParams()
   const { servicesArray, sellerName } = useSelector((state: RootState) => state.sellerdetail)
-  console.log(Service)
   useEffect(() => {
     dispatch(getSellerbyId(id))
   }, [Service, dispatch])
@@ -136,28 +135,34 @@ const ServiceList: React.FC<Props> = ({ setActiveItem }) => {
   }
 
   return (
-    <div className= {style['seller-services-container']}>
-      <div className= {style['seller-services-header']}>
+    <div className={style['seller-services-container']}>
+      <div className={style['seller-services-header']}>
         <h2>{sellerName}&apos;s Services</h2>
-        <button onClick={() => { setActiveItem('Create') }}>ADD NEW</button>
+        <button
+          onClick={() => {
+            setActiveItem('Create')
+          }}
+        >
+          ADD NEW
+        </button>
       </div>
       <ul className={style['service-list']}>
         {servicesArray.map((service, index) => (
           <li key={service._id} className={style['service-item']}>
             <span className={style['list-number']}> {index + 1}</span>
-            {ServiceId === service._id
-              ? (<>
-              <div className={style['service-left']}>
-                <input type="text" name="name" value={Service?.name} onChange={handleChange}/>
-                <input type="text" name="description" value={Service?.description} onChange={handleChange}/>
-              </div>
-                $ <input className={style['price-input']} type="number" name="price" value={Service?.price.toString()} onChange={handleChange}/>
-              <div className={style['service-buttons']}>
-                <button onClick={handleSaveClick}>Save</button>
-                <button onClick={handleCancelClick}>Cancel</button>
-              </div>
-              </>)
-              : (
+            {ServiceId === service._id ? (
+              <>
+                <div className={style['service-left']}>
+                  <input type='text' name='name' value={Service?.name} onChange={handleChange} />
+                  <input type='text' name='description' value={Service?.description} onChange={handleChange} />
+                </div>
+                $ <input className={style['price-input']} type='number' name='price' value={Service?.price.toString()} onChange={handleChange} />
+                <div className={style['service-buttons']}>
+                  <button onClick={handleSaveClick}>Save</button>
+                  <button onClick={handleCancelClick}>Cancel</button>
+                </div>
+              </>
+            ) : (
               <>
                 <div className={style['service-left-full']}>
                   <span className={style['service-name']}> {service.name}</span>
@@ -165,19 +170,30 @@ const ServiceList: React.FC<Props> = ({ setActiveItem }) => {
                 </div>
                 <span className={style['service-price']}> $ {service.price}</span>
                 <div className={style['service-rigth-full']}>
-                  <button className={style['edit-button']} onClick={() => { handleEditClick(service._id) }}>Edit</button>
-                  <button className={style['delete-button']} onClick={() => { void handleDeleteClick(service._id) }}>Delete</button>
+                  <button
+                    className={style['edit-button']}
+                    onClick={() => {
+                      handleEditClick(service._id)
+                    }}
+                  >
+                    Edit
+                  </button>
+                  <button
+                    className={style['delete-button']}
+                    onClick={() => {
+                      void handleDeleteClick(service._id)
+                    }}
+                  >
+                    Delete
+                  </button>
                 </div>
               </>
-                )}
+            )}
           </li>
         ))}
       </ul>
       <div>
-        <Toaster
-          position="top-center"
-          reverseOrder={false}
-        />
+        <Toaster position='top-center' reverseOrder={false} />
       </div>
     </div>
   )

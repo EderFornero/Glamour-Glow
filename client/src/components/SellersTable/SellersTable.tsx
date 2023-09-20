@@ -47,7 +47,7 @@ interface ActiveInfo {
   isActive: boolean
 }
 
-export default function UsersTable (props: EnhancedTableProps): JSX.Element {
+export default function UsersTable(props: EnhancedTableProps): JSX.Element {
   const { rows } = props
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(5)
@@ -135,7 +135,6 @@ export default function UsersTable (props: EnhancedTableProps): JSX.Element {
 
   const handleEnable = async (): Promise<void> => {
     dispatch(enableSellerAdmin(activeInfo.sellerId))
-    console.log(activeInfo.sellerId)
     setisActiveOpen(false)
   }
 

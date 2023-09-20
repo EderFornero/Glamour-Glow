@@ -62,7 +62,7 @@
   object-fit: cover;
 }
 
-.card button {
+/* .card button {
   margin: 30px 0 0 0;
   border: 0;
   background: #5448de;
@@ -78,7 +78,7 @@
 .card button:hover{
   background: var(--accent-color);
   color: var(--primary-color);
-}
+} */
 
 .itemsContainer{
   display: flex;

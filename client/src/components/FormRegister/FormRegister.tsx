@@ -7,7 +7,6 @@ import BirthDateInput from './inputs/BirthDateInput'
 import PasswordInput from './inputs/PasswordInput'
 import LastNameInput from './inputs/LastNameInput'
 import style from './FormRegister.module.css'
-import { useGoBack } from '../../hooks'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { postUser, postValidate, setAuth, setUserId } from '../../redux/actions'
@@ -15,15 +14,19 @@ import PhoneNumberInput from './inputs/PhoneNumberInput'
 import { sendWelcomeEmail } from '../../utils'
 import TermsAndConditions from '../TermsAndConditions/TermsAndConditions'
 import toast, { Toaster } from 'react-hot-toast'
+import StandardButton from '../StandardButton/StandardButton'
 
 interface FormLoginProps {
   onToggle: () => void
 }
 
 const FormRegister: React.FC<FormLoginProps> = () => {
-  const goBack = useGoBack()
   const dispatch = useDispatch()
   const navigate = useNavigate()
+
+  const goBack = (): void => {
+    navigate('/')
+  }
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent): void => {
@@ -141,12 +144,9 @@ const FormRegister: React.FC<FormLoginProps> = () => {
         <PhoneNumberInput register={register} errors={errors} />
         <BirthDateInput register={register} errors={errors} />
         <div className={style['div-buttons']}>
-          <button className={style.botn} onClick={goBack}>
-            Back
-          </button>
-          <button className={style.botn} type='submit'>
-            Send
-          </button>
+          <StandardButton variant='sizeForms' type='submit'>
+            Register
+          </StandardButton>
         </div>
         </form>
         <a href="#" className={style['terms-conditions']} onClick={toggleTerms}>Terms and Conditions</a>

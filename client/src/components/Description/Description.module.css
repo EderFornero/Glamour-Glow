@@ -13,7 +13,6 @@ h3 {
   font-weight: bold;
 }
 
-/* ESTILOS HEADER */
 .box-header {
   display: flex;
   justify-content: center;
@@ -116,7 +115,6 @@ h3 {
   background-color: transparent;
 }
 
-/* ESTILOS FEATURES */
 .box-features {
   padding: 50px;
   background-color: #ffffff;
@@ -159,7 +157,7 @@ h3 {
   transition: 0.4s;
   margin: 15px;
   position: relative;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.525);
+  box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.525);
   @media (max-width: 1165px) {
     height: 260px;
   }

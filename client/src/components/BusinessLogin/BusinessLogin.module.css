@@ -118,6 +118,7 @@
 
 .forgot,
 .reg-button {
+  margin-top: 10px;
   color: black;
   text-decoration: underline;
   transition: color 0.3s ease;
@@ -127,10 +128,6 @@
 .forgot:hover,
 .reg-button:hover {
   color: #ffffff;
-}
-
-.forgot {
-  margin-top: 3px;
 }
 
 .ico-div {

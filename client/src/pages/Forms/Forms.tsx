@@ -21,11 +21,11 @@ const Forms: React.FC = () => {
           <div className={style['text-log'] + (showLoginForm ? '' : ` ${style['text-log-adjusted']}`)}>
             <div className={style.text}>
               <button className={style['i-log']} onClick={toggleForm} disabled={showLoginForm}>
-                Login
+                LOGIN
               </button>
               <span className={style.I}>|</span>
               <button className={style['i-reg']} onClick={toggleForm} disabled={!showLoginForm}>
-                Register
+                REGISTER
               </button>
             </div>
             <div className={style.forms}>

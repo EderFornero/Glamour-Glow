@@ -43,6 +43,10 @@ a{
     cursor: pointer;
     color:var(--secondary-color);
     text-decoration: none;
+
+    &:hover{
+      color: #FFF;
+    }
 }
 
 menu {

@@ -3,6 +3,7 @@ import toast, { Toaster } from 'react-hot-toast'
 import axios from '../../redux/axiosService'
 import Loader from '../Loader/Loader'
 import { useState } from 'react'
+import imagen from '../../Images/Payment.png'
 const API_URL = import.meta.env.VITE_SERVER_URL
 
 interface RequestPayoutProps {
@@ -50,20 +51,23 @@ const RequestPayout: React.FC<RequestPayoutProps> = ({ accountBalance, sellerNam
   }
 
   return (
-    <form onSubmit={handleSubmit} className={style.form}>
-      <Toaster
-        toastOptions={{
-          style: {
-            marginTop: '100px'
-          }
-        }}
-      />
-      <h2 className={style.title}>You are about to request a payment</h2>
-      <p>{`$${accountBalance}.- will be deducted from your account`}</p>
-      <button type='submit' className={style.submit}>
-        {loading ? <Loader /> : 'Request'}
-      </button>
-    </form>
+    <div className={style.global}>
+      <img src={imagen} alt='imagen loca' className={style.image} />
+      <form onSubmit={handleSubmit} className={style.form}>
+        <Toaster
+          toastOptions={{
+            style: {
+              marginTop: '100px'
+            }
+          }}
+        />
+        <h2 className={style.title}>You are about to request a payment</h2>
+        <p>{`$${accountBalance}.- will be deducted from your account. Please confirm you want to perform this action`}</p>
+        <button type='submit' className={style.submit}>
+          {loading ? <Loader /> : 'Request'}
+        </button>
+      </form>
+    </div>
   )
 }
 

@@ -347,6 +347,19 @@ export const deleteUser: any = (id: string) => {
   }
 }
 
+export const deleteReport: any = (id: string) => {
+  const endpointDelete = `${API_URL}admin/reports/${id}`
+
+  return async function () {
+    try {
+      const response = await axios.delete(endpointDelete)
+      return response
+    } catch (error: any) {
+      console.log(error.message)
+    }
+  }
+}
+
 export const disableUser: any = (id: string) => {
   const endpointDisable = `${API_URL}admin/user/disable/${id}`
 
