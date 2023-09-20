@@ -33,22 +33,27 @@ const Clients: React.FC<Props> = ({ clients, id }) => {
       <ul className={style['service-list']}>
         {clients.map((client, index) => (
           <>
-          <li key={client.id} className={style['service-item']}>
-            <span className={style['list-number']}> {index + 1}</span>
-            <img className={styles['client-image']} src={client.image}/>
-            <span className={style['service-name']}> {client.name + client.lastName}</span>
-            <button className={style['edit-button']} onClick={() => { ClientView(index) }}>
-              View
-            </button>
-          </li>
+            <li key={client.id} className={style['service-item']}>
+              <span className={style['list-number']}> {index + 1}</span>
+              <img className={styles['client-image']} src={client.image} />
+              <span className={style['service-name']}> {client.name + client.lastName}</span>
+              <button
+                className={style['edit-button']}
+                onClick={() => {
+                  ClientView(index)
+                }}
+              >
+                View
+              </button>
+            </li>
 
-          {openClientIndex === index && (
+            {openClientIndex === index && (
               <div className={styles.userdetail}>
                 <div className={styles['userdetail-header']}>
                   <img src={client.image} alt={client.name} />
-                  <h1>
+                  <h3>
                     {client.name} {client.lastName === 'apellido' ? '' : client.lastName}
-                  </h1>
+                  </h3>
                 </div>
 
                 <div className={styles['userdetail-body']}>
@@ -71,8 +76,9 @@ const Clients: React.FC<Props> = ({ clients, id }) => {
                   </ul>
                 </div>
               </div>
-          )}
-        </>))}
+            )}
+          </>
+        ))}
       </ul>
     </div>
   )
