@@ -123,7 +123,7 @@ const BusinessLogin: React.FC<BusinessLoginProps> = ({ onToggle }) => {
                   Dont have an business account?
                 </p>
               </button>
-              <Link to='/login/passwordRecovery'>
+              <Link to='/businessLogin/passwordRecovery'>
                 <p className={style.forgot}>Forgot password?</p>
               </Link>
             </div>
