@@ -10,9 +10,11 @@ import TablePagination from '@mui/material/TablePagination'
 import styled from 'styled-components'
 import style from './UsersTable.module.css'
 import { useDispatch } from 'react-redux'
-import { disableUser } from '../../redux/actions'
+import { disableUser, enableUser } from '../../redux/actions'
 import DisableButton from '../../assets/UserTableButtons/DisableSvg'
+import ConfirmationReleasePay from '../ConfirmationReleasePay/ConfirmationReleasePay'
 import { Tooltip } from '@mui/material'
+import toast, { Toaster } from 'react-hot-toast'
 
 interface Data {
   _id: string
@@ -31,10 +33,18 @@ interface EnhancedTableProps {
   rows: Data[]
 }
 
+interface ActiveInfo {
+  _id: string
+}
+
 export default function UsersTable (props: EnhancedTableProps): JSX.Element {
   const { rows } = props
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(5)
+  const [isActiveOpen, setisActiveOpen] = useState<boolean>(false)
+  const [activeInfo, setActiveInfo] = useState<ActiveInfo>({
+    _id: ''
+  })
 
   const handleChangePage = (
     _event: React.MouseEvent<HTMLButtonElement> | null,
@@ -52,13 +62,42 @@ export default function UsersTable (props: EnhancedTableProps): JSX.Element {
 
   const dispatch = useDispatch()
 
-  const handleDisable = (_id: string): void => {
-    dispatch(disableUser(_id))
-    console.log(_id)
+  const handleDisable = (_id: string, isActive: boolean): void => {
+    if (isActive) {
+      const response = dispatch(disableUser(_id))
+      if (response !== null) {
+        toast.success('User disabled succesfully')
+      }
+    } else {
+      setActiveInfo({ ...activeInfo, _id })
+      setisActiveOpen(true)
+    }
+  }
+
+  const handleEnable = async (): Promise<void> => {
+    const response = dispatch(enableUser(activeInfo._id))
+    console.log(activeInfo._id)
+    setisActiveOpen(false)
+    console.log(response)
+    if (response.PromiseResult === undefined) {
+      toast.error('A problem has occurred')
+    }
+  }
+
+  const closeActive = (): void => {
+    setisActiveOpen(false)
+    setActiveInfo({ ...activeInfo, _id: '' })
   }
 
   return (
     <Box sx={{ width: '100%' }}>
+      <Toaster
+        toastOptions={{
+          style: {
+            marginTop: '100px'
+          }
+        }}
+      />
       <TableContainer>
         <Table aria-labelledby="tableTitle" size='medium' className={style['table-container']}>
           <TableHead className={style['table-head']}>
@@ -82,7 +121,7 @@ export default function UsersTable (props: EnhancedTableProps): JSX.Element {
                     <ProfileImage src={row.image}></ProfileImage>
                     <div className={style.bottom}>
                     <Tooltip title='Disable User' placement='top'>
-                      <button className={style['btn-delete-disable']} onClick={(): void => { handleDisable(row._id) }}><DisableButton /></button>
+                      <button className={style['btn-delete-disable']} onClick={(): void => { handleDisable(row._id, row.isActive) }}><DisableButton /></button>
                     </Tooltip>
                     </div>
                   </div>
@@ -110,6 +149,7 @@ export default function UsersTable (props: EnhancedTableProps): JSX.Element {
         onRowsPerPageChange={handleChangeRowsPerPage}
       />
       </div>
+      {isActiveOpen && <ConfirmationReleasePay message='This seller are disable, you want to change to enable?' onConfirm={handleEnable} onCancel={closeActive} />}
     </Box>
   )
 }

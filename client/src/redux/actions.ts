@@ -342,6 +342,19 @@ export const disableUser: any = (id: string) => {
   }
 }
 
+export const enableUser: any = (id: string) => {
+  const endpointEnable = `${API_URL}users/enable/${id}`
+
+  return async function () {
+    try {
+      const response = await axios.put(endpointEnable)
+      return response
+    } catch (error: any) {
+      console.log(error.message)
+    }
+  }
+}
+
 export const getUserMetrics: any = () => {
   const endpoint = `${API_URL}admin/userMetrics`
 
