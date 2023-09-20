@@ -1,5 +1,7 @@
-import { SellerModel } from "../models";
+import { SellerModel, PaymentsModel } from "../models";
+import mongoose from "mongoose";
 import jwt from "jsonwebtoken";
+
 
 export const readSellers = async () => {
   const allSellers = await SellerModel.find().select({sellerPassword:0, __v:0, updatedAt:0})
@@ -148,5 +150,52 @@ export const validateSellerAccount = async (id:string, payment:string) => {
     return 
   } catch (error) {
     throw error
+  }
+}
+
+export const readClientsBySellerId =async (id: string ) => {
+  try {
+    const clients = await PaymentsModel.aggregate([
+      {
+        $match: {
+          sellerId: new mongoose.Types.ObjectId(id)
+        },
+      },
+       {
+         $group: {
+           _id: "$userId",
+         },
+       },
+        {
+          $lookup: {
+            from: "users", 
+            localField: "_id",
+           foreignField: "_id",
+            as: "user",
+        },
+        },
+         {
+           $project: {
+             _id: 0,
+             user: {
+               $arrayElemAt: ["$user", 0],
+             },
+           },
+         },
+        {
+          $project: {
+           "user.name": 1,
+            "user.lastName": 1,
+            "user.image": 1,
+            "user.email": 1,
+          },
+        },
+    ])
+    console.log(clients)
+    if(!clients) throw new Error("No clients for this Seller")
+    return clients
+  } catch (error) {
+    throw error
+
   }
 }
