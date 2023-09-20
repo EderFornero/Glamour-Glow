@@ -15,7 +15,6 @@ const UserDetailFavoritesDelete = (): JSX.Element => {
   const [slidesPerView, setSlidesPerView] = useState(3)
   const [space, setSpace] = useState(0)
   const userdetail = useSelector((state: RootState) => state.userdetail)
-  console.log(userdetail.favorites[0])
 
   const updateSlidesPerView = (): void => {
     const width = window.innerWidth
@@ -54,7 +53,10 @@ const UserDetailFavoritesDelete = (): JSX.Element => {
         </div>
         <div className={styles['favorites-body']}>
           {userdetail.favorites[0]?.seller.categoriesArray.length === 0
-            ? <><p>Don&apos;t have favorites yet</p> <button onClick={() => { navigate('/business') }}> Let&apos;s Explore </button></>
+            ? <div className={styles['no-favorites']}>
+                <p>Don&apos;t have favorites yet</p>
+                <button onClick={() => { navigate('/business') }}> Let&apos;s Explore </button>
+              </div>
             : <Swiper modules={[Pagination, A11y, Autoplay]} className={style.swiper} spaceBetween={space}
               slidesPerView={slidesPerView} pagination={{ clickable: true }} autoplay={{ delay: 3000 }}>
               {userdetail.favorites.map(({ _id, seller }) => {
