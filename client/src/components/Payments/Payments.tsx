@@ -16,7 +16,7 @@ const Payments: React.FC = () => {
   const dispatch = useDispatch()
   const payments = useSelector((state: RootState) => state.payments)
   const [page, setPage] = useState(0)
-  const [rowsPerPage, setRowsPerPage] = useState(5)
+  const [rowsPerPage, setRowsPerPage] = useState(10)
 
   useEffect(() => {
     dispatch(getPayments())
@@ -50,16 +50,16 @@ const Payments: React.FC = () => {
           <TableHead className={style['table-head']}>
             <TableRow className={style['table-row']}>
               <TableCell className={style['table-cell']}>
-                <p>Name</p>
+                <p className={style['table-p']}>Name</p>
               </TableCell>
               <TableCell className={style['table-cell']}>
-                <p>Status</p>
+                <p className={style['table-p']}>Status</p>
               </TableCell>
               <TableCell className={style['table-cell']}>
-                <p>transaction Id</p>
+                <p className={style['table-p']}>Transaction Id</p>
               </TableCell>
               <TableCell className={style['table-cell']}>
-                <p>Price</p>
+                <p className={style['table-p']}>Price</p>
               </TableCell>
             </TableRow>
           </TableHead>
