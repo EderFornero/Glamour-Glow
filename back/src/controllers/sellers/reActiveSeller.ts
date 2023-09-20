@@ -2,7 +2,7 @@ import { enableSellerHandler } from "../../handlers";
 import { NextFunction,Response,Request } from "express";
 import { readAndActiveSellerTypeParams } from "../../schemas/sellerSchema";
 
-export const enableUser = async (
+export const enableSeller = async (
   req: Request<readAndActiveSellerTypeParams>,
   res: Response,
   next: NextFunction
