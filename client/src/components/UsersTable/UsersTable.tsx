@@ -10,9 +10,9 @@ import TablePagination from '@mui/material/TablePagination'
 import styled from 'styled-components'
 import style from './UsersTable.module.css'
 import { useDispatch } from 'react-redux'
-import { deleteUser, disableUser } from '../../redux/actions'
-import DeleteButton from '../../assets/UserTableButtons/DeleteSvg'
+import { disableUser } from '../../redux/actions'
 import DisableButton from '../../assets/UserTableButtons/DisableSvg'
+import { Tooltip } from '@mui/material'
 
 interface Data {
   _id: string
@@ -52,11 +52,6 @@ export default function UsersTable (props: EnhancedTableProps): JSX.Element {
 
   const dispatch = useDispatch()
 
-  const handleDelete = (_id: string): void => {
-    dispatch(deleteUser(_id))
-    console.log(_id)
-  }
-
   const handleDisable = (_id: string): void => {
     dispatch(disableUser(_id))
     console.log(_id)
@@ -86,8 +81,9 @@ export default function UsersTable (props: EnhancedTableProps): JSX.Element {
                   <div className={style['div-profile-image']}>
                     <ProfileImage src={row.image}></ProfileImage>
                     <div className={style.bottom}>
-                      <button className={style['btn-delete-disable']} onClick={(): void => { handleDelete(row._id) }}><DeleteButton /></button>
+                    <Tooltip title='Disable User' placement='top'>
                       <button className={style['btn-delete-disable']} onClick={(): void => { handleDisable(row._id) }}><DisableButton /></button>
+                    </Tooltip>
                     </div>
                   </div>
                   <TableCell className={style['table-cell']}><p>{row.name}</p></TableCell>

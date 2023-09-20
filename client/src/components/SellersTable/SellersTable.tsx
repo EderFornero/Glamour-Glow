@@ -11,8 +11,7 @@ import ConfirmationReleasePay from '../ConfirmationReleasePay/ConfirmationReleas
 import styled from 'styled-components'
 import style from './SellersTable.module.css'
 import { useDispatch } from 'react-redux'
-import { deleteUser, disableSeller } from '../../redux/actions'
-import DeleteButton from '../../assets/UserTableButtons/DeleteSvg'
+import { disableSeller } from '../../redux/actions'
 import DisableButton from '../../assets/UserTableButtons/DisableSvg'
 import DolarButton from '../../assets/UserTableButtons/DollarSvg'
 import axios from '../../redux/axiosService'
@@ -42,7 +41,7 @@ interface SellerInfo {
   accountBalance: number
 }
 
-export default function UsersTable(props: EnhancedTableProps): JSX.Element {
+export default function UsersTable (props: EnhancedTableProps): JSX.Element {
   const { rows } = props
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(5)
@@ -57,18 +56,13 @@ export default function UsersTable(props: EnhancedTableProps): JSX.Element {
   const handleChangePage = (_event: React.MouseEvent<HTMLButtonElement> | null, newPage: number): void => {
     setPage(newPage)
   }
-  // Falta averiguar de donde sacar el SALDO
+
   const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
     setRowsPerPage(parseInt(event.target.value, 10))
     setPage(0)
   }
 
   const dispatch = useDispatch()
-
-  const handleDelete = (_id: string): void => {
-    dispatch(deleteUser(_id))
-    console.log(_id)
-  }
 
   const handleDisable = (_id: string): void => {
     dispatch(disableSeller(_id))
@@ -150,14 +144,6 @@ export default function UsersTable(props: EnhancedTableProps): JSX.Element {
                 <div className={style['div-profile-image']}>
                   <ProfileImage src={row.images}></ProfileImage>
                   <div className={style.bottom}>
-                    <button
-                      className={style['btn-delete-disable']}
-                      onClick={(): void => {
-                        handleDelete(row._id)
-                      }}
-                    >
-                      <DeleteButton />
-                    </button>
                     <button
                       className={style['btn-delete-disable']}
                       onClick={(): void => {
