@@ -12,7 +12,7 @@ import TableRow from '@mui/material/TableRow'
 import TablePagination from '@mui/material/TablePagination'
 import style from './ReportsList.module.css'
 import { Tooltip } from '@mui/material'
-import DisableButton from '../../assets/UserTableButtons/DisableSvg'
+import CheckSvg from '../../assets/UserTableButtons/CheckSvg'
 import toast, { Toaster } from 'react-hot-toast'
 
 const ReportsList: React.FC = () => {
@@ -76,7 +76,7 @@ const ReportsList: React.FC = () => {
                     <div className={style['div-profile-image']}>
                     <div className={style.bottom}>
                     <Tooltip title='Check Report' placement='top'>
-                      <button className={style['btn-delete-disable']} onClick={(): void => { handleReport(row._id) }}><DisableButton /></button>
+                      <button className={style['btn-delete-disable']} onClick={(): void => { handleReport(row._id) }}><CheckSvg /></button>
                     </Tooltip>
                   </div>
                   </div>
