@@ -193,6 +193,7 @@ export const readClientsBySellerId = async (id: string ) => {
          },
         {
           $project: {
+            "user._id":1,
            "user.name": 1,
             "user.lastName": 1,
             "user.image": 1,
