@@ -11,7 +11,7 @@ import ConfirmationReleasePay from '../ConfirmationReleasePay/ConfirmationReleas
 import styled from 'styled-components'
 import style from './SellersTable.module.css'
 import { useDispatch } from 'react-redux'
-import { disableSeller, enableSeller } from '../../redux/actions'
+import { disableSellerAdmin, enableSellerAdmin } from '../../redux/actions'
 import DisableButton from '../../assets/UserTableButtons/DisableSvg'
 import DolarButton from '../../assets/UserTableButtons/DollarSvg'
 import axios from '../../redux/axiosService'
@@ -78,7 +78,7 @@ export default function UsersTable (props: EnhancedTableProps): JSX.Element {
 
   const handleDisable = (_id: string, isActive: boolean): void => {
     if (isActive) {
-      const response = dispatch(disableSeller(_id))
+      const response = dispatch(disableSellerAdmin(_id))
       if (response !== null) {
         toast.success('Seller disabled succesfully')
       }
@@ -105,16 +105,36 @@ export default function UsersTable (props: EnhancedTableProps): JSX.Element {
         accountBalance: sellerInfo.accountBalance
       })
       if (response !== null && mail !== null) {
-        toast.success('Balance deducted succesfully')
+        toast.success('Balance deducted succesfully', {
+          style: {
+            border: '1px solid #3d36be',
+            padding: '16px',
+            color: '#1eb66d'
+          },
+          iconTheme: {
+            primary: '#6e66ff',
+            secondary: '#FFFAEE'
+          }
+        })
         setSellerInfo({ ...sellerInfo, sellerId: '', sellerEmail: '', sellerName: '', accountBalance: 0 })
       }
     } catch (error) {
-      toast.error('Could not deduct balance, please try again')
+      toast.error('Could not deduct balance, please try again', {
+        style: {
+          border: '1px solid #3d36be',
+          padding: '16px',
+          color: 'red'
+        },
+        iconTheme: {
+          primary: 'red',
+          secondary: '#FFFAEE'
+        }
+      })
     }
   }
 
   const handleEnable = async (): Promise<void> => {
-    dispatch(enableSeller(activeInfo.sellerId))
+    dispatch(enableSellerAdmin(activeInfo.sellerId))
     console.log(activeInfo.sellerId)
     setisActiveOpen(false)
   }
@@ -131,13 +151,7 @@ export default function UsersTable (props: EnhancedTableProps): JSX.Element {
 
   return (
     <Box sx={{ width: '100%' }}>
-      <Toaster
-        toastOptions={{
-          style: {
-            marginTop: '100px'
-          }
-        }}
-      />
+      <Toaster />
       <TableContainer>
         <Table aria-labelledby='tableTitle' size='medium' className={style['table-container']}>
           <TableHead className={style['table-head']}>
@@ -175,24 +189,24 @@ export default function UsersTable (props: EnhancedTableProps): JSX.Element {
                   <ProfileImage src={row.images}></ProfileImage>
                   <div className={style.bottom}>
                     <Tooltip title='Disable Seller' placement='top'>
-                    <button
-                      className={style['btn-delete-disable']}
-                      onClick={(): void => {
-                        handleDisable(row._id, row.isActive)
-                      }}
-                    >
-                      <DisableButton />
-                    </button>
+                      <button
+                        className={style['btn-delete-disable']}
+                        onClick={(): void => {
+                          handleDisable(row._id, row.isActive)
+                        }}
+                      >
+                        <DisableButton />
+                      </button>
                     </Tooltip>
                     <Tooltip title='Release Money' placement='top'>
-                    <button
-                      className={style['btn-delete-disable']}
-                      onClick={(): void => {
-                        handleDolar(row._id, row.accountBalance, row.sellerEmail, row.sellerName)
-                      }}
-                    >
-                      <DolarButton />
-                    </button>
+                      <button
+                        className={style['btn-delete-disable']}
+                        onClick={(): void => {
+                          handleDolar(row._id, row.accountBalance, row.sellerEmail, row.sellerName)
+                        }}
+                      >
+                        <DolarButton />
+                      </button>
                     </Tooltip>
                   </div>
                 </div>
