@@ -162,7 +162,7 @@ export const validateSellerAccount = async (id: string, payment: string) => {
   }
 }
 
-export const readClientsBySellerId =async (id: string ) => {
+export const readClientsBySellerId = async (id: string ) => {
   try {
     const clients = await PaymentsModel.aggregate([
       {
@@ -178,7 +178,7 @@ export const readClientsBySellerId =async (id: string ) => {
         {
           $lookup: {
             from: "users", 
-            localField: "_id",
+          localField: "_id",
            foreignField: "_id",
             as: "user",
         },
@@ -197,6 +197,11 @@ export const readClientsBySellerId =async (id: string ) => {
             "user.lastName": 1,
             "user.image": 1,
             "user.email": 1,
+          },
+        },
+        {
+          $replaceRoot: {
+            newRoot: "$user", // Promote the "user" field to the top level
           },
         },
     ])
