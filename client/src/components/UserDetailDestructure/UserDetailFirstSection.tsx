@@ -30,8 +30,8 @@ const UserDetailFirstSection = (): JSX.Element => {
   const { id } = useParams()
 
   useEffect(() => {
-    image ? dispatch(updateUserInfo(id, { 'image': image })) : '' }
-  , [image])
+    image ? dispatch(updateUserInfo(id, { image: image })) : ''
+  }, [image])
 
   useEffect(() => {
     dispatch(getUserbyId(id))
@@ -109,7 +109,8 @@ const UserDetailFirstSection = (): JSX.Element => {
               Name <span>{editing ? <input type='text' name='name' value={newUserInfo.name} onChange={handleChange} /> : userdetail.name}</span>
             </li>
             <li>
-              Last Name <span>{editing ? <input type='text' name='lastName' value={newUserInfo.lastName} onChange={handleChange} /> : (userdetail.lastName === 'apellido' ? '' : userdetail.lastName)}</span>
+              Last Name{' '}
+              <span>{editing ? <input type='text' name='lastName' value={newUserInfo.lastName} onChange={handleChange} /> : userdetail.lastName === 'apellido' ? '' : userdetail.lastName}</span>
             </li>
             <li>
               Phone <span>{editing ? <input type='number' name='phoneNumber' value={newUserInfo.phoneNumber} onChange={handleChange} /> : userdetail.phoneNumber}</span>
@@ -128,10 +129,7 @@ const UserDetailFirstSection = (): JSX.Element => {
         {isReportPopupOpen && <Report id={userdetail._id} onClose={closeReportPopup} isOpen={isReportPopupOpen} route='users' />}
       </div>
       <div>
-        <Toaster
-          position="top-center"
-          reverseOrder={false}
-        />
+        <Toaster position='top-center' reverseOrder={false} />
       </div>
     </section>
   )

@@ -47,7 +47,7 @@ interface ActiveInfo {
   isActive: boolean
 }
 
-export default function UsersTable (props: EnhancedTableProps): JSX.Element {
+export default function UsersTable(props: EnhancedTableProps): JSX.Element {
   const { rows } = props
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(5)
@@ -105,11 +105,31 @@ export default function UsersTable (props: EnhancedTableProps): JSX.Element {
         accountBalance: sellerInfo.accountBalance
       })
       if (response !== null && mail !== null) {
-        toast.success('Balance deducted succesfully')
+        toast.success('Balance deducted succesfully', {
+          style: {
+            border: '1px solid #3d36be',
+            padding: '16px',
+            color: '#1eb66d'
+          },
+          iconTheme: {
+            primary: '#6e66ff',
+            secondary: '#FFFAEE'
+          }
+        })
         setSellerInfo({ ...sellerInfo, sellerId: '', sellerEmail: '', sellerName: '', accountBalance: 0 })
       }
     } catch (error) {
-      toast.error('Could not deduct balance, please try again')
+      toast.error('Could not deduct balance, please try again', {
+        style: {
+          border: '1px solid #3d36be',
+          padding: '16px',
+          color: 'red'
+        },
+        iconTheme: {
+          primary: 'red',
+          secondary: '#FFFAEE'
+        }
+      })
     }
   }
 
@@ -131,13 +151,7 @@ export default function UsersTable (props: EnhancedTableProps): JSX.Element {
 
   return (
     <Box sx={{ width: '100%' }}>
-      <Toaster
-        toastOptions={{
-          style: {
-            marginTop: '100px'
-          }
-        }}
-      />
+      <Toaster />
       <TableContainer>
         <Table aria-labelledby='tableTitle' size='medium' className={style['table-container']}>
           <TableHead className={style['table-head']}>
@@ -175,24 +189,24 @@ export default function UsersTable (props: EnhancedTableProps): JSX.Element {
                   <ProfileImage src={row.images}></ProfileImage>
                   <div className={style.bottom}>
                     <Tooltip title='Disable Seller' placement='top'>
-                    <button
-                      className={style['btn-delete-disable']}
-                      onClick={(): void => {
-                        handleDisable(row._id, row.isActive)
-                      }}
-                    >
-                      <DisableButton />
-                    </button>
+                      <button
+                        className={style['btn-delete-disable']}
+                        onClick={(): void => {
+                          handleDisable(row._id, row.isActive)
+                        }}
+                      >
+                        <DisableButton />
+                      </button>
                     </Tooltip>
                     <Tooltip title='Release Money' placement='top'>
-                    <button
-                      className={style['btn-delete-disable']}
-                      onClick={(): void => {
-                        handleDolar(row._id, row.accountBalance, row.sellerEmail, row.sellerName)
-                      }}
-                    >
-                      <DolarButton />
-                    </button>
+                      <button
+                        className={style['btn-delete-disable']}
+                        onClick={(): void => {
+                          handleDolar(row._id, row.accountBalance, row.sellerEmail, row.sellerName)
+                        }}
+                      >
+                        <DolarButton />
+                      </button>
                     </Tooltip>
                   </div>
                 </div>

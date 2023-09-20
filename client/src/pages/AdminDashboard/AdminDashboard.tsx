@@ -20,7 +20,6 @@ import { menuItems } from '../../components/SideBar/parts/itemsmenu'
 const AdminDashboard: React.FC = () => {
   const [activeItem, setActiveItem] = useState<string>('Settings')
   const [isReportPopupOpen, setIsReportPopupOpen] = useState<boolean>(false)
-
   const closeReportPopup = (): void => {
     setIsReportPopupOpen(false)
   }
@@ -49,7 +48,7 @@ const AdminDashboard: React.FC = () => {
       <div className={style['right-section']}>
         {activeItem === 'Request Payout' && <RequestPayout accountBalance={accountBalance} sellerName={sellerdetail.sellerName} sellerPhone={sellerdetail.sellerPhone} />}
         {activeItem === 'Report' && <Report id={ID} onClose={closeReportPopup} isOpen={isReportPopupOpen} route='sellers' />}
-        {activeItem === 'Create' && <FormSeller setActiveItem={setActiveItem}/>}
+        {activeItem === 'Create' && <FormSeller setActiveItem={setActiveItem} />}
         {(activeItem === 'List' || activeItem === 'Services') && <ServiceList setActiveItem={setActiveItem} sellerid={''} />}
         {activeItem === 'Clients' && <Clients clients={users} />}
         {activeItem === 'Interface' && <UpdateBusinessImages />}
