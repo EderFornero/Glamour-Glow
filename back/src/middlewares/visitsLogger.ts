@@ -11,6 +11,7 @@ export const visitsLogger = async (
     const visitDate = new Date();
     
     const pageVisit = new VisistModel({ path: originalUrl, date: visitDate });
+    console.log("document to save: ", pageVisit)
     pageVisit.save();
     
     return next();

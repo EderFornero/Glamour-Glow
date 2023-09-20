@@ -58,22 +58,28 @@ export const readSellersMetrics = async () => {
 };
 
 export const getPagesVisits = async () => {
-  const [totalVisits, uniquePaths] = await Promise.all([
-    await VisistModel.countDocuments(),
-    await VisistModel.distinct("path"),
-  ]);
+  const visits = await VisistModel.find();
 
-  const visitsByPath: { [key: string]: number } = {};
+  const visitsByPath: { [key: string]: { date: Date }[] } = {};
+  const totalVisitsByPath: { [key: string]: number } = {};
 
-  for (const path of uniquePaths) {
-    const visitCount = await VisistModel.countDocuments({ path });
-    visitsByPath[path] = visitCount;
+  for (const visit of visits) {
+    const { path, date } = visit;
+
+    if (!visitsByPath[path]) {
+      visitsByPath[path] = [];
+      totalVisitsByPath[path] = 0;
+    }
+
+    visitsByPath[path].push({ date });
+    totalVisitsByPath[path]++;
   }
 
   return {
-    totalPagesVisited: totalVisits,
-    visitsByPath: visitsByPath,
+    visitsByPath,
+    totalVisitsByPath,
   };
+
 };
 
 export const getPayments = async() => {
