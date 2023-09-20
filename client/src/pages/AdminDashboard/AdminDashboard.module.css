@@ -8,7 +8,7 @@
   min-height: 100vh;
   margin-left: 220px;
   display: flex;
-  width: 80%;
+  width: calc(100vw - 220px);
 }
 
 .Display-business {
@@ -20,6 +20,7 @@
 
 @media screen and (max-width: 900px) {
   .right-section {
+    width: calc(100vw - 85px);
     margin-left: 85px;
   }
 }
