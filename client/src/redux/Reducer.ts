@@ -19,6 +19,7 @@ import {
   SELLER_EMAIL,
   POST_SERVICES,
   PUT_SERVICES,
+  SEE_REPORTS,
   DELETE_SERVICES
 } from './Action-Types'
 import type { ServiceAction, RootState, UserDetail, SellerDetail } from './types'
@@ -31,6 +32,7 @@ export const initialState: RootState = {
   sellerMetrics: [],
   accountBalance: 0,
   sellerEmail: '',
+  reports: [],
   userdetail: {
     _id: '',
     name: '',
@@ -72,6 +74,7 @@ const reducer = (
   userMetrics: any[]
   sellerMetrics: any[]
   sellerEmail: string
+  reports: any[]
   userdetail: UserDetail
   sellerdetail: SellerDetail
   accountBalance: number
@@ -136,6 +139,9 @@ const reducer = (
 
     case SELLER_EMAIL:
       return { ...state, sellerEmail: action.payload }
+
+    case SEE_REPORTS:
+      return { ...state, reports: action.payload }
 
     case POST_SERVICES:
       return { ...state }
