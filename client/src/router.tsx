@@ -15,8 +15,10 @@ import BusinessDetail from './pages/BusinessDetail/BusinessDetail.tsx'
 import BusinessCardsView from './pages/BusinessCardsView/BusinessCardsView.tsx'
 import UserDetail from './pages/UserDetail/UserDetail.tsx'
 import PasswordRecovery from './pages/PasswordRecovery/PasswordRecovery.tsx'
+import SellerRecovery from './pages/SellerRecovery/SellerRecovery.tsx'
 import BookAService from './pages/BookAService/BookAService.tsx'
 import ResetPassword from './pages/ResetPassword/ResetPassword.tsx'
+import ResetPasswordSeller from './pages/ResetPasswordSeller.tsx/ResetPasswordSeller.tsx'
 // components
 import FormBusiness from './components/FormCreateBusiness/FormCreateBusiness.tsx'
 import GlamourAdmin from './pages/GlamourAdmin/GlamourAdmin.tsx'
@@ -101,6 +103,15 @@ const router = createBrowserRouter([
           {
             index: true,
             element: <BusinessForms />
+          },
+          {
+            path: '/businessLogin/passwordRecovery',
+            children: [
+              {
+                index: true,
+                element: <SellerRecovery />
+              }
+            ]
           }
         ]
       },
@@ -139,6 +150,15 @@ const router = createBrowserRouter([
           {
             index: true,
             element: <ResetPassword />
+          }
+        ]
+      },
+      {
+        path: '/resetPasswordSeller',
+        children: [
+          {
+            index: true,
+            element: <ResetPasswordSeller />
           }
         ]
       }
