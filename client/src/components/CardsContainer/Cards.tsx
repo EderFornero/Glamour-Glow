@@ -27,7 +27,7 @@ const Cards: React.FC<CardsProps> = ({ allServices }) => {
 
   const [sortOption, setSortOption] = useState('default')
 
-  function calcularRatingPromedio(reviews: any): any {
+  function calcularRatingPromedio (reviews: any): any {
     if (reviews.length === 0) {
       return 0
     }
@@ -54,8 +54,8 @@ const Cards: React.FC<CardsProps> = ({ allServices }) => {
         <div className={style['div-container-order-filter-cards']}>
           <FilterAndOrderCard allServices={allServices} setSortOption={setSortOption} />
           <section className={style.cardsSection}>
-            {itemsPaginated.map(({ _id, sellerName, categoriesArray, reviews, images }: ServiceProvider) => {
-              return <BusinessCard key={_id} _id={_id} reviews={reviews} sellerName={sellerName} categoriesArray={categoriesArray} images={images} />
+            {itemsPaginated.map(({ _id, sellerName, categoriesArray, reviews, images, isActive }: ServiceProvider) => {
+              return <BusinessCard key={_id} _id={_id} reviews={reviews} sellerName={sellerName} categoriesArray={categoriesArray} images={images} isActive={isActive} />
             })}
           </section>
         </div>

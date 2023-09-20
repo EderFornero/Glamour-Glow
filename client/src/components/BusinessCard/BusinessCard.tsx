@@ -10,12 +10,16 @@ interface BusinessCardProps {
   reviews: ReviewRating[]
   categoriesArray: Category[]
   images: string[]
+  isActive: boolean
 }
 
-const BusinessCard: React.FC<BusinessCardProps> = ({ _id, sellerName, reviews, categoriesArray, images }) => {
+const BusinessCard: React.FC<BusinessCardProps> = ({ _id, sellerName, reviews, categoriesArray, images, isActive }) => {
   const averageRating = useRating(reviews)
   return (
-    <article className={style.card}>
+    <>
+    {
+      isActive &&
+      <article className={style.card}>
       <div className={style.imageContainer}>{images !== undefined && images.length > 0 ? <img className={style.image} src={images[0]} alt='sellerImage' /> : <p>No image available</p>}</div>
       <div className={style.titleContainer}>
         <h2 className={style.title}> {sellerName}</h2>
@@ -28,6 +32,8 @@ const BusinessCard: React.FC<BusinessCardProps> = ({ _id, sellerName, reviews, c
         <StandardButton variant='sizeCards'>Check it out</StandardButton>
       </NavLink>
     </article>
+    }
+    </>
   )
 }
 

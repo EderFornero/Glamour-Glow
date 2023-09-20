@@ -8,6 +8,7 @@ export interface ServiceProvider {
   categoriesArray: Category[] | []
   servicesArray: Service[] | []
   images: string[]
+  isActive: boolean
 }
 
 export interface ReviewRating {
