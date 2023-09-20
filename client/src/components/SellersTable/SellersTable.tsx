@@ -57,7 +57,6 @@ export default function UsersTable(props: EnhancedTableProps): JSX.Element {
   const handleChangePage = (_event: React.MouseEvent<HTMLButtonElement> | null, newPage: number): void => {
     setPage(newPage)
   }
-  // Falta averiguar de donde sacar el SALDO
   const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
     setRowsPerPage(parseInt(event.target.value, 10))
     setPage(0)
@@ -92,11 +91,31 @@ export default function UsersTable(props: EnhancedTableProps): JSX.Element {
         accountBalance: sellerInfo.accountBalance
       })
       if (response !== null && mail !== null) {
-        toast.success('Balance deducted succesfully')
+        toast.success('Balance deducted succesfully', {
+          style: {
+            border: '1px solid #3d36be',
+            padding: '16px',
+            color: '#1eb66d'
+          },
+          iconTheme: {
+            primary: '#6e66ff',
+            secondary: '#FFFAEE'
+          }
+        })
         setSellerInfo({ ...sellerInfo, sellerId: '', sellerEmail: '', sellerName: '', accountBalance: 0 })
       }
     } catch (error) {
-      toast.error('Could not deduct balance, please try again')
+      toast.error('Could not deduct balance, please try again', {
+        style: {
+          border: '1px solid #3d36be',
+          padding: '16px',
+          color: 'red'
+        },
+        iconTheme: {
+          primary: 'red',
+          secondary: '#FFFAEE'
+        }
+      })
     }
   }
 
@@ -107,13 +126,7 @@ export default function UsersTable(props: EnhancedTableProps): JSX.Element {
 
   return (
     <Box sx={{ width: '100%' }}>
-      <Toaster
-        toastOptions={{
-          style: {
-            marginTop: '100px'
-          }
-        }}
-      />
+      <Toaster />
       <TableContainer>
         <Table aria-labelledby='tableTitle' size='medium' className={style['table-container']}>
           <TableHead className={style['table-head']}>

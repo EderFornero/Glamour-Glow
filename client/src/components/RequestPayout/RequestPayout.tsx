@@ -21,11 +21,31 @@ const RequestPayout: React.FC<RequestPayoutProps> = ({ accountBalance, sellerNam
       event.preventDefault()
       const success = await axios.post(endpoint, { accountBalance, sellerName, sellerPhone })
       if (success !== null) {
-        toast.success('Request successful. Email has been sent')
+        toast.success('Request successful. Email has been sent', {
+          style: {
+            border: '1px solid #3d36be',
+            padding: '16px',
+            color: '#1eb66d'
+          },
+          iconTheme: {
+            primary: '#6e66ff',
+            secondary: '#FFFAEE'
+          }
+        })
         setLoading(false)
       }
     } catch (error) {
-      toast.error('E-mail was not sent. Please try again')
+      toast.error('E-mail was not sent. Please try again', {
+        style: {
+          border: '1px solid #3d36be',
+          padding: '16px',
+          color: 'red'
+        },
+        iconTheme: {
+          primary: 'red',
+          secondary: '#FFFAEE'
+        }
+      })
     }
   }
 
