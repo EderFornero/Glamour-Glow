@@ -10,7 +10,7 @@ const reviewSchema = z.object({
     description: z
     .string({required_error: "Description is required"})
     .nonempty("You must provide a description")
-    .max(50, "The description must be up to 50 characters"),
+    .max(150, "The description must be up to 150 characters"),
 
     sellerId: z
     .string({required_error: "a seller id is required"}),

@@ -22,6 +22,7 @@ export interface RootState {
   isAuth: any
   userId: null
   sellerImageIndex: number
+  payments: any[]
 }
 
 export interface UserDetail {
