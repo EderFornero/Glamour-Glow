@@ -68,9 +68,6 @@ function Fotter (): JSX.Element {
             <li>
               <Link to='/know/us'>About Us</Link>
             </li>
-            <li>
-              <a>Contact</a>
-            </li>
           </menu>
         </section>
       </section>
