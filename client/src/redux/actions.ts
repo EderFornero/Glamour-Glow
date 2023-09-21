@@ -304,7 +304,7 @@ export const getClientsById: any = (id: string) => {
 }
 
 export const cleanSellerDetail: any = (): SellerDetailAction => {
-  return { type: CLEAN_SELLER_DETAIL, payload: { _id: '', sellerName: '', sellerEmail: '', sellerPhone: '', sellerGender: '', reviews: [], categoriesArray: [], servicesArray: [], images: [] } }
+  return { type: CLEAN_SELLER_DETAIL, payload: { _id: '', sellerName: '', sellerEmail: '', sellerPhone: '', sellerGender: '', reviews: [], categoriesArray: [], servicesArray: [], images: [], isActive: boolean } }
 }
 
 export const updateSellerImageIndex: any = (payload: number) => {
