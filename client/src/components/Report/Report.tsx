@@ -14,6 +14,7 @@ interface ReportProps {
 
 const Report: React.FC<ReportProps> = ({ isOpen, onClose, id, route }) => {
   const [description, setDescription] = useState<string>('')
+  const [isSubmitted, setIsSubmitted] = useState<boolean>(false)
   const location = useLocation()
 
   const handleReportSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
@@ -22,6 +23,7 @@ const Report: React.FC<ReportProps> = ({ isOpen, onClose, id, route }) => {
       const endpoint = `${API_URL}${route}/reports`
       await axios.post(endpoint, { id, description })
       setDescription('')
+      setIsSubmitted(true)
 
       toast.success('Report Submitted. We will review it as soon as possible', {
         style: {
@@ -34,6 +36,7 @@ const Report: React.FC<ReportProps> = ({ isOpen, onClose, id, route }) => {
           secondary: '#FFFAEE'
         }
       })
+      setIsSubmitted(false)
     } catch (error) {
       toast.error('Sorry, there was a problem. Please try again', {
         style: {
@@ -51,7 +54,7 @@ const Report: React.FC<ReportProps> = ({ isOpen, onClose, id, route }) => {
 
   return (
     <form className={`${styles['report-popup']} ${isOpen ? styles.open : ''}`} onSubmit={handleReportSubmit}>
-      {location.pathname.startsWith('/userdetail') && description === '' && (
+      {location.pathname.startsWith('/userdetail') && description === '' && isSubmitted && (
         <Toaster
           toastOptions={{
             style: {

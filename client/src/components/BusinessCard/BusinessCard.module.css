@@ -17,7 +17,7 @@
   gap: 10px;
   margin: 12px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  height: 460px;
+  height: fit-content;
   @media (max-width: 420px) {
     width: 350px;
   }
@@ -54,6 +54,12 @@
   height: 100%;
   aspect-ratio: 3/2;
   object-fit: cover;
+}
+
+.categories {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 .itemsContainer {
