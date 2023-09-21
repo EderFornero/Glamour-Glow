@@ -40,26 +40,21 @@ const Home: React.FC = () => {
       dispatch(getUserbyId(id))
     }
   }, [])
-  const emailRedux = useSelector((state: RootState) => state.sellerEmail)
-  const accountBalance = useSelector((state: RootState) => state.accountBalance)
-  console.log(emailRedux, accountBalance)
 
   return (
     <div>
       <SearchBar onSearch={handleOnSearch} updateShowCards={updateShowCards} />
-      {showCards
-        ? (
-          <Cards allServices={searchResults.length > 0 ? searchResults : allServices} />
-          )
-        : (
-          <>
-            <Description />
-            <Carousel cardstoshow={recomendedServices} carouselName='Recomended' />
-            <Carousel cardstoshow={mostServices} carouselName='More services' />
-            <Description2 />
-            <FAQ />
-          </>
-          )}
+      {showCards ? (
+        <Cards allServices={searchResults.length > 0 ? searchResults : allServices} />
+      ) : (
+        <>
+          <Description />
+          <Carousel cardstoshow={recomendedServices} carouselName='Recomended' />
+          <Carousel cardstoshow={mostServices} carouselName='More services' />
+          <Description2 />
+          <FAQ />
+        </>
+      )}
     </div>
   )
 }
