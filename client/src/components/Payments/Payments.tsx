@@ -76,7 +76,7 @@ const Payments: React.FC = () => {
                   <p>{row.transactionId}</p>
                 </TableCell>
                 <TableCell className={style['table-cell']}>
-                  <p>{row.price}</p>
+                  <p>${row.price}</p>
                 </TableCell>
               </TableRow>
             ))}

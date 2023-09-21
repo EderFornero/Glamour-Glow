@@ -13,7 +13,9 @@ const UsersCards: React.FC = () => {
     dispatch(getUsers())
   }, [users])
 
-  const rows = users.map((user) => ({
+  const reversedUsers = [...users].reverse()
+
+  const rows = reversedUsers.map((user) => ({
     _id: user._id,
     name: user.name,
     lastName: user.lastName,
