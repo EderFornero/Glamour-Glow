@@ -36,6 +36,7 @@ const Home: React.FC = () => {
   }
   useEffect(() => {
     const id = localStorage.getItem('id')
+    console.log(id)
     if (id !== null) {
       dispatch(getUserbyId(id))
     }
