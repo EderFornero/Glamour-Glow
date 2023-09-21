@@ -47,9 +47,18 @@ const LeaveAComment: React.FC<LeaveACommentProps> = ({ userId }) => {
           description: ''
         })
       }
-      toast.success('Thank you for your review')
     } catch (error) {
-      toast.error('Review could not be submitted')
+      toast.error('Review could not be submitted', {
+        style: {
+          border: '1px solid #3d36be',
+          padding: '16px',
+          color: 'red'
+        },
+        iconTheme: {
+          primary: 'red',
+          secondary: '#FFFAEE'
+        }
+      })
     }
   }
 

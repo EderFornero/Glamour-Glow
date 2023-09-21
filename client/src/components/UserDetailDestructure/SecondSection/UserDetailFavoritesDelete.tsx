@@ -53,8 +53,9 @@ const UserDetailFavoritesDelete = (): JSX.Element => {
           <p>Services you&apos;ve liked</p>
         </div>
         <div className={styles['favorites-body']}>
-          {userdetail.favorites !== undefined && userdetail.favorites[0]?.seller?.categoriesArray?.length > 0 ? (
-            <Swiper modules={[Pagination, A11y, Autoplay]} className={style.swipers} spaceBetween={space} slidesPerView={slidesPerView} pagination={{ clickable: true }} autoplay={{ delay: 3000 }}>
+          {userdetail.favorites !== undefined && userdetail.favorites[0]?.seller?.categoriesArray?.length > 0
+            ? (
+            <Swiper modules={[Pagination, A11y, Autoplay]} className={style.swiper} spaceBetween={space} slidesPerView={slidesPerView} pagination={{ clickable: true }} autoplay={{ delay: 3000 }}>
               {userdetail.favorites?.map(({ _id, seller }) => {
                 return (
                   <SwiperSlide key={_id} className={style.swiperslides}>
@@ -65,7 +66,8 @@ const UserDetailFavoritesDelete = (): JSX.Element => {
                 )
               })}
             </Swiper>
-          ) : (
+              )
+            : (
             <div className={styles['no-favorites']}>
               <p>Don&apos;t have favorites yet</p>
               <button
@@ -77,11 +79,10 @@ const UserDetailFavoritesDelete = (): JSX.Element => {
                 Let&apos;s Explore{' '}
               </button>
             </div>
-          )}
+              )}
         </div>
       </div>
-
-      <div className={styles['right-delete']}>
+      {/* <div className={styles['right-delete']}>
         <div className={styles['delete-header']}>
           <h4>Delete Account</h4>
           <p>Are you sure you want to delete this account?</p>
@@ -89,7 +90,7 @@ const UserDetailFavoritesDelete = (): JSX.Element => {
         <div className={styles['delete-body']}>
           <a href=''>Delete Account</a>
         </div>
-      </div>
+      </div> */}
     </>
   )
 }
