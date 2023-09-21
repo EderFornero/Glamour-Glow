@@ -15,7 +15,6 @@ const UserDetailFavoritesDelete = (): JSX.Element => {
   const [slidesPerView, setSlidesPerView] = useState(3)
   const [space, setSpace] = useState(0)
   const userdetail = useSelector((state: RootState) => state.userdetail)
-  console.log(userdetail.favorites, 'ACA')
 
   const updateSlidesPerView = (): void => {
     const width = window.innerWidth

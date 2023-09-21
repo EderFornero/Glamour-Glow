@@ -41,9 +41,6 @@ const Home: React.FC = () => {
       dispatch(getUserbyId(id))
     }
   }, [])
-  const emailRedux = useSelector((state: RootState) => state.sellerEmail)
-  const accountBalance = useSelector((state: RootState) => state.accountBalance)
-  console.log(emailRedux, accountBalance)
 
   return (
     <div>
