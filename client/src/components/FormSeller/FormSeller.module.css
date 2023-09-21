@@ -53,6 +53,8 @@
   min-height: 31rem;
   max-width: 40rem;
   max-height: 40rem;
+  display: flex;
+  align-items: center;
   justify-content: center;
   background-color: var(--secondary-color);
   color: white;
