@@ -27,7 +27,7 @@ const UserDetailFavoritesDelete = (): JSX.Element => {
       setSpace(50)
     } else if (width > 1200 && width < 1800) {
       setSlidesPerView(1)
-      setSpace(100)
+      setSpace(50)
     } else if (width > 1800 && width < 2550) {
       setSlidesPerView(2)
       setSpace(50)
