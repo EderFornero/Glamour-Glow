@@ -183,7 +183,7 @@ export default function UsersTable (props: EnhancedTableProps): JSX.Element {
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
       </div>
-      {isActiveOpen && <ConfirmationReleasePay message='This seller are disable, you want to change to enable?' onConfirm={handleEnable} onCancel={closeActive} />}
+      {isActiveOpen && <ConfirmationReleasePay message='The user is disabled. Do you want to reenable him?' onConfirm={handleEnable} onCancel={closeActive} />}
     </Box>
   )
 }

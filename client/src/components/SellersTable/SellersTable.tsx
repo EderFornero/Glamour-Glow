@@ -247,7 +247,7 @@ export default function UsersTable ({ rows }: EnhancedTableProps): JSX.Element {
         />
       </div>
       {isModalOpen && <ConfirmationReleasePay message='Are you sure you want to release the money?' onConfirm={handleBalanceDeduction} onCancel={closeRelease} />}
-      {isActiveOpen && <ConfirmationReleasePay message='This seller are disable, you want to change to enable?' onConfirm={handleEnable} onCancel={closeActive} />}
+      {isActiveOpen && <ConfirmationReleasePay message='The seller is disabled. Do you want to reenable him?' onConfirm={handleEnable} onCancel={closeActive} />}
     </Box>
   )
 }

@@ -28,11 +28,11 @@ const Metrics = (): JSX.Element => {
         <UsersPies userMetrics={userMetrics}/>
       </div>
       <div className={style.unit}>
-        <p>Actives Accounts Data</p>
+        <p>Active Accounts Data</p>
         <SellerUsersPie userMetrics={userMetrics} sellerMetrics={sellerMetrics}/>
       </div>
       <div className={style.unit}>
-        <p>All Accounts Data</p>
+        <p>Every Account Data</p>
         <AllAccountPies userMetrics={userMetrics} sellerMetrics={sellerMetrics}/>
       </div>
     </div>
