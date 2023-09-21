@@ -104,20 +104,6 @@ const StyledDivButton = styled.div`
   margin-bottom: 5px;
 `
 
-const StyledButtons = styled.div`
-  background: none;
-  cursor: pointer;
-  color: #000;
-  border: 0.125em solid var(--accent-color);
-  border-radius: 6px;
-  padding: 5px;
-
-  &:hover {
-    box-shadow: var(--accent-color) 0 5px 10px;
-    transform: translateY(-2px);
-  }
-`
-
 const UpdateImageButton = styled.div`
 width: auto;
 font-size: 15px;

@@ -57,7 +57,7 @@ const RequestPayout: React.FC<RequestPayoutProps> = ({ accountBalance, sellerNam
         <Toaster />
         <h2 className={style.title}>You are about to request a payment</h2>
         <p>{`$${accountBalance}.- will be deducted from your account. Please confirm you want to perform this action`}</p>
-        <button type='submit' className={style.submit}>
+        <button type='submit' className={style.submit} disabled={accountBalance === 0}>
           {loading ? <Loader /> : 'Request'}
         </button>
       </form>
