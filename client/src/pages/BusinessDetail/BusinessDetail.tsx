@@ -74,10 +74,10 @@ const BusinessDetail = (): JSX.Element => {
         style: {
           border: '1px solid #3d36be',
           padding: '16px',
-          color: 'red'
+          color: '#1eb66d'
         },
         iconTheme: {
-          primary: 'red',
+          primary: '#6e66ff',
           secondary: '#FFFAEE'
         }
       })
