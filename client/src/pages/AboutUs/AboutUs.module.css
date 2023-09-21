@@ -1,7 +1,6 @@
 .div-container-about{
   width: 100%;
   height: fit-content;
-  background-color: var(--primary-color);
   margin-top: -25px;
 } 
 
@@ -37,6 +36,7 @@
   box-shadow: 0px 0px 25px 5px rgba(0, 0, 0, 0.329);
   border-radius: 12px;
   border: dotted 2px rgba(0, 0, 0, 0.329);
+  background-color: var(--secondary-color);
  }
  
  .card-about-info {
@@ -58,8 +58,6 @@
   margin-bottom: 1rem;
   box-shadow: 0px 0px 25px 5px rgba(0, 0, 0, 0.555);
   margin-top: 1vh;
-
-  
  }
 
   /*Text*/
@@ -96,6 +94,7 @@
   height: 80px;
   color: var(--neutral-color);
   opacity: .6;
+  flex-grow: 1;
 
   @media (max-width: 1250px){ 
     font-size: 15px;
@@ -120,21 +119,20 @@
  
  .card-social__item svg {
   display: block;
-  height: 50px;
-  width: 60px;
-  margin-top: -5px;
+  height: 25px;
+  width: 40px;
+  margin-top: 30px;
   cursor: pointer;
   transition: fill 0.2s ease ,transform 0.2s ease;
   transition: 350ms;
  }
  .card-social__item svg:hover{
-   box-shadow: 0px 0px 60px 0 var(--accent-color);
-   border-radius: 80px;
-   background-color: rgba(127, 255, 212, 0.281);
+    filter: drop-shadow(0px 0px 10px var(--accent-color));
+    border-radius: 10px;
  }
  
 
- /*Hover*/
+ /* Hover */
  .card-about:hover .card-about-info {
   transform: translateY(-5%);
  }
@@ -152,9 +150,9 @@
  .iconos{
    display: flex;
    justify-content: center;
-   margin-top: 5vh;
    gap: 120px;
  }
+ 
  .border{
   border-bottom:  4px solid var(--secondary-color);
   padding: 5px;
