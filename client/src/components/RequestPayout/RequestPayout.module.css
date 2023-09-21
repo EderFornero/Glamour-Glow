@@ -66,5 +66,9 @@
       font-size: 1.2rem;
       min-width: 125px;
     }
+    .submit:disabled {
+      background-color: #ccc;
+      color: var(--primary-color);
+    }
   }
 }
