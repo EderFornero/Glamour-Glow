@@ -7,7 +7,7 @@ export const sendWelcomeEmail = async (recipientEmail: string) => {
   const response = await axios.post(`${API_URL}welcomeEmail`, {
     recipientEmail
   })
-  console.log(response)
+
   return response
 }
 
@@ -15,7 +15,7 @@ export const sendWelcomeEmail = async (recipientEmail: string) => {
 export const sendResetPasswordEmail = async (email: string) => {
   // eslint-disable-next-line no-useless-catch
   const response = await axios.post(`${API_URL}users/forgotPassword`, { email })
-  console.log(response)
+
   return response
 }
 
@@ -23,7 +23,7 @@ export const sendResetPasswordEmail = async (email: string) => {
 export const sendResetPasswordEmailSeller = async (sellerEmail: string) => {
   // eslint-disable-next-line no-useless-catch
   const response = await axios.post(`${API_URL}sellers/forgotPassword`, { sellerEmail })
-  console.log(response)
+
   return response
 }
 
@@ -50,10 +50,7 @@ export const paymentConfirmation = async (userEmail: string, price: string | nul
     const url = `${API_URL}successfulPayment`
     const data = { userEmail, price, sellerEmail, sellerPhone, sellerName, service }
     await axios.post(url, data)
-    console.log('EMAIL USER')
-  } catch (error) {
-    console.log('SALIO MAL')
-  }
+  } catch (error) {}
 }
 
 export const sendSellerEmail = async (userEmail: string, price: string | null, sellerEmail: string, userPhone: string, userName: string, service: string | null): Promise<any> => {
@@ -61,8 +58,5 @@ export const sendSellerEmail = async (userEmail: string, price: string | null, s
     const url = `${API_URL}successfulSale`
     const data = { userEmail, price, sellerEmail, userPhone, userName, service }
     await axios.post(url, data)
-    console.log('EMAIL SELLER')
-  } catch (error) {
-    console.log('SALIO ALGO MAL EN SEND SELLER EMAIL')
-  }
+  } catch (error) {}
 }

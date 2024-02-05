@@ -37,7 +37,7 @@ interface ActiveInfo {
   _id: string
 }
 
-export default function UsersTable (props: EnhancedTableProps): JSX.Element {
+export default function UsersTable(props: EnhancedTableProps): JSX.Element {
   const { rows } = props
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(5)
@@ -72,7 +72,6 @@ export default function UsersTable (props: EnhancedTableProps): JSX.Element {
   const handleEnable = async (): Promise<void> => {
     const response = dispatch(enableUser(activeInfo._id))
     setisActiveOpen(false)
-    console.log(response)
     if (response.PromiseResult === undefined) {
       toast.success('User enable succesfully')
     }

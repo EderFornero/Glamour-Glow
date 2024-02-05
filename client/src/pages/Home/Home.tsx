@@ -44,19 +44,17 @@ const Home: React.FC = () => {
   return (
     <div>
       <SearchBar onSearch={handleOnSearch} updateShowCards={updateShowCards} />
-      {showCards
-        ? (
-          <Cards allServices={searchResults.length > 0 ? searchResults : allServices} />
-          )
-        : (
-          <>
-            <Description />
-            <Carousel cardstoshow={recomendedServices} carouselName='Recomended' />
-            <Carousel cardstoshow={mostServices} carouselName='More services' />
-            <Description2 />
-            <FAQ />
-          </>
-          )}
+      {showCards ? (
+        <Cards allServices={searchResults.length > 0 ? searchResults : allServices} />
+      ) : (
+        <>
+          <Description />
+          <Carousel cardstoshow={recomendedServices} carouselName='Recomended' />
+          <Carousel cardstoshow={mostServices} carouselName='More services' />
+          <Description2 />
+          <FAQ />
+        </>
+      )}
     </div>
   )
 }

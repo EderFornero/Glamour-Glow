@@ -26,9 +26,7 @@ const BookAService = (): JSX.Element => {
       const id = response.data.init_point
 
       return id
-    } catch (error) {
-      console.log(error)
-    }
+    } catch (error) {}
   }
 
   const handleBuy = async (): Promise<void> => {

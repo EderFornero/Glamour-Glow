@@ -2,7 +2,7 @@ import type { Category, ReviewRating } from '../interfaces'
 
 export interface Favorite {
   _id: string
-  seller: Seller
+  seller: any
 }
 
 export interface Seller {
@@ -15,7 +15,7 @@ export interface Seller {
 export const checkFavourite = (userFavourites: Favorite[], sellerId: string | undefined): boolean => {
   const length = userFavourites.length
   for (let i = 0; i < length; i++) {
-    if (userFavourites[i]._id === sellerId) {
+    if (userFavourites[i].seller._id === sellerId) {
       return true
     }
   }
