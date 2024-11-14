@@ -33,8 +33,19 @@ export const updateService = async (id: string, update: Object) => {
   return serviceUpdate;
 };
 
-export const destroyService = async (id: string) => {
-  const deleteService = await ServicesModel.findByIdAndDelete(id);
-  await SellerModel.findOneAndUpdate({_id : deleteService?.seller}, {"$pull": {servicesArray: id}})
-  return id;
-};
+// export const destroyService = async (id: string) => {
+//   const deleteService = await ServicesModel.findByIdAndDelete(id);
+
+//   if (deleteService) {
+//     const sellerId = deleteService.seller;
+
+//     if (sellerId) {
+//       await SellerModel.findOneAndUpdate(
+//         { _id: sellerId },
+//         { $pull: { servicesArray: id } }
+//       );
+//     }
+//   }
+
+//   return id;
+// };
